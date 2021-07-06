@@ -13,6 +13,9 @@ public class LoaiHangHoa {
     private String maLHH;
     private String tenLHH;
 
+    public LoaiHangHoa() {
+    }
+
     public LoaiHangHoa(String maLHH, String tenLHH) {
         this.maLHH = maLHH;
         this.tenLHH = tenLHH;

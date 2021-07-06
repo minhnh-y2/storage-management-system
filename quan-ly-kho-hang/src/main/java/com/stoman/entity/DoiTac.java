@@ -10,14 +10,18 @@ package com.stoman.entity;
  * @author Huy
  */
 public class DoiTac {
-    private String maDT;
+    private int maDT;
     private String tenDT;
     private String diaChi;
     private String email;
     private String soDT;
+    private boolean vaiTro;
     private String maLDT;
+    
+    public DoiTac(){
+    }
 
-    public DoiTac(String maDT, String tenDT, String diaChi, String email, String soDT, String maLDT) {
+    public DoiTac(int maDT, String tenDT, String diaChi, String email, String soDT, String maLDT) {
         this.maDT = maDT;
         this.tenDT = tenDT;
         this.diaChi = diaChi;
@@ -26,11 +30,11 @@ public class DoiTac {
         this.maLDT = maLDT;
     }
 
-    public String getMaDT() {
+    public int getMaDT() {
         return maDT;
     }
 
-    public void setMaDT(String maDT) {
+    public void setMaDT(int maDT) {
         this.maDT = maDT;
     }
 
@@ -73,6 +77,13 @@ public class DoiTac {
     public void setMaLDT(String maLDT) {
         this.maLDT = maLDT;
     }
-    
+
+    public boolean isVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(boolean vaiTro) {
+        this.vaiTro = vaiTro;
+    }
     
 }

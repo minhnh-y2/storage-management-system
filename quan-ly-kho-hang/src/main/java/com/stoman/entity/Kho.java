@@ -14,6 +14,9 @@ public class Kho {
     private String DiaChi;
     private String maTK;
 
+    public Kho() {
+    }
+
     public Kho(int maKho, String DiaChi, String maTK) {
         this.maKho = maKho;
         this.DiaChi = DiaChi;

@@ -13,6 +13,9 @@ public class LoaiDoiTac {
     private String maLDT;
     private String tenLDT;
 
+    public LoaiDoiTac() {
+    }
+
     public LoaiDoiTac(String maLDT, String tenLDT) {
         this.maLDT = maLDT;
         this.tenLDT = tenLDT;

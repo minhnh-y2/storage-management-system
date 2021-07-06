@@ -21,6 +21,9 @@ public class Phieu {
     private int maDT;
     private String maNV;
 
+    public Phieu() {
+    }
+
     public Phieu(Integer maPhieu, Date ngayLap, boolean loai, boolean trangThai, Date NgThucHien, Date NgHoanThanh, int maDT, String maNV) {
         this.maPhieu = maPhieu;
         this.ngayLap = ngayLap;

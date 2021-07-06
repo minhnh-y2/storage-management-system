@@ -16,6 +16,9 @@ public class ChiTietPhieu {
     private double soLuong;
     private double donGia;
 
+    public ChiTietPhieu() {
+    }
+
     public ChiTietPhieu(int maCTP, int maPhieu, int maLT, double soLuong, double donGia) {
         this.maCTP = maCTP;
         this.maPhieu = maPhieu;

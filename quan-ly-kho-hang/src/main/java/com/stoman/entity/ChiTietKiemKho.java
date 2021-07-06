@@ -17,6 +17,9 @@ public class ChiTietKiemKho {
     private int maLT;
     private int maKK;
 
+    public ChiTietKiemKho() {
+    }
+
     public ChiTietKiemKho(int maCTKK, Double soLuongTon, Double soLuongThuc, String ghiChu, int maLT, int maKK) {
         this.maCTKK = maCTKK;
         this.soLuongTon = soLuongTon;

@@ -18,6 +18,9 @@ public class PhieuKiemKho {
     private boolean trangThai;
     private String maNV;
 
+    public PhieuKiemKho() {
+    }
+
     public PhieuKiemKho(int maKK, Date NgayLap, Date NgayKiem, boolean trangThai, String maNV) {
         this.maKK = maKK;
         this.NgayLap = NgayLap;

@@ -16,6 +16,9 @@ public class NhanVien {
     private String matKhau;
     private String muoi;
 
+    public NhanVien() {
+    }
+
     public NhanVien(String maNV, String tenNV, boolean vaiTRo, String matKhau, String muoi) {
         this.maNV = maNV;
         this.tenNV = tenNV;

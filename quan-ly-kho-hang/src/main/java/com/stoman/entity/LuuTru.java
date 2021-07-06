@@ -10,23 +10,26 @@ package com.stoman.entity;
  * @author Huy
  */
 public class LuuTru {
-    private String maLT;
+    private int maLT;
     private int maKho;
     private int maHH;
     private Double soLuong;
 
-    public LuuTru(String maLT, int maKho, int maHH, Double soLuong) {
+    public LuuTru() {
+    }
+
+    public LuuTru(int maLT, int maKho, int maHH, Double soLuong) {
         this.maLT = maLT;
         this.maKho = maKho;
         this.maHH = maHH;
         this.soLuong = soLuong;
     }
 
-    public String getMaLT() {
+    public int getMaLT() {
         return maLT;
     }
 
-    public void setMaLT(String maLT) {
+    public void setMaLT(int maLT) {
         this.maLT = maLT;
     }
 

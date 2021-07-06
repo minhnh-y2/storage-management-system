@@ -10,13 +10,16 @@ package com.stoman.entity;
  * @author Huy
  */
 public class HangHoa {
-    private int maHH;
+    private String maHH;
     private String tenHH;
     private Double donGia;
     private String donViTinh;
-    private String maLHH;
+    private int maLHH;
 
-    public HangHoa(int maHH, String tenHH, Double donGia, String donViTinh, String maLHH) {
+    public HangHoa() {
+    }
+
+    public HangHoa(String maHH, String tenHH, Double donGia, String donViTinh, int maLHH) {
         this.maHH = maHH;
         this.tenHH = tenHH;
         this.donGia = donGia;
@@ -24,11 +27,11 @@ public class HangHoa {
         this.maLHH = maLHH;
     }
 
-    public int getMaHH() {
+    public String getMaHH() {
         return maHH;
     }
 
-    public void setMaHH(int maHH) {
+    public void setMaHH(String maHH) {
         this.maHH = maHH;
     }
 
@@ -56,11 +59,11 @@ public class HangHoa {
         this.donViTinh = donViTinh;
     }
 
-    public String getMaLHH() {
+    public int getMaLHH() {
         return maLHH;
     }
 
-    public void setMaLHH(String maLHH) {
+    public void setMaLHH(int maLHH) {
         this.maLHH = maLHH;
     }
     
