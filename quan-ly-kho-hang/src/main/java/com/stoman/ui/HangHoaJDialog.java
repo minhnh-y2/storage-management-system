@@ -30,7 +30,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listLoaiHangHoa = new javax.swing.JList<>();
@@ -57,12 +59,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         btnLast = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblHangHoa = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setText("Tìm kiếm");
+
+        jLabel6.setText("Sắp xếp theo");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại hàng hoá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -192,8 +194,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         ));
         jScrollPane2.setViewportView(tblHangHoa);
-
-        jLabel6.setText("Sắp xếp theo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
