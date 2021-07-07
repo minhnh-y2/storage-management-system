@@ -61,6 +61,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         tblHangHoa = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("StoMan - Quản lý hàng hoá");
+        setAlwaysOnTop(true);
 
         jLabel5.setText("Tìm kiếm");
 

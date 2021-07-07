@@ -59,6 +59,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("StoMan - Quản lý nhân viên");
+        setAlwaysOnTop(true);
 
         jLabel1.setText("Tìm kiếm");
 

@@ -41,7 +41,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         txtTenDT = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtSoDT = new javax.swing.JTextField();
+        txtDonGia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -51,19 +51,21 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnFirst = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("StoMan - Quản lý đối tác");
+        setAlwaysOnTop(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -104,7 +106,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(btnXoaList, gridBagConstraints);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin hàng hoá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
         jLabel2.setText("Tên đối tác");
 
@@ -141,7 +143,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addGap(0, 63, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSoDT)
+                    .addComponent(txtDonGia)
                     .addComponent(txtTenDT))
                 .addContainerGap())
         );
@@ -162,7 +164,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,10 +189,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnMoi.setText("Mới");
         jPanel3.add(btnMoi);
 
-        jLabel7.setText("Tìm kiếm");
-
-        jLabel8.setText("Sắp xếp theo");
-
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFirst.setText("|<");
@@ -204,6 +202,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         btnLast.setText(">|");
         jPanel4.add(btnLast);
+
+        jLabel7.setText("Tìm kiếm");
+
+        jLabel8.setText("Sắp xếp theo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -337,8 +339,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     private javax.swing.JList<String> listLoaiHangHoa;
     private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtSoDT;
     private javax.swing.JTextField txtTenDT;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
