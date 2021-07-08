@@ -39,6 +39,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("StoMan - Đổi mật khẩu");
 
         jLabel1.setText("Mật khẩu hiện tại");
 
