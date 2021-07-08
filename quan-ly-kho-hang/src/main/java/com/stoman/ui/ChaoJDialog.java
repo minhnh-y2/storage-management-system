@@ -33,7 +33,6 @@ public class ChaoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
@@ -41,21 +40,14 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setUndecorated(true);
 
-        panel.setBackground(new java.awt.Color(255, 255, 255));
-        panel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
-        panel.setLayout(new java.awt.BorderLayout());
-
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.png"))); // NOI18N
-        panel.add(lblLogo, java.awt.BorderLayout.CENTER);
+        getContentPane().add(lblLogo, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panel, java.awt.BorderLayout.CENTER);
-
-        progressBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         progressBar.setMaximumSize(new java.awt.Dimension(32767, 17));
         progressBar.setMinimumSize(new java.awt.Dimension(10, 17));
         progressBar.setPreferredSize(new java.awt.Dimension(146, 17));
         progressBar.setStringPainted(true);
-        getContentPane().add(progressBar, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(progressBar, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,7 +97,6 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JPanel panel;
     private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 
