@@ -107,11 +107,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 762, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Tổng quan", jPanel1);
@@ -120,11 +120,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 762, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Hàng tồn kho", jPanel2);
@@ -133,11 +133,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 762, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Xuất theo quý", jPanel3);
@@ -146,11 +146,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 762, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Nhập theo quý", jPanel4);
@@ -159,11 +159,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 762, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Cán cân xuất nhập", jPanel5);
