@@ -72,7 +72,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/sign-out.png"))); // NOI18N
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -214,12 +214,12 @@ public class StoManJFrame extends javax.swing.JFrame {
         mnuHeThong.setText("Hệ thống");
 
         mniDangNhap.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/signin.png"))); // NOI18N
+        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/login.png"))); // NOI18N
         mniDangNhap.setText("Đăng nhập");
         mnuHeThong.add(mniDangNhap);
 
         mniDangXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/sign-out.png"))); // NOI18N
+        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
         mniDangXuat.setText("Đăng xuất");
         mnuHeThong.add(mniDangXuat);
         mnuHeThong.add(jSeparator3);
