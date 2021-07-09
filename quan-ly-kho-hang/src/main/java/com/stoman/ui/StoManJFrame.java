@@ -28,15 +28,15 @@ public class StoManJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnNhapXuat = new javax.swing.JButton();
+        btnKiemKho = new javax.swing.JButton();
+        btnDoiTac = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        cboThongTin = new javax.swing.JButton();
+        btnHuongDan = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -44,62 +44,91 @@ public class StoManJFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTrangThai = new javax.swing.JLabel();
+        btnDongHo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        mnuHeThong = new javax.swing.JMenu();
+        mniDangNhap = new javax.swing.JMenuItem();
+        mniDangXuat = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        mniDoiMK = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        mniThoat = new javax.swing.JMenuItem();
+        mnuQuanLy = new javax.swing.JMenu();
+        mniHangHoa = new javax.swing.JMenuItem();
+        mniDoiTac = new javax.swing.JMenuItem();
+        mniKho = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        mniPhieuNhapXuat = new javax.swing.JMenuItem();
+        mniPhieuKiemKho = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        mniNhanVien = new javax.swing.JMenuItem();
+        mnuTroGiup = new javax.swing.JMenu();
+        mniHuongDan = new javax.swing.JMenuItem();
+        mniGioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StoMan - Stroge Manager System");
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Đăng xuất");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/sign-out.png"))); // NOI18N
+        btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.setFocusable(false);
+        btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDangXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnDangXuat);
 
-        jButton7.setText("Thoát");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton7);
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
+        btnThoat.setText("Thoát");
+        btnThoat.setFocusable(false);
+        btnThoat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnThoat.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnThoat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnThoat);
         jToolBar1.add(jSeparator1);
 
-        jButton2.setText("Thực hiện nhập xuất");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        btnNhapXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/up-down-arrow.png"))); // NOI18N
+        btnNhapXuat.setText("Nhập/Xuất");
+        btnNhapXuat.setFocusable(false);
+        btnNhapXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNhapXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnNhapXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnNhapXuat);
 
-        jButton3.setText("Kiểm kho");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btnKiemKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/warehouse.png"))); // NOI18N
+        btnKiemKho.setText("Kiểm kho");
+        btnKiemKho.setFocusable(false);
+        btnKiemKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnKiemKho.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnKiemKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnKiemKho);
 
-        jButton4.setText("Quản lý đối tác");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        btnDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/handshake.png"))); // NOI18N
+        btnDoiTac.setText("Quản lý đối tác");
+        btnDoiTac.setFocusable(false);
+        btnDoiTac.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDoiTac.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnDoiTac.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnDoiTac);
         jToolBar1.add(jSeparator2);
 
-        jButton5.setText("Thông tin");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        cboThongTin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info.png"))); // NOI18N
+        cboThongTin.setText("Thông tin");
+        cboThongTin.setFocusable(false);
+        cboThongTin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cboThongTin.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        cboThongTin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(cboThongTin);
 
-        jButton6.setText("Hướng dẫn");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
+        btnHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/user-manual.png"))); // NOI18N
+        btnHuongDan.setText("Hướng dẫn");
+        btnHuongDan.setFocusable(false);
+        btnHuongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHuongDan.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnHuongDan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnHuongDan);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
@@ -111,7 +140,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Tổng quan", jPanel1);
@@ -124,7 +153,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Hàng tồn kho", jPanel2);
@@ -137,7 +166,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Xuất theo quý", jPanel3);
@@ -150,7 +179,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Nhập theo quý", jPanel4);
@@ -163,7 +192,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Cán cân xuất nhập", jPanel5);
@@ -172,25 +201,89 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("Hệ thống quản lý kho hàng");
-        jPanel6.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
+        lblTrangThai.setText("Hệ thống quản lý kho hàng");
+        jPanel6.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setText("11:20AM");
-        jPanel6.add(jLabel2, java.awt.BorderLayout.EAST);
+        btnDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
+        btnDongHo.setText("11:20AM");
+        jPanel6.add(btnDongHo, java.awt.BorderLayout.EAST);
 
         getContentPane().add(jPanel6, java.awt.BorderLayout.PAGE_END);
 
-        jMenu1.setText("Hệ thống");
-        jMenuBar1.add(jMenu1);
+        mnuHeThong.setText("Hệ thống");
 
-        jMenu2.setText("Quản lý");
-        jMenuBar1.add(jMenu2);
+        mniDangNhap.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/signin.png"))); // NOI18N
+        mniDangNhap.setText("Đăng nhập");
+        mnuHeThong.add(mniDangNhap);
 
-        jMenu4.setText("Chức năng");
-        jMenuBar1.add(jMenu4);
+        mniDangXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/sign-out.png"))); // NOI18N
+        mniDangXuat.setText("Đăng xuất");
+        mnuHeThong.add(mniDangXuat);
+        mnuHeThong.add(jSeparator3);
 
-        jMenu3.setText("Trợ giúp");
-        jMenuBar1.add(jMenu3);
+        mniDoiMK.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/password-reset.png"))); // NOI18N
+        mniDoiMK.setText("Đổi mật khẩu");
+        mnuHeThong.add(mniDoiMK);
+        mnuHeThong.add(jSeparator4);
+
+        mniThoat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
+        mniThoat.setText("Thoát");
+        mnuHeThong.add(mniThoat);
+
+        jMenuBar1.add(mnuHeThong);
+
+        mnuQuanLy.setText("Quản lý");
+
+        mniHangHoa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniHangHoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cardboard-box.png"))); // NOI18N
+        mniHangHoa.setText("Hàng hoá");
+        mnuQuanLy.add(mniHangHoa);
+
+        mniDoiTac.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/handshake.png"))); // NOI18N
+        mniDoiTac.setText("Đối tác");
+        mnuQuanLy.add(mniDoiTac);
+
+        mniKho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/warehouse.png"))); // NOI18N
+        mniKho.setText("Kho");
+        mnuQuanLy.add(mniKho);
+        mnuQuanLy.add(jSeparator6);
+
+        mniPhieuNhapXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniPhieuNhapXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/compare.png"))); // NOI18N
+        mniPhieuNhapXuat.setText("Phiếu nhập xuất");
+        mnuQuanLy.add(mniPhieuNhapXuat);
+
+        mniPhieuKiemKho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniPhieuKiemKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/attendance.png"))); // NOI18N
+        mniPhieuKiemKho.setText("Phiếu kiểm kho");
+        mnuQuanLy.add(mniPhieuKiemKho);
+        mnuQuanLy.add(jSeparator5);
+
+        mniNhanVien.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/name-tag.png"))); // NOI18N
+        mniNhanVien.setText("Nhân viên");
+        mnuQuanLy.add(mniNhanVien);
+
+        jMenuBar1.add(mnuQuanLy);
+
+        mnuTroGiup.setText("Trợ giúp");
+
+        mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/user-manual.png"))); // NOI18N
+        mniHuongDan.setText("Hướng dẫn sử dụng");
+        mnuTroGiup.add(mniHuongDan);
+
+        mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info.png"))); // NOI18N
+        mniGioiThieu.setText("Giới thiệu phần mềm");
+        mnuTroGiup.add(mniGioiThieu);
+
+        jMenuBar1.add(mnuTroGiup);
 
         setJMenuBar(jMenuBar1);
 
@@ -233,19 +326,14 @@ public class StoManJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnDoiTac;
+    private javax.swing.JLabel btnDongHo;
+    private javax.swing.JButton btnHuongDan;
+    private javax.swing.JButton btnKiemKho;
+    private javax.swing.JButton btnNhapXuat;
+    private javax.swing.JButton btnThoat;
+    private javax.swing.JButton cboThongTin;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -255,7 +343,27 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblTrangThai;
+    private javax.swing.JMenuItem mniDangNhap;
+    private javax.swing.JMenuItem mniDangXuat;
+    private javax.swing.JMenuItem mniDoiMK;
+    private javax.swing.JMenuItem mniDoiTac;
+    private javax.swing.JMenuItem mniGioiThieu;
+    private javax.swing.JMenuItem mniHangHoa;
+    private javax.swing.JMenuItem mniHuongDan;
+    private javax.swing.JMenuItem mniKho;
+    private javax.swing.JMenuItem mniNhanVien;
+    private javax.swing.JMenuItem mniPhieuKiemKho;
+    private javax.swing.JMenuItem mniPhieuNhapXuat;
+    private javax.swing.JMenuItem mniThoat;
+    private javax.swing.JMenu mnuHeThong;
+    private javax.swing.JMenu mnuQuanLy;
+    private javax.swing.JMenu mnuTroGiup;
     // End of variables declaration//GEN-END:variables
 }
