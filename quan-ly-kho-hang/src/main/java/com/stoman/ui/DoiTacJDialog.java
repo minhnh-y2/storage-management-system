@@ -177,15 +177,19 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         jPanel3.setLayout(new java.awt.GridLayout(0, 1));
 
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         jPanel3.add(btnThem);
 
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoa.setText("Xoá");
         jPanel3.add(btnXoa);
 
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
         btnSua.setText("Sửa");
         jPanel3.add(btnSua);
 
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
         btnMoi.setText("Mới");
         jPanel3.add(btnMoi);
 

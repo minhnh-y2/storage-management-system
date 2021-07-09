@@ -47,11 +47,13 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Xác nhận mật khẩu mới");
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         jButton1.setText("Đồng ý");
         jPanel1.add(jButton1);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         jButton2.setText("Thoát");
         jPanel1.add(jButton2);
 
@@ -91,7 +93,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 .addComponent(txtMatKhau2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

@@ -312,7 +312,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
-                          <Component id="jPanel7" pref="252" max="32767" attributes="0"/>
+                          <Component id="jPanel7" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -651,26 +651,41 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnThem">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/add-32.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoa">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/cancel-32.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSua">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/edit-property-32.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMoi">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/new-document-32.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnChiTiet">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/more-details-32.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
                   </Properties>
                 </Component>
@@ -724,7 +739,7 @@
                           <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="428" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="446" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

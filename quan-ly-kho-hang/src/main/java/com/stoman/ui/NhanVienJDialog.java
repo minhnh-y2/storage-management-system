@@ -139,15 +139,19 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(0, 1));
 
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         jPanel2.add(btnThem);
 
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoa.setText("Xoá");
         jPanel2.add(btnXoa);
 
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
         btnSua.setText("Sửa");
         jPanel2.add(btnSua);
 
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
         btnMoi.setText("Mới");
         jPanel2.add(btnMoi);
 
