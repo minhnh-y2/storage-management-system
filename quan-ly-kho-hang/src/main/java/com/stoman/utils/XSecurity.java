@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -26,7 +25,7 @@ public class XSecurity {
     }
 
     /**
-     * Tạo muối theo độ dài chuỗi
+     * Tạo muối theo độ dài
      */  
     public static String generateSalt(int lenght) {
         String abcCapitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
