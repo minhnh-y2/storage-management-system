@@ -15,7 +15,7 @@ import java.util.Random;
  *
  * @author MinhNH
  */
-public class XSecurity {
+public class XPassword {
 
     public static String getSalt() throws NoSuchAlgorithmException {
         SecureRandom sr = new SecureRandom();
@@ -25,9 +25,9 @@ public class XSecurity {
     }
 
     /**
-     * Tạo muối theo độ dài
+     * Tạo muối theo độ dài tuỳ ý
      */  
-    public static String generateSalt(int lenght) {
+    public static String getSalt(int lenght) {
         String abcCapitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String abcLowerCase = "abcdefghijklmnopqrstuvwxyz";
         String numbers = "01234567890123456789";
@@ -49,7 +49,7 @@ public class XSecurity {
         return sb.toString();
     }
 
-    public static String getSecurePasswordSHA512(String password, String salt) {
+    public static String getHashSHA512(String password, String salt) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -66,8 +66,8 @@ public class XSecurity {
         return generatedPassword;
     }
     
-    public static boolean authenticate(String passwordInput, String passwordDB, String salt){
-        String password = getSecurePasswordSHA512(passwordInput, salt);
+    public static boolean isValidated(String passwordInput, String passwordDB, String salt){
+        String password = getHashSHA512(passwordInput, salt);
         return password.equals(passwordDB);
     }
     
