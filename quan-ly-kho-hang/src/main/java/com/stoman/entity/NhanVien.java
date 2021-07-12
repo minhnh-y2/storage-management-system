@@ -12,17 +12,17 @@ package com.stoman.entity;
 public class NhanVien {
     private String maNV;
     private String tenNV;
-    private boolean vaiTRo;
+    private boolean vaiTro;
     private String matKhau;
     private String muoi;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String tenNV, boolean vaiTRo, String matKhau, String muoi) {
+    public NhanVien(String maNV, String tenNV, boolean vaiTro, String matKhau, String muoi) {
         this.maNV = maNV;
         this.tenNV = tenNV;
-        this.vaiTRo = vaiTRo;
+        this.vaiTro = vaiTro;
         this.matKhau = matKhau;
         this.muoi = muoi;
     }
@@ -44,11 +44,11 @@ public class NhanVien {
     }
 
     public boolean isVaiTRo() {
-        return vaiTRo;
+        return vaiTro;
     }
 
-    public void setVaiTRo(boolean vaiTRo) {
-        this.vaiTRo = vaiTRo;
+    public void setVaiTRo(boolean vaiTro) {
+        this.vaiTro = vaiTro;
     }
 
     public String getMatKhau() {

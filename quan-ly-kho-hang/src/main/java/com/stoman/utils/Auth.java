@@ -7,8 +7,6 @@ package com.stoman.utils;
 
 import com.stoman.entity.NhanVien;
 
-
-
 /**
  *
  * @author Huy

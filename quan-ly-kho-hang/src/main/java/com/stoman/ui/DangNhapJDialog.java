@@ -28,9 +28,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        lblTenDangNhap = new javax.swing.JLabel();
+        lblMatKhau = new javax.swing.JLabel();
         txtTenNV = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
         btnDangNhap = new javax.swing.JButton();
@@ -42,21 +42,21 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("PHẦN MỀM QUẢN LÝ KHO HÀNG");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 380, -1));
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("PHẦN MỀM QUẢN LÝ KHO HÀNG");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 380, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tên đăng nhập");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        lblTenDangNhap.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTenDangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        lblTenDangNhap.setText("Tên đăng nhập");
+        getContentPane().add(lblTenDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Mật khẩu");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        lblMatKhau.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        lblMatKhau.setText("Mật khẩu");
+        getContentPane().add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
         getContentPane().add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 300, -1));
         getContentPane().add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 300, -1));
 
@@ -120,10 +120,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblMatKhau;
+    private javax.swing.JLabel lblTenDangNhap;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenNV;
     // End of variables declaration//GEN-END:variables
