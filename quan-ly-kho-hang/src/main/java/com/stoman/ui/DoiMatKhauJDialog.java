@@ -7,6 +7,7 @@ package com.stoman.ui;
 
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
+import com.stoman.utils.MsgBox;
 
 /**
  *
@@ -55,6 +56,11 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         btnDongY.setText("Đồng ý");
+        btnDongY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDongYActionPerformed(evt);
+            }
+        });
         pnlButton.add(btnDongY);
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
@@ -110,7 +116,13 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
+        logOut();
     }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
+        // TODO add your handling code here:
+        changePassWord();
+    }//GEN-LAST:event_btnDongYActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,13 +184,25 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     
     NhanVienDAO dao = new NhanVienDAO();
     //Code phương thức đổi mật khẩu.
-    void DoiMatKhau(){
+    void changePassWord(){
         String matKhau = new String(txtMatKhauCu.getPassword());
         String matKhauMoi = new String(txtMatKhauMoi.getPassword());
         String xacNhanMatKhauMoi = new String(txtXacNhanMK.getPassword());
         
-        if (matKhau.equals(Auth.user.getMaNV())) {
-            
+        if (!matKhau.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Sai mật khẩu");
+        } else if (!matKhau.equals(xacNhanMatKhauMoi)) {
+            MsgBox.alert(this, "Mật khẩu mới và xác nhận mật khẩu phải giống nhau.");
+        } else {
+            Auth.user.setMatKhau(matKhau);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công.");
+        }
+    }
+
+    private void logOut() {
+        if (MsgBox.confirm(this, "Bạn có muốn thoát?")) {
+            System.exit(0);
         }
     }
 }
