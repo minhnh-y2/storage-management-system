@@ -93,12 +93,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        DangNhap();
+        login();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        Thoat();
+        exit();
     }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
@@ -161,27 +161,43 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     NhanVienDAO dao = new NhanVienDAO();
 
     //  Code phương thức đăng nhập.
-    void DangNhap() {
-        // Lấy tên mã nhân viên và mật khẩu.F
-        String manv = txtTenNV.getText();
-        String matkhau = new String(txtMatKhau.getPassword());
-
-        NhanVien NhanVien = dao.selectByID(manv);
-        if (NhanVien == null) {
-            MsgBox.alert(this, "Không được để trống.");
-        } else if (!matkhau.equals(NhanVien.getMatKhau())) {
-            MsgBox.alert(this, "Mật khẩu không đúng.");
-        } else {
-            Auth.user = NhanVien;
-            this.dispose();
+    void login() {
+        // Lấy tên mã nhân viên và mật khẩu
+        if(isValidated()) {
+            String maNV = txtTenNV.getText();
+            String matKhau = new String(txtMatKhau.getPassword());
+            NhanVien nv = dao.selectByID(maNV);
+            
+            if (nv == null) {
+                MsgBox.alert(this, "Tên đăng nhập không đúng");
+            } else if (!matKhau.equals(nv.getMatKhau())) {
+                MsgBox.alert(this, "Mật khẩu không đúng.");
+            } else {
+                Auth.user = nv;
+                new StoManJFrame().setVisible(true);
+                this.dispose();
+            }
         }
     }
 
     // Code phương thức Thoát.
-    void Thoat() {
+    void exit() {
         if (MsgBox.confirm(this, "Bạn có muốn thoát phần mềm?")) {
             System.exit(0);
         }
+    }
+    
+    boolean isValidated() {
+        if(txtTenNV.getText().length() == 0){
+            MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
+            txtTenNV.requestFocus();
+        } else if (txtMatKhau.getPassword().length == 0){
+            MsgBox.alert(this, "Chưa nhập mật khẩu!");
+            txtMatKhau.requestFocus();
+        } else {
+            return true;
+        }
+        return false;
     }
 
 }
