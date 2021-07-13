@@ -21,7 +21,7 @@ public class MsgBox {
      */
     public static void alert(Component parent, String message) {
         JOptionPane.showMessageDialog(parent, message,
-                "Hệ thống quản lý đào tạo", 
+                "Hệ thống quản lý kho hàng", 
                 JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -33,7 +33,7 @@ public class MsgBox {
      */
     public static boolean confirm (Component parent, String message) {
         int result = JOptionPane.showConfirmDialog(parent, message,
-                "Hệ thống quản lý đào tạo",
+                "Hệ thống quản lý kho hàng",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         
@@ -48,7 +48,7 @@ public class MsgBox {
      */
     public static String prompt(Component parent, String message) {
         return JOptionPane.showInputDialog(parent, message,
-                "Hệ thống quản lý đào tạo", 
+                "Hệ thống quản lý kho hàng", 
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
