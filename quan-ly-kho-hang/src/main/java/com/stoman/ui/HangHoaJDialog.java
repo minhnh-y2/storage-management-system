@@ -6,10 +6,13 @@
 package com.stoman.ui;
 
 import com.stoman.dao.HangHoaDAO;
-import com.stoman.dao.NhanVienDAO;
+import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.entity.HangHoa;
+import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.XNumber;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -79,11 +82,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlLoaiHangHoa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại hàng hoá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlLoaiHangHoa.setLayout(new java.awt.GridBagLayout());
 
-        lstLoaiHangHoa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         pnlLstLoaiHangHoa.setViewportView(lstLoaiHangHoa);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -142,7 +140,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDonViTinh)
                     .addComponent(txtMaHH)
-                    .addComponent(txtTenHH, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(txtTenHH)
                     .addComponent(txtDonGia))
                 .addContainerGap())
         );
@@ -205,6 +203,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 "Mã hàng hoá", "Tên hàng hoá", "Đơn vị tính", "Đơn giá"
             }
         ));
+        tblHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHangHoaMouseClicked(evt);
+            }
+        });
         pnlTblHangHoa.setViewportView(tblHangHoa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,7 +218,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlLoaiHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlLoaiHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlThongTinHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -223,7 +226,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTimKiem)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(lblSapXepTheo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -256,6 +259,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHangHoaMouseClicked
+        this.edit();
+    }//GEN-LAST:event_tblHangHoaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -317,7 +324,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblSapXepTheo;
     private javax.swing.JLabel lblTenHangHoa;
     private javax.swing.JLabel lblTimKiem;
-    private javax.swing.JList<String> lstLoaiHangHoa;
+    private javax.swing.JList<LoaiHangHoa> lstLoaiHangHoa;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlChuyen;
     private javax.swing.JPanel pnlLoaiHangHoa;
@@ -331,32 +338,58 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTenHH;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
-
-    int row = -1;
+    
+    HangHoaDAO HHdao = new HangHoaDAO();
+    LoaiHangHoaDAO LHHdao = new LoaiHangHoaDAO();
+    
+    String numPatern = "#,##0";
+    private String header[] = {"MÃ HH", "TÊN HH", "ĐƠN GIÁ", "ĐVT"}; 
+    private DefaultTableModel tblModel = new DefaultTableModel(header, 0){
+        @Override
+        public boolean isCellEditable(int row, int column){
+            return false;
+        }
+    };
+    
+    private DefaultListModel<LoaiHangHoa> lstModel = new DefaultListModel<LoaiHangHoa>();
 
     private void init() {
         this.setLocationRelativeTo(null);
+        tblHangHoa.setModel(tblModel);
+        lstLoaiHangHoa.setModel(lstModel);
         this.fillTable();
-        this.row = -1;
+        this.fillList();
     }
 
-    HangHoaDAO dao = new HangHoaDAO();
-
     // Code phuong thức fillTable.
-    void fillTable() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.setRowCount(0);
+    private void fillTable() {
+        tblModel.setRowCount(0);
 
         try {
-            List<HangHoa> list = dao.selectAll();
-            for (HangHoa hangHoa : list) {
+            List<HangHoa> list = HHdao.selectAll();
+            for (HangHoa hh : list) {
                 Object[] row = {
-                    hangHoa.getMaHH(),
-                    hangHoa.getTenHH(),
-                    hangHoa.getDonViTinh(),
-                    hangHoa.getDonGia()
+                    hh.getMaHH(),
+                    hh.getTenHH(),
+                    XNumber.toString(hh.getDonGia(), numPatern),
+                    hh.getDonViTinh()
                 };
-                model.addRow(row);
+                tblModel.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
+        }
+    }
+    
+    //Code phương  thức fillList.
+    private void fillList() {
+       lstLoaiHangHoa.removeAll();
+       
+       try {
+            List<LoaiHangHoa> list = LHHdao.selectAll();
+            for (LoaiHangHoa lhh : list) {
+                
+                lstModel.addElement(lhh);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
@@ -364,28 +397,29 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     //Code phương thức getForm.
-    HangHoa getForm() {
+    private HangHoa getForm() {
         HangHoa hh = new HangHoa();
-        hh.setMaLHH(Integer.parseInt(txtMaHH.getText()));
+        hh.setMaHH(txtMaHH.getText());
         hh.setTenHH(txtTenHH.getText());
         hh.setDonViTinh(txtDonViTinh.getText());
-        hh.getDonGia();
+        hh.setDonGia(XNumber.toDouble(txtDonGia.getText(), numPatern));
+        hh.setMaLHH(lstLoaiHangHoa.getSelectedValue().getMaLHH());
         return hh;
     }
 
     //Code phương thức clearForm.
-    void clearForm() {
+    private void clearForm() {
         this.setForm(new HangHoa());
-        this.row = -1;
+        tblHangHoa.clearSelection();
         this.updateStatus();
     }
     
     //Code phương thức setForm.
-    void setForm(HangHoa hh) {
-        txtTenHH.setText(hh.getTenHH());
+    private void setForm(HangHoa hh) {
+        txtMaHH.setText(hh.getMaHH());
         txtTenHH.setText(hh.getTenHH());
         txtDonViTinh.setText(hh.getDonViTinh());
-       txtDonGia.setText(String.valueOf(hh.getDonGia()));
+        txtDonGia.setText(XNumber.toString(hh.getDonGia(), numPatern));
     }
     
     //Code phương thức updateStatus.
@@ -394,10 +428,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     //Code phương thức insert
-    void insert() {
+    private void insert() {
         HangHoa item = getForm();
         try {
-            dao.insert(item);
+            HHdao.insert(item);
             this.fillTable();
             this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công.");
@@ -406,5 +440,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-    //
+    //Code phương thức Edit
+    private void edit() {
+        String maHH = (String) tblHangHoa.getValueAt(tblHangHoa.getSelectedRow(), 0);
+         HangHoa hh = HHdao.selectByID(maHH);
+         this.setForm(hh);
+         this.updateStatus();
+    }
 }

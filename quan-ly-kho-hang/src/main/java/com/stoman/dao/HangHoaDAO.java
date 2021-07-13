@@ -69,7 +69,7 @@ public class HangHoaDAO extends StoManDAO<HangHoa, String>{
                 while(rs.next()){
                     HangHoa entity = new HangHoa();
                     entity.setMaHH(rs.getString("MAHH"));
-                    entity.setTenHH(rs.getString("TENDT"));
+                    entity.setTenHH(rs.getString("TENHH"));
                     entity.setDonGia(rs.getDouble("DONGIA"));
                     entity.setDonViTinh(rs.getString("DONVITINH"));
                     entity.setMaLHH(rs.getInt("MALHH"));

@@ -10,13 +10,13 @@ package com.stoman.entity;
  * @author Huy
  */
 public class LoaiHangHoa {
-    private String maLHH;
+    private int maLHH;
     private String tenLHH;
 
     public LoaiHangHoa() {
     }
 
-    public LoaiHangHoa(String maLHH, String tenLHH) {
+    public LoaiHangHoa(int maLHH, String tenLHH) {
         this.maLHH = maLHH;
         this.tenLHH = tenLHH;
     }
@@ -29,14 +29,14 @@ public class LoaiHangHoa {
     @Override
     public boolean equals(Object obj) {
         LoaiHangHoa other = (LoaiHangHoa) obj;
-        return other.getMaLHH().equals(this.getMaLHH());
+        return other.getMaLHH() == this.getMaLHH();
     }
 
-    public String getMaLHH() {
+    public int getMaLHH() {
         return maLHH;
     }
 
-    public void setMaLHH(String maLHH) {
+    public void setMaLHH(int maLHH) {
         this.maLHH = maLHH;
     }
 

@@ -62,7 +62,7 @@ public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, String> {
                 while(rs.next()){
                     LoaiHangHoa entity = new LoaiHangHoa();
                     
-                    entity.setMaLHH(rs.getString("MALHH"));
+                    entity.setMaLHH(rs.getInt("MALHH"));
                     entity.setTenLHH(rs.getString("TENLHH"));
                     
                     list.add(entity);
