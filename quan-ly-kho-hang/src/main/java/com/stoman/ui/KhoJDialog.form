@@ -78,13 +78,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblDiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblKhoSo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMaKho" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnlTxtDiaChi" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="txtKhoSo" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtMaKho" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -97,8 +97,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblKhoSo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtKhoSo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMaKho" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMaKho" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -114,15 +114,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblKhoSo">
+        <Component class="javax.swing.JLabel" name="lblMaKho">
           <Properties>
             <Property name="text" type="java.lang.String" value="Kho s&#x1ed1;"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtKhoSo">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDiaChi">
           <Properties>
@@ -146,6 +141,13 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JFormattedTextField" name="txtMaKho">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlChucNang">

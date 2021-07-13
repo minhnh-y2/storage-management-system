@@ -10,7 +10,6 @@ import com.stoman.entity.Kho;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,11 +37,11 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         pnlThongTinKho = new javax.swing.JPanel();
-        lblKhoSo = new javax.swing.JLabel();
-        txtKhoSo = new javax.swing.JTextField();
+        lblMaKho = new javax.swing.JLabel();
         lblDiaChi = new javax.swing.JLabel();
         pnlTxtDiaChi = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
+        txtMaKho = new javax.swing.JFormattedTextField();
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -58,7 +57,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         pnlThongTinKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
-        lblKhoSo.setText("Kho số");
+        lblMaKho.setText("Kho số");
 
         lblDiaChi.setText("Địa chỉ");
 
@@ -68,6 +67,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         txtDiaChi.setWrapStyleWord(true);
         pnlTxtDiaChi.setViewportView(txtDiaChi);
 
+        txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
         javax.swing.GroupLayout pnlThongTinKhoLayout = new javax.swing.GroupLayout(pnlThongTinKho);
         pnlThongTinKho.setLayout(pnlThongTinKhoLayout);
         pnlThongTinKhoLayout.setHorizontalGroup(
@@ -76,12 +77,12 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDiaChi)
-                    .addComponent(lblKhoSo))
+                    .addComponent(lblMaKho))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTxtDiaChi)
                     .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
-                        .addComponent(txtKhoSo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -90,8 +91,8 @@ public class KhoJDialog extends javax.swing.JDialog {
             .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKhoSo)
-                    .addComponent(txtKhoSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMaKho)
+                    .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
@@ -290,7 +291,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel lblDiaChi;
-    private javax.swing.JLabel lblKhoSo;
+    private javax.swing.JLabel lblMaKho;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JScrollPane pnlTblKho;
@@ -298,7 +299,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane pnlTxtDiaChi;
     private javax.swing.JTable tblKho;
     private javax.swing.JTextArea txtDiaChi;
-    private javax.swing.JTextField txtKhoSo;
+    private javax.swing.JFormattedTextField txtMaKho;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
@@ -341,7 +342,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     void updateStatus() {
         boolean edit = (this.row >= 0);
 
-        txtKhoSo.setEditable(!edit);
+        txtMaKho.setEditable(!edit);
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
@@ -349,20 +350,19 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     Kho getForm() {
         Kho k = new Kho();
-        k.setMaKho(Integer.parseInt(txtKhoSo.getText()));
+        k.setMaKho(Integer.parseInt(txtMaKho.getText()));
         k.setDiaChi(txtDiaChi.getText());
-        //k.setMaTK(Auth.user.getMaNV());
-        k.setMaTK("minhnh");
+        k.setMaTK(Auth.user.getMaNV());
         return k;
     }
 
     void setForm(Kho k) {
-        txtKhoSo.setText(String.valueOf(k.getMaKho()));
+        txtMaKho.setText(String.valueOf(k.getMaKho()));
         txtDiaChi.setText(k.getDiaChi());
     }
 
     void clearForm() {
-        txtKhoSo.setText("");
+        txtMaKho.setText("");
         txtDiaChi.setText("");
         tblKho.clearSelection();
         this.row = -1;
@@ -377,8 +377,10 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
 
     boolean isValidated() {
-        if (txtKhoSo.getText().isEmpty()) {
+        if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
+        } else if (!txtMaKho.getText().matches("\\d+")) {
+            MsgBox.alert(this, "Chỉ được nhập số!");
         } else if (txtDiaChi.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập địa chỉ!");
         } else {
