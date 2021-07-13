@@ -5,6 +5,9 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.NhanVienDAO;
+import com.stoman.utils.Auth;
+
 /**
  *
  * @author MinhNH
@@ -17,6 +20,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -161,4 +165,20 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtXacNhanMK;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+    }
+    
+    NhanVienDAO dao = new NhanVienDAO();
+    //Code phương thức đổi mật khẩu.
+    void DoiMatKhau(){
+        String matKhau = new String(txtMatKhauCu.getPassword());
+        String matKhauMoi = new String(txtMatKhauMoi.getPassword());
+        String xacNhanMatKhauMoi = new String(txtXacNhanMK.getPassword());
+        
+        if (matKhau.equals(Auth.user.getMaNV())) {
+            
+        }
+    }
 }

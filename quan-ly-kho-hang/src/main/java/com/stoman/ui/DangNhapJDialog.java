@@ -5,6 +5,11 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.NhanVienDAO;
+import com.stoman.entity.NhanVien;
+import com.stoman.utils.Auth;
+import com.stoman.utils.MsgBox;
+
 /**
  *
  * @author MinhNH
@@ -17,6 +22,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -62,10 +68,20 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/login-24.png"))); // NOI18N
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 130, -1));
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 140, -1));
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,6 +90,16 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        DangNhap();
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        Thoat();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,4 +153,35 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenNV;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+    }
+
+    NhanVienDAO dao = new NhanVienDAO();
+
+    //  Code phương thức đăng nhập.
+    void DangNhap() {
+        // Lấy tên mã nhân viên và mật khẩu.F
+        String manv = txtTenNV.getText();
+        String matkhau = new String(txtMatKhau.getPassword());
+
+        NhanVien NhanVien = dao.selectByID(manv);
+        if (NhanVien == null) {
+            MsgBox.alert(this, "Không được để trống.");
+        } else if (!matkhau.equals(NhanVien.getMatKhau())) {
+            MsgBox.alert(this, "Mật khẩu không đúng.");
+        } else {
+            Auth.user = NhanVien;
+            this.dispose();
+        }
+    }
+
+    // Code phương thức Thoát.
+    void Thoat() {
+        if (MsgBox.confirm(this, "Bạn có muốn thoát phần mềm?")) {
+            System.exit(0);
+        }
+    }
+
 }

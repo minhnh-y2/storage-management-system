@@ -13,11 +13,11 @@ import java.sql.*;
  */
 public class XJdbc {
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost:1433;database=POLYPRO;"
+    private static String dburl = "jdbc:sqlserver://localhost:1433;database=STORAGEMS;"
             + "sslProtocol=TLSv1.2";
     
     private static String user = "sa";
-    private static String pass = "PolyproEdusys";
+    private static String pass = "123456";
     
     /**
      * Nap driver
