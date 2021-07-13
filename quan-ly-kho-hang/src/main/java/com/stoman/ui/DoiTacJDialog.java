@@ -5,6 +5,16 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.DoiTacDAO;
+import com.stoman.dao.LoaiDoiTacDAO;
+import com.stoman.entity.DoiTac;
+import com.stoman.entity.LoaiDoiTac;
+import com.stoman.utils.Auth;
+import com.stoman.utils.MsgBox;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MinhNH
@@ -17,6 +27,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     public DoiTacJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -27,11 +38,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlLoaiDoiTac = new javax.swing.JPanel();
         pnlLstLoaiDoiTac = new javax.swing.JScrollPane();
-        listLoaiHangHoa = new javax.swing.JList<>();
+        lstLoaiDoiTac = new javax.swing.JList<>();
+        pnlButtonLoaiDT = new javax.swing.JPanel();
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
         pnlThongTinDoiTac = new javax.swing.JPanel();
@@ -45,7 +57,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         txtDienThoai = new javax.swing.JTextField();
         lblVaiTro = new javax.swing.JLabel();
         rdoKhachHang = new javax.swing.JRadioButton();
-        rdoNhanPhanPhoi = new javax.swing.JRadioButton();
+        rdoNhaPhanPhoi = new javax.swing.JRadioButton();
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -58,8 +70,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnLast = new javax.swing.JButton();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
-        lblSapXepTheo = new javax.swing.JLabel();
-        cboSapXepTheo = new javax.swing.JComboBox<>();
         pnlTblDoiTac = new javax.swing.JScrollPane();
         tblDoiTac = new javax.swing.JTable();
 
@@ -68,43 +78,36 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
 
         pnlLoaiDoiTac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
-        pnlLoaiDoiTac.setLayout(new java.awt.GridBagLayout());
+        pnlLoaiDoiTac.setLayout(new java.awt.BorderLayout());
 
-        listLoaiHangHoa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        lstLoaiDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstLoaiDoiTacMouseClicked(evt);
+            }
         });
-        pnlLstLoaiDoiTac.setViewportView(listLoaiHangHoa);
+        pnlLstLoaiDoiTac.setViewportView(lstLoaiDoiTac);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 104;
-        gridBagConstraints.ipady = 108;
-        gridBagConstraints.weightx = 0.7;
-        gridBagConstraints.weighty = 1.0;
-        pnlLoaiDoiTac.add(pnlLstLoaiDoiTac, gridBagConstraints);
+        pnlLoaiDoiTac.add(pnlLstLoaiDoiTac, java.awt.BorderLayout.CENTER);
+
+        pnlButtonLoaiDT.setLayout(new java.awt.GridLayout(1, 0));
 
         btnThemList.setText("Thêm");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        pnlLoaiDoiTac.add(btnThemList, gridBagConstraints);
+        btnThemList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemListActionPerformed(evt);
+            }
+        });
+        pnlButtonLoaiDT.add(btnThemList);
 
         btnXoaList.setText("Xoá");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        pnlLoaiDoiTac.add(btnXoaList, gridBagConstraints);
+        btnXoaList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaListActionPerformed(evt);
+            }
+        });
+        pnlButtonLoaiDT.add(btnXoaList);
+
+        pnlLoaiDoiTac.add(pnlButtonLoaiDT, java.awt.BorderLayout.PAGE_END);
 
         pnlThongTinDoiTac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
@@ -118,9 +121,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         lblVaiTro.setText("Vai trò");
 
+        buttonGroup1.add(rdoKhachHang);
+        rdoKhachHang.setSelected(true);
         rdoKhachHang.setText("Khách hàng");
 
-        rdoNhanPhanPhoi.setText("Nhà phân phối");
+        buttonGroup1.add(rdoNhaPhanPhoi);
+        rdoNhaPhanPhoi.setText("Nhà phân phối");
 
         javax.swing.GroupLayout pnlThongTinDoiTacLayout = new javax.swing.GroupLayout(pnlThongTinDoiTac);
         pnlThongTinDoiTac.setLayout(pnlThongTinDoiTacLayout);
@@ -139,8 +145,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addGroup(pnlThongTinDoiTacLayout.createSequentialGroup()
                         .addComponent(rdoKhachHang)
                         .addGap(18, 18, 18)
-                        .addComponent(rdoNhanPhanPhoi)
-                        .addGap(0, 63, Short.MAX_VALUE))
+                        .addComponent(rdoNhaPhanPhoi)
+                        .addGap(0, 54, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -170,7 +176,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinDoiTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoKhachHang)
                     .addComponent(lblVaiTro)
-                    .addComponent(rdoNhanPhanPhoi))
+                    .addComponent(rdoNhaPhanPhoi))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -179,37 +185,82 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnThem);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoa.setText("Xoá");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnXoa);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnSua);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnMoi);
 
         pnlChuyen.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFirst.setText("|<");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnFirst);
 
         btnPrev.setText("<<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnPrev);
 
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnNext);
 
         btnLast.setText(">|");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnLast);
 
         lblTimKiem.setText("Tìm kiếm");
 
-        lblSapXepTheo.setText("Sắp xếp theo");
+        txtTimKiem.setToolTipText("Tìm kiếm theo tên");
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
+            }
+        });
 
         tblDoiTac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,7 +269,20 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoiTacMouseClicked(evt);
+            }
+        });
         pnlTblDoiTac.setViewportView(tblDoiTac);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,7 +294,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTblDoiTac)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlThongTinDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,11 +303,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTimKiem)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblSapXepTheo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboSapXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(282, 282, 282)
                         .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -253,15 +313,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongTinDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSapXepTheo)
-                        .addComponent(cboSapXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,6 +327,74 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lstLoaiDoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiDoiTacMouseClicked
+        // TODO add your handling code here:
+        fillToTable();
+    }//GEN-LAST:event_lstLoaiDoiTacMouseClicked
+
+    private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed
+        // TODO add your handling code here:
+        insertLoaiDT();
+    }//GEN-LAST:event_btnThemListActionPerformed
+
+    private void btnXoaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaListActionPerformed
+        // TODO add your handling code here:
+        deleteLoaiDT();
+    }//GEN-LAST:event_btnXoaListActionPerformed
+
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
+        // TODO add your handling code here:
+        if (!lstLoaiDoiTac.isSelectionEmpty()) {
+            fillToTable();
+        }
+    }//GEN-LAST:event_txtTimKiemKeyPressed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        clearForm();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void tblDoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoiTacMouseClicked
+        // TODO add your handling code here:
+        this.row = tblDoiTac.getSelectedRow();
+        edit();
+    }//GEN-LAST:event_tblDoiTacMouseClicked
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        first();
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        prev();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        next();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+        last();
+    }//GEN-LAST:event_btnLastActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,15 +449,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnThemList;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaList;
-    private javax.swing.JComboBox<String> cboSapXepTheo;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblDienThoai;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblSapXepTheo;
     private javax.swing.JLabel lblTenDT;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblVaiTro;
-    private javax.swing.JList<String> listLoaiHangHoa;
+    private javax.swing.JList<LoaiDoiTac> lstLoaiDoiTac;
+    private javax.swing.JPanel pnlButtonLoaiDT;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlChuyen;
     private javax.swing.JPanel pnlLoaiDoiTac;
@@ -340,7 +465,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane pnlTblDoiTac;
     private javax.swing.JPanel pnlThongTinDoiTac;
     private javax.swing.JRadioButton rdoKhachHang;
-    private javax.swing.JRadioButton rdoNhanPhanPhoi;
+    private javax.swing.JRadioButton rdoNhaPhanPhoi;
     private javax.swing.JTable tblDoiTac;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDienThoai;
@@ -348,4 +473,263 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTenDT;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
+
+    private DoiTacDAO dtDAO;
+    private LoaiDoiTacDAO ldtDAO;
+    private DefaultTableModel model;
+    private int row = -1;
+
+    void init() {
+        setLocationRelativeTo(null);
+
+        this.dtDAO = new DoiTacDAO();
+        this.ldtDAO = new LoaiDoiTacDAO();
+
+        this.model = (DefaultTableModel) tblDoiTac.getModel();
+        this.model.setColumnIdentifiers(new Object[]{
+            "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email", "Số điện thoại",
+            "Vai trò"
+        });
+        tblDoiTac.setAutoCreateRowSorter(true);
+
+        this.fillToList();
+        this.updateStatus();
+    }
+
+    DoiTac getForm() {
+        DoiTac dt = new DoiTac();
+        dt.setTenDT(txtTenDT.getText().trim());
+        dt.setDiaChi(txtDiaChi.getText());
+        dt.setEmail(txtEmail.getText());
+        dt.setSoDT(txtDienThoai.getText());
+        dt.setVaiTro(rdoKhachHang.isSelected());
+        dt.setMaLDT(lstLoaiDoiTac.getSelectedValue().getMaLDT());
+        return dt;
+    }
+
+    void setForm(DoiTac dt) {
+        txtTenDT.setText(dt.getTenDT());
+        txtDiaChi.setText(dt.getDiaChi());
+        txtEmail.setText(dt.getEmail());
+        txtDienThoai.setText(dt.getSoDT());
+        if (dt.isVaiTro()) {
+            rdoNhaPhanPhoi.setSelected(true);
+        } else {
+            rdoKhachHang.setSelected(true);
+        }
+    }
+
+    void clearForm() {
+        setForm(new DoiTac());
+        row = -1;
+        tblDoiTac.clearSelection();
+        this.updateStatus();
+    }
+
+    void updateStatus() {
+        if(lstLoaiDoiTac.isSelectionEmpty()){
+            btnThem.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnXoa.setEnabled(false);
+            return;
+        }
+        
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblDoiTac.getRowCount() - 1);
+        // Chọn hàng trên bảng
+        if (edit) {
+            tblDoiTac.setRowSelectionInterval(row, row);
+        }
+        
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+    }
+    
+    void edit() {
+        int maDT = (int) tblDoiTac.getValueAt(this.row, 0);
+        DoiTac dt = dtDAO.selectByID(maDT);
+        this.setForm(dt);
+        this.updateStatus();
+    }
+    
+    void first() {
+        this.row = 0;
+        this.edit();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }
+    }
+
+    void next() {
+        if (this.row < (tblDoiTac.getRowCount() - 1)) {
+            this.row++;
+            this.edit();
+        }
+    }
+
+    void last() {
+        this.row = tblDoiTac.getRowCount() - 1;
+        this.edit();
+    }
+
+    void fillToList() {
+        DefaultListModel listModel = new DefaultListModel();
+        listModel.removeAllElements();
+        try {
+            List<LoaiDoiTac> list = ldtDAO.selectAll();
+            for (LoaiDoiTac ldt : list) {
+                listModel.addElement(ldt);
+            }
+            lstLoaiDoiTac.setModel(listModel);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void fillToTable() {
+        int maLDT = lstLoaiDoiTac.getSelectedValue().getMaLDT();
+        String keyword = txtTimKiem.getText();
+        model.setRowCount(0);
+        try {
+            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword);
+            for (DoiTac dt : list) {
+                model.addRow(new Object[]{
+                    dt.getMaDT(),
+                    dt.getTenDT(),
+                    dt.getDiaChi(),
+                    dt.getEmail(),
+                    dt.getSoDT(),
+                    dt.isVaiTro() ? "Nhà phân phối" : "Khách hàng"
+                });
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    boolean isValidated() {
+        String tenDT = txtTenDT.getText();
+        String diaChi = txtDiaChi.getText();
+        String email = txtEmail.getText();
+        String dienThoai = txtDienThoai.getText();
+        if (tenDT.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập tên đối tác!");
+            txtTenDT.requestFocus();
+        } else if (diaChi.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập địa chỉ!");
+            txtDiaChi.requestFocus();
+        } else if (email.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập email!");
+            txtEmail.requestFocus();
+        } else if (!email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) {
+            MsgBox.alert(this, "Email không hợp lệ!");
+            txtEmail.requestFocus();
+        } else if (dienThoai.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập số điện thoại");
+            txtDienThoai.requestFocus();
+        } else if (!dienThoai.matches("((84)|(0))\\d{9}")) {
+            MsgBox.alert(this, "Số điện thoại không hợp lệ!");
+            txtEmail.requestFocus();
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    void insertLoaiDT() {
+        String tenLoaiDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
+        if (tenLoaiDT != null && !tenLoaiDT.isEmpty()) {
+            LoaiDoiTac loaiDT = new LoaiDoiTac(tenLoaiDT);
+            try {
+                ldtDAO.insert(loaiDT);
+                this.fillToList();
+                this.clearForm();
+                model.setRowCount(0);
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    void deleteLoaiDT() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
+        } else if(lstLoaiDoiTac.isSelectionEmpty()) {
+            MsgBox.alert(this, "Chưa chọn loại đối tác!");
+        } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại đối tác này?")) {
+            LoaiDoiTac loaiDT = lstLoaiDoiTac.getSelectedValue();
+            try {
+                ldtDAO.delete(loaiDT.getMaLDT());
+                this.fillToList();
+                this.clearForm();
+                model.setRowCount(0);
+                MsgBox.alert(this, "Xoá thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xoá thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    void insert() {
+        if (isValidated()) {
+            DoiTac dt = getForm();
+            try {
+                dtDAO.insert(dt);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    void delete() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xoá đối tác!");
+        } else if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá đối tác này không?")) {
+            int maDT = (int) tblDoiTac.getValueAt(this.row, 0);
+            try {
+                dtDAO.delete(maDT);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xoá thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xoá thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void update() {
+        if (isValidated()) {
+            DoiTac dt = getForm();
+            try {
+                dtDAO.insert(dt);
+                this.fillToTable();
+                MsgBox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

@@ -379,8 +379,6 @@ public class KhoJDialog extends javax.swing.JDialog {
     boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
-        } else if (!txtMaKho.getText().matches("\\d+")) {
-            MsgBox.alert(this, "Chỉ được nhập số!");
         } else if (txtDiaChi.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập địa chỉ!");
         } else {
@@ -396,9 +394,9 @@ public class KhoJDialog extends javax.swing.JDialog {
                 DAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
-                MsgBox.alert(this, "Thêm kho mới thành công!");
+                MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm kho mới thất bại!");
+                MsgBox.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -419,7 +417,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
     
     void delete() {
-        if(Auth.isManager()){
+        if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xoá kho!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);

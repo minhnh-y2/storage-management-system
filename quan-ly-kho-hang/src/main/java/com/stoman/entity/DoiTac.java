@@ -15,13 +15,13 @@ public class DoiTac {
     private String diaChi;
     private String email;
     private String soDT;
-    private boolean vaiTro;
-    private String maLDT;
+    private boolean vaiTro = false;
+    private int maLDT;
     
     public DoiTac(){
     }
 
-    public DoiTac(int maDT, String tenDT, String diaChi, String email, String soDT, String maLDT) {
+    public DoiTac(int maDT, String tenDT, String diaChi, String email, String soDT, int maLDT) {
         this.maDT = maDT;
         this.tenDT = tenDT;
         this.diaChi = diaChi;
@@ -70,11 +70,11 @@ public class DoiTac {
         this.soDT = soDT;
     }
 
-    public String getMaLDT() {
+    public int getMaLDT() {
         return maLDT;
     }
 
-    public void setMaLDT(String maLDT) {
+    public void setMaLDT(int maLDT) {
         this.maLDT = maLDT;
     }
 
