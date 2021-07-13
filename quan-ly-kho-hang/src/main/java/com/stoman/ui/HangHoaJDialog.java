@@ -5,6 +5,13 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.HangHoaDAO;
+import com.stoman.dao.NhanVienDAO;
+import com.stoman.entity.HangHoa;
+import com.stoman.utils.MsgBox;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MinhNH
@@ -17,6 +24,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     public HangHoaJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -46,7 +54,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblDonViTinh = new javax.swing.JLabel();
         txtDonViTinh = new javax.swing.JTextField();
         lblDonGia = new javax.swing.JLabel();
-        txtDonGia = new javax.swing.JTextField();
+        txtDonGia = new javax.swing.JFormattedTextField();
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -117,6 +125,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         lblDonGia.setText("Đơn giá");
 
+        txtDonGia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+
         javax.swing.GroupLayout pnlThongTinHangHoaLayout = new javax.swing.GroupLayout(pnlThongTinHangHoa);
         pnlThongTinHangHoa.setLayout(pnlThongTinHangHoaLayout);
         pnlThongTinHangHoaLayout.setHorizontalGroup(
@@ -130,10 +140,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(lblDonGia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDonGia)
                     .addComponent(txtDonViTinh)
                     .addComponent(txtMaHH)
-                    .addComponent(txtTenHH, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
+                    .addComponent(txtTenHH, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(txtDonGia))
                 .addContainerGap())
         );
         pnlThongTinHangHoaLayout.setVerticalGroup(
@@ -155,7 +165,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDonGia)
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
@@ -192,7 +202,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hàng hoá", "Tên hàng hoá", "Đơn vị tính", "Đơn giá"
             }
         ));
         pnlTblHangHoa.setViewportView(tblHangHoa);
@@ -240,7 +250,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                         .addComponent(cboSapXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -315,10 +325,86 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane pnlTblHangHoa;
     private javax.swing.JPanel pnlThongTinHangHoa;
     private javax.swing.JTable tblHangHoa;
-    private javax.swing.JTextField txtDonGia;
+    private javax.swing.JFormattedTextField txtDonGia;
     private javax.swing.JTextField txtDonViTinh;
     private javax.swing.JTextField txtMaHH;
     private javax.swing.JTextField txtTenHH;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
+
+    int row = -1;
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+        this.fillTable();
+        this.row = -1;
+    }
+
+    HangHoaDAO dao = new HangHoaDAO();
+
+    // Code phuong thức fillTable.
+    void fillTable() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setRowCount(0);
+
+        try {
+            List<HangHoa> list = dao.selectAll();
+            for (HangHoa hangHoa : list) {
+                Object[] row = {
+                    hangHoa.getMaHH(),
+                    hangHoa.getTenHH(),
+                    hangHoa.getDonViTinh(),
+                    hangHoa.getDonGia()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
+        }
+    }
+
+    //Code phương thức getForm.
+    HangHoa getForm() {
+        HangHoa hh = new HangHoa();
+        hh.setMaLHH(Integer.parseInt(txtMaHH.getText()));
+        hh.setTenHH(txtTenHH.getText());
+        hh.setDonViTinh(txtDonViTinh.getText());
+        hh.getDonGia();
+        return hh;
+    }
+
+    //Code phương thức clearForm.
+    void clearForm() {
+        this.setForm(new HangHoa());
+        this.row = -1;
+        this.updateStatus();
+    }
+    
+    //Code phương thức setForm.
+    void setForm(HangHoa hh) {
+        txtTenHH.setText(hh.getTenHH());
+        txtTenHH.setText(hh.getTenHH());
+        txtDonViTinh.setText(hh.getDonViTinh());
+       txtDonGia.setText(String.valueOf(hh.getDonGia()));
+    }
+    
+    //Code phương thức updateStatus.
+    void updateStatus() {
+        
+    }
+
+    //Code phương thức insert
+    void insert() {
+        HangHoa item = getForm();
+        try {
+            dao.insert(item);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công.");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại.");
+        }
+    }
+
+    //
 }
