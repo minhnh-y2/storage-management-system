@@ -350,7 +350,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             return false;
         }
     };
-    
     private DefaultListModel<LoaiHangHoa> lstModel = new DefaultListModel<LoaiHangHoa>();
 
     private void init() {
