@@ -42,7 +42,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         pnlLoaiDoiTac = new javax.swing.JPanel();
         pnlLstLoaiDoiTac = new javax.swing.JScrollPane();
-        lstLoaiDoiTac = new javax.swing.JList<>();
+        lstLHH = new javax.swing.JList<>();
         pnlButtonLoaiDT = new javax.swing.JPanel();
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
@@ -80,12 +80,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlLoaiDoiTac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlLoaiDoiTac.setLayout(new java.awt.BorderLayout());
 
-        lstLoaiDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
+        lstLHH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstLoaiDoiTacMouseClicked(evt);
+                lstLHHMouseClicked(evt);
             }
         });
-        pnlLstLoaiDoiTac.setViewportView(lstLoaiDoiTac);
+        pnlLstLoaiDoiTac.setViewportView(lstLHH);
 
         pnlLoaiDoiTac.add(pnlLstLoaiDoiTac, java.awt.BorderLayout.CENTER);
 
@@ -328,24 +328,24 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lstLoaiDoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLoaiDoiTacMouseClicked
+    private void lstLHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLHHMouseClicked
         // TODO add your handling code here:
         fillToTable();
-    }//GEN-LAST:event_lstLoaiDoiTacMouseClicked
+    }//GEN-LAST:event_lstLHHMouseClicked
 
     private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed
         // TODO add your handling code here:
-        insertLoaiDT();
+        insertLDT();
     }//GEN-LAST:event_btnThemListActionPerformed
 
     private void btnXoaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaListActionPerformed
         // TODO add your handling code here:
-        deleteLoaiDT();
+        deleteLDT();
     }//GEN-LAST:event_btnXoaListActionPerformed
 
     private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
         // TODO add your handling code here:
-        if (!lstLoaiDoiTac.isSelectionEmpty()) {
+        if (!lstLHH.isSelectionEmpty()) {
             fillToTable();
         }
     }//GEN-LAST:event_txtTimKiemKeyPressed
@@ -456,7 +456,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTenDT;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblVaiTro;
-    private javax.swing.JList<LoaiDoiTac> lstLoaiDoiTac;
+    private javax.swing.JList<LoaiDoiTac> lstLHH;
     private javax.swing.JPanel pnlButtonLoaiDT;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlChuyen;
@@ -476,7 +476,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private DoiTacDAO dtDAO;
     private LoaiDoiTacDAO ldtDAO;
-    private DefaultTableModel model;
+    private DefaultTableModel tblModel;
     private int row = -1;
 
     void init() {
@@ -485,8 +485,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
 
-        this.model = (DefaultTableModel) tblDoiTac.getModel();
-        this.model.setColumnIdentifiers(new Object[]{
+        this.tblModel = (DefaultTableModel) tblDoiTac.getModel();
+        this.tblModel.setColumnIdentifiers(new Object[]{
             "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email", "Số điện thoại",
             "Vai trò"
         });
@@ -503,7 +503,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         dt.setEmail(txtEmail.getText());
         dt.setSoDT(txtDienThoai.getText());
         dt.setVaiTro(rdoKhachHang.isSelected());
-        dt.setMaLDT(lstLoaiDoiTac.getSelectedValue().getMaLDT());
+        dt.setMaLDT(lstLHH.getSelectedValue().getMaLDT());
         return dt;
     }
 
@@ -521,13 +521,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     void clearForm() {
         setForm(new DoiTac());
-        row = -1;
+        this.row = -1;
         tblDoiTac.clearSelection();
         this.updateStatus();
     }
 
     void updateStatus() {
-        if(lstLoaiDoiTac.isSelectionEmpty()){
+        if(lstLHH.isSelectionEmpty()){
             btnThem.setEnabled(false);
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
@@ -584,14 +584,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void fillToList() {
-        DefaultListModel listModel = new DefaultListModel();
-        listModel.removeAllElements();
+        DefaultListModel lstModel = new DefaultListModel();
+        lstModel.removeAllElements();
         try {
             List<LoaiDoiTac> list = ldtDAO.selectAll();
             for (LoaiDoiTac ldt : list) {
-                listModel.addElement(ldt);
+                lstModel.addElement(ldt);
             }
-            lstLoaiDoiTac.setModel(listModel);
+            lstLHH.setModel(lstModel);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
@@ -599,13 +599,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void fillToTable() {
-        int maLDT = lstLoaiDoiTac.getSelectedValue().getMaLDT();
+        int maLDT = lstLHH.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
-        model.setRowCount(0);
+        tblModel.setRowCount(0);
         try {
             List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword);
             for (DoiTac dt : list) {
-                model.addRow(new Object[]{
+                tblModel.addRow(new Object[]{
                     dt.getMaDT(),
                     dt.getTenDT(),
                     dt.getDiaChi(),
@@ -649,15 +649,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         return false;
     }
 
-    void insertLoaiDT() {
-        String tenLoaiDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
-        if (tenLoaiDT != null && !tenLoaiDT.isEmpty()) {
-            LoaiDoiTac loaiDT = new LoaiDoiTac(tenLoaiDT);
+    void insertLDT() {
+        String tenLDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
+        if (tenLDT != null && !tenLDT.isEmpty()) {
+            LoaiDoiTac loaiDT = new LoaiDoiTac(tenLDT);
             try {
                 ldtDAO.insert(loaiDT);
                 this.fillToList();
                 this.clearForm();
-                model.setRowCount(0);
+                tblModel.setRowCount(0);
                 MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Thêm mới thất bại!");
@@ -666,18 +666,18 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void deleteLoaiDT() {
+    void deleteLDT() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
-        } else if(lstLoaiDoiTac.isSelectionEmpty()) {
+        } else if(lstLHH.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại đối tác!");
         } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại đối tác này?")) {
-            LoaiDoiTac loaiDT = lstLoaiDoiTac.getSelectedValue();
+            LoaiDoiTac ldt = lstLHH.getSelectedValue();
             try {
-                ldtDAO.delete(loaiDT.getMaLDT());
+                ldtDAO.delete(ldt.getMaLDT());
                 this.fillToList();
                 this.clearForm();
-                model.setRowCount(0);
+                tblModel.setRowCount(0);
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Xoá thất bại!");
