@@ -524,7 +524,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private HangHoa getForm() {
         HangHoa hh = new HangHoa();
         hh.setMaHH(txtMaHH.getText());
-        hh.setTenHH(txtTenHH.getText());
+        hh.setTenHH(txtTenHH.getText().trim());
         hh.setDonViTinh(txtDonViTinh.getText());
         hh.setDonGia(XNumber.toDouble(txtDonGia.getText(), numPattern));
         hh.setMaLHH(lstLHH.getSelectedValue().getMaLHH());
@@ -549,17 +549,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     //Code phương thức updateStatus.
     void updateStatus() {
-        if (lstLHH.isSelectionEmpty()) {
-            btnThem.setEnabled(false);
-            btnSua.setEnabled(false);
-            btnXoa.setEnabled(false);
-            btnMoi.setEnabled(false);
-            return;
-        } else {
-            btnThem.setEnabled(true);
-            btnMoi.setEnabled(true);
-        }
-
+        boolean isSelectedList = !lstLHH.isSelectionEmpty();
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
@@ -569,9 +559,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             tblHangHoa.setRowSelectionInterval(row, row);
         }
 
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(!edit && isSelectedList);
+        btnSua.setEnabled(edit && isSelectedList);
+        btnXoa.setEnabled(edit && isSelectedList);
+        btnMoi.setEnabled(isSelectedList);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);

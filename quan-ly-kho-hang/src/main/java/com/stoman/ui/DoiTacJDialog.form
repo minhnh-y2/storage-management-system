@@ -34,8 +34,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlTblDoiTac" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlLoaiDoiTac" pref="233" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlLoaiDoiTac" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlThongTinDoiTac" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="pnlChucNang" min="-2" pref="121" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
                           <Component id="rdoKhachHang" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="rdoNhaPhanPhoi" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                       </Group>
                       <Component id="txtDiaChi" alignment="1" max="32767" attributes="0"/>
                       <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
@@ -211,7 +211,7 @@
                       <Component id="lblVaiTro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rdoNhaPhanPhoi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

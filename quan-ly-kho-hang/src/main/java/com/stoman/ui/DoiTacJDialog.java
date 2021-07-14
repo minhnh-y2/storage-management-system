@@ -146,7 +146,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(rdoKhachHang)
                         .addGap(18, 18, 18)
                         .addComponent(rdoNhaPhanPhoi)
-                        .addGap(0, 54, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -177,7 +177,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(rdoKhachHang)
                     .addComponent(lblVaiTro)
                     .addComponent(rdoNhaPhanPhoi))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
@@ -295,7 +295,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTblDoiTac)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                        .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlThongTinDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -492,7 +492,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email", "Số điện thoại",
             "Vai trò"
         });
+        System.out.println(tblDoiTac.getSize());
         tblDoiTac.setAutoCreateRowSorter(true);
+        tblDoiTac.setRowHeight(25);
+        tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(0));
 
         this.fillToList();
         this.updateStatus();
@@ -529,28 +532,20 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void updateStatus() {
-        if (lstLDT.isSelectionEmpty()) {
-            btnThem.setEnabled(false);
-            btnSua.setEnabled(false);
-            btnXoa.setEnabled(false);
-            btnMoi.setEnabled(false);
-            return;
-        } else {
-            btnThem.setEnabled(true);
-            btnMoi.setEnabled(true);
-        }
-        
+        boolean isSelectedList = !lstLDT.isSelectionEmpty();
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblDoiTac.getRowCount() - 1);
+        
         // Chọn hàng trên bảng
         if (edit) {
             tblDoiTac.setRowSelectionInterval(row, row);
         }
         
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(!edit && isSelectedList);
+        btnSua.setEnabled(edit && isSelectedList);
+        btnXoa.setEnabled(edit && isSelectedList);
+        btnMoi.setEnabled(isSelectedList);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
@@ -559,7 +554,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
     
     void edit() {
-        int maDT = (int) tblDoiTac.getValueAt(this.row, 0);
+        int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 0);
         DoiTac dt = dtDAO.selectByID(maDT);
         this.setForm(dt);
         this.updateStatus();
@@ -708,10 +703,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void delete() {
-        if (!Auth.isManager()) {
+        if (Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá đối tác!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá đối tác này không?")) {
-            int maDT = (int) tblDoiTac.getValueAt(this.row, 0);
+            int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 0);
             try {
                 dtDAO.delete(maDT);
                 this.fillToTable();
