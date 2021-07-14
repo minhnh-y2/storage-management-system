@@ -5,6 +5,15 @@
  */
 package com.stoman.ui;
 
+import com.stoman.utils.XNumber;
+import java.awt.Color;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author Huy
@@ -16,6 +25,7 @@ public class StoManJFrame extends javax.swing.JFrame {
      */
     public StoManJFrame() {
         initComponents();
+        init();
     }
 
     /**
@@ -27,30 +37,41 @@ public class StoManJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
+        toolBar = new javax.swing.JToolBar();
         btnDangXuat = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
+        separator1 = new javax.swing.JToolBar.Separator();
         btnNhapXuat = new javax.swing.JButton();
         btnKiemKho = new javax.swing.JButton();
         btnDoiTac = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
+        separator2 = new javax.swing.JToolBar.Separator();
         cboThongTin = new javax.swing.JButton();
         btnHuongDan = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        tabs = new javax.swing.JTabbedPane();
+        pnlTongQuan = new javax.swing.JPanel();
+        pnlBieuDo = new javax.swing.JPanel();
+        pnlThongTin = new javax.swing.JPanel();
+        pnlLuongNhap = new javax.swing.JPanel();
+        lblLuongNhap = new javax.swing.JLabel();
+        lblSoLuongNhap = new javax.swing.JLabel();
+        pnlLuongXuat = new javax.swing.JPanel();
+        lblLuongXuat = new javax.swing.JLabel();
+        lblSoLuongXuat = new javax.swing.JLabel();
+        pnlLuongTonKho = new javax.swing.JPanel();
+        lblTonKho = new javax.swing.JLabel();
+        lblSoLuongTK = new javax.swing.JLabel();
+        pnlTonKho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cboLoaiHang = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHangTonKho = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        pnlXuatTheoQuy = new javax.swing.JPanel();
+        pnlNhapTheoQuy = new javax.swing.JPanel();
+        pnlCanCanXuatNhap = new javax.swing.JPanel();
+        pnlTrangThai = new javax.swing.JPanel();
         lblTrangThai = new javax.swing.JLabel();
         btnDongHo = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         mnuHeThong = new javax.swing.JMenu();
         mniDangNhap = new javax.swing.JMenuItem();
         mniDangXuat = new javax.swing.JMenuItem();
@@ -74,7 +95,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StoMan - Stroge Manager System");
 
-        jToolBar1.setRollover(true);
+        toolBar.setRollover(true);
 
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
@@ -82,7 +103,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDangXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnDangXuat);
+        toolBar.add(btnDangXuat);
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
         btnThoat.setText("Thoát");
@@ -90,8 +111,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnThoat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThoat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnThoat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnThoat);
-        jToolBar1.add(jSeparator1);
+        toolBar.add(btnThoat);
+        toolBar.add(separator1);
 
         btnNhapXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/up-down-arrow.png"))); // NOI18N
         btnNhapXuat.setText("Nhập/Xuất");
@@ -99,7 +120,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnNhapXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNhapXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnNhapXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnNhapXuat);
+        toolBar.add(btnNhapXuat);
 
         btnKiemKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/warehouse.png"))); // NOI18N
         btnKiemKho.setText("Kiểm kho");
@@ -107,7 +128,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnKiemKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKiemKho.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnKiemKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnKiemKho);
+        toolBar.add(btnKiemKho);
 
         btnDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/handshake.png"))); // NOI18N
         btnDoiTac.setText("Quản lý đối tác");
@@ -115,8 +136,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnDoiTac.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDoiTac.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnDoiTac.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnDoiTac);
-        jToolBar1.add(jSeparator2);
+        toolBar.add(btnDoiTac);
+        toolBar.add(separator2);
 
         cboThongTin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info.png"))); // NOI18N
         cboThongTin.setText("Thông tin");
@@ -124,7 +145,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         cboThongTin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cboThongTin.setMargin(new java.awt.Insets(2, 10, 2, 10));
         cboThongTin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(cboThongTin);
+        toolBar.add(cboThongTin);
 
         btnHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/user-manual.png"))); // NOI18N
         btnHuongDan.setText("Hướng dẫn");
@@ -132,22 +153,73 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnHuongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHuongDan.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnHuongDan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnHuongDan);
+        toolBar.add(btnHuongDan);
 
-        getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+        pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBieuDo.setLayout(new java.awt.BorderLayout());
+
+        pnlThongTin.setLayout(new java.awt.GridLayout(0, 1));
+
+        pnlLuongNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlLuongNhap.setLayout(new java.awt.GridLayout(0, 1));
+
+        lblLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLuongNhap.setText("Lượng nhập");
+        pnlLuongNhap.add(lblLuongNhap);
+
+        lblSoLuongNhap.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSoLuongNhap.setText("0");
+        pnlLuongNhap.add(lblSoLuongNhap);
+
+        pnlThongTin.add(pnlLuongNhap);
+
+        pnlLuongXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlLuongXuat.setLayout(new java.awt.GridLayout(0, 1));
+
+        lblLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLuongXuat.setText("Lượng xuất");
+        pnlLuongXuat.add(lblLuongXuat);
+
+        lblSoLuongXuat.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSoLuongXuat.setText("0");
+        pnlLuongXuat.add(lblSoLuongXuat);
+
+        pnlThongTin.add(pnlLuongXuat);
+
+        pnlLuongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlLuongTonKho.setLayout(new java.awt.GridLayout(0, 1));
+
+        lblTonKho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTonKho.setText("Tồn kho");
+        pnlLuongTonKho.add(lblTonKho);
+
+        lblSoLuongTK.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSoLuongTK.setText("0");
+        pnlLuongTonKho.add(lblSoLuongTK);
+
+        pnlThongTin.add(pnlLuongTonKho);
+
+        javax.swing.GroupLayout pnlTongQuanLayout = new javax.swing.GroupLayout(pnlTongQuan);
+        pnlTongQuan.setLayout(pnlTongQuanLayout);
+        pnlTongQuanLayout.setHorizontalGroup(
+            pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTongQuanLayout.createSequentialGroup()
+                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+        pnlTongQuanLayout.setVerticalGroup(
+            pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Tổng quan", jPanel1);
+        tabs.addTab("Tổng quan", pnlTongQuan);
 
         jLabel1.setText("Loại hàng hoá");
 
@@ -161,88 +233,88 @@ public class StoManJFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblHangTonKho);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlTonKhoLayout = new javax.swing.GroupLayout(pnlTonKho);
+        pnlTonKho.setLayout(pnlTonKhoLayout);
+        pnlTonKhoLayout.setHorizontalGroup(
+            pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
+                    .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboLoaiHang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlTonKhoLayout.setVerticalGroup(
+            pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cboLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Hàng tồn kho", jPanel2);
+        tabs.addTab("Hàng tồn kho", pnlTonKho);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlXuatTheoQuyLayout = new javax.swing.GroupLayout(pnlXuatTheoQuy);
+        pnlXuatTheoQuy.setLayout(pnlXuatTheoQuyLayout);
+        pnlXuatTheoQuyLayout.setHorizontalGroup(
+            pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 897, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Xuất theo quý", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+        pnlXuatTheoQuyLayout.setVerticalGroup(
+            pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 517, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Nhập theo quý", jPanel4);
+        tabs.addTab("Xuất theo quý", pnlXuatTheoQuy);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlNhapTheoQuyLayout = new javax.swing.GroupLayout(pnlNhapTheoQuy);
+        pnlNhapTheoQuy.setLayout(pnlNhapTheoQuyLayout);
+        pnlNhapTheoQuyLayout.setHorizontalGroup(
+            pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 897, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+        pnlNhapTheoQuyLayout.setVerticalGroup(
+            pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 517, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Cán cân xuất nhập", jPanel5);
+        tabs.addTab("Nhập theo quý", pnlNhapTheoQuy);
 
-        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlCanCanXuatNhapLayout = new javax.swing.GroupLayout(pnlCanCanXuatNhap);
+        pnlCanCanXuatNhap.setLayout(pnlCanCanXuatNhapLayout);
+        pnlCanCanXuatNhapLayout.setHorizontalGroup(
+            pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 897, Short.MAX_VALUE)
+        );
+        pnlCanCanXuatNhapLayout.setVerticalGroup(
+            pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 517, Short.MAX_VALUE)
+        );
 
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        tabs.addTab("Cán cân xuất nhập", pnlCanCanXuatNhap);
+
+        getContentPane().add(tabs, java.awt.BorderLayout.CENTER);
+
+        pnlTrangThai.setLayout(new java.awt.BorderLayout());
 
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
         lblTrangThai.setText("Hệ thống quản lý kho hàng");
         lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-        jPanel6.add(lblTrangThai, java.awt.BorderLayout.CENTER);
+        pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
         btnDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
         btnDongHo.setText("11:20AM");
         btnDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
-        jPanel6.add(btnDongHo, java.awt.BorderLayout.EAST);
+        pnlTrangThai.add(btnDongHo, java.awt.BorderLayout.EAST);
 
-        getContentPane().add(jPanel6, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(pnlTrangThai, java.awt.BorderLayout.PAGE_END);
 
         mnuHeThong.setText("Hệ thống");
 
@@ -268,7 +340,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniThoat.setText("Thoát");
         mnuHeThong.add(mniThoat);
 
-        jMenuBar1.add(mnuHeThong);
+        menuBar.add(mnuHeThong);
 
         mnuQuanLy.setText("Quản lý");
 
@@ -304,7 +376,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniNhanVien.setText("Nhân viên");
         mnuQuanLy.add(mniNhanVien);
 
-        jMenuBar1.add(mnuQuanLy);
+        menuBar.add(mnuQuanLy);
 
         mnuTroGiup.setText("Trợ giúp");
 
@@ -316,9 +388,9 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniGioiThieu.setText("Giới thiệu phần mềm");
         mnuTroGiup.add(mniGioiThieu);
 
-        jMenuBar1.add(mnuTroGiup);
+        menuBar.add(mnuTroGiup);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -369,23 +441,22 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboLoaiHang;
     private javax.swing.JButton cboThongTin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblLuongNhap;
+    private javax.swing.JLabel lblLuongXuat;
+    private javax.swing.JLabel lblSoLuongNhap;
+    private javax.swing.JLabel lblSoLuongTK;
+    private javax.swing.JLabel lblSoLuongXuat;
+    private javax.swing.JLabel lblTonKho;
     private javax.swing.JLabel lblTrangThai;
+    private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mniDangNhap;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoiMK;
@@ -401,6 +472,66 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuHeThong;
     private javax.swing.JMenu mnuQuanLy;
     private javax.swing.JMenu mnuTroGiup;
+    private javax.swing.JPanel pnlBieuDo;
+    private javax.swing.JPanel pnlCanCanXuatNhap;
+    private javax.swing.JPanel pnlLuongNhap;
+    private javax.swing.JPanel pnlLuongTonKho;
+    private javax.swing.JPanel pnlLuongXuat;
+    private javax.swing.JPanel pnlNhapTheoQuy;
+    private javax.swing.JPanel pnlThongTin;
+    private javax.swing.JPanel pnlTonKho;
+    private javax.swing.JPanel pnlTongQuan;
+    private javax.swing.JPanel pnlTrangThai;
+    private javax.swing.JPanel pnlXuatTheoQuy;
+    private javax.swing.JToolBar.Separator separator1;
+    private javax.swing.JToolBar.Separator separator2;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblHangTonKho;
+    private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
+
+    void init() {
+        setLocationRelativeTo(null);
+        chart();
+    }
+
+    // Test chart
+    void chart() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+        double[] luongNhap = {1000, 1200, 950, 1520};
+        double[] luongXuat = {500, 700, 400, 850};
+        double[] tonKho = {2000, 2250, 1500, 1760};
+        
+        double tongNhap = 0;
+        double tongXuat = 0;
+        double tongTonKho = 0;
+        
+        String pattern = "#,##0";
+        
+        // Đổ dữ liệu vào biểu đồ
+        for(int i = 0; i < 4; i++){
+            dataset.setValue(luongNhap[i], "Lượng nhập", "Quý " + (i + 1));
+            dataset.setValue(luongXuat[i], "Lượng xuất", "Quý " + (i + 1));
+            dataset.setValue(tonKho[i], "Tồn kho", "Quý " + (i + 1));
+            
+            tongNhap += luongNhap[i];
+            tongXuat += luongXuat[i];
+            tongTonKho += tonKho[i];
+        }
+        
+        // Tạo biểu đồ Bar Chart
+        JFreeChart barChart = ChartFactory.createBarChart3D(null,
+            "Quý", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+        
+        CategoryPlot plot = barChart.getCategoryPlot();
+        plot.setRangeGridlinePaint(Color.black);
+        
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        pnlBieuDo.add(chartPanel);
+        pnlBieuDo.updateUI();
+        lblSoLuongNhap.setText(XNumber.toString(tongNhap, pattern));
+        lblSoLuongXuat.setText(XNumber.toString(tongXuat, pattern));
+        lblSoLuongTK.setText(XNumber.toString(tongTonKho, pattern));
+    }
+
 }

@@ -415,6 +415,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             "Mã nhân viên", "Họ và tên", "Mật khẩu", "Vai trò"
         });
         tblNhanVien.setAutoCreateRowSorter(true);
+        tblNhanVien.setRowHeight(25);
 
         this.fillToTable();
         this.updateStatus();
