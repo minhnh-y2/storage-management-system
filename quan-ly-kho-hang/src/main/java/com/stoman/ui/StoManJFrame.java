@@ -209,14 +209,20 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongQuanLayout.setHorizontalGroup(
             pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
-                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlTongQuanLayout.setVerticalGroup(
             pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabs.addTab("Tổng quan", pnlTongQuan);
@@ -240,7 +246,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -265,7 +271,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlXuatTheoQuy.setLayout(pnlXuatTheoQuyLayout);
         pnlXuatTheoQuyLayout.setHorizontalGroup(
             pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 889, Short.MAX_VALUE)
         );
         pnlXuatTheoQuyLayout.setVerticalGroup(
             pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +284,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlNhapTheoQuy.setLayout(pnlNhapTheoQuyLayout);
         pnlNhapTheoQuyLayout.setHorizontalGroup(
             pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 889, Short.MAX_VALUE)
         );
         pnlNhapTheoQuyLayout.setVerticalGroup(
             pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +297,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlCanCanXuatNhap.setLayout(pnlCanCanXuatNhapLayout);
         pnlCanCanXuatNhapLayout.setHorizontalGroup(
             pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 897, Short.MAX_VALUE)
+            .addGap(0, 889, Short.MAX_VALUE)
         );
         pnlCanCanXuatNhapLayout.setVerticalGroup(
             pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,9 +447,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboLoaiHang;
     private javax.swing.JButton cboThongTin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
