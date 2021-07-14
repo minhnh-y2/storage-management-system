@@ -42,7 +42,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         pnlLoaiDoiTac = new javax.swing.JPanel();
         pnlLstLoaiDoiTac = new javax.swing.JScrollPane();
-        lstLHH = new javax.swing.JList<>();
+        lstLDT = new javax.swing.JList<>();
         pnlButtonLoaiDT = new javax.swing.JPanel();
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
@@ -80,12 +80,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlLoaiDoiTac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Loại đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlLoaiDoiTac.setLayout(new java.awt.BorderLayout());
 
-        lstLHH.addMouseListener(new java.awt.event.MouseAdapter() {
+        lstLDT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstLHHMouseClicked(evt);
+                lstLDTMouseClicked(evt);
             }
         });
-        pnlLstLoaiDoiTac.setViewportView(lstLHH);
+        pnlLstLoaiDoiTac.setViewportView(lstLDT);
 
         pnlLoaiDoiTac.add(pnlLstLoaiDoiTac, java.awt.BorderLayout.CENTER);
 
@@ -278,6 +278,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblDoiTac.getTableHeader().setReorderingAllowed(false);
         tblDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDoiTacMouseClicked(evt);
@@ -328,10 +329,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lstLHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLHHMouseClicked
+    private void lstLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLDTMouseClicked
         // TODO add your handling code here:
         fillToTable();
-    }//GEN-LAST:event_lstLHHMouseClicked
+        updateStatus();
+    }//GEN-LAST:event_lstLDTMouseClicked
 
     private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed
         // TODO add your handling code here:
@@ -345,7 +347,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
         // TODO add your handling code here:
-        if (!lstLHH.isSelectionEmpty()) {
+        if (!lstLDT.isSelectionEmpty()) {
             fillToTable();
         }
     }//GEN-LAST:event_txtTimKiemKeyPressed
@@ -456,7 +458,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTenDT;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblVaiTro;
-    private javax.swing.JList<LoaiDoiTac> lstLHH;
+    private javax.swing.JList<LoaiDoiTac> lstLDT;
     private javax.swing.JPanel pnlButtonLoaiDT;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlChuyen;
@@ -503,7 +505,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         dt.setEmail(txtEmail.getText());
         dt.setSoDT(txtDienThoai.getText());
         dt.setVaiTro(rdoKhachHang.isSelected());
-        dt.setMaLDT(lstLHH.getSelectedValue().getMaLDT());
+        dt.setMaLDT(lstLDT.getSelectedValue().getMaLDT());
         return dt;
     }
 
@@ -527,11 +529,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void updateStatus() {
-        if(lstLHH.isSelectionEmpty()){
+        if (lstLDT.isSelectionEmpty()) {
             btnThem.setEnabled(false);
             btnSua.setEnabled(false);
             btnXoa.setEnabled(false);
+            btnMoi.setEnabled(false);
             return;
+        } else {
+            btnThem.setEnabled(true);
+            btnMoi.setEnabled(true);
         }
         
         boolean edit = (this.row >= 0);
@@ -591,7 +597,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             for (LoaiDoiTac ldt : list) {
                 lstModel.addElement(ldt);
             }
-            lstLHH.setModel(lstModel);
+            lstLDT.setModel(lstModel);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
@@ -599,7 +605,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void fillToTable() {
-        int maLDT = lstLHH.getSelectedValue().getMaLDT();
+        int maLDT = lstLDT.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
         tblModel.setRowCount(0);
         try {
@@ -669,10 +675,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     void deleteLDT() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
-        } else if(lstLHH.isSelectionEmpty()) {
+        } else if(lstLDT.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại đối tác!");
         } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại đối tác này?")) {
-            LoaiDoiTac ldt = lstLHH.getSelectedValue();
+            LoaiDoiTac ldt = lstLDT.getSelectedValue();
             try {
                 ldtDAO.delete(ldt.getMaLDT());
                 this.fillToList();
