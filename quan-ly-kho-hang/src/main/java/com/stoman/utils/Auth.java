@@ -34,6 +34,6 @@ public class Auth {
      * @return 
      */
     public static boolean isManager(){
-        return Auth.isLogin() && user.isVaiTRo();
+        return Auth.isLogin() && user.isVaiTro();
     }
 }

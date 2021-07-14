@@ -349,6 +349,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (!lstLDT.isSelectionEmpty()) {
             fillToTable();
+            clearForm();
         }
     }//GEN-LAST:event_txtTimKiemKeyPressed
 
@@ -723,7 +724,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         if (isValidated()) {
             DoiTac dt = getForm();
             try {
-                dtDAO.insert(dt);
+                dtDAO.update(dt);
                 this.fillToTable();
                 MsgBox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {

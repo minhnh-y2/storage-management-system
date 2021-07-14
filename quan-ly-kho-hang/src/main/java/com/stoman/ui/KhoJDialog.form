@@ -210,7 +210,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtTimKiem">
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyReleased"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyPressed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="pnlTblKho">

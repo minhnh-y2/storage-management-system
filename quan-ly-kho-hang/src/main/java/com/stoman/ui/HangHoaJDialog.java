@@ -325,6 +325,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         // Chỉ được đổ dữ liệu vào bảng khi loại hàng hoá được chọn
         if (!lstLHH.isSelectionEmpty()) {
             fillToTable();
+            clearForm();
         }
     }//GEN-LAST:event_txtTimKiemKeyPressed
 
@@ -559,6 +560,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             tblHangHoa.setRowSelectionInterval(row, row);
         }
 
+        txtMaHH.setEditable(!edit && isSelectedList);
         btnThem.setEnabled(!edit && isSelectedList);
         btnSua.setEnabled(edit && isSelectedList);
         btnXoa.setEnabled(edit && isSelectedList);
@@ -693,8 +695,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (isValidated()) {
             HangHoa hh = getForm();
             try {
-                hhDAO.insert(hh);
+                hhDAO.update(hh);
                 this.fillToTable();
+                this.updateStatus();
                 MsgBox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Cập nhật thất bại!");

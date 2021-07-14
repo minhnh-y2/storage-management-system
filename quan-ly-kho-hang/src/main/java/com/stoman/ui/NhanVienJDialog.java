@@ -5,6 +5,14 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.NhanVienDAO;
+import com.stoman.entity.NhanVien;
+import com.stoman.utils.Auth;
+import com.stoman.utils.MsgBox;
+import com.stoman.utils.XPassword;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MinhNH
@@ -17,6 +25,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     public NhanVienJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -31,8 +40,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         btnGrpVaiTro = new javax.swing.ButtonGroup();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
-        lblSapXepTheo = new javax.swing.JLabel();
-        cboSapXepTheo = new javax.swing.JComboBox<>();
         pnlThongTinNV = new javax.swing.JPanel();
         lblMaNV = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
@@ -43,8 +50,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblXacNhanMK = new javax.swing.JLabel();
         txtXacNhanMK = new javax.swing.JPasswordField();
         lblVaiTro = new javax.swing.JLabel();
-        btnTruongKho = new javax.swing.JRadioButton();
-        btnThuKho = new javax.swing.JRadioButton();
+        rdoTruongKho = new javax.swing.JRadioButton();
+        rdoThuKho = new javax.swing.JRadioButton();
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -64,7 +71,11 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         lblTimKiem.setText("Tìm kiếm");
 
-        lblSapXepTheo.setText("Sắp xếp theo");
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
+            }
+        });
 
         pnlThongTinNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
@@ -78,11 +89,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         lblVaiTro.setText("Vai trò");
 
-        btnGrpVaiTro.add(btnTruongKho);
-        btnTruongKho.setText("Trưởng kho");
+        btnGrpVaiTro.add(rdoTruongKho);
+        rdoTruongKho.setText("Trưởng kho");
 
-        btnGrpVaiTro.add(btnThuKho);
-        btnThuKho.setText("Thủ kho");
+        btnGrpVaiTro.add(rdoThuKho);
+        rdoThuKho.setSelected(true);
+        rdoThuKho.setText("Thủ kho");
 
         javax.swing.GroupLayout pnlThongTinNVLayout = new javax.swing.GroupLayout(pnlThongTinNV);
         pnlThongTinNV.setLayout(pnlThongTinNVLayout);
@@ -99,9 +111,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(pnlThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThongTinNVLayout.createSequentialGroup()
-                        .addComponent(btnTruongKho)
+                        .addComponent(rdoTruongKho)
                         .addGap(18, 18, 18)
-                        .addComponent(btnThuKho)
+                        .addComponent(rdoThuKho)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txtMaNV, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMatKhau)
@@ -130,8 +142,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTruongKho)
-                    .addComponent(btnThuKho)
+                    .addComponent(rdoTruongKho)
+                    .addComponent(rdoThuKho)
                     .addComponent(lblVaiTro))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
@@ -143,32 +155,72 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnThem);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoa.setText("Xoá");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnXoa);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnSua);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
         pnlChucNang.add(btnMoi);
 
         pnlChuyen.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFirst.setText("|<");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnFirst);
 
         btnPrev.setText("<<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnPrev);
 
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnNext);
 
         btnLast.setText(">|");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
         pnlChuyen.add(btnLast);
 
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
@@ -179,6 +231,11 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNhanVienMouseClicked(evt);
+            }
+        });
         pnlTblNhanVien.setViewportView(tblNhanVien);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,11 +254,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblSapXepTheo)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboSapXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(280, 280, 280)
                         .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -216,9 +269,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblTimKiem)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblSapXepTheo)
-                        .addComponent(cboSapXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
@@ -227,6 +278,58 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
+        // TODO add your handling code here:
+        this.row = tblNhanVien.getSelectedRow();
+        this.edit();
+    }//GEN-LAST:event_tblNhanVienMouseClicked
+
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
+        // TODO add your handling code here:
+        fillToTable();
+        clearForm();
+    }//GEN-LAST:event_txtTimKiemKeyPressed
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        first();
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        prev();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        next();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+        last();
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        clearForm();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,14 +382,10 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JRadioButton btnThuKho;
-    private javax.swing.JRadioButton btnTruongKho;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JComboBox<String> cboSapXepTheo;
     private javax.swing.JLabel lblHoTen;
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblMatKhau;
-    private javax.swing.JLabel lblSapXepTheo;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JLabel lblXacNhanMK;
@@ -294,6 +393,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel pnlChuyen;
     private javax.swing.JScrollPane pnlTblNhanVien;
     private javax.swing.JPanel pnlThongTinNV;
+    private javax.swing.JRadioButton rdoThuKho;
+    private javax.swing.JRadioButton rdoTruongKho;
     private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaNV;
@@ -301,4 +402,196 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JPasswordField txtXacNhanMK;
     // End of variables declaration//GEN-END:variables
+
+    private NhanVienDAO DAO = new NhanVienDAO();
+    private DefaultTableModel tblModel;
+    private int row = -1;
+
+    void init() {
+        setLocationRelativeTo(null);
+
+        this.tblModel = (DefaultTableModel) tblNhanVien.getModel();
+        this.tblModel.setColumnIdentifiers(new Object[]{
+            "Mã nhân viên", "Họ và tên", "Mật khẩu", "Vai trò"
+        });
+        tblNhanVien.setAutoCreateRowSorter(true);
+
+        this.fillToTable();
+        this.updateStatus();
+    }
+
+    void fillToTable() {
+        tblModel.setRowCount(0);
+        String keyword = txtTimKiem.getText();
+        try {
+            List<NhanVien> list = DAO.selectByKeyword(keyword);
+            for (NhanVien nv : list) {
+                tblModel.addRow(new Object[]{
+                    nv.getMaNV(),
+                    nv.getTenNV(),
+                    nv.getMatKhau(),
+                    nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
+                });
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    NhanVien getForm() {
+        NhanVien nv = new NhanVien();
+        String matKhau = new String(txtMatKhau.getPassword());
+        nv.setMaNV(txtMaNV.getText());
+        nv.setTenNV(txtHoTen.getText());
+        nv.setMatKhau(matKhau);
+        nv.setVaiTro(rdoTruongKho.isSelected());
+        nv.setMuoi(XPassword.getSalt(5));
+        return nv;
+    }
+
+    void setForm(NhanVien nv) {
+        txtMaNV.setText(nv.getMaNV());
+        txtHoTen.setText(nv.getTenNV());
+        txtMatKhau.setText(nv.getMatKhau());
+        txtXacNhanMK.setText(nv.getMatKhau());
+        if (nv.isVaiTro()) {
+            rdoTruongKho.setSelected(true);
+        } else {
+            rdoThuKho.setSelected(true);
+        }
+    }
+
+    void clearForm() {
+        this.setForm(new NhanVien());
+        this.row = -1;
+        this.updateStatus();
+        tblNhanVien.clearSelection();
+    }
+
+    void edit() {
+        String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
+        NhanVien nv = DAO.selectByID(maNV);
+        this.setForm(nv);
+        this.updateStatus();
+    }
+
+    void updateStatus() {
+        boolean edit = (this.row >= 0);
+        boolean first = (this.row == 0);
+        boolean last = (this.row == tblNhanVien.getRowCount() - 1);
+
+        // Chọn hàng trên bảng
+        if (edit) {
+            tblNhanVien.setRowSelectionInterval(row, row);
+        }
+
+        txtMaNV.setEditable(!edit);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+
+        btnFirst.setEnabled(edit && !first);
+        btnPrev.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+    }
+
+    void first() {
+        this.row = 0;
+        this.edit();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }
+    }
+
+    void next() {
+        if (this.row < (tblNhanVien.getRowCount() - 1)) {
+            this.row++;
+            this.edit();
+        }
+    }
+
+    void last() {
+        this.row = tblNhanVien.getRowCount() - 1;
+        this.edit();
+    }
+
+    boolean isValidated() {
+        String maNV = txtMaNV.getText();
+        String hoTen = txtHoTen.getText();
+        char[] matKhau = txtMatKhau.getPassword();
+        char[] xacNhanMK = txtXacNhanMK.getPassword();
+        
+        if (maNV.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập mã nhân viên!");
+            txtMaNV.requestFocus();
+        } else if (hoTen.isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập họ và tên!");
+            txtHoTen.requestFocus();
+        } else if (matKhau.length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu!");
+            txtMatKhau.requestFocus();
+        } else if (xacNhanMK.length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
+            txtXacNhanMK.requestFocus();
+        } else if (!new String(matKhau).equals(new String(xacNhanMK))) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    void insert() {
+        if (isValidated()) {
+            NhanVien nv = getForm();
+            try {
+                DAO.insert(nv);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    void delete() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
+        } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá nhân viên này không?")) {
+            String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
+            try {
+                DAO.delete(maNV);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xoá thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xoá không thành công!");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void update() {
+        if (isValidated()) {
+            NhanVien nv = getForm();
+            try {
+                DAO.update(nv);
+                this.fillToTable();
+                this.updateStatus();
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại!");
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

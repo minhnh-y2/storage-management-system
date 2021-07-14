@@ -42,11 +42,7 @@
                       <Component id="lblTimKiem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTimKiem" pref="157" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSapXepTheo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="cboSapXepTheo" min="-2" pref="151" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
                       <Component id="pnlChuyen" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -67,8 +63,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSapXepTheo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cboSapXepTheo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="pnlChuyen" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -86,21 +80,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTimKiem">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblSapXepTheo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="S&#x1eaf;p x&#x1ebf;p theo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cboSapXepTheo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyPressed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="pnlThongTinNV">
       <Properties>
@@ -128,9 +110,9 @@
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btnTruongKho" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoTruongKho" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnThuKho" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoThuKho" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="txtMaNV" alignment="1" max="32767" attributes="0"/>
@@ -167,8 +149,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnTruongKho" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnThuKho" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdoTruongKho" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdoThuKho" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblVaiTro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="11" max="32767" attributes="0"/>
@@ -210,7 +192,7 @@
             <Property name="text" type="java.lang.String" value="Vai tr&#xf2;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="btnTruongKho">
+        <Component class="javax.swing.JRadioButton" name="rdoTruongKho">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnGrpVaiTro"/>
@@ -218,11 +200,12 @@
             <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edf;ng kho"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="btnThuKho">
+        <Component class="javax.swing.JRadioButton" name="rdoThuKho">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="btnGrpVaiTro"/>
             </Property>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Th&#x1ee7; kho"/>
           </Properties>
         </Component>
@@ -251,6 +234,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnXoa">
           <Properties>
@@ -259,6 +245,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSua">
           <Properties>
@@ -267,6 +256,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMoi">
           <Properties>
@@ -275,6 +267,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -289,21 +284,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="|&lt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPrev">
           <Properties>
             <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
             <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnLast">
           <Properties>
             <Property name="text" type="java.lang.String" value="&gt;|"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -352,6 +359,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblNhanVienMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
