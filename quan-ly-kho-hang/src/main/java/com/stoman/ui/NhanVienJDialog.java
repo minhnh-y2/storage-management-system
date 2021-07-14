@@ -253,8 +253,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                        .addGap(280, 280, 280)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addGap(217, 217, 217)
                         .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -412,7 +412,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         this.tblModel = (DefaultTableModel) tblNhanVien.getModel();
         this.tblModel.setColumnIdentifiers(new Object[]{
-            "Mã nhân viên", "Họ và tên", "Mật khẩu", "Vai trò"
+            "Mã nhân viên", "Họ và tên", "Vai trò"
         });
         tblNhanVien.setAutoCreateRowSorter(true);
         tblNhanVien.setRowHeight(25);
@@ -430,7 +430,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 tblModel.addRow(new Object[]{
                     nv.getMaNV(),
                     nv.getTenNV(),
-                    nv.getMatKhau(),
                     nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
                 });
             }

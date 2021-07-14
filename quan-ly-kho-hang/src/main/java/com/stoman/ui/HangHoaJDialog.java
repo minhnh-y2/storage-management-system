@@ -14,6 +14,7 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.XNumber;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -316,7 +317,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void lstLHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLHHMouseClicked
         // TODO add your handling code here:
-        fillToTable();
+        this.fillToTable();
+        this.clearForm();
         this.updateStatus();
     }//GEN-LAST:event_lstLHHMouseClicked
 
@@ -479,7 +481,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(464);
         tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(125);
         tblHangHoa.getColumnModel().getColumn(3).setPreferredWidth(125);
-
+        tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         this.fillToList();
         this.updateStatus();
     }

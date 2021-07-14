@@ -116,12 +116,12 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        logOut();
+        this.close();
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
         // TODO add your handling code here:
-        changePassWord();
+        this.changePassWord();
     }//GEN-LAST:event_btnDongYActionPerformed
 
     /**
@@ -185,45 +185,58 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     NhanVienDAO dao = new NhanVienDAO();
 
     //Code phương thức đổi mật khẩu.
-    void changePassWord() {
+    private void changePassWord() {
         if (isValidated()) {
             String matKhau = new String(txtMatKhauCu.getPassword());
             String matKhauMoi = new String(txtMatKhauMoi.getPassword());
             String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
-
+            
             if (!matKhau.equals(Auth.user.getMatKhau())) {
                 MsgBox.alert(this, "Mật khẩu không đúng!");
                 txtMatKhauCu.requestFocus();
-            } else if (!matKhau.equals(xacNhanMKMoi)) {
+            }
+            if (!matKhau.equals(Auth.user.getMatKhau())) {
+                MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
+                txtMatKhauCu.requestFocus();
+            }
+            if (!matKhauMoi.equals(xacNhanMKMoi)) {
                 MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
                 txtXacNhanMK.requestFocus();
-            } else {
-                Auth.user.setMatKhau(matKhau);
-                dao.update(Auth.user);
-                MsgBox.alert(this, "Đổi mật khẩu thành công!");
             }
+            
+            Auth.user.setMatKhau(matKhau);
+            dao.update(Auth.user);
+            MsgBox.alert(this, "Đổi mật khẩu thành công!");
+
         }
     }
 
-    private void logOut() {
-        if (MsgBox.confirm(this, "Bạn có muốn thoát?")) {
-            System.exit(0);
-        }
+    private void close() {
+        this.dispose();
     }
 
     boolean isValidated() {
         if (txtMatKhauCu.getPassword().length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu hiện tại!");
             txtMatKhauCu.requestFocus();
-        } else if (txtMatKhauMoi.getPassword().length == 0) {
+            return false;
+        }
+        if (txtMatKhauMoi.getPassword().length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
             txtMatKhauMoi.requestFocus();
-        } else if (txtXacNhanMK.getPassword().length == 0) {
-            MsgBox.alert(this, "Chưa nhập xác nhận mật khẩu mới!");
-            txtXacNhanMK.requestFocus();
-        } else {
-            return true;
+            return false;
         }
-        return false;
+        if (txtMatKhauMoi.getPassword().length < 8) {
+            MsgBox.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
+            txtMatKhauMoi.requestFocus();
+            return false;
+        }
+        if (txtMatKhauMoi.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
+            txtMatKhauMoi.requestFocus();
+            return false;
+        }
+        return true;
+        
     }
 }

@@ -331,8 +331,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void lstLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLDTMouseClicked
         // TODO add your handling code here:
-        fillToTable();
-        updateStatus();
+        this.fillToTable();
+        this.clearForm();
+        this.updateStatus();
     }//GEN-LAST:event_lstLDTMouseClicked
 
     private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed

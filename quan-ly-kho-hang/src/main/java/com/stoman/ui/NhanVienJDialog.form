@@ -41,8 +41,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblTimKiem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTimKiem" pref="157" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                      <Component id="txtTimKiem" pref="220" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                       <Component id="pnlChuyen" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
