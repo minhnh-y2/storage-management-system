@@ -181,22 +181,27 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
-    
+
     NhanVienDAO dao = new NhanVienDAO();
+
     //Code phương thức đổi mật khẩu.
-    void changePassWord(){
-        String matKhau = new String(txtMatKhauCu.getPassword());
-        String matKhauMoi = new String(txtMatKhauMoi.getPassword());
-        String xacNhanMatKhauMoi = new String(txtXacNhanMK.getPassword());
-        
-        if (!matKhau.equals(Auth.user.getMaNV())) {
-            MsgBox.alert(this, "Sai mật khẩu");
-        } else if (!matKhau.equals(xacNhanMatKhauMoi)) {
-            MsgBox.alert(this, "Mật khẩu mới và xác nhận mật khẩu phải giống nhau.");
-        } else {
-            Auth.user.setMatKhau(matKhau);
-            dao.update(Auth.user);
-            MsgBox.alert(this, "Đổi mật khẩu thành công.");
+    void changePassWord() {
+        if (isValidated()) {
+            String matKhau = new String(txtMatKhauCu.getPassword());
+            String matKhauMoi = new String(txtMatKhauMoi.getPassword());
+            String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
+
+            if (!matKhau.equals(Auth.user.getMatKhau())) {
+                MsgBox.alert(this, "Mật khẩu không đúng!");
+                txtMatKhauCu.requestFocus();
+            } else if (!matKhau.equals(xacNhanMKMoi)) {
+                MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+                txtXacNhanMK.requestFocus();
+            } else {
+                Auth.user.setMatKhau(matKhau);
+                dao.update(Auth.user);
+                MsgBox.alert(this, "Đổi mật khẩu thành công!");
+            }
         }
     }
 
@@ -204,5 +209,21 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         if (MsgBox.confirm(this, "Bạn có muốn thoát?")) {
             System.exit(0);
         }
+    }
+
+    boolean isValidated() {
+        if (txtMatKhauCu.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu hiện tại!");
+            txtMatKhauCu.requestFocus();
+        } else if (txtMatKhauMoi.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
+            txtMatKhauMoi.requestFocus();
+        } else if (txtXacNhanMK.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập xác nhận mật khẩu mới!");
+            txtXacNhanMK.requestFocus();
+        } else {
+            return true;
+        }
+        return false;
     }
 }
