@@ -16,8 +16,7 @@ public class LoaiHangHoa {
     public LoaiHangHoa() {
     }
 
-    public LoaiHangHoa(int maLHH, String tenLHH) {
-        this.maLHH = maLHH;
+    public LoaiHangHoa(String tenLHH) {
         this.tenLHH = tenLHH;
     }
     
