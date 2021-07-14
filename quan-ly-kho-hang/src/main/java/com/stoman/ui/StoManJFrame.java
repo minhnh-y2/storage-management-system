@@ -5,8 +5,13 @@
  */
 package com.stoman.ui;
 
+import com.stoman.utils.Auth;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -70,12 +75,10 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlCanCanXuatNhap = new javax.swing.JPanel();
         pnlTrangThai = new javax.swing.JPanel();
         lblTrangThai = new javax.swing.JLabel();
-        btnDongHo = new javax.swing.JLabel();
+        lblDongHo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mnuHeThong = new javax.swing.JMenu();
-        mniDangNhap = new javax.swing.JMenuItem();
         mniDangXuat = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mniDoiMK = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mniThoat = new javax.swing.JMenuItem();
@@ -93,7 +96,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniGioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("StoMan - Stroge Manager System");
+        setTitle("STOMAN - STROGE MANAGER SYSTEM");
 
         toolBar.setRollover(true);
 
@@ -103,6 +106,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDangXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
         toolBar.add(btnDangXuat);
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
@@ -111,6 +119,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnThoat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThoat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnThoat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
         toolBar.add(btnThoat);
         toolBar.add(separator1);
 
@@ -120,6 +133,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnNhapXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNhapXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnNhapXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNhapXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapXuatActionPerformed(evt);
+            }
+        });
         toolBar.add(btnNhapXuat);
 
         btnKiemKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/warehouse.png"))); // NOI18N
@@ -128,6 +146,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnKiemKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKiemKho.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnKiemKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnKiemKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKiemKhoActionPerformed(evt);
+            }
+        });
         toolBar.add(btnKiemKho);
 
         btnDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/handshake.png"))); // NOI18N
@@ -136,6 +159,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnDoiTac.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDoiTac.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnDoiTac.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDoiTac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiTacActionPerformed(evt);
+            }
+        });
         toolBar.add(btnDoiTac);
         toolBar.add(separator2);
 
@@ -145,6 +173,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         cboThongTin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cboThongTin.setMargin(new java.awt.Insets(2, 10, 2, 10));
         cboThongTin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cboThongTin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboThongTinActionPerformed(evt);
+            }
+        });
         toolBar.add(cboThongTin);
 
         btnHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/user-manual.png"))); // NOI18N
@@ -153,6 +186,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         btnHuongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHuongDan.setMargin(new java.awt.Insets(2, 10, 2, 10));
         btnHuongDan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHuongDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuongDanActionPerformed(evt);
+            }
+        });
         toolBar.add(btnHuongDan);
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
@@ -315,35 +353,44 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
-        btnDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
-        btnDongHo.setText("11:20AM");
-        btnDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
-        pnlTrangThai.add(btnDongHo, java.awt.BorderLayout.EAST);
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
+        lblDongHo.setText("11:20:20 AM");
+        lblDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
+        pnlTrangThai.add(lblDongHo, java.awt.BorderLayout.EAST);
 
         getContentPane().add(pnlTrangThai, java.awt.BorderLayout.PAGE_END);
 
         mnuHeThong.setText("Hệ thống");
 
-        mniDangNhap.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/login.png"))); // NOI18N
-        mniDangNhap.setText("Đăng nhập");
-        mnuHeThong.add(mniDangNhap);
-
         mniDangXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
         mniDangXuat.setText("Đăng xuất");
+        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangXuatActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniDangXuat);
-        mnuHeThong.add(jSeparator3);
 
         mniDoiMK.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/password-reset.png"))); // NOI18N
         mniDoiMK.setText("Đổi mật khẩu");
+        mniDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoiMKActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniDoiMK);
         mnuHeThong.add(jSeparator4);
 
         mniThoat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
         mniThoat.setText("Thoát");
+        mniThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThoatActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniThoat);
 
         menuBar.add(mnuHeThong);
@@ -353,33 +400,63 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniHangHoa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniHangHoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cardboard-box.png"))); // NOI18N
         mniHangHoa.setText("Hàng hoá");
+        mniHangHoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHangHoaActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniHangHoa);
 
         mniDoiTac.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniDoiTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/handshake.png"))); // NOI18N
         mniDoiTac.setText("Đối tác");
+        mniDoiTac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoiTacActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniDoiTac);
 
         mniKho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/warehouse.png"))); // NOI18N
         mniKho.setText("Kho");
+        mniKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhoActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniKho);
         mnuQuanLy.add(jSeparator6);
 
         mniPhieuNhapXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniPhieuNhapXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/compare.png"))); // NOI18N
         mniPhieuNhapXuat.setText("Phiếu nhập xuất");
+        mniPhieuNhapXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniPhieuNhapXuatActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniPhieuNhapXuat);
 
         mniPhieuKiemKho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniPhieuKiemKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/attendance.png"))); // NOI18N
         mniPhieuKiemKho.setText("Phiếu kiểm kho");
+        mniPhieuKiemKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniPhieuKiemKhoActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniPhieuKiemKho);
         mnuQuanLy.add(jSeparator5);
 
         mniNhanVien.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/name-tag.png"))); // NOI18N
         mniNhanVien.setText("Nhân viên");
+        mniNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniNhanVienActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniNhanVien);
 
         menuBar.add(mnuQuanLy);
@@ -388,10 +465,20 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/user-manual.png"))); // NOI18N
         mniHuongDan.setText("Hướng dẫn sử dụng");
+        mniHuongDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHuongDanActionPerformed(evt);
+            }
+        });
         mnuTroGiup.add(mniHuongDan);
 
         mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info.png"))); // NOI18N
         mniGioiThieu.setText("Giới thiệu phần mềm");
+        mniGioiThieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniGioiThieuActionPerformed(evt);
+            }
+        });
         mnuTroGiup.add(mniGioiThieu);
 
         menuBar.add(mnuTroGiup);
@@ -400,6 +487,96 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+        // TODO add your handling code here:
+        logout();
+    }//GEN-LAST:event_mniDangXuatActionPerformed
+
+    private void mniDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMKActionPerformed
+        // TODO add your handling code here:
+        openDoiMatKhauDialog();
+    }//GEN-LAST:event_mniDoiMKActionPerformed
+
+    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+        // TODO add your handling code here:
+        exit();
+    }//GEN-LAST:event_mniThoatActionPerformed
+
+    private void mniHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHangHoaActionPerformed
+        // TODO add your handling code here:
+        openHangHoaDialog();
+    }//GEN-LAST:event_mniHangHoaActionPerformed
+
+    private void mniDoiTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiTacActionPerformed
+        // TODO add your handling code here:
+        openDoiTacDialog();
+    }//GEN-LAST:event_mniDoiTacActionPerformed
+
+    private void mniKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhoActionPerformed
+        // TODO add your handling code here:
+        openKhoDialog();
+    }//GEN-LAST:event_mniKhoActionPerformed
+
+    private void mniPhieuNhapXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPhieuNhapXuatActionPerformed
+        // TODO add your handling code here:
+        openNhapXuatKhoDialog();
+    }//GEN-LAST:event_mniPhieuNhapXuatActionPerformed
+
+    private void mniPhieuKiemKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPhieuKiemKhoActionPerformed
+        // TODO add your handling code here:
+        openKiemKhoDialog();
+    }//GEN-LAST:event_mniPhieuKiemKhoActionPerformed
+
+    private void mniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNhanVienActionPerformed
+        // TODO add your handling code here:
+        openNhanVienDialog();
+    }//GEN-LAST:event_mniNhanVienActionPerformed
+
+    private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
+        // TODO add your handling code here:
+        userManual();
+    }//GEN-LAST:event_mniHuongDanActionPerformed
+
+    private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
+        // TODO add your handling code here:
+        openGioiThieuDialog();
+    }//GEN-LAST:event_mniGioiThieuActionPerformed
+
+    private void btnHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuongDanActionPerformed
+        // TODO add your handling code here:
+        userManual();
+    }//GEN-LAST:event_btnHuongDanActionPerformed
+
+    private void cboThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThongTinActionPerformed
+        // TODO add your handling code here:
+        openGioiThieuDialog();
+    }//GEN-LAST:event_cboThongTinActionPerformed
+
+    private void btnDoiTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiTacActionPerformed
+        // TODO add your handling code here:
+        openDoiTacDialog();
+    }//GEN-LAST:event_btnDoiTacActionPerformed
+
+    private void btnKiemKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKiemKhoActionPerformed
+        // TODO add your handling code here:
+        openKiemKhoDialog();
+    }//GEN-LAST:event_btnKiemKhoActionPerformed
+
+    private void btnNhapXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapXuatActionPerformed
+        // TODO add your handling code here:
+        openNhapXuatKhoDialog();
+    }//GEN-LAST:event_btnNhapXuatActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        exit();
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+        logout();
+    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,7 +616,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiTac;
-    private javax.swing.JLabel btnDongHo;
     private javax.swing.JButton btnHuongDan;
     private javax.swing.JButton btnKiemKho;
     private javax.swing.JButton btnNhapXuat;
@@ -448,10 +624,10 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JButton cboThongTin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblLuongNhap;
     private javax.swing.JLabel lblLuongXuat;
     private javax.swing.JLabel lblSoLuongNhap;
@@ -460,7 +636,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTonKho;
     private javax.swing.JLabel lblTrangThai;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mniDangNhap;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoiMK;
     private javax.swing.JMenuItem mniDoiTac;
@@ -495,7 +670,18 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     void init() {
         setLocationRelativeTo(null);
-        chart();
+        
+        new ChaoJDialog(this, true).setVisible(true);
+        this.clock();
+        this.chart();
+    }
+    
+    void clock() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        lblDongHo.setText(LocalTime.now().format(formatter));
+        new Timer(1000, (e) -> {
+            lblDongHo.setText(LocalTime.now().format(formatter));
+        }).start();
     }
 
     // Test chart
@@ -537,4 +723,55 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblSoLuongTK.setText(XNumber.toString(tongTonKho, pattern));
     }
 
+    void logout() {
+        Auth.clear();
+        new DangNhapJDialog(this, true).setVisible(true);
+    }
+    
+    void exit() {
+        if(MsgBox.confirm(this, "Bạn có muốn kết thúc chương trình?")){
+            System.exit(0);
+        }
+    }
+    
+    void openDoiMatKhauDialog() {
+        if (Auth.isLogin()) {
+            new DoiMatKhauJDialog(this, true).setVisible(true);
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        }
+    }
+    
+    void openDoiTacDialog() {
+        new DoiTacJDialog(this, true).setVisible(true);
+    }
+    
+    void openGioiThieuDialog() {
+        new GioiThieuJDialog(this, true).setVisible(true);
+    }
+    
+    void openHangHoaDialog() {
+        new HangHoaJDialog(this, true).setVisible(true);
+    }
+    
+    void openKhoDialog() {
+        new KhoJDialog(this, true).setVisible(true);
+    }
+    
+    void openNhanVienDialog() {
+        new NhanVienJDialog(this, true).setVisible(true);
+    }
+    
+    void openKiemKhoDialog() {
+        new PhieuKiemKhoJDialog(this, true).setVisible(true);
+    }
+    
+    void openNhapXuatKhoDialog() {
+        new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
+    }
+    
+    void userManual() {
+        
+    }
+    
 }
