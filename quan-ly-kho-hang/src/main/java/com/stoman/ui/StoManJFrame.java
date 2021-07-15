@@ -200,42 +200,54 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         pnlThongTin.setLayout(new java.awt.GridLayout(0, 1));
 
+        pnlLuongNhap.setBackground(new java.awt.Color(255, 102, 102));
         pnlLuongNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongNhap.setLayout(new java.awt.GridLayout(0, 1));
 
+        lblLuongNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLuongNhap.setText("Lượng nhập");
         pnlLuongNhap.add(lblLuongNhap);
 
         lblSoLuongNhap.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongNhap.setText("0");
         pnlLuongNhap.add(lblSoLuongNhap);
 
         pnlThongTin.add(pnlLuongNhap);
 
+        pnlLuongXuat.setBackground(new java.awt.Color(153, 153, 255));
         pnlLuongXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongXuat.setLayout(new java.awt.GridLayout(0, 1));
 
+        lblLuongXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLuongXuat.setText("Lượng xuất");
         pnlLuongXuat.add(lblLuongXuat);
 
         lblSoLuongXuat.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongXuat.setText("0");
         pnlLuongXuat.add(lblSoLuongXuat);
 
         pnlThongTin.add(pnlLuongXuat);
 
+        pnlLuongTonKho.setBackground(new java.awt.Color(0, 204, 102));
         pnlLuongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongTonKho.setLayout(new java.awt.GridLayout(0, 1));
 
+        lblTonKho.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTonKho.setForeground(new java.awt.Color(255, 255, 255));
         lblTonKho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTonKho.setText("Tồn kho");
         pnlLuongTonKho.add(lblTonKho);
 
         lblSoLuongTK.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongTK.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongTK.setText("0");
         pnlLuongTonKho.add(lblSoLuongTK);
@@ -248,9 +260,9 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlTongQuanLayout.setVerticalGroup(
@@ -258,7 +270,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -284,7 +296,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -299,7 +311,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cboLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -309,11 +321,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlXuatTheoQuy.setLayout(pnlXuatTheoQuyLayout);
         pnlXuatTheoQuyLayout.setHorizontalGroup(
             pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         pnlXuatTheoQuyLayout.setVerticalGroup(
             pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         tabs.addTab("Xuất theo quý", pnlXuatTheoQuy);
@@ -322,11 +334,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlNhapTheoQuy.setLayout(pnlNhapTheoQuyLayout);
         pnlNhapTheoQuyLayout.setHorizontalGroup(
             pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         pnlNhapTheoQuyLayout.setVerticalGroup(
             pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         tabs.addTab("Nhập theo quý", pnlNhapTheoQuy);
@@ -335,11 +347,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlCanCanXuatNhap.setLayout(pnlCanCanXuatNhapLayout);
         pnlCanCanXuatNhapLayout.setHorizontalGroup(
             pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         pnlCanCanXuatNhapLayout.setVerticalGroup(
             pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         tabs.addTab("Cán cân xuất nhập", pnlCanCanXuatNhap);
@@ -671,8 +683,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     void init() {
         setLocationRelativeTo(null);
         
-        new ChaoJDialog(this, true).setVisible(true);
-        new DangNhapJDialog(this, true).setVisible(true);
+//        new ChaoJDialog(this, true).setVisible(true);
+//        new DangNhapJDialog(this, true).setVisible(true);
         this.clock();
         this.chart();
     }
