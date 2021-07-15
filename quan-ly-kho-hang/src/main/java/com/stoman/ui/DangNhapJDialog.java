@@ -174,7 +174,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 MsgBox.alert(this, "Mật khẩu không đúng.");
             } else {
                 Auth.user = nv;
-                new StoManJFrame().setVisible(true);
                 this.dispose();
             }
         }

@@ -672,6 +672,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         new ChaoJDialog(this, true).setVisible(true);
+        new DangNhapJDialog(this, true).setVisible(true);
         this.clock();
         this.chart();
     }
