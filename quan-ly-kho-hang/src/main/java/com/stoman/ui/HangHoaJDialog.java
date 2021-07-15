@@ -165,7 +165,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDonGia)
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
@@ -257,6 +257,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblHangHoa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblHangHoa.getTableHeader().setReorderingAllowed(false);
         tblHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

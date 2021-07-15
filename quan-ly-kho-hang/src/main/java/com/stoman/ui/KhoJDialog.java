@@ -164,6 +164,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblKho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblKho.getTableHeader().setReorderingAllowed(false);
         tblKho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

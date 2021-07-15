@@ -278,6 +278,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblDoiTac.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblDoiTac.getTableHeader().setReorderingAllowed(false);
         tblDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
