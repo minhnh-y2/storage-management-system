@@ -26,6 +26,17 @@ public class HangHoa {
         this.donViTinh = donViTinh;
         this.maLHH = maLHH;
     }
+    
+    @Override
+    public String toString() {
+        return this.tenHH;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        HangHoa other = (HangHoa) obj;
+        return other.getMaLHH() == this.getMaLHH();
+    }
 
     public String getMaHH() {
         return maHH;
