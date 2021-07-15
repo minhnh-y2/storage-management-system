@@ -105,7 +105,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background-login.png"))); // NOI18N
-        lblBackground.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
