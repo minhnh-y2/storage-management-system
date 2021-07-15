@@ -22,6 +22,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
      */
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
         init();
     }
@@ -100,10 +101,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 lblThoatMouseExited(evt);
             }
         });
-        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
+        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background-login.png"))); // NOI18N
+        lblBackground.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
