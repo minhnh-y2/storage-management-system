@@ -313,12 +313,22 @@ public class KhoJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
         this.DAO = new KhoDAO();
-        this.model = (DefaultTableModel) tblKho.getModel();
-        this.model.setColumnIdentifiers(new Object[]{
-            "Mã kho", "Địa chỉ"
-        });
+        String header[] = {"Mã kho", "Địa chỉ"};
+        this.model = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblKho.setModel(model);
         tblKho.getColumnModel().getColumn(0).setMaxWidth(60);
         tblKho.setAutoCreateRowSorter(true);
+        tblKho.setRowHeight(25);
 
         this.fillToTable();
         this.updateStatus();
@@ -335,6 +345,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                     k.getDiaChi()
                 });
             }
+            tblKho.setModel(model);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();

@@ -411,10 +411,19 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     void init() {
         setLocationRelativeTo(null);
 
-        this.tblModel = (DefaultTableModel) tblNhanVien.getModel();
-        this.tblModel.setColumnIdentifiers(new Object[]{
-            "Mã nhân viên", "Họ và tên", "Vai trò"
-        });
+        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
+        this.tblModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblNhanVien.setModel(tblModel);
         tblNhanVien.setAutoCreateRowSorter(true);
         tblNhanVien.setRowHeight(25);
 
@@ -433,6 +442,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     nv.getTenNV(),
                     nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
                 });
+                tblNhanVien.setModel(tblModel);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");

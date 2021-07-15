@@ -490,18 +490,64 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
 
-        this.tblModel = (DefaultTableModel) tblDoiTac.getModel();
-        this.tblModel.setColumnIdentifiers(new Object[]{
-            "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email", "Số điện thoại",
-            "Vai trò"
-        });
-        System.out.println(tblDoiTac.getSize());
+        String header[] = {"Mã đối tác", "Tên đối tác", "Địa chỉ", "Email",
+            "Số điện thoại", "Vai trò"};
+        this.tblModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblDoiTac.setModel(tblModel);
         tblDoiTac.setAutoCreateRowSorter(true);
         tblDoiTac.setRowHeight(25);
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(0));
 
         this.fillToList();
         this.updateStatus();
+    }
+    
+    void fillToList() {
+        DefaultListModel lstModel = new DefaultListModel();
+        lstModel.removeAllElements();
+        try {
+            List<LoaiDoiTac> list = ldtDAO.selectAll();
+            for (LoaiDoiTac ldt : list) {
+                lstModel.addElement(ldt);
+            }
+            lstLDT.setModel(lstModel);
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
+    }
+
+    void fillToTable() {
+        int maLDT = lstLDT.getSelectedValue().getMaLDT();
+        String keyword = txtTimKiem.getText();
+        tblModel.setRowCount(0);
+        try {
+            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword);
+            for (DoiTac dt : list) {
+                tblModel.addRow(new Object[]{
+                    dt.getMaDT(),
+                    dt.getTenDT(),
+                    dt.getDiaChi(),
+                    dt.getEmail(),
+                    dt.getSoDT(),
+                    dt.isVaiTro() ? "Nhà phân phối" : "Khách hàng"
+                });
+                tblDoiTac.setModel(tblModel);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
     }
 
     DoiTac getForm() {
@@ -585,43 +631,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     void last() {
         this.row = tblDoiTac.getRowCount() - 1;
         this.edit();
-    }
-
-    void fillToList() {
-        DefaultListModel lstModel = new DefaultListModel();
-        lstModel.removeAllElements();
-        try {
-            List<LoaiDoiTac> list = ldtDAO.selectAll();
-            for (LoaiDoiTac ldt : list) {
-                lstModel.addElement(ldt);
-            }
-            lstLDT.setModel(lstModel);
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-            e.printStackTrace();
-        }
-    }
-
-    void fillToTable() {
-        int maLDT = lstLDT.getSelectedValue().getMaLDT();
-        String keyword = txtTimKiem.getText();
-        tblModel.setRowCount(0);
-        try {
-            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword);
-            for (DoiTac dt : list) {
-                tblModel.addRow(new Object[]{
-                    dt.getMaDT(),
-                    dt.getTenDT(),
-                    dt.getDiaChi(),
-                    dt.getEmail(),
-                    dt.getSoDT(),
-                    dt.isVaiTro() ? "Nhà phân phối" : "Khách hàng"
-                });
-            }
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-            e.printStackTrace();
-        }
     }
 
     boolean isValidated() {

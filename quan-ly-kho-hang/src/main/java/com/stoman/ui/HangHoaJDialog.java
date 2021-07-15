@@ -474,6 +474,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
         };
         tblHangHoa.setModel(tblModel);
         tblHangHoa.setAutoCreateRowSorter(true);
@@ -499,11 +504,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 Object[] row = {
                     hh.getMaHH(),
                     hh.getTenHH(),
-                    XNumber.toString(hh.getDonGia(), numPattern),
+                    hh.getDonGia(),
                     hh.getDonViTinh()
                 };
                 tblModel.addRow(row);
             }
+            tblHangHoa.setModel(tblModel);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
             e.printStackTrace();
