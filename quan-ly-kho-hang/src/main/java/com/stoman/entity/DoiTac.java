@@ -86,4 +86,15 @@ public class DoiTac {
         this.vaiTro = vaiTro;
     }
     
+    @Override
+    public String toString() {
+        return this.getTenDT();
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        DoiTac other = (DoiTac) obj;
+        return other.getMaDT() == this.getMaDT();
+    }
+    
 }

@@ -46,5 +46,16 @@ public class Kho {
     public void setMaTK(String maTK) {
         this.maTK = maTK;
     }
+    
+    @Override
+    public String toString() {
+        return String.valueOf(this.getMaKho());
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Kho other = (Kho) obj;
+        return other.getMaKho() == this.getMaKho();
+    }
 
 }

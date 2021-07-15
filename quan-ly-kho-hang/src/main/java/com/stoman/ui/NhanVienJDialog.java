@@ -420,6 +420,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
                 return getValueAt(0, columnIndex).getClass();
             }
         };
@@ -442,8 +445,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     nv.getTenNV(),
                     nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
                 });
-                tblNhanVien.setModel(tblModel);
             }
+            tblNhanVien.setModel(tblModel);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();

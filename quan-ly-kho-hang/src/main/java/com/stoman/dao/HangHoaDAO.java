@@ -93,4 +93,9 @@ public class HangHoaDAO extends StoManDAO<HangHoa, String>{
         return this.selectBySQL(sql, maLHH, "%" + keyword + "%");
     }
     
+    public List<HangHoa> selectByLoaiHangHoa(Integer maLHH) {
+        String sql = "SELECT * FROM HANGHOA WHERE MALHH = ?";
+        return this.selectBySQL(sql, maLHH);
+    }
+
 }

@@ -500,6 +500,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
                 return getValueAt(0, columnIndex).getClass();
             }
         };

@@ -99,4 +99,14 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
         return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
     }
     
+    public List<DoiTac> selectByLoaiDT(Integer maLDT) {
+        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ?";
+        return this.selectBySQL(sql, maLDT);
+    }
+    
+    public String getTenDT(int maDT){
+        String sql = "SELECT TENDT FROM DOITAC WHERE MADT = ?";
+        return (String) XJdbc.value(sql, maDT);
+    }
+    
 }
