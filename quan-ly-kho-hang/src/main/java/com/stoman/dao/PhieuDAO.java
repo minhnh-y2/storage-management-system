@@ -20,7 +20,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override
     public void insert(Phieu entity) {
-        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, MADT, MANV) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, MANV, ) VALUES (?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.isLoai(),
@@ -33,7 +33,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override
     public void update(Phieu entity) {
-        String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, MADT=?, MANV=? WHERE MAPHIEU=?";
+        String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, GHICHU=?, MADT=?, MANV=?,  WHERE MAPHIEU=?";
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.isLoai(),
@@ -79,6 +79,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
                     entity.setTrangThai(rs.getBoolean("TRANGTHAI"));
                     entity.setNgThucHien(rs.getDate("NGTHUCHIEN"));
                     entity.setNgHoanThanh(rs.getDate("NGHOANTHANH"));
+                    entity.setGhiChu(rs.getString("GHICHU"));
                     entity.setMaDT(rs.getInt("MADT"));
                     entity.setMaNV(rs.getString("MANV"));
                             

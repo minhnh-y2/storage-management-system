@@ -24,7 +24,7 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
         XJdbc.update(sql,
                 entity.getMaNV(),
                 entity.getTenNV(),
-                entity.isVaiTRo(),
+                entity.isVaiTro(),
                 entity.getMatKhau(),
                 entity.getMuoi());
     }
@@ -34,7 +34,7 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
         String sql = "UPDATE NHANVIEN SET TENNV=?, VAITRO=?, MATKHAU=?, MUOI=? WHERE MANV=?";
         XJdbc.update(sql,
                 entity.getTenNV(),
-                entity.isVaiTRo(),
+                entity.isVaiTro(),
                 entity.getMatKhau(),
                 entity.getMuoi(),
                 entity.getMaNV());
@@ -71,7 +71,7 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
                     
                     entity.setMaNV(rs.getString("MANV"));
                     entity.setTenNV(rs.getString("TENNV"));
-                    entity.setVaiTRo(rs.getBoolean("VAITRO"));
+                    entity.setVaiTro(rs.getBoolean("VAITRO"));
                     entity.setMatKhau(rs.getString("MATKHAU"));
                     entity.setMuoi(rs.getString("MUOI"));
 
@@ -87,6 +87,11 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
             throw new RuntimeException(ex);
         }
         return list;
+    }
+    
+    public List<NhanVien> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM NHANVIEN WHERE TENNV LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%");
     }
     
 }

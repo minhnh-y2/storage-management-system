@@ -83,5 +83,9 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
         }
         return list;
     }
+    public int getMaKho(int maLT) {
+        String sql = "SELECT MAKHO FROM LUUTRU WHERE MALT = ?";
+        return (int) XJdbc.value(sql, maLT);
+    }
     
 }

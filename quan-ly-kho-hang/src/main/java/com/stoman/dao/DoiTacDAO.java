@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Huy
  */
-public class DoiTacDAO extends StoManDAO<DoiTac, String>{
+public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
 
     @Override
     public void insert(DoiTac entity) {
@@ -44,7 +44,7 @@ public class DoiTacDAO extends StoManDAO<DoiTac, String>{
     }
 
     @Override
-    public void delete(String key) {
+    public void delete(Integer key) {
         String sql = "DELETE FROM DOITAC WHERE MADT = ?";
         XJdbc.update(sql, key);
     }
@@ -56,7 +56,7 @@ public class DoiTacDAO extends StoManDAO<DoiTac, String>{
     }
 
     @Override
-    public DoiTac selectByID(String key) {
+    public DoiTac selectByID(Integer key) {
         String sql = "SELECT * FROM DOITAC WHERE MADT = ?";
         List<DoiTac> list = this.selectBySQL(sql, key);
         return list.size() > 0 ? list.get(0) : null;
@@ -78,7 +78,7 @@ public class DoiTacDAO extends StoManDAO<DoiTac, String>{
                     entity.setEmail(rs.getString("EMAIL"));
                     entity.setSoDT(rs.getString("SODT"));
                     entity.setVaiTro(rs.getBoolean("VAITRO"));
-                    entity.setMaLDT(rs.getString("MALDT"));
+                    entity.setMaLDT(rs.getInt("MALDT"));
 
                     list.add(entity);
                 }
@@ -92,6 +92,21 @@ public class DoiTacDAO extends StoManDAO<DoiTac, String>{
             throw new RuntimeException(ex);
         }
         return list;
+    }
+    
+    public List<DoiTac> selectByKeyword(Integer maLDT, String keyword) {
+        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ? AND TenDT LIKE ?";
+        return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
+    }
+    
+    public List<DoiTac> selectByLoaiDT(Integer maLDT) {
+        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ?";
+        return this.selectBySQL(sql, maLDT);
+    }
+    
+    public String getTenDT(int maDT){
+        String sql = "SELECT TENDT FROM DOITAC WHERE MADT = ?";
+        return (String) XJdbc.value(sql, maDT);
     }
     
 }

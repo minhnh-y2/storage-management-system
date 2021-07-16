@@ -16,25 +16,25 @@ import java.util.List;
  *
  * @author Huy
  */
-public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, String>{
+public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, Integer>{
 
     @Override
     public void insert(LoaiDoiTac entity) {
-        String sql = "INSERT INTO LOAIDOITAC (TENDT) VALUES (?)";
+        String sql = "INSERT INTO LOAIDOITAC (TENLDT) VALUES (?)";
         XJdbc.update(sql,
                 entity.getTenLDT());
     }
 
     @Override
     public void update(LoaiDoiTac entity) {
-        String sql = "UPDATE LOAIDOITAC SET TENDT=? WHERE MALDT=?";
+        String sql = "UPDATE LOAIDOITAC SET TENLDT=? WHERE MALDT=?";
         XJdbc.update(sql,
                 entity.getTenLDT(),
                 entity.getMaLDT());
     }
 
     @Override
-    public void delete(String key) {
+    public void delete(Integer key) {
         String sql = "DELETE FROM LOAIDOITAC WHERE MALDT = ?";
         XJdbc.update(sql, key);
     }
@@ -46,7 +46,7 @@ public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, String>{
     }
 
     @Override
-    public LoaiDoiTac selectByID(String key) {
+    public LoaiDoiTac selectByID(Integer key) {
         String sql = "SELECT * FROM LOAIDOITAC WHERE MALDT = ?";
         List<LoaiDoiTac> list = this.selectBySQL(sql, key);
         return list.size() > 0 ? list.get(0) : null;
@@ -62,8 +62,8 @@ public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, String>{
                 while(rs.next()){
                     LoaiDoiTac entity = new LoaiDoiTac();
                     
-                    entity.setMaLDT(rs.getString("MALDT"));
-                    entity.setTenLDT(rs.getString("TENDT"));
+                    entity.setMaLDT(rs.getInt("MALDT"));
+                    entity.setTenLDT(rs.getString("TENLDT"));
                     
                     list.add(entity);
                 }

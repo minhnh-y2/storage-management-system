@@ -8,6 +8,7 @@ package com.stoman.ui;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +21,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
      */
     public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
         init();
     }
@@ -39,21 +41,49 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         txtMatKhauMoi = new javax.swing.JPasswordField();
         lblXacNhanMK = new javax.swing.JLabel();
         txtXacNhanMK = new javax.swing.JPasswordField();
-        pnlButton = new javax.swing.JPanel();
+        lblMatKhauCu1 = new javax.swing.JLabel();
         btnDongY = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        lblThoat = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Đổi mật khẩu");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblMatKhauCu.setForeground(new java.awt.Color(51, 51, 51));
         lblMatKhauCu.setText("Mật khẩu hiện tại");
+        getContentPane().add(lblMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
+        txtMatKhauCu.setBackground(new java.awt.Color(0, 0, 0, 0));
+        txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtMatKhauCu.setOpaque(false);
+        getContentPane().add(txtMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 280, -1));
+
+        lblMatKhauMoi.setForeground(new java.awt.Color(51, 51, 51));
         lblMatKhauMoi.setText("Mật khẩu mới");
+        getContentPane().add(lblMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
+        txtMatKhauMoi.setBackground(new java.awt.Color(0, 0, 0, 0));
+        txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtMatKhauMoi.setOpaque(false);
+        getContentPane().add(txtMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 280, -1));
+
+        lblXacNhanMK.setForeground(new java.awt.Color(51, 51, 51));
         lblXacNhanMK.setText("Xác nhận mật khẩu mới");
+        getContentPane().add(lblXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
-        pnlButton.setLayout(new java.awt.GridLayout(1, 0));
+        txtXacNhanMK.setBackground(new java.awt.Color(0, 0, 0, 0));
+        txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtXacNhanMK.setOpaque(false);
+        getContentPane().add(txtXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 280, -1));
 
+        lblMatKhauCu1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        lblMatKhauCu1.setForeground(new java.awt.Color(51, 51, 51));
+        lblMatKhauCu1.setText("ĐỔI MẬT KHẨU");
+        getContentPane().add(lblMatKhauCu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
+
+        btnDongY.setBackground(new java.awt.Color(204, 255, 204));
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         btnDongY.setText("Đồng ý");
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
@@ -61,8 +91,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnDongYActionPerformed(evt);
             }
         });
-        pnlButton.add(btnDongY);
+        getContentPane().add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 150, -1));
 
+        btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -70,59 +101,53 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnThoatActionPerformed(evt);
             }
         });
-        pnlButton.add(btnThoat);
+        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMatKhauCu)
-                    .addComponent(txtMatKhauMoi)
-                    .addComponent(txtXacNhanMK)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMatKhauCu)
-                            .addComponent(lblMatKhauMoi)
-                            .addComponent(lblXacNhanMK))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblMatKhauCu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMatKhauMoi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblXacNhanMK)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png"))); // NOI18N
+        lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThoatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblThoatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblThoatMouseExited(evt);
+            }
+        });
+        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background_changed_pass.png"))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        logOut();
+        this.close();
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
         // TODO add your handling code here:
-        changePassWord();
+        this.changePassWord();
     }//GEN-LAST:event_btnDongYActionPerformed
+
+    private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
+        // TODO add your handling code here:
+        this.close();
+    }//GEN-LAST:event_lblThoatMouseClicked
+
+    private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
+        // TODO add your handling code here:
+        lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32.png")));
+    }//GEN-LAST:event_lblThoatMouseEntered
+
+    private void lblThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseExited
+        // TODO add your handling code here:
+        lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png")));
+    }//GEN-LAST:event_lblThoatMouseExited
 
     /**
      * @param args the command line arguments
@@ -169,10 +194,12 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDongY;
     private javax.swing.JButton btnThoat;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMatKhauCu;
+    private javax.swing.JLabel lblMatKhauCu1;
     private javax.swing.JLabel lblMatKhauMoi;
+    private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblXacNhanMK;
-    private javax.swing.JPanel pnlButton;
     private javax.swing.JPasswordField txtMatKhauCu;
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtXacNhanMK;
@@ -181,28 +208,62 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
     }
-    
+
     NhanVienDAO dao = new NhanVienDAO();
+
     //Code phương thức đổi mật khẩu.
-    void changePassWord(){
-        String matKhau = new String(txtMatKhauCu.getPassword());
-        String matKhauMoi = new String(txtMatKhauMoi.getPassword());
-        String xacNhanMatKhauMoi = new String(txtXacNhanMK.getPassword());
-        
-        if (!matKhau.equals(Auth.user.getMaNV())) {
-            MsgBox.alert(this, "Sai mật khẩu");
-        } else if (!matKhau.equals(xacNhanMatKhauMoi)) {
-            MsgBox.alert(this, "Mật khẩu mới và xác nhận mật khẩu phải giống nhau.");
-        } else {
+    private void changePassWord() {
+        if (isValidated()) {
+            String matKhau = new String(txtMatKhauCu.getPassword());
+            String matKhauMoi = new String(txtMatKhauMoi.getPassword());
+            String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
+            
+            if (!matKhau.equals(Auth.user.getMatKhau())) {
+                MsgBox.alert(this, "Mật khẩu không đúng!");
+                txtMatKhauCu.requestFocus();
+            }
+            if (!matKhau.equals(Auth.user.getMatKhau())) {
+                MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
+                txtMatKhauCu.requestFocus();
+            }
+            if (!matKhauMoi.equals(xacNhanMKMoi)) {
+                MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+                txtXacNhanMK.requestFocus();
+            }
+            
             Auth.user.setMatKhau(matKhau);
             dao.update(Auth.user);
-            MsgBox.alert(this, "Đổi mật khẩu thành công.");
+            MsgBox.alert(this, "Đổi mật khẩu thành công!");
+
         }
     }
 
-    private void logOut() {
-        if (MsgBox.confirm(this, "Bạn có muốn thoát?")) {
-            System.exit(0);
+    private void close() {
+        this.dispose();
+    }
+
+    boolean isValidated() {
+        if (txtMatKhauCu.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu hiện tại!");
+            txtMatKhauCu.requestFocus();
+            return false;
         }
+        if (txtMatKhauMoi.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
+            txtMatKhauMoi.requestFocus();
+            return false;
+        }
+        if (txtMatKhauMoi.getPassword().length < 8) {
+            MsgBox.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
+            txtMatKhauMoi.requestFocus();
+            return false;
+        }
+        if (txtMatKhauMoi.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
+            txtMatKhauMoi.requestFocus();
+            return false;
+        }
+        return true;
+        
     }
 }

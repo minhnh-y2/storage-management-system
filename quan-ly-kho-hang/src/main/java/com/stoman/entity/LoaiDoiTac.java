@@ -10,14 +10,13 @@ package com.stoman.entity;
  * @author Huy
  */
 public class LoaiDoiTac {
-    private String maLDT;
+    private int maLDT;
     private String tenLDT;
 
     public LoaiDoiTac() {
     }
 
-    public LoaiDoiTac(String maLDT, String tenLDT) {
-        this.maLDT = maLDT;
+    public LoaiDoiTac(String tenLDT) {
         this.tenLDT = tenLDT;
     }
     
@@ -29,14 +28,14 @@ public class LoaiDoiTac {
     @Override
     public boolean equals(Object obj) {
         LoaiDoiTac other = (LoaiDoiTac) obj;
-        return other.getMaLDT().equals(this.getMaLDT());
+        return other.getMaLDT() == this.getMaLDT();
     }
 
-    public String getMaLDT() {
+    public int getMaLDT() {
         return maLDT;
     }
 
-    public void setMaLDT(String maLDT) {
+    public void setMaLDT(int maLDT) {
         this.maLDT = maLDT;
     }
 

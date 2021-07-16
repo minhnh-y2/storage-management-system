@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Huy
  */
-public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, String> {
+public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, Integer> {
 
     @Override
     public void insert(LoaiHangHoa entity) {
@@ -34,7 +34,7 @@ public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, String> {
     }
 
     @Override
-    public void delete(String key) {
+    public void delete(Integer key) {
         String sql = "DELETE FROM LOAIHANGHOA WHERE MALHH = ?";
         XJdbc.update(sql, key);
     }
@@ -46,7 +46,7 @@ public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, String> {
     }
 
     @Override
-    public LoaiHangHoa selectByID(String key) {
+    public LoaiHangHoa selectByID(Integer key) {
         String sql = "SELECT * FROM LOAIHANGHOA WHERE MALHH = ?";
         List<LoaiHangHoa> list = this.selectBySQL(sql, key);
         return list.size() > 0 ? list.get(0) : null;

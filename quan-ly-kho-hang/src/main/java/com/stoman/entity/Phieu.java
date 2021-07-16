@@ -12,27 +12,27 @@ import java.util.Date;
  * @author Huy
  */
 public class Phieu {
+
     private Integer maPhieu;
-    private Date ngayLap;
-    private boolean loai;
-    private boolean trangThai;
+    private Date ngayLap = new Date();
+    private boolean loai = true;
+    private boolean trangThai = true;
     private Date NgThucHien;
     private Date NgHoanThanh;
     private int maDT;
     private String maNV;
+    private String ghiChu;
 
     public Phieu() {
     }
 
-    public Phieu(Integer maPhieu, Date ngayLap, boolean loai, boolean trangThai, Date NgThucHien, Date NgHoanThanh, int maDT, String maNV) {
+    public Phieu(Integer maPhieu, Date NgThucHien, Date NgHoanThanh, int maDT, String maNV, String ghiChu) {
         this.maPhieu = maPhieu;
-        this.ngayLap = ngayLap;
-        this.loai = loai;
-        this.trangThai = trangThai;
         this.NgThucHien = NgThucHien;
         this.NgHoanThanh = NgHoanThanh;
         this.maDT = maDT;
         this.maNV = maNV;
+        this.ghiChu = ghiChu;
     }
 
     public Integer getMaPhieu() {
@@ -98,5 +98,13 @@ public class Phieu {
     public void setMaNV(String maNV) {
         this.maNV = maNV;
     }
-    
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+
 }

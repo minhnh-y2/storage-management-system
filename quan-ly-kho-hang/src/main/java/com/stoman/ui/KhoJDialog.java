@@ -9,6 +9,10 @@ import com.stoman.dao.KhoDAO;
 import com.stoman.entity.Kho;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,17 +40,31 @@ public class KhoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlBackground = new javax.swing.JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+                Graphics2D g2d = (Graphics2D) g;
+                int width = getWidth();
+                int heith = getHeight();
+
+                Color color1 = new Color(187, 160, 229);
+                Color color2 = new Color(187, 213, 229);
+                GradientPaint gp = new GradientPaint(0, 0, color1, 180, heith, color2);
+                g2d.setPaint(gp);
+                g2d.fillRect(0, 0, width, heith);
+            }
+        };
+        pnlChucNang = new javax.swing.JPanel();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnMoi = new javax.swing.JButton();
         pnlThongTinKho = new javax.swing.JPanel();
         lblMaKho = new javax.swing.JLabel();
         lblDiaChi = new javax.swing.JLabel();
         pnlTxtDiaChi = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
         txtMaKho = new javax.swing.JFormattedTextField();
-        pnlChucNang = new javax.swing.JPanel();
-        btnThem = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
-        btnSua = new javax.swing.JButton();
-        btnMoi = new javax.swing.JButton();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         pnlTblKho = new javax.swing.JScrollPane();
@@ -55,53 +73,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý kho");
 
-        pnlThongTinKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
-
-        lblMaKho.setText("Kho số");
-
-        lblDiaChi.setText("Địa chỉ");
-
-        txtDiaChi.setColumns(20);
-        txtDiaChi.setLineWrap(true);
-        txtDiaChi.setRows(5);
-        txtDiaChi.setWrapStyleWord(true);
-        pnlTxtDiaChi.setViewportView(txtDiaChi);
-
-        txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-
-        javax.swing.GroupLayout pnlThongTinKhoLayout = new javax.swing.GroupLayout(pnlThongTinKho);
-        pnlThongTinKho.setLayout(pnlThongTinKhoLayout);
-        pnlThongTinKhoLayout.setHorizontalGroup(
-            pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDiaChi)
-                    .addComponent(lblMaKho))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlTxtDiaChi)
-                    .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
-                        .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pnlThongTinKhoLayout.setVerticalGroup(
-            pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMaKho)
-                    .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
-                        .addComponent(lblDiaChi)
-                        .addGap(0, 57, Short.MAX_VALUE))
-                    .addComponent(pnlTxtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
+        pnlChucNang.setOpaque(false);
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
@@ -140,13 +112,67 @@ public class KhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnMoi);
 
+        pnlThongTinKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(51, 51, 51))); // NOI18N
+        pnlThongTinKho.setOpaque(false);
+
+        lblMaKho.setForeground(new java.awt.Color(51, 51, 51));
+        lblMaKho.setText("Kho số");
+
+        lblDiaChi.setForeground(new java.awt.Color(51, 51, 51));
+        lblDiaChi.setText("Địa chỉ");
+
+        txtDiaChi.setColumns(20);
+        txtDiaChi.setLineWrap(true);
+        txtDiaChi.setRows(5);
+        txtDiaChi.setWrapStyleWord(true);
+        pnlTxtDiaChi.setViewportView(txtDiaChi);
+
+        txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        javax.swing.GroupLayout pnlThongTinKhoLayout = new javax.swing.GroupLayout(pnlThongTinKho);
+        pnlThongTinKho.setLayout(pnlThongTinKhoLayout);
+        pnlThongTinKhoLayout.setHorizontalGroup(
+            pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDiaChi)
+                    .addComponent(lblMaKho))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTxtDiaChi)
+                    .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
+                        .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlThongTinKhoLayout.setVerticalGroup(
+            pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMaKho)
+                    .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
+                        .addComponent(lblDiaChi)
+                        .addGap(0, 46, Short.MAX_VALUE))
+                    .addComponent(pnlTxtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        lblTimKiem.setForeground(new java.awt.Color(51, 51, 51));
         lblTimKiem.setText("Tìm kiếm");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
             }
         });
+
+        pnlTblKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(51, 51, 51))); // NOI18N
+        pnlTblKho.setOpaque(false);
 
         tblKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,6 +190,9 @@ public class KhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblKho.setOpaque(false);
+        tblKho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblKho.getTableHeader().setReorderingAllowed(false);
         tblKho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhoMouseClicked(evt);
@@ -176,14 +205,14 @@ public class KhoJDialog extends javax.swing.JDialog {
             tblKho.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
+        pnlBackground.setLayout(pnlBackgroundLayout);
+        pnlBackgroundLayout.setHorizontalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTimKiem))
@@ -192,20 +221,31 @@ public class KhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        pnlBackgroundLayout.setVerticalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlThongTinKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiem)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -237,11 +277,11 @@ public class KhoJDialog extends javax.swing.JDialog {
         update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
         // TODO add your handling code here:
         fillToTable();
         clearForm();
-    }//GEN-LAST:event_txtTimKiemKeyReleased
+    }//GEN-LAST:event_txtTimKiemKeyPressed
 
     /**
      * @param args the command line arguments
@@ -293,6 +333,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblMaKho;
     private javax.swing.JLabel lblTimKiem;
+    private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JScrollPane pnlTblKho;
     private javax.swing.JPanel pnlThongTinKho;
@@ -311,12 +352,26 @@ public class KhoJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
         this.DAO = new KhoDAO();
-        this.model = (DefaultTableModel) tblKho.getModel();
-        this.model.setColumnIdentifiers(new Object[]{
-            "Mã kho", "Địa chỉ"
-        });
+        String header[] = {"Mã kho", "Địa chỉ"};
+        this.model = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblKho.setModel(model);
         tblKho.getColumnModel().getColumn(0).setMaxWidth(60);
         tblKho.setAutoCreateRowSorter(true);
+        tblKho.setRowHeight(25);
+        pnlTblKho.getViewport().setOpaque(false);
 
         this.fillToTable();
         this.updateStatus();
@@ -333,6 +388,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                     k.getDiaChi()
                 });
             }
+            tblKho.setModel(model);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
@@ -379,8 +435,6 @@ public class KhoJDialog extends javax.swing.JDialog {
     boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
-        } else if (!txtMaKho.getText().matches("\\d+")) {
-            MsgBox.alert(this, "Chỉ được nhập số!");
         } else if (txtDiaChi.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập địa chỉ!");
         } else {
@@ -396,9 +450,9 @@ public class KhoJDialog extends javax.swing.JDialog {
                 DAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
-                MsgBox.alert(this, "Thêm kho mới thành công!");
+                MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm kho mới thất bại!");
+                MsgBox.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -419,7 +473,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
     
     void delete() {
-        if(Auth.isManager()){
+        if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xoá kho!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);
