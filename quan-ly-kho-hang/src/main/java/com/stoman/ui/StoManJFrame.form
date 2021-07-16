@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
+      <Properties>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuHeThong">
           <Properties>
@@ -210,6 +213,9 @@
       <Properties>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JToolBar() {&#xa;    @Override&#xa;    protected void paintComponent(Graphics g){&#xa;        Graphics2D g2 = (Graphics2D)g.create();&#xa;&#xa;        Color startColor = new Color(141, 220, 250);&#xa;        Color endColor = new Color(137, 236, 186);&#xa;&#xa;        g2.setPaint(new GradientPaint(0, 0, startColor, 0, getHeight(), endColor));&#xa;        g2.fillRect(0, 0, getWidth(), getHeight());&#xa;&#xa;        g2.dispose();&#xa;    }&#xa;}"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="First"/>
@@ -709,6 +715,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlTrangThai">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="e3" red="d2" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Last"/>

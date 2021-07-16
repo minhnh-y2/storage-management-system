@@ -9,9 +9,14 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JComponent;
 import javax.swing.Timer;
+import javax.swing.plaf.basic.BasicMenuBarUI;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -42,7 +47,20 @@ public class StoManJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        toolBar = new javax.swing.JToolBar();
+        toolBar = new javax.swing.JToolBar() {
+            @Override
+            protected void paintComponent(Graphics g){
+                Graphics2D g2 = (Graphics2D)g.create();
+
+                Color startColor = new Color(141, 220, 250);
+                Color endColor = new Color(137, 236, 186);
+
+                g2.setPaint(new GradientPaint(0, 0, startColor, 0, getHeight(), endColor));
+                g2.fillRect(0, 0, getWidth(), getHeight());
+
+                g2.dispose();
+            }
+        };
         btnDangXuat = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         separator1 = new javax.swing.JToolBar.Separator();
@@ -358,6 +376,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(tabs, java.awt.BorderLayout.CENTER);
 
+        pnlTrangThai.setBackground(new java.awt.Color(210, 227, 255));
         pnlTrangThai.setLayout(new java.awt.BorderLayout());
 
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
@@ -371,6 +390,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTrangThai.add(lblDongHo, java.awt.BorderLayout.EAST);
 
         getContentPane().add(pnlTrangThai, java.awt.BorderLayout.PAGE_END);
+
+        menuBar.setOpaque(false);
 
         mnuHeThong.setText("Hệ thống");
 
@@ -682,13 +703,23 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     void init() {
         setLocationRelativeTo(null);
-        
+
 //        new ChaoJDialog(this, true).setVisible(true);
 //        new DangNhapJDialog(this, true).setVisible(true);
+
+        // Them color cho menuBar
+        menuBar.setUI(new BasicMenuBarUI() {
+            @Override
+            public void paint(Graphics g, JComponent c) {
+                g.setColor(new Color(210, 227, 255));
+                g.fillRect(0, 0, c.getWidth(), c.getHeight());
+            }
+        });
+
         this.clock();
         this.chart();
     }
-    
+
     void clock() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         lblDongHo.setText(LocalTime.now().format(formatter));
@@ -699,35 +730,35 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Test chart
     void chart() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         double[] luongNhap = {1000, 1200, 950, 1520};
         double[] luongXuat = {500, 700, 400, 850};
         double[] tonKho = {2000, 2250, 1500, 1760};
-        
+
         double tongNhap = 0;
         double tongXuat = 0;
         double tongTonKho = 0;
-        
+
         String pattern = "#,##0";
-        
+
         // Đổ dữ liệu vào biểu đồ
-        for(int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             dataset.setValue(luongNhap[i], "Lượng nhập", "Quý " + (i + 1));
             dataset.setValue(luongXuat[i], "Lượng xuất", "Quý " + (i + 1));
             dataset.setValue(tonKho[i], "Tồn kho", "Quý " + (i + 1));
-            
+
             tongNhap += luongNhap[i];
             tongXuat += luongXuat[i];
             tongTonKho += tonKho[i];
         }
-        
+
         // Tạo biểu đồ Bar Chart
         JFreeChart barChart = ChartFactory.createBarChart3D(null,
-            "Quý", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
-        
+                "Quý", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+
         CategoryPlot plot = barChart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.black);
-        
+
         ChartPanel chartPanel = new ChartPanel(barChart);
         pnlBieuDo.add(chartPanel);
         pnlBieuDo.updateUI();
@@ -740,13 +771,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         Auth.clear();
         new DangNhapJDialog(this, true).setVisible(true);
     }
-    
+
     void exit() {
-        if(MsgBox.confirm(this, "Bạn có muốn kết thúc chương trình?")){
+        if (MsgBox.confirm(this, "Bạn có muốn kết thúc chương trình?")) {
             System.exit(0);
         }
     }
-    
+
     void openDoiMatKhauDialog() {
         if (Auth.isLogin()) {
             new DoiMatKhauJDialog(this, true).setVisible(true);
@@ -754,37 +785,37 @@ public class StoManJFrame extends javax.swing.JFrame {
             MsgBox.alert(this, "Vui lòng đăng nhập");
         }
     }
-    
+
     void openDoiTacDialog() {
         new DoiTacJDialog(this, true).setVisible(true);
     }
-    
+
     void openGioiThieuDialog() {
         new GioiThieuJDialog(this, true).setVisible(true);
     }
-    
+
     void openHangHoaDialog() {
         new HangHoaJDialog(this, true).setVisible(true);
     }
-    
+
     void openKhoDialog() {
         new KhoJDialog(this, true).setVisible(true);
     }
-    
+
     void openNhanVienDialog() {
         new NhanVienJDialog(this, true).setVisible(true);
     }
-    
+
     void openKiemKhoDialog() {
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
     }
-    
+
     void openNhapXuatKhoDialog() {
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
     }
-    
+
     void userManual() {
-        
+
     }
-    
+
 }
