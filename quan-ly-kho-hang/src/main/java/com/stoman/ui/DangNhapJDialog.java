@@ -81,6 +81,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMatKhau.setOpaque(false);
         getContentPane().add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 280, -1));
 
+        btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +91,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         });
         getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 150, -1));
 
+        btnDangNhap.setBackground(new java.awt.Color(153, 204, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/login-24.png"))); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {

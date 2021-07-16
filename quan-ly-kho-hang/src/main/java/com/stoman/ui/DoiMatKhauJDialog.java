@@ -83,6 +83,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         lblMatKhauCu1.setText("ĐỔI MẬT KHẨU");
         getContentPane().add(lblMatKhauCu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
+        btnDongY.setBackground(new java.awt.Color(204, 255, 204));
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         btnDongY.setText("Đồng ý");
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +93,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         });
         getContentPane().add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 150, -1));
 
+        btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
