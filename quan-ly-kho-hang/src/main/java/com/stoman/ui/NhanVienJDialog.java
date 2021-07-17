@@ -100,11 +100,13 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         btnGrpVaiTro.add(rdoTruongKho);
         rdoTruongKho.setForeground(new java.awt.Color(255, 255, 255));
         rdoTruongKho.setText("Trưởng kho");
+        rdoTruongKho.setOpaque(false);
 
         btnGrpVaiTro.add(rdoThuKho);
         rdoThuKho.setForeground(new java.awt.Color(255, 255, 255));
         rdoThuKho.setSelected(true);
         rdoThuKho.setText("Thủ kho");
+        rdoThuKho.setOpaque(false);
 
         javax.swing.GroupLayout pnlThongTinNVLayout = new javax.swing.GroupLayout(pnlThongTinNV);
         pnlThongTinNV.setLayout(pnlThongTinNVLayout);
