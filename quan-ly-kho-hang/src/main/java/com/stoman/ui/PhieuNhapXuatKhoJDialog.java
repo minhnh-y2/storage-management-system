@@ -719,12 +719,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         for (Phieu p : list) {
             modelPhieu.addRow(new Object[]{
                 p.getMaPhieu(),
-                XDate.toString(p.getNgayLap(), "dd/MM/yyyy"),
+                XDate.toString(p.getNgayLap(), "dd-MM-yyyy"),
                 p.isLoai() ? "Xuất" : "Nhập",
                 p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                XDate.toString(p.getNgThucHien(), "dd/MM/yyyy"),
-                XDate.toString(p.getNgHoanThanh(), "dd/MM/yyyy"),
-                p.getGhiChu(),
+                p.getNgThucHien(),
+                p.getNgHoanThanh(),
+                p.getGhiChu() != null ? p.getGhiChu() : "<None>",
                 dtDAO.getTenDT(p.getMaDT()),
                 p.getMaNV()
             });
@@ -839,9 +839,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         p.setMaDT(ldt.getMaLDT());
         p.setMaNV(txtMaNV.getText());
         p.setMaPhieu((Integer) tblPhieu.getValueAt(this.row, 0));
-        p.setNgHoanThanh(XDate.toDate(txtNgayHoanThanh.getText(), "dd/MM/yyyy"));
-        p.setNgThucHien(XDate.toDate(txtNgayThucHien.getText(), "dd/MM/yyyy"));
-        p.setNgayLap(XDate.toDate(txtNgayLap.getText(), "dd/MM/yyyy"));
+        p.setNgHoanThanh(XDate.toDate(txtNgayHoanThanh.getText(), "dd-MM-yyyy"));
+        p.setNgThucHien(XDate.toDate(txtNgayThucHien.getText(), "dd-MM-yyyy"));
+        p.setNgayLap(XDate.toDate(txtNgayLap.getText(), "dd-MM-yyyy"));
         p.setTrangThai(chkHoanThanh.isSelected());
         p.setGhiChu(txtGhiChu.getText());
         return p;
@@ -854,9 +854,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         cboLoaiDT.setSelectedItem(ldt);
         cboDoiTac.setSelectedItem(dt);
         txtMaNV.setText(p.getMaNV());
-        txtNgayLap.setText(XDate.toString(p.getNgayLap(), "dd/MM/yyyy"));
-        txtNgayThucHien.setText(XDate.toString(p.getNgThucHien(), "dd/MM/yyyy"));
-        txtNgayHoanThanh.setText(XDate.toString(p.getNgHoanThanh(), "dd/MM/yyyy"));
+        txtNgayLap.setText(XDate.toString(p.getNgayLap(), "dd-MM-yyyy"));
+        txtNgayThucHien.setText(XDate.toString(p.getNgThucHien(), "dd-MM-yyyy"));
+        txtNgayHoanThanh.setText(XDate.toString(p.getNgHoanThanh(), "dd-MM-yyyy"));
         txtGhiChu.setText(p.getGhiChu());
     }
     

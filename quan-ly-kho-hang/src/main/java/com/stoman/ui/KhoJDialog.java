@@ -115,15 +115,17 @@ public class KhoJDialog extends javax.swing.JDialog {
         pnlThongTinKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(51, 51, 51))); // NOI18N
         pnlThongTinKho.setOpaque(false);
 
+        lblMaKho.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaKho.setForeground(new java.awt.Color(51, 51, 51));
         lblMaKho.setText("Kho số");
 
+        lblDiaChi.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblDiaChi.setForeground(new java.awt.Color(51, 51, 51));
         lblDiaChi.setText("Địa chỉ");
 
         txtDiaChi.setColumns(20);
         txtDiaChi.setLineWrap(true);
-        txtDiaChi.setRows(5);
+        txtDiaChi.setRows(3);
         txtDiaChi.setWrapStyleWord(true);
         pnlTxtDiaChi.setViewportView(txtDiaChi);
 
@@ -157,8 +159,8 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
                         .addComponent(lblDiaChi)
-                        .addGap(0, 46, Short.MAX_VALUE))
-                    .addComponent(pnlTxtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 70, Short.MAX_VALUE))
+                    .addComponent(pnlTxtDiaChi))
                 .addContainerGap())
         );
 
@@ -233,7 +235,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiem)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

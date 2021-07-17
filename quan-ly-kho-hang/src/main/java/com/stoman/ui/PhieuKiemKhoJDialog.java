@@ -68,10 +68,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         txtNguoiLap = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        lblTimKiemChiTiet_sub = new javax.swing.JLabel();
         txtTimKiemChiTiet_sub = new javax.swing.JTextField();
         lblSapXepChiTiet_sub = new javax.swing.JLabel();
-        cboSapXepChiTiet_sub = new javax.swing.JComboBox<>();
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -88,8 +86,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblPhieuKiemKho = new javax.swing.JTable();
         lblTimKiemPhieuKiem = new javax.swing.JLabel();
         txtTimKiemPhieuKiem = new javax.swing.JTextField();
-        lblSapXepPhieuKiem = new javax.swing.JLabel();
-        cboSapXepPhieuKiem = new javax.swing.JComboBox<>();
 
         tblPhieuKiemKho1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -278,7 +274,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(txtNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(txtSo)
                     .addComponent(txtNgayLap))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,12 +284,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(txtNguoiLap, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkHoanThanh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboKho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        pnlThongTinLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboKho, txtNgayKiem, txtNgayLap, txtNguoiLap, txtSo});
+
         pnlThongTinLayout.setVerticalGroup(
             pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongTinLayout.createSequentialGroup()
@@ -324,8 +323,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         );
 
         pnlThongTinLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtNgayKiem, txtNgayLap, txtNguoiLap, txtSo});
-
-        lblTimKiemChiTiet_sub.setText("Sắp xếp theo");
 
         lblSapXepChiTiet_sub.setText("Tìm kiếm");
 
@@ -376,15 +373,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(lblSapXepChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSapXepChiTiet_sub)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTimKiemChiTiet_sub)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboSapXepChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChuyen, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                        .addComponent(txtTimKiemChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(349, 349, 349)
+                        .addComponent(pnlChuyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                         .addComponent(pnlTblChiTietPhieuKiem_sub)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -396,17 +389,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblSapXepChiTiet_sub)
-                        .addComponent(txtTimKiemChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTimKiemChiTiet_sub)
-                        .addComponent(cboSapXepChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTimKiemChiTiet_sub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                     .addComponent(pnlTblChiTietPhieuKiem_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -425,8 +416,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         lblTimKiemPhieuKiem.setText("Tìm kiếm");
 
-        lblSapXepPhieuKiem.setText("Sắp xếp theo");
-
         javax.swing.GroupLayout pnlDanhSachLayout = new javax.swing.GroupLayout(pnlDanhSach);
         pnlDanhSach.setLayout(pnlDanhSachLayout);
         pnlDanhSachLayout.setHorizontalGroup(
@@ -437,13 +426,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTblPhieuKiemKho)
                     .addGroup(pnlDanhSachLayout.createSequentialGroup()
                         .addComponent(lblTimKiemPhieuKiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTimKiemPhieuKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblSapXepPhieuKiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboSapXepPhieuKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(262, 262, 262)))
+                        .addGap(521, 521, 521)))
                 .addContainerGap())
         );
         pnlDanhSachLayout.setVerticalGroup(
@@ -452,9 +437,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiemPhieuKiem)
-                    .addComponent(txtTimKiemPhieuKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSapXepPhieuKiem)
-                    .addComponent(cboSapXepPhieuKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiemPhieuKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -539,8 +522,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaKhoiDS;
     private javax.swing.JComboBox<String> cboKho;
-    private javax.swing.JComboBox<String> cboSapXepChiTiet_sub;
-    private javax.swing.JComboBox<String> cboSapXepPhieuKiem;
     private javax.swing.JComboBox<String> cboSapXepPhieuKiem1;
     private javax.swing.JComboBox<String> cboSapXepPhieuKiem2;
     private javax.swing.JCheckBox chkHoanThanh;
@@ -554,10 +535,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblSapXepChiTiet_sub;
-    private javax.swing.JLabel lblSapXepPhieuKiem;
     private javax.swing.JLabel lblSapXepPhieuKiem1;
     private javax.swing.JLabel lblSapXepPhieuKiem2;
-    private javax.swing.JLabel lblTimKiemChiTiet_sub;
     private javax.swing.JLabel lblTimKiemPhieuKiem;
     private javax.swing.JLabel lblTimKiemPhieuKiem1;
     private javax.swing.JLabel lblTimKiemPhieuKiem2;
