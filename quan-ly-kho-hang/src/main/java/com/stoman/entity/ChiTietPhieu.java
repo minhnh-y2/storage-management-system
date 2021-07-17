@@ -5,6 +5,8 @@
  */
 package com.stoman.entity;
 
+import com.stoman.utils.XNumber;
+
 /**
  *
  * @author Huy
@@ -67,5 +69,14 @@ public class ChiTietPhieu {
         this.donGia = donGia;
     }
     
+    @Override
+    public String toString() {
+        return XNumber.toString(this.soLuong, "#,##0.0");
+    }
     
+    @Override
+    public boolean equals(Object obj) {
+        ChiTietPhieu other = (ChiTietPhieu) obj;
+        return other.getMaCTP()== this.getMaCTP();
+    }
 }

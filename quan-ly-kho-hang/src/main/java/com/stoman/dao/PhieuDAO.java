@@ -10,6 +10,7 @@ import com.stoman.utils.XJdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,13 +21,14 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override
     public void insert(Phieu entity) {
-        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, MANV, ) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, MANV) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.isLoai(),
                 entity.isTrangThai(),
                 entity.getNgThucHien(),
                 entity.getNgHoanThanh(),
+                entity.getGhiChu(),
                 entity.getMaDT(),
                 entity.getMaNV());
     }
@@ -40,8 +42,10 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
                 entity.isTrangThai(),
                 entity.getNgThucHien(),
                 entity.getNgHoanThanh(),
+                entity.getGhiChu(),
                 entity.getMaDT(),
-                entity.getMaNV());
+                entity.getMaNV(),
+                entity.getMaPhieu());
     }
 
     @Override
@@ -97,4 +101,9 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
         return list;
     }
     
+    public Integer getMaPhieuByNVandCreatedDate(String MaNV, Date NgayLap){
+        String sql = "SELECT * FROM PHIEU WHERE MANV = ? AND NGAYLAP = ?";
+        List<Phieu> list = this.selectBySQL(sql, MaNV, NgayLap);
+        return list.size() > 0 ? list.get(0).getMaPhieu() : null;
+    }
 }

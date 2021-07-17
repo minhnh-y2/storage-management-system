@@ -50,7 +50,7 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
 
     @Override
     public LuuTru selectByID(Integer key) {
-        String sql = "SELECT * FROM CHITIETKIEMKHO WHERE MACTKK = ?";
+        String sql = "SELECT * FROM LUUTRU WHERE MALT = ?";
         List<LuuTru> list = this.selectBySQL(sql, key);
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -66,7 +66,7 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
                     LuuTru entity = new LuuTru();
                     
                     entity.setMaLT(rs.getInt("MALT"));
-                    entity.setMaHH(rs.getInt("MAHH"));
+                    entity.setMaHH(rs.getString("MAHH"));
                     entity.setMaKho(rs.getInt("MAKHO"));
                     entity.setSoLuong(rs.getDouble("SOLUONG"));
                     

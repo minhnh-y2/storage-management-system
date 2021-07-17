@@ -12,13 +12,13 @@ package com.stoman.entity;
 public class LuuTru {
     private int maLT;
     private int maKho;
-    private int maHH;
+    private String maHH;
     private Double soLuong;
 
     public LuuTru() {
     }
 
-    public LuuTru(int maLT, int maKho, int maHH, Double soLuong) {
+    public LuuTru(int maLT, int maKho, String maHH, Double soLuong) {
         this.maLT = maLT;
         this.maKho = maKho;
         this.maHH = maHH;
@@ -41,11 +41,11 @@ public class LuuTru {
         this.maKho = maKho;
     }
 
-    public int getMaHH() {
+    public String getMaHH() {
         return maHH;
     }
 
-    public void setMaHH(int maHH) {
+    public void setMaHH(String maHH) {
         this.maHH = maHH;
     }
 

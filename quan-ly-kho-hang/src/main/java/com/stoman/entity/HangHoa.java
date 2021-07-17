@@ -35,7 +35,7 @@ public class HangHoa {
     @Override
     public boolean equals(Object obj) {
         HangHoa other = (HangHoa) obj;
-        return other.getMaLHH() == this.getMaLHH();
+        return other.maHH.equals(this.maHH) ;
     }
 
     public String getMaHH() {

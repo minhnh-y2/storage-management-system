@@ -106,5 +106,15 @@ public class Phieu {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
-
+    
+    @Override
+    public String toString() {
+        return maNV;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Phieu other = (Phieu) obj;
+        return other.getMaPhieu() == this.getMaPhieu();
+    }
 }
