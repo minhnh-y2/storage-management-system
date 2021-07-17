@@ -65,42 +65,42 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 lblThoatMouseExited(evt);
             }
         });
-        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 40, 50));
+        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 30, 30));
 
         lblMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
         lblMatKhauCu.setText("Mật khẩu hiện tại");
-        getContentPane().add(lblMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+        getContentPane().add(lblMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
         txtMatKhauCu.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         txtMatKhauCu.setOpaque(false);
-        getContentPane().add(txtMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 260, -1));
+        getContentPane().add(txtMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 260, -1));
 
         lblMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
         lblMatKhauMoi.setText("Mật khẩu mới");
-        getContentPane().add(lblMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        getContentPane().add(lblMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
         txtMatKhauMoi.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         txtMatKhauMoi.setOpaque(false);
-        getContentPane().add(txtMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 260, -1));
+        getContentPane().add(txtMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 260, -1));
 
         lblXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
         lblXacNhanMK.setText("Xác nhận mật khẩu mới");
-        getContentPane().add(lblXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+        getContentPane().add(lblXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
 
         txtXacNhanMK.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
         txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         txtXacNhanMK.setOpaque(false);
-        getContentPane().add(txtXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 260, -1));
+        getContentPane().add(txtXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 260, -1));
 
         lblDoiMatKhau.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         lblDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         lblDoiMatKhau.setText("ĐỔI MẬT KHẨU");
-        getContentPane().add(lblDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+        getContentPane().add(lblDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         btnDongY.setBackground(new java.awt.Color(204, 255, 204));
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
@@ -110,7 +110,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnDongYActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 130, -1));
+        getContentPane().add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 130, -1));
 
         btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
@@ -120,14 +120,14 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnThoatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 130, -1));
+        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 130, -1));
 
         pnlDoiMatKhau.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 340, 310));
+        getContentPane().add(pnlDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 340, 320));
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background_changedpass.png"))); // NOI18N
         lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
-        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 450));
+        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
