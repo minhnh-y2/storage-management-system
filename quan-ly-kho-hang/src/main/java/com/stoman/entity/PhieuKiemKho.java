@@ -13,22 +13,22 @@ import java.util.Date;
  */
 public class PhieuKiemKho {
     private int maKK;
-    private Date NgayLap;
-    private Date NgayKiem;
-    private boolean trangThai;
+    private Date ngayLap = new Date();
+    private Date ngayKiem;
+    private String ghiChu;
+    private boolean trangThai = true;
     private String maNV;
 
     public PhieuKiemKho() {
     }
 
-    public PhieuKiemKho(int maKK, Date NgayLap, Date NgayKiem, boolean trangThai, String maNV) {
+    public PhieuKiemKho(int maKK, Date ngayKiem, String ghiChu, String maNV) {
         this.maKK = maKK;
-        this.NgayLap = NgayLap;
-        this.NgayKiem = NgayKiem;
-        this.trangThai = trangThai;
+        this.ngayKiem = ngayKiem;
+        this.ghiChu = ghiChu;
         this.maNV = maNV;
     }
-
+    
     public int getMaKK() {
         return maKK;
     }
@@ -38,19 +38,19 @@ public class PhieuKiemKho {
     }
 
     public Date getNgayLap() {
-        return NgayLap;
+        return ngayLap;
     }
 
     public void setNgayLap(Date NgayLap) {
-        this.NgayLap = NgayLap;
+        this.ngayLap = NgayLap;
     }
 
     public Date getNgayKiem() {
-        return NgayKiem;
+        return ngayKiem;
     }
 
     public void setNgayKiem(Date NgayKiem) {
-        this.NgayKiem = NgayKiem;
+        this.ngayKiem = NgayKiem;
     }
 
     public boolean isTrangThai() {
@@ -68,6 +68,13 @@ public class PhieuKiemKho {
     public void setMaNV(String maNV) {
         this.maNV = maNV;
     }
-    
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
     
 }
