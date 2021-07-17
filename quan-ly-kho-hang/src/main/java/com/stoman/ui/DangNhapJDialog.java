@@ -130,7 +130,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
-        exit();
+        this.dispose();
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseExited

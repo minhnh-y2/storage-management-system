@@ -14,9 +14,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JComponent;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
-import javax.swing.plaf.basic.BasicMenuBarUI;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -61,7 +60,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 g2.dispose();
             }
         };
-        btnDangXuat = new javax.swing.JButton();
+        btnTaiKhoan = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         separator1 = new javax.swing.JToolBar.Separator();
         btnNhapXuat = new javax.swing.JButton();
@@ -96,7 +95,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblDongHo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mnuHeThong = new javax.swing.JMenu();
-        mniDangXuat = new javax.swing.JMenuItem();
+        mniTaiKhoan = new javax.swing.JMenuItem();
         mniDoiMK = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mniThoat = new javax.swing.JMenuItem();
@@ -118,18 +117,18 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         toolBar.setRollover(true);
 
-        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
-        btnDangXuat.setText("Đăng xuất");
-        btnDangXuat.setFocusable(false);
-        btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDangXuat.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+        btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout.png"))); // NOI18N
+        btnTaiKhoan.setText("Đăng xuất");
+        btnTaiKhoan.setFocusable(false);
+        btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTaiKhoan.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        btnTaiKhoan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangXuatActionPerformed(evt);
+                btnTaiKhoanActionPerformed(evt);
             }
         });
-        toolBar.add(btnDangXuat);
+        toolBar.add(btnTaiKhoan);
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close.png"))); // NOI18N
         btnThoat.setText("Thoát");
@@ -376,14 +375,16 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(tabs, java.awt.BorderLayout.CENTER);
 
-        pnlTrangThai.setBackground(new java.awt.Color(210, 227, 255));
+        pnlTrangThai.setBackground(new java.awt.Color(0, 96, 128));
         pnlTrangThai.setLayout(new java.awt.BorderLayout());
 
+        lblTrangThai.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
         lblTrangThai.setText("Hệ thống quản lý kho hàng");
         lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
+        lblDongHo.setForeground(new java.awt.Color(255, 255, 255));
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
         lblDongHo.setText("11:20:20 AM");
         lblDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
@@ -395,15 +396,15 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         mnuHeThong.setText("Hệ thống");
 
-        mniDangXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout-rounded-left.png"))); // NOI18N
-        mniDangXuat.setText("Đăng xuất");
-        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+        mniTaiKhoan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout.png"))); // NOI18N
+        mniTaiKhoan.setText("Đăng xuất");
+        mniTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDangXuatActionPerformed(evt);
+                mniTaiKhoanActionPerformed(evt);
             }
         });
-        mnuHeThong.add(mniDangXuat);
+        mnuHeThong.add(mniTaiKhoan);
 
         mniDoiMK.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/password-reset.png"))); // NOI18N
@@ -521,10 +522,10 @@ public class StoManJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+    private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
         logout();
-    }//GEN-LAST:event_mniDangXuatActionPerformed
+    }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     private void mniDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMKActionPerformed
         // TODO add your handling code here:
@@ -606,10 +607,10 @@ public class StoManJFrame extends javax.swing.JFrame {
         exit();
     }//GEN-LAST:event_btnThoatActionPerformed
 
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+    private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
         // TODO add your handling code here:
         logout();
-    }//GEN-LAST:event_btnDangXuatActionPerformed
+    }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -647,11 +648,11 @@ public class StoManJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiTac;
     private javax.swing.JButton btnHuongDan;
     private javax.swing.JButton btnKiemKho;
     private javax.swing.JButton btnNhapXuat;
+    private javax.swing.JButton btnTaiKhoan;
     private javax.swing.JButton btnThoat;
     private javax.swing.JComboBox<String> cboLoaiHang;
     private javax.swing.JButton cboThongTin;
@@ -669,7 +670,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblTonKho;
     private javax.swing.JLabel lblTrangThai;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoiMK;
     private javax.swing.JMenuItem mniDoiTac;
     private javax.swing.JMenuItem mniGioiThieu;
@@ -679,6 +679,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniNhanVien;
     private javax.swing.JMenuItem mniPhieuKiemKho;
     private javax.swing.JMenuItem mniPhieuNhapXuat;
+    private javax.swing.JMenuItem mniTaiKhoan;
     private javax.swing.JMenuItem mniThoat;
     private javax.swing.JMenu mnuHeThong;
     private javax.swing.JMenu mnuQuanLy;
@@ -704,20 +705,28 @@ public class StoManJFrame extends javax.swing.JFrame {
     void init() {
         setLocationRelativeTo(null);
 
-//        new ChaoJDialog(this, true).setVisible(true);
-//        new DangNhapJDialog(this, true).setVisible(true);
+        new ChaoJDialog(this, true).setVisible(true);
+        new DangNhapJDialog(this, true).setVisible(true);
 
-        // Them color cho menuBar
-        menuBar.setUI(new BasicMenuBarUI() {
-            @Override
-            public void paint(Graphics g, JComponent c) {
-                g.setColor(new Color(210, 227, 255));
-                g.fillRect(0, 0, c.getWidth(), c.getHeight());
-            }
-        });
-
+        this.loginStatus();
         this.clock();
         this.chart();
+    }
+    
+    // Tự động điều chỉnh nút đăng nhập/đăng xuất
+    void loginStatus() {
+        if(!Auth.isLogin()) {
+            mniTaiKhoan.setText("Đăng nhập");
+            mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
+            btnTaiKhoan.setText("Đăng nhập");
+            btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
+            
+        } else {
+            mniTaiKhoan.setText("Đăng xuất");
+            mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
+            btnTaiKhoan.setText("Đăng xuất");
+            btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
+        }
     }
 
     void clock() {
