@@ -12,18 +12,18 @@
             <Property name="text" type="java.lang.String" value="H&#x1ec7; th&#x1ed1;ng"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniDangXuat">
+            <MenuItem class="javax.swing.JMenuItem" name="mniTaiKhoan">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/stoman/icons/logout-rounded-left.png"/>
+                  <Image iconType="3" name="/com/stoman/icons/logout.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDangXuatActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniTaiKhoanActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniDoiMK">
@@ -224,10 +224,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnDangXuat">
+        <Component class="javax.swing.JButton" name="btnTaiKhoan">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/stoman/icons/logout-rounded-left.png"/>
+              <Image iconType="3" name="/com/stoman/icons/logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -238,7 +238,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDangXuatActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaiKhoanActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThoat">
@@ -717,7 +717,7 @@
     <Container class="javax.swing.JPanel" name="pnlTrangThai">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="e3" red="d2" type="rgb"/>
+          <Color blue="80" green="60" red="0" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -730,6 +730,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblTrangThai">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/stoman/icons/info-squared.png"/>
             </Property>
@@ -748,6 +751,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDongHo">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/stoman/icons/alarm-clock.png"/>
             </Property>

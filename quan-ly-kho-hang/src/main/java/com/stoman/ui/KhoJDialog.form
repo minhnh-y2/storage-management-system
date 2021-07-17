@@ -36,7 +36,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlBackground">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        int width = getWidth();&#xa;        int heith = getHeight();&#xa;&#xa;        Color color1 = new Color(187, 160, 229);&#xa;        Color color2 = new Color(187, 213, 229);&#xa;        GradientPaint gp = new GradientPaint(0, 0, color1, 180, heith, color2);&#xa;        g2d.setPaint(gp);&#xa;        g2d.fillRect(0, 0, width, heith);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        int width = getWidth();&#xa;        int heith = getHeight();&#xa;&#xa;        Color color1 = new Color(187, 213, 229);&#xa;        Color color2 = new Color(187, 160, 229);&#xa;        &#xa;        GradientPaint gp = new GradientPaint(0, 0, color1, 180, heith, color2);&#xa;        g2d.setPaint(gp);&#xa;        g2d.fillRect(0, 0, width, heith);&#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>

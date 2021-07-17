@@ -47,8 +47,9 @@ public class KhoJDialog extends javax.swing.JDialog {
                 int width = getWidth();
                 int heith = getHeight();
 
-                Color color1 = new Color(187, 160, 229);
-                Color color2 = new Color(187, 213, 229);
+                Color color1 = new Color(187, 213, 229);
+                Color color2 = new Color(187, 160, 229);
+
                 GradientPaint gp = new GradientPaint(0, 0, color1, 180, heith, color2);
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, width, heith);
