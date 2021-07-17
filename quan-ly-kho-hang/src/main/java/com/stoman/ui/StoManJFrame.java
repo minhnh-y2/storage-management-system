@@ -720,7 +720,6 @@ public class StoManJFrame extends javax.swing.JFrame {
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
             btnTaiKhoan.setText("Đăng nhập");
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
-            
         } else {
             mniTaiKhoan.setText("Đăng xuất");
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));

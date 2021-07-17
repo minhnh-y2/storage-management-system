@@ -50,6 +50,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Đăng nhập");
+        setAlwaysOnTop(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -116,6 +117,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 150, -1));
+
+        pnlDangNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         getContentPane().add(pnlDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 360, 290));
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));

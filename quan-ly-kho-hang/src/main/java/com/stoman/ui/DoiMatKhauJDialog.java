@@ -122,6 +122,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         });
         getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 130, -1));
 
+        pnlDoiMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         pnlDoiMatKhau.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(pnlDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 340, 320));
 
