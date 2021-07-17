@@ -5,6 +5,7 @@
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="StoMan - Qu&#x1ea3;n l&#xfd; h&#xe0;ng ho&#xe1;"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -33,23 +34,90 @@
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="pnlChucNang" min="-2" pref="121" max="-2" attributes="0"/>
           </Group>
+          <Component id="pnlThanhTieuDe" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
+              <Component id="pnlThanhTieuDe" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="pnlChucNang" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pnlThongTinHangHoa" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pnlLoaiHangHoa" alignment="1" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlLoaiHangHoa" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlThongTinHangHoa" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnlBackground" min="-2" max="-2" attributes="0"/>
+              <Component id="pnlBackground" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlThanhTieuDe">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="99" red="0" type="rgb"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pnlThanhTieuDeMouseDragged"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlThanhTieuDeMousePressed"/>
+      </Events>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblTieuDe" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="lblTieuDe" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="lblThoat" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblTieuDe">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="13" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="STOMAN - QU&#x1ea2;N L&#xdd; H&#xc0;NG HO&#xc1;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblThoat">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/stoman/icons/close(2).png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblThoatMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblThoatMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblThoatMouseExited"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JPanel" name="pnlThongTinHangHoa">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -69,7 +137,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblTenHangHoa" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblMaHangHoa" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -78,12 +146,12 @@
                   </Group>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtDonViTinh" pref="273" max="32767" attributes="0"/>
+                      <Component id="txtDonViTinh" pref="290" max="32767" attributes="0"/>
                       <Component id="txtMaHH" max="32767" attributes="0"/>
                       <Component id="txtTenHH" max="32767" attributes="0"/>
                       <Component id="txtDonGia" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -178,11 +246,11 @@
     <Container class="javax.swing.JPanel" name="pnlLoaiHangHoa">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="60" green="4b" red="c" type="rgb"/>
+          <Color blue="69" green="68" red="43" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder bottom="10" left="10" right="10" top="10"/>
+            <EmptyBorder bottom="10" left="10" right="0" top="10"/>
           </Border>
         </Property>
       </Properties>
@@ -249,11 +317,11 @@
     <Container class="javax.swing.JPanel" name="pnlChucNang">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="60" green="4b" red="c" type="rgb"/>
+          <Color blue="69" green="68" red="43" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder bottom="10" left="10" right="10" top="10"/>
+            <EmptyBorder bottom="10" left="0" right="10" top="10"/>
           </Border>
         </Property>
       </Properties>
@@ -312,13 +380,9 @@
     <Container class="javax.swing.JPanel" name="pnlBackground">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="0" type="rgb"/>
+          <Color blue="99" green="99" red="0" type="rgb"/>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        Graphics2D g2d = (Graphics2D) g;&#xa;        int width = getWidth();&#xa;        int heith = getHeight();&#xa;&#xa;        Color color1 = new Color(0, 102, 68);&#xa;        Color color2 = new Color(38, 77, 115);&#xa;        GradientPaint gp = new GradientPaint(0, 0, color1, 180, heith, color2);&#xa;        g2d.setPaint(gp);&#xa;        g2d.fillRect(0, 0, width, heith);&#xa;    }&#xa;}"/>
-      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -349,7 +413,7 @@
                       <Component id="txtTimKiem" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="pnlTblHangHoa" pref="284" max="32767" attributes="0"/>
+                  <Component id="pnlTblHangHoa" pref="293" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -401,6 +465,7 @@
                   </TableColumnModel>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
+                <Property name="rowHeight" type="int" value="25"/>
                 <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                   <JTableSelectionModel selectionMode="0"/>
                 </Property>

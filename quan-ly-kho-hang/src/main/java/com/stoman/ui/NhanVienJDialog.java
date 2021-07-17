@@ -80,7 +80,17 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setUndecorated(true);
 
-        pnlThanhTieuDe.setBackground(new java.awt.Color(153, 153, 153));
+        pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
+        pnlThanhTieuDe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                pnlThanhTieuDeMouseDragged(evt);
+            }
+        });
+        pnlThanhTieuDe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlThanhTieuDeMousePressed(evt);
+            }
+        });
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTieuDe.setForeground(new java.awt.Color(255, 255, 255));
@@ -342,7 +352,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addComponent(pnlTblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -438,6 +448,26 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
 
+    private void pnlThanhTieuDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMousePressed
+        // Di chuyển cửa sổ khi nhấp và kéo chuột
+        initialClick = evt.getPoint();
+    }//GEN-LAST:event_pnlThanhTieuDeMousePressed
+
+    private void pnlThanhTieuDeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMouseDragged
+        // Vị trí cửa sổ hiện tại   
+        int thisX = getLocation().x;
+        int thisY = getLocation().y;
+
+        // Xác định mức độ di chuyển của chuột từ lần nhấp chuột
+        int xMoved = evt.getX() - initialClick.x;
+        int yMoved = evt.getY() - initialClick.y;
+
+        // Di chuyển cửa sổ
+        int x = thisX + xMoved;
+        int y = thisY + yMoved;
+        setLocation(x, y);
+    }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -521,32 +551,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     void init() {
         setLocationRelativeTo(null);
-        
-        // Di chuyển cửa sổ khi nhấp và kéo chuột
-        pnlThanhTieuDe.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                // Vị trí nhấp chuột hiện tại
-                initialClick = e.getPoint();
-            }
-        });
-        pnlThanhTieuDe.addMouseMotionListener(new MouseMotionAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                // Vị trí cửa sổ hiện tại
-                int thisX = getLocation().x;
-                int thisY = getLocation().y;
-
-                // Xác định mức độ di chuyển của chuột từ lần nhấp chuột
-                int xMoved = e.getX() - initialClick.x;
-                int yMoved = e.getY() - initialClick.y;
-
-                // Di chuyển cửa sổ
-                int x = thisX + xMoved;
-                int y = thisY + yMoved;
-                setLocation(x, y);
-            }
-        });
 
         String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
         this.tblModel = new DefaultTableModel(header, 0) {

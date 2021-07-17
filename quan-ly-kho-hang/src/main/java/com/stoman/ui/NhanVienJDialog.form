@@ -57,9 +57,13 @@
     <Container class="javax.swing.JPanel" name="pnlThanhTieuDe">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
+          <Color blue="cc" green="99" red="0" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pnlThanhTieuDeMouseDragged"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlThanhTieuDeMousePressed"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -388,7 +392,7 @@
                       <Component id="pnlDieuHuong" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="pnlTblNhanVien" pref="271" max="32767" attributes="0"/>
+                  <Component id="pnlTblNhanVien" pref="284" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
