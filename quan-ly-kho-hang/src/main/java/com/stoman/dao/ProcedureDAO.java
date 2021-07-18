@@ -35,4 +35,30 @@ public class ProcedureDAO {
                 ctp.getSoLuong(),
                 ctp.getDonGia());
     }
+    
+    public void updateNhap(ChiTietPhieu ctp){
+        String sql = "EXEC SP_SUACHITIETPHIEUNHAP ?, ?, ?";
+        XJdbc.update(sql,
+                ctp.getMaCTP(),
+                ctp.getSoLuong(),
+                ctp.getDonGia());
+    }
+    
+    public void updateXuat(ChiTietPhieu ctp){
+        String sql = "EXEC SP_SUACHITIETPHIEUXUAT ?, ?, ?";
+        XJdbc.update(sql,
+                ctp.getMaCTP(),
+                ctp.getSoLuong(),
+                ctp.getDonGia());
+    }
+    
+    public void deleteNhap(ChiTietPhieu ctp){
+        String sql = "EXEC SP_XOACHITIETPHIEUNHAP ?";
+        XJdbc.update(sql, ctp.getMaCTP());
+    }
+    
+    public void deleteXuat(ChiTietPhieu ctp){
+        String sql = "EXEC SP_XOACHITIETPHIEUXUAT ?";
+        XJdbc.update(sql, ctp.getMaCTP());
+    }
 }

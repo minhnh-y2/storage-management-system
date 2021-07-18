@@ -35,7 +35,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override
     public void update(Phieu entity) {
-        String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, GHICHU=?, MADT=?, MANV=?,  WHERE MAPHIEU=?";
+        String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, GHICHU=?, MADT=?, MANV=?  WHERE MAPHIEU=?";
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.isLoai(),

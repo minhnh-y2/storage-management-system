@@ -95,7 +95,7 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer>{
     
     public Integer getOnlyOneMaLT(Integer maPhieu) {
         List<ChiTietPhieu> list = this.selectByMaPhieu(maPhieu);
-        return list.size()>0?list.get(0).getMaLT():null;
+        return list.size()>0?list.get(0).getMaLT():0;
     }
     
 }
