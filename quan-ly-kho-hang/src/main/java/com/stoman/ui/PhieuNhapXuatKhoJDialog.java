@@ -971,7 +971,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             modelCTPhieu.addRow(new Object[]{
                 tblCTPhieu_main.getRowCount()+1,
                 (HangHoa) cboHangHoa.getSelectedItem(),
-                XNumber.toString(50.0, numFormat),
+                XNumber.toString(0.0, numFormat),
                 XNumber.toString(0.0, numFormat),
                 0
             });            
