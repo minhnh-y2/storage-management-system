@@ -574,6 +574,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.setFormPhieu(phieu);
         this.tabs.setSelectedIndex(0);
+        
+        isUpdate = true;
     }//GEN-LAST:event_tblPhieuMouseClicked
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
@@ -983,6 +985,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     
     private void deleteCT(){
         int delRow = tblCTPhieu_main.getSelectedRow();
+        
         if(isUpdate){
             delCTP.add((ChiTietPhieu)modelCTPhieu.getValueAt(delRow, 4));
         }
