@@ -23,6 +23,7 @@ import com.stoman.entity.LoaiHangHoa;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.util.ArrayList;
@@ -594,16 +595,22 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.insertPhieu();
+        this.clearForm();
+        this.fillToTablePhieu();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         this.deletePhieu();
+        this.clearForm();
+        this.fillToTablePhieu();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         this.updatePhieu();
+        this.clearForm();
+        this.fillToTablePhieu();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
@@ -754,6 +761,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
+                if(column == 2 || column == 3) return true;
                 return false;
             }
 
@@ -1143,5 +1151,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_sub.setRowHeight(25);
         tblCTPhieu_main.setRowHeight(25);
         tblPhieu.setRowHeight(25);
+        
+        // Thêm chức năng nhập cho bảng
+        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        tblCTPhieu_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        tblCTPhieu_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
     }
 }

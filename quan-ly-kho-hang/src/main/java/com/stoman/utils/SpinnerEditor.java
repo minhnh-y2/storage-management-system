@@ -19,17 +19,17 @@ import javax.swing.table.TableCellEditor;
 public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
     JSpinner spinner = new JSpinner();
 
-    public SpinnerEditor(){
-        spinner = new JSpinner(new SpinnerNumberModel(0, 0, 10, 0.01));
+    public SpinnerEditor(double value, double minimum, double maximum, double stepSize){
+        spinner = new JSpinner(new SpinnerNumberModel(value, minimum, maximum, stepSize));
         spinner.setBorder(null);
     }
 
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column){
-        spinner.setValue(Double.parseDouble((String) value));
+        spinner.setValue(XNumber.toDouble(((String) value),"#,##0.0"));
         return spinner;
     }
 
     public Object getCellEditorValue(){
-        return spinner.getValue().toString();
+        return XNumber.toString((Double) spinner.getValue(), "#,##0.0");
     }
 }
