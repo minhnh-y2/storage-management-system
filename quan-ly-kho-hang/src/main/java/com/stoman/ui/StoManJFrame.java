@@ -212,6 +212,8 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
+        pnlTongQuan.setBackground(new java.awt.Color(153, 153, 153));
+
         pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
 
