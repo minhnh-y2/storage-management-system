@@ -21,6 +21,7 @@ import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiDoiTac;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.entity.Phieu;
+import com.stoman.utils.DateRenderer;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
@@ -683,6 +684,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void tblPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhieuMouseClicked
         // TODO add your handling code here:
         if(evt.getClickCount()<2) return;
+        
         delCTP.clear();
         int row = tblPhieu.getSelectedRow();
         Phieu phieu = (Phieu) this.modelPhieu.getValueAt(row, 8);
@@ -695,6 +697,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
+        delCTP.clear();
         this.clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
@@ -892,7 +895,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private DefaultTableModel modelCTPhieu;
     
     private String numFormat = "#,##0.0";
-    private String dateFormat = "dd-MM-yyyy";
+    private String dateFormat = "dd-mm-yyyy";
     
     private boolean isUpdate = false;
     private Point initialClick;
@@ -906,7 +909,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         
         // Dữ liệu hàng tiêu đề bảng
-        String headerPhieu[] = {"Mã phiếu", "Đối tác" , "Loại", "Kho" , "Trạng thái",
+        String headerPhieu[] = {"STT", "Đối tác" , "Loại", "Kho" , "Trạng thái",
             "Ngày thực hiện", "Ngày hoàn thành", "Ngày lập", "Người lập"};
         this.modelPhieu = new DefaultTableModel(headerPhieu, 0) {
             @Override
@@ -948,6 +951,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         
         this.formatTable();
         this.clearForm();
+        
     }
 
     // Đổ dữ liệu phiếu nhập xuất
@@ -966,12 +970,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 p.isLoai() ? "Nhập" : "Xuất",
                 kho,
                 p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                XDate.toString(p.getNgThucHien(), dateFormat),
-                XDate.toString(p.getNgHoanThanh(), dateFormat),
-                XDate.toString(p.getNgayLap(), dateFormat + " (hh:MM:ss)"),
+                p.getNgThucHien(),
+                p.getNgHoanThanh(),
+                p.getNgayLap(),
                 p
             });
         }
+        
     }
 
     // Đổ dữ liệu chi tiết phiếu
@@ -1303,6 +1308,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     private void formatTable(){
+        // cài đặt bộ lọc cho bảng
+        tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
+        tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));
+        tblPhieu.getColumnModel().getColumn(7).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
+
         tblPhieu.setAutoCreateRowSorter(true);
         tblCTPhieu_sub.setAutoCreateRowSorter(true);
         tblCTPhieu_main.setAutoCreateRowSorter(true);
@@ -1319,9 +1329,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblPhieu.setRowHeight(25);
         
         // Thêm chức năng nhập cho bảng
-        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 100000.0, 1.0));
         tblCTPhieu_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
-        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 100000.0, 1.0));
         tblCTPhieu_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
     }
+    
+            
 }
