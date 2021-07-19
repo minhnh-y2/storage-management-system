@@ -10,12 +10,9 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
-import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -285,8 +282,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblTimKiem.setText("Tìm kiếm");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
@@ -315,7 +312,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem2)
                     .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem))
@@ -468,13 +465,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         setLocation(x, y);
     }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
 
-    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
-        // TODO add your handling code here:
-        // Chỉ được đổ dữ liệu vào bảng khi loại hàng hoá được chọn
-        fillToTable();
-        clearForm();
-    }//GEN-LAST:event_txtTimKiemKeyPressed
-
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         first();
@@ -494,6 +484,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         last();
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        fillToTable();
+        clearForm();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
@@ -600,19 +596,18 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         };
         tblNhanVien.setModel(tblModel);
         tblNhanVien.setAutoCreateRowSorter(true);
-        //pnlTblNhanVien.getViewport().setOpaque(false);
 
+        this.fillToComboBox();
         this.fillToTable();
         this.updateStatus();
     }
     
-    
-    
     void fillToTable() {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
+        int headerIndex = cboTimKiem.getSelectedIndex();
         try {
-            List<NhanVien> list = DAO.selectByKeyword(keyword);
+            List<NhanVien> list = DAO.selectByKeyword(keyword, headerIndex);
             for (NhanVien nv : list) {
                 tblModel.addRow(new Object[]{
                     nv.getMaNV(),
@@ -624,6 +619,14 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
+        }
+    }
+    
+    void fillToComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
+        model.removeAllElements();
+        for(int i = 0; i < tblNhanVien.getColumnCount(); i++) {
+            model.addElement(tblNhanVien.getColumnName(i));
         }
     }
 
