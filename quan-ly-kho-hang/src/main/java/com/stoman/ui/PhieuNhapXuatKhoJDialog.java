@@ -22,11 +22,14 @@ import com.stoman.entity.LoaiDoiTac;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.MsgBox;
-import com.stoman.utils.RoundedPanel;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -80,7 +83,22 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChiTiet = new javax.swing.JPanel();
         pnlTblCTPhieu_sub = new javax.swing.JScrollPane();
         tblCTPhieu_sub = new javax.swing.JTable();
-        pnlThongTinPhieu = new RoundedPanel(25);
+        pnlThongTinPhieu = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Dimension arcs = new Dimension(25,25);
+                int width = getWidth();
+                int height = getHeight();
+                Graphics2D graphics = (Graphics2D) g;
+                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                //Draws the rounded opaque panel with borders.
+                graphics.setColor(getBackground());
+                graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint background
+                graphics.setColor(getForeground());
+            }
+        };
         lblLoaiDT = new javax.swing.JLabel();
         lblMaNV = new javax.swing.JLabel();
         lblTrangThai = new javax.swing.JLabel();
@@ -694,8 +712,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
-        //this.dispose();
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered

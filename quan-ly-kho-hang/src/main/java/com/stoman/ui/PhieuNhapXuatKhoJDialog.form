@@ -469,7 +469,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                   </AccessibilityProperties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundedPanel(25)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    @Override&#xa;    protected void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;        Dimension arcs = new Dimension(25,25);&#xa;        int width = getWidth();&#xa;        int height = getHeight();&#xa;        Graphics2D graphics = (Graphics2D) g;&#xa;        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);&#xa;&#xa;&#xa;        //Draws the rounded opaque panel with borders.&#xa;        graphics.setColor(getBackground());&#xa;        graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height);//paint background&#xa;        graphics.setColor(getForeground());&#xa;    }&#xa;}"/>
                   </AuxValues>
 
                   <Layout>
@@ -522,7 +522,7 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="pnlGhiChu" pref="232" max="32767" attributes="0"/>
+                                      <Component id="pnlGhiChu" pref="242" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="chkHoanThanh" min="-2" max="-2" attributes="0"/>
                               </Group>
