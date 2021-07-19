@@ -925,7 +925,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.formatTable();
         this.clearForm();
         
-        System.out.println((Date) this.tblPhieu.getValueAt(1, 6));
     }
 
     // Đổ dữ liệu phiếu nhập xuất
