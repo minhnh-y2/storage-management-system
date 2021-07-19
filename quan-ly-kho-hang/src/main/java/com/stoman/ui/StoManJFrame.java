@@ -212,7 +212,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
-        pnlTongQuan.setBackground(new java.awt.Color(153, 153, 153));
+        pnlTongQuan.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
@@ -289,7 +289,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -330,7 +330,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(cboLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -344,7 +344,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         pnlXuatTheoQuyLayout.setVerticalGroup(
             pnlXuatTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         tabs.addTab("Xuất theo quý", pnlXuatTheoQuy);
@@ -357,7 +357,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         pnlNhapTheoQuyLayout.setVerticalGroup(
             pnlNhapTheoQuyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         tabs.addTab("Nhập theo quý", pnlNhapTheoQuy);
@@ -370,23 +370,22 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
         pnlCanCanXuatNhapLayout.setVerticalGroup(
             pnlCanCanXuatNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
 
         tabs.addTab("Cán cân xuất nhập", pnlCanCanXuatNhap);
 
         getContentPane().add(tabs, java.awt.BorderLayout.CENTER);
 
-        pnlTrangThai.setBackground(new java.awt.Color(0, 96, 128));
+        pnlTrangThai.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTrangThai.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(102, 102, 102)));
         pnlTrangThai.setLayout(new java.awt.BorderLayout());
 
-        lblTrangThai.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
         lblTrangThai.setText("Hệ thống quản lý kho hàng");
         lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
-        lblDongHo.setForeground(new java.awt.Color(255, 255, 255));
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
         lblDongHo.setText("11:20:20 AM");
         lblDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
