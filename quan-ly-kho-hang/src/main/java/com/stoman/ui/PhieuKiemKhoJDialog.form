@@ -406,12 +406,10 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lblNguoiLap" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblTrangThai" max="32767" attributes="0"/>
-                                  <Component id="lblNgayLap" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="lblTrangThai" max="32767" attributes="0"/>
+                              <Component id="lblNgayLap" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" min="13" max="32767" attributes="0"/>
+                          <EmptySpace min="13" pref="26" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="txtNgayLap" min="-2" pref="154" max="-2" attributes="0"/>
@@ -420,22 +418,22 @@
                               <Component id="txtNguoiLap" linkSize="4" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="lblKho" min="-2" pref="27" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                   <Component id="cboKho" linkSize="4" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblGhiChu" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="lblNgayKiem" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="txtNgayKiem" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblGhiChu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="pnlTxtGhiChu" pref="249" max="32767" attributes="0"/>
+                          <Component id="pnlTxtGhiChu" pref="264" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

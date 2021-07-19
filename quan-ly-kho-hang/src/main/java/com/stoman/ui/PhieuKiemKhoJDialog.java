@@ -229,29 +229,28 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNguoiLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblTrangThai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblNgayLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTrangThai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNgayLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(13, 26, Short.MAX_VALUE)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(chkHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNguoiLap, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addComponent(lblKho, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(cboKho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblGhiChu))
+                        .addComponent(cboKho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addComponent(lblNgayKiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtNgayKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(lblGhiChu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -498,13 +497,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private KhoDAO kDAO = new KhoDAO();
     private PhieuKiemKhoDAO pkkDAO = new PhieuKiemKhoDAO();
-    
+
     private DefaultTableModel modelPhieuKiem;
     private DefaultTableModel modelCTPhieuKiem;
-    
-    void init() {
+
+    private void init() {
         this.setLocationRelativeTo(null);
-        
+
         String[] headerPhieuKiem = {"Mã kiểm kho", "Ngày lập", "Ngày kiểm",
             "Ghi chú", "Trạng thái", "Mã nhân viên"};
         this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
@@ -524,21 +523,21 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         };
         tblPhieuKiemKho.setModel(modelPhieuKiem);
         tblPhieuKiemKho.setAutoCreateRowSorter(true);
-        
+
         String[] headerCTPhieuKiem = {"Mã chi tiết", "Hàng hoá", "Số lượng tồn",
             "Số lượng thực"};
-        
+
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
     }
-    
+
     // Đổ dữ liệu vào ComboBox kho
-    void fillToComboBoxKho() {
+    private void fillToComboBoxKho() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
             List<Kho> list = kDAO.selectAll();
-            for(Kho k : list) {
+            for (Kho k : list) {
                 model.addElement(k);
             }
             cboKho.setModel(model);
@@ -548,11 +547,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu vào bảng phiếu kiểm
-    void fillToTablePhieuKiem() {
+    private void fillToTablePhieuKiem() {
         modelPhieuKiem.setRowCount(0);
         try {
             List<PhieuKiemKho> list = pkkDAO.selectAll();
-            for(PhieuKiemKho pkk : list) {
+            for (PhieuKiemKho pkk : list) {
                 modelPhieuKiem.addRow(new Object[]{
                     pkk.getMaKK(),
                     pkk.getNgayLap(),
@@ -566,9 +565,5 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
-    
-    void fillToTableCTPhieuKiem() {
-        
-    }
-    
+
 }
