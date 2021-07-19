@@ -245,7 +245,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(lblDonGia))
                 .addGap(10, 10, 10)
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(txtMaHH)
                     .addComponent(txtTenHH)
                     .addComponent(txtDonGia))
@@ -302,7 +302,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addComponent(lblTimKiem2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pnlTimKiemLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboTimKiem, txtTimKiem});

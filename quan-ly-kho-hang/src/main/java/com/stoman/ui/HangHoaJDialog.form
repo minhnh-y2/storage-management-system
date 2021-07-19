@@ -188,7 +188,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtDonViTinh" pref="370" max="32767" attributes="0"/>
+                          <Component id="txtDonViTinh" pref="270" max="32767" attributes="0"/>
                           <Component id="txtMaHH" max="32767" attributes="0"/>
                           <Component id="txtTenHH" max="32767" attributes="0"/>
                           <Component id="txtDonGia" alignment="0" max="32767" attributes="0"/>
@@ -420,7 +420,7 @@
                       <Component id="lblTimKiem2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cboTimKiem" linkSize="4" min="-2" pref="156" max="-2" attributes="0"/>
-                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
