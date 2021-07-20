@@ -13,6 +13,7 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import java.awt.Point;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -283,12 +284,18 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         lblTimKiem.setText("Tìm kiếm");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
         lblTimKiem2.setText("theo");
+
+        cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
         pnlTimKiem.setLayout(pnlTimKiemLayout);
@@ -313,7 +320,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem2)
                     .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem))
@@ -458,6 +465,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void lstLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLDTMouseClicked
         // TODO add your handling code here:
+        cboTimKiem.setSelectedIndex(0);
         this.fillToTable();
         this.clearForm();
         this.updateStatus();
@@ -533,15 +541,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         setLocation(x, y);
     }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
 
-    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
-        // TODO add your handling code here:
-        // Chỉ được đổ dữ liệu vào bảng khi loại hàng hoá được chọn
-        if (!lstLDT.isSelectionEmpty()) {
-            fillToTable();
-            clearForm();
-        }
-    }//GEN-LAST:event_txtTimKiemKeyPressed
-
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         first();
@@ -561,6 +560,23 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         last();
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
+        // TODO add your handling code here:
+        if (!lstLDT.isSelectionEmpty()) {
+            txtTimKiem.setText("");
+            fillToTable();
+            clearForm();
+        }
+    }//GEN-LAST:event_cboTimKiemActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        if (!lstLDT.isSelectionEmpty()) {
+            fillToTable();
+            clearForm();
+        }
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
@@ -680,6 +696,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         tblDoiTac.setAutoCreateRowSorter(true);
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(0));
         
+        this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
     }
@@ -702,9 +719,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     void fillToTable() {
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
+        int headerIndex = cboTimKiem.getSelectedIndex();
         tblModel.setRowCount(0);
         try {
-            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword);
+            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
             for (DoiTac dt : list) {
                 tblModel.addRow(new Object[]{
                     dt.getMaDT(),
@@ -719,6 +737,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
+        }
+    }
+    
+    // Đổ tên bảng vào ComboBox tìm kiếm
+    void fillToComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
+        model.removeAllElements();
+        for(int i = 0; i < tblDoiTac.getColumnCount(); i++) {
+            model.addElement(tblDoiTac.getColumnName(i));
         }
     }
 
