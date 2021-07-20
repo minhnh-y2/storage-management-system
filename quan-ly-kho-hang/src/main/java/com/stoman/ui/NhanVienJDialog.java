@@ -289,6 +289,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         lblTimKiem2.setText("theo");
 
+        cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimKiemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
         pnlTimKiem.setLayout(pnlTimKiemLayout);
         pnlTimKiemLayout.setHorizontalGroup(
@@ -490,6 +496,13 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         fillToTable();
         clearForm();
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
+        // TODO add your handling code here:
+        txtTimKiem.setText("");
+        clearForm();
+        fillToTable();
+    }//GEN-LAST:event_cboTimKiemActionPerformed
 
     /**
      * @param args the command line arguments
