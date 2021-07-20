@@ -20,22 +20,20 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
 
     @Override
     public void insert(ChiTietKiemKho entity) {
-        String sql = "INSERT INTO CHITIETKIEMKHO (SOLUONGTON, SOLUONGTHUC, GHICHU, MAKK, MALT) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CHITIETKIEMKHO (SOLUONGTON, SOLUONGTHUC, MAKK, MALT) VALUES (?, ?, ?, ?)";
         XJdbc.update(sql,
                 entity.getSoLuongTon(),
                 entity.getSoLuongThuc(),
-                entity.getGhiChu(),
                 entity.getMaKK(),
                 entity.getMaLT());
     }
 
     @Override
     public void update(ChiTietKiemKho entity) {
-        String sql = "UPDATE CHITIETKIEMKHO SET SOLUONGTON=?, SOLUONGTHUC=?, GHICHU=?, MAKK=?, MALT=? WHERE MACTKK=?";
+        String sql = "UPDATE CHITIETKIEMKHO SET SOLUONGTON=?, SOLUONGTHUC=?, MAKK=?, MALT=? WHERE MACTKK=?";
         XJdbc.update(sql,
                 entity.getSoLuongTon(),
                 entity.getSoLuongThuc(),
-                entity.getGhiChu(),
                 entity.getMaKK(),
                 entity.getMaLT(),
                 entity.getMaCTKK());
@@ -73,7 +71,6 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
                     entity.setMaCTKK(rs.getInt("MACTKK"));
                     entity.setSoLuongTon(rs.getDouble("SOLUONGTON"));
                     entity.setSoLuongThuc(rs.getDouble("SOLUONGTHUC"));
-                    entity.setGhiChu(rs.getString("GHICHU"));
                     entity.setMaKK(rs.getInt("MALT"));
                     entity.setMaLT(rs.getInt("MAKK"));
                     
@@ -91,4 +88,13 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
         return list;
     }
     
+    public List<ChiTietKiemKho> selectByMaPhieu(Integer maPhieu) {
+        String sql = "SELECT * FROM CHITIETKIEMKHO WHERE MAKK = ?";
+        return this.selectBySQL(sql, maPhieu);
+    }
+    
+    public Integer getOnlyOneMaLT(Integer maPhieu) {
+        List<ChiTietKiemKho> list = this.selectByMaPhieu(maPhieu);
+        return list.size()>0?list.get(0).getMaLT():0;
+    }
 }

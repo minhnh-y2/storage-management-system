@@ -49,7 +49,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="pnlTblCTKiemKho" max="32767" attributes="0"/>
+                              <Component id="pnlTblCTPhieuKiemKho_main" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="425" max="32767" attributes="0"/>
                                   <Component id="btnXoaKhoiDS" min="-2" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlTblCTKiemKho" pref="299" max="32767" attributes="0"/>
+                          <Component id="pnlTblCTPhieuKiemKho_main" pref="299" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnXoaKhoiDS" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -72,14 +72,14 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="pnlTblCTKiemKho">
+                <Container class="javax.swing.JScrollPane" name="pnlTblCTPhieuKiemKho_main">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblCTPhieuKiemKho">
+                    <Component class="javax.swing.JTable" name="tblCTPhieuKiemKho_main">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
@@ -409,7 +409,7 @@
                               <Component id="lblTrangThai" max="32767" attributes="0"/>
                               <Component id="lblNgayLap" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="13" pref="26" max="32767" attributes="0"/>
+                          <EmptySpace min="13" pref="34" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="txtNgayLap" min="-2" pref="154" max="-2" attributes="0"/>
@@ -418,22 +418,19 @@
                               <Component id="txtNguoiLap" linkSize="4" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblKho" min="-2" pref="27" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="cboKho" linkSize="4" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="lblNgayKiem" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtNgayKiem" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblNgayKiem" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKho" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cboKho" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="txtNgayKiem" linkSize="4" min="-2" pref="154" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="lblGhiChu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="pnlTxtGhiChu" pref="264" max="32767" attributes="0"/>
+                          <Component id="pnlTxtGhiChu" pref="271" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -495,7 +492,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNguoiLap">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
+                    <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1ead;p"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblGhiChu">

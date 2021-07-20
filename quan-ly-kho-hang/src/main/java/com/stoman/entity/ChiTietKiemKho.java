@@ -13,18 +13,16 @@ public class ChiTietKiemKho {
     private int maCTKK;
     private Double soLuongTon;
     private Double soLuongThuc;
-    private String ghiChu;
     private int maLT;
     private int maKK;
 
     public ChiTietKiemKho() {
     }
 
-    public ChiTietKiemKho(int maCTKK, Double soLuongTon, Double soLuongThuc, String ghiChu, int maLT, int maKK) {
+    public ChiTietKiemKho(int maCTKK, Double soLuongTon, Double soLuongThuc, int maLT, int maKK) {
         this.maCTKK = maCTKK;
         this.soLuongTon = soLuongTon;
         this.soLuongThuc = soLuongThuc;
-        this.ghiChu = ghiChu;
         this.maLT = maLT;
         this.maKK = maKK;
     }
@@ -51,14 +49,6 @@ public class ChiTietKiemKho {
 
     public void setSoLuongThuc(Double soLuongThuc) {
         this.soLuongThuc = soLuongThuc;
-    }
-
-    public String getGhiChu() {
-        return ghiChu;
-    }
-
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
     }
 
     public int getMaLT() {

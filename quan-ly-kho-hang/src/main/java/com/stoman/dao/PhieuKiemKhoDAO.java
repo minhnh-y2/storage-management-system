@@ -89,4 +89,5 @@ public class PhieuKiemKhoDAO extends StoManDAO<PhieuKiemKho, Integer> {
         return list;
     }
     
+    
 }

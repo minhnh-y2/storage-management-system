@@ -5,13 +5,18 @@
  */
 package com.stoman.ui;
 
+import com.stoman.dao.ChiTietKiemKhoDAO;
 import com.stoman.dao.KhoDAO;
+import com.stoman.dao.LuuTruDAO;
 import com.stoman.dao.PhieuKiemKhoDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.PhieuKiemKho;
+import com.stoman.utils.DateRenderer;
+import com.stoman.utils.SpinnerEditor;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -40,8 +45,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuJDialog = new javax.swing.JDialog();
         pnlMainCTP = new javax.swing.JTabbedPane();
         pnlDSKiemKho = new javax.swing.JPanel();
-        pnlTblCTKiemKho = new javax.swing.JScrollPane();
-        tblCTPhieuKiemKho = new javax.swing.JTable();
+        pnlTblCTPhieuKiemKho_main = new javax.swing.JScrollPane();
+        tblCTPhieuKiemKho_main = new javax.swing.JTable();
         btnXoaKhoiDS = new javax.swing.JButton();
         pnlDSHangHoa = new javax.swing.JPanel();
         pnlTblHangHoaKho = new javax.swing.JScrollPane();
@@ -82,7 +87,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTblPhieuKiemKho = new javax.swing.JScrollPane();
         tblPhieuKiemKho = new javax.swing.JTable();
 
-        tblCTPhieuKiemKho.setModel(new javax.swing.table.DefaultTableModel(
+        tblCTPhieuKiemKho_main.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -90,7 +95,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        pnlTblCTKiemKho.setViewportView(tblCTPhieuKiemKho);
+        pnlTblCTPhieuKiemKho_main.setViewportView(tblCTPhieuKiemKho_main);
 
         btnXoaKhoiDS.setText("Xóa khỏi danh sách");
 
@@ -101,7 +106,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDSKiemKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDSKiemKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlTblCTKiemKho)
+                    .addComponent(pnlTblCTPhieuKiemKho_main)
                     .addGroup(pnlDSKiemKhoLayout.createSequentialGroup()
                         .addGap(0, 425, Short.MAX_VALUE)
                         .addComponent(btnXoaKhoiDS)))
@@ -111,7 +116,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             pnlDSKiemKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDSKiemKhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlTblCTKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(pnlTblCTPhieuKiemKho_main, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnXoaKhoiDS)
                 .addGap(7, 7, 7))
@@ -207,7 +212,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         lblNgayKiem.setText("Ngày kiểm");
 
-        lblNguoiLap.setText("Mã nhân viên");
+        lblNguoiLap.setText("Người lập");
 
         lblGhiChu.setText("Ghi chú");
 
@@ -231,30 +236,28 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblNguoiLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTrangThai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNgayLap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(13, 26, Short.MAX_VALUE)
+                .addGap(13, 34, Short.MAX_VALUE)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(chkHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNguoiLap, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlThongTinLayout.createSequentialGroup()
-                        .addComponent(lblKho, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(cboKho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlThongTinLayout.createSequentialGroup()
-                        .addComponent(lblNgayKiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNgayKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNgayKiem)
+                    .addComponent(lblKho, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboKho, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgayKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblGhiChu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlThongTinLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboKho, txtNgayKiem, txtNguoiLap});
+        pnlThongTinLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtNgayKiem, txtNguoiLap});
 
         pnlThongTinLayout.setVerticalGroup(
             pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,13 +482,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel pnlDanhSach;
     private javax.swing.JTabbedPane pnlMain;
     private javax.swing.JTabbedPane pnlMainCTP;
-    private javax.swing.JScrollPane pnlTblCTKiemKho;
+    private javax.swing.JScrollPane pnlTblCTPhieuKiemKho_main;
     private javax.swing.JScrollPane pnlTblCTPhieuKiemKho_sub;
     private javax.swing.JScrollPane pnlTblHangHoaKho;
     private javax.swing.JScrollPane pnlTblPhieuKiemKho;
     private javax.swing.JPanel pnlThongTin;
     private javax.swing.JScrollPane pnlTxtGhiChu;
-    private javax.swing.JTable tblCTPhieuKiemKho;
+    private javax.swing.JTable tblCTPhieuKiemKho_main;
     private javax.swing.JTable tblCTPhieuKiemKho_sub;
     private javax.swing.JTable tblHangHoaKho;
     private javax.swing.JTable tblPhieuKiemKho;
@@ -497,15 +500,18 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private KhoDAO kDAO = new KhoDAO();
     private PhieuKiemKhoDAO pkkDAO = new PhieuKiemKhoDAO();
+    private ChiTietKiemKhoDAO ctkkDAO = new ChiTietKiemKhoDAO();
+    private LuuTruDAO ltDAO = new LuuTruDAO();
 
     private DefaultTableModel modelPhieuKiem;
     private DefaultTableModel modelCTPhieuKiem;
+    
+    private String dateFormat = "dd-mm-yyyy";
 
     private void init() {
         this.setLocationRelativeTo(null);
 
-        String[] headerPhieuKiem = {"Mã kiểm kho", "Ngày lập", "Ngày kiểm",
-            "Ghi chú", "Trạng thái", "Mã nhân viên"};
+        String[] headerPhieuKiem = {"STT", "Kho", "Ngày kiểm", "Trạng thái", "Mã nhân viên", "Ngày lập", "Mã phiếu"};
         this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -521,14 +527,33 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return getValueAt(0, columnIndex).getClass();
             }
         };
-        tblPhieuKiemKho.setModel(modelPhieuKiem);
-        tblPhieuKiemKho.setAutoCreateRowSorter(true);
 
-        String[] headerCTPhieuKiem = {"Mã chi tiết", "Hàng hoá", "Số lượng tồn",
-            "Số lượng thực"};
+        String[] headerCTPhieuKiem = {"STT", "Hàng hoá", "Số lượng tồn",
+            "Số lượng thực", "Mã chi tiết"};
+        this.modelCTPhieuKiem = new DefaultTableModel(headerCTPhieuKiem, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
 
+            // Get class để sắp xếp bảng
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
+        
+        tblPhieuKiemKho.setModel(modelPhieuKiem);
+        tblCTPhieuKiemKho_main.setModel(modelCTPhieuKiem);
+        tblCTPhieuKiemKho_sub.setModel(modelCTPhieuKiem);
+        
+        this.formatTable();
     }
 
     // Đổ dữ liệu vào ComboBox kho
@@ -551,19 +576,51 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         modelPhieuKiem.setRowCount(0);
         try {
             List<PhieuKiemKho> list = pkkDAO.selectAll();
+            int i = 1;
             for (PhieuKiemKho pkk : list) {
+                int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
+                if(maLT == 0) continue;
+                int maKho = ltDAO.getMaKho(maLT);
+                Kho kho = kDAO.selectByID(maKho);
                 modelPhieuKiem.addRow(new Object[]{
-                    pkk.getMaKK(),
-                    pkk.getNgayLap(),
+                    i++,
+                    kho,
                     pkk.getNgayKiem(),
-                    pkk.getGhiChu() == null ? "<None>" : pkk.getGhiChu(),
                     pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                    pkk.getMaNV()
+                    pkk.getMaNV(),
+                    pkk.getNgayLap(),
+                    pkk.getMaKK()
                 });
             }
             tblPhieuKiemKho.setModel(modelPhieuKiem);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+    
+    
+    
+    private void formatTable(){
+        // cài đặt bộ lọc cho bảng
+        tblPhieuKiemKho.getColumnModel().getColumn(2).setCellRenderer(new DateRenderer(dateFormat));
+        tblPhieuKiemKho.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
 
+        tblPhieuKiemKho.setAutoCreateRowSorter(true);
+        tblCTPhieuKiemKho_main.setAutoCreateRowSorter(true);
+        tblCTPhieuKiemKho_sub.setAutoCreateRowSorter(true);
+        
+        //giấu cột maCTP
+        tblPhieuKiemKho.getColumnModel().removeColumn(tblPhieuKiemKho.getColumnModel().getColumn(6));
+        tblCTPhieuKiemKho_main.getColumnModel().removeColumn(tblCTPhieuKiemKho_main.getColumnModel().getColumn(4));
+        tblCTPhieuKiemKho_sub.getColumnModel().removeColumn(tblCTPhieuKiemKho_sub.getColumnModel().getColumn(4));
+
+        // Chỉnh độ rộng hàng trong bảng
+        tblPhieuKiemKho.setRowHeight(25);
+        tblCTPhieuKiemKho_main.setRowHeight(25);
+        tblCTPhieuKiemKho_sub.setRowHeight(25);
+        
+        // Thêm chức năng nhập cho bảng
+        tblCTPhieuKiemKho_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+    }
 }
