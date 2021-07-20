@@ -660,7 +660,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
 
-        String header[] = {"Mã đối tác", "Tên đối tác", "Địa chỉ", "Email",
+        String header[] = {"STT", "Tên đối tác", "Địa chỉ", "Email",
             "Số điện thoại", "Vai trò"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
