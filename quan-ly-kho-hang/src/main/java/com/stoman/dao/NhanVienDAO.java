@@ -91,11 +91,13 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
     
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
-        if(index == 2) {
+        if(header[index].equals("VAITRO")) {
             if("TRƯỞNG KHO".contains(keyword.toUpperCase().trim())){
                 keyword = "1";
             } else if ("THỦ KHO".contains(keyword.toUpperCase().trim())) {
                 keyword = "0";
+            } else {
+                keyword = "";
             }
         }
         String sql = "SELECT * FROM NHANVIEN WHERE " + header[index] + " LIKE ?";

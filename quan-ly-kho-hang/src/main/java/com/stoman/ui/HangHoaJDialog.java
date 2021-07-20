@@ -14,6 +14,7 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.XNumber;
 import java.awt.Point;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
@@ -282,12 +283,18 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblTimKiem.setText("Tìm kiếm");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
         lblTimKiem2.setText("theo");
+
+        cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
         pnlTimKiem.setLayout(pnlTimKiemLayout);
@@ -312,7 +319,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem2)
                     .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem))
@@ -413,7 +420,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -440,19 +447,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void lstLHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLHHMouseClicked
         // TODO add your handling code here:
+        cboTimKiem.setSelectedIndex(0);
         this.fillToTable();
         this.clearForm();
         this.updateStatus();
     }//GEN-LAST:event_lstLHHMouseClicked
-
-    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
-        // TODO add your handling code here:
-        // Chỉ được đổ dữ liệu vào bảng khi loại hàng hoá được chọn
-        if (!lstLHH.isSelectionEmpty()) {
-            fillToTable();
-            clearForm();
-        }
-    }//GEN-LAST:event_txtTimKiemKeyPressed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
@@ -537,6 +536,23 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         int y = thisY + yMoved;
         setLocation(x, y);
     }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
+
+    private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
+        // TODO add your handling code here:
+        if (!lstLHH.isSelectionEmpty()) {
+            txtTimKiem.setText("");
+            fillToTable();
+            clearForm();
+        }
+    }//GEN-LAST:event_cboTimKiemActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        if (!lstLHH.isSelectionEmpty()) {
+            fillToTable();
+            clearForm();
+        }
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
@@ -629,7 +645,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private DefaultListModel<LoaiHangHoa> lstModel;
 
-    private void init() {
+    void init() {
         this.setLocationRelativeTo(null);
         this.lstModel = new DefaultListModel<>();
 
@@ -655,19 +671,20 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(125);
         tblHangHoa.getColumnModel().getColumn(3).setPreferredWidth(125);
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //pnlTblHangHoa.getViewport().setOpaque(false);
         
+        this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
     }
 
     // Đổ dữ liệu vào bảng.
-    private void fillToTable() {
+    void fillToTable() {
         tblModel.setRowCount(0);
         int maLHH = lstLHH.getSelectedValue().getMaLHH();
         String keyword = txtTimKiem.getText();
+        int headerIndex = cboTimKiem.getSelectedIndex();
         try {
-            List<HangHoa> list = hhDAO.selectByKeyword(maLHH, keyword);
+            List<HangHoa> list = hhDAO.selectByKeyword(maLHH, keyword, headerIndex);
             for (HangHoa hh : list) {
                 Object[] row = {
                     hh.getMaHH(),
@@ -685,7 +702,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     //Đổ dữ liệu vào List.
-    private void fillToList() {
+    void fillToList() {
         lstModel.removeAllElements();
         try {
             List<LoaiHangHoa> list = lhhDAO.selectAll();
@@ -698,9 +715,18 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
+    
+    // Đổ tên bảng vào ComboBox tìm kiếm
+    void fillToComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
+        model.removeAllElements();
+        for(int i = 0; i < tblHangHoa.getColumnCount(); i++) {
+            model.addElement(tblHangHoa.getColumnName(i));
+        }
+    }
 
     // Lấy dữ liệu từ form
-    private HangHoa getForm() {
+    HangHoa getForm() {
         HangHoa hh = new HangHoa();
         hh.setMaHH(txtMaHH.getText());
         hh.setTenHH(txtTenHH.getText().trim());
@@ -709,9 +735,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         hh.setMaLHH(lstLHH.getSelectedValue().getMaLHH());
         return hh;
     }
-
+    
     // Làm mới form
-    private void clearForm() {
+    void clearForm() {
         this.setForm(new HangHoa());
         this.row = -1;
         tblHangHoa.clearSelection();
@@ -719,7 +745,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     // Đưa dữ liệu lên form
-    private void setForm(HangHoa hh) {
+    void setForm(HangHoa hh) {
         txtMaHH.setText(hh.getMaHH());
         txtTenHH.setText(hh.getTenHH());
         txtDonViTinh.setText(hh.getDonViTinh());

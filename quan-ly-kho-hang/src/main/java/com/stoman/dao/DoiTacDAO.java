@@ -94,8 +94,20 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
         return list;
     }
     
-    public List<DoiTac> selectByKeyword(Integer maLDT, String keyword) {
-        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ? AND TenDT LIKE ?";
+    public List<DoiTac> selectByKeyword(Integer maLDT, String keyword, int index) {
+        String header[] = {"TENDT", "DIACHI", "EMAIL", "SODT", "VAITRO"};
+        if(header[index].equals("VAITRO")) {
+            if("KHÁCH HÀNG".contains(keyword.toUpperCase().trim())){
+                keyword = "0";
+            } else if ("NHÀ PHÂN PHỐI".contains(keyword.toUpperCase().trim())) {
+                keyword = "1";
+            } else {
+                keyword = "";
+            }
+        }
+        System.out.println(header[index]);
+        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ? AND " + header[index]
+                + " LIKE ?";
         return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
     }
     
