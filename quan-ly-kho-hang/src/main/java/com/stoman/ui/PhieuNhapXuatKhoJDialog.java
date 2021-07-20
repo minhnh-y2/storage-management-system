@@ -1312,10 +1312,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_main.setAutoCreateRowSorter(true);
         
         //giấu cột maCTP
-        TableColumnModel tcm = tblCTPhieu_sub.getColumnModel();
-        tcm.removeColumn(tcm.getColumn(4));
-        tcm = tblCTPhieu_main.getColumnModel();
-        tcm.removeColumn(tcm.getColumn(4));
+        tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(4));
+        tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(4));
 
         // Chỉnh độ rộng hàng trong bảng
         tblCTPhieu_sub.setRowHeight(25);
