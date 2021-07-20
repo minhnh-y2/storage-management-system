@@ -299,17 +299,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator1" max="32767" attributes="0"/>
+                              <Component id="peparator" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="lblTimKiem" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemCT" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtTimKiem" min="-2" pref="315" max="-2" attributes="0"/>
+                                          <Component id="txtTimKiemCTPhieu" min="-2" pref="315" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemCT2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" max="32767" attributes="0"/>
+                                          <Component id="cboTimKiemCT" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="pnlTblCTPhieu_sub" max="32767" attributes="0"/>
                                       <Component id="pnlNutDieuHuong" max="32767" attributes="0"/>
@@ -327,22 +327,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnlThongTinPhieu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="peparator" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTimKiemCT2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlTblCTPhieu_sub" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="pnlChucNang" pref="352" max="32767" attributes="0"/>
+                              <Component id="pnlChucNang" pref="398" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -606,9 +606,6 @@
                         <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkHoanThanhActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoPhieuNhap">
                       <Properties>
@@ -832,24 +829,30 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="txtTimKiem">
+                <Component class="javax.swing.JTextField" name="txtTimKiemCTPhieu">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemCTPhieuKeyReleased"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblTimKiem">
+                <Component class="javax.swing.JLabel" name="lblTimKiemCT">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="lblTimKiemCT2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="theo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cboTimKiemCT">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemCTActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator1">
+                <Component class="javax.swing.JSeparator" name="peparator">
                 </Component>
               </SubComponents>
             </Container>
@@ -870,7 +873,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="986" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="scrollPane2" pref="986" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblTimKiemCT1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtTimKiemPhieu" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblTimKiemPhieu2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cboTimKiemPhieu" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -879,7 +894,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="538" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblTimKiemCT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimKiemPhieu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Component id="scrollPane2" min="-2" pref="544" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -940,6 +962,29 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="lblTimKiemCT1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtTimKiemPhieu">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemPhieuKeyReleased"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTimKiemPhieu2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="theo"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cboTimKiemPhieu">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemPhieuActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
