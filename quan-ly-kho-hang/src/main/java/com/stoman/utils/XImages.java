@@ -25,7 +25,7 @@ public class XImages {
      * @return icon cua chuong trinh
      */
     public static Image getAppIcon(){
-        URL url = XImages.class.getResource("/com/edusys/ui/images/fpt.png");
+        URL url = XImages.class.getResource("/com/stoman/icons/logo.png");
         return new ImageIcon(url).getImage();
     }
     

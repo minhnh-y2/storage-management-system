@@ -7,6 +7,7 @@ package com.stoman.ui;
 
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -704,7 +705,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     void init() {
-        setLocationRelativeTo(null);
+        this.setIconImage(XImages.getAppIcon());
+        this.setLocationRelativeTo(null);
 
         new ChaoJDialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
