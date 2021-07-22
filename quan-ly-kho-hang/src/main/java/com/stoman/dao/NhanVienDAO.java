@@ -89,11 +89,6 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
         return list;
     }
     
-    public List<NhanVien> selectTruongKho() {
-        String sql = "SELECT * FROM NHANVIEN WHERE VAITRO = 1";
-        return selectBySQL(sql);
-    }
-    
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
         if(header[index].equals("VAITRO")) {
@@ -103,5 +98,10 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
         }
         String sql = "SELECT * FROM NHANVIEN WHERE " + header[index] + " LIKE ?";
         return this.selectBySQL(sql, "%" + keyword + "%");
+    }
+    
+    public List<NhanVien> selectTruongKho() {
+        String sql = "SELECT * FROM NHANVIEN WHERE VAITRO = 1";
+        return this.selectBySQL(sql);
     }
 }
