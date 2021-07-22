@@ -5,6 +5,7 @@
  */
 package com.stoman.ui;
 
+import com.google.zxing.WriterException;
 import com.stoman.dao.ChiTietPhieuDAO;
 import com.stoman.dao.DoiTacDAO;
 import com.stoman.dao.HangHoaDAO;
@@ -23,19 +24,22 @@ import com.stoman.entity.LoaiHangHoa;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.QRCode;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -114,6 +118,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
+        btnChiTiet1 = new javax.swing.JButton();
         txtTimKiemCTPhieu = new javax.swing.JTextField();
         lblTimKiemCT = new javax.swing.JLabel();
         lblTimKiemCT2 = new javax.swing.JLabel();
@@ -454,7 +459,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setBackground(new java.awt.Color(153, 153, 255));
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         pnlChucNang.setOpaque(false);
-        pnlChucNang.setLayout(new java.awt.GridLayout(5, 1));
+        pnlChucNang.setLayout(new java.awt.GridLayout(6, 1));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add-32.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -501,6 +506,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnChiTiet);
 
+        btnChiTiet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code.png"))); // NOI18N
+        btnChiTiet1.setText("Xuất mã phiếu");
+        btnChiTiet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTiet1ActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnChiTiet1);
+
         txtTimKiemCTPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemCTPhieuKeyReleased(evt);
@@ -539,7 +553,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(pnlTblCTPhieu_sub)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(10, 10, 10)
-                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
         pnlChiTietLayout.setVerticalGroup(
@@ -722,7 +736,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         if(evt.getClickCount() < 2) return;
         
         delCTP.clear();
-        int row = tblPhieu.getSelectedRow();
+        row = tblPhieu.getSelectedRow();
         Phieu phieu = (Phieu) this.modelPhieu.getValueAt(row, 8);
 
         this.setFormPhieu(phieu);
@@ -829,6 +843,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
+    private void btnChiTiet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTiet1ActionPerformed
+        // TODO add your handling code here:
+        createQRCode();
+    }//GEN-LAST:event_btnChiTiet1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -877,6 +896,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog ChiTietPhieuDialog;
     private javax.swing.JButton btnChiTiet;
+    private javax.swing.JButton btnChiTiet1;
     private javax.swing.JButton btnFirst;
     private javax.swing.ButtonGroup btnGrpLoaiPhieu;
     private javax.swing.JButton btnLast;
@@ -1458,5 +1478,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
         sorterCTPhieu.setRowFilter(rf);
     }
-            
+    
+    void createQRCode() {
+        Phieu phieu = (Phieu) this.modelPhieu.getValueAt(row, 8);
+        try {
+            BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(phieu.getMaPhieu()));
+            ImageIcon icon = new ImageIcon(bi);
+            MsgBox.showImage(this, "QR Code", icon);
+        } catch (WriterException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
