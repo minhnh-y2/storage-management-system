@@ -68,7 +68,7 @@ public class NhanVien {
     
     @Override
     public String toString() {
-        return String.valueOf(this.getTenNV());
+        return this.getTenNV();
     }
     
     @Override
