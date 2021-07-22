@@ -717,12 +717,19 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     void fillToTable() {
+        tblModel.setRowCount(0);
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
-        int headerIndex = cboTimKiem.getSelectedIndex();
-        tblModel.setRowCount(0);
+        List<DoiTac> list = null;
+            
         try {
-            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
+            if(keyword.isEmpty()){
+                list = dtDAO.selectByLoaiDT(maLDT);
+            } else {
+                int headerIndex = cboTimKiem.getSelectedIndex();
+                list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
+            }
+            
             for (DoiTac dt : list) {
                 tblModel.addRow(new Object[]{
                     dt.getMaDT(),
