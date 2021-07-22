@@ -96,8 +96,6 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
                 keyword = "1";
             } else if ("THỦ KHO".contains(keyword.toUpperCase().trim())) {
                 keyword = "0";
-            } else {
-                keyword = "";
             }
         }
         String sql = "SELECT * FROM NHANVIEN WHERE " + header[index] + " LIKE ?";
