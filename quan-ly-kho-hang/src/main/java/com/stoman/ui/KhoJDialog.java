@@ -561,6 +561,8 @@ public class KhoJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Chưa nhập số kho!");
         } else if (txtDiaChi.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập địa chỉ!");
+        } else if (cboTruongKho.getSelectedIndex() == 0) {
+            MsgBox.alert(this, "Chưa chọn trưởng kho!");
         } else {
             return true;
         }

@@ -52,11 +52,5 @@ public class MsgBox {
                 "Hệ thống quản lý kho hàng", 
                 JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    public static void showImage(Component parent, String message, ImageIcon icon) {
-        JOptionPane.showMessageDialog(parent, message,
-                "Hệ thống quản lý kho hàng", 
-                JOptionPane.INFORMATION_MESSAGE, icon);
-    }
 
 }

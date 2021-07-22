@@ -61,14 +61,14 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
 
     @Override
     protected List<NhanVien> selectBySQL(String sql, Object... args) {
-        List<NhanVien> list=new ArrayList<>();
+        List<NhanVien> list = new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
                 rs = XJdbc.query(sql, args);
-                while(rs.next()){
+                while (rs.next()) {
                     NhanVien entity = new NhanVien();
-                    
+
                     entity.setMaNV(rs.getString("MANV"));
                     entity.setTenNV(rs.getString("TENNV"));
                     entity.setVaiTro(rs.getBoolean("VAITRO"));
@@ -77,31 +77,29 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
 
                     list.add(entity);
                 }
-            } 
-            finally{
+            } finally {
                 rs.getStatement().getConnection().close();
             }
-        } 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
         return list;
     }
-    
+
     public List<NhanVien> selectTruongKho() {
         String sql = "SELECT * FROM NHANVIEN WHERE VAITRO = 1";
         return selectBySQL(sql);
     }
-    
+
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
-        if(header[index].equals("VAITRO")) {
-            if(keyword.toUpperCase().contains("TRƯỞNG KHO")) keyword = "1";
-            else
-            if (keyword.toUpperCase().contains("THỦ KHO")) keyword = "0";
-            else
-                keyword = "2";
+        if (header[index].equals("VAITRO")) {
+            if (keyword.toUpperCase().contains("TRƯỞNG KHO")) {
+                keyword = "1";
+            } else if (keyword.toUpperCase().contains("THỦ KHO")) {
+                keyword = "0";
+            }
         }
         String sql = "SELECT * FROM NHANVIEN WHERE " + header[index] + " LIKE ?";
         return this.selectBySQL(sql, "%" + keyword + "%");
