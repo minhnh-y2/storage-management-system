@@ -457,7 +457,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private int row = -1;
     private Point initialClick;
 
-    void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         this.kDAO = new KhoDAO();
@@ -471,7 +471,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         
     }
     
-    void formatTable() {
+    // Tạo tiêu đề và định dạng bảng
+    private void formatTable() {
         String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
         this.model = new DefaultTableModel(header, 0) {
             @Override
@@ -494,7 +495,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         tblKho.setAutoCreateRowSorter(true);
     }
     
-    void fillToComboBox() {
+    // Đổ dữ liệu combobox mã kho
+    private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTruongKho.getModel();
         model.removeAllElements();
         try {
@@ -508,7 +510,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
 
-    void fillToTable() {
+    // Đổ dữ liệu vào bảng
+    private void fillToTable() {
         model.setRowCount(0);
         String keyword = txtTimKiem.getText();
         try {
@@ -527,7 +530,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
 
-    void updateStatus() {
+    // Cập nhật trạng thái nút và form
+    private void updateStatus() {
         boolean edit = (this.row >= 0);
 
         txtMaKho.setEditable(!edit);
@@ -536,7 +540,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         btnXoa.setEnabled(edit);
     }
 
-    Kho getForm() {
+    // Lấy dữ liệu từ form
+    private Kho getForm() {
         Kho k = new Kho();
         NhanVien nv = (NhanVien) cboTruongKho.getSelectedItem();
         k.setMaKho(Integer.parseInt(txtMaKho.getText()));
@@ -545,14 +550,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         return k;
     }
 
-    void setForm(Kho k) {
+    // Hiển thị dữ liệu lên form
+    private void setForm(Kho k) {
         NhanVien nv = nvDAO.selectByID(k.getMaTK());
         txtMaKho.setText(String.valueOf(k.getMaKho()));
         txtDiaChi.setText(k.getDiaChi());
         cboTruongKho.setSelectedItem(nv);
     }
 
-    void clearForm() {
+    // Xoá trắng form
+    private void clearForm() {
         txtMaKho.setText("");
         txtDiaChi.setText("");
         tblKho.clearSelection();
@@ -561,14 +568,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
-    void edit() {
+    // Hiển thị dữ liệu đang chọn trên bảng lên form
+    private void edit() {
         int maKho = (int) tblKho.getValueAt(this.row, 0);
         Kho k = kDAO.selectByID(maKho);
         this.setForm(k);
         this.updateStatus();
     }
 
-    boolean isValidated() {
+    // Xác thực dữ liệu trên form
+    private boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
         } else if (txtDiaChi.getText().isEmpty()) {
@@ -579,7 +588,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         return false;
     }
     
-    void insert() {
+    // Thêm kho mới
+    private void insert() {
         if(isValidated()){
             Kho k = getForm();
             try {
@@ -594,7 +604,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
     
-    void update() {
+    // Cập nhật kho
+    private void update() {
         if(isValidated()) {
             Kho k = getForm();
             try {
@@ -608,7 +619,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
     
-    void delete() {
+    // Xoá kho
+    private void delete() {
         if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xoá kho!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {

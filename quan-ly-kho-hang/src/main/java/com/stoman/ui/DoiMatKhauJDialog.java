@@ -253,7 +253,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         this.dispose();
     }
 
-    boolean isValidated() {
+    private boolean isValidated() {
         if (txtMatKhauCu.getPassword().length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu hiện tại!");
             txtMatKhauCu.requestFocus();

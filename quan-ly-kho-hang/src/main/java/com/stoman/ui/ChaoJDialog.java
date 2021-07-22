@@ -100,7 +100,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
     private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 
-    void init() {
+    private void init() {
         setLocationRelativeTo(null);
         new Timer(20, new ActionListener(){
             @Override
