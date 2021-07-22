@@ -628,23 +628,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
         this.lstModel = new DefaultListModel<>();
-
-        String header[] = {"STT", "TÊN HH", "ĐƠN GIÁ", "ĐVT"};
-        this.tblModel = new DefaultTableModel(header, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-            
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-        tblHangHoa.setModel(tblModel);
         
         this.formatTable();
         this.fillToComboBox();
@@ -899,7 +882,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"MÃ HH", "TÊN HH", "ĐƠN GIÁ", "ĐVT"};
+       String header[] = {"STT", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -915,10 +898,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         };
         tblHangHoa.setModel(tblModel);
+        
         tblHangHoa.setAutoCreateRowSorter(true);
-
-        tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(125);
-        tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(464);
+        // Set size column
+        tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(524);
         tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(125);
         tblHangHoa.getColumnModel().getColumn(3).setPreferredWidth(125);
 

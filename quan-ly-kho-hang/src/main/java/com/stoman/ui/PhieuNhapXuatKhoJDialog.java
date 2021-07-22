@@ -1557,6 +1557,28 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_sub.setModel(modelCTPhieu);
         tblCTPhieu_main.setModel(modelCTPhieu);
         
+        // Chỉnh độ dài các cột bảng Phiếu
+        tblPhieu.getColumnModel().getColumn(0).setPreferredWidth(16);
+        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(284);
+        tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(32);
+        tblPhieu.getColumnModel().getColumn(3).setPreferredWidth(18);
+        tblPhieu.getColumnModel().getColumn(4).setPreferredWidth(82);
+        tblPhieu.getColumnModel().getColumn(5).setPreferredWidth(88);
+        tblPhieu.getColumnModel().getColumn(6).setPreferredWidth(87);
+        tblPhieu.getColumnModel().getColumn(7).setPreferredWidth(116);
+        tblPhieu.getColumnModel().getColumn(8).setPreferredWidth(114);
+        // Chỉnh độ dài các cột bảng Chi tiết phiếu
+        tblCTPhieu_main.getColumnModel().getColumn(0).setPreferredWidth(15);
+        tblCTPhieu_main.getColumnModel().getColumn(1).setPreferredWidth(380);
+        tblCTPhieu_main.getColumnModel().getColumn(2).setPreferredWidth(85);
+        tblCTPhieu_main.getColumnModel().getColumn(3).setPreferredWidth(84);
+        tblCTPhieu_sub.getColumnModel().getColumn(0).setPreferredWidth(15);
+        tblCTPhieu_sub.getColumnModel().getColumn(1).setPreferredWidth(487);
+        tblCTPhieu_sub.getColumnModel().getColumn(2).setPreferredWidth(122);
+        tblCTPhieu_sub.getColumnModel().getColumn(3).setPreferredWidth(120);
+
+
+        
         // cài đặt bộ lọc cho bảng
         tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));

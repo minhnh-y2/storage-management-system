@@ -460,6 +460,11 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         };
         tblKho.setModel(tblModel);
+        
+        // Điều chỉnh size column
+        tblKho.getColumnModel().getColumn(0).setPreferredWidth(22);
+        tblKho.getColumnModel().getColumn(1).setPreferredWidth(130);
+        tblKho.getColumnModel().getColumn(2).setPreferredWidth(107);
     }
 
     // Đổ dữ liệu combobox mã kho
