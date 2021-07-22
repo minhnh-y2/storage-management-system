@@ -6,15 +6,14 @@
 package com.stoman.ui;
 
 import com.stoman.dao.KhoDAO;
+import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.Kho;
+import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,6 +53,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         pnlTxtDiaChi = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
         txtMaKho = new javax.swing.JFormattedTextField();
+        lblTruongKho = new javax.swing.JLabel();
+        cboTruongKho = new javax.swing.JComboBox<>();
         lblTimKiem = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         pnlTblKho = new javax.swing.JScrollPane();
@@ -127,6 +128,10 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
+        lblTruongKho.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTruongKho.setForeground(new java.awt.Color(51, 51, 51));
+        lblTruongKho.setText("Trưởng kho");
+
         javax.swing.GroupLayout pnlThongTinKhoLayout = new javax.swing.GroupLayout(pnlThongTinKho);
         pnlThongTinKho.setLayout(pnlThongTinKhoLayout);
         pnlThongTinKhoLayout.setHorizontalGroup(
@@ -141,7 +146,10 @@ public class KhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTxtDiaChi)
                     .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
                         .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTruongKho)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboTruongKho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlThongTinKhoLayout.setVerticalGroup(
@@ -150,7 +158,9 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMaKho)
-                    .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTruongKho)
+                    .addComponent(cboTruongKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThongTinKhoLayout.createSequentialGroup()
@@ -268,12 +278,12 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTimKiem))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
         pnlBackgroundLayout.setVerticalGroup(
@@ -421,11 +431,13 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cboTruongKho;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblMaKho;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblTieuDe;
     private javax.swing.JLabel lblTimKiem;
+    private javax.swing.JLabel lblTruongKho;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JScrollPane pnlTblKho;
@@ -438,7 +450,9 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
-    private KhoDAO DAO;
+    private KhoDAO kDAO;
+    private NhanVienDAO nvDAO;
+    
     private DefaultTableModel model;
     private int row = -1;
     private Point initialClick;
@@ -446,8 +460,19 @@ public class KhoJDialog extends javax.swing.JDialog {
     void init() {
         setLocationRelativeTo(null);
 
-        this.DAO = new KhoDAO();
-        String header[] = {"Mã kho", "Địa chỉ"};
+        this.kDAO = new KhoDAO();
+        this.nvDAO = new NhanVienDAO();
+        
+        this.formatTable();
+
+        this.fillToComboBox();
+        this.fillToTable();
+        this.updateStatus();
+        
+    }
+    
+    void formatTable() {
+        String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
         this.model = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -463,22 +488,36 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         };
         tblKho.setModel(model);
-        tblKho.getColumnModel().getColumn(0).setMaxWidth(60);
+        tblKho.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tblKho.getColumnModel().getColumn(1).setPreferredWidth(224);
+        tblKho.getColumnModel().getColumn(2).setPreferredWidth(80);
         tblKho.setAutoCreateRowSorter(true);
-
-        this.fillToTable();
-        this.updateStatus();
+    }
+    
+    void fillToComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTruongKho.getModel();
+        model.removeAllElements();
+        try {
+            List<NhanVien> list = nvDAO.selectTruongKho();
+            for (NhanVien nv : list) {
+                model.addElement(nv);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            e.printStackTrace();
+        }
     }
 
     void fillToTable() {
         model.setRowCount(0);
         String keyword = txtTimKiem.getText();
         try {
-            List<Kho> list = DAO.selectByKeyword(keyword);
+            List<Kho> list = kDAO.selectByKeyword(keyword);
             for (Kho k : list) {
                 model.addRow(new Object[]{
                     k.getMaKho(),
-                    k.getDiaChi()
+                    k.getDiaChi(),
+                    k.getMaTK()
                 });
             }
             tblKho.setModel(model);
@@ -499,28 +538,32 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     Kho getForm() {
         Kho k = new Kho();
+        NhanVien nv = (NhanVien) cboTruongKho.getSelectedItem();
         k.setMaKho(Integer.parseInt(txtMaKho.getText()));
         k.setDiaChi(txtDiaChi.getText());
-        k.setMaTK(Auth.user.getMaNV());
+        k.setMaTK(nv.getMaNV());
         return k;
     }
 
     void setForm(Kho k) {
+        NhanVien nv = nvDAO.selectByID(k.getMaTK());
         txtMaKho.setText(String.valueOf(k.getMaKho()));
         txtDiaChi.setText(k.getDiaChi());
+        cboTruongKho.setSelectedItem(nv);
     }
 
     void clearForm() {
         txtMaKho.setText("");
         txtDiaChi.setText("");
         tblKho.clearSelection();
+        cboTruongKho.setSelectedIndex(0);
         this.row = -1;
         this.updateStatus();
     }
 
     void edit() {
         int maKho = (int) tblKho.getValueAt(this.row, 0);
-        Kho k = DAO.selectByID(maKho);
+        Kho k = kDAO.selectByID(maKho);
         this.setForm(k);
         this.updateStatus();
     }
@@ -540,7 +583,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         if(isValidated()){
             Kho k = getForm();
             try {
-                DAO.insert(k);
+                kDAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công!");
@@ -555,7 +598,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         if(isValidated()) {
             Kho k = getForm();
             try {
-                DAO.update(k);
+                kDAO.update(k);
                 this.fillToTable();
                 MsgBox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
@@ -571,7 +614,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);
             try {
-                DAO.delete(maKho);
+                kDAO.delete(maKho);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá kho thành công!");

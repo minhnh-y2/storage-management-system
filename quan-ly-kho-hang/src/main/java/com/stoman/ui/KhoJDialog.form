@@ -63,13 +63,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="lblTimKiem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtTimKiem" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="pnlChucNang" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlChucNang" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
@@ -179,7 +179,10 @@
                           <Component id="pnlTxtDiaChi" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="txtMaKho" min="-2" pref="55" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblTruongKho" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cboTruongKho" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -193,6 +196,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMaKho" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtMaKho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTruongKho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboTruongKho" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -253,6 +258,22 @@
                   <Format format="#0" subtype="-1" type="0"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTruongKho">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edf;ng kho"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTruongKho">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
