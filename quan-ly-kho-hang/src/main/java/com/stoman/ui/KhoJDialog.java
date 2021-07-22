@@ -460,6 +460,22 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void init() {
         setLocationRelativeTo(null);
 
+<<<<<<< HEAD
+=======
+        this.kDAO = new KhoDAO();
+        this.nvDAO = new NhanVienDAO();
+        
+        this.formatTable();
+
+        this.fillToComboBox();
+        this.fillToTable();
+        this.updateStatus();
+        
+    }
+    
+    // Tạo tiêu đề và định dạng bảng
+    private void formatTable() {
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
@@ -487,7 +503,12 @@ public class KhoJDialog extends javax.swing.JDialog {
         khac.setTenNV("Chưa có");
     }
     
+<<<<<<< HEAD
     private void fillToCbo(){
+=======
+    // Đổ dữ liệu combobox mã kho
+    private void fillToComboBox() {
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTruongKho.getModel();
         model.removeAllElements();
          try {
@@ -502,9 +523,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         }        
     }
 
+<<<<<<< HEAD
     private void fillToTable() {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText().trim();
+=======
+    // Đổ dữ liệu vào bảng
+    private void fillToTable() {
+        model.setRowCount(0);
+        String keyword = txtTimKiem.getText();
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         try {
             List<Kho> list = kDAO.selectByKeyword(keyword);
             for (Kho k : list) {
@@ -521,6 +549,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
 
+<<<<<<< HEAD
+=======
+    // Cập nhật trạng thái nút và form
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void updateStatus() {
         boolean edit = (this.row >= 0);
 
@@ -530,6 +562,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         btnXoa.setEnabled(edit);
     }
 
+<<<<<<< HEAD
+=======
+    // Lấy dữ liệu từ form
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private Kho getForm() {
         Kho k = new Kho();
         NhanVien nv = (NhanVien) cboTruongKho.getSelectedItem();
@@ -543,12 +579,22 @@ public class KhoJDialog extends javax.swing.JDialog {
         return k;
     }
 
+<<<<<<< HEAD
     private void setForm(Kho k, NhanVien nv) {
+=======
+    // Hiển thị dữ liệu lên form
+    private void setForm(Kho k) {
+        NhanVien nv = nvDAO.selectByID(k.getMaTK());
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         txtMaKho.setText(String.valueOf(k.getMaKho()));
         txtDiaChi.setText(k.getDiaChi());
         cboTruongKho.getModel().setSelectedItem(nv);
     }
 
+<<<<<<< HEAD
+=======
+    // Xoá trắng form
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void clearForm() {
         txtMaKho.setText("");
         txtDiaChi.setText("");
@@ -558,6 +604,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
+<<<<<<< HEAD
+=======
+    // Hiển thị dữ liệu đang chọn trên bảng lên form
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void edit() {
         int maKho = (int) tblKho.getValueAt(this.row, 0);
         String maNV = ((NhanVien) tblKho.getValueAt(this.row, 2)).getMaNV();
@@ -567,6 +617,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
+<<<<<<< HEAD
+=======
+    // Xác thực dữ liệu trên form
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
@@ -578,6 +632,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         return false;
     }
     
+<<<<<<< HEAD
+=======
+    // Thêm kho mới
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void insert() {
         if(isValidated()){
             Kho k = getForm();
@@ -593,6 +651,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
     
+<<<<<<< HEAD
+=======
+    // Cập nhật kho
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void update() {
         if(isValidated()) {
             Kho k = getForm();
@@ -607,6 +669,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
     }
     
+<<<<<<< HEAD
+=======
+    // Xoá kho
+>>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void delete() {
         if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xoá kho!");
