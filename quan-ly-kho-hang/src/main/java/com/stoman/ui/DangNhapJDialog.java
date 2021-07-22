@@ -220,7 +220,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     NhanVienDAO dao = new NhanVienDAO();
 
     //  Code phương thức đăng nhập.
-    void login() {
+    private void login() {
         // Lấy tên mã nhân viên và mật khẩu
         if(isValidated()) {
             String maNV = txtTenNV.getText();
@@ -239,13 +239,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }
 
     // Code phương thức Thoát.
-    void exit() {
+    private void exit() {
         if (MsgBox.confirm(this, "Bạn có muốn thoát phần mềm?")) {
             System.exit(0);
         }
     }
     
-    boolean isValidated() {
+    // Xác thực dữ liệu nhập vào form
+    private boolean isValidated() {
         if(txtTenNV.getText().length() == 0){
             MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
             txtTenNV.requestFocus();

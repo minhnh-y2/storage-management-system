@@ -33,8 +33,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -983,51 +981,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private int row = -1;
     
 
-    void init() {
+    private void init() {
         this.setLocationRelativeTo(null);
         
         ChiTietPhieuDialog.pack();
         ChiTietPhieuDialog.setLocationRelativeTo(null);
         ChiTietPhieuDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         ChiTietPhieuDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        
-        // Dữ liệu hàng tiêu đề bảng
-        String headerPhieu[] = {"STT", "Đối tác" , "Loại", "Kho" , "Trạng thái",
-            "Ngày thực hiện", "Ngày hoàn thành", "Ngày lập", "Người lập"};
-        this.modelPhieu = new DefaultTableModel(headerPhieu, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Phiếu"};
-        this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                if(column == 2 || column == 3) return true;
-                return false;
-            }
-
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-
-        tblPhieu.setModel(modelPhieu);
-        tblCTPhieu_sub.setModel(modelCTPhieu);
-        tblCTPhieu_main.setModel(modelCTPhieu);
         
         this.formatTable();
         this.fillToComboBoxTimKiemCTPhieu();
@@ -1042,7 +1002,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu phiếu nhập xuất
-    void fillToTablePhieu() {
+    private void fillToTablePhieu() {
         tblPhieu.setRowSorter(null);
         modelPhieu.setRowCount(0);
         List<Phieu> list = pDAO.selectAll();
@@ -1068,7 +1028,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu chi tiết phiếu
-    void fillToTableCTPhieu() {
+    private void fillToTableCTPhieu() {
         tblCTPhieu_main.setRowSorter(null);
         tblCTPhieu_sub.setRowSorter(null);
         modelCTPhieu.setRowCount(0);
@@ -1097,7 +1057,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ dữ liệu ComboBox loại đối tác
-    void fillToComboBoxLoaiDT() {
+    private void fillToComboBoxLoaiDT() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
@@ -1113,7 +1073,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu ComboBox đối tác
-    void fillToComboBoxDoiTac() {
+    private void fillToComboBoxDoiTac() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
@@ -1129,7 +1089,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ dữ liệu vào ComboBox kho
-    void fillToComboBoxKho() {
+    private void fillToComboBoxKho() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
@@ -1144,7 +1104,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ dữ liệu ComboBox loại hàng hoá
-    void fillToComboBoxLoaiHH() {
+    private void fillToComboBoxLoaiHH() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
@@ -1160,7 +1120,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ dữ liệu ComboBox hàng hoá
-    void fillToComboBoxHangHoa() {
+    private void fillToComboBoxHangHoa() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.removeAllElements();
         try {
@@ -1329,7 +1289,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         MsgBox.alert(this, "Cập nhật phiếu " + (phieu.isLoai()?"nhập":"xuất") + " thành công!");
     }
     
-    // Xoa phieu khoi he thong
+    // Xoá phieu khoi he thong
     private void deletePhieu(){
         Phieu phieu = this.getFormPhieu();
         String maPhieu = tblCTPhieu_sub.getToolTipText();
@@ -1381,7 +1341,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         isUpdate = false;
     }
 
-    // cập nhật giao diện form theo hoạt động
+    // Cập nhật giao diện form theo hoạt động
     private void updateStatus() {
 //        boolean edit = (this.row >= 0);
 //        boolean first = (this.row == 0);
@@ -1398,7 +1358,46 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 //        btnLast.setEnabled(!last);
     }
     
+    // Định dạng bảng
     private void formatTable(){
+        // Dữ liệu hàng tiêu đề bảng
+        String headerPhieu[] = {"STT", "Đối tác" , "Loại", "Kho" , "Trạng thái",
+            "Ngày thực hiện", "Ngày hoàn thành", "Ngày lập", "Người lập"};
+        this.modelPhieu = new DefaultTableModel(headerPhieu, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Phiếu"};
+        this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                if(column == 2 || column == 3) return true;
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+
+        tblPhieu.setModel(modelPhieu);
+        tblCTPhieu_sub.setModel(modelCTPhieu);
+        tblCTPhieu_main.setModel(modelCTPhieu);
+        
         // cài đặt bộ lọc cho bảng
         tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));
@@ -1425,7 +1424,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ combobox tìm kiếm chi tiết phiếu
-    void fillToComboBoxTimKiemCTPhieu() {
+    private void fillToComboBoxTimKiemCTPhieu() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCT.getModel();
         model.removeAllElements();
         for(int i = 0; i < tblCTPhieu_sub.getColumnCount(); i++) {
@@ -1434,7 +1433,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Lọc bảng theo từ khoá chi tiết phiếu
-    void searchCTPhieu() {  
+    private void searchCTPhieu() {  
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieu);
         tblCTPhieu_sub.setRowSorter(sorterCTPhieu);
         tblCTPhieu_main.setRowSorter(sorterCTPhieu);
@@ -1452,7 +1451,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Đổ combobox tìm kiếm phiếu
-    void fillToComboBoxTimKiemPhieu() {
+    private void fillToComboBoxTimKiemPhieu() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemPhieu.getModel();
         model.removeAllElements();
         for(int i = 0; i < tblPhieu.getColumnCount(); i++) {
@@ -1461,7 +1460,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
     
     // Lọc bảng theo từ khoá phiếu
-    void searchPhieu() {  
+    private void searchPhieu() {  
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelPhieu);
         tblPhieu.setRowSorter(sorterCTPhieu);
         tblPhieu.setRowSorter(sorterCTPhieu);
@@ -1478,7 +1477,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         sorterCTPhieu.setRowFilter(rf);
     }
     
-    void createQRCode() {
+    // Tạo mã QR chứa mã phiếu
+    private void createQRCode() {
         Phieu phieu = (Phieu) this.modelPhieu.getValueAt(row, 8);
         try {
             BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(phieu.getMaPhieu()));

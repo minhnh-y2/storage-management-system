@@ -589,33 +589,18 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private int row = -1;
     private Point initialClick;
 
-    void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
-        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
-        this.tblModel = new DefaultTableModel(header, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-            
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-        tblNhanVien.setModel(tblModel);
-        tblNhanVien.setAutoCreateRowSorter(true);
+        this.formatTable();
 
         this.fillToComboBox();
         this.fillToTable();
         this.updateStatus();
     }
     
-    void fillToTable() {
+    // Đổ dữ liệu nhân viên vào bảng
+    private void fillToTable() {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
         List<NhanVien> list = null;
@@ -641,7 +626,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
     }
     
-    void fillToComboBox() {
+    // Đổ tên bảng vào combobox tìm kiếm
+    private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for(int i = 0; i < tblNhanVien.getColumnCount(); i++) {
@@ -649,7 +635,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
     }
 
-    NhanVien getForm() {
+    // Tạo nhân viên mới từ form
+    private NhanVien getForm() {
         NhanVien nv = new NhanVien();
         String matKhau = new String(txtMatKhau.getPassword());
         nv.setMaNV(txtMaNV.getText());
@@ -660,7 +647,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         return nv;
     }
 
-    void setForm(NhanVien nv) {
+    // Hiển thị thông tin nhân viên lên form
+    private void setForm(NhanVien nv) {
         txtMaNV.setText(nv.getMaNV());
         txtHoTen.setText(nv.getTenNV());
         txtMatKhau.setText(nv.getMatKhau());
@@ -672,21 +660,24 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
     }
 
-    void clearForm() {
+    // Xoá trắng form
+    private void clearForm() {
         this.setForm(new NhanVien());
         this.row = -1;
         this.updateStatus();
         tblNhanVien.clearSelection();
     }
 
-    void edit() {
+    // Hiển thị dữ liệu nhân viên đang chọn trên bảng
+    private void edit() {
         String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
         NhanVien nv = DAO.selectByID(maNV);
         this.setForm(nv);
         this.updateStatus();
     }
 
-    void updateStatus() {
+    // Cập nhật trạng thái form và các nút
+    private void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
@@ -707,31 +698,36 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
     }
 
-    void first() {
+    // Hiển thị nhân viên đầu danh sách
+    private void first() {
         this.row = 0;
         this.edit();
     }
 
-    void prev() {
+    // Hiển thị nhân viên kế trước
+    private void prev() {
         if (this.row > 0) {
             this.row--;
             this.edit();
         }
     }
 
-    void next() {
+    // Hiển thị nhân viên kế tiếp
+    private void next() {
         if (this.row < (tblNhanVien.getRowCount() - 1)) {
             this.row++;
             this.edit();
         }
     }
 
-    void last() {
+    // Hiển thị nhân viên cuối danh sách
+    private void last() {
         this.row = tblNhanVien.getRowCount() - 1;
         this.edit();
     }
 
-    boolean isValidated() {
+    // Xác thực dữ liệu trên form
+    private boolean isValidated() {
         String maNV = txtMaNV.getText();
         String hoTen = txtHoTen.getText();
         char[] matKhau = txtMatKhau.getPassword();
@@ -757,7 +753,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         return false;
     }
 
-    void insert() {
+    // Thêm nhân viên mới
+    private void insert() {
         if (isValidated()) {
             NhanVien nv = getForm();
             try {
@@ -772,7 +769,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
     }
 
-    void delete() {
+    // Xoá nhân viên hiện tại
+    private void delete() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá nhân viên này không?")) {
@@ -789,7 +787,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
     }
     
-    void update() {
+    // Cập nhật nhân viên 
+    private void update() {
         if (isValidated()) {
             NhanVien nv = getForm();
             try {
@@ -802,6 +801,27 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 e.printStackTrace();
             }
         }
+    }
+
+    // Định dạng bảng
+    private void formatTable() {
+        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
+        this.tblModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblNhanVien.setModel(tblModel);
+        tblNhanVien.setAutoCreateRowSorter(true);
     }
 
 }
