@@ -92,16 +92,16 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
         if(header[index].equals("VAITRO")) {
-            if("TRƯỞNG KHO".contains(keyword.toUpperCase().trim())){
-                keyword = "1";
-            } else if ("THỦ KHO".contains(keyword.toUpperCase().trim())) {
-                keyword = "0";
-            } else {
-                keyword = "";
-            }
+            if(keyword.toUpperCase().contains("TRƯỞNG KHO")) keyword = "1";
+            else
+            if (keyword.toUpperCase().contains("THỦ KHO")) keyword = "0";
         }
         String sql = "SELECT * FROM NHANVIEN WHERE " + header[index] + " LIKE ?";
         return this.selectBySQL(sql, "%" + keyword + "%");
     }
     
+    public List<NhanVien> selectTruongKho() {
+        String sql = "SELECT * FROM NHANVIEN WHERE VAITRO = 1";
+        return this.selectBySQL(sql);
+    }
 }

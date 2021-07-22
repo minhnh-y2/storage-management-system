@@ -90,8 +90,7 @@ public class HangHoaDAO extends StoManDAO<HangHoa, String>{
     
     public List<HangHoa> selectByKeyword(Integer maLHH, String keyword, int index) {
         String[] header = {"MAHH", "TENHH", "DONGIA", "DONVITINH"};
-        String sql = "SELECT * FROM HANGHOA WHERE MALHH = ? AND "
-                + header[index] + " LIKE ?";
+        String sql = "SELECT * FROM HANGHOA WHERE MALHH = ? AND " + header[index] + " LIKE ?";
         return this.selectBySQL(sql, maLHH, "%" + keyword + "%");
     }
     

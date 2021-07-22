@@ -96,19 +96,15 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
     
     public List<DoiTac> selectByKeyword(Integer maLDT, String keyword, int index) {
         String header[] = {"TENDT", "DIACHI", "EMAIL", "SODT", "VAITRO"};
-        if(header[index].equals("VAITRO")) {
-            if("KHÁCH HÀNG".contains(keyword.toUpperCase().trim())){
-                keyword = "0";
-            } else if ("NHÀ PHÂN PHỐI".contains(keyword.toUpperCase().trim())) {
-                keyword = "1";
-            } else {
-                keyword = "";
-            }
+        
+        if(index == 4){
+            if(keyword.toUpperCase().contains("NHÀ PHÂN PHỐI")) keyword = "1";
+            else
+            if(keyword.toUpperCase().contains("KHÁCH HÀNG")) keyword = "0";
         }
-        System.out.println(header[index]);
-        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ? AND " + header[index]
-                + " LIKE ?";
-        return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
+        
+        String sql = "SELECT * FROM DOITAC WHERE MALDT = " + maLDT + " AND " + header[index]+ " LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%");
     }
     
     public List<DoiTac> selectByLoaiDT(Integer maLDT) {

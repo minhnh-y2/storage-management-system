@@ -65,5 +65,15 @@ public class NhanVien {
     public void setMuoi(String muoi) {
         this.muoi = muoi;
     }
-       
+    
+    @Override
+    public String toString() {
+        return String.valueOf(this.getTenNV());
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        NhanVien other = (NhanVien) obj;
+        return other.getMaNV() == this.getMaNV();
+    }
 }

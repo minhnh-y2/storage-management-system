@@ -670,7 +670,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private int row = -1;
     private Point initialClick;
 
-    void init() {
+    private void init() {
         setLocationRelativeTo(null);
 
         this.dtDAO = new DoiTacDAO();
@@ -701,7 +701,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
     
-    void fillToList() {
+    private void fillToList() {
         DefaultListModel lstModel = new DefaultListModel();
         lstModel.removeAllElements();
         try {
@@ -716,16 +716,17 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void fillToTable() {
+    private void fillToTable() {
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
         int headerIndex = cboTimKiem.getSelectedIndex();
         tblModel.setRowCount(0);
+        int i = 1;
         try {
             List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
             for (DoiTac dt : list) {
                 tblModel.addRow(new Object[]{
-                    dt.getMaDT(),
+                    i++,
                     dt.getTenDT(),
                     dt.getDiaChi(),
                     dt.getEmail(),
@@ -741,7 +742,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
     
     // Đổ tên bảng vào ComboBox tìm kiếm
-    void fillToComboBox() {
+    private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for(int i = 0; i < tblDoiTac.getColumnCount(); i++) {
@@ -749,7 +750,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    DoiTac getForm() {
+    private DoiTac getForm() {
         DoiTac dt = new DoiTac();
         dt.setTenDT(txtTenDT.getText().trim());
         dt.setDiaChi(txtDiaChi.getText());
@@ -760,7 +761,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         return dt;
     }
 
-    void setForm(DoiTac dt) {
+    private void setForm(DoiTac dt) {
         txtTenDT.setText(dt.getTenDT());
         txtDiaChi.setText(dt.getDiaChi());
         txtEmail.setText(dt.getEmail());
@@ -772,14 +773,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void clearForm() {
+    private void clearForm() {
         setForm(new DoiTac());
         this.row = -1;
         tblDoiTac.clearSelection();
         this.updateStatus();
     }
 
-    void updateStatus() {
+    private void updateStatus() {
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
@@ -801,38 +802,38 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
     }
     
-    void edit() {
+    private void edit() {
         int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 0);
         DoiTac dt = dtDAO.selectByID(maDT);
         this.setForm(dt);
         this.updateStatus();
     }
     
-    void first() {
+    private void first() {
         this.row = 0;
         this.edit();
     }
 
-    void prev() {
+    private void prev() {
         if (this.row > 0) {
             this.row--;
             this.edit();
         }
     }
 
-    void next() {
+    private void next() {
         if (this.row < (tblDoiTac.getRowCount() - 1)) {
             this.row++;
             this.edit();
         }
     }
 
-    void last() {
+    private void last() {
         this.row = tblDoiTac.getRowCount() - 1;
         this.edit();
     }
 
-    boolean isValidated() {
+    private boolean isValidated() {
         String tenDT = txtTenDT.getText();
         String diaChi = txtDiaChi.getText();
         String email = txtEmail.getText();
@@ -861,7 +862,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         return false;
     }
 
-    void insertLDT() {
+    private void insertLDT() {
         String tenLDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
         if (tenLDT != null && !tenLDT.isEmpty()) {
             LoaiDoiTac loaiDT = new LoaiDoiTac(tenLDT);
@@ -878,7 +879,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void deleteLDT() {
+    private void deleteLDT() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
         } else if(lstLDT.isSelectionEmpty()) {
@@ -898,7 +899,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void insert() {
+    private void insert() {
         if (isValidated()) {
             DoiTac dt = getForm();
             try {
@@ -913,7 +914,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-    void delete() {
+    private void delete() {
         if (Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá đối tác!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá đối tác này không?")) {
@@ -930,7 +931,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
     
-    void update() {
+    private void update() {
         if (isValidated()) {
             DoiTac dt = getForm();
             try {

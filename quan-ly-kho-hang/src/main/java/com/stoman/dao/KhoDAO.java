@@ -84,8 +84,8 @@ public class KhoDAO extends StoManDAO<Kho, Integer>{
     }
     
     public List<Kho> selectByKeyword(String keyword) {
-        String sql = "SELECT * FROM KHO WHERE DIACHI LIKE ?";
-        return this.selectBySQL(sql, "%" + keyword + "%");
+        String sql = "SELECT * FROM KHO WHERE DIACHI LIKE ? OR MATK LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%", "%" + keyword + "%");
     }
     
 }
