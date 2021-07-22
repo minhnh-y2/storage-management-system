@@ -7,6 +7,7 @@ package com.stoman.ui;
 
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
+import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -46,11 +47,13 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         lblDoiMatKhau = new javax.swing.JLabel();
         btnDongY = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        pnlMotion = new DragPanel(this);
         pnlDoiMatKhau = new javax.swing.JPanel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Đổi mật khẩu");
+        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png"))); // NOI18N
@@ -121,6 +124,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 130, -1));
+
+        pnlMotion.setOpaque(false);
+        getContentPane().add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
 
         pnlDoiMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         pnlDoiMatKhau.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -210,6 +216,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblXacNhanMK;
     private javax.swing.JPanel pnlDoiMatKhau;
+    private javax.swing.JPanel pnlMotion;
     private javax.swing.JPasswordField txtMatKhauCu;
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtXacNhanMK;

@@ -8,6 +8,7 @@ package com.stoman.ui;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
+import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -45,6 +46,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMatKhau = new javax.swing.JPasswordField();
         btnThoat = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
+        pnlMotion = new DragPanel(this);
         pnlDangNhap = new javax.swing.JPanel();
         lblBackground = new javax.swing.JLabel();
 
@@ -117,6 +119,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 150, -1));
+
+        pnlMotion.setOpaque(false);
+        getContentPane().add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
 
         pnlDangNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         getContentPane().add(pnlDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 360, 290));
@@ -208,6 +213,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTenDangNhap;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JPanel pnlDangNhap;
+    private javax.swing.JPanel pnlMotion;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenNV;
     // End of variables declaration//GEN-END:variables

@@ -187,7 +187,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý phiếu kiểm kho");
-        setAlwaysOnTop(true);
         setResizable(false);
 
         pnlTblCTPhieuKiemKho_sub.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách kiểm kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N

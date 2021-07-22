@@ -8,6 +8,7 @@ package com.stoman.ui;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
+import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
 import java.awt.Point;
@@ -42,7 +43,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         btnGrpVaiTro = new javax.swing.ButtonGroup();
         pnlBackground = new javax.swing.JPanel();
-        pnlThanhTieuDe = new javax.swing.JPanel();
+        pnlThanhTieuDe = new DragPanel(this);
         lblTieuDe = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
         pnlTblNhanVien = new javax.swing.JScrollPane();
@@ -78,23 +79,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý nhân viên");
-        setAlwaysOnTop(true);
         setUndecorated(true);
 
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
-        pnlThanhTieuDe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMouseDragged(evt);
-            }
-        });
-        pnlThanhTieuDe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMousePressed(evt);
-            }
-        });
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTieuDe.setForeground(new java.awt.Color(255, 255, 255));
@@ -450,26 +440,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
-
-    private void pnlThanhTieuDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMousePressed
-        // Di chuyển cửa sổ khi nhấp và kéo chuột
-        initialClick = evt.getPoint();
-    }//GEN-LAST:event_pnlThanhTieuDeMousePressed
-
-    private void pnlThanhTieuDeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMouseDragged
-        // Vị trí cửa sổ hiện tại   
-        int thisX = getLocation().x;
-        int thisY = getLocation().y;
-
-        // Xác định mức độ di chuyển của chuột từ lần nhấp chuột
-        int xMoved = evt.getX() - initialClick.x;
-        int yMoved = evt.getY() - initialClick.y;
-
-        // Di chuyển cửa sổ
-        int x = thisX + xMoved;
-        int y = thisY + yMoved;
-        setLocation(x, y);
-    }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:

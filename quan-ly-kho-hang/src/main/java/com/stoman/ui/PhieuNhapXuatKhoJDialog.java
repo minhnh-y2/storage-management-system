@@ -23,6 +23,7 @@ import com.stoman.entity.LoaiDoiTac;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.DateRenderer;
+import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.SpinnerEditor;
@@ -66,6 +67,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         ChiTietPhieuDialog = new javax.swing.JDialog();
+        pnlBackgroundDialog = new javax.swing.JPanel();
         pnlTblCTPhieu_main = new javax.swing.JScrollPane();
         tblCTPhieu_main = new javax.swing.JTable();
         pnlThongTinCTP = new javax.swing.JPanel();
@@ -76,6 +78,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNangCTP = new javax.swing.JPanel();
         btnThemCTP = new javax.swing.JButton();
         btnXoaCTP = new javax.swing.JButton();
+        pnlThanhTieuDeCTP = new DragPanel(ChiTietPhieuDialog);
+        lblTieuDeDialog = new javax.swing.JLabel();
+        lblThoatCTP = new javax.swing.JLabel();
+        QRCodeDialog = new javax.swing.JDialog();
         btnGrpLoaiPhieu = new javax.swing.ButtonGroup();
         pnlBackground = new javax.swing.JPanel();
         tabs = new javax.swing.JTabbedPane();
@@ -129,9 +135,18 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtTimKiemPhieu = new javax.swing.JTextField();
         lblTimKiemPhieu2 = new javax.swing.JLabel();
         cboTimKiemPhieu = new javax.swing.JComboBox<>();
-        pnlThanhTieuDe = new javax.swing.JPanel();
+        pnlThanhTieuDe = new DragPanel(this);
         lblTieuDe = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
+
+        ChiTietPhieuDialog.setTitle("StoMan - Chi tiết phiếu nhập xuất kho");
+        ChiTietPhieuDialog.setUndecorated(true);
+
+        pnlBackgroundDialog.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBackgroundDialog.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+
+        pnlTblCTPhieu_main.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        pnlTblCTPhieu_main.setOpaque(false);
 
         tblCTPhieu_main.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,8 +168,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_main.getTableHeader().setReorderingAllowed(false);
         pnlTblCTPhieu_main.setViewportView(tblCTPhieu_main);
 
-        pnlThongTinCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết phiếu kiểm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        pnlThongTinCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlThongTinCTP.setToolTipText("StoMan - Chi tiết phiếu kiểm kho");
+        pnlThongTinCTP.setOpaque(false);
 
         lblLoaiHH.setText("Loại hàng hoá");
 
@@ -177,7 +193,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblLoaiHH))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboLoaiHH, 0, 338, Short.MAX_VALUE)
+                    .addComponent(cboLoaiHH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboHangHoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -192,10 +208,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTenHH)
                     .addComponent(cboHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlChucNangCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        pnlChucNangCTP.setOpaque(false);
         pnlChucNangCTP.setLayout(new java.awt.GridLayout(0, 1));
 
         btnThemCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
@@ -216,30 +233,95 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNangCTP.add(btnXoaCTP);
 
+        pnlThanhTieuDeCTP.setBackground(new java.awt.Color(0, 153, 204));
+
+        lblTieuDeDialog.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTieuDeDialog.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieuDeDialog.setText("STOMAN - CHI TIẾT PHIẾU NHẬP XUẤT KHO");
+
+        lblThoatCTP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoatCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png"))); // NOI18N
+        lblThoatCTP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThoatCTPMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblThoatCTPMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblThoatCTPMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlThanhTieuDeCTPLayout = new javax.swing.GroupLayout(pnlThanhTieuDeCTP);
+        pnlThanhTieuDeCTP.setLayout(pnlThanhTieuDeCTPLayout);
+        pnlThanhTieuDeCTPLayout.setHorizontalGroup(
+            pnlThanhTieuDeCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhTieuDeCTPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTieuDeDialog)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
+                .addComponent(lblThoatCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlThanhTieuDeCTPLayout.setVerticalGroup(
+            pnlThanhTieuDeCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhTieuDeCTPLayout.createSequentialGroup()
+                .addGroup(pnlThanhTieuDeCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThanhTieuDeCTPLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblTieuDeDialog))
+                    .addComponent(lblThoatCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+        javax.swing.GroupLayout pnlBackgroundDialogLayout = new javax.swing.GroupLayout(pnlBackgroundDialog);
+        pnlBackgroundDialog.setLayout(pnlBackgroundDialogLayout);
+        pnlBackgroundDialogLayout.setHorizontalGroup(
+            pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
+                        .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlTblCTPhieu_main))
+                .addContainerGap())
+            .addComponent(pnlThanhTieuDeCTP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlBackgroundDialogLayout.setVerticalGroup(
+            pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
+                .addComponent(pnlThanhTieuDeCTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout ChiTietPhieuDialogLayout = new javax.swing.GroupLayout(ChiTietPhieuDialog.getContentPane());
         ChiTietPhieuDialog.getContentPane().setLayout(ChiTietPhieuDialogLayout);
         ChiTietPhieuDialogLayout.setHorizontalGroup(
             ChiTietPhieuDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ChiTietPhieuDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ChiTietPhieuDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ChiTietPhieuDialogLayout.createSequentialGroup()
-                        .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(pnlBackgroundDialog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         ChiTietPhieuDialogLayout.setVerticalGroup(
             ChiTietPhieuDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ChiTietPhieuDialogLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ChiTietPhieuDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlBackgroundDialog, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout QRCodeDialogLayout = new javax.swing.GroupLayout(QRCodeDialog.getContentPane());
+        QRCodeDialog.getContentPane().setLayout(QRCodeDialogLayout);
+        QRCodeDialogLayout.setHorizontalGroup(
+            QRCodeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        QRCodeDialogLayout.setVerticalGroup(
+            QRCodeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -652,16 +734,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlBackground.add(tabs, java.awt.BorderLayout.CENTER);
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
-        pnlThanhTieuDe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMouseDragged(evt);
-            }
-        });
-        pnlThanhTieuDe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMousePressed(evt);
-            }
-        });
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTieuDe.setForeground(new java.awt.Color(255, 255, 255));
@@ -795,25 +867,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
 
-    private void pnlThanhTieuDeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMouseDragged
-        // Vị trí cửa sổ hiện tại
-        int thisX = getLocation().x;
-        int thisY = getLocation().y;
-
-        // Xác định mức độ di chuyển của chuột từ lần nhấp chuột
-        int xMoved = evt.getX() - initialClick.x;
-        int yMoved = evt.getY() - initialClick.y;
-
-        // Di chuyển cửa sổ
-        int x = thisX + xMoved;
-        int y = thisY + yMoved;
-        setLocation(x, y);
-    }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
-
-    private void pnlThanhTieuDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMousePressed
-        initialClick = evt.getPoint();
-    }//GEN-LAST:event_pnlThanhTieuDeMousePressed
-
     private void txtTimKiemCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemCTPhieuKeyReleased
         // TODO add your handling code here:
         searchCTPhieu();
@@ -844,6 +897,21 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         createQRCode();
     }//GEN-LAST:event_btnChiTiet1ActionPerformed
+
+    private void lblThoatCTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatCTPMouseClicked
+        // TODO add your handling code here:
+        ChiTietPhieuDialog.dispose();
+    }//GEN-LAST:event_lblThoatCTPMouseClicked
+
+    private void lblThoatCTPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatCTPMouseEntered
+        // TODO add your handling code here:
+        lblThoatCTP.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close.png")));
+    }//GEN-LAST:event_lblThoatCTPMouseEntered
+
+    private void lblThoatCTPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatCTPMouseExited
+        // TODO add your handling code here:
+        lblThoatCTP.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
+    }//GEN-LAST:event_lblThoatCTPMouseExited
 
     /**
      * @param args the command line arguments
@@ -892,6 +960,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog ChiTietPhieuDialog;
+    private javax.swing.JDialog QRCodeDialog;
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnChiTiet1;
     private javax.swing.JButton btnFirst;
@@ -925,7 +994,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblNgayThucHien;
     private javax.swing.JLabel lblTenHH;
     private javax.swing.JLabel lblThoat;
+    private javax.swing.JLabel lblThoatCTP;
     private javax.swing.JLabel lblTieuDe;
+    private javax.swing.JLabel lblTieuDeDialog;
     private javax.swing.JLabel lblTimKiemCT;
     private javax.swing.JLabel lblTimKiemCT1;
     private javax.swing.JLabel lblTimKiemCT2;
@@ -933,6 +1004,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTrangThai;
     private javax.swing.JSeparator peparator;
     private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlBackgroundDialog;
     private javax.swing.JPanel pnlChiTiet;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlChucNangCTP;
@@ -942,6 +1014,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane pnlTblCTPhieu_main;
     private javax.swing.JScrollPane pnlTblCTPhieu_sub;
     private javax.swing.JPanel pnlThanhTieuDe;
+    private javax.swing.JPanel pnlThanhTieuDeCTP;
     private javax.swing.JPanel pnlThongTinCTP;
     private javax.swing.JPanel pnlThongTinPhieu;
     private javax.swing.JRadioButton rdoPhieuNhap;

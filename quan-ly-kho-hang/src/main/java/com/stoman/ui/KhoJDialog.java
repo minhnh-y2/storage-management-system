@@ -10,6 +10,7 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
+import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import java.awt.Point;
 import java.util.List;
@@ -59,7 +60,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         txtTimKiem = new javax.swing.JTextField();
         pnlTblKho = new javax.swing.JScrollPane();
         tblKho = new javax.swing.JTable();
-        pnlThanhTieuDe = new javax.swing.JPanel();
+        pnlThanhTieuDe = new DragPanel(this);
         lblTieuDe = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
 
@@ -129,6 +130,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         lblTruongKho.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTruongKho.setForeground(new java.awt.Color(51, 51, 51));
         lblTruongKho.setText("Trưởng kho");
 
         javax.swing.GroupLayout pnlThongTinKhoLayout = new javax.swing.GroupLayout(pnlThongTinKho);
@@ -214,16 +216,6 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
-        pnlThanhTieuDe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMouseDragged(evt);
-            }
-        });
-        pnlThanhTieuDe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMousePressed(evt);
-            }
-        });
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTieuDe.setForeground(new java.awt.Color(255, 255, 255));
@@ -363,26 +355,6 @@ public class KhoJDialog extends javax.swing.JDialog {
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
 
-    private void pnlThanhTieuDeMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMouseDragged
-        // Vị trí cửa sổ hiện tại
-        int thisX = getLocation().x;
-        int thisY = getLocation().y;
-
-        // Xác định mức độ di chuyển của chuột từ lần nhấp chuột
-        int xMoved = evt.getX() - initialClick.x;
-        int yMoved = evt.getY() - initialClick.y;
-
-        // Di chuyển cửa sổ
-        int x = thisX + xMoved;
-        int y = thisY + yMoved;
-        setLocation(x, y);
-    }//GEN-LAST:event_pnlThanhTieuDeMouseDragged
-
-    private void pnlThanhTieuDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMousePressed
-        // Di chuyển cửa sổ khi nhấp và kéo chuột
-        initialClick = evt.getPoint();
-    }//GEN-LAST:event_pnlThanhTieuDeMousePressed
-
     /**
      * @param args the command line arguments
      */
@@ -430,7 +402,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JComboBox<NhanVien> cboTruongKho;
+    private javax.swing.JComboBox<String> cboTruongKho;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblMaKho;
     private javax.swing.JLabel lblThoat;
@@ -449,10 +421,9 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
-    private KhoDAO kDAO = new KhoDAO();
-    private NhanVienDAO nvDAO = new NhanVienDAO();
-    
-    private NhanVien khac = new NhanVien();
+    private KhoDAO kDAO;
+    private NhanVienDAO nvDAO;
+
     private DefaultTableModel tblModel;
     private int row = -1;
     private Point initialClick;
@@ -462,17 +433,15 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         this.kDAO = new KhoDAO();
         this.nvDAO = new NhanVienDAO();
-        
+
         this.formatTable();
 
         this.fillToComboBox();
         this.fillToTable();
         this.updateStatus();
-        
-        khac.setMaNV("0");
-        khac.setTenNV("Chưa chọn");
+
     }
-    
+
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
         String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
@@ -481,7 +450,7 @@ public class KhoJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
-            
+
             @Override
             public Class getColumnClass(int columnIndex) {
                 if (getValueAt(0, columnIndex) == null) {
@@ -491,31 +460,22 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         };
         tblKho.setModel(tblModel);
-
-        this.fillToTable();
-        this.updateStatus();
-        this.fillToComboBox();
-        
-        this.formatTable();
-        
-        khac.setMaNV("0");
-        khac.setTenNV("Chưa có");
     }
-    
+
     // Đổ dữ liệu combobox mã kho
     private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTruongKho.getModel();
         model.removeAllElements();
-         try {
+        try {
             List<NhanVien> list = nvDAO.selectTruongKho();
-            model.addElement(khac);
+            model.addElement(new NhanVien("Chọn trưởng kho..."));
             for (NhanVien nv : list) {
                 model.addElement(nv);
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
-        }        
+        }
     }
 
     // Đổ dữ liệu vào bảng
@@ -529,7 +489,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                 tblModel.addRow(new Object[]{
                     k.getMaKho(),
                     k.getDiaChi(),
-                    tk == null?khac:tk
+                    tk == null ? new NhanVien("<none>") : tk
                 });
             }
         } catch (Exception e) {
@@ -552,17 +512,19 @@ public class KhoJDialog extends javax.swing.JDialog {
     private Kho getForm() {
         Kho k = new Kho();
         NhanVien nv = new NhanVien();
-        if(cboTruongKho.getSelectedIndex()==0)
+        if (cboTruongKho.getSelectedIndex() == 0) {
             nv.setMaNV(null);
-        else
+        } else {
             nv = (NhanVien) cboTruongKho.getSelectedItem();
+        }
         k.setMaKho(Integer.parseInt(txtMaKho.getText()));
         k.setDiaChi(txtDiaChi.getText());
         int index = this.cboTruongKho.getSelectedIndex();
-        if(index != 0)
-            k.setMaTK(((NhanVien)this.cboTruongKho.getSelectedItem()).getMaNV());
-        else
+        if (index != 0) {
+            k.setMaTK(((NhanVien) this.cboTruongKho.getSelectedItem()).getMaNV());
+        } else {
             k.setMaTK(null);
+        }
         return k;
     }
 
@@ -604,10 +566,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
         return false;
     }
-    
+
     // Thêm kho mới
     private void insert() {
-        if(isValidated()){
+        if (isValidated()) {
             Kho k = getForm();
             try {
                 kDAO.insert(k);
@@ -620,10 +582,10 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Cập nhật kho
     private void update() {
-        if(isValidated()) {
+        if (isValidated()) {
             Kho k = getForm();
             try {
                 kDAO.update(k);
@@ -635,10 +597,10 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Xoá kho
     private void delete() {
-        if(!Auth.isManager()){
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá kho!");
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);
@@ -653,5 +615,5 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
 }

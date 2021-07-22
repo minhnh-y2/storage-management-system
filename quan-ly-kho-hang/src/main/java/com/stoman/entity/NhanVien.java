@@ -10,13 +10,17 @@ package com.stoman.entity;
  * @author Huy
  */
 public class NhanVien {
-    private String maNV;
+    private String maNV = "";
     private String tenNV;
     private boolean vaiTro = false;
     private String matKhau;
     private String muoi;
 
     public NhanVien() {
+    }
+    
+    public NhanVien(String tenNV) {
+        this.tenNV = tenNV;
     }
 
     public NhanVien(String maNV, String tenNV, String matKhau, String muoi) {
@@ -65,15 +69,15 @@ public class NhanVien {
     public void setMuoi(String muoi) {
         this.muoi = muoi;
     }
-    
+
     @Override
     public String toString() {
         return this.getTenNV();
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         NhanVien other = (NhanVien) obj;
-        return other.getMaNV() == this.getMaNV();
+        return other.getMaNV().equals(this.getMaNV());
     }
 }
