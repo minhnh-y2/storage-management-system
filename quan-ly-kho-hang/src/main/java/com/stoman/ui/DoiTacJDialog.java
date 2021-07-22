@@ -683,10 +683,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
     
-<<<<<<< HEAD
-=======
     // Đổ dữ liệu loại đối tác vào List
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void fillToList() {
         DefaultListModel lstModel = new DefaultListModel();
         lstModel.removeAllElements();
@@ -702,13 +699,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-    private void fillToTable() {
-=======
     // Đổ dữ liệu vào bảng
     private void fillToTable() {
         tblModel.setRowCount(0);
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         String keyword = txtTimKiem.getText();
         int headerIndex = cboTimKiem.getSelectedIndex();
@@ -742,10 +735,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Lấy dữ liệu từ form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private DoiTac getForm() {
         DoiTac dt = new DoiTac();
         dt.setTenDT(txtTenDT.getText().trim());
@@ -757,10 +747,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         return dt;
     }
 
-<<<<<<< HEAD
-=======
+
     // Nạp dữ liệu vào form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void setForm(DoiTac dt) {
         txtTenDT.setText(dt.getTenDT());
         txtDiaChi.setText(dt.getDiaChi());
@@ -773,10 +761,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Xoá trắng form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void clearForm() {
         setForm(new DoiTac());
         this.row = -1;
@@ -784,10 +769,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
-<<<<<<< HEAD
-=======
     // Cập nhập trạng thái nút và bảng
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void updateStatus() {
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
         boolean edit = (this.row >= 0);
@@ -810,30 +792,21 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
     }
     
-<<<<<<< HEAD
-=======
     // Hiển thị đối tác được chọn từ bảng lên form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void edit() {
         int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 0);
         DoiTac dt = dtDAO.selectByID(maDT);
         this.setForm(dt);
         this.updateStatus();
     }
-    
-<<<<<<< HEAD
-=======
+
     // Hiển thị đối tác đầu danh sách trên bảng
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void first() {
         this.row = 0;
         this.edit();
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị đối tác kế trước
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void prev() {
         if (this.row > 0) {
             this.row--;
@@ -841,10 +814,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị đối tác kế tiếp
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void next() {
         if (this.row < (tblDoiTac.getRowCount() - 1)) {
             this.row++;
@@ -852,19 +822,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị đối tác cuối danh sách trên bảng
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void last() {
         this.row = tblDoiTac.getRowCount() - 1;
         this.edit();
     }
 
-<<<<<<< HEAD
-=======
     // Xác thực dữ liệu hợp lệ trên form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private boolean isValidated() {
         String tenDT = txtTenDT.getText();
         String diaChi = txtDiaChi.getText();
@@ -894,10 +858,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         return false;
     }
 
-<<<<<<< HEAD
-=======
     // Thêm loại đối tác vào danh dách
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void insertLDT() {
         String tenLDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
         if (tenLDT != null && !tenLDT.isEmpty()) {
@@ -915,10 +876,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Xoá loại đối tác khỏi danh sách
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void deleteLDT() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
@@ -939,10 +897,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Thêm đối tác vào CSDL
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void insert() {
         if (isValidated()) {
             DoiTac dt = getForm();
@@ -958,10 +913,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
+
     // Xoá đối tác khỏi CSDL
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void delete() {
         if (Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá đối tác!");
@@ -979,10 +932,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
     
-<<<<<<< HEAD
-=======
     // Cập nhật thông tin đối tác vào CSDL
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void update() {
         if (isValidated()) {
             DoiTac dt = getForm();

@@ -649,7 +649,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.lstModel = new DefaultListModel<>();
 
-<<<<<<< HEAD
         String header[] = {"STT", "TÊN HH", "ĐƠN GIÁ", "ĐVT"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
@@ -666,9 +665,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         };
         tblHangHoa.setModel(tblModel);
-=======
-        this.formatTable();
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
         
         this.formatTable();
         this.fillToComboBox();
@@ -776,10 +772,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
     }
     
-<<<<<<< HEAD
-=======
     // Hiển thị dữ liệu hàng hoá được chọn trên bảng lên form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void edit() {
         String maHH = (String) tblHangHoa.getValueAt(this.row, 0);
         HangHoa hh = hhDAO.selectByID(maHH);
@@ -787,19 +780,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị hàng hoá đầu danh sách bảng
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void first() {
         this.row = 0;
         this.edit();
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị hàng hoá kế trước
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void prev() {
         if (this.row > 0) {
             this.row--;
@@ -807,10 +794,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị hàng hoá tiếp theo
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void next() {
         if (this.row < (tblHangHoa.getRowCount() - 1)) {
             this.row++;
@@ -818,19 +802,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Hiển thị hàng hoá cuối danh sách bảng
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void last() {
         this.row = tblHangHoa.getRowCount() - 1;
         this.edit();
     }
     
-<<<<<<< HEAD
-=======
     // Thêm mới loại hàng hoá
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void insertLHH() {
         String tenLHH = MsgBox.prompt(this, "Nhập tên loại hàng hoá mới:");
         if (tenLHH != null && !tenLHH.isEmpty()) {
@@ -848,10 +826,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Xoá loại hàng hoá
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void deleteLHH() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
@@ -872,10 +847,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Xác thực dữ liệu form
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private boolean isValidated() {
         if (txtMaHH.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã hàng hoá!");
@@ -895,10 +867,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         return false;
     }
 
-<<<<<<< HEAD
-=======
     // Thêm hàng hoá mới
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void insert() {
         if (isValidated()) {
             HangHoa dt = getForm();
@@ -914,10 +883,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Xoá hàng hoá
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void delete() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá hàng hoá!");
@@ -935,10 +901,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
     }
     
-<<<<<<< HEAD
-=======
     // Cập nhật hàng hoá
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
     private void update() {
         if (isValidated()) {
             HangHoa hh = getForm();
@@ -953,12 +916,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         }
     }
-<<<<<<< HEAD
-    
-    private void formatTable(){
-        tblHangHoa.setAutoCreateRowSorter(true);
-        
-=======
 
     // Định dạng bảng
     private void formatTable() {
@@ -979,15 +936,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         };
         tblHangHoa.setModel(tblModel);
         tblHangHoa.setAutoCreateRowSorter(true);
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
+
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(125);
         tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(464);
         tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(125);
         tblHangHoa.getColumnModel().getColumn(3).setPreferredWidth(125);
-<<<<<<< HEAD
-        
-=======
->>>>>>> b563db886491a25cd26de63e0a334ffab92275e7
+
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 }
