@@ -89,6 +89,11 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
         return list;
     }
     
+    public List<NhanVien> selectTruongKho() {
+        String sql = "SELECT * FROM NHANVIEN WHERE VAITRO = 1";
+        return selectBySQL(sql);
+    }
+    
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
         if(header[index].equals("VAITRO")) {
