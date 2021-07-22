@@ -1559,14 +1559,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         
         // Chỉnh độ dài các cột bảng Phiếu
         tblPhieu.getColumnModel().getColumn(0).setPreferredWidth(16);
-        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(284);
+        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(310);
         tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(32);
         tblPhieu.getColumnModel().getColumn(3).setPreferredWidth(18);
         tblPhieu.getColumnModel().getColumn(4).setPreferredWidth(82);
         tblPhieu.getColumnModel().getColumn(5).setPreferredWidth(88);
         tblPhieu.getColumnModel().getColumn(6).setPreferredWidth(87);
-        tblPhieu.getColumnModel().getColumn(7).setPreferredWidth(116);
-        tblPhieu.getColumnModel().getColumn(8).setPreferredWidth(114);
+        tblPhieu.getColumnModel().getColumn(7).setPreferredWidth(124);
+        tblPhieu.getColumnModel().getColumn(8).setPreferredWidth(80);
         // Chỉnh độ dài các cột bảng Chi tiết phiếu
         tblCTPhieu_main.getColumnModel().getColumn(0).setPreferredWidth(15);
         tblCTPhieu_main.getColumnModel().getColumn(1).setPreferredWidth(380);

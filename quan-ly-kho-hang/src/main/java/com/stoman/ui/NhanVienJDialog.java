@@ -557,8 +557,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private NhanVienDAO DAO = new NhanVienDAO();
     private DefaultTableModel tblModel;
     private int row = -1;
-    private Point initialClick;
-
+    
     private void init() {
         setLocationRelativeTo(null);
 
