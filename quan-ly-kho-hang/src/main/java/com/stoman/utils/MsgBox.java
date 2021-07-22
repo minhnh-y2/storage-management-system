@@ -6,6 +6,7 @@
 package com.stoman.utils;
 
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +51,12 @@ public class MsgBox {
         return JOptionPane.showInputDialog(parent, message,
                 "Hệ thống quản lý kho hàng", 
                 JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static void showImage(Component parent, String message, ImageIcon icon) {
+        JOptionPane.showMessageDialog(parent, message,
+                "Hệ thống quản lý kho hàng", 
+                JOptionPane.INFORMATION_MESSAGE, icon);
     }
 
 }

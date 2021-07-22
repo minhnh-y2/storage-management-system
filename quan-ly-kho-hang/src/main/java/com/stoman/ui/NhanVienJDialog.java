@@ -618,9 +618,15 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     void fillToTable() {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
-        int headerIndex = cboTimKiem.getSelectedIndex();
+        List<NhanVien> list = null;
+        
         try {
-            List<NhanVien> list = DAO.selectByKeyword(keyword, headerIndex);
+            if(!txtTimKiem.getText().isEmpty()){
+                int headerIndex = cboTimKiem.getSelectedIndex();
+                list = DAO.selectByKeyword(keyword, headerIndex);
+            } else {
+                list = DAO.selectAll();
+            }
             for (NhanVien nv : list) {
                 tblModel.addRow(new Object[]{
                     nv.getMaNV(),

@@ -11,10 +11,6 @@ import com.stoman.entity.Kho;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -281,12 +277,12 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(lblTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTimKiem))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
         pnlBackgroundLayout.setVerticalGroup(
@@ -453,7 +449,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
-    private KhoDAO DAO = new KhoDAO();
+    private KhoDAO kDAO = new KhoDAO();
     private NhanVienDAO nvDAO = new NhanVienDAO();
     
     private NhanVien khac = new NhanVien();
@@ -510,7 +506,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText().trim();
         try {
-            List<Kho> list = DAO.selectByKeyword(keyword);
+            List<Kho> list = kDAO.selectByKeyword(keyword);
             for (Kho k : list) {
                 NhanVien tk = nvDAO.selectByID(k.getMaTK());
                 tblModel.addRow(new Object[]{
@@ -536,6 +532,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     private Kho getForm() {
         Kho k = new Kho();
+        NhanVien nv = (NhanVien) cboTruongKho.getSelectedItem();
         k.setMaKho(Integer.parseInt(txtMaKho.getText()));
         k.setDiaChi(txtDiaChi.getText());
         int index = this.cboTruongKho.getSelectedIndex();
@@ -556,6 +553,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         txtMaKho.setText("");
         txtDiaChi.setText("");
         tblKho.clearSelection();
+        cboTruongKho.setSelectedIndex(0);
         this.row = -1;
         this.updateStatus();
     }
@@ -563,7 +561,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void edit() {
         int maKho = (int) tblKho.getValueAt(this.row, 0);
         String maNV = ((NhanVien) tblKho.getValueAt(this.row, 2)).getMaNV();
-        Kho k = DAO.selectByID(maKho);
+        Kho k = kDAO.selectByID(maKho);
         NhanVien nv = nvDAO.selectByID(maNV);
         this.setForm(k, nv);
         this.updateStatus();
@@ -584,7 +582,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         if(isValidated()){
             Kho k = getForm();
             try {
-                DAO.insert(k);
+                kDAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công!");
@@ -599,7 +597,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         if(isValidated()) {
             Kho k = getForm();
             try {
-                DAO.update(k);
+                kDAO.update(k);
                 this.fillToTable();
                 MsgBox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
@@ -615,7 +613,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);
             try {
-                DAO.delete(maKho);
+                kDAO.delete(maKho);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá kho thành công!");
