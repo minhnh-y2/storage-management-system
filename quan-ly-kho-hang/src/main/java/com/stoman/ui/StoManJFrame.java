@@ -746,7 +746,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đăng xuất
     private void logout() {
         Auth.clear();
-        this.dispose();
         new DangNhapJDialog(this, true).setVisible(true);
     }
 

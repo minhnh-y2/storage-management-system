@@ -605,7 +605,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Tạo nhân viên mới từ form
     private NhanVien getForm() {
-        NhanVien nv =  new NhanVien();
+        NhanVien nv = new NhanVien();
         byte[] muoi = XPassword.getSalt();
         String matKhau = new String(txtMatKhau.getPassword());
         nv.setMaNV(txtMaNV.getText());
@@ -617,7 +617,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         return nv;
     }
 
-    
     // Hiển thị thông tin nhân viên lên form
     private void setForm(NhanVien nv) {
         txtMaNV.setText(nv.getMaNV());
@@ -744,16 +743,20 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void delete() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
-        } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá nhân viên này không?")) {
+        } else {
             String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
-            try {
-                DAO.delete(maNV);
-                this.fillToTable();
-                this.clearForm();
-                MsgBox.alert(this, "Xoá thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Xoá không thành công!");
-                e.printStackTrace();
+            if (maNV.equals(Auth.user.getMaNV())) {
+                MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
+            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
+                try {
+                    DAO.delete(maNV);
+                    this.fillToTable();
+                    this.clearForm();
+                    MsgBox.alert(this, "Xoá thành công!");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Xoá không thành công!");
+                    e.printStackTrace();
+                }
             }
         }
     }
