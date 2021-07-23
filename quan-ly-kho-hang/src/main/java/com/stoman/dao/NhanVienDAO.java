@@ -73,7 +73,7 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
                     entity.setTenNV(rs.getString("TENNV"));
                     entity.setVaiTro(rs.getBoolean("VAITRO"));
                     entity.setMatKhau(rs.getString("MATKHAU"));
-                    entity.setMuoi(rs.getString("MUOI"));
+                    entity.setMuoi(rs.getBytes("MUOI"));
 
                     list.add(entity);
                 }

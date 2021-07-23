@@ -10,6 +10,7 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.XPassword;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -225,9 +226,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     NhanVienDAO dao = new NhanVienDAO();
 
-    //  Code phương thức đăng nhập.
+    //  Đăng nhập và lưu thông tin tài khoản.
     private void login() {
-        // Lấy tên mã nhân viên và mật khẩu
         if(isValidated()) {
             String maNV = txtTenNV.getText();
             String matKhau = new String(txtMatKhau.getPassword());
@@ -235,16 +235,22 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             
             if (nv == null) {
                 MsgBox.alert(this, "Tên đăng nhập không đúng");
-            } else if (!matKhau.equals(nv.getMatKhau())) {
-                MsgBox.alert(this, "Mật khẩu không đúng.");
-            } else {
-                Auth.user = nv;
-                this.dispose();
+                txtTenNV.requestFocus();
+                return;
             }
+            
+            if (!XPassword.isValidated(matKhau, nv.getMatKhau(), nv.getMuoi())) {
+                MsgBox.alert(this, "Mật khẩu không đúng.");
+                txtMatKhau.requestFocus();
+                return;
+            }
+            
+            Auth.user = nv;
+            this.dispose();
         }
     }
 
-    // Code phương thức Thoát.
+    // Thoát chương trình
     private void exit() {
         if (MsgBox.confirm(this, "Bạn có muốn thoát phần mềm?")) {
             System.exit(0);

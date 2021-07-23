@@ -11,7 +11,6 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
-import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -557,7 +556,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private NhanVienDAO DAO = new NhanVienDAO();
     private DefaultTableModel tblModel;
     private int row = -1;
-    
+
     private void init() {
         setLocationRelativeTo(null);
 
@@ -567,15 +566,15 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         this.fillToTable();
         this.updateStatus();
     }
-    
+
     // Đổ dữ liệu nhân viên vào bảng
     private void fillToTable() {
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
         List<NhanVien> list = null;
-        
+
         try {
-            if(!txtTimKiem.getText().isEmpty()){
+            if (!txtTimKiem.getText().isEmpty()) {
                 int headerIndex = cboTimKiem.getSelectedIndex();
                 list = DAO.selectByKeyword(keyword, headerIndex);
             } else {
@@ -594,28 +593,31 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
-    
+
     // Đổ tên bảng vào combobox tìm kiếm
     private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
-        for(int i = 0; i < tblNhanVien.getColumnCount(); i++) {
+        for (int i = 0; i < tblNhanVien.getColumnCount(); i++) {
             model.addElement(tblNhanVien.getColumnName(i));
         }
     }
 
     // Tạo nhân viên mới từ form
     private NhanVien getForm() {
-        NhanVien nv = new NhanVien();
+        NhanVien nv =  new NhanVien();
+        byte[] muoi = XPassword.getSalt();
         String matKhau = new String(txtMatKhau.getPassword());
         nv.setMaNV(txtMaNV.getText());
         nv.setTenNV(txtHoTen.getText());
-        nv.setMatKhau(matKhau);
+        nv.setMatKhau(XPassword.getHashMD5(matKhau, muoi));
         nv.setVaiTro(rdoTruongKho.isSelected());
-        nv.setMuoi(XPassword.getSalt(5));
+        nv.setMuoi(muoi);
+
         return nv;
     }
 
+    
     // Hiển thị thông tin nhân viên lên form
     private void setForm(NhanVien nv) {
         txtMaNV.setText(nv.getMaNV());
@@ -701,7 +703,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         String hoTen = txtHoTen.getText();
         char[] matKhau = txtMatKhau.getPassword();
         char[] xacNhanMK = txtXacNhanMK.getPassword();
-        
+
         if (maNV.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã nhân viên!");
             txtMaNV.requestFocus();
@@ -755,19 +757,23 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Cập nhật nhân viên 
     private void update() {
-        if (isValidated()) {
-            NhanVien nv = getForm();
-            try {
-                DAO.update(nv);
-                this.fillToTable();
-                this.updateStatus();
-                MsgBox.alert(this, "Thêm mới thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại!");
-                e.printStackTrace();
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền sửa nhân viên!");
+        } else {
+            if (isValidated()) {
+                NhanVien nv = getForm();
+                try {
+                    DAO.update(nv);
+                    this.fillToTable();
+                    this.updateStatus();
+                    MsgBox.alert(this, "Cập nhật thành công!");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Cập nhật thất bại!");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -780,7 +786,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
-            
+
             @Override
             public Class getColumnClass(int columnIndex) {
                 if (getValueAt(0, columnIndex) == null) {

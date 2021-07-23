@@ -578,6 +578,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
         // TODO add your handling code here:
         logout();
+        this.loginStatus();
     }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     /**
@@ -675,7 +676,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         new ChaoJDialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
 
-        this.loginStatus();
         this.clock();
         this.chart();
     }
@@ -746,6 +746,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đăng xuất
     private void logout() {
         Auth.clear();
+        this.dispose();
         new DangNhapJDialog(this, true).setVisible(true);
     }
 

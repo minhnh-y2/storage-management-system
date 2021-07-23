@@ -14,7 +14,7 @@ public class NhanVien {
     private String tenNV;
     private boolean vaiTro = false;
     private String matKhau;
-    private String muoi;
+    private byte [] muoi;
 
     public NhanVien() {
     }
@@ -23,7 +23,7 @@ public class NhanVien {
         this.tenNV = tenNV;
     }
 
-    public NhanVien(String maNV, String tenNV, String matKhau, String muoi) {
+    public NhanVien(String maNV, String tenNV, String matKhau, byte[] muoi) {
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.matKhau = matKhau;
@@ -62,11 +62,11 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
-    public String getMuoi() {
+    public byte [] getMuoi() {
         return muoi;
     }
 
-    public void setMuoi(String muoi) {
+    public void setMuoi(byte [] muoi) {
         this.muoi = muoi;
     }
 

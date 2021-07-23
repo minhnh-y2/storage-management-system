@@ -109,8 +109,8 @@ CREATE TABLE NHANVIEN(
 	MANV VARCHAR(10) PRIMARY KEY NOT NULL,
 	TENNV NVARCHAR(50) NOT NULL,
 	VAITRO BIT NOT NULL DEFAULT 0,
-	MATKHAU VARCHAR(15) NOT NULL,
-	MUOI VARCHAR(15) NOT NULL,
+	MATKHAU VARCHAR(32) NOT NULL,
+	MUOI VARCHAR(32) NOT NULL,
 )
 GO
 	
@@ -239,10 +239,10 @@ VALUES
 --
 INSERT INTO NHANVIEN(MANV, TENNV, VAITRO, MATKHAU, MUOI) 
 VALUES 
-	('khoalhd', N'Lê Hữu Đăng Khoa', 1, '12345','12345'),
-	('minhnh', N'Nguyễn Hoài Minh', 1, '12345','12345'),
-	('huynq', N'Nguyễn Quang Huy', 1, '12345','12345'),
-	('huydq', N'Đỗ Quang Huy', 0, '12345','12345');
+	(N'huydq', N'Đỗ Quang Huy', 0, N'81385914127bbb4add18dbfbf4095d72', N'ÔÉ÷OQ°:ă?ÁÖO¶ƯT³'),
+	(N'huynq', N'Nguyễn Quang Huy', 1, N'1ad19a8bf3a97ca5ee1347020eccf1e4', N'4ơ±h	@Ê¨3†'),
+	(N'khoalhd', N'Lê Hữu Đăng Khoa', 1, N'00696a3d231cb86bd8b99d0e0b873e6a', N'÷,Ă‚§ZÈơ”º˜W‹†'),
+	(N'minhnh', N'Nguyễn Hoài Minh', 1, N'23cd8fb50237ddbf3229350c4ad42768', N'}Èùs@(ç4®ig')
 --
 INSERT INTO KHO(MAKHO, DIACHI, MATK) 
 VALUES

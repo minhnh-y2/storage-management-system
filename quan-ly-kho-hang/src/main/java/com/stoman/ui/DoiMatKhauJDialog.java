@@ -9,6 +9,7 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.XPassword;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -236,23 +237,30 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             String matKhauMoi = new String(txtMatKhauMoi.getPassword());
             String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
             
-            if (!matKhau.equals(Auth.user.getMatKhau())) {
+            if (!XPassword.isValidated(matKhau, Auth.user.getMatKhau(), Auth.user.getMuoi())) {
                 MsgBox.alert(this, "Mật khẩu không đúng!");
                 txtMatKhauCu.requestFocus();
+                return;
             }
-            if (!matKhau.equals(Auth.user.getMatKhau())) {
+            if (XPassword.isValidated(matKhauMoi, Auth.user.getMatKhau(), Auth.user.getMuoi())) {
                 MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
                 txtMatKhauCu.requestFocus();
+                return;
             }
             if (!matKhauMoi.equals(xacNhanMKMoi)) {
                 MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
                 txtXacNhanMK.requestFocus();
+                return;
             }
             
-            Auth.user.setMatKhau(matKhau);
+            byte[] muoi = XPassword.getSalt();
+            Auth.user.setMuoi(muoi);
+            Auth.user.setMatKhau(XPassword.getHashMD5(matKhauMoi, muoi));
+            
             dao.update(Auth.user);
             MsgBox.alert(this, "Đổi mật khẩu thành công!");
-
+            this.dispose();
+            
         }
     }
 
