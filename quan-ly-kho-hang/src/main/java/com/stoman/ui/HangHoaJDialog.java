@@ -13,7 +13,6 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XNumber;
-import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -91,11 +90,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
-        pnlThanhTieuDe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnlThanhTieuDeMousePressed(evt);
-            }
-        });
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblTieuDe.setForeground(new java.awt.Color(255, 255, 255));
@@ -513,10 +507,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
 
-    private void pnlThanhTieuDeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlThanhTieuDeMousePressed
-        initialClick = evt.getPoint();
-    }//GEN-LAST:event_pnlThanhTieuDeMousePressed
-
     private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
         // TODO add your handling code here:
         if (!lstLHH.isSelectionEmpty()) {
@@ -619,7 +609,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private HangHoaDAO hhDAO = new HangHoaDAO();
     private LoaiHangHoaDAO lhhDAO = new LoaiHangHoaDAO();
     private int row = -1;
-    private Point initialClick;
     private String numPattern = "#,##0";
     private DefaultTableModel tblModel;
 
@@ -628,7 +617,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void init() {
         this.setLocationRelativeTo(null);
         this.lstModel = new DefaultListModel<>();
-        
+
         this.formatTable();
         this.fillToComboBox();
         this.fillToList();
@@ -647,6 +636,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             for (HangHoa hh : list) {
                 Object[] row = {
                     i++,
+                    hh.getMaHH(),
                     hh.getTenHH(),
                     hh.getDonGia(),
                     hh.getDonViTinh()
@@ -674,12 +664,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
-    
+
     // Đổ tên bảng vào ComboBox tìm kiếm
     private void fillToComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
-        for(int i = 0; i < tblHangHoa.getColumnCount(); i++) {
+        for (int i = 0; i < tblHangHoa.getColumnCount(); i++) {
             model.addElement(tblHangHoa.getColumnName(i));
         }
     }
@@ -694,7 +684,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         hh.setMaLHH(lstLHH.getSelectedValue().getMaLHH());
         return hh;
     }
-    
+
     // Làm mới form
     private void clearForm() {
         this.setForm(new HangHoa());
@@ -717,6 +707,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
+        boolean isManager = Auth.isManager();
 
         // Chọn hàng trên bảng
         if (edit) {
@@ -724,20 +715,22 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
 
         txtMaHH.setEditable(!edit && isSelectedList);
-        btnThem.setEnabled(!edit && isSelectedList);
-        btnSua.setEnabled(edit && isSelectedList);
-        btnXoa.setEnabled(edit && isSelectedList);
-        btnMoi.setEnabled(isSelectedList);
+        btnThem.setEnabled(!edit && isSelectedList && isManager);
+        btnSua.setEnabled(edit && isSelectedList && isManager);
+        btnXoa.setEnabled(edit && isSelectedList && isManager);
+        btnMoi.setEnabled(isSelectedList && isManager);
+        btnThemList.setEnabled(isManager);
+        btnXoaList.setEnabled(isManager);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
     }
-    
+
     // Hiển thị dữ liệu hàng hoá được chọn trên bảng lên form
     private void edit() {
-        String maHH = (String) tblHangHoa.getValueAt(this.row, 0);
+        String maHH = (String) tblHangHoa.getModel().getValueAt(this.row, 1);
         HangHoa hh = hhDAO.selectByID(maHH);
         this.setForm(hh);
         this.updateStatus();
@@ -770,7 +763,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         this.row = tblHangHoa.getRowCount() - 1;
         this.edit();
     }
-    
+
     // Thêm mới loại hàng hoá
     private void insertLHH() {
         String tenLHH = MsgBox.prompt(this, "Nhập tên loại hàng hoá mới:");
@@ -791,9 +784,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Xoá loại hàng hoá
     private void deleteLHH() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xoá loại đối tác!");
-        } else if (lstLHH.isSelectionEmpty()) {
+        if (lstLHH.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại hàng hoá!");
         } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại hàng hoá này?")) {
             LoaiHangHoa lhh = lstLHH.getSelectedValue();
@@ -815,19 +806,40 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (txtMaHH.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã hàng hoá!");
             txtMaHH.requestFocus();
-        } else if (txtTenHH.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập tên hàng hoá!");
-            txtMaHH.requestFocus();
-        } else if (txtDonGia.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập đơn giá!");
-            txtMaHH.requestFocus();
-        } else if (txtDonViTinh.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập đơn vị tính!");
-            txtMaHH.requestFocus();
-        } else {
-            return true;
+            return false;
         }
-        return false;
+        HangHoa hh = hhDAO.selectByID(txtMaHH.getText());
+        if (hh != null) {
+            MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
+            txtMaHH.requestFocus();
+            return false;
+        }
+        if (txtTenHH.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập tên hàng hoá!");
+            txtTenHH.requestFocus();
+            return false;
+        }
+        if (txtDonGia.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập đơn giá!");
+            txtDonGia.requestFocus();
+            return false;
+        }
+        try {
+            double donGia = Double.parseDouble(txtDonGia.getText());
+            if (donGia < 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            MsgBox.alert(this, "Đơn giá phải là số và lớn hơn 0!");
+            txtDonGia.requestFocus();
+            return false;
+        }
+        if (txtDonViTinh.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập đơn vị tính!");
+            txtDonViTinh.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     // Thêm hàng hoá mới
@@ -848,9 +860,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Xoá hàng hoá
     private void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xoá hàng hoá!");
-        } else if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
+        if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
             String maHH = (String) tblHangHoa.getValueAt(this.row, 0);
             try {
                 hhDAO.delete(maHH);
@@ -863,7 +873,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Cập nhật hàng hoá
     private void update() {
         if (isValidated()) {
@@ -882,13 +892,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-       String header[] = {"STT", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
+        String header[] = {"STT", "Mã hàng hoá", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
-            
+
             @Override
             public Class getColumnClass(int columnIndex) {
                 if (getValueAt(0, columnIndex) == null) {
@@ -898,8 +908,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
         };
         tblHangHoa.setModel(tblModel);
-        
+
         tblHangHoa.setAutoCreateRowSorter(true);
+        tblHangHoa.removeColumn(tblHangHoa.getColumnModel().getColumn(1));
         // Set size column
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(524);

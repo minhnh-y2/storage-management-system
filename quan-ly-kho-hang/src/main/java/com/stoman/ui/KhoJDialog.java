@@ -426,7 +426,6 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     private DefaultTableModel tblModel;
     private int row = -1;
-    private Point initialClick;
 
     private void init() {
         setLocationRelativeTo(null);
@@ -460,7 +459,7 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         };
         tblKho.setModel(tblModel);
-        
+
         // Điều chỉnh size column
         tblKho.getColumnModel().getColumn(0).setPreferredWidth(22);
         tblKho.getColumnModel().getColumn(1).setPreferredWidth(130);
@@ -506,11 +505,19 @@ public class KhoJDialog extends javax.swing.JDialog {
     // Cập nhật trạng thái nút và form
     private void updateStatus() {
         boolean edit = (this.row >= 0);
+        
+        boolean isTableEmpty = (tblKho.getRowCount() == 0);
+        boolean isManager = Auth.isManager();
+        
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblKho.setAutoCreateRowSorter(!isTableEmpty);
 
         txtMaKho.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(!edit && isManager);
+        btnSua.setEnabled(edit && isManager);
+        btnXoa.setEnabled(edit && isManager);
+        btnMoi.setEnabled(isManager);
+        
     }
 
     // Lấy dữ liệu từ form
@@ -564,14 +571,29 @@ public class KhoJDialog extends javax.swing.JDialog {
     private boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập số kho!");
-        } else if (txtDiaChi.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập địa chỉ!");
-        } else if (cboTruongKho.getSelectedIndex() == 0) {
-            MsgBox.alert(this, "Chưa chọn trưởng kho!");
-        } else {
-            return true;
+            txtMaKho.requestFocus();
+            return false;
+        } 
+        try {
+            int maKho = Integer.parseInt(txtMaKho.getText());
+            if(maKho < 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            MsgBox.alert(this, "Mã kho phải là số và lớn hơn 0!");
+            txtMaKho.requestFocus();
+            return false;
         }
-        return false;
+        if (txtDiaChi.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập địa chỉ!");
+            txtDiaChi.requestFocus();
+            return false;
+        } 
+        if (cboTruongKho.getSelectedIndex() == 0) {
+            MsgBox.alert(this, "Chưa chọn trưởng kho!");
+            return false;
+        }
+        return true;
     }
 
     // Thêm kho mới
@@ -589,8 +611,8 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         }
     }
-
     // Cập nhật kho
+
     private void update() {
         if (isValidated()) {
             Kho k = getForm();
@@ -607,9 +629,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Xoá kho
     private void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xoá kho!");
-        } else if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
+        if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
             int maKho = (int) tblKho.getValueAt(this.row, 0);
             try {
                 kDAO.delete(maKho);

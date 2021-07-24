@@ -663,16 +663,22 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
+        
+        boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
+        boolean isManager = Auth.isManager();
 
         // Chọn hàng trên bảng
         if (edit) {
             tblNhanVien.setRowSelectionInterval(row, row);
         }
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
 
         txtMaNV.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(!edit && isManager);
+        btnSua.setEnabled(edit && isManager);
+        btnXoa.setEnabled(edit && isManager);
+        btnMoi.setEnabled(isManager);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
@@ -719,33 +725,37 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         if (maNV.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã nhân viên!");
             txtMaNV.requestFocus();
-        } else if (nv != null) {
+            return false;
+        }
+        if (nv != null) {
             MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
             txtHoTen.requestFocus();
-        }  else if (hoTen.isEmpty()) {
+            return false;
+        }
+        if (hoTen.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập họ và tên!");
             txtHoTen.requestFocus();
-        } else if (matKhau.length == 0) {
+            return false;
+        }
+        if (matKhau.length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
-        } else if (xacNhanMK.length == 0) {
+            return false;
+        }
+        if (xacNhanMK.length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
             txtXacNhanMK.requestFocus();
-        } else if (!new String(matKhau).equals(new String(xacNhanMK))) {
-            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
-        } else {
-            return true;
+            return false;
         }
-        return false;
+        if (!new String(matKhau).equals(new String(xacNhanMK))) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
+            return false;
+        }
+        return true;
     }
 
     // Thêm nhân viên mới
     private void insert() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền thêm nhân viên!");
-            return;
-        }
-
         if (isValidated()) {
             NhanVien nv = getForm();
             try {
@@ -762,11 +772,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Xoá nhân viên hiện tại
     private void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
-            return;
-        }
-
         String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
         if (maNV.equals(Auth.user.getMaNV())) {
             MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
@@ -785,11 +790,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Cập nhật nhân viên 
     private void update() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền sửa nhân viên!");
-            return;
-        }
-        
         if (isValidated()) {
             NhanVien nv = getForm();
             try {
@@ -803,7 +803,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Tự động viết hoa chữ cái đầu họ và tên
     public static String capitalizeWord(String str) {
         str = str.trim();
@@ -839,7 +839,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         };
         tblNhanVien.setModel(tblModel);
-        tblNhanVien.setAutoCreateRowSorter(true);
     }
 
 }
