@@ -556,7 +556,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnlThongTinPhieu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="peparator" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -572,7 +572,7 @@
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="pnlChucNang" pref="398" max="32767" attributes="0"/>
+                              <Component id="pnlChucNang" pref="423" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -708,7 +708,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1113,9 +1113,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="scrollPane2" pref="986" max="32767" attributes="0"/>
+                              <Component id="scrollPane2" pref="1004" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblTimKiemCT1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1123,26 +1123,26 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lblTimKiemPhieu2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cboTimKiemPhieu" pref="317" max="32767" attributes="0"/>
+                                  <Component id="cboTimKiemPhieu" pref="311" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblTimKiemCT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTimKiemPhieu2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="scrollPane2" min="-2" pref="556" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1250,7 +1250,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblTieuDe" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="738" max="32767" attributes="0"/>
+                      <EmptySpace pref="804" max="32767" attributes="0"/>
                       <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1279,7 +1279,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="STOMAN - QU&#x1ea2;N L&#xdd; NH&#x1eac;P XU&#x1ea4;T KHO"/>
+                <Property name="text" type="java.lang.String" value="STOMAN - QU&#x1ea2;N L&#xdd; KI&#x1ec2;M KHO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblThoat">
