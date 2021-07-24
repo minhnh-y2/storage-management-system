@@ -1343,18 +1343,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     
     // Thêm hàng hóa vào bảng Chi tiết
     private void insertCT(){
-        if(isUpdate){
-            return;
-        }
-        else {
-            modelCTPhieu.addRow(new Object[]{
+        modelCTPhieu.addRow(new Object[]{
                 tblCTPhieu_main.getRowCount()+1,
                 (HangHoa) cboHangHoa.getSelectedItem(),
                 XNumber.toString(0.0, numFormat),
                 XNumber.toString(0.0, numFormat),
                 0
-            });            
-        }
+        }); 
     }
     
     // Xóa hàng hóa khỏi chi tiết

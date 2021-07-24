@@ -10,6 +10,7 @@ import com.stoman.utils.XJdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -57,7 +58,7 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
 
     @Override
     protected List<LuuTru> selectBySQL(String sql, Object... args) {
-        List<LuuTru> list=new ArrayList<>();
+        List<LuuTru> list = new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
@@ -86,6 +87,22 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
     public int getMaKho(int maLT) {
         String sql = "SELECT MAKHO FROM LUUTRU WHERE MALT = ?";
         return (int) XJdbc.value(sql, maLT);
+    }
+    
+    public List<LuuTru> selectNotInList(Integer maKho, String keyword, Integer index, List<Integer> listCT){
+        String[] header = {"MAHH", "TENHH", "DONGIA", "DONVITINH"};
+        String sql = "SELECT * FROM LUUTRU WHERE MAKHO LIKE ?";
+        
+        if(listCT.size()>0){
+            sql += " AND MALT NOT IN (";
+            for (Integer integer : listCT) {
+                sql += ", " + integer;
+            }
+            sql += ")";
+            sql = sql.replaceFirst(", ", "");
+            System.out.println(sql);
+        }
+        return selectBySQL(sql, maKho);
     }
     
 }

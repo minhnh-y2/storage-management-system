@@ -97,4 +97,5 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
         List<ChiTietKiemKho> list = this.selectByMaPhieu(maPhieu);
         return list.size()>0?list.get(0).getMaLT():0;
     }
+
 }

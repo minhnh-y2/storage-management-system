@@ -262,13 +262,15 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         if(txtTenNV.getText().length() == 0){
             MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
             txtTenNV.requestFocus();
-        } else if (txtMatKhau.getPassword().length == 0){
+            return false;
+        } 
+        if (txtMatKhau.getPassword().length == 0){
             MsgBox.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
-        } else {
-            return true;
-        }
-        return false;
+            return false;
+        } 
+        return true;
+        
     }
 
 }
