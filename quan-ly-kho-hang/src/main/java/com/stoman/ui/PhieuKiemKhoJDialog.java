@@ -442,7 +442,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         
         delCTP.clear();
         int row = tblPhieuKiemKho.getSelectedRow();
-        PhieuKiemKho pkk = (PhieuKiemKho) this.modelPhieuKiem.getValueAt(row, 7);
+        PhieuKiemKho pkk = (PhieuKiemKho) this.modelPhieuKiem.getValueAt(row, 6);
 
         this.setFormPhieu(pkk);
         pnlMain.setSelectedIndex(0);
@@ -665,20 +665,19 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     
     // Lấy dữ liệu từ form phiếu nhập
     private PhieuKiemKho getFormPhieu() {
-        Kho kho = (Kho) cboKho.getSelectedItem();
-        PhieuKiemKho p = new PhieuKiemKho();
-        p.setMaNV(numFormat);
-        p.setNgayKiem(XDate.toDate(txtNgayLap.getText(), dateFormat));
-        p.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat+ "(hh:MM:ss)"));
-        p.setTrangThai(chkHoanThanh.isSelected());
-        p.setGhiChu(txtGhiChu.getText());
+        PhieuKiemKho pkk = new PhieuKiemKho();
+        pkk.setMaNV(numFormat);
+        pkk.setNgayKiem(XDate.toDate(txtNgayLap.getText(), dateFormat));
+        pkk.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat+ "(hh:MM:ss)"));
+        pkk.setTrangThai(chkHoanThanh.isSelected());
+        pkk.setGhiChu(txtGhiChu.getText());
         
-        return p;
+        return pkk;
     }
     
     // Nhập dữ liệu vào form phiếu nhập
     private void setFormPhieu(PhieuKiemKho p) {  
-        Kho kho = (Kho) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 3);
+        Kho kho = (Kho) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 1);
         
         txtNguoiLap.setText(p.getMaNV());
         txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat));
@@ -694,9 +693,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void fillToTableCTPhieu() {
         modelCTPhieuKiem.setRowCount(0);
         listCT.clear();
-        Integer maPhieu = (Integer) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 6);
+        PhieuKiemKho pkk = (PhieuKiemKho) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 6);
         try {
-            List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(maPhieu);
+            List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(pkk.getMaKK());
             int i = 1;
             for (ChiTietKiemKho ctkk : list) {
                 listCT.add(ctkk.getMaLT());
