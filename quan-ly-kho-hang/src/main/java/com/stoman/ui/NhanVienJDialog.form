@@ -342,6 +342,9 @@
             <Component class="javax.swing.JTextField" name="txtMaNV">
             </Component>
             <Component class="javax.swing.JTextField" name="txtHoTen">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtHoTenFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtMatKhau">
             </Component>

@@ -162,6 +162,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblVaiTro.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblVaiTro.setText("Vai trò");
 
+        txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusLost(evt);
+            }
+        });
+
         btnGrpVaiTro.add(rdoTruongKho);
         rdoTruongKho.setText("Trưởng kho");
         rdoTruongKho.setOpaque(false);
@@ -473,6 +479,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         fillToTable();
     }//GEN-LAST:event_cboTimKiemActionPerformed
 
+    private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
+        // TODO add your handling code here:
+        String hoTen = txtHoTen.getText();
+        txtHoTen.setText(capitalizeWord(hoTen));
+    }//GEN-LAST:event_txtHoTenFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -651,16 +663,22 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
+        
+        boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
+        boolean isManager = Auth.isManager();
 
         // Chọn hàng trên bảng
         if (edit) {
             tblNhanVien.setRowSelectionInterval(row, row);
         }
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
 
         txtMaNV.setEditable(!edit);
-        btnThem.setEnabled(!edit);
-        btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
+        btnThem.setEnabled(!edit && isManager);
+        btnSua.setEnabled(edit && isManager);
+        btnXoa.setEnabled(edit && isManager);
+        btnMoi.setEnabled(isManager);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
@@ -702,25 +720,38 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         String hoTen = txtHoTen.getText();
         char[] matKhau = txtMatKhau.getPassword();
         char[] xacNhanMK = txtXacNhanMK.getPassword();
+        NhanVien nv = DAO.selectByID(maNV);
 
         if (maNV.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã nhân viên!");
             txtMaNV.requestFocus();
-        } else if (hoTen.isEmpty()) {
+            return false;
+        }
+        if (nv != null) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
+            txtHoTen.requestFocus();
+            return false;
+        }
+        if (hoTen.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập họ và tên!");
             txtHoTen.requestFocus();
-        } else if (matKhau.length == 0) {
+            return false;
+        }
+        if (matKhau.length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
-        } else if (xacNhanMK.length == 0) {
+            return false;
+        }
+        if (xacNhanMK.length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
             txtXacNhanMK.requestFocus();
-        } else if (!new String(matKhau).equals(new String(xacNhanMK))) {
-            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
-        } else {
-            return true;
+            return false;
         }
-        return false;
+        if (!new String(matKhau).equals(new String(xacNhanMK))) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
+            return false;
+        }
+        return true;
     }
 
     // Thêm nhân viên mới
@@ -741,44 +772,53 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Xoá nhân viên hiện tại
     private void delete() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
-        } else {
-            String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
-            if (maNV.equals(Auth.user.getMaNV())) {
-                MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
-            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
-                try {
-                    DAO.delete(maNV);
-                    this.fillToTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xoá thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xoá không thành công!");
-                    e.printStackTrace();
-                }
+        String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
+        if (maNV.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
+        } else if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
+            try {
+                DAO.delete(maNV);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xoá thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xoá không thành công!");
+                e.printStackTrace();
             }
         }
     }
 
     // Cập nhật nhân viên 
     private void update() {
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền sửa nhân viên!");
-        } else {
-            if (isValidated()) {
-                NhanVien nv = getForm();
-                try {
-                    DAO.update(nv);
-                    this.fillToTable();
-                    this.updateStatus();
-                    MsgBox.alert(this, "Cập nhật thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Cập nhật thất bại!");
-                    e.printStackTrace();
-                }
+        if (isValidated()) {
+            NhanVien nv = getForm();
+            try {
+                DAO.update(nv);
+                this.fillToTable();
+                this.updateStatus();
+                MsgBox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật thất bại!");
+                e.printStackTrace();
             }
         }
+    }
+
+    // Tự động viết hoa chữ cái đầu họ và tên
+    public static String capitalizeWord(String str) {
+        str = str.trim();
+        String[] words = str.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            String s = words[i].substring(0, 1).toUpperCase()
+                    + words[i].substring(1).toLowerCase();
+            sb.append(s);
+            if (i < words.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
     }
 
     // Định dạng bảng
@@ -799,7 +839,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         };
         tblNhanVien.setModel(tblModel);
-        tblNhanVien.setAutoCreateRowSorter(true);
     }
 
 }
