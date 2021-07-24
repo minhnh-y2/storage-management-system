@@ -16,7 +16,10 @@ import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -175,8 +178,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         lblTimKiem.setText("Tìm kiếm");
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
@@ -334,12 +337,6 @@ public class KhoJDialog extends javax.swing.JDialog {
         update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
-        // TODO add your handling code here:
-        fillToTable();
-        clearForm();
-    }//GEN-LAST:event_txtTimKiemKeyPressed
-
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         this.dispose();
@@ -354,6 +351,11 @@ public class KhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatMouseExited
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        search();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
@@ -484,10 +486,11 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng
     private void fillToTable() {
+        tblKho.setRowSorter(null);
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
         try {
-            List<Kho> list = kDAO.selectByKeyword(keyword);
+            List<Kho> list = kDAO.selectAll();
             for (Kho k : list) {
                 NhanVien tk = nvDAO.selectByID(k.getMaTK());
                 tblModel.addRow(new Object[]{
@@ -511,7 +514,11 @@ public class KhoJDialog extends javax.swing.JDialog {
         
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblKho.setAutoCreateRowSorter(!isTableEmpty);
-
+        // Chọn hàng trên bảng
+        if (edit) {
+            tblKho.setRowSelectionInterval(row, row);
+        }
+        
         txtMaKho.setEditable(!edit);
         btnThem.setEnabled(!edit && isManager);
         btnSua.setEnabled(edit && isManager);
@@ -544,7 +551,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void setForm(Kho k, NhanVien nv) {
         txtMaKho.setText(String.valueOf(k.getMaKho()));
         txtDiaChi.setText(k.getDiaChi());
-        cboTruongKho.getModel().setSelectedItem(nv);
+        cboTruongKho.setSelectedItem(nv);
     }
 
     // Xoá trắng form
@@ -641,6 +648,21 @@ public class KhoJDialog extends javax.swing.JDialog {
                 e.printStackTrace();
             }
         }
+    }
+    
+    private void search() {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblModel);
+        tblKho.setRowSorter(sorter);
+        
+        String keyword = txtTimKiem.getText();
+        
+        RowFilter<TableModel, Object> rf = null;
+        try {
+            rf = RowFilter.regexFilter(keyword);
+        } catch (Exception e) {
+            return;
+        }
+        sorter.setRowFilter(rf);
     }
 
 }

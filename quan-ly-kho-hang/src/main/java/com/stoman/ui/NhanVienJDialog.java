@@ -667,12 +667,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
         boolean isManager = Auth.isManager();
 
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
         // Chọn hàng trên bảng
         if (edit) {
             tblNhanVien.setRowSelectionInterval(row, row);
         }
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
 
         txtMaNV.setEditable(!edit);
         btnThem.setEnabled(!edit && isManager);

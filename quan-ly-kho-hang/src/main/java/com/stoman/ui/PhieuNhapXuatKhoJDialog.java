@@ -1639,7 +1639,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void searchPhieu() {  
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelPhieu);
         tblPhieu.setRowSorter(sorterCTPhieu);
-        tblPhieu.setRowSorter(sorterCTPhieu);
         
         int columnFilter = cboTimKiemPhieu.getSelectedIndex();
         String keyword = txtTimKiemPhieu.getText();

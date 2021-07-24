@@ -708,7 +708,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
         boolean isManager = Auth.isManager();
+        boolean isTableEmpty = (tblHangHoa.getRowCount() == 0);
 
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblHangHoa.setAutoCreateRowSorter(!isTableEmpty);
         // Chọn hàng trên bảng
         if (edit) {
             tblHangHoa.setRowSelectionInterval(row, row);
@@ -909,7 +912,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         };
         tblHangHoa.setModel(tblModel);
 
-        tblHangHoa.setAutoCreateRowSorter(true);
         tblHangHoa.removeColumn(tblHangHoa.getColumnModel().getColumn(1));
         // Set size column
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
