@@ -12,7 +12,6 @@ import com.stoman.entity.LoaiDoiTac;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
-import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -750,12 +749,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         boolean isTableEmpty = (tblDoiTac.getRowCount() == 0);
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
 
+        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblDoiTac.setAutoCreateRowSorter(!isTableEmpty);
         // Chọn hàng trên bảng
         if (edit) {
             tblDoiTac.setRowSelectionInterval(row, row);
         }
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblDoiTac.setAutoCreateRowSorter(!isTableEmpty);
 
         btnThem.setEnabled(!edit && isSelectedList && isManager);
         btnSua.setEnabled(edit && isSelectedList && isManager);
