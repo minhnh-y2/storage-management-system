@@ -162,6 +162,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblVaiTro.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblVaiTro.setText("Vai trò");
 
+        txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusLost(evt);
+            }
+        });
+
         btnGrpVaiTro.add(rdoTruongKho);
         rdoTruongKho.setText("Trưởng kho");
         rdoTruongKho.setOpaque(false);
@@ -473,6 +479,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         fillToTable();
     }//GEN-LAST:event_cboTimKiemActionPerformed
 
+    private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
+        // TODO add your handling code here:
+        String hoTen = txtHoTen.getText();
+        txtHoTen.setText(capitalizeWord(hoTen));
+    }//GEN-LAST:event_txtHoTenFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -702,11 +714,15 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         String hoTen = txtHoTen.getText();
         char[] matKhau = txtMatKhau.getPassword();
         char[] xacNhanMK = txtXacNhanMK.getPassword();
+        NhanVien nv = DAO.selectByID(maNV);
 
         if (maNV.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã nhân viên!");
             txtMaNV.requestFocus();
-        } else if (hoTen.isEmpty()) {
+        } else if (nv != null) {
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
+            txtHoTen.requestFocus();
+        }  else if (hoTen.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập họ và tên!");
             txtHoTen.requestFocus();
         } else if (matKhau.length == 0) {
@@ -725,6 +741,11 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Thêm nhân viên mới
     private void insert() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền thêm nhân viên!");
+            return;
+        }
+
         if (isValidated()) {
             NhanVien nv = getForm();
             try {
@@ -743,20 +764,21 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void delete() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xoá nhân viên!");
-        } else {
-            String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
-            if (maNV.equals(Auth.user.getMaNV())) {
-                MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
-            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
-                try {
-                    DAO.delete(maNV);
-                    this.fillToTable();
-                    this.clearForm();
-                    MsgBox.alert(this, "Xoá thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Xoá không thành công!");
-                    e.printStackTrace();
-                }
+            return;
+        }
+
+        String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
+        if (maNV.equals(Auth.user.getMaNV())) {
+            MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
+        } else if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
+            try {
+                DAO.delete(maNV);
+                this.fillToTable();
+                this.clearForm();
+                MsgBox.alert(this, "Xoá thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xoá không thành công!");
+                e.printStackTrace();
             }
         }
     }
@@ -765,20 +787,38 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void update() {
         if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền sửa nhân viên!");
-        } else {
-            if (isValidated()) {
-                NhanVien nv = getForm();
-                try {
-                    DAO.update(nv);
-                    this.fillToTable();
-                    this.updateStatus();
-                    MsgBox.alert(this, "Cập nhật thành công!");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Cập nhật thất bại!");
-                    e.printStackTrace();
-                }
+            return;
+        }
+        
+        if (isValidated()) {
+            NhanVien nv = getForm();
+            try {
+                DAO.update(nv);
+                this.fillToTable();
+                this.updateStatus();
+                MsgBox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Cập nhật thất bại!");
+                e.printStackTrace();
             }
         }
+    }
+    
+    // Tự động viết hoa chữ cái đầu họ và tên
+    public static String capitalizeWord(String str) {
+        str = str.trim();
+        String[] words = str.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            String s = words[i].substring(0, 1).toUpperCase()
+                    + words[i].substring(1).toLowerCase();
+            sb.append(s);
+            if (i < words.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
     }
 
     // Định dạng bảng
