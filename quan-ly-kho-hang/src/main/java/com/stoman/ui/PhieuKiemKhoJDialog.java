@@ -18,6 +18,7 @@ import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.SpinnerEditor;
+import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.util.ArrayList;
 import java.util.List;
@@ -617,7 +618,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-        this.fillToTableCTPhieu();
+        
+        delCTP.clear();
+        int row = tblPhieuKiemKho.getSelectedRow();
+        PhieuKiemKho pkk = (PhieuKiemKho) this.modelPhieuKiem.getValueAt(row, 6);
+
+        this.setFormPhieu(pkk);
+        pnlMain.setSelectedIndex(0);
+        
+        isUpdate = true;
     }//GEN-LAST:event_tblPhieuKiemKhoMouseClicked
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -879,14 +888,40 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
+    
+    // Lấy dữ liệu từ form phiếu nhập
+    private PhieuKiemKho getFormPhieu() {
+        PhieuKiemKho pkk = new PhieuKiemKho();
+        pkk.setMaNV(numFormat);
+        pkk.setNgayKiem(XDate.toDate(txtNgayLap.getText(), dateFormat));
+        pkk.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat+ "(hh:MM:ss)"));
+        pkk.setTrangThai(chkHoanThanh.isSelected());
+        pkk.setGhiChu(txtGhiChu.getText());
+        
+        return pkk;
+    }
+    
+    // Nhập dữ liệu vào form phiếu nhập
+    private void setFormPhieu(PhieuKiemKho p) {  
+        Kho kho = (Kho) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 1);
+        
+        txtNguoiLap.setText(p.getMaNV());
+        txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat));
+        txtNgayKiem.setText(XDate.toString(p.getNgayLap(), dateFormat));
+        cboKho.getModel().setSelectedItem(kho);
+        chkHoanThanh.setSelected(p.isTrangThai());
+        txtGhiChu.setText(p.getGhiChu());
+        
+        this.fillToTableCTPhieu();
+    }
 
     // Đỗ dữ liệu vào bảng chi tiết
     private void fillToTableCTPhieu() {
         modelCTPhieuKiem.setRowCount(0);
         listCT.clear();
-        Integer maPhieu = (Integer) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 6);
+        PhieuKiemKho pkk = (PhieuKiemKho) modelPhieuKiem.getValueAt(tblPhieuKiemKho.getSelectedRow(), 6);
         try {
-            List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(maPhieu);
+            List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(pkk.getMaKK());
             int i = 1;
             for (ChiTietKiemKho ctkk : list) {
                 listCT.add(ctkk.getMaLT());
@@ -949,7 +984,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                     pkk.getMaNV(),
                     pkk.getNgayLap(),
-                    pkk.getMaKK()
+                    pkk
                 });
             }
             tblPhieuKiemKho.setModel(modelPhieuKiem);
