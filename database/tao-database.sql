@@ -618,16 +618,6 @@ GO
 --SELECT * FROM CHITIETPHIEU WHERE MAPHIEU = 11
 
 -------------------------------------------------------
--- TAO VIEW --
---
-
-
-
-
-
-
-
-
 
 
 
