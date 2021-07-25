@@ -69,11 +69,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTblHangHoaKho = new javax.swing.JScrollPane();
         tblHangHoaKho = new javax.swing.JTable();
         btnThemVaoDS = new javax.swing.JButton();
-        pnlThanhTieuDeCTP = new DragPanel(this);
+        pnlThanhTieuDeCTP = new DragPanel(ChiTietPhieuJDialog);
         lblTieuDeCTP = new javax.swing.JLabel();
         lblThoatCTP = new javax.swing.JLabel();
         QRCodeDialog = new javax.swing.JDialog();
-        pnlThanhTieuDeQR = new DragPanel(this);
+        pnlThanhTieuDeQR = new DragPanel(QRCodeDialog);
         lblTieuDeQR = new javax.swing.JLabel();
         lblThoatQR = new javax.swing.JLabel();
         pnlBackgroundQR = new javax.swing.JPanel();
