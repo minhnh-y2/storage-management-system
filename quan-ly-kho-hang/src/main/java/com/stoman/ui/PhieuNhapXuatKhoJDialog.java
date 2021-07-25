@@ -1444,9 +1444,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         Phieu phieu = this.getFormPhieu();
         String maPhieu = tblCTPhieu_sub.getToolTipText();
 
-        if (maPhieu == null) {
-            return;
-        }
+        if (maPhieu == null) return;
+        
         phieu.setMaPhieu(Integer.valueOf(maPhieu));
         Kho kho = (Kho) cboKho.getSelectedItem();
         pDAO.update(phieu);

@@ -10,6 +10,7 @@ import com.stoman.utils.XJdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -89,5 +90,10 @@ public class PhieuKiemKhoDAO extends StoManDAO<PhieuKiemKho, Integer> {
         return list;
     }
     
+    public Integer getMaPhieuByNVandCreatedDate(String MaNV, Date NgayLap){
+        String sql = "SELECT * FROM PHIEUKIEMKHO WHERE MANV = ? AND NGAYLAP = ?";
+        List<PhieuKiemKho> list = this.selectBySQL(sql, MaNV, NgayLap);
+        return list.size() > 0 ? list.get(0).getMaKK() : null;
+    }
     
 }
