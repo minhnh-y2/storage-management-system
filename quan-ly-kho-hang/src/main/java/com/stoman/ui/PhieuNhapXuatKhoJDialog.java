@@ -41,6 +41,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.table.TableStringConverter;
 
 /**
  *
@@ -958,7 +959,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
         // TODO add your handling code here:
-        if (tblCTPhieu_sub.getRowCount() > 0) {
+        if (tblPhieu.getRowCount() > 0) {
             txtTimKiemPhieu.setText("");
             searchPhieu();
         }
@@ -1547,35 +1548,36 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean edit = (this.rowPhieu >= 0);
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
-        
+
         boolean isPhieuEmpty = (tblPhieu.getRowCount() == 0);
         boolean isCTPhieu_subEmpty = (tblCTPhieu_sub.getRowCount() == 0);
         boolean isCTPhieu_mainEmpty = (tblCTPhieu_main.getRowCount() == 0);
         boolean isManager = Auth.isManager();
-        
+
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblPhieu.setAutoCreateRowSorter(!isPhieuEmpty);
         tblCTPhieu_sub.setAutoCreateRowSorter(!isCTPhieu_subEmpty);
         tblCTPhieu_main.setAutoCreateRowSorter(!isCTPhieu_mainEmpty);
+        
         // Chọn hàng trên bảng
         if (edit) {
             tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
         }
-        
-        // trạng thái form
+
+        // Trạng thái form
         btnThem.setEnabled(!edit && isManager);
         btnSua.setEnabled(edit && isManager);
         btnXoa.setEnabled(edit && isManager);
         btnMoi.setEnabled(isManager);
         btnChiTiet.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
-        
+
         btnThemCTP.setEnabled(isManager);
         btnXoaCTP.setEnabled(isManager);
         cboLoaiHH.setEnabled(isManager);
         cboHangHoa.setEnabled(isManager);
 
-        // trạng thái điều hướng
+        // Trạng thái điều hướng
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
@@ -1678,14 +1680,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void searchCTPhieu() {
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieu);
         tblCTPhieu_sub.setRowSorter(sorterCTPhieu);
-        tblCTPhieu_main.setRowSorter(sorterCTPhieu);
 
         int columnFilter = cboTimKiemCT.getSelectedIndex();
-        String keyword = txtTimKiemCTPhieu.getText();
+        String keyword = txtTimKiemCTPhieu.getText().toLowerCase();
+        
+        sorterCTPhieu.setStringConverter(new TableStringConverter() {
+            @Override
+            public String toString(TableModel model, int row, int column) {
+                return model.getValueAt(row, column).toString().toLowerCase();
+            }
+        });
 
         RowFilter<TableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter(keyword, columnFilter);
+            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
         } catch (Exception e) {
             return;
         }
@@ -1709,9 +1717,22 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int columnFilter = cboTimKiemPhieu.getSelectedIndex();
         String keyword = txtTimKiemPhieu.getText();
 
+        sorterCTPhieu.setStringConverter(new TableStringConverter() {
+            @Override
+            public String toString(TableModel model, int row, int column) {
+                return model.getValueAt(row, column).toString().toLowerCase();
+            }
+        });
+
         RowFilter<TableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter(keyword, columnFilter);
+            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
+            //rf = new RowFilter<TableModel, Object>(){
+            //    @Override
+            //    public boolean include(RowFilter.Entry<? extends TableModel, ? extends Object> entry) {
+            //        
+            //    }
+            //}
         } catch (Exception e) {
             return;
         }

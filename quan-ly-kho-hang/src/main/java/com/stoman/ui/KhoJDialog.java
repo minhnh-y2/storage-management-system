@@ -20,6 +20,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.table.TableStringConverter;
 
 /**
  *
@@ -654,11 +655,18 @@ public class KhoJDialog extends javax.swing.JDialog {
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblModel);
         tblKho.setRowSorter(sorter);
         
-        String keyword = txtTimKiem.getText();
+        String keyword = txtTimKiem.getText().toLowerCase();
+        
+        sorter.setStringConverter(new TableStringConverter() {
+            @Override
+            public String toString(TableModel model, int row, int column) {
+                return model.getValueAt(row, column).toString().toLowerCase();
+            }
+        });
         
         RowFilter<TableModel, Object> rf = null;
         try {
-            rf = RowFilter.regexFilter(keyword);
+            rf = RowFilter.regexFilter(keyword.toLowerCase());
         } catch (Exception e) {
             return;
         }
