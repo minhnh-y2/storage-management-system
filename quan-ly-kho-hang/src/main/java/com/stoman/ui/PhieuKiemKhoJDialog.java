@@ -5,6 +5,7 @@
  */
 package com.stoman.ui;
 
+import com.google.zxing.WriterException;
 import com.stoman.dao.ChiTietKiemKhoDAO;
 import com.stoman.dao.HangHoaDAO;
 import com.stoman.dao.KhoDAO;
@@ -15,13 +16,16 @@ import com.stoman.entity.ChiTietKiemKho;
 import com.stoman.entity.HangHoa;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LuuTru;
+import com.stoman.entity.Phieu;
 import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.QRCode;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,9 +69,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTblHangHoaKho = new javax.swing.JScrollPane();
         tblHangHoaKho = new javax.swing.JTable();
         btnThemVaoDS = new javax.swing.JButton();
-        pnlThanhTieuDeCTP = new DragPanel(this);
+        pnlThanhTieuDeCTP = new DragPanel(ChiTietPhieuJDialog);
         lblTieuDeCTP = new javax.swing.JLabel();
         lblThoatCTP = new javax.swing.JLabel();
+        QRCodeDialog = new javax.swing.JDialog();
+        pnlThanhTieuDeQR = new DragPanel(QRCodeDialog);
+        lblTieuDeQR = new javax.swing.JLabel();
+        lblThoatQR = new javax.swing.JLabel();
+        pnlBackgroundQR = new javax.swing.JPanel();
+        lblQRCodeImage = new javax.swing.JLabel();
         pnlBackground = new javax.swing.JPanel();
         pnlMain = new javax.swing.JTabbedPane();
         pnlChiTietPhieuKiem = new javax.swing.JPanel();
@@ -93,6 +103,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
+        btnXuatMaPhieu = new javax.swing.JButton();
         peparator = new javax.swing.JSeparator();
         pnlTimKiem = new javax.swing.JPanel();
         cboTimKiem = new javax.swing.JComboBox<>();
@@ -257,6 +268,62 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         ChiTietPhieuJDialog.getContentPane().add(pnlThanhTieuDeCTP, java.awt.BorderLayout.PAGE_START);
 
+        QRCodeDialog.setUndecorated(true);
+        QRCodeDialog.setResizable(false);
+
+        pnlThanhTieuDeQR.setBackground(new java.awt.Color(0, 153, 204));
+
+        lblTieuDeQR.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTieuDeQR.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieuDeQR.setText("STOMAN - XUẤT MÃ PHIẾU (QR)");
+
+        lblThoatQR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoatQR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png"))); // NOI18N
+        lblThoatQR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThoatQRMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblThoatQRMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblThoatQRMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlThanhTieuDeQRLayout = new javax.swing.GroupLayout(pnlThanhTieuDeQR);
+        pnlThanhTieuDeQR.setLayout(pnlThanhTieuDeQRLayout);
+        pnlThanhTieuDeQRLayout.setHorizontalGroup(
+            pnlThanhTieuDeQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhTieuDeQRLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTieuDeQR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(lblThoatQR, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlThanhTieuDeQRLayout.setVerticalGroup(
+            pnlThanhTieuDeQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhTieuDeQRLayout.createSequentialGroup()
+                .addGroup(pnlThanhTieuDeQRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThanhTieuDeQRLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblTieuDeQR))
+                    .addComponent(lblThoatQR, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+        QRCodeDialog.getContentPane().add(pnlThanhTieuDeQR, java.awt.BorderLayout.PAGE_START);
+
+        pnlBackgroundQR.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+        pnlBackgroundQR.setPreferredSize(new java.awt.Dimension(300, 300));
+        pnlBackgroundQR.setLayout(new java.awt.GridBagLayout());
+
+        lblQRCodeImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        lblQRCodeImage.setPreferredSize(new java.awt.Dimension(200, 200));
+        pnlBackgroundQR.add(lblQRCodeImage, new java.awt.GridBagConstraints());
+
+        QRCodeDialog.getContentPane().add(pnlBackgroundQR, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý phiếu kiểm kho");
         setUndecorated(true);
@@ -377,8 +444,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
+        pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 5, 0));
         pnlChucNang.setOpaque(false);
-        pnlChucNang.setLayout(new java.awt.GridLayout(5, 1));
+        pnlChucNang.setLayout(new java.awt.GridLayout(6, 1));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add-32.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -424,6 +492,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         });
         pnlChucNang.add(btnChiTiet);
+
+        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code.png"))); // NOI18N
+        btnXuatMaPhieu.setText("Xuất mã phiếu");
+        btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatMaPhieuActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnXuatMaPhieu);
 
         pnlTimKiem.setOpaque(false);
 
@@ -483,20 +560,20 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTietPhieuKiemLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(peparator)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                         .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTietPhieuKiemLayout.createSequentialGroup()
-                                .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(18, 18, 18))
+                            .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
+                                .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(pnlTblCTPhieuKiemKho_sub))
                                 .addGap(15, 15, 15)))
-                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(peparator)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
         pnlChiTietPhieuKiemLayout.setVerticalGroup(
@@ -733,6 +810,26 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.fillToTableHHkho();
     }//GEN-LAST:event_cboKhoItemStateChanged
 
+    private void btnXuatMaPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatMaPhieuActionPerformed
+        // TODO add your handling code here:
+        createQRCode();
+    }//GEN-LAST:event_btnXuatMaPhieuActionPerformed
+
+    private void lblThoatQRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatQRMouseClicked
+        // TODO add your handling code here:
+        QRCodeDialog.dispose();
+    }//GEN-LAST:event_lblThoatQRMouseClicked
+
+    private void lblThoatQRMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatQRMouseEntered
+        // TODO add your handling code here:
+        lblThoatQR.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close.png")));
+    }//GEN-LAST:event_lblThoatQRMouseEntered
+
+    private void lblThoatQRMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatQRMouseExited
+        // TODO add your handling code here:
+        lblThoatQR.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
+    }//GEN-LAST:event_lblThoatQRMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -778,6 +875,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog ChiTietPhieuJDialog;
+    private javax.swing.JDialog QRCodeDialog;
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnFirst;
     private javax.swing.JButton btnLast;
@@ -789,6 +887,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnThemVaoDS;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaKhoiDS;
+    private javax.swing.JButton btnXuatMaPhieu;
     private javax.swing.JComboBox<String> cboKho;
     private javax.swing.JComboBox<String> cboTimKiem;
     private javax.swing.JComboBox<String> cboTimKiem1;
@@ -798,10 +897,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblNgayKiem;
     private javax.swing.JLabel lblNgayLap;
     private javax.swing.JLabel lblNguoiLap;
+    private javax.swing.JLabel lblQRCodeImage;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblThoatCTP;
+    private javax.swing.JLabel lblThoatQR;
     private javax.swing.JLabel lblTieuDe;
     private javax.swing.JLabel lblTieuDeCTP;
+    private javax.swing.JLabel lblTieuDeQR;
     private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblTimKiem1;
     private javax.swing.JLabel lblTimKiem2;
@@ -810,6 +912,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JSeparator peparator;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundCTP;
+    private javax.swing.JPanel pnlBackgroundQR;
     private javax.swing.JPanel pnlChiTietPhieuKiem;
     private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlDSHangHoa;
@@ -824,6 +927,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane pnlTblPhieuKiemKho;
     private javax.swing.JPanel pnlThanhTieuDe;
     private javax.swing.JPanel pnlThanhTieuDeCTP;
+    private javax.swing.JPanel pnlThanhTieuDeQR;
     private javax.swing.JPanel pnlThongTin;
     private javax.swing.JPanel pnlTimKiem;
     private javax.swing.JPanel pnlTimKiem1;
@@ -934,6 +1038,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuJDialog.setLocationRelativeTo(null);
         ChiTietPhieuJDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         ChiTietPhieuJDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        
+        QRCodeDialog.pack();
+        QRCodeDialog.setLocationRelativeTo(null);
+        QRCodeDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+        QRCodeDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }
 
     // Đổ dữ liệu vào ComboBox kho
@@ -1235,5 +1344,21 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         // Thêm chức năng nhập cho bảng
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+    }
+
+    private void createQRCode() {
+        int rowPhieu = tblPhieuKiemKho.getSelectedRow();
+        if (rowPhieu < 0) {
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+        } else {
+            int maPhieu = (int) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+            try {
+                BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(maPhieu));
+                lblQRCodeImage.setIcon(new ImageIcon(bi));
+                QRCodeDialog.setVisible(true);
+            } catch (WriterException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
