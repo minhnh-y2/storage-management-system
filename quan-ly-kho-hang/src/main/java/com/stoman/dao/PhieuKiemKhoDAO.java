@@ -25,24 +25,24 @@ public class PhieuKiemKhoDAO extends StoManDAO<PhieuKiemKho, Integer> {
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.getNgayKiem(),
+                entity.getGhiChu(),
                 entity.isTrangThai(),
                 entity.getMaNV());
     }
 
     @Override
     public void update(PhieuKiemKho entity) {
-        String sql = "UPDATE PHIEUKIEMKHO SET NGAYLAP=?, NGAYKIEM=?, GHICHU=?, TRANGTHAI=?, MANV=? WHERE MAKK=?";
+        String sql = "UPDATE PHIEUKIEMKHO SET NGAYKIEM=?, GHICHU=?, TRANGTHAI=? WHERE MAKK=?";
         XJdbc.update(sql,
-                entity.getNgayLap(),
                 entity.getNgayKiem(),
+                entity.getGhiChu(),
                 entity.isTrangThai(),
-                entity.getMaNV(),
                 entity.getMaKK());
     }
 
     @Override
     public void delete(Integer key) {
-        String sql = "DELETE PHIEUKIEMKHO PHIEU WHERE MAKK = ?";
+        String sql = "DELETE PHIEUKIEMKHO WHERE MAKK = ?";
         XJdbc.update(sql, key);
     }
 
