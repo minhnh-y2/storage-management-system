@@ -461,7 +461,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         rdoPhieuXuat.setText("Phiếu xuất");
         rdoPhieuXuat.setOpaque(false);
 
-        txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss"))));
         txtNgayLap.setEnabled(false);
 
         txtNgayThucHien.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
@@ -1159,7 +1159,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private DefaultTableModel modelCTPhieu;
 
     private String numFormat = "#,##0.0";
-    private String dateFormat = "dd-mm-yyyy";
+    private String dateFormat = "dd-MM-yyyy";
 
     private boolean isUpdate = false;
 
