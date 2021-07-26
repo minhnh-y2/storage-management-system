@@ -21,6 +21,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -87,14 +88,17 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTonKho = new javax.swing.JLabel();
         lblSoLuongTK = new javax.swing.JLabel();
         pnlTonKho = new javax.swing.JPanel();
-        lblTblHangTonKho = new javax.swing.JScrollPane();
-        tblHangTonKho = new javax.swing.JTable();
-        lblTimKiemHH = new javax.swing.JLabel();
-        txtTimKiemHH = new javax.swing.JTextField();
-        lblTheo = new javax.swing.JLabel();
-        cboTimKiemHH = new javax.swing.JComboBox<>();
-        lblKhoHH = new javax.swing.JLabel();
-        cboKhoHH = new javax.swing.JComboBox<>();
+        lblTblLuuTru = new javax.swing.JScrollPane();
+        tblLuuTru = new javax.swing.JTable();
+        lblTimKiemLT = new javax.swing.JLabel();
+        txtTimKiemLT = new javax.swing.JTextField();
+        lblTheoLT = new javax.swing.JLabel();
+        cboTimKiemLT = new javax.swing.JComboBox<>();
+        lblKhoLT = new javax.swing.JLabel();
+        cboKhoLT = new javax.swing.JComboBox<>();
+        lblKhoLT1 = new javax.swing.JLabel();
+        cboKhoLT1 = new javax.swing.JComboBox<>();
+        separator = new javax.swing.JSeparator();
         pnlNhapTheoThang = new javax.swing.JPanel();
         lblTblNhap = new javax.swing.JScrollPane();
         tblNhap = new javax.swing.JTable();
@@ -311,14 +315,14 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                     .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         tabs.addTab("Tổng quan", pnlTongQuan);
 
-        tblHangTonKho.setModel(new javax.swing.table.DefaultTableModel(
+        tblLuuTru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -326,13 +330,15 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        lblTblHangTonKho.setViewportView(tblHangTonKho);
+        lblTblLuuTru.setViewportView(tblLuuTru);
 
-        lblTimKiemHH.setText("Tìm kiếm");
+        lblTimKiemLT.setText("Tìm kiếm");
 
-        lblTheo.setText("Theo");
+        lblTheoLT.setText("Theo");
 
-        lblKhoHH.setText("Trong Kho");
+        lblKhoLT.setText("Loại Hàng Hóa");
+
+        lblKhoLT1.setText("Kho");
 
         javax.swing.GroupLayout pnlTonKhoLayout = new javax.swing.GroupLayout(pnlTonKho);
         pnlTonKho.setLayout(pnlTonKhoLayout);
@@ -341,19 +347,26 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTblHangTonKho, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                    .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                    .addComponent(separator)
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
-                        .addComponent(lblTimKiemHH)
+                        .addComponent(lblTimKiemLT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTimKiemLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTimKiemHH)
+                        .addComponent(lblTheoLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTheo)
+                        .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlTonKhoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblKhoLT1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboKhoLT1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblKhoLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboTimKiemHH, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblKhoHH)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboKhoHH, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboKhoLT, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlTonKhoLayout.setVerticalGroup(
@@ -361,14 +374,20 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKhoHH)
-                    .addComponent(cboKhoHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboTimKiemHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTimKiemHH)
-                    .addComponent(lblTheo)
-                    .addComponent(txtTimKiemHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTblHangTonKho, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                    .addComponent(cboKhoLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKhoLT1)
+                    .addComponent(cboKhoLT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKhoLT))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator, javax.swing.GroupLayout.DEFAULT_SIZE, 5, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTimKiemLT)
+                    .addComponent(txtTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTheoLT)
+                    .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTblLuuTru, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -432,11 +451,11 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addComponent(cboNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboKhoNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addComponent(lblTblNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(lblTblNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        tabs.addTab("Nhập theo tháng", pnlNhapTheoThang);
+        tabs.addTab("Tỏng Nhập", pnlNhapTheoThang);
 
         tblXuat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -486,22 +505,23 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlXuatTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlXuatTheoThangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlXuatTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKhoXuat)
-                    .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTimKiemXuat)
-                    .addComponent(lblTheoXuat)
-                    .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlXuatTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlXuatTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNgayXuat)
                         .addComponent(cboNgayXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cboKhoXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboKhoXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlXuatTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblKhoXuat)
+                        .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTimKiemXuat)
+                        .addComponent(lblTheoXuat)
+                        .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTblXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(lblTblXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        tabs.addTab("Xuất theo tháng", pnlXuatTheoThang);
+        tabs.addTab("Tổng Xuất", pnlXuatTheoThang);
 
         tblHangTonKho3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -553,7 +573,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addComponent(lblTheo3)
                     .addComponent(txtTimKiemHH3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -821,14 +841,15 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnTaiKhoan;
     private javax.swing.JButton btnThoat;
     private javax.swing.JComboBox<String> cboKhoCC;
-    private javax.swing.JComboBox<String> cboKhoHH;
+    private javax.swing.JComboBox<String> cboKhoLT;
+    private javax.swing.JComboBox<String> cboKhoLT1;
     private javax.swing.JComboBox<String> cboKhoNhap;
     private javax.swing.JComboBox<String> cboKhoXuat;
     private javax.swing.JComboBox<String> cboNgayNhap;
     private javax.swing.JComboBox<String> cboNgayXuat;
     private javax.swing.JButton cboThongTin;
-    private javax.swing.JComboBox<String> cboTimKiemHH;
     private javax.swing.JComboBox<String> cboTimKiemHH3;
+    private javax.swing.JComboBox<String> cboTimKiemLT;
     private javax.swing.JComboBox<String> cboTimKiemNhap;
     private javax.swing.JComboBox<String> cboTimKiemXuat;
     private javax.swing.JScrollPane jScrollPane4;
@@ -837,7 +858,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblKho3;
-    private javax.swing.JLabel lblKhoHH;
+    private javax.swing.JLabel lblKhoLT;
+    private javax.swing.JLabel lblKhoLT1;
     private javax.swing.JLabel lblKhoNhap;
     private javax.swing.JLabel lblKhoXuat;
     private javax.swing.JLabel lblLuongNhap;
@@ -847,15 +869,15 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoLuongNhap;
     private javax.swing.JLabel lblSoLuongTK;
     private javax.swing.JLabel lblSoLuongXuat;
-    private javax.swing.JScrollPane lblTblHangTonKho;
+    private javax.swing.JScrollPane lblTblLuuTru;
     private javax.swing.JScrollPane lblTblNhap;
     private javax.swing.JScrollPane lblTblXuat;
-    private javax.swing.JLabel lblTheo;
     private javax.swing.JLabel lblTheo3;
+    private javax.swing.JLabel lblTheoLT;
     private javax.swing.JLabel lblTheoNhap;
     private javax.swing.JLabel lblTheoXuat;
-    private javax.swing.JLabel lblTimKiemHH;
     private javax.swing.JLabel lblTimKiemHH3;
+    private javax.swing.JLabel lblTimKiemLT;
     private javax.swing.JLabel lblTimKiemNhap;
     private javax.swing.JLabel lblTimKiemXuat;
     private javax.swing.JLabel lblTonKho;
@@ -885,21 +907,24 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTongQuan;
     private javax.swing.JPanel pnlTrangThai;
     private javax.swing.JPanel pnlXuatTheoThang;
+    private javax.swing.JSeparator separator;
     private javax.swing.JToolBar.Separator separator1;
     private javax.swing.JToolBar.Separator separator2;
     private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblHangTonKho;
     private javax.swing.JTable tblHangTonKho3;
+    private javax.swing.JTable tblLuuTru;
     private javax.swing.JTable tblNhap;
     private javax.swing.JTable tblXuat;
     private javax.swing.JToolBar toolBar;
-    private javax.swing.JTextField txtTimKiemHH;
     private javax.swing.JTextField txtTimKiemHH3;
+    private javax.swing.JTextField txtTimKiemLT;
     private javax.swing.JTextField txtTimKiemNhap;
     private javax.swing.JTextField txtTimKiemXuat;
     // End of variables declaration//GEN-END:variables
 
     private KhoDAO kDAO = new KhoDAO();
+    
+    private DefaultTableModel tblLuuTruModel;
     
     private void init() {
         this.setIconImage(XImages.getAppIcon());
@@ -912,6 +937,31 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.chart();
         
         this.fillToComboBoxKho();
+    }
+    
+     // Tạo tiêu đề và định dạng bảng
+    private void formatTable() {
+        String header[] = {"STT", "Hàng Hóa", "Số lượng tồn"};
+        tblLuuTruModel = new DefaultTableModel(header, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        tblLuuTru.setModel(tblLuuTruModel);
+
+        // Điều chỉnh size column
+//        tblLuuTru.getColumnModel().getColumn(0).setPreferredWidth(22);
+//        tblLuuTru.getColumnModel().getColumn(1).setPreferredWidth(130);
+//        tblLuuTru.getColumnModel().getColumn(2).setPreferredWidth(107);
     }
     
     // Tự động điều chỉnh nút đăng nhập/đăng xuất
@@ -1055,12 +1105,32 @@ public class StoManJFrame extends javax.swing.JFrame {
                 model4.addElement(k);
 
             }
-            cboKhoHH.setModel(model1);
+            cboKhoLT.setModel(model1);
             cboKhoXuat.setModel(model2);
             cboKhoNhap.setModel(model3);
             cboKhoCC.setModel(model4);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    // Đỗ dữ liệu vào bảng danh sách hàng hóa
+    private void fillToTableLuuTru(){
+        tblLuuTruModel.setRowCount(0);
+//        String keyword = txtTimKiemLT.getText();
+//        try {
+//            List<Kho> list = kDAO.selectAll();
+//            for (Kho k : list) {
+//                NhanVien tk = nvDAO.selectByID(k.getMaTK());
+//                tblModel.addRow(new Object[]{
+//                    k.getMaKho(),
+//                    k.getDiaChi(),
+//                    tk == null ? new NhanVien("<none>") : tk
+//                });
+//            }
+//        } catch (Exception e) {
+//            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+//            e.printStackTrace();
+//        }
     }
 }

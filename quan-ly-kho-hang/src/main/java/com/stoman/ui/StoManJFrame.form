@@ -193,7 +193,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,49,0,0,3,17"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,55,0,0,3,17"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -361,7 +361,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pnlThongTin" pref="380" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="399" max="32767" attributes="0"/>
                           <Component id="pnlBieuDo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -533,22 +533,30 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblTblHangTonKho" pref="760" max="32767" attributes="0"/>
+                          <Component id="lblTblLuuTru" pref="760" max="32767" attributes="0"/>
+                          <Component id="separator" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="lblTimKiemHH" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimKiemLT" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtTimKiemLT" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemHH" max="32767" attributes="0"/>
+                              <Component id="lblTheoLT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblTheo" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboTimKiemLT" min="-2" pref="172" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="lblKhoLT1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cboKhoLT1" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblKhoLT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemHH" min="-2" pref="161" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblKhoHH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboKhoHH" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="cboKhoLT" min="-2" pref="270" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -560,29 +568,36 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblKhoHH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboKhoHH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboTimKiemHH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTimKiemHH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTheo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTimKiemHH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboKhoLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKhoLT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboKhoLT1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKhoLT" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblTblHangTonKho" pref="362" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="separator" pref="5" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTheoLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblTblLuuTru" min="-2" pref="336" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="lblTblHangTonKho">
+            <Container class="javax.swing.JScrollPane" name="lblTblLuuTru">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblHangTonKho">
+                <Component class="javax.swing.JTable" name="tblLuuTru">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
@@ -623,40 +638,52 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemHH">
+            <Component class="javax.swing.JLabel" name="lblTimKiemLT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemHH">
+            <Component class="javax.swing.JTextField" name="txtTimKiemLT">
             </Component>
-            <Component class="javax.swing.JLabel" name="lblTheo">
+            <Component class="javax.swing.JLabel" name="lblTheoLT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Theo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboTimKiemHH">
+            <Component class="javax.swing.JComboBox" name="cboTimKiemLT">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblKhoHH">
+            <Component class="javax.swing.JLabel" name="lblKhoLT">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Trong Kho"/>
+                <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i H&#xe0;ng H&#xf3;a"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboKhoHH">
+            <Component class="javax.swing.JComboBox" name="cboKhoLT">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblKhoLT1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kho"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboKhoLT1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="separator">
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlNhapTheoThang">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Nh&#x1ead;p theo th&#xe1;ng">
-                <Property name="tabTitle" type="java.lang.String" value="Nh&#x1ead;p theo th&#xe1;ng"/>
+              <JTabbedPaneConstraints tabName="T&#x1ecf;ng Nh&#x1ead;p">
+                <Property name="tabTitle" type="java.lang.String" value="T&#x1ecf;ng Nh&#x1ead;p"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -705,7 +732,7 @@
                           <Component id="cboKhoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="lblTblNhap" pref="362" max="32767" attributes="0"/>
+                      <Component id="lblTblNhap" pref="368" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -802,8 +829,8 @@
         <Container class="javax.swing.JPanel" name="pnlXuatTheoThang">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Xu&#x1ea5;t theo th&#xe1;ng">
-                <Property name="tabTitle" type="java.lang.String" value="Xu&#x1ea5;t theo th&#xe1;ng"/>
+              <JTabbedPaneConstraints tabName="T&#x1ed5;ng Xu&#x1ea5;t">
+                <Property name="tabTitle" type="java.lang.String" value="T&#x1ed5;ng Xu&#x1ea5;t"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -841,20 +868,22 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblKhoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="lblNgayXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboNgayXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboKhoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblKhoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblTblXuat" pref="362" max="32767" attributes="0"/>
+                      <Component id="lblTblXuat" pref="368" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -995,7 +1024,7 @@
                           <Component id="txtTimKiemHH3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="362" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="368" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
