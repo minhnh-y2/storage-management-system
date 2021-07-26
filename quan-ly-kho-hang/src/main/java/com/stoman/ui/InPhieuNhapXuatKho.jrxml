@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b556074-ffdd-49e3-b0d5-2c33bcf61ac2">
+	<property name="ireport.zoom" value="1.771561000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="98" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="22" height="24" uuid="20674d39-eb44-48d7-bb58-cf0f68873586"/>
+				<imageExpression><![CDATA["D:\\MinhNH\\Documents\\Workspace\\FPT-Polytechnic\\PRO1041_DuAn1\\du-an-1\\quan-ly-kho-hang\\src\\main\\resources\\com\\stoman\\icons\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="22" y="0" width="533" height="24" uuid="cf92c499-3bef-4d2b-be20-9c4bed81ddf3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[HỆ THỐNG QUẢN LÝ KHO HÀNG STOMAN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="24" width="555" height="34" uuid="f869e0d9-627d-4fa4-b876-df36059d6cb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOAIPHIEU}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="198" y="58" width="29" height="20" uuid="7651eda7-b73c-4665-8a1c-434282277989"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Số:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="78" width="29" height="20" uuid="323c6def-762d-4f23-8f0b-e16ddb3b60b1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ngày:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="321" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="0" width="56" height="15" uuid="0db05b50-eaa3-4175-a7e4-79d567d58bba"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tên đối tác:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="15" width="56" height="15" uuid="a574bce1-355e-49a1-a3dc-a97c2ae33b12"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tên đối tác:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

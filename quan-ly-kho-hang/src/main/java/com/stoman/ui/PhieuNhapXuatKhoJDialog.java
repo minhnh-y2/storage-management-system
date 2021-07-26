@@ -13,6 +13,7 @@ import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiDoiTacDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.dao.LuuTruDAO;
+import com.stoman.dao.NhanVienDAO;
 import com.stoman.dao.PhieuDAO;
 import com.stoman.dao.ProcedureDAO;
 import com.stoman.entity.ChiTietPhieu;
@@ -21,6 +22,7 @@ import com.stoman.entity.HangHoa;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiDoiTac;
 import com.stoman.entity.LoaiHangHoa;
+import com.stoman.entity.NhanVien;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DateRenderer;
@@ -461,12 +463,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         rdoPhieuXuat.setText("Phiếu xuất");
         rdoPhieuXuat.setOpaque(false);
 
-        txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txtNgayLap.setEnabled(false);
+        txtNgayLap.setEditable(false);
+        txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss"))));
 
         txtNgayThucHien.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
 
         txtNgayHoanThanh.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
+
+        txtMaNV.setEditable(false);
 
         lblGhiChu.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblGhiChu.setText("Ghi chú");
@@ -1153,13 +1157,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private LoaiHangHoaDAO lhhDAO = new LoaiHangHoaDAO();
     private HangHoaDAO hhDAO = new HangHoaDAO();
     private KhoDAO kDAO = new KhoDAO();
+    private NhanVienDAO nvDAO = new NhanVienDAO();
     private ProcedureDAO spDAO = new ProcedureDAO();
 
     private DefaultTableModel modelPhieu;
     private DefaultTableModel modelCTPhieu;
 
     private String numFormat = "#,##0.0";
-    private String dateFormat = "dd-mm-yyyy";
+    private String dateFormat = "dd-MM-yyyy";
 
     private boolean isUpdate = false;
 
@@ -1339,7 +1344,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         Phieu p = new Phieu();
         p.setLoai(rdoPhieuNhap.isSelected());
         p.setMaDT(ldt.getMaLDT());
-        p.setMaNV(txtMaNV.getText());
+        p.setMaNV(txtMaNV.getToolTipText());
+        p.setMaNV(numFormat);
         p.setNgHoanThanh(XDate.toDate(txtNgayHoanThanh.getText(), dateFormat));
         p.setNgThucHien(XDate.toDate(txtNgayThucHien.getText(), dateFormat));
         p.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat + "(hh:MM:ss)"));
@@ -1352,10 +1358,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void setFormPhieu(Phieu p) {
         DoiTac dt = dtDAO.selectByID(p.getMaDT());
         LoaiDoiTac ldt = ldtDAO.selectByID(dt.getMaLDT());
+        NhanVien nv = nvDAO.selectByID(p.getMaNV());
         Kho kho = (Kho) tblPhieu.getValueAt(rowPhieu, 3);
         cboLoaiDT.setSelectedItem(ldt);
         cboDoiTac.setSelectedItem(dt);
-        txtMaNV.setText(p.getMaNV());
+        txtMaNV.setToolTipText(p.getMaNV());
+        txtMaNV.setText(nv.getTenNV());
         txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat + "(hh:MM:ss)"));
         txtNgayThucHien.setText(XDate.toString(p.getNgThucHien(), dateFormat));
         txtNgayHoanThanh.setText(XDate.toString(p.getNgHoanThanh(), dateFormat));
@@ -1526,7 +1534,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void clearForm() {
         cboLoaiDT.setSelectedIndex(0);
         cboDoiTac.setSelectedIndex(0);
-        txtMaNV.setText(null); //Auth.user.getMaNV()
+        txtMaNV.setText(null); //Auth.user.getTenNV()
+        txtMaNV.setToolTipText(null); //Auth.user.getMaNV()
         Date NgayLap = new Date(System.currentTimeMillis());
         txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
         txtNgayThucHien.setText(null);
