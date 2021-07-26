@@ -487,7 +487,6 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng
     private void fillToTable() {
-        tblKho.setRowSorter(null);
         tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
         try {
