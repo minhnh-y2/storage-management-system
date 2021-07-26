@@ -31,10 +31,15 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
+import com.stoman.utils.XJdbc;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -44,6 +49,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -131,6 +142,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         btnXuatMaPhieu = new javax.swing.JButton();
+        btnInPhieu = new javax.swing.JButton();
         txtTimKiemCTPhieu = new javax.swing.JTextField();
         lblTimKiemCT = new javax.swing.JLabel();
         lblTimKiemCT2 = new javax.swing.JLabel();
@@ -614,7 +626,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setBackground(new java.awt.Color(153, 153, 255));
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 4, 0));
         pnlChucNang.setOpaque(false);
-        pnlChucNang.setLayout(new java.awt.GridLayout(6, 1));
+        pnlChucNang.setLayout(new java.awt.GridLayout(7, 1));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add-32.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -669,6 +681,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
         pnlChucNang.add(btnXuatMaPhieu);
+
+        btnInPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/print.png"))); // NOI18N
+        btnInPhieu.setText("In phiếu");
+        btnInPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInPhieuActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnInPhieu);
 
         txtTimKiemCTPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1024,6 +1045,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         last();
     }//GEN-LAST:event_btnLastActionPerformed
 
+    private void btnInPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPhieuActionPerformed
+        // TODO add your handling code here:
+        exportReport();
+    }//GEN-LAST:event_btnInPhieuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1075,6 +1101,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnFirst;
     private javax.swing.ButtonGroup btnGrpLoaiPhieu;
+    private javax.swing.JButton btnInPhieu;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnNext;
@@ -1163,8 +1190,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private DefaultTableModel modelPhieu;
     private DefaultTableModel modelCTPhieu;
 
-    private String numFormat = "#,##0.0";
-    private String dateFormat = "dd-MM-yyyy";
+    private final String numFormat = "#,##0.0";
+    private final String dateFormat = "dd-MM-yyyy";
+    private final String reportFile = "/com/stoman/reports/InPhieuNhapXuatKho.jrxml";
 
     private boolean isUpdate = false;
 
@@ -1172,6 +1200,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        this.setModal(false);
         this.initDialogOther();
 
         this.formatTable();
@@ -1747,22 +1776,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         sorterCTPhieu.setRowFilter(rf);
     }
 
-    // Tạo mã QR chứa mã phiếu
-    private void createQRCode() {
-        if (rowPhieu < 0) {
-            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
-        } else {
-            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 8);
-            try {
-                BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(phieu.getMaPhieu()));
-                lblQRCodeImage.setIcon(new ImageIcon(bi));
-                QRCodeDialog.setVisible(true);
-            } catch (WriterException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
     // Hiển thị phiếu đầu danh sách
     private void first() {
         this.rowPhieu = 0;
@@ -1791,6 +1804,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.edit();
     }
 
+    // Hiển thị dữ liệu của phiếu được chọn lên form
     private void edit() {
         delCTP.clear();
 
@@ -1803,5 +1817,48 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         isUpdate = true;
         this.updateStatus();
+    }
+
+    // Tạo mã QR chứa mã phiếu
+    private void createQRCode() {
+        if (rowPhieu < 0) {
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+        } else {
+            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 8);
+            try {
+                BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(phieu.getMaPhieu()));
+                lblQRCodeImage.setIcon(new ImageIcon(bi));
+                QRCodeDialog.setVisible(true);
+            } catch (WriterException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    // Xuất phiếu
+    private void exportReport() {
+        if (rowPhieu < 0) {
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+            return;
+        }
+        JasperReport jasperReport = null;
+        JasperPrint jasperPrint = null;
+        try {
+            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 8);
+            // Truyền tham số vào báo cáo
+            HashMap parameters = new HashMap();
+            parameters.put("MAPHIEU", phieu.getMaPhieu());
+            // Kết nối với Database
+            Connection conn = XJdbc.getConnection();
+            // Biên dịch tệp
+            InputStream path = this.getClass().getResourceAsStream(reportFile);
+            jasperReport = JasperCompileManager.compileReport(path);
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            conn.close();
+        } catch (SQLException | JRException e) {
+            MsgBox.alert(this, "Lỗi xuất phiếu");
+            e.printStackTrace();
+        }
     }
 }

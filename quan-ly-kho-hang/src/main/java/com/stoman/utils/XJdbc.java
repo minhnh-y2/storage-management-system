@@ -31,6 +31,15 @@ public class XJdbc {
     }
     
     /**
+     * Ket noi voi Database
+     * @return Connection
+     * @throws SQLException
+     */
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(dburl, user, pass);
+    }
+    
+    /**
      * Xay dung PreparedStatement
      * @param sql la cau lenh SQL
      * @param args la danh sach cac gia tri duoc cung cap cho cac tham so trong cau lenh SQL

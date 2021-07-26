@@ -5,8 +5,6 @@
  */
 package com.stoman.entity;
 
-import com.stoman.utils.XNumber;
-
 /**
  *
  * @author Huy
