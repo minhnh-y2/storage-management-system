@@ -673,7 +673,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnChiTiet);
 
-        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code.png"))); // NOI18N
+        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code-32.png"))); // NOI18N
         btnXuatMaPhieu.setText("Xuất mã phiếu");
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -682,7 +682,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnXuatMaPhieu);
 
-        btnInPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/print.png"))); // NOI18N
+        btnInPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/print-32.png"))); // NOI18N
         btnInPhieu.setText("In phiếu");
         btnInPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

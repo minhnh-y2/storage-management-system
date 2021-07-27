@@ -1075,7 +1075,7 @@
                     <Component class="javax.swing.JButton" name="btnXuatMaPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/qr-code.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/qr-code-32.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t m&#xe3; phi&#x1ebf;u"/>
                       </Properties>
@@ -1086,7 +1086,7 @@
                     <Component class="javax.swing.JButton" name="btnInPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/print.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/print-32.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="In phi&#x1ebf;u"/>
                       </Properties>
