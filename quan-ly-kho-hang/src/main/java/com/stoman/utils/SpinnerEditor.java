@@ -24,12 +24,16 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
         spinner.setBorder(null);
     }
 
+    @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column){
-        spinner.setValue(XNumber.toDouble(((String) value),"#,##0.0"));
+        //spinner.setValue(XNumber.toDouble(((String) value),"#,##0.0"));
+        spinner.setValue(value);
         return spinner;
     }
 
+    @Override
     public Object getCellEditorValue(){
-        return XNumber.toString((Double) spinner.getValue(), "#,##0.0");
+        //return XNumber.toString((Double) spinner.getValue(), "#,##0.0");
+        return spinner.getValue();
     }
 }

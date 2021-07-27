@@ -1206,6 +1206,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToComboBoxKho();
 
         tabs.setSelectedIndex(1);
+        
+        this.updateStatus();
 
     }
 
@@ -1270,9 +1272,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 modelCTPhieu.addRow(new Object[]{
                     i++,
                     hh,
-                    XNumber.toString(ctp.getSoLuong(), numFormat),
-                    XNumber.toString(ctp.getDonGia(), numFormat),
-                    ctp.getMaCTP()
+                    //XNumber.toString(ctp.getSoLuong(), numFormat),
+                    //XNumber.toString(ctp.getDonGia(), numFormat),
+                    ctp.getSoLuong(),
+                    ctp.getDonGia(),
+                    ctp.getMaCTP(),
+                    ctp.getThanhTien()
                 });
             }
             tblCTPhieu_sub.setModel(modelCTPhieu);
@@ -1419,8 +1424,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         modelCTPhieu.addRow(new Object[]{
             tblCTPhieu_main.getRowCount() + 1,
             (HangHoa) cboHangHoa.getSelectedItem(),
-            XNumber.toString(0.0, numFormat),
-            XNumber.toString(0.0, numFormat),
+            //XNumber.toString(0.0, numFormat),
+            //XNumber.toString(0.0, numFormat),
+            0,
+            0,
             0
         });
     }
@@ -1636,7 +1643,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return getValueAt(0, columnIndex).getClass();
             }
         };
-        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Phiếu"};
+        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Phiếu", "Thành tiền"};
         this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

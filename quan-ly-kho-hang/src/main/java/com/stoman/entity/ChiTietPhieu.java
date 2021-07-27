@@ -15,16 +15,18 @@ public class ChiTietPhieu {
     private int maLT;
     private double soLuong;
     private double donGia;
+    private double thanhTien;
 
     public ChiTietPhieu() {
     }
 
-    public ChiTietPhieu(int maCTP, int maPhieu, int maLT, double soLuong, double donGia) {
+    public ChiTietPhieu(int maCTP, int maPhieu, int maLT, double soLuong, double donGia, double thanhTien) {
         this.maCTP = maCTP;
         this.maPhieu = maPhieu;
         this.maLT = maLT;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.thanhTien = thanhTien;
     }
 
     public int getMaCTP() {
@@ -65,5 +67,9 @@ public class ChiTietPhieu {
 
     public void setDonGia(double donGia) {
         this.donGia = donGia;
+    }
+    
+    public double getThanhTien() {
+        return (this.getDonGia() * this.getThanhTien());
     }
 }
