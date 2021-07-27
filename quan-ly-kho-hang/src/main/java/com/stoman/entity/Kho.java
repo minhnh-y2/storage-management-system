@@ -54,8 +54,11 @@ public class Kho {
     
     @Override
     public boolean equals(Object obj) {
-        Kho other = (Kho) obj;
-        return other.getMaKho() == this.getMaKho();
+        if(obj instanceof Kho){
+            Kho other = (Kho) obj;
+            return other.getMaKho()== this.getMaKho();
+        }
+        return super.equals(obj);
     }
 
 }

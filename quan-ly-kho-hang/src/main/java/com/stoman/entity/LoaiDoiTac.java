@@ -27,8 +27,12 @@ public class LoaiDoiTac {
     
     @Override
     public boolean equals(Object obj) {
-        LoaiDoiTac other = (LoaiDoiTac) obj;
-        return other.getMaLDT() == this.getMaLDT();
+        if(obj instanceof LoaiDoiTac){
+            LoaiDoiTac other = (LoaiDoiTac) obj;
+            return other.getMaLDT() == this.getMaLDT();
+        }
+        return super.equals(obj);
+        
     }
 
     public int getMaLDT() {

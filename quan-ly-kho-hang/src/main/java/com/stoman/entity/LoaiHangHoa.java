@@ -27,8 +27,11 @@ public class LoaiHangHoa {
     
     @Override
     public boolean equals(Object obj) {
-        LoaiHangHoa other = (LoaiHangHoa) obj;
-        return other.getMaLHH() == this.getMaLHH();
+        if(obj instanceof LoaiHangHoa){
+            LoaiHangHoa other = (LoaiHangHoa) obj;
+            return other.getMaLHH() == this.getMaLHH();
+        }
+        return super.equals(obj);
     }
 
     public int getMaLHH() {

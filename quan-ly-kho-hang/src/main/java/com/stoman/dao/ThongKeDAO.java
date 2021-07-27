@@ -35,16 +35,17 @@ public class ThongKeDAO {
         }
     }
 
-    public List<Object[]> getListLuuTru(Integer maKho, Integer maLHH, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONG", "MAHH", "MALHH", "MAKHO"};
+    public List<Object[]> getListLuuTru(String maKho, String maLHH, String keyword, Integer index) {
+        String[] cols = {"TENHH", "SOLUONGTON", "DONGIA", "MAHH", "MALHH", "MAKHO"};
         String sql = "SELECT * FROM V_LUU_TRU WHERE MAKHO LIKE ? AND MALHH LIKE ?";
         
         
         if(keyword.length()>0){
             sql += " AND " + cols[index] + " LIKE ?";
+            System.out.println(sql);
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+keyword+"%");
         }
-        
+        System.out.println(sql);
         return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%");
     }
     
