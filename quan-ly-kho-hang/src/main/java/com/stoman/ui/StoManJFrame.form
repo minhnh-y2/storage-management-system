@@ -1124,7 +1124,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlTKNhap1">
+        <Container class="javax.swing.JPanel" name="pnlTKxuat">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Th&#x1ed1;ng k&#xea; Xu&#x1ea5;t">
@@ -1140,39 +1140,39 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblTimKiemNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimKiemXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtTimKiemNhap1" min="-2" pref="275" max="-2" attributes="0"/>
+                              <Component id="txtTimKiemXuat" min="-2" pref="275" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblTheoNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTheoXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboTheoNhap1" max="32767" attributes="0"/>
+                              <Component id="cboTheoXuat" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="lblTblTKnhap1" alignment="0" min="-2" pref="516" max="-2" attributes="0"/>
+                          <Component id="lblTblTKxuat" alignment="0" min="-2" pref="516" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="separator7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cboKhoNhap1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cboLoaiHangHoaNhap1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnlTongGTNhap1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cboKhoXuat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cboLoaiHangHoaXuat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlTongGTXuat" alignment="0" max="32767" attributes="0"/>
                           <Component id="separator9" alignment="0" max="32767" attributes="0"/>
                           <Component id="separator8" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblLoaiHangHoaNhap1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblKhoNhap1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTrongNhap1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLoaiHangHoaXuat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKhoXuat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTrongXuat" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="lblThangNhap1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblThangXuat" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cboThangNhap1" min="-2" pref="69" max="-2" attributes="0"/>
+                                      <Component id="cboThangXuat" min="-2" pref="69" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="lblNamNhap1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNamXuat" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cboNamNhap1" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Component id="cboNamXuat" min="-2" pref="84" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1190,39 +1190,39 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblTimKiemNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimKiemNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTheoNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTheoNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblTblTKnhap1" pref="0" max="32767" attributes="0"/>
+                              <Component id="lblTblTKxuat" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblKhoNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblKhoXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cboKhoNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboKhoXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblLoaiHangHoaNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLoaiHangHoaXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cboLoaiHangHoaNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboLoaiHangHoaXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator8" min="-2" pref="2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblTrongNhap1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTrongXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblThangNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboThangNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNamNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboNamNhap1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNamXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboNamXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="pnlTongLGNhap1" min="-2" pref="142" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="pnlTongGTNhap1" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Component id="pnlTongGTXuat" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                           <Component id="separator7" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -1232,14 +1232,14 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="lblTblTKnhap1">
+            <Container class="javax.swing.JScrollPane" name="lblTblTKxuat">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblTKnhap1">
+                <Component class="javax.swing.JTable" name="tblTKxuat">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
@@ -1280,19 +1280,19 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemNhap1">
+            <Component class="javax.swing.JLabel" name="lblTimKiemXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemNhap1">
+            <Component class="javax.swing.JTextField" name="txtTimKiemXuat">
             </Component>
-            <Component class="javax.swing.JLabel" name="lblTheoNhap1">
+            <Component class="javax.swing.JLabel" name="lblTheoXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Theo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboTheoNhap1">
+            <Component class="javax.swing.JComboBox" name="cboTheoXuat">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1302,27 +1302,27 @@
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblKhoNhap1">
+            <Component class="javax.swing.JLabel" name="lblKhoXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kho"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboKhoNhap1">
+            <Component class="javax.swing.JComboBox" name="cboKhoXuat">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboKhoNhap1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboKhoXuatActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblLoaiHangHoaNhap1">
+            <Component class="javax.swing.JLabel" name="lblLoaiHangHoaXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i H&#xe0;ng H&#xf3;a"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboLoaiHangHoaNhap1">
+            <Component class="javax.swing.JComboBox" name="cboLoaiHangHoaXuat">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLoaiHangHoaNhap1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLoaiHangHoaXuatActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
@@ -1330,32 +1330,32 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="separator8">
             </Component>
-            <Component class="javax.swing.JLabel" name="lblTrongNhap1">
+            <Component class="javax.swing.JLabel" name="lblTrongXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Trong"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblThangNhap1">
+            <Component class="javax.swing.JLabel" name="lblThangXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xe1;ng"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboThangNhap1">
+            <Component class="javax.swing.JComboBox" name="cboThangXuat">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboThangNhap1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboThangXuatActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNamNhap1">
+            <Component class="javax.swing.JLabel" name="lblNamXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#x103;m"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboNamNhap1">
+            <Component class="javax.swing.JComboBox" name="cboNamXuat">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNamNhap1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNamXuatActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
@@ -1380,7 +1380,7 @@
                 <Property name="rows" type="int" value="0"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblTongGiaTriNhap1">
+                <Component class="javax.swing.JLabel" name="lblTongGiaTriXuat">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="1"/>
@@ -1389,10 +1389,10 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Gi&#xe1; Tr&#x1ecb; Nh&#x1ead;p"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Gi&#xe1; Tr&#x1ecb; Xu&#x1ea5;t"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblTongSoGTN1">
+                <Component class="javax.swing.JLabel" name="lblTongSoGTX">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="0"/>
@@ -1406,7 +1406,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnlTongGTNhap1">
+            <Container class="javax.swing.JPanel" name="pnlTongGTXuat">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="99" type="rgb"/>
@@ -1423,7 +1423,7 @@
                 <Property name="rows" type="int" value="0"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblTongLuongNhap1">
+                <Component class="javax.swing.JLabel" name="lblTongLuongXuat">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="1"/>
@@ -1432,10 +1432,10 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng l&#x1b0;&#x1ee3;ng Nh&#x1ead;p"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng l&#x1b0;&#x1ee3;ng Xu&#x1ea5;t"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblTongSoLN1">
+                <Component class="javax.swing.JLabel" name="lblTongSoLX">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="0"/>
