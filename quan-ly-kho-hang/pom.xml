@@ -46,6 +46,13 @@
             <artifactId>jasperreports</artifactId>
             <version>6.17.0</version>
         </dependency>
+        <!-- JasperReports Fonts -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>6.17.0</version>
+        </dependency>
+
     </dependencies>
     
 </project>
