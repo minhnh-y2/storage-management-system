@@ -49,8 +49,8 @@ public class ThongKeDAO {
         return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%");
     }
     
-    public List<Object[]> getListNhap(Integer maKho, Integer maLHH, Integer thang, Integer nam, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGNHAP", "DONGIA", "TONGCONGNHAP", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
+    public List<Object[]> getListNhap(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
+        String[] cols = {"TENHH", "SOLUONGNHAP", "SLNHAPTB", "GIANHAPTB", "TONGGIATRINHAP", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
         String sql = "SELECT * FROM V_HANG_NHAP WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?";
         
         
@@ -62,8 +62,8 @@ public class ThongKeDAO {
         return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+nam+"%", "%"+thang+"%");
     }
     
-    public List<Object[]> getListXuat(Integer maKho, Integer maLHH, Integer thang, Integer nam, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGXUAT", "DONGIA", "TONGCONGXUAT", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
+    public List<Object[]> getListXuat(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
+        String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGCONGXUAT", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
         String sql = "SELECT * FROM V_HANG_XUAT WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?";
         
         
@@ -87,6 +87,34 @@ public class ThongKeDAO {
         String sql = "SELECT * FROM V_CAN_CAN WHERE NAM = ?";
         
         return this.getListOfArray(sql, cols, nam);
+    }
+    
+    public List<Object[]> getListThangNhap(Integer nam) {
+        String[] cols = {"THANG"};
+        String sql = "SELECT DISTINCT THANG FROM V_HANG_NHAP WHERE NAM = ? ORDER BY THANG";
+        
+        return this.getListOfArray(sql, cols, nam);
+    }
+    
+    public List<Object[]> getListNamNhap() {
+        String[] cols = {"NAM"};
+        String sql = "SELECT DISTINCT NAM FROM V_HANG_NHAP ORDER BY NAM";
+        
+        return this.getListOfArray(sql, cols);
+    }
+    
+    public List<Object[]> getListThangXuat(Integer nam) {
+        String[] cols = {"THANG"};
+        String sql = "SELECT DISTINCT THANG FROM V_HANG_XUAT WHERE NAM = ? ORDER BY THANG";
+        
+        return this.getListOfArray(sql, cols, nam);
+    }
+    
+    public List<Object[]> getListNamXuat() {
+        String[] cols = {"NAM"};
+        String sql = "SELECT DISTINCT NAM FROM V_HANG_XUAT ORDER BY NAM";
+        
+        return this.getListOfArray(sql, cols);
     }
 
 }
