@@ -16,23 +16,26 @@ import com.stoman.entity.ChiTietKiemKho;
 import com.stoman.entity.HangHoa;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LuuTru;
-import com.stoman.entity.Phieu;
 import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
+import com.stoman.utils.ReportHelper;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -104,6 +107,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         btnXuatMaPhieu = new javax.swing.JButton();
+        btnXuatMaPhieu1 = new javax.swing.JButton();
         peparator = new javax.swing.JSeparator();
         pnlTimKiem = new javax.swing.JPanel();
         cboTimKiem = new javax.swing.JComboBox<>();
@@ -446,7 +450,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 5, 0));
         pnlChucNang.setOpaque(false);
-        pnlChucNang.setLayout(new java.awt.GridLayout(6, 1));
+        pnlChucNang.setLayout(new java.awt.GridLayout(7, 1));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add-32.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -501,6 +505,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         });
         pnlChucNang.add(btnXuatMaPhieu);
+
+        btnXuatMaPhieu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/print.png"))); // NOI18N
+        btnXuatMaPhieu1.setText("In phiếu");
+        btnXuatMaPhieu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatMaPhieu1ActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnXuatMaPhieu1);
 
         pnlTimKiem.setOpaque(false);
 
@@ -830,6 +843,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         lblThoatQR.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/close(2).png")));
     }//GEN-LAST:event_lblThoatQRMouseExited
 
+    private void btnXuatMaPhieu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatMaPhieu1ActionPerformed
+        // TODO add your handling code here:
+        exportReport();
+    }//GEN-LAST:event_btnXuatMaPhieu1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -888,6 +906,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaKhoiDS;
     private javax.swing.JButton btnXuatMaPhieu;
+    private javax.swing.JButton btnXuatMaPhieu1;
     private javax.swing.JComboBox<String> cboKho;
     private javax.swing.JComboBox<String> cboTimKiem;
     private javax.swing.JComboBox<String> cboTimKiem1;
@@ -1359,6 +1378,28 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             } catch (WriterException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    private final String reportFile = "/com/stoman/reports/InPhieuKiemKho.jrxml";
+    private void exportReport() {
+        int row = tblPhieuKiemKho.getSelectedRow();
+        if (row < 0) {
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+            return;
+        }
+
+        try {
+            int maKK = (int) this.modelPhieuKiem.getValueAt(row, 6);
+
+            // Truyền tham số vào báo cáo
+            HashMap parameters = new HashMap();
+            parameters.put("MAKK", maKK);
+
+            ReportHelper.printReport(reportFile, parameters);
+        } catch (SQLException | JRException e) {
+            MsgBox.alert(this, "Lỗi xuất phiếu!");
+            e.printStackTrace();
         }
     }
 }

@@ -29,13 +29,11 @@ import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
+import com.stoman.utils.ReportHelper;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
-import com.stoman.utils.XJdbc;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,11 +48,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -1481,8 +1475,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         Phieu phieu = this.getFormPhieu();
         String maPhieu = tblCTPhieu_sub.getToolTipText();
 
-        if (maPhieu == null) return;
-        
+        if (maPhieu == null) {
+            return;
+        }
+
         phieu.setMaPhieu(Integer.valueOf(maPhieu));
         Kho kho = (Kho) cboKho.getSelectedItem();
         pDAO.update(phieu);
@@ -1595,7 +1591,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblPhieu.setAutoCreateRowSorter(!isPhieuEmpty);
         tblCTPhieu_sub.setAutoCreateRowSorter(!isCTPhieu_subEmpty);
         tblCTPhieu_main.setAutoCreateRowSorter(!isCTPhieu_mainEmpty);
-        
+
         // Chọn hàng trên bảng
         if (edit) {
             tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
@@ -1720,7 +1716,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         int columnFilter = cboTimKiemCT.getSelectedIndex();
         String keyword = txtTimKiemCTPhieu.getText().toLowerCase();
-        
+
         sorterCTPhieu.setStringConverter(new TableStringConverter() {
             @Override
             public String toString(TableModel model, int row, int column) {
@@ -1841,24 +1837,19 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
         }
-        JasperReport jasperReport = null;
-        JasperPrint jasperPrint = null;
+
         try {
             Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 8);
+
             // Truyền tham số vào báo cáo
             HashMap parameters = new HashMap();
             parameters.put("MAPHIEU", phieu.getMaPhieu());
-            // Kết nối với Database
-            Connection conn = XJdbc.getConnection();
-            // Biên dịch tệp
-            InputStream path = this.getClass().getResourceAsStream(reportFile);
-            jasperReport = JasperCompileManager.compileReport(path);
-            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
-            JasperViewer.viewReport(jasperPrint, false);
-            conn.close();
+
+            ReportHelper.printReport(reportFile, parameters);
         } catch (SQLException | JRException e) {
-            MsgBox.alert(this, "Lỗi xuất phiếu");
+            MsgBox.alert(this, "Lỗi xuất phiếu!");
             e.printStackTrace();
         }
     }
+
 }
