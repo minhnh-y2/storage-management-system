@@ -63,7 +63,7 @@ public class ThongKeDAO {
     }
     
     public List<Object[]> getListXuat(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGCONGXUAT", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
+        String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGGIATRIXUAT", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
         String sql = "SELECT * FROM V_HANG_XUAT WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?";
         
         

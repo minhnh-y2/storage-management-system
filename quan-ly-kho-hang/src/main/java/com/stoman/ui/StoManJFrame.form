@@ -596,12 +596,12 @@
                               <Component id="lblLoaiHangHoaLT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cboLoaiHangHoaLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="78" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="pnlTongGiaTri" min="-2" pref="133" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="pnlTongTonKho" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="pnlTongGiaTri" pref="163" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pnlTongTonKho" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                           <Component id="separator" alignment="0" max="32767" attributes="0"/>
                       </Group>
