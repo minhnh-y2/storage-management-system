@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Huy
  */
-public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer>{
+public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer> {
 
     @Override
     public void insert(ChiTietPhieu entity) {
@@ -60,42 +60,40 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer>{
 
     @Override
     protected List<ChiTietPhieu> selectBySQL(String sql, Object... args) {
-        List<ChiTietPhieu> list=new ArrayList<>();
+        List<ChiTietPhieu> list = new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
                 rs = XJdbc.query(sql, args);
-                while(rs.next()){
+                while (rs.next()) {
                     ChiTietPhieu entity = new ChiTietPhieu();
-                    
+
                     entity.setMaCTP(rs.getInt("MACTP"));
                     entity.setMaPhieu(rs.getInt("MAPHIEU"));
                     entity.setMaLT(rs.getInt("MALT"));
                     entity.setSoLuong(rs.getDouble("SOLUONG"));
                     entity.setDonGia(rs.getDouble("DONGIA"));
-                    
+
                     list.add(entity);
                 }
-            } 
-            finally{
+            } finally {
                 rs.getStatement().getConnection().close();
             }
-        } 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
         return list;
     }
-    
+
     public List<ChiTietPhieu> selectByMaPhieu(Integer maPhieu) {
         String sql = "SELECT * FROM CHITIETPHIEU WHERE MAPHIEU = ?";
         return this.selectBySQL(sql, maPhieu);
     }
-    
+
     public Integer getOnlyOneMaLT(Integer maPhieu) {
         List<ChiTietPhieu> list = this.selectByMaPhieu(maPhieu);
-        return list.size()>0?list.get(0).getMaLT():0;
+        return list.size() > 0 ? list.get(0).getMaLT() : 0;
     }
-    
+
 }
