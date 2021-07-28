@@ -42,8 +42,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -179,8 +181,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblCTPhieu_main.setCellSelectionEnabled(true);
         tblCTPhieu_main.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieu_main.getTableHeader().setReorderingAllowed(false);
+        tblCTPhieu_main.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieu_mainPropertyChange(evt);
+            }
+        });
         pnlTblCTPhieu_main.setViewportView(tblCTPhieu_main);
 
         pnlThongTinCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
@@ -421,8 +429,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblCTPhieu_sub.setCellSelectionEnabled(true);
         tblCTPhieu_sub.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieu_sub.getTableHeader().setReorderingAllowed(false);
+        tblCTPhieu_sub.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieu_subPropertyChange(evt);
+            }
+        });
         pnlTblCTPhieu_sub.setViewportView(tblCTPhieu_sub);
 
         pnlThongTinPhieu.setBackground(new java.awt.Color(255, 255, 255));
@@ -1059,6 +1073,18 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }//GEN-LAST:event_chkHoanThanhMouseClicked
 
+    private void tblCTPhieu_subPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieu_subPropertyChange
+        // TODO add your handling code here:
+        int row = tblCTPhieu_sub.getSelectedRow();
+        this.updateThanhTien(row);
+    }//GEN-LAST:event_tblCTPhieu_subPropertyChange
+
+    private void tblCTPhieu_mainPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieu_mainPropertyChange
+        // TODO add your handling code here:
+        int row = tblCTPhieu_main.getSelectedRow();
+        this.updateThanhTien(row);
+    }//GEN-LAST:event_tblCTPhieu_mainPropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -1618,7 +1644,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean isManager = Auth.isManager();
         // Kiểm tra trạng thái phiếu
         boolean isCompleted = chkHoanThanh.isSelected();
-       
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblPhieu.setAutoCreateRowSorter(!isPhieuEmpty);
@@ -1728,7 +1753,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // Cài đặt bộ lọc cho bảng
         tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));
-        tblPhieu.getColumnModel().getColumn(7).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
+        tblPhieu.getColumnModel().getColumn(7).setCellRenderer(new DateRenderer(dateFormat + "(HH:mm:ss)"));
 
         // Giấu cột maCTP
         tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(4));
@@ -1740,10 +1765,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblPhieu.setRowHeight(25);
 
         // Thêm chức năng nhập cho bảng
-        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 100000.0, 1.0));
-        tblCTPhieu_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
-        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(new SpinnerEditor(0.0, 0.0, 100000.0, 1.0));
-        tblCTPhieu_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0));
+        SpinnerEditor spinnerSoLuong = new SpinnerEditor(0.0, 0.0, 100000.0, 1.0);
+        SpinnerEditor spinnerDonGia = new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0);
+
+        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
+        tblCTPhieu_main.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
+        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
+        tblCTPhieu_sub.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
     }
 
     // Đổ combobox tìm kiếm chi tiết phiếu
@@ -1890,6 +1918,18 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Lỗi xuất phiếu!");
             e.printStackTrace();
         }
+    }
+    
+    // Cập nhật thành tiền khi sửa số lượng hoặc đơn giá trên bảng
+    private void updateThanhTien(int row) {
+        if (row < 0) {
+            return;
+        }
+        
+        double soLuong = (double) modelCTPhieu.getValueAt(row, 2);
+        double donGia = (double) modelCTPhieu.getValueAt(row, 3);
+        
+        modelCTPhieu.setValueAt(soLuong * donGia, row, 5);
     }
 
 }
