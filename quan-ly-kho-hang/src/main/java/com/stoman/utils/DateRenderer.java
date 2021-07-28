@@ -37,7 +37,7 @@ public class DateRenderer extends DefaultTableCellRenderer {
         if ((value != null)) {
             String stringFormat = value.toString();
             try {
-                dateValue = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH).parse(stringFormat);
+                dateValue = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(stringFormat);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

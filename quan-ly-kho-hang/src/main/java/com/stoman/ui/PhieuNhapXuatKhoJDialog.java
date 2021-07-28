@@ -460,6 +460,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         chkHoanThanh.setText("Hoàn thành");
         chkHoanThanh.setOpaque(false);
+        chkHoanThanh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkHoanThanhMouseClicked(evt);
+            }
+        });
 
         btnGrpLoaiPhieu.add(rdoPhieuNhap);
         rdoPhieuNhap.setSelected(true);
@@ -475,6 +480,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         txtNgayThucHien.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
 
+        txtNgayHoanThanh.setEditable(false);
         txtNgayHoanThanh.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
 
         txtMaNV.setEditable(false);
@@ -915,6 +921,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         delCTP.clear();
         this.clearForm();
+        this.updateStatus();
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemCTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTPActionPerformed
@@ -967,13 +974,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void txtTimKiemCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemCTPhieuKeyReleased
         // TODO add your handling code here:
-            searchCTPhieu();
+        searchCTPhieu();
     }//GEN-LAST:event_txtTimKiemCTPhieuKeyReleased
 
     private void cboTimKiemCTPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemCTPhieuActionPerformed
         // TODO add your handling code here:
-            txtTimKiemCTPhieu.setText("");
-            searchCTPhieu();
+        txtTimKiemCTPhieu.setText("");
+        searchCTPhieu();
     }//GEN-LAST:event_cboTimKiemCTPhieuActionPerformed
 
     private void txtTimKiemPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemPhieuKeyReleased
@@ -983,8 +990,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
         // TODO add your handling code here:
-            txtTimKiemPhieu.setText("");
-            searchPhieu();
+        txtTimKiemPhieu.setText("");
+        searchPhieu();
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
     private void btnXuatMaPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatMaPhieuActionPerformed
@@ -1046,6 +1053,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         exportReport();
     }//GEN-LAST:event_btnInPhieuActionPerformed
+
+    private void chkHoanThanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkHoanThanhMouseClicked
+        // TODO add your handling code here:
+        this.updateStatus();
+    }//GEN-LAST:event_chkHoanThanhMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1211,9 +1223,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         tabs.setSelectedIndex(1);
 
-        this.updateStatus();
-
         Auth.user = nvDAO.selectByID("minhnh");
+        this.updateStatus();
 
     }
 
@@ -1241,12 +1252,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 continue;
             }
             int maKho = ltDAO.getMaKho(maLT);
-            Kho kho = kDAO.selectByID(maKho);
+            Kho k = kDAO.selectByID(maKho);
             modelPhieu.addRow(new Object[]{
                 i++,
                 dtDAO.getTenDT(p.getMaDT()),
                 p.isLoai() ? "Nhập" : "Xuất",
-                kho,
+                k.getMaKho(),
                 p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                 p.getNgThucHien(),
                 p.getNgHoanThanh(),
@@ -1392,12 +1403,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         DoiTac dt = dtDAO.selectByID(p.getMaDT());
         LoaiDoiTac ldt = ldtDAO.selectByID(dt.getMaLDT());
         NhanVien nv = nvDAO.selectByID(p.getMaNV());
-        Kho kho = (Kho) tblPhieu.getValueAt(rowPhieu, 3);
+        Kho kho = kDAO.selectByID((Integer) tblPhieu.getValueAt(rowPhieu, 3));
         cboLoaiDT.setSelectedItem(ldt);
         cboDoiTac.setSelectedItem(dt);
         txtMaNV.setToolTipText(p.getMaNV());
         txtMaNV.setText(nv.getTenNV());
-        txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat + "(hh:MM:ss)"));
+        txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat + "(hh:mm:ss)"));
         txtNgayThucHien.setText(XDate.toString(p.getNgThucHien(), dateFormat));
         txtNgayHoanThanh.setText(XDate.toString(p.getNgHoanThanh(), dateFormat));
         cboKho.setSelectedItem(kho);
@@ -1574,8 +1585,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void clearForm() {
         cboLoaiDT.setSelectedIndex(0);
         cboDoiTac.setSelectedIndex(0);
-        txtMaNV.setText(null); //Auth.user.getTenNV()
-        txtMaNV.setToolTipText(null); //Auth.user.getMaNV()
+        Auth.user.getTenNV();
+        Auth.user.getMaNV();
         Date NgayLap = new Date(System.currentTimeMillis());
         txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
         txtNgayThucHien.setText(null);
@@ -1587,7 +1598,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_sub.setToolTipText(null);
         lblQRCodeImage.setIcon(null);
         this.fillToTableCTPhieu();
-        
+
         this.rowPhieu = -1;
 
         isUpdate = false;
@@ -1595,14 +1606,19 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Cập nhật giao diện form theo hoạt động
     private void updateStatus() {
+        // Kiểm tra trạng thái chọn hàng trên bảng
         boolean edit = (this.rowPhieu >= 0);
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
-
+        // Kiểm tra dữ liệu bảng
         boolean isPhieuEmpty = (tblPhieu.getRowCount() == 0);
         boolean isCTPhieu_subEmpty = (tblCTPhieu_sub.getRowCount() == 0);
         boolean isCTPhieu_mainEmpty = (tblCTPhieu_main.getRowCount() == 0);
+        // Kiểm tra vai trò người dùng
         boolean isManager = Auth.isManager();
+        // Kiểm tra trạng thái phiếu
+        boolean isCompleted = chkHoanThanh.isSelected();
+       
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblPhieu.setAutoCreateRowSorter(!isPhieuEmpty);
@@ -1614,7 +1630,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
         }
 
-        // Trạng thái form
+        // Trạng thái form và nút chức năng
+        if (!isCompleted) {
+            txtNgayHoanThanh.setText("");
+        }
+        txtNgayHoanThanh.setEditable(isCompleted);
         btnThem.setEnabled(!edit && isManager);
         btnSua.setEnabled(edit && isManager);
         btnXoa.setEnabled(edit && isManager);
@@ -1648,7 +1668,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if(modelPhieu.getRowCount() <= 1) {
+                if (modelPhieu.getRowCount() <= 1) {
                     return String.class;
                 }
                 if (getValueAt(0, columnIndex) == null) {
@@ -1669,7 +1689,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if(modelCTPhieu.getRowCount() <= 1) {
+                if (modelCTPhieu.getRowCount() <= 1) {
                     return String.class;
                 }
                 if (getValueAt(0, columnIndex) == null) {

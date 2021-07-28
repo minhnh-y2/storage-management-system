@@ -843,6 +843,9 @@
                         <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkHoanThanhMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoPhieuNhap">
                       <Properties>
@@ -880,6 +883,7 @@
                     </Component>
                     <Component class="javax.swing.JFormattedTextField" name="txtNgayHoanThanh">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                           <Format format="dd-MM-yyyy" subtype="-1" type="1"/>
                         </Property>
