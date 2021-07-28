@@ -70,6 +70,6 @@ public class ChiTietPhieu {
     }
     
     public double getThanhTien() {
-        return (this.getDonGia() * this.getThanhTien());
+        return (this.getDonGia() * this.getSoLuong());
     }
 }

@@ -97,6 +97,7 @@
                         <Column editable="false" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -128,6 +129,9 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieu_mainPropertyChange"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -527,25 +531,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnlThongTinPhieu" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="peparator" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblTimKiemCT" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txtTimKiemCTPhieu" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="lblTimKiemCT2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cboTimKiemCT" min="-2" pref="207" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemCTPhieu" min="-2" pref="207" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="pnlTblCTPhieu_sub" max="32767" attributes="0"/>
+                                      <Component id="pnlTblCTPhieu_sub" alignment="0" max="32767" attributes="0"/>
                                       <Component id="pnlNutDieuHuong" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="pnlChucNang" min="-2" pref="159" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="pnlChucNang" max="32767" attributes="0"/>
+                                      <Component id="pnlChucNangMoRong" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -559,20 +566,24 @@
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="peparator" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblTimKiemCT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlTblCTPhieu_sub" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="pnlChucNang" pref="423" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="pnlChucNang" min="-2" pref="315" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="pnlChucNangMoRong" min="-2" pref="116" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -600,6 +611,7 @@
                             <Column editable="false" title="Title 4" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -631,6 +643,9 @@
                           <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieu_subPropertyChange"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -836,6 +851,9 @@
                         <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkHoanThanhMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoPhieuNhap">
                       <Properties>
@@ -873,6 +891,7 @@
                     </Component>
                     <Component class="javax.swing.JFormattedTextField" name="txtNgayHoanThanh">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                           <Format format="dd-MM-yyyy" subtype="-1" type="1"/>
                         </Property>
@@ -1004,17 +1023,12 @@
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="99" type="rgb"/>
                     </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder bottom="4" left="0" right="0" top="0"/>
-                      </Border>
-                    </Property>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                     <Property name="columns" type="int" value="1"/>
-                    <Property name="rows" type="int" value="7"/>
+                    <Property name="rows" type="int" value="5"/>
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnThem">
@@ -1072,6 +1086,18 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChiTietActionPerformed"/>
                       </Events>
                     </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlChucNangMoRong">
+                  <Properties>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="1"/>
+                    <Property name="rows" type="int" value="2"/>
+                  </Layout>
+                  <SubComponents>
                     <Component class="javax.swing.JButton" name="btnXuatMaPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1111,9 +1137,9 @@
                     <Property name="text" type="java.lang.String" value="theo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cboTimKiemCT">
+                <Component class="javax.swing.JComboBox" name="cboTimKiemCTPhieu">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemCTActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemCTPhieuActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
