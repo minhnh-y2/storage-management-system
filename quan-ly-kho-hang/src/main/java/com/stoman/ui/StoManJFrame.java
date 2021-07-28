@@ -1603,7 +1603,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
             // Tạo biểu đồ Bar Chart
             JFreeChart barChart = ChartFactory.createBarChart(null,
-                    "Quý", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+                    "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
             CategoryPlot plot = barChart.getCategoryPlot();
             plot.setRangeGridlinePaint(Color.black);
 
