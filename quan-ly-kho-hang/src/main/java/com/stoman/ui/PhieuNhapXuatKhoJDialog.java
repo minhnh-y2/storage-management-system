@@ -951,7 +951,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
-        this.dispose();
+        //this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
@@ -1443,9 +1444,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void deleteCT() {
         int delRow = tblCTPhieu_main.getSelectedRow();
+        int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
 
         if (isUpdate) {
-            delCTP.add((ChiTietPhieu) modelCTPhieu.getValueAt(delRow, 4));
+            delCTP.add(ctpDAO.selectByID(maCTP));
         }
         modelCTPhieu.removeRow(delRow);
         for (int i = 0; i < modelCTPhieu.getRowCount(); i++) {
@@ -1655,7 +1657,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return getValueAt(0, columnIndex).getClass();
             }
         };
-        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Phiếu", "Thành tiền"};
+        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Mã chi tiết phiếu", "Thành tiền"};
         this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1703,12 +1705,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_sub.getColumnModel().getColumn(3).setPreferredWidth(120);
         tblCTPhieu_sub.getColumnModel().getColumn(3).setPreferredWidth(120);
 
-        // cài đặt bộ lọc cho bảng
+        // Cài đặt bộ lọc cho bảng
         tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(7).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
 
-        //giấu cột maCTP
+        // Giấu cột maCTP
         tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(4));
         tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(4));
 
