@@ -45,7 +45,7 @@ public class ThongKeDAO {
             System.out.println(sql);
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+keyword+"%");
         }
-        System.out.println(sql);
+
         return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%");
     }
     
@@ -75,16 +75,22 @@ public class ThongKeDAO {
         return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+nam+"%", "%"+thang+"%");
     }
     
-    public List<Object[]> getListCanCan(int nam) {
-        String[] cols = {"THANG", "TONGLUONGXUAT", "TONGLUONGNHAP", "NAM"};
-        String sql = "SELECT * FROM V_NHAP_XUAT WHERE NAM = ?";
+    public List<Object[]> getListTongHop(String maKho, int nam, String keyword, Integer index) {
+        String[] cols = {"THANG", "XUATTRONGTHANG", "TONGGTXUAT", "NHAPTRONGTHANG", "TONGGTNHAP", "TONGGTXUATNHAP", "MAKHO", "NAM"};
+        String sql = "SELECT * FROM V_TONGHOP WHERE MAKHO LIKE ? AND NAM LIKE ?";
         
-        return this.getListOfArray(sql, cols, nam);
+        
+        if(keyword.length()>0){
+            sql += " AND " + cols[index] + " LIKE ?";
+            return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+nam+"%", "%"+keyword+"%");
+        }
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+nam+"%");
     }
     
     public List<Object[]> getListTongQuan(Integer nam) {
-        String[] cols = {"THANG", "TONGCONGXUAT", "TONGCONGNHAP", "CANCAN", "NAM"};
-        String sql = "SELECT * FROM V_CAN_CAN WHERE NAM = ?";
+        String[] cols = {"THANG", "TONGLUONGXUAT", "TONGLUONGNHAP", "NAM"};
+        String sql = "SELECT * FROM V_NHAP_XUAT WHERE NAM = ?";
         
         return this.getListOfArray(sql, cols, nam);
     }
@@ -116,5 +122,25 @@ public class ThongKeDAO {
         
         return this.getListOfArray(sql, cols);
     }
-
+    
+    public List<Object[]> getListNamNhapXuat() {
+        String[] cols = {"NAM"};
+        String sql = "SELECT DISTINCT NAM FROM V_NHAP_XUAT ORDER BY NAM";
+        
+        return this.getListOfArray(sql, cols);
+    }
+    
+    public List<Object[]> getListTongLuongSP() {
+        String[] cols = {"TONGLUONGSP"};
+        String sql = "SELECT SUM(SOLUONG) AS TONGLUONGSP FROM LUUTRU ";
+        
+        return this.getListOfArray(sql, cols);
+    }
+    
+    public List<Object[]> getListNamTongHop() {
+        String[] cols = {"NAM"};
+        String sql = "SELECT DISTINCT NAM FROM V_NHAP_XUAT ORDER BY NAM";
+        
+        return this.getListOfArray(sql, cols);
+    }
 }
