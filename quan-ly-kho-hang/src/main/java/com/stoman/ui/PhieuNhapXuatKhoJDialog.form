@@ -539,7 +539,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="lblTimKiemCT2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cboTimKiemCT" min="-2" pref="207" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemCTPhieu" min="-2" pref="207" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="pnlTblCTPhieu_sub" alignment="0" max="32767" attributes="0"/>
                                       <Component id="pnlNutDieuHuong" max="32767" attributes="0"/>
@@ -568,7 +568,7 @@
                                       <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblTimKiemCT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="pnlTblCTPhieu_sub" pref="0" max="32767" attributes="0"/>
@@ -1125,9 +1125,9 @@
                     <Property name="text" type="java.lang.String" value="theo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cboTimKiemCT">
+                <Component class="javax.swing.JComboBox" name="cboTimKiemCTPhieu">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemCTActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemCTPhieuActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

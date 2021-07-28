@@ -141,7 +141,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtTimKiemCTPhieu = new javax.swing.JTextField();
         lblTimKiemCT = new javax.swing.JLabel();
         lblTimKiemCT2 = new javax.swing.JLabel();
-        cboTimKiemCT = new javax.swing.JComboBox<>();
+        cboTimKiemCTPhieu = new javax.swing.JComboBox<>();
         peparator = new javax.swing.JSeparator();
         pnlDanhSach = new javax.swing.JPanel();
         scrollPane2 = new javax.swing.JScrollPane();
@@ -698,9 +698,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         lblTimKiemCT2.setText("theo");
 
-        cboTimKiemCT.addActionListener(new java.awt.event.ActionListener() {
+        cboTimKiemCTPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTimKiemCTActionPerformed(evt);
+                cboTimKiemCTPhieuActionPerformed(evt);
             }
         });
 
@@ -722,7 +722,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTimKiemCT2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboTimKiemCT, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(10, 10, 10)
@@ -744,7 +744,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(lblTimKiemCT)
                             .addComponent(txtTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTimKiemCT2)
-                            .addComponent(cboTimKiemCT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
@@ -966,18 +966,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void txtTimKiemCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemCTPhieuKeyReleased
         // TODO add your handling code here:
-        if (tblCTPhieu_sub.getRowCount() > 0) {
             searchCTPhieu();
-        }
     }//GEN-LAST:event_txtTimKiemCTPhieuKeyReleased
 
-    private void cboTimKiemCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemCTActionPerformed
+    private void cboTimKiemCTPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemCTPhieuActionPerformed
         // TODO add your handling code here:
-        if (tblCTPhieu_sub.getRowCount() > 0) {
             txtTimKiemCTPhieu.setText("");
             searchCTPhieu();
-        }
-    }//GEN-LAST:event_cboTimKiemCTActionPerformed
+    }//GEN-LAST:event_cboTimKiemCTPhieuActionPerformed
 
     private void txtTimKiemPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemPhieuKeyReleased
         // TODO add your handling code here:
@@ -986,10 +982,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
         // TODO add your handling code here:
-        if (tblPhieu.getRowCount() > 0) {
             txtTimKiemPhieu.setText("");
             searchPhieu();
-        }
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
     private void btnXuatMaPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatMaPhieuActionPerformed
@@ -1119,7 +1113,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cboKho;
     private javax.swing.JComboBox<String> cboLoaiDT;
     private javax.swing.JComboBox<String> cboLoaiHH;
-    private javax.swing.JComboBox<String> cboTimKiemCT;
+    private javax.swing.JComboBox<String> cboTimKiemCTPhieu;
     private javax.swing.JComboBox<String> cboTimKiemPhieu;
     private javax.swing.JCheckBox chkHoanThanh;
     private javax.swing.JLabel lblDoiTac;
@@ -1652,6 +1646,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if(modelPhieu.getRowCount() <= 1) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -1670,6 +1667,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if(modelCTPhieu.getRowCount() <= 1) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -1726,7 +1726,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Đổ combobox tìm kiếm chi tiết phiếu
     private void fillToComboBoxTimKiemCTPhieu() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCT.getModel();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCTPhieu.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblCTPhieu_sub.getColumnCount(); i++) {
             model.addElement(tblCTPhieu_sub.getColumnName(i));
@@ -1738,7 +1738,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieu);
         tblCTPhieu_sub.setRowSorter(sorterCTPhieu);
 
-        int columnFilter = cboTimKiemCT.getSelectedIndex();
+        int columnFilter = cboTimKiemCTPhieu.getSelectedIndex();
         String keyword = txtTimKiemCTPhieu.getText().toLowerCase();
 
         sorterCTPhieu.setStringConverter(new TableStringConverter() {
@@ -1826,7 +1826,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.setFormPhieu(phieu);
         tabs.setSelectedIndex(0);
-        cboTimKiemCT.setSelectedIndex(0);
+        cboTimKiemCTPhieu.setSelectedIndex(0);
         txtTimKiemCTPhieu.setText("");
 
         isUpdate = true;
