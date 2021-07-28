@@ -5,9 +5,11 @@
  */
 package com.stoman.ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -65,6 +67,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.put("nimbusOrange", new ColorUIResource(new Color(37, 156, 82)));
                     break;
                 }
             }
