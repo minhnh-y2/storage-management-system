@@ -399,6 +399,8 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Tổng quan", pnlTongQuan);
 
+        pnlTonKho.setBackground(new java.awt.Color(255, 255, 255));
+
         tblLuuTru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -526,6 +528,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Hàng tồn kho", pnlTonKho);
+
+        pnlTKNhap.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTKnhap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -695,6 +699,8 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Thống kê nhập", pnlTKNhap);
 
+        pnlTKxuat.setBackground(new java.awt.Color(255, 255, 255));
+
         tblTKxuat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -862,6 +868,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Thống kê xuất", pnlTKxuat);
+
+        pnlTongHop.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTongHop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
