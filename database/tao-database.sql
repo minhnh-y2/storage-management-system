@@ -110,7 +110,7 @@ CREATE TABLE NHANVIEN(
 	TENNV NVARCHAR(50) NOT NULL,
 	VAITRO BIT NOT NULL DEFAULT 0,
 	MATKHAU VARCHAR(32) NOT NULL,
-	MUOI VARCHAR(32) NOT NULL,
+	MUOI BINARY(16) NOT NULL,
 )
 GO
 	
@@ -239,10 +239,10 @@ VALUES
 --
 INSERT INTO NHANVIEN(MANV, TENNV, VAITRO, MATKHAU, MUOI) 
 VALUES 
-	(N'huydq', N'Đỗ Quang Huy', 0, N'81385914127bbb4add18dbfbf4095d72', N'ÔÉ÷OQ°:ă?ÁÖO¶ƯT³'),
-	(N'huynq', N'Nguyễn Quang Huy', 1, N'1ad19a8bf3a97ca5ee1347020eccf1e4', N'4ơ±h	@Ê¨3†'),
-	(N'khoalhd', N'Lê Hữu Đăng Khoa', 1, N'00696a3d231cb86bd8b99d0e0b873e6a', N'÷,Ă‚§ZÈơ”º˜W‹†'),
-	(N'minhnh', N'Nguyễn Hoài Minh', 1, N'23cd8fb50237ddbf3229350c4ad42768', N'}Èùs@(ç4®ig')
+	(N'huydq', N'Đỗ Quang Huy', 0, N'0371f03761c8df912d3be49082099c8c', 0xBB9FA44C946B7EBA35E0FA6DC74E9D9D),
+	(N'huynq', N'Nguyễn Quang Huy', 1, N'e246aa6324a6e104e1675b0c77669832', 0x20209DB5804AB4665CA7266FF9212933),
+	(N'khoalhd', N'Lê Hữu Đăng Khoa', 1, N'aa0b70737f4b7e087459c686b7288bbe', 0xE782E167965267DA8B4B2ECC6BBB659F),
+	(N'minhnh', N'Nguyễn Hoài Minh', 1, N'e9b5d7db59bb814702c0392ed731a200', 0xD83DA6D8A1E72AB33DEC901010D8E964)
 --
 INSERT INTO KHO(MAKHO, DIACHI, MATK) 
 VALUES
