@@ -16,7 +16,9 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.validator.GenericValidator;
 
 /**
  *
@@ -642,7 +644,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
 
@@ -826,7 +827,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             txtEmail.requestFocus();
             return false;
         }
-        if (!email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")) {
+        if (!GenericValidator.isEmail(email)) {
             MsgBox.alert(this, "Email không hợp lệ!");
             txtEmail.requestFocus();
             return false;
@@ -842,10 +843,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             return false;
         }
         return true;
-
+        
     }
 
-    // Thêm loại đối tác vào danh dách
+    // Thêm loại đối tác vào danh sách
     private void insertLDT() {
         String tenLDT = MsgBox.prompt(this, "Nhập tên loại đối tác mới:");
         if (tenLDT != null && !tenLDT.isEmpty()) {
@@ -941,6 +942,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
