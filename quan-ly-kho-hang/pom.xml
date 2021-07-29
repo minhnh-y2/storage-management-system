@@ -52,6 +52,12 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.17.0</version>
         </dependency>
+        <!-- Thư viện cung cấp các quy tắc xác thực dữ liệu  -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.7</version>
+        </dependency>
 
     </dependencies>
     

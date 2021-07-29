@@ -427,7 +427,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private KhoDAO kDAO;
     private NhanVienDAO nvDAO;
 
-    private DefaultTableModel modelKho;
+    private DefaultTableModel tblModel;
     private int row = -1;
 
     private void init() {
@@ -447,7 +447,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
         String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
-        modelKho = new DefaultTableModel(header, 0) {
+        tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -455,7 +455,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if(modelKho.getRowCount() <= 1) {
+                if(tblModel.getRowCount() <= 1) {
                     return String.class;
                 }
                 if (getValueAt(0, columnIndex) == null) {
@@ -464,7 +464,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                 return getValueAt(0, columnIndex).getClass();
             }
         };
-        tblKho.setModel(modelKho);
+        tblKho.setModel(tblModel);
 
         // Điều chỉnh size column
         tblKho.getColumnModel().getColumn(0).setPreferredWidth(22);
@@ -490,13 +490,13 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng
     private void fillToTable() {
-        modelKho.setRowCount(0);
+        tblModel.setRowCount(0);
         String keyword = txtTimKiem.getText();
         try {
             List<Kho> list = kDAO.selectAll();
             for (Kho k : list) {
                 NhanVien tk = nvDAO.selectByID(k.getMaTK());
-                modelKho.addRow(new Object[]{
+                tblModel.addRow(new Object[]{
                     k.getMaKho(),
                     k.getDiaChi(),
                     tk == null ? new NhanVien("<none>") : tk
@@ -654,7 +654,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
     
     private void search() {
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(modelKho);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblModel);
         tblKho.setRowSorter(sorter);
         
         String keyword = txtTimKiem.getText().toLowerCase();

@@ -811,12 +811,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             txtMaHH.requestFocus();
             return false;
         }
-        HangHoa hh = hhDAO.selectByID(txtMaHH.getText());
-        if (hh != null) {
-            MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
-            txtMaHH.requestFocus();
-            return false;
-        }
         if (txtTenHH.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập tên hàng hoá!");
             txtTenHH.requestFocus();
@@ -833,7 +827,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            MsgBox.alert(this, "Đơn giá phải là số và lớn hơn 0!");
+            MsgBox.alert(this, "Đơn giá không hợp lệ!");
             txtDonGia.requestFocus();
             return false;
         }
@@ -848,16 +842,24 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Thêm hàng hoá mới
     private void insert() {
         if (isValidated()) {
-            HangHoa dt = getForm();
-            try {
-                hhDAO.insert(dt);
-                this.fillToTable();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại!");
-                e.printStackTrace();
-            }
+            return;
+        }
+        
+        if (hhDAO.selectByID(txtMaHH.getText()) != null) {
+            MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
+            txtMaHH.requestFocus();
+            return;
+        }
+        
+        HangHoa hh = getForm();
+        try {
+            hhDAO.insert(hh);
+            this.fillToTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+            e.printStackTrace();
         }
     }
 
@@ -897,6 +899,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void formatTable() {
         String header[] = {"STT", "Mã hàng hoá", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
         this.tblModel = new DefaultTableModel(header, 0) {
+
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -904,6 +907,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }

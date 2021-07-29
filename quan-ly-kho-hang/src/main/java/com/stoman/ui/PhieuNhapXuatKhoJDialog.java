@@ -1286,7 +1286,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         tabs.setSelectedIndex(1);
 
-        Auth.user = nvDAO.selectByID("minhnh");
         this.updateStatus();
 
     }
@@ -1737,7 +1736,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelPhieu.getRowCount() <= 1) {
+                if (modelPhieu.getRowCount() < 1) {
                     return String.class;
                 }
                 if (getValueAt(0, columnIndex) == null) {
@@ -1758,7 +1757,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelCTPhieu.getRowCount() <= 1) {
+                if (modelCTPhieu.getRowCount() < 1) {
                     return String.class;
                 }
                 if (getValueAt(0, columnIndex) == null) {
