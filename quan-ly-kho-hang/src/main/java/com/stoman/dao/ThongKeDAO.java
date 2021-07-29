@@ -76,8 +76,11 @@ public class ThongKeDAO {
     }
     
     public List<Object[]> getListTongHop(String maKho, int nam, String keyword, Integer index) {
-        String[] cols = {"THANG", "XUATTRONGTHANG", "TONGGTXUAT", "NHAPTRONGTHANG", "TONGGTNHAP", "TONGGTXUATNHAP", "MAKHO", "NAM"};
-        String sql = "SELECT * FROM V_TONGHOP WHERE MAKHO LIKE ? AND NAM LIKE ?";
+        String[] cols = {"THANG", "XUATTRONGTHANG", "TONGGTXUAT", "NHAPTRONGTHANG", "TONGGTNHAP", "TONGGTXUATNHAP"};
+        String sql = "SELECT THANG, SUM(XUATTRONGTHANG) AS XUATTRONGTHANG, SUM(TONGGTXUAT) AS TONGGTXUAT, "
+                + "SUM(NHAPTRONGTHANG) AS NHAPTRONGTHANG, SUM(TONGGTNHAP) AS TONGGTNHAP, "
+                + "SUM(TONGGTXUATNHAP) AS TONGGTXUATNHAP FROM V_TONGHOP"
+                + " WHERE MAKHO LIKE ? AND NAM LIKE ? GROUP BY THANG";
         
         
         if(keyword.length()>0){

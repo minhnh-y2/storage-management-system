@@ -714,6 +714,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTimKiemLT">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLTKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTheoLT">
               <Properties>
@@ -721,6 +724,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboTimKiemLT">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemLTActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -873,7 +879,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblTheoNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboTheoNhap" min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="cboTimKiemNhap" min="-2" pref="188" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lblTblTKnhap" pref="592" max="32767" attributes="0"/>
                       </Group>
@@ -915,7 +921,7 @@
                                   <Component id="lblTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTheoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTheoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblTblTKnhap" max="32767" attributes="0"/>
@@ -1008,13 +1014,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTimKiemNhap">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemNhapKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTheoNhap">
               <Properties>
                 <Property name="text" type="java.lang.String" value="theo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboTheoNhap">
+            <Component class="javax.swing.JComboBox" name="cboTimKiemNhap">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemNhapActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1200,7 +1212,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblTheoXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTheoXuat" min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="cboTimKiemXuat" min="-2" pref="188" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lblTblTKxuat" pref="592" max="32767" attributes="0"/>
                       </Group>
@@ -1242,7 +1254,7 @@
                                   <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblTblTKxuat" max="32767" attributes="0"/>
@@ -1335,13 +1347,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTimKiemXuat">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemXuatKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTheoXuat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="theo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboTheoXuat">
+            <Component class="javax.swing.JComboBox" name="cboTimKiemXuat">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemXuatActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1645,6 +1663,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTimKiemTH">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemTHKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTheoTH">
               <Properties>
@@ -1652,6 +1673,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboTimKiemTH">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemTHActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
