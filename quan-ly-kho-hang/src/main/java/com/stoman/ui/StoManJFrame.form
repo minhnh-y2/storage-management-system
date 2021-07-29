@@ -355,17 +355,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="pnlBieuDo" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblNamTQ" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cboNamTQ" pref="649" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cboNamTQ" pref="685" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="pnlBieuDo" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="pnlThongTin" min="-2" pref="169" max="-2" attributes="0"/>
@@ -378,7 +375,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlThongTin" pref="506" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="513" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="cboNamTQ" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -885,43 +882,40 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator3" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="cboKhoNhap" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cboLoaiHangHoaNhap" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblLoaiHangHoaNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblKhoNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTrongNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                              <Component id="lblThangNhap" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cboThangNhap" linkSize="1" min="-2" pref="69" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                              <Component id="lblNamNhap" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cboNamNhap" linkSize="1" min="-2" pref="84" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="separator5" max="32767" attributes="0"/>
-                                          <Component id="separator4" min="-2" pref="276" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="cboKhoNhap" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboLoaiHangHoaNhap" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lblLoaiHangHoaNhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblKhoNhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTrongNhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                          <Component id="lblThangNhap" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="cboThangNhap" linkSize="1" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Component id="lblNamNhap" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="cboNamNhap" linkSize="1" min="-2" pref="84" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="pnlTongGTNhap" min="-2" pref="276" max="-2" attributes="0"/>
+                                      <Component id="separator5" max="32767" attributes="0"/>
+                                      <Component id="separator4" min="-2" pref="276" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pnlTongGTNhap" min="-2" pref="276" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlTongLGNhap" min="-2" pref="276" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
