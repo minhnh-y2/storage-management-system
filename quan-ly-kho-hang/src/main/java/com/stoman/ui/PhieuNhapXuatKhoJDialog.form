@@ -97,7 +97,6 @@
                         <Column editable="false" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
-                    <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -534,25 +533,32 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="peparator" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblTimKiemCT" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtTimKiemCTPhieu" max="32767" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="lblTimKiemCT2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cboTimKiemCTPhieu" min="-2" pref="207" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="pnlChucNangMoRong" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="pnlTblCTPhieu_sub" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="pnlNutDieuHuong" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblTimKiemCT" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTimKiemCTPhieu" max="32767" attributes="0"/>
+                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemCT2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemCTPhieu" min="-2" pref="286" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                          <Component id="lblTongTienTitle" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTongTien" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="pnlTblCTPhieu_sub" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="pnlChucNang" max="32767" attributes="0"/>
-                                      <Component id="pnlChucNangMoRong" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="pnlChucNang" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -566,24 +572,28 @@
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="peparator" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTimKiemCT2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemCT2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTongTienTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jSeparator1" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="pnlTblCTPhieu_sub" pref="0" max="32767" attributes="0"/>
+                                  <Component id="pnlTblCTPhieu_sub" pref="297" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="pnlNutDieuHuong" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlChucNangMoRong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="pnlChucNang" min="-2" pref="315" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="pnlChucNangMoRong" min="-2" pref="116" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="pnlChucNang" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -611,7 +621,6 @@
                             <Column editable="false" title="Title 4" type="java.lang.Object"/>
                           </Table>
                         </Property>
-                        <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -962,7 +971,10 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="1"/>
+                  </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnFirst">
                       <Properties>
@@ -1029,6 +1041,7 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                     <Property name="columns" type="int" value="1"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="verticalGap" type="int" value="15"/>
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnThem">
@@ -1094,14 +1107,14 @@
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="1"/>
-                    <Property name="rows" type="int" value="2"/>
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="rows" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnXuatMaPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/qr-code-32.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/qr-code.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t m&#xe3; phi&#x1ebf;u"/>
                       </Properties>
@@ -1112,7 +1125,7 @@
                     <Component class="javax.swing.JButton" name="btnInPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/print-32.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/print.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="In phi&#x1ebf;u"/>
                       </Properties>
@@ -1147,6 +1160,27 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="peparator">
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblTongTienTitle">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="13" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTongTien">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="13" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator1">
+                  <Properties>
+                    <Property name="orientation" type="int" value="1"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlDanhSach">
@@ -1167,7 +1201,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="scrollPane2" pref="1004" max="32767" attributes="0"/>
+                              <Component id="scrollPane2" pref="957" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblTimKiemCT1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1175,7 +1209,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lblTimKiemPhieu2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cboTimKiemPhieu" pref="311" max="32767" attributes="0"/>
+                                  <Component id="cboTimKiemPhieu" pref="264" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -1193,7 +1227,7 @@
                               <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="scrollPane2" min="-2" pref="556" max="-2" attributes="0"/>
+                          <Component id="scrollPane2" pref="508" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1241,6 +1275,7 @@
                             </Column>
                           </TableColumnModel>
                         </Property>
+                        <Property name="rowHeight" type="int" value="25"/>
                         <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                           <JTableSelectionModel selectionMode="0"/>
                         </Property>
@@ -1302,7 +1337,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblTieuDe" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="762" max="32767" attributes="0"/>
+                      <EmptySpace pref="715" max="32767" attributes="0"/>
                       <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
