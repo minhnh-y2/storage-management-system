@@ -34,6 +34,7 @@ import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -2034,8 +2035,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             } else {
                 fileName = "PhieuXuatSo" + phieu.getMaPhieu();
             }
-            ExporterReport.exportExcel(fileName, reportPath, parameters);
-        } catch (SQLException | JRException e) {
+            ExporterReport.exportFile(fileName, reportPath, parameters);
+        } catch (SQLException | JRException | IOException e) {
             MsgBox.alert(this, "Xuất file Excel thất bại!");
             e.printStackTrace();
         }

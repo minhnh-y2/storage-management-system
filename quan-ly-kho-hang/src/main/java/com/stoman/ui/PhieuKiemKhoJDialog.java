@@ -26,6 +26,7 @@ import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -1495,7 +1496,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
             String fileName = "PhieuKiemKhoSo" + maKK;
             ExporterReport.exportExcel(fileName, reportPath, parameters);
-        } catch (SQLException | JRException e) {
+        } catch (SQLException | JRException | IOException e) {
             MsgBox.alert(this, "Xuất file PDF thất bại!");
             e.printStackTrace();
         }
