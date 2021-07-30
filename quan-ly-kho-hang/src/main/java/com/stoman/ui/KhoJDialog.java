@@ -12,7 +12,6 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
-import java.awt.Point;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -75,6 +74,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
 
+        pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         pnlChucNang.setOpaque(false);
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -287,14 +287,14 @@ public class KhoJDialog extends javax.swing.JDialog {
                 .addComponent(pnlThanhTieuDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(pnlThongTinKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(0, 0, 0)
                 .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiem)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -522,11 +522,13 @@ public class KhoJDialog extends javax.swing.JDialog {
             tblKho.setRowSelectionInterval(row, row);
         }
         
+        pnlChucNang.setVisible(isManager);
+        pnlThongTinKho.setVisible(isManager);
+        
         txtMaKho.setEditable(!edit);
-        btnThem.setEnabled(!edit && isManager);
-        btnSua.setEnabled(edit && isManager);
-        btnXoa.setEnabled(edit && isManager);
-        btnMoi.setEnabled(isManager);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
         
     }
 
