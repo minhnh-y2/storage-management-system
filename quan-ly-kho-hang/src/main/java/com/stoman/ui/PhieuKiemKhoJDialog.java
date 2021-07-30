@@ -1497,7 +1497,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             String fileName = "PhieuKiemKhoSo" + maKK;
             ExporterReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
-            MsgBox.alert(this, "Xuất file PDF thất bại!");
+            MsgBox.alert(this, "Xuất file thất bại!");
             e.printStackTrace();
         }
     }
@@ -1519,7 +1519,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             String fileName = "PhieuKiemKhoSo" + maKK;
             ExporterReport.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
-            MsgBox.alert(this, "Xuất file excel thất bại!");
+            MsgBox.alert(this, "In phiếu thất bại!");
             e.printStackTrace();
         }
     }

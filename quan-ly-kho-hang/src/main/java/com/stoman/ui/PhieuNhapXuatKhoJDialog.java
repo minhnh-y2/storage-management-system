@@ -1138,7 +1138,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
         // TODO add your handling code here:
-        exportReportExcel();
+        exportReport();
     }//GEN-LAST:event_btnXuatFileActionPerformed
 
     private void chkHoanThanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkHoanThanhMouseClicked
@@ -2015,7 +2015,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Xuất phiếu
-    private void exportReportExcel() {
+    private void exportReport() {
         if (rowPhieu < 0) {
             MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
@@ -2037,7 +2037,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
             ExporterReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
-            MsgBox.alert(this, "Xuất file Excel thất bại!");
+            MsgBox.alert(this, "Xuất file thất bại!");
             e.printStackTrace();
         }
     }
