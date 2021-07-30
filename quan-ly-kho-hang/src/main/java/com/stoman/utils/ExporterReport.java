@@ -137,65 +137,6 @@ public class ExporterReport {
 
     }
 
-    public static void exportPDF(String fileName, String reportPath, HashMap parameters) throws SQLException, JRException {
-        String date = XDate.toString(new Date(), "ddMMyyyy");
-        fileName = fileName + "_" + date;
-
-        JasperPrint jasperPrint = getJasperPrint(reportPath, parameters);
-
-        String filePath = choosePathFileSave(fileName);
-
-        if (filePath == null) {
-            return;
-        }
-
-        // Chuẩn bị trình xuất PDF
-        JRPdfExporter exporter = new JRPdfExporter();
-        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(filePath));
-
-        // Điều chỉnh cấu hình xuất
-        SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
-        exporter.setConfiguration(configuration);
-        exporter.exportReport();
-
-    }
-
-    public static void exportExcel(String fileName, String reportPath, HashMap parameters) throws SQLException, JRException, IOException {
-        String date = XDate.toString(new Date(), "ddMMyyyy");
-        fileName = fileName + "_" + date;
-
-        JasperPrint jasperPrint = getJasperPrint(reportPath, parameters);
-
-        String filePath = choosePathFileSave(fileName);
-
-        if (filePath == null) {
-            return;
-        }
-
-        // Chuẩn bị trình xuất file Excel
-        Exporter exporter = new JRXlsxExporter();
-        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(filePath));
-
-        // Điều chỉnh cấu hình xuất
-        SimpleXlsxReportConfiguration configuration = new SimpleXlsxReportConfiguration();
-        configuration.setOnePagePerSheet(true);
-        configuration.setDetectCellType(false);
-        exporter.setConfiguration(configuration);
-        exporter.exportReport();
-
-        File outputFile = new File(fileName);
-        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                OutputStream fileOutputStream = new FileOutputStream(outputFile)) {
-            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
-            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(byteArrayOutputStream));
-            exporter.setConfiguration(configuration);
-            exporter.exportReport();
-            byteArrayOutputStream.writeTo(fileOutputStream);
-        }
-    }
-
     public static void printReport(String fileName, String reportPath, HashMap parameters) throws SQLException, JRException {
         JasperPrint jasperPrint = getJasperPrint(reportPath, parameters);
         jasperPrint.setName(fileName);
