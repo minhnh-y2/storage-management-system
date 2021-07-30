@@ -5,7 +5,6 @@
  */
 package com.stoman.utils;
 
-import java.awt.Frame;
 import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -29,7 +28,7 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
  *
  * @author MinhNH
  */
-public class ExporterReport {
+public class ExporterPDF {
 
     /**
      * In phiếu dạng pdf
@@ -49,7 +48,7 @@ public class ExporterReport {
         Connection conn = XJdbc.getConnection();
         
         // Biên dịch file
-        InputStream path = ExporterReport.class.getResourceAsStream(reportPath);
+        InputStream path = ExporterPDF.class.getResourceAsStream(reportPath);
         JasperReport jasperReport = JasperCompileManager.compileReport(path);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
         
@@ -62,13 +61,12 @@ public class ExporterReport {
         }
         File selectedFile = fileChooser.getSelectedFile();
         
-        // Trình xuất PDF
+        // Chuẩn bị trình xuất PDF
         JRPdfExporter exporter = new JRPdfExporter();
-        ExporterInput exporterInput = new SimpleExporterInput(jasperPrint);
-        exporter.setExporterInput(exporterInput);
-        OutputStreamExporterOutput exporterOutput = new SimpleOutputStreamExporterOutput(
-                selectedFile.getAbsolutePath());
-        exporter.setExporterOutput(exporterOutput);
+        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+        exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(selectedFile.getAbsolutePath()));
+        
+        // Điều chỉnh cấu hình xuất
         SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
         exporter.setConfiguration(configuration);
         exporter.exportReport();
