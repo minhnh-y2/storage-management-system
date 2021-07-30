@@ -1495,7 +1495,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             parameters.put("MAKK", maKK);
 
             String fileName = "PhieuKiemKhoSo" + maKK;
-            ExporterReport.exportExcel(fileName, reportPath, parameters);
+            ExporterReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
             MsgBox.alert(this, "Xuất file PDF thất bại!");
             e.printStackTrace();
