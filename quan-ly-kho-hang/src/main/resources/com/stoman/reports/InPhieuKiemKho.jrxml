@@ -83,7 +83,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="106" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<image>
 				<reportElement x="1" y="0" width="31" height="31" uuid="e3c00109-59b7-47ee-b71f-d47f785e5197"/>
 				<imageExpression><![CDATA[this.getClass().getResourceAsStream("/com/stoman/icons/logo.png")]]></imageExpression>
@@ -91,58 +91,64 @@ WHERE
 			<staticText>
 				<reportElement x="32" y="0" width="165" height="16" uuid="a489431e-8db1-4a06-83d7-efea04ecab68"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10"/>
+					<font fontName="DejaVu Sans" size="10"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[HỆ THỐNG QUẢN LÝ KHO HÀNG]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="427" y="15" width="47" height="16" uuid="12fb1b3f-a634-494b-a0ba-f04290ac86a6"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="401" y="15" width="52" height="16" uuid="12fb1b3f-a634-494b-a0ba-f04290ac86a6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<text><![CDATA[Ngày lập:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="427" y="0" width="47" height="16" uuid="2c2aad09-65e3-4e51-9689-67d22a61e1cf"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="401" y="0" width="52" height="16" uuid="2c2aad09-65e3-4e51-9689-67d22a61e1cf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<text><![CDATA[Số phiếu:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="48" width="555" height="23" uuid="30411930-c0d8-44a7-b9c1-87693cb13bab"/>
+				<reportElement x="1" y="53" width="555" height="23" uuid="30411930-c0d8-44a7-b9c1-87693cb13bab"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="18" isBold="true"/>
+					<font fontName="DejaVu Sans" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PHIẾU KIỂM KHO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="473" y="0" width="82" height="16" uuid="c50881c3-ae36-4eb3-aa6b-e7b805370910"/>
+				<reportElement x="452" y="0" width="103" height="16" uuid="c50881c3-ae36-4eb3-aa6b-e7b805370910"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEUKIEMKHO_MAKK}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="473" y="15" width="82" height="16" uuid="612234ad-a4a2-4082-af2a-6ba9efb611da"/>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="452" y="15" width="103" height="16" uuid="612234ad-a4a2-4082-af2a-6ba9efb611da"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEUKIEMKHO_NGAYLAP}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="251" y="71" width="38" height="20" uuid="9381a99d-1a03-4e33-bcd3-b478e9609e2d"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="251" y="76" width="38" height="20" uuid="9381a99d-1a03-4e33-bcd3-b478e9609e2d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<text><![CDATA[Kho số:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="288" y="71" width="21" height="20" uuid="35661d1a-936c-476e-9da3-219c0a3c4379"/>
+				<reportElement x="288" y="76" width="21" height="20" uuid="35661d1a-936c-476e-9da3-219c0a3c4379"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{KHO_MAKHO}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="32" y="15" width="165" height="16" uuid="d9928e2e-f54d-4a83-aea6-0db38aca9873"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10"/>
+					<font fontName="DejaVu Sans" size="10"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<text><![CDATA[STOMAN]]></text>
@@ -152,38 +158,44 @@ WHERE
 	<pageHeader>
 		<band height="44" splitType="Stretch">
 			<staticText>
-				<reportElement x="74" y="0" width="95" height="20" uuid="cb86c568-2050-4b8f-ad58-060d93470a9f"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Nhân viên kiểm kho:]]></text>
+				<reportElement x="60" y="0" width="59" height="20" uuid="cb86c568-2050-4b8f-ad58-060d93470a9f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Nhân viên:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="0" width="72" height="20" uuid="c825c265-a121-4cf9-8557-11bf6a98d30e"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="343" y="0" width="82" height="20" uuid="c825c265-a121-4cf9-8557-11bf6a98d30e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<text><![CDATA[Ngày kiểm kho:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="24" width="42" height="20" uuid="1dd3a13f-1903-49f7-ba23-a02625034439"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="60" y="24" width="43" height="20" uuid="1dd3a13f-1903-49f7-ba23-a02625034439"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<text><![CDATA[Ghi chú:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="115" y="24" width="232" height="20" uuid="6bc09de0-b8d2-4e4c-8551-5dd2ca7c44cc"/>
+				<reportElement x="102" y="24" width="386" height="20" uuid="6bc09de0-b8d2-4e4c-8551-5dd2ca7c44cc"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEUKIEMKHO_GHICHU}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="168" y="0" width="179" height="20" uuid="d2b42fa7-2027-4bf0-850c-8e7efbc35284"/>
+				<reportElement x="118" y="0" width="226" height="20" uuid="d2b42fa7-2027-4bf0-850c-8e7efbc35284"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NHANVIEN_TENNV}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="417" y="0" width="100" height="20" uuid="d8e061e3-a7a1-4586-90e3-7c15c0a79987"/>
+				<reportElement x="424" y="0" width="64" height="20" uuid="d8e061e3-a7a1-4586-90e3-7c15c0a79987"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{PHIEUKIEMKHO_NGAYKIEM})]]></textFieldExpression>
 			</textField>
@@ -204,7 +216,7 @@ WHERE
 							<staticText>
 								<reportElement x="0" y="0" width="305" height="30" forecolor="#000000" uuid="393e5a52-c0db-4f79-a25c-1ca3dde40f5a"/>
 								<textElement verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font fontName="DejaVu Sans" isBold="true"/>
 									<paragraph leftIndent="5"/>
 								</textElement>
 								<text><![CDATA[TÊN HÀNG HOÁ]]></text>
@@ -214,7 +226,7 @@ WHERE
 							<staticText>
 								<reportElement x="0" y="0" width="305" height="20" uuid="dd1a4f2a-3e0a-44d5-b2d1-df64d5697f91"/>
 								<textElement verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font fontName="DejaVu Sans" isBold="true"/>
 									<paragraph leftIndent="5"/>
 								</textElement>
 								<text><![CDATA[TỔNG]]></text>
@@ -224,6 +236,7 @@ WHERE
 							<textField>
 								<reportElement x="0" y="0" width="305" height="20" uuid="223cdb81-3c15-41fe-8acb-36375f732be5"/>
 								<textElement verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
 									<paragraph leftIndent="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{HANGHOA_TENHH}]]></textFieldExpression>
@@ -235,7 +248,7 @@ WHERE
 							<staticText>
 								<reportElement x="0" y="0" width="120" height="30" forecolor="#000000" uuid="366e5812-5936-46b6-afdb-bd073b96c109"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font fontName="DejaVu Sans" isBold="true"/>
 								</textElement>
 								<text><![CDATA[SỐ LƯỢNG TỒN]]></text>
 							</staticText>
@@ -243,14 +256,18 @@ WHERE
 						<jr:columnFooter height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="120" height="20" uuid="09308fa0-ef42-42a8-95e6-1ef7f30b2cd9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$V{SOLUONGTON_SUM}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="120" height="20" uuid="4fc1cb4e-85c5-45b0-9e82-b6c846d2c373"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{CHITIETKIEMKHO_SOLUONGTON}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -260,7 +277,7 @@ WHERE
 							<staticText>
 								<reportElement x="0" y="0" width="130" height="30" forecolor="#000000" uuid="5d2b4482-478a-46dd-8cda-b03c14799b8d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font isBold="true"/>
+									<font fontName="DejaVu Sans" isBold="true"/>
 								</textElement>
 								<text><![CDATA[SỐ LƯỢNG THỰC]]></text>
 							</staticText>
@@ -268,14 +285,18 @@ WHERE
 						<jr:columnFooter height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="130" height="20" uuid="1f354ec5-43df-47e7-80be-6d8f5ad0591c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$V{SOLUONGTHUC_SUM}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="130" height="20" uuid="5021d707-3d81-4e5f-aff3-a22cacccc97f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Sans"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{CHITIETKIEMKHO_SOLUONGTHUC}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

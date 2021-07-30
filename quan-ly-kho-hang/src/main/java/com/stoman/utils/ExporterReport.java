@@ -5,10 +5,12 @@
  */
 package com.stoman.utils;
 
+import java.awt.Frame;
 import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JFileChooser;
 import net.sf.jasperreports.engine.JRException;
@@ -27,49 +29,53 @@ import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
  *
  * @author MinhNH
  */
-public class ReportHelper {
+public class ExporterReport {
 
     /**
      * In phiếu dạng pdf
      *
-     * @param reportPath: Đường dẫn file report
-     * @param parameters: Map các tham số truyền vào báo cáo để xuất CSDL
+     * @param fileName tên file xuất
+     * @param reportPath đường dẫn chứa file report
+     * @param parameters các tham số truyền vào báo cáo
+     * @return true/false
      * @throws SQLException
      * @throws JRException
      */
-    public static void printReport(String reportPath, HashMap parameters) throws SQLException, JRException {
+    public static boolean printReport(String fileName, String reportPath, HashMap parameters) throws SQLException, JRException {
+        String date = XDate.toString(new Date(), "ddMMyyyy");
+        fileName = fileName + "_" + date;
+        
         // Kết nối với database
         Connection conn = XJdbc.getConnection();
+        
         // Biên dịch file
-        InputStream path = ReportHelper.class.getResourceAsStream(reportPath);
+        InputStream path = ExporterReport.class.getResourceAsStream(reportPath);
         JasperReport jasperReport = JasperCompileManager.compileReport(path);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
         
         // Chọn đường dẫn
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setSelectedFile(new File("PhieuXuatNhapKho.pdf"));
+        fileChooser.setSelectedFile(new File(fileName + ".pdf"));
         int returnValue = fileChooser.showSaveDialog(null);
         if (returnValue == JFileChooser.CANCEL_OPTION) {
-            return;
+            return false;
         }
         File selectedFile = fileChooser.getSelectedFile();
         
-        // PDF Exportor.
+        // Trình xuất PDF
         JRPdfExporter exporter = new JRPdfExporter();
         ExporterInput exporterInput = new SimpleExporterInput(jasperPrint);
-        
-        // Exporter Input
         exporter.setExporterInput(exporterInput);
-        
-        // Exporter Output
         OutputStreamExporterOutput exporterOutput = new SimpleOutputStreamExporterOutput(
                 selectedFile.getAbsolutePath());
-        
-        // Output
         exporter.setExporterOutput(exporterOutput);
         SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
         exporter.setConfiguration(configuration);
         exporter.exportReport();
+        
+        // Đóng kết nối
         conn.close();
+        
+        return true;
     }
 }

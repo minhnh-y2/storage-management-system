@@ -21,7 +21,7 @@ import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
-import com.stoman.utils.ReportHelper;
+import com.stoman.utils.ExporterReport;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
@@ -1381,7 +1381,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
     }
 
-    private final String reportFile = "/com/stoman/reports/InPhieuKiemKho.jrxml";
+    private final String reportPath = "/com/stoman/reports/InPhieuKiemKho.jrxml";
     private void exportReport() {
         int row = tblPhieuKiemKho.getSelectedRow();
         if (row < 0) {
@@ -1396,9 +1396,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             HashMap parameters = new HashMap();
             parameters.put("MAKK", maKK);
 
-            ReportHelper.printReport(reportFile, parameters);
+            String fileName = "PhieuKiemKho" + maKK;
+            boolean resurt = ExporterReport.printReport(fileName, reportPath, parameters);
+            if (resurt)  MsgBox.alert(this, "Xuất file PDF thành công!");
         } catch (SQLException | JRException e) {
-            MsgBox.alert(this, "Lỗi xuất phiếu!");
+            MsgBox.alert(this, "Xuất file PDF thất bại!");
             e.printStackTrace();
         }
     }
