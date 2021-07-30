@@ -66,8 +66,8 @@ public class ExporterExcel {
         
         // Điều chỉnh cấu hình xuất
         SimpleXlsxReportConfiguration  configuration = new SimpleXlsxReportConfiguration();
-        configuration.setOnePagePerSheet(true);
-        configuration.setDetectCellType(true);
+        configuration.setOnePagePerSheet(false);
+        configuration.setDetectCellType(false);
         exporter.setConfiguration(configuration);
         exporter.exportReport();
         

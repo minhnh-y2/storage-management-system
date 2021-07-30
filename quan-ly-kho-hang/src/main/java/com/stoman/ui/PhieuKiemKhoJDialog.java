@@ -19,6 +19,7 @@ import com.stoman.entity.LuuTru;
 import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
+import com.stoman.utils.ExporterExcel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.ExporterPDF;
@@ -1485,9 +1486,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             HashMap parameters = new HashMap();
             parameters.put("MAKK", maKK);
 
-            String fileName = "PhieuKiemKho" + maKK;
-            boolean resurt = ExporterPDF.printReport(fileName, reportPath, parameters);
-            if (resurt)  MsgBox.alert(this, "Xuất file PDF thành công!");
+            String fileName = "PhieuKiemKhoSo" + maKK;
+            ExporterExcel.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
             MsgBox.alert(this, "Xuất file PDF thất bại!");
             e.printStackTrace();

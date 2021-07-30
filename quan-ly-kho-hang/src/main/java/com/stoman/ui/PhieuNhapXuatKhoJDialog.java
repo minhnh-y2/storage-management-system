@@ -27,6 +27,7 @@ import com.stoman.entity.Phieu;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DateRenderer;
 import com.stoman.utils.DragPanel;
+import com.stoman.utils.ExporterExcel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.SpinnerEditor;
@@ -34,6 +35,7 @@ import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.image.BufferedImage;
 import java.rmi.server.ExportException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -46,6 +48,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -1123,7 +1126,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnInPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPhieuActionPerformed
         // TODO add your handling code here:
-        exportReport();
+        exportReportPDF();
     }//GEN-LAST:event_btnInPhieuActionPerformed
 
     private void chkHoanThanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkHoanThanhMouseClicked
@@ -1995,7 +1998,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Xuất phiếu
-    private void exportReport() {
+    private void exportReportPDF() {
         if (rowPhieu < 0) {
             MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
@@ -2011,12 +2014,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             String fileName = "";
 
             if (phieu.isLoai()) {
-                fileName = "PhieuNhap" + phieu.getMaPhieu();
+                fileName = "PhieuNhapSo" + phieu.getMaPhieu();
             } else {
-                fileName = "PhieuXuat" + phieu.getMaPhieu();
+                fileName = "PhieuXuatSo" + phieu.getMaPhieu();
             }
-
-        } catch (Exception e) {
+            ExporterExcel.printReport(fileName, reportPath, parameters);
+        } catch (SQLException | JRException e) {
             MsgBox.alert(this, "Xuất file PDF thất bại!");
             e.printStackTrace();
         }
