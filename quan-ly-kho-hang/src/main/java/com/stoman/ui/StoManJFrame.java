@@ -30,7 +30,6 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
@@ -408,6 +407,9 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblLuuTru.setRowHeight(25);
+        tblLuuTru.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblLuuTru.getTableHeader().setReorderingAllowed(false);
         lblTblLuuTru.setViewportView(tblLuuTru);
 
         lblTimKiemLT.setText("Tìm kiếm");
@@ -548,6 +550,9 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTKnhap.setRowHeight(25);
+        tblTKnhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblTKnhap.getTableHeader().setReorderingAllowed(false);
         lblTblTKnhap.setViewportView(tblTKnhap);
 
         lblTimKiemNhap.setText("Tìm kiếm");
@@ -737,6 +742,8 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTKxuat.setRowHeight(25);
+        tblTKxuat.getTableHeader().setReorderingAllowed(false);
         lblTblTKxuat.setViewportView(tblTKxuat);
 
         lblTimKiemXuat.setText("Tìm kiếm");
@@ -919,6 +926,9 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTongHop.setRowHeight(25);
+        tblTongHop.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblTongHop.getTableHeader().setReorderingAllowed(false);
         lblTblTongHop.setViewportView(tblTongHop);
 
         lblTimKiemTH.setText("Tìm kiếm");
@@ -1385,6 +1395,16 @@ public class StoManJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StoManJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        /*
+        try {
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+            javax.swing.UIManager.put("Table.showHorizontalLines", true);
+            javax.swing.UIManager.put("Table.showVerticalLines", true);
+            javax.swing.UIManager.put("TitlePane.unifiedBackground", true);
+        } catch (Exception ex) {
+            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+        */
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

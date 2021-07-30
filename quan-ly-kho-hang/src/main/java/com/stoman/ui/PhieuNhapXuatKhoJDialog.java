@@ -1009,7 +1009,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         delCTP.clear();
         this.clearForm();
-        this.updateStatus();
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemCTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTPActionPerformed
@@ -1741,6 +1740,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.rowPhieu = -1;
 
         isUpdate = false;
+        this.updateStatus();
     }
 
     // Cập nhật giao diện form theo hoạt động
@@ -1749,7 +1749,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean edit = (this.rowPhieu >= 0);
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
-
         if (edit) {
             tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
         }
@@ -1765,23 +1764,17 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
 
         // Kiểm tra dữ liệu bảng, chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        boolean isPhieuEmpty = (tblPhieu.getRowCount() == 0);
-        boolean isCTPhieu_subEmpty = (tblCTPhieu_sub.getRowCount() == 0);
-        boolean isCTPhieu_mainEmpty = (tblCTPhieu_main.getRowCount() == 0);
+        tblPhieu.setAutoCreateRowSorter(tblPhieu.getRowCount() > 0);
+        tblCTPhieu_sub.setAutoCreateRowSorter(tblCTPhieu_sub.getRowCount() > 0);
+        tblCTPhieu_main.setAutoCreateRowSorter(tblCTPhieu_main.getRowCount() > 0);
 
-        tblPhieu.setAutoCreateRowSorter(!isPhieuEmpty);
-        tblCTPhieu_sub.setAutoCreateRowSorter(!isCTPhieu_subEmpty);
-        tblCTPhieu_main.setAutoCreateRowSorter(!isCTPhieu_mainEmpty);
-
-        // Kiểm tra vai trò người dùng
+        // Kiểm tra vai trò người dùng, hạn chế quyền thủ kho
         boolean isManager = Auth.isManager();
-
         btnXoa.setVisible(isManager);
         btnXoaCTP.setEnabled(isManager);
 
         // Kiểm tra trạng thái hoàn thành phiếu
         boolean isCompleted = chkHoanThanh.isSelected();
-
         if (!isCompleted) {
             txtNgayHoanThanh.setDate(null);
         }
