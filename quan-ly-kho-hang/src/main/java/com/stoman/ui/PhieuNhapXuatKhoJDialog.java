@@ -604,7 +604,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         );
 
         pnlNutDieuHuong.setOpaque(false);
-        pnlNutDieuHuong.setLayout(new java.awt.GridLayout(1, 0));
+        pnlNutDieuHuong.setLayout(new java.awt.GridLayout());
 
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/skip-to-start.png"))); // NOI18N
         btnFirst.setPreferredSize(new java.awt.Dimension(100, 33));
