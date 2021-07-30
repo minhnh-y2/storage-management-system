@@ -107,6 +107,6 @@ public class ExporterReport {
     public static void printReport (String fileName, String reportPath, HashMap parameters) throws SQLException, JRException {
         JasperPrint jasperPrint = getJasperPrint(reportPath, parameters);
         jasperPrint.setName(fileName);
-        JasperViewer.viewReport(jasperPrint);
+        JasperViewer.viewReport(jasperPrint, false);
     }
 }
