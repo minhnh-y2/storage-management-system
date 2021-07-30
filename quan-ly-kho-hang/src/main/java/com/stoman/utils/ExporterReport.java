@@ -38,7 +38,7 @@ public class ExporterReport {
         Connection conn = XJdbc.getConnection();
         
         // Biên dịch file
-        InputStream path = ExporterExcel.class.getResourceAsStream(reportPath);
+        InputStream path = ExporterReport.class.getResourceAsStream(reportPath);
         JasperReport jasperReport = JasperCompileManager.compileReport(path);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
         
