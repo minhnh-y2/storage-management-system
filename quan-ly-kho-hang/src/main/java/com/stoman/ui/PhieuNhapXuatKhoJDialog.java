@@ -492,8 +492,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         txtNgayLap.setEditable(false);
         txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss"))));
+        txtNgayLap.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         txtMaNV.setEditable(false);
+        txtMaNV.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         lblGhiChu.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblGhiChu.setText("Ghi chú");
@@ -2063,7 +2065,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
             ExporterReport.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
-            MsgBox.alert(this, "Xuất file PDF thất bại!");
+            MsgBox.alert(this, "In phiếu thất bại!");
             e.printStackTrace();
         }
     }
