@@ -66,6 +66,10 @@ public class ExporterReport {
 
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
+            
+            if(selectedFile.exists())
+                if(!MsgBox.confirm(fileChooser, "File tồn tại! Bạn có muốn ghi đè")) return null;
+            
             String pathFile = selectedFile.getAbsolutePath();
             
             if(fileChooser.getFileFilter().getDescription().equals("Microsoft Excel Documents"))
