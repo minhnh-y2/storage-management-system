@@ -49,6 +49,7 @@ public class ExporterExcel {
         InputStream path = ExporterExcel.class.getResourceAsStream(reportPath);
         JasperReport jasperReport = JasperCompileManager.compileReport(path);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
+        conn.close();
         
         // Chọn đường dẫn
         JFileChooser fileChooser = new JFileChooser();
@@ -70,9 +71,6 @@ public class ExporterExcel {
         configuration.setDetectCellType(false);
         exporter.setConfiguration(configuration);
         exporter.exportReport();
-        
-        // Đóng kết nối
-        conn.close();
         
         return true;
     }

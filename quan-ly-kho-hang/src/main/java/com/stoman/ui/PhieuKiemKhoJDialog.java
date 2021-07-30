@@ -23,6 +23,7 @@ import com.stoman.utils.ExporterExcel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.ExporterPDF;
+import com.stoman.utils.ExporterReport;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
@@ -117,9 +118,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
+        btnXuatMaPhieu = new javax.swing.JButton();
         pnlChucNangMoRong = new javax.swing.JPanel();
         btnXuatFile = new javax.swing.JButton();
-        btnXuatMaPhieu = new javax.swing.JButton();
         btnInPhieu = new javax.swing.JButton();
         cboTimKiem = new javax.swing.JComboBox<>();
         lblTimKiem = new javax.swing.JLabel();
@@ -420,7 +421,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addComponent(lblGhiChu)
                 .addGap(10, 10, 10)
-                .addComponent(pnlTxtGhiChu)
+                .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -528,7 +529,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(9, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 9, 0);
         pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32.png"))); // NOI18N
@@ -542,7 +543,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
@@ -556,7 +557,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document-32.png"))); // NOI18N
@@ -570,7 +571,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
@@ -584,8 +585,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
+
+        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code.png"))); // NOI18N
+        btnXuatMaPhieu.setText("QR Code");
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(120, 60));
+        btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatMaPhieuActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
+        pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
         pnlChucNangMoRong.setLayout(new java.awt.GridLayout(1, 3));
@@ -598,15 +613,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         });
         pnlChucNangMoRong.add(btnXuatFile);
-
-        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code.png"))); // NOI18N
-        btnXuatMaPhieu.setText("Xuất mã phiếu");
-        btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXuatMaPhieuActionPerformed(evt);
-            }
-        });
-        pnlChucNangMoRong.add(btnXuatMaPhieu);
 
         btnInPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/print.png"))); // NOI18N
         btnInPhieu.setText("In phiếu");
@@ -641,8 +647,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                                 .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlTblCTPhieuKiemKho_sub))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -664,11 +670,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblTimKiem)))
                         .addGap(10, 10, 10)
-                        .addComponent(pnlTblCTPhieuKiemKho_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                        .addComponent(pnlTblCTPhieuKiemKho_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
@@ -743,7 +749,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addComponent(pnlTimKiem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
@@ -910,7 +916,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
         // TODO add your handling code here:
-        exportReportPDF();
+        exportReportExcel();
     }//GEN-LAST:event_btnXuatFileActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
@@ -931,6 +937,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void btnInPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPhieuActionPerformed
         // TODO add your handling code here:
+        printReport();
     }//GEN-LAST:event_btnInPhieuActionPerformed
 
     /**
@@ -1071,6 +1078,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        this.setModal(false);
         this.initDialogOther();
 
         String[] headerPhieuKiem = {"STT", "Kho", "Ngày kiểm", "Trạng thái", "Mã nhân viên", "Ngày lập", "Mã phiếu"};
@@ -1472,8 +1480,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
     }
 
+    // Xuất file excel
     private final String reportPath = "/com/stoman/reports/InPhieuKiemKho.jrxml";
-    private void exportReportPDF() {
+    private void exportReportExcel() {
         if (rowPhieu < 0) {
             MsgBox.alert(this, "Chưa chọn phiếu!");
             return;
@@ -1487,9 +1496,31 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             parameters.put("MAKK", maKK);
 
             String fileName = "PhieuKiemKhoSo" + maKK;
-            ExporterExcel.printReport(fileName, reportPath, parameters);
+            ExporterReport.exportExcel(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
             MsgBox.alert(this, "Xuất file PDF thất bại!");
+            e.printStackTrace();
+        }
+    }
+    
+    // In báo báo
+    private void printReport() {
+        if (rowPhieu < 0) {
+            MsgBox.alert(this, "Chưa chọn phiếu!");
+            return;
+        }
+
+        try {
+            int maKK = (int) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+
+            // Truyền tham số vào báo cáo
+            HashMap parameters = new HashMap();
+            parameters.put("MAKK", maKK);
+
+            String fileName = "PhieuKiemKhoSo" + maKK;
+            ExporterReport.printReport(fileName, reportPath, parameters);
+        } catch (SQLException | JRException e) {
+            MsgBox.alert(this, "Xuất file excel thất bại!");
             e.printStackTrace();
         }
     }

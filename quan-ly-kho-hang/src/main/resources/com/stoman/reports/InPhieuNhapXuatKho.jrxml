@@ -165,7 +165,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<text><![CDATA[Ngày hoàn thành]]></text>
+				<text><![CDATA[Ngày hoàn thành:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="357" y="0" width="93" height="15" uuid="6e6db56d-9fe7-44ac-b958-91f7acf215e6"/>
