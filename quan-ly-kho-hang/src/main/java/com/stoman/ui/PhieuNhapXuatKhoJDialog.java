@@ -517,8 +517,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
 
+        txtNgayThucHien.setDate(new Date());
         txtNgayThucHien.setOpaque(false);
 
+        txtNgayHoanThanh.setDate(new Date());
         txtNgayHoanThanh.setOpaque(false);
 
         javax.swing.GroupLayout pnlThongTinPhieuLayout = new javax.swing.GroupLayout(pnlThongTinPhieu);
@@ -1338,7 +1340,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setModal(false);
         this.initDialogOther();
-        
+
         pnlThanhTieuDe.setVisible(false);
         pnlThanhTieuDeCTP.setVisible(false);
         pnlThanhTieuDeQR.setVisible(false);
@@ -1419,8 +1421,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 modelCTPhieu.addRow(new Object[]{
                     i++,
                     hh,
-                    //XNumber.toString(ctp.getSoLuong(), numFormat),
-                    //XNumber.toString(ctp.getDonGia(), numFormat),
                     ctp.getSoLuong(),
                     ctp.getDonGia(),
                     ctp.getMaCTP(),
@@ -1612,6 +1612,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int maPhieu = pDAO.getMaPhieuByNVandCreatedDate(phieu.getMaNV(), phieu.getNgayLap());
 
         int rows = modelCTPhieu.getRowCount();
+        
+        if(rows < 1) {
+            MsgBox.alert(this, "Danh sách hàng hoá trống!");
+            return;
+        }
 
         if (phieu.isLoai()) {
             for (int i = 0; i < rows; i++) {
@@ -1734,8 +1739,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtMaNV.setToolTipText(Auth.user.getMaNV());
         txtMaNV.setText(Auth.user.getTenNV());
         txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
-        txtNgayThucHien.setDate(null);
-        txtNgayHoanThanh.setDate(null);
+        txtNgayThucHien.setDate(new Date());
+        txtNgayHoanThanh.setDate(new Date());
         txtGhiChu.setText(null);
         cboKho.setSelectedIndex(0);
         chkHoanThanh.setSelected(false);
@@ -2092,6 +2097,27 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Chưa nhập ngày thực hiện!");
             txtNgayThucHien.requestFocus();
             return false;
+        }
+
+        Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
+        if (txtNgayThucHien.getDate().before(ngayLap)) {
+            MsgBox.alert(this, "Ngày kiểm kho không nhỏ hơn ngày lập phiếu!");
+            txtNgayThucHien.requestFocus();
+            return false;
+        }
+
+        if (chkHoanThanh.isSelected()) {
+            if (txtNgayThucHien.getDate() == null) {
+                MsgBox.alert(this, "Chưa nhập ngày hoàn thành!");
+                txtNgayThucHien.requestFocus();
+                return false;
+            }
+            Date ngayHoanThanh = txtNgayHoanThanh.getDate();
+            if(ngayHoanThanh.before(txtNgayThucHien.getDate())) {
+                MsgBox.alert(this, "Ngày hoàn thành không nhỏ hơn ngày thực hiện!");
+                txtNgayThucHien.requestFocus();
+                return false;
+            }
         }
         return true;
     }
