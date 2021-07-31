@@ -160,7 +160,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         lblTieuDe = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
 
-        ChiTietPhieuDialog.setTitle("StoMan - Chi tiết phiếu nhập xuất kho");
+        ChiTietPhieuDialog.setTitle("Chi tiết phiếu nhập xuất kho");
         ChiTietPhieuDialog.setResizable(false);
 
         pnlTblCTPhieu_main.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
@@ -337,7 +337,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         );
 
         QRCodeDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        QRCodeDialog.setTitle("StoMan - Xuất mã phiếu QR Code");
+        QRCodeDialog.setTitle("Xuất mã phiếu QR Code");
         QRCodeDialog.setResizable(false);
 
         pnlThanhTieuDeQR.setBackground(new java.awt.Color(0, 153, 204));

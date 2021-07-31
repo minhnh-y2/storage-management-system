@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="ChiTietPhieuDialog">
       <Properties>
-        <Property name="title" type="java.lang.String" value="StoMan - Chi ti&#x1ebf;t phi&#x1ebf;u nh&#x1ead;p xu&#x1ea5;t kho"/>
+        <Property name="title" type="java.lang.String" value="Chi ti&#x1ebf;t phi&#x1ebf;u nh&#x1ead;p xu&#x1ea5;t kho"/>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
 
@@ -320,7 +320,7 @@
     <Container class="javax.swing.JDialog" name="QRCodeDialog">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
-        <Property name="title" type="java.lang.String" value="StoMan - Xu&#x1ea5;t m&#xe3; phi&#x1ebf;u QR Code"/>
+        <Property name="title" type="java.lang.String" value="Xu&#x1ea5;t m&#xe3; phi&#x1ebf;u QR Code"/>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
 

@@ -136,12 +136,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         lblTieuDe = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
 
+        ChiTietPhieuJDialog.setTitle("Chi tiết phiếu kiểm kho");
         ChiTietPhieuJDialog.setResizable(false);
 
         pnlBackgroundCTP.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackgroundCTP.setLayout(new java.awt.BorderLayout());
 
-        pnlDSKiemKho.setBackground(new java.awt.Color(255, 255, 255));
+        pnlMainCTP.setOpaque(true);
 
         tblCTPhieuKiemKho_main.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,8 +185,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         );
 
         pnlMainCTP.addTab("Danh sách kiểm kho", pnlDSKiemKho);
-
-        pnlDSHangHoa.setOpaque(false);
 
         tblHangHoaKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -276,6 +275,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         ChiTietPhieuJDialog.getContentPane().add(pnlThanhTieuDeCTP, java.awt.BorderLayout.PAGE_START);
 
+        QRCodeDialog.setTitle("Xuất mã phiếu (QR Code)");
         QRCodeDialog.setResizable(false);
 
         pnlThanhTieuDeQR.setBackground(new java.awt.Color(0, 153, 204));
@@ -321,7 +321,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         QRCodeDialog.getContentPane().add(pnlThanhTieuDeQR, java.awt.BorderLayout.PAGE_START);
 
-        pnlBackgroundQR.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
         pnlBackgroundQR.setPreferredSize(new java.awt.Dimension(300, 300));
         pnlBackgroundQR.setLayout(new java.awt.GridBagLayout());
 
