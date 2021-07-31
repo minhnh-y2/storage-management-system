@@ -18,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +44,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pnlBackground = new javax.swing.JPanel();
         pnlThanhTieuDe = new DragPanel(this);
@@ -84,10 +86,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý hàng hoá");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -133,6 +131,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlThongTinHangHoa.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnlThongTinHangHoa.setForeground(new java.awt.Color(255, 255, 255));
+        pnlThongTinHangHoa.setOpaque(false);
 
         lblMaHangHoa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaHangHoa.setText("Mã hàng hoá");
@@ -160,7 +159,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         pnlLoaiHangHoa.add(pnlLstLoaiHangHoa, java.awt.BorderLayout.CENTER);
 
-        pnlButtonLoaiHH.setOpaque(false);
         pnlButtonLoaiHH.setLayout(new java.awt.GridLayout(1, 0));
 
         btnThemList.setText("Thêm");
@@ -182,43 +180,57 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlLoaiHangHoa.add(pnlButtonLoaiHH, java.awt.BorderLayout.PAGE_END);
 
         pnlChucNang.setBackground(new java.awt.Color(255, 255, 255));
-        pnlChucNang.setLayout(new java.awt.GridLayout(0, 1));
+        pnlChucNang.setOpaque(false);
+        pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnThem);
+        pnlChucNang.add(btnThem, new java.awt.GridBagConstraints());
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoa.setText("Xoá");
+        btnXoa.setPreferredSize(new java.awt.Dimension(100, 35));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnXoa);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnSua);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
         btnMoi.setText("Mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(100, 35));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnMoi);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        pnlChucNang.add(btnMoi, gridBagConstraints);
 
         javax.swing.GroupLayout pnlThongTinHangHoaLayout = new javax.swing.GroupLayout(pnlThongTinHangHoa);
         pnlThongTinHangHoa.setLayout(pnlThongTinHangHoaLayout);
@@ -235,7 +247,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(lblDonGia))
                 .addGap(10, 10, 10)
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                     .addComponent(txtMaHH)
                     .addComponent(txtTenHH)
                     .addComponent(txtDonGia))
@@ -494,6 +506,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
+        timer.stop();
         this.dispose();
     }//GEN-LAST:event_lblThoatMouseClicked
 
@@ -616,12 +629,16 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        
+        pnlThanhTieuDe.setVisible(false);
         this.lstModel = new DefaultListModel<>();
 
         this.formatTable();
         this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
+        
+        timer.start();
     }
 
     // Đổ dữ liệu vào bảng.
@@ -670,7 +687,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblHangHoa.getColumnCount(); i++) {
-            model.addElement(tblHangHoa.getColumnName(i));
+            String columnName = tblHangHoa.getColumnName(i);
+            if (columnName.equalsIgnoreCase("STT")) continue;
+            model.addElement(columnName);
         }
     }
 
@@ -707,7 +726,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
-        boolean isManager = Auth.isManager();
         boolean isTableEmpty = (tblHangHoa.getRowCount() == 0);
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
@@ -718,17 +736,16 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
 
         txtMaHH.setEditable(!edit && isSelectedList);
-        btnThem.setEnabled(!edit && isSelectedList && isManager);
-        btnSua.setEnabled(edit && isSelectedList && isManager);
-        btnXoa.setEnabled(edit && isSelectedList && isManager);
-        btnMoi.setEnabled(isSelectedList && isManager);
-        btnThemList.setEnabled(isManager);
-        btnXoaList.setEnabled(isManager);
+        btnThem.setEnabled(!edit && isSelectedList);
+        btnSua.setEnabled(edit && isSelectedList);
+        btnXoa.setEnabled(edit && isSelectedList);
+        btnXoa.setVisible(Auth.isManager());
+        btnMoi.setEnabled(isSelectedList);
 
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+        btnFirst.setEnabled(isSelectedList && !first);
+        btnPrev.setEnabled(isSelectedList && !first);
+        btnNext.setEnabled(isSelectedList && !last);
+        btnLast.setEnabled(isSelectedList && !last);
     }
 
     // Hiển thị dữ liệu hàng hoá được chọn trên bảng lên form
@@ -798,7 +815,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 tblModel.setRowCount(0);
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá thất bại!");
+                MsgBox.alert(this, "Không thể xoá danh mục đang có sản phẩm!");
                 e.printStackTrace();
             }
         }
@@ -816,6 +833,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             txtTenHH.requestFocus();
             return false;
         }
+        if (txtDonViTinh.getText().isEmpty()) {
+            MsgBox.alert(this, "Chưa nhập đơn vị tính!");
+            txtDonViTinh.requestFocus();
+            return false;
+        }
         if (txtDonGia.getText().isEmpty()) {
             MsgBox.alert(this, "Chưa nhập đơn giá!");
             txtDonGia.requestFocus();
@@ -831,26 +853,21 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             txtDonGia.requestFocus();
             return false;
         }
-        if (txtDonViTinh.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập đơn vị tính!");
-            txtDonViTinh.requestFocus();
-            return false;
-        }
         return true;
     }
 
     // Thêm hàng hoá mới
     private void insert() {
-        if (isValidated()) {
+        if (!isValidated()) {
             return;
         }
-        
+
         if (hhDAO.selectByID(txtMaHH.getText()) != null) {
             MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
             txtMaHH.requestFocus();
             return;
         }
-        
+
         HangHoa hh = getForm();
         try {
             hhDAO.insert(hh);
@@ -866,14 +883,14 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Xoá hàng hoá
     private void delete() {
         if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
-            String maHH = (String) tblHangHoa.getValueAt(this.row, 0);
+            String maHH = (String) tblHangHoa.getValueAt(this.row, 1);
             try {
                 hhDAO.delete(maHH);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá thất bại!");
+                MsgBox.alert(this, "Không thể xoá hàng hoá đang còn tồn kho!");
                 e.printStackTrace();
             }
         }
@@ -881,7 +898,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Cập nhật hàng hoá
     private void update() {
-        if (isValidated()) {
+        if (!isValidated()) {
+            return;
+        }
             HangHoa hh = getForm();
             try {
                 hhDAO.update(hh);
@@ -892,12 +911,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 MsgBox.alert(this, "Cập nhật thất bại!");
                 e.printStackTrace();
             }
-        }
     }
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"STT", "Mã hàng hoá", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
+        String header[] = {"STT", "MÃ HÀNG HOÁ", "TÊN HÀNG HOÁ", "ĐƠN GIÁ", "ĐƠN VỊ TÍNH"};
         this.tblModel = new DefaultTableModel(header, 0) {
 
             @Override
@@ -918,13 +936,27 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         };
         tblHangHoa.setModel(tblModel);
 
-        tblHangHoa.removeColumn(tblHangHoa.getColumnModel().getColumn(1));
+        //tblHangHoa.removeColumn(tblHangHoa.getColumnModel().getColumn(1));
         // Set size column
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
-        tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(524);
-        tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(125);
+        tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblHangHoa.getColumnModel().getColumn(2).setPreferredWidth(424);
         tblHangHoa.getColumnModel().getColumn(3).setPreferredWidth(125);
+        tblHangHoa.getColumnModel().getColumn(4).setPreferredWidth(125);
 
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
+
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBox();
+        this.fillToTable();
+
+        this.timer.restart();
+    }
+
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(300000, (e) -> {
+        refeshForm();
+    });
 }

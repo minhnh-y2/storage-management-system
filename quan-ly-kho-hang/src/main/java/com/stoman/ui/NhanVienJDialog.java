@@ -14,6 +14,7 @@ import com.stoman.utils.XPassword;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -78,10 +79,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý nhân viên");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+        setResizable(false);
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -146,6 +144,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         pnlThongTinNV.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinNV.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        pnlThongTinNV.setOpaque(false);
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaNV.setText("Mã nhân viên");
@@ -163,8 +162,23 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblVaiTro.setText("Vai trò");
 
         txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoTenFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtHoTenFocusLost(evt);
+            }
+        });
+
+        txtMatKhau.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMatKhauFocusGained(evt);
+            }
+        });
+
+        txtXacNhanMK.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtXacNhanMKFocusGained(evt);
             }
         });
 
@@ -177,7 +191,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         rdoThuKho.setText("Thủ kho");
         rdoThuKho.setOpaque(false);
 
-        pnlChucNang.setBackground(new java.awt.Color(255, 255, 255));
         pnlChucNang.setForeground(new java.awt.Color(51, 51, 51));
         pnlChucNang.setLayout(new java.awt.GridLayout(0, 1, 2, 0));
 
@@ -368,7 +381,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     .addComponent(pnlThongTinNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
@@ -385,22 +398,11 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(pnlTblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(pnlBackground, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -434,6 +436,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         this.dispose();
+        timer.stop();
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
@@ -482,8 +485,25 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         // TODO add your handling code here:
         String hoTen = txtHoTen.getText();
-        txtHoTen.setText(capitalizeWord(hoTen));
+        if(!hoTen.isEmpty()){
+            txtHoTen.setText(capitalizeWord(hoTen));
+        }
     }//GEN-LAST:event_txtHoTenFocusLost
+
+    private void txtMatKhauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMatKhauFocusGained
+        // TODO add your handling code here:
+        txtMatKhau.selectAll();
+    }//GEN-LAST:event_txtMatKhauFocusGained
+
+    private void txtXacNhanMKFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtXacNhanMKFocusGained
+        // TODO add your handling code here:
+        txtXacNhanMK.selectAll();
+    }//GEN-LAST:event_txtXacNhanMKFocusGained
+
+    private void txtHoTenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusGained
+        // TODO add your handling code here:
+        txtHoTen.selectAll();
+    }//GEN-LAST:event_txtHoTenFocusGained
 
     /**
      * @param args the command line arguments
@@ -571,6 +591,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
+        pnlThanhTieuDe.setVisible(false);
+        
         this.formatTable();
         
         this.fillToComboBox();
@@ -610,7 +632,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblNhanVien.getColumnCount(); i++) {
-            model.addElement(tblNhanVien.getColumnName(i));
+            String columnName = tblNhanVien.getColumnName(i);
+            model.addElement(columnName);
         }
     }
 
@@ -657,14 +680,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         this.updateStatus();
     }
 
-    // Cập nhật trạng thái form và các nút
+    // Cập nhật trạng thái form và các nút theo hoạt động của người dùng
     private void updateStatus() {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
-
         boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
-        boolean isManager = Auth.isManager();
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
@@ -672,17 +693,16 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         if (edit) {
             tblNhanVien.setRowSelectionInterval(row, row);
         }
-
+        // Điều chỉnh trạng thái các nút và ô nhập text
         txtMaNV.setEditable(!edit);
-        btnThem.setEnabled(!edit && isManager);
-        btnSua.setEnabled(edit && isManager);
-        btnXoa.setEnabled(edit && isManager);
-        btnMoi.setEnabled(isManager);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+        btnFirst.setEnabled(!first);
+        btnPrev.setEnabled(!first);
+        btnNext.setEnabled(!last);
+        btnLast.setEnabled(!last);
     }
 
     // Hiển thị nhân viên đầu danh sách
@@ -719,7 +739,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         String hoTen = txtHoTen.getText();
         char[] matKhau = txtMatKhau.getPassword();
         char[] xacNhanMK = txtXacNhanMK.getPassword();
-        NhanVien nv = DAO.selectByID(maNV);
 
         if (maNV.isEmpty()) {
             MsgBox.alert(this, "Chưa nhập mã nhân viên!");
@@ -759,13 +778,12 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             return;
         }
 
-        NhanVien nv = getForm();
-        if (nv != null) {
+        if (DAO.selectByID(txtMaNV.getText()) != null) {
             MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
             txtHoTen.requestFocus();
             return;
         }
-
+        NhanVien nv = getForm();
         try {
             DAO.insert(nv);
             this.fillToTable();
@@ -835,7 +853,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
+        String header[] = {"MÃ NHÂN VIÊN", "HỌ TÊN", "VAI TRÒ"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -856,4 +874,17 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         tblNhanVien.setModel(tblModel);
     }
 
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBox();
+        this.fillToTable();
+
+        this.timer.restart();
+    }
+    
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(120000, (e) -> {
+        refeshForm();
+    });
+    
 }

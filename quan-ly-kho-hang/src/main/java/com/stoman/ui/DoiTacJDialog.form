@@ -8,7 +8,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="StoMan - Qu&#x1ea3;n l&#xfd; &#x111;&#x1ed1;i t&#xe1;c"/>
-    <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -43,18 +43,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlBackground">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="2" left="2" right="2" top="0">
-              <Color PropertyName="color" blue="cc" green="99" red="0" type="rgb"/>
-            </MatteColorBorder>
-          </Border>
-        </Property>
-      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -68,7 +56,7 @@
                       <Component id="pnlThongTinDoiTac" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnlTimKiem" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="32" max="32767" attributes="0"/>
+                          <EmptySpace pref="36" max="32767" attributes="0"/>
                           <Component id="pnlDieuHuong" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -90,7 +78,7 @@
                       <Component id="pnlDieuHuong" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="pnlTblDoiTac" pref="292" max="32767" attributes="0"/>
+                  <Component id="pnlTblDoiTac" pref="294" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -184,7 +172,7 @@
                               <Component id="rdoKhachHang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="rdoNhaPhanPhoi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="58" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtDiaChi" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
@@ -333,7 +321,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="pnlButtonLoaiDT">
+                <Container class="javax.swing.JPanel" name="pnlChucNangLoaiDT">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>

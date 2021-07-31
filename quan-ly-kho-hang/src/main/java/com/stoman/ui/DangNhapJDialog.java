@@ -90,14 +90,20 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtTenNV.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtTenNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtTenNV.setForeground(new java.awt.Color(255, 255, 255));
+        txtTenNV.setText("minhnh");
         txtTenNV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtTenNV.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtTenNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTenNV.setOpaque(false);
         getContentPane().add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 280, -1));
 
         txtMatKhau.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtMatKhau.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        txtMatKhau.setText("12345");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtMatKhau.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtMatKhau.setOpaque(false);
         getContentPane().add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 280, -1));
 
