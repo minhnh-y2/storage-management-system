@@ -10,11 +10,9 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComponent;
-import javax.swing.JProgressBar;
 import javax.swing.Painter;
 import javax.swing.Timer;
 import javax.swing.UIDefaults;
-import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.nimbus.AbstractRegionPainter;
 
