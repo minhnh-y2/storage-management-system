@@ -289,7 +289,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
-        tabs.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        tabs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
@@ -384,7 +384,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
                         .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -517,7 +517,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTheoLT)
                             .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                        .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(lblKhoLT)
                         .addGap(10, 10, 10)
@@ -697,7 +697,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTheoNhap)
                             .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                        .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblKhoNhap)
                         .addGap(10, 10, 10)
@@ -1014,7 +1014,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTheoTH)
                             .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addComponent(lblTblTongHop, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                        .addComponent(lblTblTongHop, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblKhoTH)
                         .addGap(10, 10, 10)
@@ -1177,6 +1177,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
         logout();
+        this.loginStatus();
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     private void mniDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMKActionPerformed
@@ -1370,7 +1371,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        /*
+ /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1387,7 +1388,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StoManJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        */
+         */
         //</editor-fold>
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -1396,9 +1397,9 @@ public class StoManJFrame extends javax.swing.JFrame {
             javax.swing.UIManager.put("TitlePane.unifiedBackground", true);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
+        }
 
- /* Create and display the form */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StoManJFrame().setVisible(true);
@@ -1731,10 +1732,10 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Mở form đổi mật khẩu
     private void openDoiMatKhauDialog() {
         if (Auth.isLogin()) {
-            new DoiMatKhauJDialog(this, true).setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập");
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
+        new DoiMatKhauJDialog(this, true).setVisible(true);
+
     }
 
     // Mở form quản lý đối tác
@@ -1767,6 +1768,14 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý nhân viên
     private void openNhanVienDialog() {
+        if (Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
+        if (Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền quản lý nhân viên!");
+            return;
+        }
         this.timer.stop();
         new NhanVienJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -2237,14 +2246,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableNhap();
         this.fillToTableXuat();
         this.fillToTableTongHop();
-        
+
         this.timer.restart();
     }
-
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
         refeshForm();
     });
-    
+
 }

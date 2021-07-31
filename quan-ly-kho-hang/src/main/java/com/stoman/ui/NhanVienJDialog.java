@@ -176,7 +176,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         rdoThuKho.setText("Thủ kho");
         rdoThuKho.setOpaque(false);
 
-        pnlChucNang.setBackground(new java.awt.Color(255, 255, 255));
         pnlChucNang.setForeground(new java.awt.Color(51, 51, 51));
         pnlChucNang.setLayout(new java.awt.GridLayout(0, 1, 2, 0));
 
@@ -388,18 +387,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(pnlBackground, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -482,7 +470,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         // TODO add your handling code here:
         String hoTen = txtHoTen.getText();
-        txtHoTen.setText(capitalizeWord(hoTen));
+        if(!hoTen.isEmpty()){
+            txtHoTen.setText(capitalizeWord(hoTen));
+        }
     }//GEN-LAST:event_txtHoTenFocusLost
 
     /**
@@ -571,7 +561,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-        pnlThanhTieuDe.setVisible(true);
+        pnlThanhTieuDe.setVisible(false);
         
         this.formatTable();
         
@@ -666,7 +656,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
 
         boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
-        boolean isManager = Auth.isManager();
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
         tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
@@ -676,10 +665,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
 
         txtMaNV.setEditable(!edit);
-        btnThem.setEnabled(!edit && isManager);
-        btnSua.setEnabled(edit && isManager);
-        btnXoa.setEnabled(edit && isManager);
-        btnMoi.setEnabled(isManager);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
