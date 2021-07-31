@@ -1329,6 +1329,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int maKK = pkkDAO.getMaPhieuByNVandCreatedDate(pkk.getMaNV(), pkk.getNgayLap());
 
         int rows = modelCTPhieuKiem.getRowCount();
+        
+        if(rows < 1) {
+            MsgBox.alert(this, "Danh sách hàng hoá trống!");
+            return;
+        }
 
         for (int i = 0; i < rows; i++) {
             ctkk = getFormCTPhieu(i);

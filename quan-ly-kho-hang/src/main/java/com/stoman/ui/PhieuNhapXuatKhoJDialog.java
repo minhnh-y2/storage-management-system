@@ -1601,6 +1601,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int maPhieu = pDAO.getMaPhieuByNVandCreatedDate(phieu.getMaNV(), phieu.getNgayLap());
 
         int rows = modelCTPhieu.getRowCount();
+        
+        if(rows < 1) {
+            MsgBox.alert(this, "Danh sách hàng hoá trống!");
+            return;
+        }
 
         if (phieu.isLoai()) {
             for (int i = 0; i < rows; i++) {
