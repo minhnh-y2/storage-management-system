@@ -24,7 +24,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
      */
     public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setUndecorated(true);
         initComponents();
         init();
     }
@@ -38,73 +37,40 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblThoat = new javax.swing.JLabel();
+        pnlDoiMatKhau = new javax.swing.JPanel();
         lblMatKhauCu = new javax.swing.JLabel();
         txtMatKhauCu = new javax.swing.JPasswordField();
         lblMatKhauMoi = new javax.swing.JLabel();
         txtMatKhauMoi = new javax.swing.JPasswordField();
         lblXacNhanMK = new javax.swing.JLabel();
         txtXacNhanMK = new javax.swing.JPasswordField();
-        lblDoiMatKhau = new javax.swing.JLabel();
+        pnlChucNang = new javax.swing.JPanel();
         btnDongY = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        pnlMotion = new DragPanel(this);
-        pnlDoiMatKhau = new javax.swing.JPanel();
-        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Đổi mật khẩu");
         setAlwaysOnTop(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setResizable(false);
 
-        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png"))); // NOI18N
-        lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblThoatMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblThoatMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblThoatMouseExited(evt);
+        lblMatKhauCu.setText("Mật khẩu hiện tại");
+
+        txtMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblMatKhauMoi.setText("Mật khẩu mới");
+
+        txtMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblXacNhanMK.setText("Xác nhận mật khẩu mới");
+
+        txtXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
+        txtXacNhanMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXacNhanMKActionPerformed(evt);
             }
         });
-        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 30, 30));
 
-        lblMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
-        lblMatKhauCu.setText("Mật khẩu hiện tại");
-        getContentPane().add(lblMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
-
-        txtMatKhauCu.setBackground(new java.awt.Color(0, 0, 0, 0));
-        txtMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
-        txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtMatKhauCu.setOpaque(false);
-        getContentPane().add(txtMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 260, -1));
-
-        lblMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
-        lblMatKhauMoi.setText("Mật khẩu mới");
-        getContentPane().add(lblMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
-
-        txtMatKhauMoi.setBackground(new java.awt.Color(0, 0, 0, 0));
-        txtMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
-        txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtMatKhauMoi.setOpaque(false);
-        getContentPane().add(txtMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 260, -1));
-
-        lblXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
-        lblXacNhanMK.setText("Xác nhận mật khẩu mới");
-        getContentPane().add(lblXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
-
-        txtXacNhanMK.setBackground(new java.awt.Color(0, 0, 0, 0));
-        txtXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
-        txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
-        txtXacNhanMK.setOpaque(false);
-        getContentPane().add(txtXacNhanMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 260, -1));
-
-        lblDoiMatKhau.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        lblDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        lblDoiMatKhau.setText("ĐỔI MẬT KHẨU");
-        getContentPane().add(lblDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+        pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
         btnDongY.setBackground(new java.awt.Color(204, 255, 204));
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
@@ -114,7 +80,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnDongYActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 130, -1));
+        pnlChucNang.add(btnDongY);
 
         btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
@@ -124,18 +90,45 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 btnThoatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 130, -1));
+        pnlChucNang.add(btnThoat);
 
-        pnlMotion.setOpaque(false);
-        getContentPane().add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
+        javax.swing.GroupLayout pnlDoiMatKhauLayout = new javax.swing.GroupLayout(pnlDoiMatKhau);
+        pnlDoiMatKhau.setLayout(pnlDoiMatKhauLayout);
+        pnlDoiMatKhauLayout.setHorizontalGroup(
+            pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtXacNhanMK, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMatKhauCu)
+                    .addComponent(lblMatKhauCu)
+                    .addComponent(lblMatKhauMoi)
+                    .addComponent(lblXacNhanMK))
+                .addGap(15, 15, 15))
+        );
+        pnlDoiMatKhauLayout.setVerticalGroup(
+            pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(lblMatKhauCu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblMatKhauMoi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lblXacNhanMK)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
 
-        pnlDoiMatKhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
-        pnlDoiMatKhau.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlDoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 340, 320));
-
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background_changedpass.png"))); // NOI18N
-        lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 3));
-        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
+        getContentPane().add(pnlDoiMatKhau, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,20 +143,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         this.changePassWord();
     }//GEN-LAST:event_btnDongYActionPerformed
 
-    private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
+    private void txtXacNhanMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXacNhanMKActionPerformed
         // TODO add your handling code here:
-        this.close();
-    }//GEN-LAST:event_lblThoatMouseClicked
-
-    private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
-        // TODO add your handling code here:
-        lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32.png")));
-    }//GEN-LAST:event_lblThoatMouseEntered
-
-    private void lblThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseExited
-        // TODO add your handling code here:
-        lblThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png")));
-    }//GEN-LAST:event_lblThoatMouseExited
+    }//GEN-LAST:event_txtXacNhanMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,14 +192,11 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDongY;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JLabel lblBackground;
-    private javax.swing.JLabel lblDoiMatKhau;
     private javax.swing.JLabel lblMatKhauCu;
     private javax.swing.JLabel lblMatKhauMoi;
-    private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblXacNhanMK;
+    private javax.swing.JPanel pnlChucNang;
     private javax.swing.JPanel pnlDoiMatKhau;
-    private javax.swing.JPanel pnlMotion;
     private javax.swing.JPasswordField txtMatKhauCu;
     private javax.swing.JPasswordField txtMatKhauMoi;
     private javax.swing.JPasswordField txtXacNhanMK;
@@ -225,7 +204,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        pnlDoiMatKhau.setBackground(new Color(0, 0, 0, 160));
     }
 
     NhanVienDAO dao = new NhanVienDAO();
