@@ -334,7 +334,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Quản lý phiếu kiểm kho");
         setResizable(false);
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setLayout(new java.awt.BorderLayout());
 
         pnlChiTietPhieuKiem.setOpaque(false);
@@ -376,7 +375,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         txtGhiChu.setRows(5);
         pnlTxtGhiChu.setViewportView(txtGhiChu);
 
-        chkHoanThanh.setBackground(new java.awt.Color(255, 255, 255));
         chkHoanThanh.setText("Hoàn thành");
         chkHoanThanh.setOpaque(false);
 
@@ -1089,75 +1087,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlThanhTieuDeCTP.setVisible(false);
         pnlThanhTieuDeQR.setVisible(false);
 
-        String[] headerPhieuKiem = {"STT", "KHO", "NGÀY KIỂM", "TRẠNG THÁI", "MÃ NHÂN VIÊN", "NGÀY LẬP", "MÃ PHIẾU"};
-        this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-            // Get class để sắp xếp bảng
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (modelPhieuKiem.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-
-        String[] headerCTPhieuKiem = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "SỐ LƯỢNG THỰC", "MÃ CHI TIẾT", "MÃ LƯU TRỮ"};
-        this.modelCTPhieuKiem = new DefaultTableModel(headerCTPhieuKiem, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                if (column == 3) {
-                    return true;
-                }
-                return false;
-            }
-
-            // Get class để sắp xếp bảng
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-
-        String[] headerHangHoaKho = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "LƯU TRỮ"};
-        this.modelHangHoaKho = new DefaultTableModel(headerHangHoaKho, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-            // Get class để sắp xếp bảng
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
-            }
-        };
-
+        this.formatTable();
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
 
-        tblPhieuKiemKho.setModel(modelPhieuKiem);
-        tblCTPhieuKiemKho_main.setModel(modelCTPhieuKiem);
-        tblCTPhieuKiemKho_sub.setModel(modelCTPhieuKiem);
-        tblHangHoaKho.setModel(modelHangHoaKho);
+        
 
         tabs.setSelectedIndex(1);
-
-        this.formatTable();
+        
         this.updateStatus();
     }
 
@@ -1458,6 +1396,68 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     private void formatTable() {
+        String[] headerPhieuKiem = {"STT", "KHO", "NGÀY KIỂM", "TRẠNG THÁI", "MÃ NHÂN VIÊN", "NGÀY LẬP", "MÃ PHIẾU"};
+        this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            // Get class để sắp xếp bảng
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (modelPhieuKiem.getRowCount() < 1) {
+                    return String.class;
+                }
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+
+        String[] headerCTPhieuKiem = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "SỐ LƯỢNG THỰC", "MÃ CHI TIẾT", "MÃ LƯU TRỮ"};
+        this.modelCTPhieuKiem = new DefaultTableModel(headerCTPhieuKiem, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                if (column == 3) {
+                    return true;
+                }
+                return false;
+            }
+
+            // Get class để sắp xếp bảng
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+
+        String[] headerHangHoaKho = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "LƯU TRỮ"};
+        this.modelHangHoaKho = new DefaultTableModel(headerHangHoaKho, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+            // Get class để sắp xếp bảng
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                if (getValueAt(0, columnIndex) == null) {
+                    return Object.class;
+                }
+                return getValueAt(0, columnIndex).getClass();
+            }
+        };
+        
+        tblPhieuKiemKho.setModel(modelPhieuKiem);
+        tblCTPhieuKiemKho_main.setModel(modelCTPhieuKiem);
+        tblCTPhieuKiemKho_sub.setModel(modelCTPhieuKiem);
+        tblHangHoaKho.setModel(modelHangHoaKho);
+
         // cài đặt bộ lọc cho bảng
         tblPhieuKiemKho.getColumnModel().getColumn(2).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieuKiemKho.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
@@ -1482,9 +1482,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         // Thêm chức năng nhập cho bảng
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
-        
-        System.out.println(tblCTPhieuKiemKho_main.getSize());
-        System.out.println(tblHangHoaKho.getSize());
         
         // Chỉnh size cột các bảng
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setPreferredWidth(35);

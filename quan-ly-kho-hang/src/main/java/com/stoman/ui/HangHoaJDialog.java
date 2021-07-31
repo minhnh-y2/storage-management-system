@@ -85,8 +85,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý hàng hoá");
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -131,6 +129,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlThongTinHangHoa.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnlThongTinHangHoa.setForeground(new java.awt.Color(255, 255, 255));
+        pnlThongTinHangHoa.setOpaque(false);
 
         lblMaHangHoa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaHangHoa.setText("Mã hàng hoá");

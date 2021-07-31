@@ -397,7 +397,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         setFocusCycleRoot(false);
         setResizable(false);
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlBackground.setLayout(new java.awt.BorderLayout());
 
         pnlChiTiet.setBackground(new java.awt.Color(0, 0, 0));

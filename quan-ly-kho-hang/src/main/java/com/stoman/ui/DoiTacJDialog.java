@@ -89,8 +89,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Quản lý đối tác");
         setResizable(false);
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlTblDoiTac.setOpaque(false);
 
         tblDoiTac.setModel(new javax.swing.table.DefaultTableModel(

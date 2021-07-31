@@ -80,8 +80,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Quản lý nhân viên");
         setResizable(false);
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
         lblTieuDe.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -145,6 +143,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         pnlThongTinNV.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinNV.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        pnlThongTinNV.setOpaque(false);
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaNV.setText("Mã nhân viên");

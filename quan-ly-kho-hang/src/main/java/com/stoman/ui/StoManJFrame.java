@@ -290,8 +290,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
-        pnlTongQuan.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
 
@@ -372,7 +370,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
                         .addComponent(lblNamTQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboNamTQ, 0, 685, Short.MAX_VALUE))
+                        .addComponent(cboNamTQ, 0, 754, Short.MAX_VALUE))
                     .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(separator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,8 +395,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Tổng quan", pnlTongQuan);
-
-        pnlTonKho.setBackground(new java.awt.Color(255, 255, 255));
 
         tblLuuTru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -489,12 +485,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(lblTimKiemLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemLT, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemLT, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                    .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -540,8 +536,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Hàng tồn kho", pnlTonKho);
-
-        pnlTKNhap.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTKnhap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -650,12 +644,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTimKiemNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                    .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(separator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,8 +726,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Thống kê nhập", pnlTKNhap);
-
-        pnlTKxuat.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTKxuat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -841,12 +833,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKxuatLayout.createSequentialGroup()
                         .addComponent(lblTimKiemXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTblTKxuat, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                    .addComponent(lblTblTKxuat, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(separator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -916,8 +908,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         );
 
         tabs.addTab("Thống kê xuất", pnlTKxuat);
-
-        pnlTongHop.setBackground(new java.awt.Color(255, 255, 255));
 
         tblTongHop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -992,7 +982,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTimKiemTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemTH, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemTH, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

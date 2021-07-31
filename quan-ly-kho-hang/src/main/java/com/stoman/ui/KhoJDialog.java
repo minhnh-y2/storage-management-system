@@ -71,8 +71,6 @@ public class KhoJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Quản lý kho");
         setResizable(false);
 
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         pnlChucNang.setOpaque(false);
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
