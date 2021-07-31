@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.validator.GenericValidator;
 
@@ -652,6 +653,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
+        
+        timer.stop();
     }
 
     // Đổ dữ liệu loại đối tác vào List
@@ -745,7 +748,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblDoiTac.getRowCount() - 1);
-        
+
         boolean isManager = Auth.isManager();
         boolean isTableEmpty = (tblDoiTac.getRowCount() == 0);
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
@@ -843,7 +846,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             return false;
         }
         return true;
-        
+
     }
 
     // Thêm loại đối tác vào danh sách
@@ -955,5 +958,18 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(1));
         tblDoiTac.getColumnModel().getColumn(0).setMaxWidth(40);
     }
+
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBox();
+        this.fillToTable();
+
+        this.timer.restart();
+    }
+
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(300000, (e) -> {
+        refeshForm();
+    });
 
 }

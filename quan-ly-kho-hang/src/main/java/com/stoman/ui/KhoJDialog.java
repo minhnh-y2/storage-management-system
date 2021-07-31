@@ -16,6 +16,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.RowFilter;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -676,5 +677,18 @@ public class KhoJDialog extends javax.swing.JDialog {
         }
         sorter.setRowFilter(rf);
     }
+    
+        // Đỗ lại dữ liệu 
+        public void refeshForm() {
+            this.fillToComboBox();
+            this.fillToTable();
+
+            this.timer.restart();
+        }
+
+        // sau hai phút tải lại dữ liệu
+        private Timer timer = new Timer(120000, (e) -> {
+            refeshForm();
+        });
 
 }

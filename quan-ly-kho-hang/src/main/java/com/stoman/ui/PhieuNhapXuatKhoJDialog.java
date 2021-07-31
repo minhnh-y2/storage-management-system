@@ -44,6 +44,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -1338,13 +1339,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.initDialogOther();
 
         this.formatTable();
+
+        this.refeshForm();
+
         this.fillToComboBoxTimKiemCTPhieu();
         this.fillToComboBoxTimKiemPhieu();
-        this.fillToTablePhieu();
-        this.fillToComboBoxLoaiDT();
-        this.fillToComboBoxLoaiHH();
-        this.fillToComboBoxKho();
-
         tabs.setSelectedIndex(1);
 
         this.updateStatus();
@@ -2034,7 +2033,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             e.printStackTrace();
         }
     }
-    
+
     // In báo cáo
     private void printReport() {
         if (rowPhieu < 0) {
@@ -2090,5 +2089,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
         return true;
     }
+
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBoxKho();
+        this.fillToTablePhieu();
+        this.fillToComboBoxLoaiDT();
+        this.fillToComboBoxLoaiHH();
+
+        this.timer.restart();
+    }
+
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(120000, (e) -> {
+        refeshForm();
+    });
 
 }

@@ -36,6 +36,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 
@@ -1661,4 +1662,18 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.rowPhieu = tblPhieuKiemKho.getRowCount() - 1;
         this.edit();
     }
+    
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBoxKho();
+        this.fillToTablePhieuKiem();
+        this.fillToTableHHkho();
+
+        this.timer.restart();
+    }
+    
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(120000, (e) -> {
+        refeshForm();
+    });
 }

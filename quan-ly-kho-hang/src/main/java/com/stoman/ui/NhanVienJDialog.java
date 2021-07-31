@@ -14,6 +14,7 @@ import com.stoman.utils.XPassword;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -434,6 +435,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         this.dispose();
+        timer.stop();
     }//GEN-LAST:event_lblThoatMouseClicked
 
     private void lblThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseEntered
@@ -856,4 +858,17 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         tblNhanVien.setModel(tblModel);
     }
 
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBox();
+        this.fillToTable();
+
+        this.timer.restart();
+    }
+    
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(120000, (e) -> {
+        refeshForm();
+    });
+    
 }

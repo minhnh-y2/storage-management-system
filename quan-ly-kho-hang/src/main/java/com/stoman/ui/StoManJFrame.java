@@ -21,6 +21,7 @@ import java.awt.Graphics2D;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.TimerTask;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
@@ -1404,9 +1405,9 @@ public class StoManJFrame extends javax.swing.JFrame {
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
-        */
+         */
 
-        /* Create and display the form */
+ /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StoManJFrame().setVisible(true);
@@ -1570,21 +1571,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.formatTable();
         this.loginStatus();
 
-        this.fillToComboBoxKho();
-        this.fillToComboBoxLoaiHangHoa();
-        this.fillToComboBoxNamNhap();
-        this.fillToComboBoxThangNhap();
-        this.fillToComboBoxNamXuat();
-        this.fillToComboBoxThangXuat();
-        this.fillToComboBoxNamXuatNhap();
-        this.fillToComboBoxNamTongHop();
+        this.refeshForm();
 
-        this.fillToChartTongQuan();
-        this.fillToTableLuuTru();
-        this.fillToTableNhap();
-        this.fillToTableXuat();
-        this.fillToTableTongHop();
-        
         this.fillToComboBoxTimKiem();
     }
 
@@ -1689,6 +1677,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         new Timer(1000, (e) -> {
             lblDongHo.setText(LocalTime.now().format(formatter));
         }).start();
+
     }
 
     // Đỗ dữ liệu cho biểu đồ
@@ -1759,37 +1748,51 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý đối tác
     private void openDoiTacDialog() {
+        this.timer.stop();
         new DoiTacJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form giới thiệu phần mềm
     private void openGioiThieuDialog() {
+        this.timer.stop();
         new GioiThieuJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form quản lý hàng hoá
     private void openHangHoaDialog() {
+        this.timer.stop();
         new HangHoaJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form quản lý kho
     private void openKhoDialog() {
+        this.timer.stop();
         new KhoJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form quản lý nhân viên
     private void openNhanVienDialog() {
+        this.timer.stop();
         new NhanVienJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form quản lý phiếu kiểm kho
     private void openKiemKhoDialog() {
+        this.timer.stop();
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Mở form quản lý phiếu nhập xuất kho
     private void openNhapXuatKhoDialog() {
+        this.timer.stop();
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
+        this.refeshForm();
     }
 
     // Đổ dữ liệu vào ComboBox kho
@@ -2000,15 +2003,15 @@ public class StoManJFrame extends javax.swing.JFrame {
         for (int i = 1; i < tblLuuTru.getColumnCount(); i++) {
             modelLT.addElement(tblLuuTru.getColumnName(i));
         }
-        
+
         for (int i = 1; i < tblTKnhap.getColumnCount(); i++) {
             modelNhap.addElement(tblTKnhap.getColumnName(i));
         }
-        
+
         for (int i = 1; i < tblTKxuat.getColumnCount(); i++) {
             modelXuat.addElement(tblTKxuat.getColumnName(i));
         }
-        
+
         for (int i = 0; i < tblTongHop.getColumnCount(); i++) {
             modelTH.addElement(tblTongHop.getColumnName(i));
         }
@@ -2025,7 +2028,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         String keyword = txtTimKiemLT.getText();
         int index = cboTimKiemLT.getSelectedIndex();
-        
+
         String maKho;
         int indexKho = cboKhoLT.getSelectedIndex();
         String maLHH;
@@ -2069,10 +2072,10 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đỗ dữ liệu vào bảng danh sách hàng nhập
     private void fillToTableNhap() {
         tblNhapModel.setRowCount(0);
-        
+
         String keyword = txtTimKiemNhap.getText().trim();
         int index = cboTimKiemNhap.getSelectedIndex();
-        
+
         String maKho;
         int indexKho = cboKhoNhap.getSelectedIndex();
         String maLHH;
@@ -2133,7 +2136,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         String keyword = txtTimKiemXuat.getText().trim();
         int index = cboTimKiemXuat.getSelectedIndex();
-        
+
         String maKho;
         int indexKho = cboKhoXuat.getSelectedIndex();
         String maLHH;
@@ -2191,7 +2194,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đỗ dữ liệu vào bảng danh sách hàng xuất
     private void fillToTableTongHop() {
         tblTongHopModel.setRowCount(0);
-        
+
         String keyword = txtTimKiemTH.getText();
         int index = cboTimKiemTH.getSelectedIndex();
 
@@ -2226,4 +2229,31 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBoxKho();
+        this.fillToComboBoxLoaiHangHoa();
+        this.fillToComboBoxNamNhap();
+        this.fillToComboBoxThangNhap();
+        this.fillToComboBoxNamXuat();
+        this.fillToComboBoxThangXuat();
+        this.fillToComboBoxNamXuatNhap();
+        this.fillToComboBoxNamTongHop();
+
+        this.fillToChartTongQuan();
+        this.fillToTableLuuTru();
+        this.fillToTableNhap();
+        this.fillToTableXuat();
+        this.fillToTableTongHop();
+        
+        this.timer.restart();
+    }
+
+
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(120000, (e) -> {
+        refeshForm();
+    });
+    
 }

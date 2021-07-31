@@ -18,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -494,6 +495,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
+        timer.stop();
         this.dispose();
     }//GEN-LAST:event_lblThoatMouseClicked
 
@@ -622,6 +624,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
+        
+        timer.start();
     }
 
     // Đổ dữ liệu vào bảng.
@@ -844,13 +848,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (isValidated()) {
             return;
         }
-        
+
         if (hhDAO.selectByID(txtMaHH.getText()) != null) {
             MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
             txtMaHH.requestFocus();
             return;
         }
-        
+
         HangHoa hh = getForm();
         try {
             hhDAO.insert(hh);
@@ -927,4 +931,17 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
+
+    // Đỗ lại dữ liệu 
+    public void refeshForm() {
+        this.fillToComboBox();
+        this.fillToTable();
+
+        this.timer.restart();
+    }
+
+    // sau hai phút tải lại dữ liệu
+    private Timer timer = new Timer(300000, (e) -> {
+        refeshForm();
+    });
 }
