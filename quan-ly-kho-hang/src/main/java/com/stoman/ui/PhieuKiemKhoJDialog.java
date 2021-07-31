@@ -1090,7 +1090,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
-        String[] headerPhieuKiem = {"STT", "Kho", "Ngày kiểm", "Trạng thái", "Mã nhân viên", "Ngày lập", "Mã phiếu"};
+        String[] headerPhieuKiem = {"STT", "KHO", "NGÀY KIỂM", "TRẠNG THÁI", "MÃ NHÂN VIÊN", "NGÀY LẬP", "MÃ PHIẾU"};
         this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1110,7 +1110,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         };
 
-        String[] headerCTPhieuKiem = {"STT", "Hàng hoá", "Số lượng tồn", "Số lượng thực", "Mã Chi tiết", "Mã lưu trữ"};
+        String[] headerCTPhieuKiem = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "SỐ LƯỢNG THỰC", "MÃ CHI TIẾT", "MÃ LƯU TRỮ"};
         this.modelCTPhieuKiem = new DefaultTableModel(headerCTPhieuKiem, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1130,7 +1130,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         };
 
-        String[] headerHangHoaKho = {"STT", "Hàng hoá", "Số lượng tồn", "Lưu trữ"};
+        String[] headerHangHoaKho = {"STT", "HÀNG HOÁ", "SỐ LƯỢNG TỒN", "LƯU TRỮ"};
         this.modelHangHoaKho = new DefaultTableModel(headerHangHoaKho, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1150,7 +1150,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
-        this.clearForm();
 
         tblPhieuKiemKho.setModel(modelPhieuKiem);
         tblCTPhieuKiemKho_main.setModel(modelCTPhieuKiem);

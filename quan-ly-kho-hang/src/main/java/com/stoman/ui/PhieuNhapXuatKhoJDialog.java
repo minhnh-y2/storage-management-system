@@ -1790,8 +1790,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Định dạng bảng
     private void formatTable() {
         // Dữ liệu hàng tiêu đề bảng
-        String headerPhieu[] = {"STT", "Đối tác", "Loại", "Kho", "Trạng thái",
-            "Ngày thực hiện", "Ngày hoàn thành", "Ngày lập", "Người lập"};
+        String headerPhieu[] = {"STT", "ĐỐI TÁC", "LOẠI", "KHO", "TRẠNG THÁI",
+            "NGÀY THỰC HIỆN", "NGÀY HOÀN THÀNH", "NGÀY LẬP", "NGƯỜI LẬP"};
         this.modelPhieu = new DefaultTableModel(headerPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1809,7 +1809,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return getValueAt(0, columnIndex).getClass();
             }
         };
-        String headerCTPhieu[] = {"STT", "Tên hàng hóa", "Số lượng", "Đơn giá", "Mã chi tiết phiếu", "Thành tiền"};
+        String headerCTPhieu[] = {"STT", "TÊN HÀNG HÓA", "SỐ LƯỢNG", "ĐƠN GIÁ", "MÃ CHI TIẾT PHIẾU", "THÀNH TIỀN"};
         this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

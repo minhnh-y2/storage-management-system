@@ -446,7 +446,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
+        String header[] = {"MÃ KHO", "ĐỊA CHỈ", "TRƯỞNG KHO"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

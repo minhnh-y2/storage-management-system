@@ -5,6 +5,7 @@
  */
 package com.stoman.ui;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.dao.ThongKeDAO;
@@ -1378,6 +1379,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1394,17 +1396,16 @@ public class StoManJFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StoManJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        */
         //</editor-fold>
-        /*
         try {
-            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
             javax.swing.UIManager.put("Table.showHorizontalLines", true);
             javax.swing.UIManager.put("Table.showVerticalLines", true);
             javax.swing.UIManager.put("TitlePane.unifiedBackground", true);
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } 
-        */
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

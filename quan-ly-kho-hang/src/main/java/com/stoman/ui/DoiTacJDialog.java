@@ -932,8 +932,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String header[] = {"STT", "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email",
-            "Số điện thoại", "Vai trò"};
+        String header[] = {"STT", "MÃ ĐỐI TÁC", "TÊN ĐỐI TÁC", "ĐỊA CHỈ", "EMAIL",
+            "SỐ ĐIỆN THOẠI", "VAI TRÒ"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

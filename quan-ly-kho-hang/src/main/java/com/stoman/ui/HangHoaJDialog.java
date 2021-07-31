@@ -897,7 +897,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"STT", "Mã hàng hoá", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
+        String header[] = {"STT", "MÃ HÀNG HOÁ", "TÊN HÀNG HOÁ", "ĐƠN GIÁ", "ĐƠN VỊ TÍNH"};
         this.tblModel = new DefaultTableModel(header, 0) {
 
             @Override

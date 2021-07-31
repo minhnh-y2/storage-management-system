@@ -835,7 +835,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
+        String header[] = {"MÃ NHÂN VIÊN", "HỌ TÊN", "VAI TRÒ"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
