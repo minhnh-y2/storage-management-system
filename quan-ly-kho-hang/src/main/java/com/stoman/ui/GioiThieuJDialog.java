@@ -38,7 +38,6 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(519, 540));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(519, 540));
 
         pnlGioiThieu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         pnlGioiThieu.setMinimumSize(new java.awt.Dimension(514, 176));
