@@ -338,7 +338,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         QRCodeDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         QRCodeDialog.setTitle("StoMan - Xuất mã phiếu QR Code");
-        QRCodeDialog.setUndecorated(true);
         QRCodeDialog.setResizable(false);
 
         pnlThanhTieuDeQR.setBackground(new java.awt.Color(0, 153, 204));
