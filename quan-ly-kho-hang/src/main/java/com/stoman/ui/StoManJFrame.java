@@ -16,6 +16,7 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,9 +32,14 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
+import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.RectangleEdge;
 
 /**
  *
@@ -205,8 +211,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STOMAN - STROGE MANAGER SYSTEM");
-        setMinimumSize(new java.awt.Dimension(1001, 684));
-        setPreferredSize(new java.awt.Dimension(1001, 684));
+        setMinimumSize(new java.awt.Dimension(1001, 700));
 
         toolBar.setRollover(true);
 
@@ -294,7 +299,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        pnlBieuDo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
 
         pnlThongTin.setLayout(new java.awt.GridLayout(0, 1));
@@ -839,7 +843,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKxuatLayout.createSequentialGroup()
                         .addComponent(lblTimKiemXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -905,10 +909,10 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(cboNamXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addComponent(separator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(pnlTongLGXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(pnlTongGTXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlTongGTXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(separator7, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(10, 10, 10))
         );
@@ -1577,7 +1581,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String headerLT[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG TỒN", "ĐƠN GIÁ"};
+        String headerLT[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG TỒN"};
         tblLuuTruModel = new DefaultTableModel(headerLT, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1753,9 +1757,22 @@ public class StoManJFrame extends javax.swing.JFrame {
                     "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
             CategoryPlot plot = barChart.getCategoryPlot();
             plot.setRangeGridlinePaint(Color.black);
-
+            
             ChartPanel chtBieuDo = new ChartPanel(barChart);
-
+            
+            Color trans = new Color(0xFF, 0xFF, 0xFF, 0);
+            barChart.setBackgroundPaint(trans);
+            plot.setOutlinePaint(trans);
+            plot.setBackgroundPaint(trans);
+            
+            LegendTitle legend = barChart.getLegend();
+            legend.setPosition(RectangleEdge.TOP);
+            legend.setBackgroundPaint(trans);
+            legend.setFrame(BlockBorder.NONE);
+            legend.setItemFont(new Font("Arial",0,15));
+            
+            ((BarRenderer)plot.getRenderer()).setBarPainter(new StandardBarPainter());
+            
             // Chỉnh màu cột
             ((CategoryPlot) chtBieuDo.getChart().getPlot()).getRenderer().setSeriesPaint(0, new Color(255, 102, 102));
             ((CategoryPlot) chtBieuDo.getChart().getPlot()).getRenderer().setSeriesPaint(1, new Color(0, 153, 204));
@@ -2323,6 +2340,12 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableNhap();
         this.fillToTableXuat();
         this.fillToTableTongHop();
+        
+        // Kiểm tra dữ liệu bảng, chỉ bật bộ sắp xếp khi bảng có dữ liệu
+        tblLuuTru.setAutoCreateRowSorter(tblLuuTru.getRowCount() > 0);
+        tblTKnhap.setAutoCreateRowSorter(tblTKnhap.getRowCount() > 0);
+        tblTKxuat.setAutoCreateRowSorter(tblTKxuat.getRowCount() > 0);
+        tblTongHop.setAutoCreateRowSorter(tblTongHop.getRowCount() > 0);
 
         this.timer.restart();
     }
