@@ -70,10 +70,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý kho");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+        setResizable(false);
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         pnlChucNang.setOpaque(false);
@@ -295,7 +292,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiem)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addComponent(pnlTblKho, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -434,6 +431,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void init() {
         setLocationRelativeTo(null);
 
+        pnlThanhTieuDe.setVisible(false);
         this.kDAO = new KhoDAO();
         this.nvDAO = new NhanVienDAO();
 
@@ -447,7 +445,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String header[] = {"Mã kho", "Địa chỉ", "Trưởng kho"};
+        String header[] = {"MÃ KHO", "ĐỊA CHỈ", "TRƯỞNG KHO"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

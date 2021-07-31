@@ -79,10 +79,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý nhân viên");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+        setResizable(false);
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -147,6 +144,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
         pnlThongTinNV.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinNV.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        pnlThongTinNV.setOpaque(false);
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaNV.setText("Mã nhân viên");
@@ -369,7 +367,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     .addComponent(pnlThongTinNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
@@ -573,6 +571,8 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
+        pnlThanhTieuDe.setVisible(true);
+        
         this.formatTable();
         
         this.fillToComboBox();
@@ -837,7 +837,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"Mã nhân viên", "Họ tên", "Vai trò"};
+        String header[] = {"MÃ NHÂN VIÊN", "HỌ TÊN", "VAI TRÒ"};
         tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

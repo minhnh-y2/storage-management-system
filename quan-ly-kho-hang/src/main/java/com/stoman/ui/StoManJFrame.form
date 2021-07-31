@@ -193,7 +193,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-84,0,0,3,-97"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-84,0,0,3,-23"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -336,11 +336,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="pnlTongQuan">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="T&#x1ed5;ng quan">
@@ -358,7 +353,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblNamTQ" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cboNamTQ" pref="685" max="32767" attributes="0"/>
+                              <Component id="cboNamTQ" pref="754" max="32767" attributes="0"/>
                           </Group>
                           <Component id="pnlBieuDo" max="32767" attributes="0"/>
                       </Group>
@@ -572,11 +567,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTonKho">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="H&#xe0;ng t&#x1ed3;n kho">
@@ -594,13 +584,13 @@
                           <Group type="102" attributes="0">
                               <Component id="lblTimKiemLT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemLT" pref="303" max="32767" attributes="0"/>
+                              <Component id="txtTimKiemLT" pref="377" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lblTheoLT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemLT" min="-2" pref="208" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblTblLuuTru" pref="604" max="32767" attributes="0"/>
+                          <Component id="lblTblLuuTru" pref="678" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator" min="-2" max="-2" attributes="0"/>
@@ -853,11 +843,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTKNhap">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Th&#x1ed1;ng k&#xea; nh&#x1ead;p">
@@ -875,13 +860,13 @@
                           <Group type="102" attributes="0">
                               <Component id="lblTimKiemNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemNhap" pref="303" max="32767" attributes="0"/>
+                              <Component id="txtTimKiemNhap" pref="377" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lblTheoNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemNhap" min="-2" pref="208" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblTblTKnhap" pref="604" max="32767" attributes="0"/>
+                          <Component id="lblTblTKnhap" pref="678" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator3" min="-2" max="-2" attributes="0"/>
@@ -1202,11 +1187,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTKxuat">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Th&#x1ed1;ng k&#xea; xu&#x1ea5;t">
@@ -1224,13 +1204,13 @@
                           <Group type="102" attributes="0">
                               <Component id="lblTimKiemXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemXuat" pref="303" max="32767" attributes="0"/>
+                              <Component id="txtTimKiemXuat" pref="377" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lblTheoXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemXuat" min="-2" pref="208" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblTblTKxuat" pref="604" max="32767" attributes="0"/>
+                          <Component id="lblTblTKxuat" pref="678" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator7" min="-2" max="-2" attributes="0"/>
@@ -1536,11 +1516,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTongHop">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="T&#x1ed5;ng h&#x1ee3;p">
@@ -1558,7 +1533,7 @@
                           <Group type="102" attributes="0">
                               <Component id="lblTimKiemTH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemTH" pref="303" max="32767" attributes="0"/>
+                              <Component id="txtTimKiemTH" pref="377" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lblTheoTH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>

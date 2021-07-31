@@ -89,10 +89,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý đối tác");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
+        setResizable(false);
 
         pnlTblDoiTac.setOpaque(false);
 
@@ -244,7 +241,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(rdoKhachHang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoNhaPhanPhoi)
-                        .addGap(0, 58, Short.MAX_VALUE))
+                        .addGap(0, 62, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -419,7 +416,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(pnlThongTinDoiTac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBackgroundLayout.createSequentialGroup()
                         .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
@@ -436,7 +433,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -645,6 +642,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
+        pnlThanhTieuDe.setVisible(false);
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
 
@@ -935,8 +933,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String header[] = {"STT", "Mã đối tác", "Tên đối tác", "Địa chỉ", "Email",
-            "Số điện thoại", "Vai trò"};
+        String header[] = {"STT", "MÃ ĐỐI TÁC", "TÊN ĐỐI TÁC", "ĐỊA CHỈ", "EMAIL",
+            "SỐ ĐIỆN THOẠI", "VAI TRÒ"};
         this.tblModel = new DefaultTableModel(header, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

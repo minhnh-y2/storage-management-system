@@ -85,10 +85,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý hàng hoá");
-        setUndecorated(true);
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(0, 153, 204)));
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -134,6 +130,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlThongTinHangHoa.setBackground(new java.awt.Color(255, 255, 255));
         pnlThongTinHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnlThongTinHangHoa.setForeground(new java.awt.Color(255, 255, 255));
+        pnlThongTinHangHoa.setOpaque(false);
 
         lblMaHangHoa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaHangHoa.setText("Mã hàng hoá");
@@ -236,7 +233,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(lblDonGia))
                 .addGap(10, 10, 10)
                 .addGroup(pnlThongTinHangHoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(txtDonViTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                     .addComponent(txtMaHH)
                     .addComponent(txtTenHH)
                     .addComponent(txtDonGia))
@@ -410,7 +407,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -618,6 +615,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        
+        pnlThanhTieuDe.setVisible(false);
         this.lstModel = new DefaultListModel<>();
 
         this.formatTable();
@@ -901,7 +900,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Định dạng bảng
     private void formatTable() {
-        String header[] = {"STT", "Mã hàng hoá", "Tên hàng hoá", "Đơn giá", "Đơn vị tính"};
+        String header[] = {"STT", "MÃ HÀNG HOÁ", "TÊN HÀNG HOÁ", "ĐƠN GIÁ", "ĐƠN VỊ TÍNH"};
         this.tblModel = new DefaultTableModel(header, 0) {
 
             @Override
