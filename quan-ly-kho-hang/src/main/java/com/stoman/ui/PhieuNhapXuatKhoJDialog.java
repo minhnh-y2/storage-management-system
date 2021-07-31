@@ -162,8 +162,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuDialog.setTitle("StoMan - Chi tiết phiếu nhập xuất kho");
         ChiTietPhieuDialog.setResizable(false);
 
-        pnlBackgroundDialog.setBackground(new java.awt.Color(255, 255, 255));
-
         pnlTblCTPhieu_main.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlTblCTPhieu_main.setOpaque(false);
 
@@ -337,6 +335,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             .addComponent(pnlBackgroundDialog, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        QRCodeDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        QRCodeDialog.setTitle("StoMan - Xuất mã phiếu QR Code");
         QRCodeDialog.setUndecorated(true);
         QRCodeDialog.setResizable(false);
 
@@ -1572,9 +1572,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         modelCTPhieu.addRow(new Object[]{
             tblCTPhieu_main.getRowCount() + 1,
             (HangHoa) cboHangHoa.getSelectedItem(),
+            0.0,
+            0.0,
             0,
-            0,
-            0
+            0.0
         });
     }
 
