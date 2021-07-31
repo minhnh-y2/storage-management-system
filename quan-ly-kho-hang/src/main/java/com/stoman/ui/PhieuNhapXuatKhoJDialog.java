@@ -396,6 +396,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Quản lý phiếu nhập xuất kho");
         setFocusCycleRoot(false);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         pnlBackground.setLayout(new java.awt.BorderLayout());
 
@@ -1159,6 +1164,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         printReport();
     }//GEN-LAST:event_btnInPhieuActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.timer.stop();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -1342,7 +1352,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tabs.setSelectedIndex(1);
 
         this.updateStatus();
-
+        
+        this.timer.start();
     }
 
     void initDialogOther() {

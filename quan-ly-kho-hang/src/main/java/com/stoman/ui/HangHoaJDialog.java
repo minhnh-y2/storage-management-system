@@ -86,6 +86,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý hàng hoá");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         pnlThanhTieuDe.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -536,6 +541,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             clearForm();
         }
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.timer.stop();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

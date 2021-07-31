@@ -71,6 +71,11 @@ public class KhoJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý kho");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         pnlChucNang.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 10, 0));
         pnlChucNang.setOpaque(false);
@@ -356,6 +361,11 @@ public class KhoJDialog extends javax.swing.JDialog {
         search();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.timer.stop();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -440,7 +450,8 @@ public class KhoJDialog extends javax.swing.JDialog {
         this.fillToComboBox();
         this.fillToTable();
         this.updateStatus();
-
+        
+        this.timer.start();
     }
 
     // Tạo tiêu đề và định dạng bảng

@@ -1564,6 +1564,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.refeshForm();
 
         this.fillToComboBoxTimKiem();
+        
+        timer.start();
     }
 
     // Tạo tiêu đề và định dạng bảng
@@ -2254,6 +2256,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Đỗ lại dữ liệu 
     public void refeshForm() {
+        
         this.fillToComboBoxKho();
         this.fillToComboBoxLoaiHangHoa();
         this.fillToComboBoxNamNhap();

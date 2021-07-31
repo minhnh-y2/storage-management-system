@@ -89,6 +89,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý đối tác");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         pnlTblDoiTac.setOpaque(false);
 
@@ -547,6 +552,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.timer.stop();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -650,7 +660,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.fillToList();
         this.updateStatus();
         
-        timer.stop();
+        timer.start();
     }
 
     // Đổ dữ liệu loại đối tác vào List

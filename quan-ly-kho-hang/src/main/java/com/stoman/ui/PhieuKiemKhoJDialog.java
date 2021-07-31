@@ -333,6 +333,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý phiếu kiểm kho");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         pnlBackground.setLayout(new java.awt.BorderLayout());
 
@@ -942,6 +947,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         cboKho.setEnabled(!isUpdate);
     }//GEN-LAST:event_cboKhoActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        this.timer.stop();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -1092,11 +1102,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
 
-        
-
         tabs.setSelectedIndex(1);
         
         this.updateStatus();
+        
+        timer.start();
     }
 
     private void initDialogOther() {
@@ -1657,6 +1667,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     
     // Đỗ lại dữ liệu 
     public void refeshForm() {
+        
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
