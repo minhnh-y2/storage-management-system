@@ -812,7 +812,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-
+        this.rowPhieu = tblPhieuKiemKho.getSelectedRow();
         edit();
     }//GEN-LAST:event_tblPhieuKiemKhoMouseClicked
 
@@ -1246,7 +1246,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             tblCTPhieuKiemKho_main.getRowCount() + 1,
             (HangHoa) modelHangHoaKho.getValueAt(selectRow, 1),
             (Double) modelHangHoaKho.getValueAt(selectRow, 2),
-            0,
+            0.0,
             0,
             maLT
         });
@@ -1583,7 +1583,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
-        btnChiTiet.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
         btnXuatFile.setEnabled(edit);
 
@@ -1618,7 +1617,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void edit() {
         delCTP.clear();
-        rowPhieu = tblPhieuKiemKho.getSelectedRow();
         int maPkk = (Integer) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
 
         PhieuKiemKho pkk = pkkDAO.selectByID(maPkk);

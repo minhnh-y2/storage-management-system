@@ -985,10 +985,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         // TODO add your handling code here:
-        if (rowPhieu < 0) {
-            MsgBox.alert(this, "Vui lòng chọn một phiếu!");
-            return;
-        }
         ChiTietPhieuDialog.setVisible(true);
     }//GEN-LAST:event_btnChiTietActionPerformed
 
@@ -1754,7 +1750,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
-        btnChiTiet.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
         btnXuatFile.setEnabled(edit);
         btnFirst.setEnabled(edit && !first);
