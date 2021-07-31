@@ -6,10 +6,17 @@
 package com.stoman.ui;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComponent;
+import javax.swing.JProgressBar;
+import javax.swing.Painter;
 import javax.swing.Timer;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.nimbus.AbstractRegionPainter;
 
 /**
  *
@@ -42,9 +49,10 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setUndecorated(true);
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/chao.gif"))); // NOI18N
         getContentPane().add(lblLogo, java.awt.BorderLayout.CENTER);
 
+        progressBar.setMaximum(1000);
         progressBar.setMaximumSize(new java.awt.Dimension(32767, 17));
         progressBar.setMinimumSize(new java.awt.Dimension(10, 17));
         progressBar.setPreferredSize(new java.awt.Dimension(146, 17));
@@ -103,19 +111,53 @@ public class ChaoJDialog extends javax.swing.JDialog {
     private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 
-    private void init() {
+    private void init() {        
+        Painter painter = new MyPainter(new Color(0,120,215));
+        
+        UIDefaults defaults = new UIDefaults();
+        defaults.put("ProgressBar[Enabled].foregroundPainter", painter);
+        defaults.put("ProgressBar[Enabled+Finished].foregroundPainter", painter);
+        
+        progressBar.putClientProperty("Nimbus.Overrides.InheritDefaults", Boolean.TRUE);
+        progressBar.putClientProperty("Nimbus.Overrides", defaults);
+        
         setLocationRelativeTo(null);
-        new Timer(10, new ActionListener(){
+        new Timer(10, new ActionListener() {
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 int value = progressBar.getValue();
-                if(value < 100){
-                    progressBar.setValue(value + 1);
-                }
-                else{
+                if (value < 1000) {
+                    progressBar.setValue(value + 8);
+                } else {
                     ChaoJDialog.this.dispose();
                 }
             }
         }).start();
     }
+}
+
+class MyPainter extends AbstractRegionPainter {
+
+    private Color fillColor;
+    public MyPainter(Color color) {
+        // as a slight visual improvement, make the color transparent
+        // to at least see the background gradient
+        // the default progressBarPainter does it as well (plus a bit more)
+        fillColor = new Color(
+                color.getRed(), color.getGreen(), color.getBlue(), 156);
+    }
+
+    @Override
+    protected void doPaint(Graphics2D g, JComponent c, int width,
+            int height, Object[] extendedCacheKeys) {
+        g.setColor(fillColor);
+        g.fillRect(0, 0, width, height);
+    }
+
+    @Override
+    protected PaintContext getPaintContext() {
+        return null;
+    }
+
 }
