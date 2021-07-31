@@ -211,7 +211,8 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STOMAN - STROGE MANAGER SYSTEM");
-        setMinimumSize(new java.awt.Dimension(1001, 700));
+        setMinimumSize(new java.awt.Dimension(1020, 700));
+        setPreferredSize(new java.awt.Dimension(1020, 700));
 
         toolBar.setRollover(true);
 
@@ -495,7 +496,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(lblTimKiemLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemLT, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemLT, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -654,7 +655,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTimKiemNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -992,7 +993,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTimKiemTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimKiemTH, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                        .addComponent(txtTimKiemTH, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTheoTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
