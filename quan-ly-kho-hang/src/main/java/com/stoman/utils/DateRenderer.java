@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -24,17 +25,19 @@ public class DateRenderer extends DefaultTableCellRenderer {
 
     public DateRenderer(){
         super();
+        setHorizontalAlignment(JLabel.CENTER);
     }
 
     public DateRenderer(String format){
         super();
         sdfNewValue.applyPattern(format);
+        setHorizontalAlignment(JLabel.CENTER);
     }
 
 
     @Override
     public void setValue(Object value) {
-        if ((value != null)) {
+        if (value != null) {
             String stringFormat = value.toString();
             try {
                 dateValue = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(stringFormat);

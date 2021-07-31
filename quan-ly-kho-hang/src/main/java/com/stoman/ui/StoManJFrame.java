@@ -15,6 +15,7 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
+import com.stoman.utils.XTable;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -24,7 +25,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -1554,6 +1558,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     private final String numFormat = "#,##0.0";
 
+
     private void init() {
         this.setIconImage(XImages.getAppIcon());
         this.setLocationRelativeTo(null);
@@ -1574,7 +1579,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String headerLT[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG TỒN"};
+        String headerLT[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG TỒN", "ĐƠN GIÁ"};
         tblLuuTruModel = new DefaultTableModel(headerLT, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1641,11 +1646,45 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         };
         tblTongHop.setModel(tblTongHopModel);
+  
+        
+        // Điều chỉnh size column        
+        // Chỉnh size cột các bảng
+        tblLuuTru.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblLuuTru.getColumnModel().getColumn(1).setPreferredWidth(452);
+        tblLuuTru.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
+        tblTKnhap.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblTKnhap.getColumnModel().getColumn(1).setPreferredWidth(330);
+        tblTKnhap.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblTKnhap.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tblTKnhap.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblTKnhap.getColumnModel().getColumn(5).setPreferredWidth(100);
+        
+        tblTKxuat.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblTKxuat.getColumnModel().getColumn(1).setPreferredWidth(330);
+        tblTKxuat.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tblTKxuat.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tblTKxuat.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblTKxuat.getColumnModel().getColumn(5).setPreferredWidth(100);
+        
+        tblTongHop.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblTongHop.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblTongHop.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblTongHop.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tblTongHop.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblTongHop.getColumnModel().getColumn(5).setPreferredWidth(100);
 
-        // Điều chỉnh size column
-//        tblLuuTru.getColumnModel().getColumn(0).setPreferredWidth(22);
-//        tblLuuTru.getColumnModel().getColumn(1).setPreferredWidth(130);
-//        tblLuuTru.getColumnModel().getColumn(2).setPreferredWidth(107);
+        // thể hiện các cột    
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        
+        tblLuuTru.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tblTKnhap.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        tblTKxuat.getColumnModel().getColumn(0).setCellRenderer( centerRenderer ); 
+        tblTongHop.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+
+        
     }
 
     // Tự động điều chỉnh nút đăng nhập/đăng xuất

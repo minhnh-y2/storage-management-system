@@ -36,12 +36,12 @@ public class ThongKeDAO {
     }
 
     public List<Object[]> getListLuuTru(String maKho, String maLHH, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGTON", "DONGIA", "MAHH", "MALHH", "MAKHO"};
-        String sql = "SELECT * FROM V_LUU_TRU WHERE MAKHO LIKE ? AND MALHH LIKE ?";
+        String[] cols = {"TENHH", "SOLUONGTON", "DONGIA"};
+        String sql = "SELECT TENHH, SUM(SOLUONGTON) AS SOLUONGTON, AVG(DONGIA) AS DONGIA FROM V_LUU_TRU WHERE MAKHO LIKE ? AND MALHH LIKE ? GROUP BY TENHH";
         
         
         if(keyword.length()>0){
-            sql += " AND " + cols[index] + " LIKE ?";
+            sql += " HAVING " + cols[index] + " LIKE ?";
             System.out.println(sql);
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+keyword+"%");
         }
@@ -50,12 +50,14 @@ public class ThongKeDAO {
     }
     
     public List<Object[]> getListNhap(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGNHAP", "SLNHAPTB", "GIANHAPTB", "TONGGIATRINHAP", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
-        String sql = "SELECT * FROM V_HANG_NHAP WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?";
+        String[] cols = {"TENHH", "SOLUONGNHAP", "SLNHAPTB", "GIANHAPTB", "TONGGIATRINHAP"};
+        String sql = "SELECT TENHH, SUM(SOLUONGNHAP) AS SOLUONGNHAP, AVG(SLNHAPTB) AS SLNHAPTB, AVG(GIANHAPTB) AS GIANHAPTB, SUM(TONGGIATRINHAP) AS TONGGIATRINHAP FROM V_HANG_NHAP "
+                + "WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?"
+                + " GROUP BY TENHH";
         
         
         if(keyword.length()>0){
-            sql += " AND " + cols[index] + " LIKE ?";
+            sql += " HAVING " + cols[index] + " LIKE ?";
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+nam+"%", "%"+thang+"%", "%"+keyword+"%");
         }
         
@@ -63,12 +65,14 @@ public class ThongKeDAO {
     }
     
     public List<Object[]> getListXuat(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
-        String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGGIATRIXUAT", "MAHH", "MALHH", "MAKHO", "THANG", "NAM"};
-        String sql = "SELECT * FROM V_HANG_XUAT WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?";
+        String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGGIATRIXUAT"};
+        String sql = "SELECT TENHH, SUM(SOLUONGXUAT) AS SOLUONGXUAT, AVG(SLXUATTB) AS SLXUATTB, AVG(GIAXUATTB) AS GIAXUATTB, SUM(TONGGIATRIXUAT) AS TONGGIATRIXUAT FROM V_HANG_XUAT "
+                + "WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?"
+                + " GROUP BY TENHH";
         
         
         if(keyword.length()>0){
-            sql += " AND " + cols[index] + " LIKE ?";
+            sql += " HAVING " + cols[index] + " LIKE ?";
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+nam+"%", "%"+thang+"%", "%"+keyword+"%");
         }
         
@@ -80,11 +84,12 @@ public class ThongKeDAO {
         String sql = "SELECT THANG, SUM(XUATTRONGTHANG) AS XUATTRONGTHANG, SUM(TONGGTXUAT) AS TONGGTXUAT, "
                 + "SUM(NHAPTRONGTHANG) AS NHAPTRONGTHANG, SUM(TONGGTNHAP) AS TONGGTNHAP, "
                 + "SUM(TONGGTXUATNHAP) AS TONGGTXUATNHAP FROM V_TONGHOP"
-                + " WHERE MAKHO LIKE ? AND NAM LIKE ? GROUP BY THANG";
+                + " WHERE MAKHO LIKE ? AND NAM LIKE ? "
+                + "GROUP BY THANG";
         
         
         if(keyword.length()>0){
-            sql += " AND " + cols[index] + " LIKE ?";
+            sql += " HAVING " + cols[index] + " LIKE ?";
             return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+nam+"%", "%"+keyword+"%");
         }
         

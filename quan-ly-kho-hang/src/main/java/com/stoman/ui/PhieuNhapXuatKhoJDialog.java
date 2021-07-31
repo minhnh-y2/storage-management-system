@@ -1867,7 +1867,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_sub.getColumnModel().getColumn(3).setPreferredWidth(120);
         tblCTPhieu_sub.getColumnModel().getColumn(4).setPreferredWidth(120);
 
-        // Cài đặt bộ lọc cho bảng
+        // Cài đặt định dạng cho bảng
         tblPhieu.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(6).setCellRenderer(new DateRenderer(dateFormat));
         tblPhieu.getColumnModel().getColumn(7).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
