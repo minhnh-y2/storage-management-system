@@ -321,7 +321,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="pnlButtonLoaiDT">
+                <Container class="javax.swing.JPanel" name="pnlChucNangLoaiDT">
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>

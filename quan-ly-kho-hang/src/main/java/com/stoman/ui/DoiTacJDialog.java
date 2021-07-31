@@ -16,7 +16,6 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.validator.GenericValidator;
@@ -64,7 +63,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlLoaiDoiTac = new javax.swing.JPanel();
         pnlLstLoaiDoiTac = new javax.swing.JScrollPane();
         lstLDT = new javax.swing.JList<>();
-        pnlButtonLoaiDT = new javax.swing.JPanel();
+        pnlChucNangLoaiDT = new javax.swing.JPanel();
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
         pnlChucNang = new javax.swing.JPanel();
@@ -160,8 +159,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         pnlLoaiDoiTac.add(pnlLstLoaiDoiTac, java.awt.BorderLayout.CENTER);
 
-        pnlButtonLoaiDT.setOpaque(false);
-        pnlButtonLoaiDT.setLayout(new java.awt.GridLayout(1, 0));
+        pnlChucNangLoaiDT.setOpaque(false);
+        pnlChucNangLoaiDT.setLayout(new java.awt.GridLayout(1, 0));
 
         btnThemList.setText("Thêm");
         btnThemList.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +168,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 btnThemListActionPerformed(evt);
             }
         });
-        pnlButtonLoaiDT.add(btnThemList);
+        pnlChucNangLoaiDT.add(btnThemList);
 
         btnXoaList.setText("Xoá");
         btnXoaList.addActionListener(new java.awt.event.ActionListener() {
@@ -177,9 +176,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 btnXoaListActionPerformed(evt);
             }
         });
-        pnlButtonLoaiDT.add(btnXoaList);
+        pnlChucNangLoaiDT.add(btnXoaList);
 
-        pnlLoaiDoiTac.add(pnlButtonLoaiDT, java.awt.BorderLayout.PAGE_END);
+        pnlLoaiDoiTac.add(pnlChucNangLoaiDT, java.awt.BorderLayout.PAGE_END);
 
         pnlChucNang.setBackground(new java.awt.Color(255, 255, 255));
         pnlChucNang.setOpaque(false);
@@ -458,7 +457,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         cboTimKiem.setSelectedIndex(0);
         this.fillToTable();
         this.clearForm();
-        this.updateStatus();
     }//GEN-LAST:event_lstLDTMouseClicked
 
     private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed
@@ -615,8 +613,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JList<LoaiDoiTac> lstLDT;
     private javax.swing.JPanel pnlBackground;
-    private javax.swing.JPanel pnlButtonLoaiDT;
     private javax.swing.JPanel pnlChucNang;
+    private javax.swing.JPanel pnlChucNangLoaiDT;
     private javax.swing.JPanel pnlDieuHuong;
     private javax.swing.JPanel pnlLoaiDoiTac;
     private javax.swing.JScrollPane pnlLstLoaiDoiTac;
@@ -675,12 +673,16 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void fillToTable() {
         tblModel.setRowCount(0);
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
-        String keyword = txtTimKiem.getText();
         int headerIndex = cboTimKiem.getSelectedIndex();
-        tblModel.setRowCount(0);
+        String keyword = txtTimKiem.getText();
+        List<DoiTac> list = null;
         int i = 1;
         try {
-            List<DoiTac> list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
+            if (keyword.isEmpty()) {
+                list = dtDAO.selectByLoaiDT(maLDT);
+            } else {
+                list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
+            }
             for (DoiTac dt : list) {
                 tblModel.addRow(new Object[]{
                     i++,
@@ -704,7 +706,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblDoiTac.getColumnCount(); i++) {
-            model.addElement(tblDoiTac.getColumnName(i));
+            String columnName = tblDoiTac.getColumnName(i);
+            if (columnName.equalsIgnoreCase("STT")) continue;
+            model.addElement(columnName);
         }
     }
 
@@ -746,29 +750,24 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblDoiTac.getRowCount() - 1);
-
-        boolean isManager = Auth.isManager();
-        boolean isTableEmpty = (tblDoiTac.getRowCount() == 0);
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
 
         // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblDoiTac.setAutoCreateRowSorter(!isTableEmpty);
+        tblDoiTac.setAutoCreateRowSorter(tblDoiTac.getRowCount() > 0);
         // Chọn hàng trên bảng
         if (edit) {
             tblDoiTac.setRowSelectionInterval(row, row);
         }
+        
+        btnThem.setEnabled(!edit && isSelectedList);
+        btnSua.setEnabled(edit && isSelectedList);
+        btnXoa.setEnabled(edit && isSelectedList);
+        btnMoi.setEnabled(isSelectedList);
 
-        btnThem.setEnabled(!edit && isSelectedList && isManager);
-        btnSua.setEnabled(edit && isSelectedList && isManager);
-        btnXoa.setEnabled(edit && isSelectedList && isManager);
-        btnMoi.setEnabled(isSelectedList && isManager);
-        btnThemList.setEnabled(isManager);
-        btnXoaList.setEnabled(isManager);
-
-        btnFirst.setEnabled(edit && !first);
-        btnPrev.setEnabled(edit && !first);
-        btnNext.setEnabled(edit && !last);
-        btnLast.setEnabled(edit && !last);
+        btnFirst.setEnabled(!first && isSelectedList);
+        btnPrev.setEnabled(!first && isSelectedList);
+        btnNext.setEnabled(!last && isSelectedList);
+        btnLast.setEnabled(!last && isSelectedList);
     }
 
     // Hiển thị đối tác được chọn từ bảng lên form
@@ -840,7 +839,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
         if (!dienThoai.matches("((84)|(0))\\d{9}")) {
             MsgBox.alert(this, "Số điện thoại không hợp lệ!");
-            txtEmail.requestFocus();
+            txtDienThoai.requestFocus();
             return false;
         }
         return true;
@@ -903,14 +902,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     // Xoá đối tác khỏi CSDL
     private void delete() {
         if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá đối tác này không?")) {
-            int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 0);
+            int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
             try {
                 dtDAO.delete(maDT);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá thất bại!");
+                MsgBox.alert(this, "Không thể xoá khi đối tác còn hàng hoá trong kho!");
                 e.printStackTrace();
             }
         }

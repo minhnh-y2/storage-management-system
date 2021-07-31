@@ -94,10 +94,10 @@ public class NhanVienDAO extends StoManDAO<NhanVien, String> {
 
     public List<NhanVien> selectByKeyword(String keyword, int index) {
         String header[] = {"MANV", "TENNV", "VAITRO"};
-        if (header[index].equals("VAITRO")) {
-            if (keyword.toUpperCase().contains("TRƯỞNG KHO")) {
+        if (header[index].equalsIgnoreCase("VAITRO")) {
+            if (("TRƯỞNG KHO").contains(keyword.toUpperCase())) {
                 keyword = "1";
-            } else if (keyword.toUpperCase().contains("THỦ KHO")) {
+            } else if (("THỦ KHO").contains(keyword.toUpperCase())) {
                 keyword = "0";
             }
         }

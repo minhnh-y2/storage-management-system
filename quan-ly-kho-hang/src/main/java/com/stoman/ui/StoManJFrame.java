@@ -22,7 +22,6 @@ import java.awt.Graphics2D;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.TimerTask;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
@@ -1177,7 +1176,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
         logout();
-        this.loginStatus();
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     private void mniDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMKActionPerformed
@@ -1652,6 +1650,8 @@ public class StoManJFrame extends javax.swing.JFrame {
             btnTaiKhoan.setText("Đăng nhập");
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
             lblTrangThai.setText("Chưa đăng nhập vào hệ thống!");
+            
+            tabs.setVisible(false);
         } else {
             mniTaiKhoan.setText("Đăng xuất");
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
@@ -1659,6 +1659,8 @@ public class StoManJFrame extends javax.swing.JFrame {
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
             String vaiTro = Auth.user.isVaiTro() ? "Trưởng kho" : "Thủ kho";
             lblTrangThai.setText(Auth.user.getTenNV() + " | " + vaiTro);
+            
+            tabs.setVisible(true);
         }
     }
 
@@ -1719,6 +1721,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đăng xuất
     private void logout() {
         Auth.clear();
+        this.loginStatus();
         new DangNhapJDialog(this, true).setVisible(true);
     }
 
@@ -1731,15 +1734,23 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form đổi mật khẩu
     private void openDoiMatKhauDialog() {
-        if (Auth.isLogin()) {
+        if (!Auth.isLogin()) {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
         }
         new DoiMatKhauJDialog(this, true).setVisible(true);
-
     }
 
     // Mở form quản lý đối tác
     private void openDoiTacDialog() {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền quản lý đối tác!");
+            return;
+        }
         this.timer.stop();
         new DoiTacJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -1754,6 +1765,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý hàng hoá
     private void openHangHoaDialog() {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new HangHoaJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -1761,6 +1776,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý kho
     private void openKhoDialog() {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new KhoJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -1768,11 +1787,11 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý nhân viên
     private void openNhanVienDialog() {
-        if (Auth.isLogin()) {
+        if (!Auth.isLogin()) {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
             return;
         }
-        if (Auth.isManager()) {
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền quản lý nhân viên!");
             return;
         }
@@ -1783,6 +1802,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu kiểm kho
     private void openKiemKhoDialog() {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -1790,6 +1813,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu nhập xuất kho
     private void openNhapXuatKhoDialog() {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
         this.refeshForm();
@@ -1819,8 +1846,9 @@ public class StoManJFrame extends javax.swing.JFrame {
                 model2.addElement(k);
                 model3.addElement(k);
                 model4.addElement(k);
-
             }
+            
+
             cboKhoLT.setModel(model1);
             cboKhoNhap.setModel(model2);
             cboKhoXuat.setModel(model3);
@@ -1855,7 +1883,6 @@ public class StoManJFrame extends javax.swing.JFrame {
                 model2.addElement(lhh);
                 model3.addElement(lhh);
                 model4.addElement(lhh);
-
             }
 
             cboLoaiHangHoaLT.setModel(model1);
@@ -1899,7 +1926,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             for (Object[] thang : list) {
                 model.addElement((Integer) thang[0]);
-
             }
             cboThangNhap.setModel(model);
 
@@ -1918,7 +1944,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             for (Object[] nam : list) {
                 model.addElement((Integer) nam[0]);
-
             }
             cboNamXuat.setModel(model);
 
@@ -1939,7 +1964,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             for (Object[] thang : list) {
                 model.addElement((Integer) thang[0]);
-
             }
             cboThangXuat.setModel(model);
 
@@ -1958,7 +1982,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             for (Object[] nam : list) {
                 model.addElement((Integer) nam[0]);
-
             }
             cboNamTQ.setModel(model);
 
@@ -1977,7 +2000,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             for (Object[] nam : list) {
                 model.addElement((Integer) nam[0]);
-
             }
             cboNamTH.setModel(model);
 

@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Huy
  */
-public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
+public class DoiTacDAO extends StoManDAO<DoiTac, Integer> {
 
     @Override
     public void insert(DoiTac entity) {
@@ -64,14 +64,14 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
 
     @Override
     protected List<DoiTac> selectBySQL(String sql, Object... args) {
-        List<DoiTac> list=new ArrayList<>();
+        List<DoiTac> list = new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
                 rs = XJdbc.query(sql, args);
-                while(rs.next()){
+                while (rs.next()) {
                     DoiTac entity = new DoiTac();
-                    
+
                     entity.setMaDT(rs.getInt("MADT"));
                     entity.setTenDT(rs.getString("TENDT"));
                     entity.setDiaChi(rs.getString("DIACHI"));
@@ -82,39 +82,37 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer>{
 
                     list.add(entity);
                 }
-            } 
-            finally{
+            } finally {
                 rs.getStatement().getConnection().close();
             }
-        } 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
         return list;
     }
-    
+
     public List<DoiTac> selectByKeyword(Integer maLDT, String keyword, int index) {
         String header[] = {"TENDT", "DIACHI", "EMAIL", "SODT", "VAITRO"};
-        
-        if(index == 4){
-            if(keyword.toUpperCase().contains("NHÀ PHÂN PHỐI")) keyword = "1";
-            else
-            if(keyword.toUpperCase().contains("KHÁCH HÀNG")) keyword = "0";
+        if (header[index].equalsIgnoreCase("VAITRO")) {
+            if (("NHÀ PHÂN PHỐI").contains(keyword.toUpperCase())) {
+                keyword = "1";
+            } else if (("KHÁCH HÀNG").contains(keyword.toUpperCase())) {
+                keyword = "0";
+            }
         }
-        
-        String sql = "SELECT * FROM DOITAC WHERE MALDT = " + maLDT + " AND " + header[index]+ " LIKE ?";
-        return this.selectBySQL(sql, "%" + keyword + "%");
+        String sql = "SELECT * FROM DOITAC WHERE MALDT = ? AND " + header[index] + " LIKE ?";
+        return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
     }
-    
+
     public List<DoiTac> selectByLoaiDT(Integer maLDT) {
         String sql = "SELECT * FROM DOITAC WHERE MaLDT = ?";
         return this.selectBySQL(sql, maLDT);
     }
-    
-    public String getTenDT(int maDT){
+
+    public String getTenDT(int maDT) {
         String sql = "SELECT TENDT FROM DOITAC WHERE MADT = ?";
         return (String) XJdbc.value(sql, maDT);
     }
-    
+
 }
