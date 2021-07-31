@@ -1677,7 +1677,8 @@ public class StoManJFrame extends javax.swing.JFrame {
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
             btnTaiKhoan.setText("Đăng xuất");
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
-            lblTrangThai.setText(Auth.user.getTenNV());
+            String vaiTro = Auth.user.isVaiTro() ? "Trưởng kho" : "Thủ kho";
+            lblTrangThai.setText(Auth.user.getTenNV() + " | " + vaiTro);
         }
     }
 

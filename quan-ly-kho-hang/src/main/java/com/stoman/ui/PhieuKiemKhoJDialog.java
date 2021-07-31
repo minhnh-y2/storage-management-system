@@ -1484,6 +1484,33 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         // Thêm chức năng nhập cho bảng
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+        
+        System.out.println(tblCTPhieuKiemKho_main.getSize());
+        System.out.println(tblHangHoaKho.getSize());
+        
+        // Chỉnh size cột các bảng
+        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(1).setPreferredWidth(452);
+        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        tblHangHoaKho.getColumnModel().getColumn(0).setPreferredWidth(46);
+        tblHangHoaKho.getColumnModel().getColumn(1).setPreferredWidth(330);
+        tblHangHoaKho.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblHangHoaKho.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setPreferredWidth(46);
+        tblCTPhieuKiemKho_main.getColumnModel().getColumn(1).setPreferredWidth(330);
+        tblCTPhieuKiemKho_main.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblCTPhieuKiemKho_main.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        tblPhieuKiemKho.getColumnModel().getColumn(0).setPreferredWidth(46);
+        tblPhieuKiemKho.getColumnModel().getColumn(1).setPreferredWidth(46);
+        tblPhieuKiemKho.getColumnModel().getColumn(2).setPreferredWidth(185);
+        tblPhieuKiemKho.getColumnModel().getColumn(3).setPreferredWidth(185);
+        tblPhieuKiemKho.getColumnModel().getColumn(4).setPreferredWidth(185);
+        tblPhieuKiemKho.getColumnModel().getColumn(5).setPreferredWidth(186);
+        
     }
 
     private void createQRCode() {
