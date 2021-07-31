@@ -1754,7 +1754,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
             // Tạo biểu đồ Bar Chart
             JFreeChart barChart = ChartFactory.createBarChart(null,
-                    "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+                    "", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
             CategoryPlot plot = barChart.getCategoryPlot();
             plot.setRangeGridlinePaint(Color.black);
             
@@ -2117,6 +2117,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Đỗ dữ liệu vào bảng danh sách lưu trữ
     private void fillToTableLuuTru() {
+        
         tblLuuTruModel.setRowCount(0);
 
         String keyword = txtTimKiemLT.getText();

@@ -36,12 +36,17 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        setMinimumSize(new java.awt.Dimension(519, 540));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(519, 540));
 
         pnlGioiThieu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        pnlGioiThieu.setMinimumSize(new java.awt.Dimension(514, 176));
         pnlGioiThieu.setLayout(new java.awt.BorderLayout());
 
         txtGioiThieu.setEditable(false);
+        txtGioiThieu.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 5, 10, 5));
+        txtGioiThieu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtGioiThieu.setText("StoMan là phần mềm quản lý kho hàng hiệu quả cho các doanh nghiệp, nâng cao công tác quản lý hàng tồn kho và cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ. \n\nHệ thống quản lý kho hàng giúp giảm tải các nhân viên hành chính liên quan đến việc thống kê và đạt được kết quả tốt hơn trong các hoạt động của công ty.\n\nYêu cầu về môi trường:\n1. Hệ điều hành bất kỳ\n2. JDK 1.8 trở lên\n3. SQL Server 2008 trở lên");
         txtGioiThieu.setPreferredSize(new java.awt.Dimension(512, 175));
         txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,7 +61,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         pnlLogo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
         pnlLogo.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif"))); // NOI18N
         lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoMouseClicked(evt);
