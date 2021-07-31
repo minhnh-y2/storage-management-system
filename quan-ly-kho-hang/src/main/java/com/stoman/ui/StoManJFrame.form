@@ -375,7 +375,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlThongTin" pref="513" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="506" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="cboNamTQ" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1801,9 +1801,9 @@
         <Component class="javax.swing.JLabel" name="lblTrangThai">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/stoman/icons/info-squared.png"/>
+              <Image iconType="3" name="/com/stoman/icons/team_32px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="H&#x1ec7; th&#x1ed1;ng qu&#x1ea3;n l&#xfd; kho h&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Ch&#x1b0;a &#x111;&#x103;ng nh&#x1ead;p!"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="1" left="10" right="1" top="1"/>
@@ -1819,7 +1819,7 @@
         <Component class="javax.swing.JLabel" name="lblDongHo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/stoman/icons/alarm-clock.png"/>
+              <Image iconType="3" name="/com/stoman/icons/alarm_clock_32px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="00:00:00 AM"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

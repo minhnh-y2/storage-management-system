@@ -384,7 +384,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
                         .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1049,12 +1049,12 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTrangThai.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(102, 102, 102)));
         pnlTrangThai.setLayout(new java.awt.BorderLayout());
 
-        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/info-squared.png"))); // NOI18N
-        lblTrangThai.setText("Hệ thống quản lý kho hàng");
+        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/team_32px.png"))); // NOI18N
+        lblTrangThai.setText("Chưa đăng nhập!");
         lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
-        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm-clock.png"))); // NOI18N
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm_clock_32px.png"))); // NOI18N
         lblDongHo.setText("00:00:00 AM");
         lblDongHo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
         pnlTrangThai.add(lblDongHo, java.awt.BorderLayout.EAST);
@@ -1568,6 +1568,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         this.clock();
         this.formatTable();
+        this.loginStatus();
 
         this.fillToComboBoxKho();
         this.fillToComboBoxLoaiHangHoa();
@@ -1589,7 +1590,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Tạo tiêu đề và định dạng bảng
     private void formatTable() {
-        String headerLT[] = {"STT", "Hàng Hóa", "Số lượng tồn"};
+        String headerLT[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG TỒN"};
         tblLuuTruModel = new DefaultTableModel(headerLT, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1606,7 +1607,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblLuuTru.setModel(tblLuuTruModel);
 
-        String headerNhap[] = {"STT", "Hàng Hóa", "Số lượng nhập", "Nhập TB", "Giá nhập TB", "Tổng giá trị"};
+        String headerNhap[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG NHẬP", "NHẬP TB", "GIÁ NHẬP TB", "TỔNG GIÁ TRỊ"};
         tblNhapModel = new DefaultTableModel(headerNhap, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1623,7 +1624,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblTKnhap.setModel(tblNhapModel);
 
-        String headerXuat[] = {"STT", "Hàng Hóa", "Số lượng xuất", "Nhập TB", "Giá nhập TB", "Tổng giá trị"};
+        String headerXuat[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG XUẤT", "NHẬP TB", "GIÁ NHẬP TB", "TỔNG GIÁ TRỊ"};
         tblXuatModel = new DefaultTableModel(headerXuat, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1640,7 +1641,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblTKxuat.setModel(tblXuatModel);
 
-        String headerTH[] = {"Tháng", "Xuất trong tháng", "Tổng GT xuất", "Nhập trong tháng", "Tổng GT nhập", "Tổng GT xuất nhập"};
+        String headerTH[] = {"THÁNG", "XUẤT TRONG THÁNG", "TỔNG GT XUẤT", "NHẬP TRONG THÁNG", "TỔNG GT NHẬP", "TỔNG GT XUẤT NHẬP"};
         tblTongHopModel = new DefaultTableModel(headerTH, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1670,11 +1671,13 @@ public class StoManJFrame extends javax.swing.JFrame {
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
             btnTaiKhoan.setText("Đăng nhập");
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
+            lblTrangThai.setText("Chưa đăng nhập vào hệ thống!");
         } else {
             mniTaiKhoan.setText("Đăng xuất");
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
             btnTaiKhoan.setText("Đăng xuất");
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
+            lblTrangThai.setText(Auth.user.getTenNV());
         }
     }
 

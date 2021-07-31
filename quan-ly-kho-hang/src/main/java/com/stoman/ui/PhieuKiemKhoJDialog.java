@@ -401,6 +401,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         txtNgayLap.setEditable(false);
         txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
+        txtNgayKiem.setOpaque(false);
+
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
         pnlThongTin.setLayout(pnlThongTinLayout);
         pnlThongTinLayout.setHorizontalGroup(
@@ -756,7 +758,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addComponent(pnlTimKiem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
@@ -919,18 +921,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
+        prev();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
+        first();
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
+        next();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
+        last();
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnInPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPhieuActionPerformed
@@ -1199,7 +1205,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 Kho kho = kDAO.selectByID(maKho);
                 modelPhieuKiem.addRow(new Object[]{
                     i++,
-                    kho,
+                    kho.getMaKho(),
                     pkk.getNgayKiem(),
                     pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                     pkk.getMaNV(),
@@ -1215,12 +1221,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Nhập dữ liệu vào form phiếu nhập
     private void setFormPhieu(PhieuKiemKho pkk) {
-        Kho kho = (Kho) modelPhieuKiem.getValueAt(rowPhieu, 1);
+        int maKho = (int) modelPhieuKiem.getValueAt(rowPhieu, 1);
+        Kho k = kDAO.selectByID(maKho);
 
         txtNguoiLap.setText(pkk.getMaNV());
         txtNgayKiem.setDate(pkk.getNgayLap());
         txtNgayLap.setText(XDate.toString(pkk.getNgayLap(), dateFormat + "(hh:MM:ss)"));
-        cboKho.getModel().setSelectedItem(kho);
+        cboKho.getModel().setSelectedItem(k);
         chkHoanThanh.setSelected(pkk.isTrangThai());
         txtGhiChu.setText(pkk.getGhiChu());
 
@@ -1248,8 +1255,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 modelCTPhieuKiem.addRow(new Object[]{
                     i++,
                     hh,
-                    XNumber.toString(ctkk.getSoLuongTon(), numFormat),
-                    XNumber.toString(ctkk.getSoLuongThuc(), numFormat),
+                    ctkk.getSoLuongTon(),
+                    ctkk.getSoLuongThuc(),
                     ctkk.getMaCTKK(),
                     ctkk.getMaLT()
                 });
@@ -1297,17 +1304,17 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     // Thêm hàng hóa vào bảng Chi tiết
     private void insertCT() {
         int selectRow = tblHangHoaKho.getSelectedRow();
-        int malt = (Integer) modelHangHoaKho.getValueAt(tblHangHoaKho.getSelectedRow(), 3);
+        int maLT = (Integer) modelHangHoaKho.getValueAt(tblHangHoaKho.getSelectedRow(), 3);
         modelCTPhieuKiem.addRow(new Object[]{
             tblCTPhieuKiemKho_main.getRowCount() + 1,
             (HangHoa) modelHangHoaKho.getValueAt(selectRow, 1),
-            XNumber.toString((Double) modelHangHoaKho.getValueAt(selectRow, 2), numFormat),
-            XNumber.toString(0.0, numFormat),
+            (Double) modelHangHoaKho.getValueAt(selectRow, 2),
             0,
-            malt
+            0,
+            maLT
         });
 
-        this.listCT.add(malt);
+        this.listCT.add(maLT);
         this.fillToTableHHkho();
     }
 
@@ -1336,8 +1343,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private ChiTietKiemKho getFormCTPhieu(int row) {
         ChiTietKiemKho ctkk = new ChiTietKiemKho();
 
-        ctkk.setSoLuongTon(XNumber.toDouble((String) modelCTPhieuKiem.getValueAt(row, 2), numFormat));
-        ctkk.setSoLuongThuc(XNumber.toDouble((String) modelCTPhieuKiem.getValueAt(row, 3), numFormat));
+        ctkk.setSoLuongTon((double) modelCTPhieuKiem.getValueAt(row, 2));
+        ctkk.setSoLuongThuc((double) modelCTPhieuKiem.getValueAt(row, 3));
 
         ctkk.setMaCTKK((Integer) modelCTPhieuKiem.getValueAt(row, 4));
         ctkk.setMaLT((Integer) modelCTPhieuKiem.getValueAt(row, 5));
@@ -1436,7 +1443,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Xóa trắng form
     private void clearForm() {
-        txtNguoiLap.setText(null); //Auth.user.getMaNV()
+        txtNguoiLap.setText(Auth.user.getMaNV());
         Date NgayLap = new Date(System.currentTimeMillis());
         txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
         txtNgayKiem.setDate(null);
@@ -1449,6 +1456,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         isUpdate = false;
 
         this.rowPhieu = -1;
+        this.updateStatus();
     }
 
     private void formatTable() {
@@ -1597,5 +1605,33 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         isUpdate = true;
         this.updateStatus();
+    }
+    
+    // Hiển thị phiếu đầu danh sách
+    private void first() {
+        this.rowPhieu = 0;
+        this.edit();
+    }
+
+    // Hiển thị phiếu kế trước
+    private void prev() {
+        if (this.rowPhieu > 0) {
+            this.rowPhieu--;
+            this.edit();
+        }
+    }
+
+    // Hiển thị phiếu kế tiếp
+    private void next() {
+        if (this.rowPhieu < (tblPhieuKiemKho.getRowCount() - 1)) {
+            this.rowPhieu++;
+            this.edit();
+        }
+    }
+
+    // Hiển thị phiếu cuối danh sách
+    private void last() {
+        this.rowPhieu = tblPhieuKiemKho.getRowCount() - 1;
+        this.edit();
     }
 }
