@@ -114,5 +114,5 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer> {
         String sql = "SELECT TENDT FROM DOITAC WHERE MADT = ?";
         return (String) XJdbc.value(sql, maDT);
     }
-
+    
 }

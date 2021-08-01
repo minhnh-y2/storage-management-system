@@ -7,9 +7,10 @@ package com.stoman.ui;
 
 import com.stoman.dao.DoiTacDAO;
 import com.stoman.dao.LoaiDoiTacDAO;
+import com.stoman.dao.PhieuDAO;
 import com.stoman.entity.DoiTac;
 import com.stoman.entity.LoaiDoiTac;
-import com.stoman.utils.Auth;
+import com.stoman.entity.Phieu;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import java.util.List;
@@ -644,6 +645,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private DoiTacDAO dtDAO;
+    private PhieuDAO pDAO;
     private LoaiDoiTacDAO ldtDAO;
     private DefaultTableModel tblModel;
     private int row = -1;
@@ -653,13 +655,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlThanhTieuDe.setVisible(false);
         this.dtDAO = new DoiTacDAO();
         this.ldtDAO = new LoaiDoiTacDAO();
+        this.pDAO = new PhieuDAO();
 
         this.formatTable();
 
         this.fillToComboBox();
         this.fillToList();
         this.updateStatus();
-        
+
         timer.start();
     }
 
@@ -717,7 +720,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         model.removeAllElements();
         for (int i = 0; i < tblDoiTac.getColumnCount(); i++) {
             String columnName = tblDoiTac.getColumnName(i);
-            if (columnName.equalsIgnoreCase("STT")) continue;
+            if (columnName.equalsIgnoreCase("STT")) {
+                continue;
+            }
             model.addElement(columnName);
         }
     }
@@ -768,7 +773,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         if (edit) {
             tblDoiTac.setRowSelectionInterval(row, row);
         }
-        
+
         btnThem.setEnabled(!edit && isSelectedList);
         btnSua.setEnabled(edit && isSelectedList);
         btnXoa.setEnabled(edit && isSelectedList);
@@ -878,7 +883,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void deleteLDT() {
         if (lstLDT.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại đối tác!");
-        } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại đối tác này?")) {
+            return;
+        }
+        String message = "Các đối tác thuộc loại đối tác này sẽ bị xoá!"
+                + "\nBạn có muốn tiếp tục xoá không?";
+        if (MsgBox.confirm(this, message)) {
             LoaiDoiTac ldt = lstLDT.getSelectedValue();
             try {
                 ldtDAO.delete(ldt.getMaLDT());
@@ -911,15 +920,17 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Xoá đối tác khỏi CSDL
     private void delete() {
-        if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá đối tác này không?")) {
-            int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
+        String message = "Các hàng hoá của đối tác đang lưu trữ trong kho sẽ bị xoá!"
+                + "\nBạn có muốn tiếp tục xoá đối tác này?";
+        if (MsgBox.confirm(this, message)) {
             try {
+                int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
                 dtDAO.delete(maDT);
                 this.fillToTable();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Không thể xoá khi đối tác còn hàng hoá trong kho!");
+                MsgBox.alert(this, "Xoá thất bại!");
                 e.printStackTrace();
             }
         }
@@ -927,16 +938,17 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Cập nhật thông tin đối tác vào CSDL
     private void update() {
-        if (isValidated()) {
-            DoiTac dt = getForm();
-            try {
-                dtDAO.update(dt);
-                this.fillToTable();
-                MsgBox.alert(this, "Cập nhật thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại!");
-                e.printStackTrace();
-            }
+        if (!isValidated()) {
+            return;
+        }
+        DoiTac dt = getForm();
+        try {
+            dtDAO.update(dt);
+            this.fillToTable();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+            e.printStackTrace();
         }
     }
 

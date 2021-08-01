@@ -816,7 +816,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void deleteLHH() {
         if (lstLHH.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại hàng hoá!");
-        } else if (MsgBox.confirm(this, "Bạn chắc chắn muốn xoá loại hàng hoá này?")) {
+            return;
+        } 
+        String message = "Các hàng hoá thuộc loại hàng hoá này sẽ bị xoá!"
+                + "\nBạn có muốn tiếp tục xoá không?";
+        if (MsgBox.confirm(this, message)) {
             LoaiHangHoa lhh = lstLHH.getSelectedValue();
             try {
                 lhhDAO.delete(lhh.getMaLHH());
