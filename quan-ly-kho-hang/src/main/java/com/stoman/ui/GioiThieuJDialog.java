@@ -39,7 +39,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(519, 540));
         setUndecorated(true);
 
-        pnlGioiThieu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        pnlGioiThieu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(153, 153, 153)));
         pnlGioiThieu.setMinimumSize(new java.awt.Dimension(514, 176));
         pnlGioiThieu.setLayout(new java.awt.BorderLayout());
 
@@ -57,7 +57,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
 
         getContentPane().add(pnlGioiThieu, java.awt.BorderLayout.CENTER);
 
-        pnlLogo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        pnlLogo.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 0, 2, new java.awt.Color(153, 153, 153)));
         pnlLogo.setLayout(new java.awt.GridLayout(1, 0));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif"))); // NOI18N
