@@ -1276,7 +1276,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongSoGTNTH.setText("0");
         pnlTongLGNhapTH.add(lblTongSoGTNTH);
 
-        pnlTongCCGTXuatNhap.setBackground(new java.awt.Color(0, 204, 102));
+        pnlTongCCGTXuatNhap.setBackground(new java.awt.Color(255, 153, 51));
         pnlTongCCGTXuatNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongCCGTXuatNhap.setLayout(new java.awt.GridLayout(0, 1));
 
