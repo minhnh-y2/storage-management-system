@@ -130,12 +130,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         pnlMotion.setOpaque(false);
         getContentPane().add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
 
-        pnlDangNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        pnlDangNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         getContentPane().add(pnlDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 360, 290));
 
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/background-login.png"))); // NOI18N
-        lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
 
         pack();

@@ -73,6 +73,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
         btnDongY.setBackground(new java.awt.Color(204, 255, 204));
+        btnDongY.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         btnDongY.setText("Đồng ý");
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +84,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnDongY);
 
         btnThoat.setBackground(new java.awt.Color(255, 153, 153));
+        btnThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +125,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 .addComponent(lblXacNhanMK)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap())
         );
 
         getContentPane().add(pnlDoiMatKhau, java.awt.BorderLayout.CENTER);
