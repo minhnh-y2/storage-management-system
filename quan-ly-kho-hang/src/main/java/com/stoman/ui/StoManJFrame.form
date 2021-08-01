@@ -180,9 +180,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1020, 700]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1020, 700]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
@@ -199,13 +196,14 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-84,0,0,3,-23"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,111,0,0,3,-19"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Container class="javax.swing.JToolBar" name="toolBar">
       <Properties>
+        <Property name="floatable" type="boolean" value="false"/>
         <Property name="rollover" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
@@ -359,9 +357,9 @@
                           <Group type="102" attributes="0">
                               <Component id="lblNamTQ" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboNamTQ" min="-2" pref="748" max="-2" attributes="0"/>
+                              <Component id="cboNamTQ" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="pnlBieuDo" max="32767" attributes="0"/>
+                          <Component id="pnlBieuDo" pref="789" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="separator10" min="-2" max="-2" attributes="0"/>
@@ -376,7 +374,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlThongTin" pref="515" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="454" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="cboNamTQ" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -584,73 +582,155 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTimKiemLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemLT" pref="396" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTheoLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemLT" min="-2" pref="208" max="-2" attributes="0"/>
+                          <Component id="separator11" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblTopLHH" pref="345" max="32767" attributes="0"/>
+                                  <Component id="pnlTopLHH" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator12" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTopHH" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="621" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="lblTblLuuTru" pref="678" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblTimKiemLT" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTimKiemLT" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblTheoLT" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemLT" min="-2" pref="257" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblTblLuuTru" max="32767" attributes="0"/>
+                                  <Component id="lblDShangHoa" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlTongTonKho" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="pnlTongGiaTri" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblKhoLT" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLoaiHangHoaLT" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cboKhoLT" pref="163" max="32767" attributes="0"/>
+                                          <Component id="cboLoaiHangHoaLT" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="separator6" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblPhanLoaiHH" pref="241" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="separator" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlTongGiaTri" alignment="0" pref="276" max="32767" attributes="0"/>
-                          <Component id="pnlTongTonKho" alignment="0" pref="276" max="32767" attributes="0"/>
-                          <Component id="lblLoaiHangHoaLT" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKhoLT" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboKhoLT" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cboLoaiHangHoaLT" alignment="0" max="32767" attributes="0"/>
-                          <Component id="separator6" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblDShangHoa" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTheoLT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTblLuuTru" pref="485" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblTblLuuTru" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblKhoLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboKhoLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblLoaiHangHoaLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboLoaiHangHoaLT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator6" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblPhanLoaiHH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboKhoLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKhoLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblLoaiHangHoaLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboLoaiHangHoaLT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="pnlTongGiaTri" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="pnlTongTonKho" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Component id="separator6" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlTongGiaTri" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlTongTonKho" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="separator" alignment="0" max="32767" attributes="0"/>
+                          <Component id="separator" alignment="1" min="-2" pref="294" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="separator11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTopLHH" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTopHH" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="oblTopHH" pref="121" max="32767" attributes="0"/>
+                                  <Component id="pnlTopLHH" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="separator12" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblDShangHoa">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch h&#xe0;ng h&#xf3;a"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTimKiemLT">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTimKiemLT">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLTKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTheoLT">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="theo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTimKiemLT">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemLTActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Container class="javax.swing.JScrollPane" name="lblTblLuuTru">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -703,28 +783,19 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemLT">
+            <Component class="javax.swing.JSeparator" name="separator">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemLT">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLTKeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblTheoLT">
+            <Component class="javax.swing.JLabel" name="lblPhanLoaiHH">
               <Properties>
-                <Property name="text" type="java.lang.String" value="theo"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xe2;n lo&#x1ea1;i danh s&#xe1;ch"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cboTimKiemLT">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemLTActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblKhoLT">
               <Properties>
@@ -752,10 +823,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSeparator" name="separator">
-              <Properties>
-                <Property name="orientation" type="int" value="1"/>
-              </Properties>
+            <Component class="javax.swing.JSeparator" name="separator6">
             </Component>
             <Container class="javax.swing.JPanel" name="pnlTongGiaTri">
               <Properties>
@@ -843,8 +911,127 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JSeparator" name="separator6">
+            <Component class="javax.swing.JSeparator" name="separator11">
             </Component>
+            <Component class="javax.swing.JLabel" name="lblTopLHH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 lo&#x1ea1;i h&#xe0;ng t&#x1ed3;n nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="pnlTopLHH">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopLHH">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JSeparator" name="separator12">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopHH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 m&#x1eb7;t h&#xe0;ng t&#x1ed3;n  nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="oblTopHH">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopHH">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTKNhap">
@@ -859,109 +1046,186 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTimKiemNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemNhap" pref="396" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTheoNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemNhap" min="-2" pref="208" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblTblTKnhap" pref="678" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="separator3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cboKhoNhap" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cboLoaiHangHoaNhap" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblLoaiHangHoaNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblKhoNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTrongNhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                          <Component id="lblThangNhap" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cboThangNhap" linkSize="1" min="-2" pref="69" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                          <Component id="lblNamNhap" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cboNamNhap" linkSize="1" min="-2" pref="84" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="separator5" max="32767" attributes="0"/>
-                                      <Component id="separator4" min="-2" pref="276" max="-2" attributes="0"/>
-                                  </Group>
+                          <Component id="separator17" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlTopLHHNhap" pref="0" max="32767" attributes="0"/>
+                                  <Component id="lblTopLHHNhap" pref="345" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlTongGTNhap" min="-2" pref="276" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator19" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTopHHNhap" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHNhap" alignment="0" pref="621" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTblTKnhap" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblTimKiemNhap" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTimKiemNhap" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblTheoNhap" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemNhap" min="-2" pref="276" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblDShangHoaNhap" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="pnlTongLGNhap" min="-2" pref="276" max="-2" attributes="0"/>
+                              <Component id="separator18" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblPhanLoaiN" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="pnlTongGTNhap" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="pnlTongLGNhap" alignment="1" pref="250" max="32767" attributes="0"/>
+                                  <Component id="separator4" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblThangNhap" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboThangNhap" min="-2" pref="65" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblNamNhap" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cboNamNhap" min="-2" pref="84" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="separator5" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblKhoNhap" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLoaiHangHoaNhap" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cboKhoNhap" max="32767" attributes="0"/>
+                                          <Component id="cboLoaiHangHoaNhap" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="lblTrongNhap" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTheoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPhanLoaiN" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDShangHoaNhap" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTblTKnhap" pref="485" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblKhoNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboKhoNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblLoaiHangHoaNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboLoaiHangHoaNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator5" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTrongNhap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblThangNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboThangNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNamNhap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboNamNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="cboKhoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblKhoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="cboLoaiHangHoaNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLoaiHangHoaNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="separator5" min="-2" pref="2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTrongNhap" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblThangNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboThangNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNamNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboNamNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="separator4" min="-2" pref="2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongLGNhap" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongGTNhap" min="-2" pref="90" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="cboTimKiemNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTheoNhap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTblTKnhap" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator4" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="pnlTongLGNhap" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="pnlTongGTNhap" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="separator3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="separator18" min="-2" pref="324" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="separator17" min="-2" pref="2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblTopHHNhap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="oblTopHHNhap" pref="91" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblTopLHHNhap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlTopLHHNhap" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="separator19" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblDShangHoaNhap">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch h&#xe0;ng h&#xf3;a nh&#x1ead;p"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTimKiemNhap">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTimKiemNhap">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemNhapKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTheoNhap">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="theo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTimKiemNhap">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemNhapActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Container class="javax.swing.JScrollPane" name="lblTblTKnhap">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1014,30 +1278,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemNhap">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemNhap">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemNhapKeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblTheoNhap">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="theo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cboTimKiemNhap">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemNhapActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="separator3">
+            <Component class="javax.swing.JSeparator" name="separator18">
               <Properties>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -1072,6 +1313,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblTrongNhap">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Trong"/>
               </Properties>
             </Component>
@@ -1100,6 +1344,15 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPhanLoaiN">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xe2;n lo&#x1ea1;i danh s&#xe1;ch"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="separator4">
             </Component>
@@ -1189,9 +1442,130 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JSeparator" name="separator17">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopLHHNhap">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 lo&#x1ea1;i h&#xe0;ng nh&#x1ead;p nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="pnlTopLHHNhap">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopLHHNhap">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JSeparator" name="separator19">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopHHNhap">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 m&#x1eb7;t h&#xe0;ng nh&#x1ead;p nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="oblTopHHNhap">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopHHNhap">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlTKxuat">
+        <Container class="javax.swing.JPanel" name="pnlTKXuat">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Th&#x1ed1;ng k&#xea; xu&#x1ea5;t">
@@ -1204,96 +1578,181 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTimKiemXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemXuat" pref="396" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTheoXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemXuat" min="-2" pref="208" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblTblTKxuat" pref="678" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="separator7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblLoaiHangHoaXuat" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKhoXuat" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTrongXuat" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="separator27" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblThangXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="cboThangXuat" linkSize="2" min="-2" pref="69" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblNamXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cboNamXuat" linkSize="2" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlTopLHHXuat" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="lblTopLHHXuat" alignment="0" pref="345" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator28" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTopHHXuat" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHXuat" alignment="0" pref="621" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="cboKhoXuat" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cboLoaiHangHoaXuat" alignment="0" max="32767" attributes="0"/>
-                          <Component id="separator8" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnlTongLGXuat" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
-                          <Component id="separator9" alignment="0" max="32767" attributes="0"/>
-                          <Component id="pnlTongGTXuat" alignment="0" min="-2" pref="276" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblTimKiemXuat" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTimKiemXuat" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblTheoXuat" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemXuat" min="-2" pref="276" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblDShangHoaXuat" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTblTKxuat" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator24" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblPhanXuat" alignment="1" pref="250" max="32767" attributes="0"/>
+                                  <Component id="separator26" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblThangXuat" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboThangXuat" min="-2" pref="65" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblNamNhap2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cboNamXuat" min="-2" pref="78" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="separator25" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblKhoXuat" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLoaiHangHoaXuat" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cboKhoXuat" max="32767" attributes="0"/>
+                                          <Component id="cboLoaiHangHoaXuat" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="lblTrongXuat" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="pnlTongGTXuat" max="32767" attributes="0"/>
+                                  <Component id="pnlTongLGXuat" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPhanXuat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDShangHoaXuat" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTblTKxuat" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblKhoXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboKhoXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblLoaiHangHoaXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboLoaiHangHoaXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator8" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTrongXuat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNamXuat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboNamXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblTheoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTblTKxuat" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblKhoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboKhoXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblLoaiHangHoaXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboLoaiHangHoaXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="separator25" min="-2" pref="2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTrongXuat" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNamNhap2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboThangXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboNamXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="separator26" min="-2" pref="2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongLGXuat" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongGTXuat" min="-2" pref="90" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator9" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace pref="46" max="32767" attributes="0"/>
-                              <Component id="pnlTongLGXuat" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="pnlTongGTXuat" min="-2" pref="141" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="separator7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="separator24" min="-2" pref="324" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="separator27" min="-2" pref="2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblTopHHXuat" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="oblTopHHXuat" pref="91" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblTopLHHXuat" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlTopLHHXuat" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="separator28" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblDShangHoaXuat">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch h&#xe0;ng h&#xf3;a xu&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTimKiemXuat">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTimKiemXuat">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemXuatKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTheoXuat">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="theo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTimKiemXuat">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemXuatActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Container class="javax.swing.JScrollPane" name="lblTblTKxuat">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1343,30 +1802,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemXuat">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemXuat">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemXuatKeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblTheoXuat">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="theo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cboTimKiemXuat">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemXuatActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="separator7">
+            <Component class="javax.swing.JSeparator" name="separator24">
               <Properties>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -1397,10 +1833,13 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSeparator" name="separator8">
+            <Component class="javax.swing.JSeparator" name="separator25">
             </Component>
             <Component class="javax.swing.JLabel" name="lblTrongXuat">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Trong"/>
               </Properties>
             </Component>
@@ -1417,7 +1856,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNamXuat">
+            <Component class="javax.swing.JLabel" name="lblNamNhap2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#x103;m"/>
               </Properties>
@@ -1430,7 +1869,16 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSeparator" name="separator9">
+            <Component class="javax.swing.JLabel" name="lblPhanXuat">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xe2;n lo&#x1ea1;i danh s&#xe1;ch"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="separator26">
             </Component>
             <Container class="javax.swing.JPanel" name="pnlTongLGXuat">
               <Properties>
@@ -1518,6 +1966,127 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JSeparator" name="separator27">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopLHHXuat">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 lo&#x1ea1;i h&#xe0;ng nh&#x1ead;p nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="pnlTopLHHXuat">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopLHHNhap2">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JSeparator" name="separator28">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopHHXuat">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 m&#x1eb7;t h&#xe0;ng nh&#x1ead;p nhi&#x1ec1;u nh&#x1ea5;t"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="oblTopHHXuat">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopHHNhap2">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlTongHop">
@@ -1533,73 +2102,169 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTimKiemTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemTH" pref="396" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTheoTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemTH" min="-2" pref="208" max="-2" attributes="0"/>
+                          <Component id="separator32" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlTopLHHTH" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="lblTopLHHTH" alignment="0" pref="345" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator33" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTopHHTH" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHTH" alignment="0" pref="621" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="lblTblTongHop" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblTimKiemTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtTimKiemTH" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTheoTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cboTimKiemTH" min="-2" pref="274" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblTblTongHop" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblDSTongHop" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separator29" min="-2" pref="2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblPhanTH" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="separator31" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="separator30" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblTrongTH" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="pnlTongLGXuatTH" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pnlTongLGNhapTH" max="32767" attributes="0"/>
+                                  <Component id="pnlTongCCGTXuatNhap" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="lblKhoTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cboKhoTH" min="-2" pref="214" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblNamTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cboNamTH" min="-2" pref="214" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="separator14" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="separator15" min="-2" pref="274" max="-2" attributes="0"/>
-                          <Component id="pnlTongCCGTXuatNhap" alignment="0" pref="276" max="32767" attributes="0"/>
-                          <Component id="lblNamTH" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKhoTH" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboKhoTH" alignment="0" pref="276" max="32767" attributes="0"/>
-                          <Component id="cboNamTH" pref="276" max="32767" attributes="0"/>
-                          <Component id="separator16" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTheoTH" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPhanTH" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDSTongHop" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblTblTongHop" pref="485" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblKhoTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboKhoTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="separator30" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTrongTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="cboNamTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNamTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="separator31" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongLGXuatTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongLGNhapTH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="pnlTongCCGTXuatNhap" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblTheoTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="lblTblTongHop" min="-2" pref="260" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblKhoTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboKhoTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="separator15" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblNamTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cboNamTH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="separator16" min="-2" pref="0" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="pnlTongCCGTXuatNhap" min="-2" pref="142" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="separator14" alignment="0" max="32767" attributes="0"/>
+                          <Component id="separator29" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="separator32" min="-2" pref="2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblTopHHTH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="oblTopHHTH" pref="94" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblTopLHHTH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlTopLHHTH" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="separator33" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblDSTongHop">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="C&#xe1;n c&#xe2;n xu&#x1ea5;t nh&#x1ead;p theo n&#x103;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTimKiemTH">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTimKiemTH">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemTHKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTheoTH">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="theo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboTimKiemTH">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemTHActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Container class="javax.swing.JScrollPane" name="lblTblTongHop">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1652,28 +2317,19 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblTimKiemTH">
+            <Component class="javax.swing.JSeparator" name="separator29">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemTH">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemTHKeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblTheoTH">
+            <Component class="javax.swing.JLabel" name="lblPhanTH">
               <Properties>
-                <Property name="text" type="java.lang.String" value="theo"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xe2;n lo&#x1ea1;i danh s&#xe1;ch"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cboTimKiemTH">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemTHActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblKhoTH">
               <Properties>
@@ -1688,6 +2344,16 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JSeparator" name="separator30">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTrongTH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Trong"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="lblNamTH">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#x103;m"/>
@@ -1701,15 +2367,98 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSeparator" name="separator14">
-              <Properties>
-                <Property name="orientation" type="int" value="1"/>
-              </Properties>
+            <Component class="javax.swing.JSeparator" name="separator31">
             </Component>
+            <Container class="javax.swing.JPanel" name="pnlTongLGXuatTH">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="1"/>
+                <Property name="rows" type="int" value="0"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblTongGiaTriXuatTH">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Gi&#xe1; Tr&#x1ecb; Xu&#x1ea5;t"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTongSoGTXTH">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="24" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlTongLGNhapTH">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="1"/>
+                <Property name="rows" type="int" value="0"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblTongGiaTriNhapTH">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng Gi&#xe1; Tr&#x1ecb; Nh&#x1ead;p"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTongSoGTNTH">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="24" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
             <Container class="javax.swing.JPanel" name="pnlTongCCGTXuatNhap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="0" type="rgb"/>
+                  <Color blue="66" green="cc" red="0" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -1732,7 +2481,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng gi&#xe1; tr&#x1ecb; xu&#x1ea5;t nh&#x1ead;p"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ed5;ng c&#xe1;n c&#xe2;n xu&#x1ea5;t nh&#x1ead;p"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblTongSoGTXN">
@@ -1749,10 +2498,127 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JSeparator" name="separator15">
+            <Component class="javax.swing.JSeparator" name="separator32">
             </Component>
-            <Component class="javax.swing.JSeparator" name="separator16">
+            <Component class="javax.swing.JLabel" name="lblTopLHHTH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 lo&#x1ea1;i h&#xe0;ng gi&#xe1; tr&#x1ecb; nh&#x1ead;p xu&#x1ea5;t cao"/>
+              </Properties>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="pnlTopLHHTH">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopLHHTH">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JSeparator" name="separator33">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTopHHTH">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="10 m&#x1eb7;t h&#xe0;ng gi&#xe1; tr&#x1ecb; nh&#x1ead;p xu&#x1ea5;t cao"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="oblTopHHTH">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblTopHHTH">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
