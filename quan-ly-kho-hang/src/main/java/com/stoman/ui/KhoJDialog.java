@@ -6,8 +6,10 @@
 package com.stoman.ui;
 
 import com.stoman.dao.KhoDAO;
+import com.stoman.dao.LuuTruDAO;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.Kho;
+import com.stoman.entity.LuuTru;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
@@ -651,9 +653,11 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Xoá kho
     private void delete() {
-        if (MsgBox.confirm(this, "Bạn có chắc chắn muốn xoá kho hàng này?")) {
-            int maKho = (int) tblKho.getValueAt(this.row, 0);
+        String message = "Các hàng hoá đang lưu trữ trong kho này cũng sẽ bị xoá!"
+                + "\nBạn có muốn tiếp tục xoá không?";
+        if (MsgBox.confirm(this, message)) {
             try {
+                int maKho = (int) tblKho.getValueAt(this.row, 0);
                 kDAO.delete(maKho);
                 this.fillToTable();
                 this.clearForm();
