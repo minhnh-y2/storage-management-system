@@ -42,6 +42,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlBorder = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
@@ -49,15 +50,20 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setUndecorated(true);
 
+        pnlBorder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        pnlBorder.setLayout(new java.awt.BorderLayout());
+
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/chao.gif"))); // NOI18N
-        getContentPane().add(lblLogo, java.awt.BorderLayout.CENTER);
+        pnlBorder.add(lblLogo, java.awt.BorderLayout.CENTER);
 
         progressBar.setMaximum(1000);
         progressBar.setMaximumSize(new java.awt.Dimension(32767, 17));
         progressBar.setMinimumSize(new java.awt.Dimension(10, 17));
         progressBar.setPreferredSize(new java.awt.Dimension(146, 17));
         progressBar.setStringPainted(true);
-        getContentPane().add(progressBar, java.awt.BorderLayout.SOUTH);
+        pnlBorder.add(progressBar, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(pnlBorder, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +114,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JPanel pnlBorder;
     private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 
@@ -122,7 +129,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
         progressBar.putClientProperty("Nimbus.Overrides", defaults);
         
         setLocationRelativeTo(null);
-        new Timer(10, new ActionListener() {
+        new Timer(15, new ActionListener() {
             
             @Override
             public void actionPerformed(ActionEvent e) {
