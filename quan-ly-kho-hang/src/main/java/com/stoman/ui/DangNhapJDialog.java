@@ -237,7 +237,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        pnlDangNhap.setBackground(new Color(0, 0, 0, 90));
+        pnlDangNhap.setBackground(new Color(0, 0, 0, 99));
     }
 
     NhanVienDAO dao = new NhanVienDAO();

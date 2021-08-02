@@ -34,6 +34,7 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.SubCategoryAxis;
 import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
@@ -108,8 +109,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         separator10 = new javax.swing.JSeparator();
         lblKhoTQ = new javax.swing.JLabel();
         cboKhoTQ = new javax.swing.JComboBox<>();
-        lblNamTQ2 = new javax.swing.JLabel();
-        cboNamTQ2 = new javax.swing.JComboBox<>();
+        lblQuyTQ = new javax.swing.JLabel();
+        cboQuyTQ = new javax.swing.JComboBox<>();
         lblDShangHoa1 = new javax.swing.JLabel();
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
@@ -438,14 +439,14 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblNamTQ2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNamTQ2.setText("QUÝ");
+        lblQuyTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblQuyTQ.setText("QUÝ");
 
-        cboNamTQ2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboNamTQ2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cả năm", "1", "2", "3", "4" }));
-        cboNamTQ2.addActionListener(new java.awt.event.ActionListener() {
+        cboQuyTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboQuyTQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cả năm", "1", "2", "3", "4" }));
+        cboQuyTQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNamTQ2ActionPerformed(evt);
+                cboQuyTQActionPerformed(evt);
             }
         });
 
@@ -473,9 +474,9 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(lblNamTQ2)
+                        .addComponent(lblQuyTQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboQuyTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
                         .addContainerGap()
@@ -500,8 +501,8 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblNamTQ)
                             .addComponent(lblKhoTQ)
                             .addComponent(cboKhoTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNamTQ2)
-                            .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblQuyTQ)
+                            .addComponent(cboQuyTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(separator10, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1812,11 +1813,13 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     private void cboKhoTQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKhoTQActionPerformed
         // TODO add your handling code here:
+        this.fillToChartTongQuan();
     }//GEN-LAST:event_cboKhoTQActionPerformed
 
-    private void cboNamTQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamTQ2ActionPerformed
+    private void cboQuyTQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboQuyTQActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboNamTQ2ActionPerformed
+        this.fillToChartTongQuan();
+    }//GEN-LAST:event_cboQuyTQActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1880,8 +1883,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cboNamNhap;
     private javax.swing.JComboBox cboNamTH;
     private javax.swing.JComboBox<String> cboNamTQ;
-    private javax.swing.JComboBox<String> cboNamTQ2;
     private javax.swing.JComboBox cboNamXuat;
+    private javax.swing.JComboBox<String> cboQuyTQ;
     private javax.swing.JComboBox cboThangNhap;
     private javax.swing.JComboBox cboThangXuat;
     private javax.swing.JButton cboThongTin;
@@ -1912,11 +1915,11 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNamNhap2;
     private javax.swing.JLabel lblNamTH;
     private javax.swing.JLabel lblNamTQ;
-    private javax.swing.JLabel lblNamTQ2;
     private javax.swing.JLabel lblPhanLoaiHH;
     private javax.swing.JLabel lblPhanLoaiN;
     private javax.swing.JLabel lblPhanTH;
     private javax.swing.JLabel lblPhanXuat;
+    private javax.swing.JLabel lblQuyTQ;
     private javax.swing.JLabel lblSoLuongNhap;
     private javax.swing.JLabel lblSoLuongTK;
     private javax.swing.JLabel lblSoLuongTKLT;
@@ -2235,6 +2238,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Đỗ dữ liệu cho biểu đồ
     private void fillToChartTongQuan() {
+        pnlBieuDo.removeAll();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         Double tongNhap = 0.0;
@@ -2247,18 +2251,23 @@ public class StoManJFrame extends javax.swing.JFrame {
             List<Object[]> list = tkDAO.getListTongQuan(nam);
 
             for (Object[] values : list) {
-                dataset.setValue((Double) values[2], "Lượng nhập", "Tháng " + values[0]);
-                dataset.setValue((Double) values[1], "Lượng xuất", "Tháng " + values[0]);
+                dataset.setValue((Double) values[2], "Lượng nhập", "T " + values[0]);
+                dataset.setValue((Double) values[1], "Lượng xuất", "T " + values[0]);
 
                 tongNhap += (Double) values[2];
                 tongXuat += (Double) values[1];
             }
             // Tạo biểu đồ Bar Chart
             JFreeChart barChart = ChartFactory.createBarChart(null,
-                    "", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
+                    "Tháng", "Số lượng", dataset, PlotOrientation.VERTICAL, true, true, false);
             CategoryPlot plot = barChart.getCategoryPlot();
             plot.setRangeGridlinePaint(Color.black);
-
+            
+            //khoảng chống giữa các thanh
+            SubCategoryAxis domainAxis = new SubCategoryAxis(" ");
+            domainAxis.setCategoryMargin(0.40);
+            plot.setDomainAxis(domainAxis);
+            
             ChartPanel chtBieuDo = new ChartPanel(barChart);
 
             Color trans = new Color(0xFF, 0xFF, 0xFF, 0);
