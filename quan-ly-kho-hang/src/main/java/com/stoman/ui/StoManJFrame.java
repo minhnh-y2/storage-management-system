@@ -106,6 +106,10 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblNamTQ = new javax.swing.JLabel();
         cboNamTQ = new javax.swing.JComboBox<>();
         separator10 = new javax.swing.JSeparator();
+        lblNamTQ1 = new javax.swing.JLabel();
+        cboNamTQ1 = new javax.swing.JComboBox<>();
+        lblNamTQ2 = new javax.swing.JLabel();
+        cboNamTQ2 = new javax.swing.JComboBox<>();
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
         lblTimKiemLT = new javax.swing.JLabel();
@@ -422,6 +426,28 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        lblNamTQ1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNamTQ1.setText("KHO");
+
+        cboNamTQ1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboNamTQ1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNamTQ1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamTQ1ActionPerformed(evt);
+            }
+        });
+
+        lblNamTQ2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNamTQ2.setText("QUÝ");
+
+        cboNamTQ2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboNamTQ2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNamTQ2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamTQ2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlTongQuanLayout = new javax.swing.GroupLayout(pnlTongQuan);
         pnlTongQuan.setLayout(pnlTongQuanLayout);
         pnlTongQuanLayout.setHorizontalGroup(
@@ -430,9 +456,18 @@ public class StoManJFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
+                        .addComponent(lblNamTQ1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboNamTQ1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
                         .addComponent(lblNamTQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboNamTQ, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(lblNamTQ2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(separator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -449,7 +484,11 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
                         .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNamTQ))
+                            .addComponent(lblNamTQ)
+                            .addComponent(lblNamTQ1)
+                            .addComponent(cboNamTQ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNamTQ2)
+                            .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(separator10, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1758,6 +1797,14 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableLuuTru();
     }//GEN-LAST:event_txtTimKiemLTKeyReleased
 
+    private void cboNamTQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamTQ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNamTQ1ActionPerformed
+
+    private void cboNamTQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamTQ2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNamTQ2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1819,6 +1866,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cboNamNhap;
     private javax.swing.JComboBox cboNamTH;
     private javax.swing.JComboBox<String> cboNamTQ;
+    private javax.swing.JComboBox<String> cboNamTQ1;
+    private javax.swing.JComboBox<String> cboNamTQ2;
     private javax.swing.JComboBox cboNamXuat;
     private javax.swing.JComboBox cboThangNhap;
     private javax.swing.JComboBox cboThangXuat;
@@ -1848,6 +1897,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNamNhap2;
     private javax.swing.JLabel lblNamTH;
     private javax.swing.JLabel lblNamTQ;
+    private javax.swing.JLabel lblNamTQ1;
+    private javax.swing.JLabel lblNamTQ2;
     private javax.swing.JLabel lblPhanLoaiHH;
     private javax.swing.JLabel lblPhanLoaiN;
     private javax.swing.JLabel lblPhanTH;
