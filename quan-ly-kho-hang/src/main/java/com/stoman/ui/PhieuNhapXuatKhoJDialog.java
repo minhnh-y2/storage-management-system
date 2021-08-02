@@ -1347,7 +1347,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.formatTable();
 
-        this.refeshForm();
+        this.refreshForm();
 
         this.fillToComboBoxTimKiemCTPhieu();
         this.fillToComboBoxTimKiemPhieu();
@@ -2123,7 +2123,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
         this.fillToComboBoxKho();
         this.fillToTablePhieu();
         this.fillToComboBoxLoaiDT();
@@ -2134,7 +2134,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
 
 }

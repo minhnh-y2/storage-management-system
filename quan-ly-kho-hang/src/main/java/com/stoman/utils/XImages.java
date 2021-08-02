@@ -57,4 +57,10 @@ public class XImages {
         File path = new File ("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
+    
+    public static ImageIcon getImageScale(ImageIcon imageIcon, int w, int h) {
+        Image image = imageIcon.getImage();
+        Image imageScale = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return new ImageIcon(imageScale);
+    }
 }

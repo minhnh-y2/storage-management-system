@@ -10,6 +10,7 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.XImages;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -82,7 +83,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtTenNV.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtTenNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         txtTenNV.setForeground(new java.awt.Color(255, 255, 255));
-        txtTenNV.setText("minhnh");
+        txtTenNV.setText("trungtv");
         txtTenNV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtTenNV.setCaretColor(new java.awt.Color(255, 255, 255));
         txtTenNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -237,33 +238,38 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        pnlDangNhap.setBackground(new Color(0, 0, 0, 99));
+        pnlDangNhap.setBackground(new Color(0, 0, 0, 120));
+        lblBackground.setIcon(XImages.getImageScale(new ImageIcon(
+                getClass().getResource("/com/stoman/images/background-login.png")),
+                this.getWidth(),
+                this.getHeight())
+        );
     }
 
     NhanVienDAO dao = new NhanVienDAO();
 
     //  Đăng nhập và lưu thông tin tài khoản.
     private void login() {
-        if(!isValidated()) {
-           return;
+        if (!isValidated()) {
+            return;
         }
         try {
             String maNV = txtTenNV.getText();
             String matKhau = new String(txtMatKhau.getPassword());
             NhanVien nv = dao.selectByID(maNV);
-            
+
             if (nv == null) {
                 MsgBox.alert(this, "Tên đăng nhập không đúng");
                 txtTenNV.requestFocus();
                 return;
             }
-            
+
             if (!XPassword.isValidated(matKhau, nv.getMatKhau(), nv.getMuoi())) {
                 MsgBox.alert(this, "Mật khẩu không đúng.");
                 txtMatKhau.requestFocus();
                 return;
             }
-            
+
             Auth.user = nv;
             this.dispose();
         } catch (Exception e) {
@@ -278,21 +284,21 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             System.exit(0);
         }
     }
-    
+
     // Xác thực dữ liệu nhập vào form
     private boolean isValidated() {
-        if(txtTenNV.getText().length() == 0){
+        if (txtTenNV.getText().length() == 0) {
             MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
             txtTenNV.requestFocus();
             return false;
-        } 
-        if (txtMatKhau.getPassword().length == 0){
+        }
+        if (txtMatKhau.getPassword().length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
             return false;
-        } 
+        }
         return true;
-        
+
     }
 
 }

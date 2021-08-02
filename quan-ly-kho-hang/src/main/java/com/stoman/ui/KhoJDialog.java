@@ -692,7 +692,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
     
         // Đỗ lại dữ liệu 
-        public void refeshForm() {
+        public void refreshForm() {
             this.fillToComboBox();
             this.fillToTable();
 
@@ -701,7 +701,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         // sau hai phút tải lại dữ liệu
         private Timer timer = new Timer(120000, (e) -> {
-            refeshForm();
+            refreshForm();
         });
 
 }

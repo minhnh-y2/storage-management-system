@@ -360,7 +360,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="separator10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="pnlThongTin" min="-2" pref="169" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
@@ -371,7 +371,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlThongTin" pref="484" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="477" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblDShangHoa1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -683,7 +683,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHH" max="32767" attributes="0"/>
-                                  <Component id="oblTopHH" pref="621" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="615" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -741,7 +741,7 @@
                                   <Component id="cboTimKiemLT" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblTblLuuTru" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="lblTblLuuTru" min="-2" pref="246" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblPhanLoaiHH" min="-2" max="-2" attributes="0"/>
@@ -775,7 +775,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="oblTopHH" pref="156" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="132" max="32767" attributes="0"/>
                                   <Component id="pnlTopLHH" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1052,7 +1052,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1114,7 +1114,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1148,7 +1148,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHNhap" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHNhap" alignment="0" pref="621" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHNhap" alignment="0" pref="615" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1167,7 +1167,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator18" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblPhanLoaiN" alignment="1" max="32767" attributes="0"/>
                                   <Component id="pnlTongGTNhap" alignment="1" max="32767" attributes="0"/>
@@ -1267,7 +1267,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHNhap" pref="121" max="32767" attributes="0"/>
+                              <Component id="oblTopHHNhap" pref="94" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHNhap" min="-2" max="-2" attributes="0"/>
@@ -1583,7 +1583,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1645,7 +1645,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1679,7 +1679,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHXuat" alignment="0" pref="621" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHXuat" alignment="0" pref="615" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1694,11 +1694,11 @@
                                       <Component id="cboTimKiemXuat" min="-2" pref="250" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lblDShangHoaXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblTblTKxuat" alignment="1" pref="712" max="32767" attributes="0"/>
+                                  <Component id="lblTblTKxuat" alignment="1" pref="710" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator24" min="-2" pref="2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblPhanXuat" alignment="1" pref="250" max="32767" attributes="0"/>
                                   <Component id="separator26" alignment="1" max="32767" attributes="0"/>
@@ -1794,7 +1794,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHXuat" pref="121" max="32767" attributes="0"/>
+                              <Component id="oblTopHHXuat" pref="94" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHXuat" min="-2" max="-2" attributes="0"/>
@@ -2107,7 +2107,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -2169,7 +2169,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -2203,7 +2203,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHTH" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHTH" alignment="0" pref="621" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHTH" alignment="0" pref="615" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -2649,7 +2649,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -2711,7 +2711,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>

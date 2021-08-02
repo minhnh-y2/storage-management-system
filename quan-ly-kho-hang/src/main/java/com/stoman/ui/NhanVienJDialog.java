@@ -814,8 +814,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
             return;
         }
-
-        if (MsgBox.confirm(this, "Bạn thực sự muốn xoá nhân viên này?")) {
+        String message = "Các phiếu nhập xuất và kiểm kho do nhân viên này lập sẽ bị xoá!"
+                + "\nBạn có chắc chắn xoá nhân viên này?";
+        if (MsgBox.confirm(this, message)) {
             try {
                 DAO.delete(maNV);
                 this.fillToTable();
@@ -887,7 +888,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
         
         this.fillToComboBox();
         this.fillToTable();
@@ -897,7 +898,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
     
 }

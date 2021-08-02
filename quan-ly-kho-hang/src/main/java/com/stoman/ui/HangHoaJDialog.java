@@ -962,7 +962,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
         this.fillToComboBox();
         this.fillToTable();
 
@@ -971,6 +971,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(300000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
 }

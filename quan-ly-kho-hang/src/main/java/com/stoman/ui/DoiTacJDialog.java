@@ -10,7 +10,6 @@ import com.stoman.dao.LoaiDoiTacDAO;
 import com.stoman.dao.PhieuDAO;
 import com.stoman.entity.DoiTac;
 import com.stoman.entity.LoaiDoiTac;
-import com.stoman.entity.Phieu;
 import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import java.util.List;
@@ -921,7 +920,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     // Xoá đối tác khỏi CSDL
     private void delete() {
         String message = "Các hàng hoá của đối tác đang lưu trữ trong kho sẽ bị xoá!"
-                + "\nBạn có muốn tiếp tục xoá đối tác này?";
+                + "\nBạn có chắc chắn xoá đối tác này?";
         if (MsgBox.confirm(this, message)) {
             try {
                 int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
@@ -979,7 +978,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
         this.fillToComboBox();
         this.fillToTable();
 
@@ -988,7 +987,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(300000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
 
 }

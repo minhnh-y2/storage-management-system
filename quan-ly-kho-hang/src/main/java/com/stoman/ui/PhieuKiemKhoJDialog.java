@@ -1712,7 +1712,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
         
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
@@ -1723,7 +1723,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
     
     // Đổ tên bảng vào combobox tìm kiếm

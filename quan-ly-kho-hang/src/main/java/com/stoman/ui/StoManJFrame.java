@@ -16,12 +16,10 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.io.File;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -37,13 +35,11 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.SubCategoryAxis;
 import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.RectangleEdge;
 
 /**
@@ -486,7 +482,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addComponent(lblDShangHoa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
@@ -495,7 +491,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                         .addComponent(lblDShangHoa1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -607,6 +603,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopLHH.getTableHeader().setReorderingAllowed(false);
         pnlTopLHH.setViewportView(tblTopLHH);
 
         separator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -623,6 +620,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopHH.getTableHeader().setReorderingAllowed(false);
         oblTopHH.setViewportView(tblTopHH);
 
         javax.swing.GroupLayout pnlTonKhoLayout = new javax.swing.GroupLayout(pnlTonKho);
@@ -642,7 +640,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTonKhoLayout.createSequentialGroup()
@@ -687,7 +685,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTheoLT)
                             .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTblLuuTru, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTblLuuTru, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTonKhoLayout.createSequentialGroup()
                         .addComponent(lblPhanLoaiHH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -715,7 +713,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTopHH))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                             .addComponent(pnlTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(separator12))
                 .addContainerGap())
@@ -841,6 +839,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopLHHNhap.getTableHeader().setReorderingAllowed(false);
         pnlTopLHHNhap.setViewportView(tblTopLHHNhap);
 
         separator19.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -857,6 +856,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopHHNhap.getTableHeader().setReorderingAllowed(false);
         oblTopHHNhap.setViewportView(tblTopHHNhap);
 
         javax.swing.GroupLayout pnlTKNhapLayout = new javax.swing.GroupLayout(pnlTKNhap);
@@ -876,7 +876,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTblTKnhap)
@@ -891,7 +891,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblDShangHoaNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator18, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblPhanLoaiN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlTongGTNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -970,7 +970,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopLHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1098,6 +1098,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopLHHXuat.getTableHeader().setReorderingAllowed(false);
         pnlTopLHHXuat.setViewportView(tblTopLHHXuat);
 
         separator28.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -1114,6 +1115,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopHHXuat.getTableHeader().setReorderingAllowed(false);
         oblTopHHXuat.setViewportView(tblTopHHXuat);
 
         javax.swing.GroupLayout pnlTKXuatLayout = new javax.swing.GroupLayout(pnlTKXuat);
@@ -1133,7 +1135,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTKXuatLayout.createSequentialGroup()
@@ -1145,10 +1147,10 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblDShangHoaXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTblTKxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE))
+                            .addComponent(lblTblTKxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator24, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblPhanXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(separator26, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1225,7 +1227,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1352,6 +1354,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopLHHTH.getTableHeader().setReorderingAllowed(false);
         pnlTopLHHTH.setViewportView(tblTopLHHTH);
 
         separator33.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -1368,6 +1371,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblTopHHTH.getTableHeader().setReorderingAllowed(false);
         oblTopHHTH.setViewportView(tblTopHHTH);
 
         lblKhoTH.setText("Kho");
@@ -1405,7 +1409,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTongHopLayout.createSequentialGroup()
@@ -1956,7 +1960,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboTimKiemTH;
     private javax.swing.JComboBox<String> cboTimKiemXuat;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator4;
@@ -2153,7 +2156,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.formatTable();
         this.loginStatus();
 
-        this.refeshForm();
+        this.refreshForm();
 
         this.fillToComboBoxTimKiem();
 
@@ -2633,14 +2636,14 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new DoiTacJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form giới thiệu phần mềm
     private void openGioiThieuDialog() {
         this.timer.stop();
         new GioiThieuJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form quản lý hàng hoá
@@ -2651,7 +2654,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new HangHoaJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form quản lý kho
@@ -2662,7 +2665,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new KhoJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form quản lý nhân viên
@@ -2677,7 +2680,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new NhanVienJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form quản lý phiếu kiểm kho
@@ -2688,7 +2691,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Mở form quản lý phiếu nhập xuất kho
@@ -2699,7 +2702,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
         this.timer.stop();
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
-        this.refeshForm();
+        this.refreshForm();
     }
 
     // Đổ dữ liệu vào ComboBox kho
@@ -3502,7 +3505,11 @@ public class StoManJFrame extends javax.swing.JFrame {
     
 
     // Đỗ lại dữ liệu 
-    public void refeshForm() {
+    public void refreshForm() {
+        tblLuuTru.setRowSorter(null);
+        tblTKnhap.setRowSorter(null);
+        tblTKxuat.setRowSorter(null);
+        tblTongHop.setRowSorter(null);
 
         this.fillToComboBoxKho();
         this.fillToComboBoxLoaiHangHoa();
@@ -3534,13 +3541,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTKnhap.setAutoCreateRowSorter(tblTKnhap.getRowCount() > 0);
         tblTKxuat.setAutoCreateRowSorter(tblTKxuat.getRowCount() > 0);
         tblTongHop.setAutoCreateRowSorter(tblTongHop.getRowCount() > 0);
-
+        
         this.timer.restart();
     }
 
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
-        refeshForm();
+        refreshForm();
     });
 
 }
