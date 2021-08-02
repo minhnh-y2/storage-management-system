@@ -13,30 +13,35 @@ import java.text.ParseException;
  * @author Huy
  */
 public class XNumber {
+
     private static DecimalFormat formater = new DecimalFormat();
-    
+
     /**
      * chuyển chuỗi thành kiểu số
+     *
      * @param num chuổi số
      * @return giá trị số
      */
-    public static Double toDouble(String num, String pattern){
-        try{
+    public static Double toDouble(String num, String pattern) {
+        try {
             formater.applyPattern(pattern);
             return formater.parse(num).doubleValue();
-        } catch (ParseException e){
+        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
-    
+
     /**
      * chuyển số thành chuổi theo kiểu
+     *
      * @param num giá trị số cần chuyển đổi
      * @param format kiểu biến đổi
-     * @return chuổi đã biến đổi từ số 
+     * @return chuổi đã biến đổi từ số
      */
-    public static String toString(Double num, String pattern){
-        if(num == null) return null;
+    public static String toString(Double num, String pattern) {
+        if (num == null) {
+            return null;
+        }
         formater.applyPattern(pattern);
 
         return formater.format(num);

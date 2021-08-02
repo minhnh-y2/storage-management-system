@@ -106,10 +106,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblNamTQ = new javax.swing.JLabel();
         cboNamTQ = new javax.swing.JComboBox<>();
         separator10 = new javax.swing.JSeparator();
-        lblNamTQ1 = new javax.swing.JLabel();
-        cboNamTQ1 = new javax.swing.JComboBox<>();
+        lblKhoTQ = new javax.swing.JLabel();
+        cboKhoTQ = new javax.swing.JComboBox<>();
         lblNamTQ2 = new javax.swing.JLabel();
         cboNamTQ2 = new javax.swing.JComboBox<>();
+        lblDShangHoa1 = new javax.swing.JLabel();
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
         lblTimKiemLT = new javax.swing.JLabel();
@@ -426,14 +427,14 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblNamTQ1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNamTQ1.setText("KHO");
+        lblKhoTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblKhoTQ.setText("KHO");
 
-        cboNamTQ1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboNamTQ1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboNamTQ1.addActionListener(new java.awt.event.ActionListener() {
+        cboKhoTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboKhoTQ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboKhoTQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNamTQ1ActionPerformed(evt);
+                cboKhoTQActionPerformed(evt);
             }
         });
 
@@ -441,35 +442,45 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblNamTQ2.setText("QUÝ");
 
         cboNamTQ2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboNamTQ2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNamTQ2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cả năm", "1", "2", "3", "4" }));
         cboNamTQ2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboNamTQ2ActionPerformed(evt);
             }
         });
 
+        lblDShangHoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDShangHoa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDShangHoa1.setText("Biểu đồ nhập xuất");
+
         javax.swing.GroupLayout pnlTongQuanLayout = new javax.swing.GroupLayout(pnlTongQuan);
         pnlTongQuan.setLayout(pnlTongQuanLayout);
         pnlTongQuanLayout.setHorizontalGroup(
             pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblDShangHoa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
-                        .addComponent(lblNamTQ1)
+                        .addGap(187, 187, 187)
+                        .addComponent(lblKhoTQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboNamTQ1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addComponent(cboKhoTQ, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
                         .addComponent(lblNamTQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
+                        .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
                         .addComponent(lblNamTQ2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
+                        .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlTongQuanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)))
                 .addComponent(separator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,14 +493,16 @@ public class StoManJFrame extends javax.swing.JFrame {
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                     .addGroup(pnlTongQuanLayout.createSequentialGroup()
+                        .addComponent(lblDShangHoa1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboNamTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNamTQ)
-                            .addComponent(lblNamTQ1)
-                            .addComponent(cboNamTQ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblKhoTQ)
+                            .addComponent(cboKhoTQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNamTQ2)
                             .addComponent(cboNamTQ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(separator10, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(10, 10, 10))
@@ -631,17 +644,17 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)))
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                                 .addComponent(lblTimKiemLT)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtTimKiemLT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTheoLT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTblLuuTru)
                             .addComponent(lblDShangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -704,7 +717,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTopHH))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                             .addComponent(pnlTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(separator12))
                 .addContainerGap())
@@ -876,7 +889,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTheoNhap)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblDShangHoaNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator18, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -916,7 +929,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblPhanLoaiN)
                             .addComponent(lblDShangHoaNhap))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(pnlTKNhapLayout.createSequentialGroup()
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboKhoNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -941,7 +954,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addComponent(pnlTongLGNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlTongGTNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlTKNhapLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTKNhapLayout.createSequentialGroup()
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(lblTimKiemNhap)
@@ -950,7 +963,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                         .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblTheoNhap)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTblTKnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblTblTKnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                     .addComponent(separator18, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator17, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1132,7 +1145,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTheoXuat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblDShangHoaXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblTblTKxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1173,15 +1186,15 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblPhanXuat)
                             .addComponent(lblDShangHoaXuat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlTKXuatLayout.createSequentialGroup()
+                        .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTKXuatLayout.createSequentialGroup()
                                 .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTheoXuat)
                                     .addComponent(lblTimKiemXuat)
                                     .addComponent(txtTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTblTKxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTblTKxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                             .addGroup(pnlTKXuatLayout.createSequentialGroup()
                                 .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblKhoXuat)
@@ -1214,7 +1227,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1385,10 +1398,10 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addComponent(lblTimKiemTH)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTimKiemTH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTheoTH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTblTongHop)
                             .addComponent(lblDSTongHop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1417,7 +1430,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongHopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhanTH)
@@ -1444,14 +1457,14 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlTongCCGTXuatNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlTongHopLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                                .addGap(6, 6, 6)
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTheoTH)
                                     .addComponent(lblTimKiemTH)
                                     .addComponent(txtTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(separator29))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator32, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1460,7 +1473,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1797,9 +1810,9 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableLuuTru();
     }//GEN-LAST:event_txtTimKiemLTKeyReleased
 
-    private void cboNamTQ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamTQ1ActionPerformed
+    private void cboKhoTQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKhoTQActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboNamTQ1ActionPerformed
+    }//GEN-LAST:event_cboKhoTQActionPerformed
 
     private void cboNamTQ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamTQ2ActionPerformed
         // TODO add your handling code here:
@@ -1859,6 +1872,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cboKhoLT;
     private javax.swing.JComboBox cboKhoNhap;
     private javax.swing.JComboBox cboKhoTH;
+    private javax.swing.JComboBox<String> cboKhoTQ;
     private javax.swing.JComboBox cboKhoXuat;
     private javax.swing.JComboBox cboLoaiHangHoaLT;
     private javax.swing.JComboBox cboLoaiHangHoaNhap;
@@ -1866,7 +1880,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cboNamNhap;
     private javax.swing.JComboBox cboNamTH;
     private javax.swing.JComboBox<String> cboNamTQ;
-    private javax.swing.JComboBox<String> cboNamTQ1;
     private javax.swing.JComboBox<String> cboNamTQ2;
     private javax.swing.JComboBox cboNamXuat;
     private javax.swing.JComboBox cboThangNhap;
@@ -1881,12 +1894,14 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JLabel lblDSTongHop;
     private javax.swing.JLabel lblDShangHoa;
+    private javax.swing.JLabel lblDShangHoa1;
     private javax.swing.JLabel lblDShangHoaNhap;
     private javax.swing.JLabel lblDShangHoaXuat;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblKhoLT;
     private javax.swing.JLabel lblKhoNhap;
     private javax.swing.JLabel lblKhoTH;
+    private javax.swing.JLabel lblKhoTQ;
     private javax.swing.JLabel lblKhoXuat;
     private javax.swing.JLabel lblLoaiHangHoaLT;
     private javax.swing.JLabel lblLoaiHangHoaNhap;
@@ -1897,7 +1912,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNamNhap2;
     private javax.swing.JLabel lblNamTH;
     private javax.swing.JLabel lblNamTQ;
-    private javax.swing.JLabel lblNamTQ1;
     private javax.swing.JLabel lblNamTQ2;
     private javax.swing.JLabel lblPhanLoaiHH;
     private javax.swing.JLabel lblPhanLoaiN;
@@ -2387,11 +2401,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         DefaultComboBoxModel model2 = new DefaultComboBoxModel();
         DefaultComboBoxModel model3 = new DefaultComboBoxModel();
         DefaultComboBoxModel model4 = new DefaultComboBoxModel();
+        DefaultComboBoxModel model5 = new DefaultComboBoxModel();
 
         model1.removeAllElements();
         model2.removeAllElements();
         model3.removeAllElements();
         model4.removeAllElements();
+        model5.removeAllElements();
 
         try {
             List<Kho> list = kDAO.selectAll();
@@ -2399,18 +2415,21 @@ public class StoManJFrame extends javax.swing.JFrame {
             model2.addElement(new String("Tất cả"));
             model3.addElement(new String("Tất cả"));
             model4.addElement(new String("Tất cả"));
+            model5.addElement(new String("Tất cả"));
 
             for (Kho k : list) {
                 model1.addElement(k);
                 model2.addElement(k);
                 model3.addElement(k);
                 model4.addElement(k);
+                model5.addElement(k);
             }
 
             cboKhoLT.setModel(model1);
             cboKhoNhap.setModel(model2);
             cboKhoXuat.setModel(model3);
             cboKhoTH.setModel(model4);
+            cboKhoTQ.setModel(model5);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -2452,7 +2471,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
     }
 
-    // Đổ dữ liệu vào ComboBox năm tháng
+    // Đổ dữ liệu vào ComboBox năm tháng    
     private void fillToComboBoxNamNhap() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
@@ -2530,7 +2549,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
     }
 
-    private void fillToComboBoxNamXuatNhap() {
+    private void fillToComboBoxNamTQ() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
         model.removeAllElements();
@@ -2816,11 +2835,11 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         this.fillToComboBoxKho();
         this.fillToComboBoxLoaiHangHoa();
+        this.fillToComboBoxNamTQ();
         this.fillToComboBoxNamNhap();
         this.fillToComboBoxThangNhap();
         this.fillToComboBoxNamXuat();
         this.fillToComboBoxThangXuat();
-        this.fillToComboBoxNamXuatNhap();
         this.fillToComboBoxNamTongHop();
 
         this.fillToChartTongQuan();
