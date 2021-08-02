@@ -234,7 +234,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     //  Đăng nhập và lưu thông tin tài khoản.
     private void login() {
-        if(isValidated()) {
+        if(!isValidated()) {
+           return;
+        }
+        try {
             String maNV = txtTenNV.getText();
             String matKhau = new String(txtMatKhau.getPassword());
             NhanVien nv = dao.selectByID(maNV);
@@ -253,6 +256,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             
             Auth.user = nv;
             this.dispose();
+        } catch (Exception e) {
+            MsgBox.alert(this, "Không thể đăng nhập!");
+            e.printStackTrace();
         }
     }
 
