@@ -59,47 +59,51 @@ public class ThongKeDAO {
 
         if (keyword.length() > 0) {
              sql = "SELECT * FROM (" + sql + ") AS BANGPHU WHERE " + cols[index] + " LIKE ?";
-            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", "%" + nam + "%", "%" + thang + "%", "%" + keyword + "%");
+            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", nam, "%" + thang + "%", "%" + keyword + "%");
         }
 
-        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", "%" + nam + "%", "%" + thang + "%");
+        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", nam, "%" + thang + "%");
     }
 
     public List<Object[]> getListXuat(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
         String[] cols = {"TENHH", "SOLUONGXUAT", "SLXUATTB", "GIAXUATTB", "TONGGIATRIXUAT"};
         String sql = "SELECT TENHH, SUM(SOLUONGXUAT) AS SOLUONGXUAT, AVG(SLXUATTB) AS SLXUATTB, AVG(GIAXUATTB) AS GIAXUATTB, SUM(TONGGIATRIXUAT) AS TONGGIATRIXUAT FROM V_HANG_XUAT "
-                + "WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM LIKE ? AND THANG LIKE ?"
+                + "WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM = ? AND THANG LIKE ?"
                 + " GROUP BY TENHH";
 
         if (keyword.length() > 0) {
             sql = "SELECT * FROM (" + sql + ") AS BANGPHU WHERE " + cols[index] + " LIKE ?";
-            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", "%" + nam + "%", "%" + thang + "%", "%" + keyword + "%");
+            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", nam, "%" + thang + "%", "%" + keyword + "%");
         }
 
-        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", "%" + nam + "%", "%" + thang + "%");
+        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%",nam, "%" + thang + "%");
     }
 
-    public List<Object[]> getListTongHop(String maKho, int nam, String keyword, Integer index) {
-        String[] cols = {"THANG", "XUATTRONGTHANG", "TONGGTXUAT", "NHAPTRONGTHANG", "TONGGTNHAP", "TONGGTXUATNHAP"};
-        String sql = "SELECT THANG, SUM(XUATTRONGTHANG) AS XUATTRONGTHANG, SUM(TONGGTXUAT) AS TONGGTXUAT, "
-                    + "SUM(NHAPTRONGTHANG) AS NHAPTRONGTHANG, SUM(TONGGTNHAP) AS TONGGTNHAP, "
-                    + "SUM(TONGGTXUATNHAP) AS TONGGTXUATNHAP FROM V_TONGHOP "
-                    + "WHERE MAKHO LIKE ? AND NAM LIKE ? "
-                    + "GROUP BY THANG";
+    public List<Object[]> getListTongHop(String maKho, String maLHH, String thang, String nam, String keyword, Integer index) {
+        String[] cols = {"TENHH", "GIATRIXUATNHAP", "GTCHENHLECHTB", "CHENHLECHNHAPXUATTB", "TONGGIATRIXUAT", "TONGGIATRINHAP" };
+        String sql = "SELECT TENHH, "
+                    + "SUM(GIATRIXUATNHAP) AS GIATRIXUATNHAP, "
+                    + "AVG(GTCHENHLECHTB) AS GTCHENHLECHTB, "
+                    + "ROUND(AVG(CHENHLECHNHAPXUAT),0) AS CHENHLECHNHAPXUATTB, "
+                    + "SUM(TONGGIATRIXUAT) AS TONGGIATRIXUAT, "
+                    + "SUM(TONGGIATRINHAP) AS TONGGIATRINHAP "
+                    + "FROM V_TONGHOP "
+                    + "WHERE MAKHO LIKE ? AND MALHH LIKE ? AND NAM = ? AND THANG LIKE ? "
+                    + "GROUP BY TENHH";
 
         if (keyword.length() > 0) {
             sql = "SELECT * FROM (" + sql + ") AS BANGPHU WHERE " + cols[index] + " LIKE ?";
-            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + nam + "%", "%" + keyword + "%");
+            return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", nam, "%" + thang + "%", "%" + keyword + "%");
         }
 
-        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + nam + "%");
+        return this.getListOfArray(sql, cols, "%" + maKho + "%", "%" + maLHH + "%", nam, "%" + thang + "%");
     }
 
-    public List<Object[]> getListTongQuan(Integer nam) {
+    public List<Object[]> getListTongQuan(Integer nam, String kho) {
         String[] cols = {"THANG", "TONGLUONGXUAT", "TONGLUONGNHAP", "NAM"};
-        String sql = "SELECT * FROM V_NHAP_XUAT WHERE NAM = ?";
+        String sql = "SELECT * FROM V_NHAP_XUAT WHERE NAM = ? AND MAKHO LIKE ?";
 
-        return this.getListOfArray(sql, cols, nam);
+        return this.getListOfArray(sql, cols, nam, "%" + kho + "%");
     }
 
     public List<Object[]> getListThangNhap(Integer nam) {
@@ -149,6 +153,7 @@ public class ThongKeDAO {
         String sql = "SELECT SUM(SOLUONG) AS TONGLUONGSP FROM LUUTRU ";
 
         return this.getListOfArray(sql, cols);
+        
     }
 
     public List<Object[]> getListNamTongHop() {
@@ -156,5 +161,68 @@ public class ThongKeDAO {
         String sql = "SELECT DISTINCT NAM FROM V_NHAP_XUAT ORDER BY NAM";
 
         return this.getListOfArray(sql, cols);
+    }
+    
+    public List<Object[]> getListThangTongHop(Integer nam) {
+        String[] cols = {"THANG"};
+        String sql = "SELECT DISTINCT THANG FROM V_TONGHOP WHERE NAM = ? ORDER BY THANG";
+
+        return this.getListOfArray(sql, cols, nam);
+    }
+    
+    public List<Object[]> getListTop10LTLHH(String maKho){
+        String[] cols = {"TENLHH", "SOLUONGTON"};
+        String sql = "EXEC SP_T10LHHLUUTRU ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%");
+    }
+    
+    public List<Object[]> getListTop10LTHH(String maKho, String maLHH){
+        String[] cols = {"TENHH", "SOLUONGTON"};
+        String sql = "EXEC SP_T10HHLUUTRU ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%");
+    }    
+    
+    public List<Object[]> getListTop10NLHH(String maKho, String thang, String nam){
+        String[] cols = {"TENLHH", "SOLUONGNHAP"};
+        String sql = "EXEC SP_T10LHHNHAP ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+thang+"%", nam); 
+    }
+    
+    public List<Object[]> getListTop10NHH(String maKho, String maLHH, String thang, String nam){
+        String[] cols = {"TENHH", "SOLUONGNHAP"};
+        String sql = "EXEC SP_T10HHNHAP ?, ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+thang+"%", nam);
+    }
+    
+    public List<Object[]> getListTop10XLHH(String maKho, String thang, String nam){
+        String[] cols = {"TENLHH", "SOLUONGXUAT"};
+        String sql = "EXEC SP_T10LHHXUAT ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+thang+"%", nam); 
+    }
+    
+    public List<Object[]> getListTop10XHH(String maKho, String maLHH, String thang, String nam){
+        String[] cols = {"TENHH", "SOLUONGXUAT"};
+        String sql = "EXEC SP_T10HHXUAT ?, ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+thang+"%", nam);
+    }
+    
+    public List<Object[]> getListTop10THLHH(String maKho, String thang, String nam){
+        String[] cols = {"TENLHH", "TONGGIATRIXUATNHAP", "TONGGTCHENHLECHTB"};
+        String sql = "EXEC SP_T10LHHTH ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+thang+"%", nam); 
+    }
+    
+    public List<Object[]> getListTop10THHH(String maKho, String maLHH, String thang, String nam){
+        String[] cols = {"TENHH", "TONGGIATRIXUATNHAP", "TONGGTCHENHLECHTB"};
+        String sql = "EXEC SP_T10HHTH ?, ?, ?, ?";
+        
+        return this.getListOfArray(sql, cols, "%"+maKho+"%", "%"+maLHH+"%", "%"+thang+"%", nam);
     }
 }
