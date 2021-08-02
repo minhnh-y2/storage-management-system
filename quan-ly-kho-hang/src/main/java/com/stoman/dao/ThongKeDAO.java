@@ -100,8 +100,11 @@ public class ThongKeDAO {
     }
 
     public List<Object[]> getListTongQuan(Integer nam, String kho) {
-        String[] cols = {"THANG", "TONGLUONGXUAT", "TONGLUONGNHAP", "NAM"};
-        String sql = "SELECT * FROM V_NHAP_XUAT WHERE NAM = ? AND MAKHO LIKE ?";
+        String[] cols = {"THANG", "TONGLUONGXUAT", "TONGLUONGNHAP"};
+        String sql = "SELECT THANG, SUM(TONGLUONGXUAT) AS TONGLUONGXUAT, SUM(TONGLUONGNHAP) AS TONGLUONGNHAP " 
+                        + "FROM V_NHAP_XUAT "
+                        +"WHERE NAM = ? AND MAKHO LIKE ? " 
+                        +"GROUP BY THANG";
 
         return this.getListOfArray(sql, cols, nam, "%" + kho + "%");
     }

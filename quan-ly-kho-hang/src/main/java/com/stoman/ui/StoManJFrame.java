@@ -1873,11 +1873,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.fillToTableTop10HHTH();
         this.fillToTableTop10LHHTH();
+        this.fillToTableTongHop();
     }//GEN-LAST:event_cboThangTHActionPerformed
 
     private void cboLoaiHangHoaTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiHangHoaTHActionPerformed
         // TODO add your handling code here:
         this.fillToTableTop10HHTH();
+        this.fillToTableTongHop();
     }//GEN-LAST:event_cboLoaiHangHoaTHActionPerformed
 
     /**
@@ -2195,7 +2197,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblTKnhap.setModel(tblNhapModel);
 
-        String headerXuat[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG XUẤT", "NHẬP TB", "GIÁ NHẬP TB", "TỔNG GIÁ TRỊ"};
+        String headerXuat[] = {"STT", "HÀNG HÓA", "SỐ LƯỢNG XUẤT", "XUẤT TB", "GIÁ XUẤT TB", "TỔNG GIÁ TRỊ"};
         tblXuatModel = new DefaultTableModel(headerXuat, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -2212,7 +2214,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblTKxuat.setModel(tblXuatModel);
 
-        String headerTH[] = {"STT", "LOẠI HÀNG HÓA", "TỔNG GIÁ TRỊ XUẤT NHẬP", "LỢI NHUẬN TB", "TỒN DƯ TRUNG BÌNH"};
+        String headerTH[] = {"STT", "LOẠI HÀNG HÓA", "TỔNG GIÁ TRỊ XUẤT NHẬP", "LỢI NHUẬN TB"};
         tblTongHopModel = new DefaultTableModel(headerTH, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -2413,7 +2415,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTongHop.getColumnModel().getColumn(1).setPreferredWidth(600);
         tblTongHop.getColumnModel().getColumn(2).setPreferredWidth(200);
         tblTongHop.getColumnModel().getColumn(3).setPreferredWidth(200);
-        tblTongHop.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         tblTopLHHTH.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopLHHTH.getColumnModel().getColumn(1).setPreferredWidth(150);
@@ -3166,8 +3167,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     i++,
                     rs[0],
                     rs[1],
-                    rs[2],
-                    rs[3]
+                    rs[2]
                 };
                 sumXuatNhap += (Double) rs[2];
                 sumXuat += (Double) rs[4];
