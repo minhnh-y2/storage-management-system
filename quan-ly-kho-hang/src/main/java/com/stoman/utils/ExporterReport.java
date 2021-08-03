@@ -54,7 +54,7 @@ public class ExporterReport {
     }
 
     private static String choosePathFileSave(String fileName) {
-        JFileChooser fileChooser = new JSystemFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PDF Documents", "pdf"));
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Microsoft Excel Documents", "xlsx"));
