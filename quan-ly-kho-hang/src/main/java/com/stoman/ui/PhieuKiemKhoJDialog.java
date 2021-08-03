@@ -35,9 +35,11 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -1448,7 +1450,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     private void formatTable() {
-        String[] headerPhieuKiem = {"STT", "KHO", "NGÀY KIỂM", "TRẠNG THÁI", "MÃ NHÂN VIÊN", "NGÀY LẬP", "MÃ PHIẾU"};
+        String[] headerPhieuKiem = {"STT", "KHO", "NGÀY KIỂM", "TRẠNG THÁI", "NGƯỜI LẬP", "NGÀY LẬP", "MÃ PHIẾU"};
         this.modelPhieuKiem = new DefaultTableModel(headerPhieuKiem, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1560,7 +1562,17 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblPhieuKiemKho.getColumnModel().getColumn(3).setPreferredWidth(185);
         tblPhieuKiemKho.getColumnModel().getColumn(4).setPreferredWidth(185);
         tblPhieuKiemKho.getColumnModel().getColumn(5).setPreferredWidth(186);
-
+        
+        // Định dạng form ra giữa
+//        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+//        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+//
+//        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+//        tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+//        
+//        tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+//        tblPhieuKiemKho.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);        
+        
     }
 
     private void createQRCode() {
