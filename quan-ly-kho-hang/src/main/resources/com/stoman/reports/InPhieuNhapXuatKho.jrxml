@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InPhieuNhapXuatKho" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f2cbbbe2-f169-4e63-b403-2dd93c56c556">
-	<property name="ireport.zoom" value="2.143588810000009"/>
-	<property name="ireport.x" value="21"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.9487171000000083"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="140"/>
 	<style name="tblCTPhieu">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -54,6 +54,8 @@ WHERE
 	<queryString>
 		<![CDATA[SELECT DISTINCT
      IIF(PHIEU."LOAI" = 0, N'PHIẾU NHẬP KHO', N'PHIẾU XUẤT KHO') AS PHIEU_LOAIPHIEU,
+     IIF(PHIEU."LOAI" = 0, N'Nhập từ:', N'Xuất cho:') AS PHIEU_LOAIPHIEU2,
+IIF(PHIEU."LOAI" = 0, N'Đối tác:', N'Khách hàng') AS PHIEU_KYTEN,
      PHIEU."MAPHIEU" AS PHIEU_MAPHIEU,
      PHIEU."NGAYLAP" AS PHIEU_NGAYLAP,
      LUUTRU."MAKHO" AS LUUTRU_MAKHO,
@@ -72,6 +74,8 @@ WHERE
      PHIEU."MAPHIEU" = $P{MAPHIEU}]]>
 	</queryString>
 	<field name="PHIEU_LOAIPHIEU" class="java.lang.String"/>
+	<field name="PHIEU_LOAIPHIEU2" class="java.lang.String"/>
+	<field name="PHIEU_KYTEN" class="java.lang.String"/>
 	<field name="PHIEU_MAPHIEU" class="java.lang.Integer"/>
 	<field name="PHIEU_NGAYLAP" class="java.sql.Timestamp"/>
 	<field name="LUUTRU_MAKHO" class="java.lang.Integer"/>
@@ -159,7 +163,7 @@ WHERE
 		</band>
 	</title>
 	<pageHeader>
-		<band height="55">
+		<band height="75">
 			<staticText>
 				<reportElement x="357" y="20" width="93" height="15" uuid="c51da684-d683-4f79-b911-c2adb594f2f6"/>
 				<textElement verticalAlignment="Middle">
@@ -175,14 +179,7 @@ WHERE
 				<text><![CDATA[Ngày thực hiện:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="17" y="0" width="63" height="15" uuid="a8ab2e46-650c-424d-93bb-792a0ccdd065"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="DejaVu Sans"/>
-				</textElement>
-				<text><![CDATA[Tên đối tác:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="17" y="20" width="63" height="15" uuid="9ab9a187-a27b-4c99-bfe0-2336938ed56d"/>
+				<reportElement x="21" y="20" width="59" height="15" uuid="9ab9a187-a27b-4c99-bfe0-2336938ed56d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
@@ -213,14 +210,14 @@ WHERE
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{PHIEU_NGHOANTHANH})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="17" y="40" width="63" height="15" uuid="a03a2960-ebc5-4571-ab9e-ef325596ff6e"/>
+				<reportElement x="21" y="60" width="59" height="15" uuid="a03a2960-ebc5-4571-ab9e-ef325596ff6e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<text><![CDATA[Ghi chú:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="80" y="40" width="443" height="15" uuid="5347aaa9-de66-4fe5-bdc3-06c641775d75"/>
+				<reportElement x="80" y="60" width="443" height="15" uuid="5347aaa9-de66-4fe5-bdc3-06c641775d75"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
 					<paragraph leftIndent="5"/>
@@ -235,10 +232,21 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DOITAC_TENDT}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="21" y="0" width="59" height="15" uuid="a640a460-1be6-4655-87ca-052bdc8562b7"/>
+				<textFieldExpression><![CDATA[$F{PHIEU_LOAIPHIEU2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="357" y="40" width="77" height="15" uuid="55faf898-d64d-4418-b340-5ea8952f93ea"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<text><![CDATA[Đã thanh toán:]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="280" splitType="Stretch">
+		<band height="135" splitType="Stretch">
 			<componentElement>
 				<reportElement key="tblCTPhieu" style="tblCTPhieu" x="0" y="28" width="555" height="80" uuid="bcd023ff-d97d-497b-b8c7-755088027422"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -363,6 +371,40 @@ WHERE
 					</jr:column>
 				</jr:table>
 			</componentElement>
+		</band>
+		<band height="111">
+			<staticText>
+				<reportElement x="66" y="0" width="100" height="20" uuid="25742ea8-2207-4a86-b005-01af981a90bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Ký tên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="20" width="100" height="20" uuid="1421e705-b8d1-4608-8a87-8d3166efe09c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhân viên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="0" width="100" height="20" uuid="53f1d20c-fc19-41c5-b9bc-190175281576"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Ký tên]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="20" width="100" height="20" uuid="771d03bd-b632-403d-be94-e08728695b34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PHIEU_KYTEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="96" width="172" height="15" uuid="820f83f1-93e2-4d0a-90a1-b34f42340625"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NHANVIEN_TENNV}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
