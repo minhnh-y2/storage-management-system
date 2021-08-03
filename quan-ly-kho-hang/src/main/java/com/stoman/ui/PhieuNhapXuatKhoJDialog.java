@@ -44,6 +44,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -1374,28 +1375,34 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void fillToTablePhieu() {
         tblPhieu.setRowSorter(null);
         modelPhieu.setRowCount(0);
-        List<Phieu> list = pDAO.selectAll();
-        int i = 1;
-        for (Phieu p : list) {
-            int maLT = ctpDAO.getOnlyOneMaLT(p.getMaPhieu());
-            if (maLT == 0) {
-                continue;
+        
+        new SwingWorker<DefaultTableModel, Void>() {
+            @Override
+            protected DefaultTableModel doInBackground() throws Exception {
+                List<Phieu> list = pDAO.selectAll();
+                int i = 1;
+                for (Phieu p : list) {
+                    int maLT = ctpDAO.getOnlyOneMaLT(p.getMaPhieu());
+                    if (maLT == 0) {
+                        continue;
+                    }
+                    int maKho = ltDAO.getMaKho(maLT);
+                    Kho k = kDAO.selectByID(maKho);
+                    modelPhieu.addRow(new Object[]{
+                        i++,
+                        dtDAO.getTenDT(p.getMaDT()),
+                        p.isLoai() ? "Nhập" : "Xuất",
+                        k.getMaKho(),
+                        p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
+                        p.getNgThucHien(),
+                        p.getNgHoanThanh(),
+                        p.getNgayLap(),
+                        p
+                    });
+                }
+                return modelPhieu;
             }
-            int maKho = ltDAO.getMaKho(maLT);
-            Kho k = kDAO.selectByID(maKho);
-            modelPhieu.addRow(new Object[]{
-                i++,
-                dtDAO.getTenDT(p.getMaDT()),
-                p.isLoai() ? "Nhập" : "Xuất",
-                k.getMaKho(),
-                p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                p.getNgThucHien(),
-                p.getNgHoanThanh(),
-                p.getNgayLap(),
-                p
-            });
-        }
-
+        }.execute();
     }
 
     // Đổ dữ liệu chi tiết phiếu
