@@ -36,6 +36,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -1168,26 +1169,32 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void fillToTablePhieuKiem() {
         modelPhieuKiem.setRowCount(0);
         try {
-            List<PhieuKiemKho> list = pkkDAO.selectAll();
-            int i = 1;
-            for (PhieuKiemKho pkk : list) {
-                int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
-                if (maLT == 0) {
-                    continue;
+            new SwingWorker<DefaultTableModel, Void>() {
+                @Override
+                protected DefaultTableModel doInBackground() throws Exception {
+                    List<PhieuKiemKho> list = pkkDAO.selectAll();
+                    int i = 1;
+                    for (PhieuKiemKho pkk : list) {
+                        int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
+                        if (maLT == 0) {
+                            continue;
+                        }
+                        int maKho = ltDAO.getMaKho(maLT);
+                        Kho kho = kDAO.selectByID(maKho);
+                        modelPhieuKiem.addRow(new Object[]{
+                            i++,
+                            kho.getMaKho(),
+                            pkk.getNgayKiem(),
+                            pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
+                            pkk.getMaNV(),
+                            pkk.getNgayLap(),
+                            pkk.getMaKK()
+                        });
+                    }
+                    return modelPhieuKiem;
                 }
-                int maKho = ltDAO.getMaKho(maLT);
-                Kho kho = kDAO.selectByID(maKho);
-                modelPhieuKiem.addRow(new Object[]{
-                    i++,
-                    kho.getMaKho(),
-                    pkk.getNgayKiem(),
-                    pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                    pkk.getMaNV(),
-                    pkk.getNgayLap(),
-                    pkk.getMaKK()
-                });
-            }
-            tblPhieuKiemKho.setModel(modelPhieuKiem);
+            }.execute();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
