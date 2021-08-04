@@ -15,10 +15,12 @@ public class Phieu {
 
     private Integer maPhieu;
     private Date ngayLap = new Date();
-    private boolean loai = true;
-    private boolean trangThai = true;
+    private boolean loai;
+    private boolean trangThai;
     private Date NgThucHien;
     private Date NgHoanThanh;
+    private double soTienThanhToan;
+    private boolean tinhTrangThanhToan;
     private int maDT;
     private String maNV;
     private String ghiChu;
@@ -117,4 +119,22 @@ public class Phieu {
         Phieu other = (Phieu) obj;
         return other.getMaPhieu() == this.getMaPhieu();
     }
+
+    public double getSoTienThanhToan() {
+        return soTienThanhToan;
+    }
+
+    public void setSoTienThanhToan(double soTienThanhToan) {
+        this.soTienThanhToan = soTienThanhToan;
+    }
+
+    public boolean isTinhTrangThanhToan() {
+        return tinhTrangThanhToan;
+    }
+
+    public void setTinhTrangThanhToan(boolean tinhTrangThanhToan) {
+        this.tinhTrangThanhToan = tinhTrangThanhToan;
+    }
+    
+    
 }
