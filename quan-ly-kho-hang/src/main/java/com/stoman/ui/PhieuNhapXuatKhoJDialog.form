@@ -500,11 +500,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="pnlThongTinPhieu" alignment="0" max="32767" attributes="0"/>
                               <Component id="peparator" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="pnlNutDieuHuong" min="-2" pref="373" max="-2" attributes="0"/>
-                                          <EmptySpace pref="172" max="32767" attributes="0"/>
+                                          <EmptySpace pref="132" max="32767" attributes="0"/>
                                           <Component id="pnlChucNangMoRong" min="-2" pref="220" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -517,10 +517,15 @@
                                           <Component id="cboTimKiemCTPhieu" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="pnlTblCTPhieu_sub" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblTrangThai1" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlChucNang" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="pnlChucNang" max="32767" attributes="0"/>
+                                      <Component id="lblTrangThai2" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <Component id="lblTrangThai3" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -529,11 +534,18 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="lblTrangThai3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnlThongTinPhieu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="peparator" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblTrangThai1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTrangThai2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -543,14 +555,14 @@
                                       <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlTblCTPhieu_sub" pref="226" max="32767" attributes="0"/>
+                                  <Component id="pnlTblCTPhieu_sub" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="pnlChucNangMoRong" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="pnlNutDieuHuong" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="pnlChucNang" max="32767" attributes="0"/>
+                              <Component id="pnlChucNang" pref="246" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -597,10 +609,10 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
-                            <Column editable="false" title="Title 1" type="java.lang.Integer"/>
-                            <Column editable="false" title="Title 2" type="java.lang.Object"/>
-                            <Column editable="false" title="Title 3" type="java.lang.Object"/>
-                            <Column editable="false" title="Title 4" type="java.lang.Object"/>
+                            <Column editable="true" title="null" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -718,9 +730,18 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="669" max="-2" attributes="0"/>
-                              <Component id="lblTongTien" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTongTien" pref="172" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chkChuyenHang" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkThanhToan" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -740,17 +761,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jSeparator2" min="-2" pref="6" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblTrangThai" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="chkHoanThanh1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="chkHoanThanh" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="lblTrangThai" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -790,13 +802,13 @@
                                                   </Group>
                                                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jFormattedTextField1" pref="232" max="32767" attributes="0"/>
                                                       <Component id="jSeparator3" max="32767" attributes="0"/>
                                                       <Component id="jSeparator4" max="32767" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="102" attributes="0">
                                                           <Component id="lblTongTienTitle1" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                          <EmptySpace min="0" pref="118" max="32767" attributes="0"/>
                                                       </Group>
+                                                      <Component id="txtDaThanhToan" pref="212" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -812,7 +824,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="lblTongTien" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="195" max="32767" attributes="0"/>
+                              <EmptySpace pref="133" max="32767" attributes="0"/>
+                              <Component id="chkChuyenHang" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chkThanhToan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -826,15 +842,11 @@
                                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblTongTienTitle1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField1" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="txtDaThanhToan" min="-2" pref="31" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jSeparator3" min="-2" pref="2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="lblTrangThai" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="chkHoanThanh" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="chkHoanThanh1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -888,9 +900,13 @@
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="btnGrpLoaiPhieu"/>
                         </Property>
+                        <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u nh&#x1ead;p"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rdoPhieuNhapStateChanged"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblNgayLap">
                       <Properties>
@@ -916,21 +932,12 @@
                         <Property name="text" type="java.lang.String" value="Ng&#xe0;y th&#x1ef1;c hi&#x1ec7;n"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="chkHoanThanh1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh thanh to&#xe1;n"/>
-                        <Property name="opaque" type="boolean" value="false"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkHoanThanh1MouseClicked"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblTongTienTitle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n"/>
+                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n c&#x1ea7;n thanh to&#xe1;n"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblNgayHoanThanh">
@@ -951,10 +958,10 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtMaNV">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
+                        <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cboDoiTac">
@@ -980,10 +987,19 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="text" type="java.lang.String" value="0.0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+                    <Component class="javax.swing.JFormattedTextField" name="txtDaThanhToan">
+                      <Properties>
+                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                          <Format format="#,##0.0" subtype="-1" type="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="0.0"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="0"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblLoaiDT">
                       <Properties>
@@ -1061,13 +1077,13 @@
                     </Container>
                     <Component class="javax.swing.JFormattedTextField" name="txtNgayLap">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                           <Format format="dd-MM-yyyy HH:mm:ss" subtype="-1" type="1"/>
                         </Property>
                         <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
                         </Property>
+                        <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cboLoaiDT">
@@ -1114,13 +1130,23 @@
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="chkHoanThanh">
+                    <Component class="javax.swing.JCheckBox" name="chkChuyenHang">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh chuy&#x1ec3;n h&#xe0;ng"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkHoanThanhMouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkChuyenHangMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="chkThanhToan">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh thanh to&#xe1;n"/>
+                        <Property name="opaque" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkThanhToanMouseClicked"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkThanhToanActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1258,6 +1284,33 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="lblTrangThai1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="CHI TI&#x1ebe;T PHI&#x1ebe;U"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTrangThai2">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="CH&#x1ee8;C N&#x102;NG"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTrangThai3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN PHI&#x1ebe;U"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlDanhSach">
@@ -1283,12 +1336,12 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblTimKiemPhieu2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cboTimKiemPhieu" pref="210" max="32767" attributes="0"/>
+                          <Component id="cboTimKiemPhieu" pref="170" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="891" max="32767" attributes="0"/>
+                          <Component id="scrollPane2" pref="851" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1362,6 +1415,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPhieuMouseClicked"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPhieuPropertyChange"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1414,7 +1468,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblTieuDe" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="641" max="32767" attributes="0"/>
+                      <EmptySpace pref="601" max="32767" attributes="0"/>
                       <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>

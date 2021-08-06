@@ -103,4 +103,19 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
         return selectBySQL(sql, maKho);
     }
     
+    public double getSoLuong(Integer maKho, String maHH){
+        String sql = "SELECT * FROM LUUTRU WHERE MAKHO = ? AND MAHH = ?";
+        List<LuuTru> l = this.selectBySQL(sql, maKho, maHH);
+        
+        return l.size()>0?l.get(0).getSoLuong():-1.0;
+    }
+    
+    
+    public Integer getMaLT(Integer maKho, String maHH){
+        String sql = "SELECT * FROM LUUTRU WHERE MAKHO = ? AND MAHH = ?";
+        List<LuuTru> l = this.selectBySQL(sql, maKho, maHH);
+        
+        return l.size()>0?l.get(0).getMaLT():0;
+    }
+    
 }

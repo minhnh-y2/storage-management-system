@@ -88,7 +88,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
     @Override
     public List<Phieu> selectAll() {
         String sql = "SELECT * FROM PHIEU";
-        return selectBySQL(sql);
+        return selectBySQLTest(sql);
     }
 
     @Override

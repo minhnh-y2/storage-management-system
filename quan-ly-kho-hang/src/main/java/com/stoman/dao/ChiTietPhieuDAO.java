@@ -154,4 +154,10 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer> {
         List<ChiTietPhieu> list = this.selectByMaPhieuTest(maPhieu);
         return list.size() > 0 ? list.get(0).getMaLT() : 0;
     }
+    
+    public Integer getMaCTP(Integer maPhieu, Integer maLT) {
+        String sql = "SELECT MACTP FROM CHITIETPHIEU WHERE MAPHIEU = ? AND MALT = ?";
+        
+        return (Integer) XJdbc.value(sql, maPhieu, maLT);
+    }
 }

@@ -98,5 +98,10 @@ public class HangHoaDAO extends StoManDAO<HangHoa, String>{
         String sql = "SELECT * FROM HANGHOA WHERE MALHH = ?";
         return this.selectBySQL(sql, maLHH);
     }
+    
+    public List<HangHoa> selectByLoaiHangHoaCoLT(Integer maLHH, Integer maKho) {
+        String sql = "SELECT * FROM HANGHOA HH INNER JOIN LUUTRU LT ON LT.MAHH = HH.MAHH WHERE MALHH = ? AND MAKHO = ? AND SOLUONG > 0";
+        return this.selectBySQL(sql, maLHH, maKho);
+    }
 
 }
