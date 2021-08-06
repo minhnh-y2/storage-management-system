@@ -27,6 +27,16 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer> {
                 entity.getSoLuong(),
                 entity.getDonGia());
     }
+    
+    public void insertTest(ChiTietPhieu entity) {
+        String sql = "INSERT INTO CHITIETPHIEU (MAPHIEU, MALT, SOLUONG, DONGIA, TRANGTHAI) VALUES (?, ?, ?, ?)";
+        XJdbc.update(sql,
+                entity.getMaPhieu(),
+                entity.getMaLT(),
+                entity.getSoLuong(),
+                entity.getDonGia(),
+                entity.isTrangThai());
+    }
 
     @Override
     public void update(ChiTietPhieu entity) {
@@ -36,6 +46,17 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer> {
                 entity.getMaLT(),
                 entity.getSoLuong(),
                 entity.getDonGia(),
+                entity.getMaCTP());
+    }
+    
+    public void updateTest(ChiTietPhieu entity) {
+        String sql = "UPDATE CHITIETPHIEU SET MAPHIEU=?, MALT=?, SOLUONG=?, DONGIA=?, TRANGTHAI=? WHERE MACTP=?";
+        XJdbc.update(sql,
+                entity.getMaPhieu(),
+                entity.getMaLT(),
+                entity.getSoLuong(),
+                entity.getDonGia(),
+                entity.isTrangThai(),
                 entity.getMaCTP());
     }
 
@@ -85,15 +106,58 @@ public class ChiTietPhieuDAO extends StoManDAO<ChiTietPhieu, Integer> {
         }
         return list;
     }
+    
+    protected List<ChiTietPhieu> selectBySQLtest(String sql, Object... args) {
+        List<ChiTietPhieu> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = XJdbc.query(sql, args);
+                while (rs.next()) {
+                    ChiTietPhieu entity = new ChiTietPhieu();
+
+                    entity.setMaCTP(rs.getInt("MACTP"));
+                    entity.setMaPhieu(rs.getInt("MAPHIEU"));
+                    entity.setMaLT(rs.getInt("MALT"));
+                    entity.setSoLuong(rs.getDouble("SOLUONG"));
+                    entity.setDonGia(rs.getDouble("DONGIA"));
+                    entity.setTrangThai(rs.getBoolean("TRANGTHAI"));
+
+                    list.add(entity);
+                }
+            } finally {
+                rs.getStatement().getConnection().close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+        return list;
+    }
 
     public List<ChiTietPhieu> selectByMaPhieu(Integer maPhieu) {
         String sql = "SELECT * FROM CHITIETPHIEU WHERE MAPHIEU = ?";
         return this.selectBySQL(sql, maPhieu);
+    }
+    
+    public List<ChiTietPhieu> selectByMaPhieuTest(Integer maPhieu) {
+        String sql = "SELECT * FROM CHITIETPHIEU WHERE MAPHIEU = ?";
+        return this.selectBySQLtest(sql, maPhieu);
     }
 
     public Integer getOnlyOneMaLT(Integer maPhieu) {
         List<ChiTietPhieu> list = this.selectByMaPhieu(maPhieu);
         return list.size() > 0 ? list.get(0).getMaLT() : 0;
     }
-
+    
+    public Integer getOnlyOneMaLTtest(Integer maPhieu) {
+        List<ChiTietPhieu> list = this.selectByMaPhieuTest(maPhieu);
+        return list.size() > 0 ? list.get(0).getMaLT() : 0;
+    }
+    
+    public Integer getMaCTP(Integer maPhieu, Integer maLT) {
+        String sql = "SELECT MACTP FROM CHITIETPHIEU WHERE MAPHIEU = ? AND MALT = ?";
+        
+        return (Integer) XJdbc.value(sql, maPhieu, maLT);
+    }
 }

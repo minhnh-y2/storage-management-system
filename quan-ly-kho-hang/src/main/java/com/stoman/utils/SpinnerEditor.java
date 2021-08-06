@@ -18,6 +18,8 @@ import javax.swing.table.TableCellEditor;
  */
 public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
     JSpinner spinner = new JSpinner();
+    private double newValue;
+    private double oldValue;
 
     public SpinnerEditor(double value, double minimum, double maximum, double stepSize){
         spinner = new JSpinner(new SpinnerNumberModel(value, minimum, maximum, stepSize));
@@ -28,12 +30,23 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column){
         //spinner.setValue(XNumber.toDouble(((String) value),"#,##0.0"));
         spinner.setValue(value);
+        oldValue = (Double) value;
         return spinner;
     }
 
     @Override
     public Object getCellEditorValue(){
         //return XNumber.toString((Double) spinner.getValue(), "#,##0.0");
-        return spinner.getValue();
+        newValue = (Double) spinner.getValue();
+        return newValue;
     }
+
+    public double getNewValue() {
+        return newValue;
+    }
+
+    public double getOldValue() {
+        return oldValue;
+    }  
+    
 }

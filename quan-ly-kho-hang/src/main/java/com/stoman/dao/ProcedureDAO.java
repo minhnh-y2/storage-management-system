@@ -26,6 +26,11 @@ public class ProcedureDAO {
                 ctp.getSoLuong(),
                 ctp.getDonGia());
     }
+    
+    public void insertNhapTest(int MaCTP) {
+        String sql = "EXEC SP_THEM_NHAPLUUTRU ?";
+        XJdbc.update(sql,MaCTP);
+    }
 
     public void insertXuat(ChiTietPhieu ctp, int maPhieu, HangHoa hh, Kho kho) {
         String sql = "EXEC SP_NHAPCHITIETPHIEUXUAT ?, ?, ?, ?, ?";
@@ -35,6 +40,11 @@ public class ProcedureDAO {
                 hh.getMaHH(),
                 ctp.getSoLuong(),
                 ctp.getDonGia());
+    }
+    
+    public void insertXuatTest(int MaCTP) {
+        String sql = "EXEC SP_THEM_XUATLUUTRU ?";
+        XJdbc.update(sql,MaCTP);
     }
 
     public void insertPhieuKiem(ChiTietKiemKho ctkk, int maKK) {
@@ -73,10 +83,20 @@ public class ProcedureDAO {
         String sql = "EXEC SP_XOACHITIETPHIEUNHAP ?";
         XJdbc.update(sql, ctp.getMaCTP());
     }
+    
+     public void deleteNhapTest(int maCTP) {
+        String sql = "EXEC SP_XOA_NHAPLUUTRU ?";
+        XJdbc.update(sql, maCTP);
+    }
 
     public void deleteXuat(ChiTietPhieu ctp) {
         String sql = "EXEC SP_XOACHITIETPHIEUXUAT ?";
         XJdbc.update(sql, ctp.getMaCTP());
+    }
+    
+    public void deleteXuatTest(int maCTP) {
+        String sql = "EXEC SP_XOA_XUATLUUTRU ?";
+        XJdbc.update(sql, maCTP);
     }
     
     public void deletePhieuKiem(ChiTietKiemKho ctkk) {
