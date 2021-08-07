@@ -3,9 +3,6 @@
 <Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
-      <Properties>
-        <Property name="opaque" type="boolean" value="false"/>
-      </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuHeThong">
           <Properties>
@@ -196,7 +193,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-115,0,0,3,-19"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-113,0,0,3,-31"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -683,7 +680,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHH" max="32767" attributes="0"/>
-                                  <Component id="oblTopHH" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="622" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -775,7 +772,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="oblTopHH" pref="132" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="148" max="32767" attributes="0"/>
                                   <Component id="pnlTopLHH" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1148,7 +1145,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHNhap" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHNhap" alignment="0" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHNhap" alignment="0" pref="622" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1175,9 +1172,9 @@
                                   <Component id="separator4" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblThangNhap" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboThangNhap" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblNamNhap" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboNamNhap" min="-2" pref="84" max="-2" attributes="0"/>
@@ -1267,7 +1264,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHNhap" pref="94" max="32767" attributes="0"/>
+                              <Component id="oblTopHHNhap" pref="112" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHNhap" min="-2" max="-2" attributes="0"/>
@@ -1679,7 +1676,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHXuat" alignment="0" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHXuat" alignment="0" pref="622" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1694,7 +1691,7 @@
                                       <Component id="cboTimKiemXuat" min="-2" pref="250" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lblDShangHoaXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblTblTKxuat" alignment="1" pref="710" max="32767" attributes="0"/>
+                                  <Component id="lblTblTKxuat" alignment="1" pref="717" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator24" min="-2" pref="2" max="-2" attributes="0"/>
@@ -1704,9 +1701,9 @@
                                   <Component id="separator26" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblThangXuat" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboThangXuat" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblNamXuat" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboNamXuat" min="-2" pref="84" max="-2" attributes="0"/>
@@ -1794,7 +1791,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHXuat" pref="94" max="32767" attributes="0"/>
+                              <Component id="oblTopHHXuat" pref="112" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHXuat" min="-2" max="-2" attributes="0"/>
@@ -2203,7 +2200,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHTH" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHTH" alignment="0" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHTH" alignment="0" pref="622" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -2233,11 +2230,11 @@
                                   <Component id="pnlTongCCGTXuatNhap" alignment="0" pref="250" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblThangTH" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboThangTH" min="-2" pref="65" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="lblNamTH" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cboNamTH" min="-2" pref="84" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2280,7 +2277,7 @@
                                           <Component id="cboLoaiHangHoaTH" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblLoaiHangHoaTH" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="separator30" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Component id="lblTrongTH" min="-2" max="-2" attributes="0"/>
@@ -2321,7 +2318,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHTH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHTH" pref="98" max="32767" attributes="0"/>
+                              <Component id="oblTopHHTH" pref="92" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHTH" min="-2" max="-2" attributes="0"/>
