@@ -78,5 +78,10 @@ public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, Integer>{
         }
         return list;
     }
+    
+    public List<LoaiDoiTac> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM LOAIDOITAC WHERE TENLDT LIKE ?";
+        return this.selectBySQL(sql, "%" + keyword + "%");
+    }
 
 }

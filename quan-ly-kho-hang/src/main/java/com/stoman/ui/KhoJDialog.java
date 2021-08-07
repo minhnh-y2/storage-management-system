@@ -50,10 +50,10 @@ public class KhoJDialog extends javax.swing.JDialog {
 
         pnlBackground = new javax.swing.JPanel();
         pnlChucNang = new javax.swing.JPanel();
+        btnMoi = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnMoi = new javax.swing.JButton();
         pnlThongTinKho = new javax.swing.JPanel();
         lblDiaChi = new javax.swing.JLabel();
         pnlTxtDiaChi = new javax.swing.JScrollPane();
@@ -83,7 +83,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setOpaque(false);
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_24px.png"))); // NOI18N
+        btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnMoi);
+
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_add_list_24px_4.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +101,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnThem);
 
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px_2.png"))); // NOI18N
         btnXoa.setText("Xoá");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,15 +118,6 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         });
         pnlChucNang.add(btnSua);
-
-        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoiActionPerformed(evt);
-            }
-        });
-        pnlChucNang.add(btnMoi);
 
         pnlThongTinKho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kho", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(51, 51, 51))); // NOI18N
         pnlThongTinKho.setOpaque(false);
