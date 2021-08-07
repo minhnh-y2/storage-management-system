@@ -432,7 +432,7 @@
                                       <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pnlTblCTPhieu_sub" pref="218" max="32767" attributes="0"/>
+                                  <Component id="pnlTblCTPhieu_sub" pref="229" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="pnlNutDieuHuong" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -609,10 +609,24 @@
                     <Property name="rows" type="int" value="6"/>
                   </Layout>
                   <SubComponents>
+                    <Component class="javax.swing.JButton" name="btnMoi">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/com/stoman/icons/icons8_document_32px.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[120, 45]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiActionPerformed"/>
+                      </Events>
+                    </Component>
                     <Component class="javax.swing.JButton" name="btnThem">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/add-32.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/icons8_new_copy_32px.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -626,7 +640,7 @@
                     <Component class="javax.swing.JButton" name="btnXoa">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/cancel-32.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/icons8_delete_document_32px.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -651,20 +665,6 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnMoi">
-                      <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/new-document-32.png"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[120, 45]"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JButton" name="btnChiTiet">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -682,7 +682,7 @@
                     <Component class="javax.swing.JButton" name="btnXuatMaPhieu">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/stoman/icons/qr-code-32.png"/>
+                          <Image iconType="3" name="/com/stoman/icons/icons8_qr_code_24px.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="QR Code"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -911,7 +911,7 @@
                                           </Group>
                                           <Component id="txtMaNV" max="32767" attributes="0"/>
                                           <Component id="txtNgayLap" max="32767" attributes="0"/>
-                                          <Component id="cboKho" alignment="0" pref="289" max="32767" attributes="0"/>
+                                          <Component id="cboKho" alignment="0" pref="316" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -925,7 +925,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cboLoaiDT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtNgayThucHien" alignment="0" pref="216" max="32767" attributes="0"/>
+                                          <Component id="txtNgayThucHien" alignment="0" pref="244" max="32767" attributes="0"/>
                                           <Component id="txtNgayHoanThanh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cboDoiTac" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -1186,18 +1186,11 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
-                          <Component id="lblTimKiemPhieu3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cboTimKiemPhieu1" min="-2" pref="154" max="-2" attributes="0"/>
-                          <EmptySpace pref="430" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="lblDanhSachPhieu" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="lblTimKiemCT1" min="-2" max="-2" attributes="0"/>
@@ -1210,42 +1203,49 @@
                                       </Group>
                                       <Component id="scrollPane2" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="pnlThongKe" max="32767" attributes="0"/>
+                                          <Component id="pnlThongKe" pref="528" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="pnlChuThich" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
+                          <Component id="lblTimKiemPhieu3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cboTimKiemPhieu1" min="-2" pref="154" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="lblDanhSachPhieu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblTimKiemPhieu3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemPhieu1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblTimKiemCT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTimKiemPhieu2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="337" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="scrollPane2" pref="379" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="pnlThongKe" max="32767" attributes="0"/>
                               <Component id="pnlChuThich" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

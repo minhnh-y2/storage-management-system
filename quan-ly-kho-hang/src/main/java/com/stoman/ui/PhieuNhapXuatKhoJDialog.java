@@ -116,10 +116,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         pnlChucNang = new javax.swing.JPanel();
+        btnMoi = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         btnXuatMaPhieu = new javax.swing.JButton();
         pnlChucNangMoRong = new javax.swing.JPanel();
@@ -430,7 +430,17 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setOpaque(false);
         pnlChucNang.setLayout(new java.awt.GridLayout(6, 0));
 
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add-32.png"))); // NOI18N
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
+        btnMoi.setText("Mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        pnlChucNang.add(btnMoi);
+
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setPreferredSize(new java.awt.Dimension(120, 45));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -440,7 +450,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnThem);
 
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32.png"))); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá");
         btnXoa.setPreferredSize(new java.awt.Dimension(120, 45));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -460,16 +470,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnSua);
 
-        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/new-document-32.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(120, 45));
-        btnMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoiActionPerformed(evt);
-            }
-        });
-        pnlChucNang.add(btnMoi);
-
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
         btnChiTiet.setText("Chi tiết");
         btnChiTiet.setPreferredSize(new java.awt.Dimension(120, 45));
@@ -480,7 +480,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         pnlChucNang.add(btnChiTiet);
 
-        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/qr-code-32.png"))); // NOI18N
+        btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
         btnXuatMaPhieu.setText("QR Code");
         btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(120, 45));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
@@ -699,7 +699,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(rdoPhieuXuat))
                             .addComponent(txtMaNV)
                             .addComponent(txtNgayLap)
-                            .addComponent(cboKho, 0, 289, Short.MAX_VALUE))
+                            .addComponent(cboKho, 0, 316, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -710,7 +710,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboLoaiDT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                             .addComponent(txtNgayHoanThanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboDoiTac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlGhiChu))
@@ -817,7 +817,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(lblTimKiemCT2)
                             .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1015,12 +1015,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlDanhSach.setLayout(pnlDanhSachLayout);
         pnlDanhSachLayout.setHorizontalGroup(
             pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(lblTimKiemPhieu3)
-                .addGap(18, 18, 18)
-                .addComponent(cboTimKiemPhieu1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(430, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDanhSachLayout.createSequentialGroup()
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDanhSachPhieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1037,29 +1031,35 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(scrollPane2)
                             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlChuThich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(pnlDanhSachLayout.createSequentialGroup()
+                .addGap(422, 422, 422)
+                .addComponent(lblTimKiemPhieu3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboTimKiemPhieu1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDanhSachLayout.setVerticalGroup(
             pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(lblDanhSachPhieu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiemPhieu3)
                     .addComponent(cboTimKiemPhieu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiemCT1)
                     .addComponent(txtTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiemPhieu2)
                     .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlChuThich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1461,7 +1461,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             protected DefaultTableModel doInBackground() throws Exception {
                 List<Phieu> list = pDAO.selectAll();
                 int i = 1;
-                
+
                 int hoanThanh = 0;
                 int cThanhToan = 0;
                 int cVanChuyen = 0;
@@ -1474,20 +1474,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     }
                     int maKho = ltDAO.getMaKho(maLT);
                     Kho k = kDAO.selectByID(maKho);
-                    if(p.isTrangThai()){
-                        if(p.isTinhTrangThanhToan()){
+                    if (p.isTrangThai()) {
+                        if (p.isTinhTrangThanhToan()) {
                             hoanThanh++;
-                        }else{
+                        } else {
                             cThanhToan++;
                         }
-                    }else{
+                    } else {
                         cVanChuyen++;
-                        if(!p.isTinhTrangThanhToan()){
+                        if (!p.isTinhTrangThanhToan()) {
                             cThanhToan++;
                         }
                     }
                     tongPhieu++;
-                    
+
                     modelPhieu.addRow(new Object[]{
                         i++,
                         dtDAO.getTenDT(p.getMaDT()),
@@ -1500,13 +1500,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         p.getNgayLap(),
                         p
                     });
-                    
+
                     lblSoLuongPhieu.setText(String.valueOf(tongPhieu));
                     lblSoLuongHoanThanh.setText(String.valueOf(hoanThanh));
                     lblSoLuongThanhToan.setText(String.valueOf(cThanhToan));
                     lblSoLuongChuyenHang.setText(String.valueOf(cVanChuyen));
                 }
-                
+
                 return modelPhieu;
             }
         }.execute();
@@ -1993,7 +1993,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         cboLoaiDT.setSelectedIndex(0);
         cboDoiTac.setSelectedIndex(0);
-        txtMaNV.setToolTipText(Auth.user.getMaNV()); 
+        txtMaNV.setToolTipText(Auth.user.getMaNV());
         txtMaNV.setText(Auth.user.getTenNV());
         txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
         txtNgayThucHien.setDate(new Date());
@@ -2172,7 +2172,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return this;
             }
         };
-        
+
         DateRenderer cellDateRenderK = new DateRenderer(dateFormat + "(hh:MM:ss)") {
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
@@ -2248,6 +2248,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         };
 
         DefaultTableCellRenderer cellNormalRender = new DefaultTableCellRenderer() {
+            @Override
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 
@@ -2331,7 +2332,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
             @Override
             public void editingCanceled(ChangeEvent e) {
-
             }
         });
 
@@ -2566,13 +2566,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             return false;
         }
 
-        Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
-        if (txtNgayThucHien.getDate().before(ngayLap)) {
-            MsgBox.alert(this, "Ngày kiểm kho không nhỏ hơn ngày lập phiếu!");
-            txtNgayThucHien.requestFocus();
-            return false;
-        }
-
+        //Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
+        //Date ngayThucHien = txtNgayThucHien.getDate();
+        //if (ngayThucHien.before(ngayLap)) {
+        //    MsgBox.alert(this, "Ngày thực hiện không nhỏ hơn ngày lập phiếu!");
+        //    txtNgayThucHien.requestFocus();
+        //    return false;
+        //}
         if (chkChuyenHang.isSelected()) {
             if (txtNgayHoanThanh.getDate() == null) {
                 MsgBox.alert(this, "Chưa nhập ngày hoàn thành!");
