@@ -33,6 +33,10 @@ public class DateRenderer extends DefaultTableCellRenderer {
         sdfNewValue.applyPattern(format);
         setHorizontalAlignment(JLabel.CENTER);
     }
+    
+    public void setFormat(String format){
+        sdfNewValue.applyPattern(format);
+    }
 
 
     @Override
