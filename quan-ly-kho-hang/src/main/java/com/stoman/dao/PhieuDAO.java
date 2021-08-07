@@ -19,21 +19,8 @@ import java.util.List;
  */
 public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
-    @Override
+    @Override  
     public void insert(Phieu entity) {
-        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, MANV) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        XJdbc.update(sql,
-                entity.getNgayLap(),
-                entity.isLoai(),
-                entity.isTrangThai(),
-                entity.getNgThucHien(),
-                entity.getNgHoanThanh(),
-                entity.getGhiChu(),
-                entity.getMaDT(),
-                entity.getMaNV());
-    }
-    
-    public void insertTest(Phieu entity) {
         String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, TINHTRANGTT, SOTIENDATHANHTOAN, MANV) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql,
                 entity.getNgayLap(),
@@ -48,22 +35,8 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
                 entity.getMaNV());
     }
 
-    @Override
+    @Override   
     public void update(Phieu entity) {
-        String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, GHICHU=?, MADT=?, MANV=?  WHERE MAPHIEU=?";
-        XJdbc.update(sql,
-                entity.getNgayLap(),
-                entity.isLoai(),
-                entity.isTrangThai(),
-                entity.getNgThucHien(),
-                entity.getNgHoanThanh(),
-                entity.getGhiChu(),
-                entity.getMaDT(),
-                entity.getMaNV(),
-                entity.getMaPhieu());
-    }
-    
-    public void updateTest(Phieu entity) {
         String sql = "UPDATE PHIEU SET NGAYLAP=?, LOAI=?, TRANGTHAI=?, NGTHUCHIEN=?, NGHOANTHANH=?, GHICHU=?, MADT=?, TINHTRANGTT = ?, SOTIENDATHANHTOAN = ?, MANV=?  WHERE MAPHIEU=?";
         XJdbc.update(sql,
                 entity.getNgayLap(),
@@ -87,7 +60,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override
     public List<Phieu> selectAll() {
-        String sql = "SELECT * FROM PHIEU";
+        String sql = "SELECT * FROM PHIEU ORDER BY MAPHIEU DESC";
         return selectBySQLTest(sql);
     }
 
