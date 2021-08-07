@@ -45,7 +45,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         pnlBackground = new javax.swing.JPanel();
@@ -161,18 +160,18 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlTimKiemLayout.setVerticalGroup(
             pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTimKiemLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTimKiem2)
                     .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pnlDieuHuongTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều hướng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlDieuHuongTitle.setOpaque(false);
 
-        pnlDieuHuong.setLayout(new java.awt.GridLayout());
+        pnlDieuHuong.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/skip-to-start.png"))); // NOI18N
         btnFirst.setPreferredSize(new java.awt.Dimension(30, 25));
@@ -216,14 +215,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             pnlDieuHuongTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDieuHuongTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(pnlDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlDieuHuongTitleLayout.setVerticalGroup(
             pnlDieuHuongTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDieuHuongTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, 24, Short.MAX_VALUE)
+                .addComponent(pnlDieuHuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -295,7 +294,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(txtTimKiemLDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLstLoaiDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addComponent(pnlLstLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlChucNangLoaiDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -357,19 +356,19 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTenDT))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDiaChi))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDienThoai))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoKhachHang)
                     .addComponent(lblVaiTro)
@@ -434,7 +433,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangTitleLayout.setVerticalGroup(
             pnlChucNangTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChucNangTitleLayout.createSequentialGroup()
-                .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -462,14 +461,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlChucNangTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlDieuHuongTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnlLoaiDoiTac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlChucNangTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlDieuHuongTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addContainerGap())
@@ -483,7 +482,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void lstLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLDTMouseClicked
         // TODO add your handling code here:
         cboTimKiem.setSelectedIndex(0);
-        this.fillToTable();
+        this.fillToTableDoiTac();
         this.clearForm();
     }//GEN-LAST:event_lstLDTMouseClicked
 
@@ -547,7 +546,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (!lstLDT.isSelectionEmpty()) {
             txtTimKiem.setText("");
-            fillToTable();
+            fillToTableDoiTac();
             clearForm();
         }
     }//GEN-LAST:event_cboTimKiemActionPerformed
@@ -555,7 +554,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
         if (!lstLDT.isSelectionEmpty()) {
-            fillToTable();
+            fillToTableDoiTac();
             clearForm();
         }
     }//GEN-LAST:event_txtTimKiemKeyReleased
@@ -572,7 +571,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void txtTimKiemLDTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemLDTKeyReleased
         // TODO add your handling code here:
-        fillToList();
+        fillToListLoaiDoiTac();
     }//GEN-LAST:event_txtTimKiemLDTKeyReleased
 
     /**
@@ -667,15 +666,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         this.formatTable();
 
-        this.fillToComboBox();
-        this.fillToList();
+        this.fillToComboBoxTimKiemDT();
+        this.fillToListLoaiDoiTac();
         this.updateStatus();
 
         timer.start();
     }
 
     // Đổ dữ liệu loại đối tác vào List
-    private void fillToList() {
+    private void fillToListLoaiDoiTac() {
         DefaultListModel lstModel = new DefaultListModel();
         lstModel.removeAllElements();
         String keyword = txtTimKiemLDT.getText();
@@ -692,7 +691,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu vào bảng
-    private void fillToTable() {
+    private void fillToTableDoiTac() {
         tblModel.setRowCount(0);
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         int headerIndex = cboTimKiem.getSelectedIndex();
@@ -724,7 +723,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     }
 
     // Đổ tên bảng vào ComboBox tìm kiếm
-    private void fillToComboBox() {
+    private void fillToComboBoxTimKiemDT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblDoiTac.getColumnCount(); i++) {
@@ -877,7 +876,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             LoaiDoiTac loaiDT = new LoaiDoiTac(tenLDT);
             try {
                 ldtDAO.insert(loaiDT);
-                this.fillToList();
+                this.fillToListLoaiDoiTac();
                 this.clearForm();
                 tblModel.setRowCount(0);
                 MsgBox.alert(this, "Thêm mới thành công!");
@@ -900,7 +899,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             ldt.setTenLDT(tenLDT);
             try {
                 ldtDAO.update(ldt);
-                this.fillToList();
+                this.fillToListLoaiDoiTac();
                 MsgBox.alert(this, "Đổi tên thành công!");
             } catch (Exception e) {
                 MsgBox.alert(this, "Đổi tên thất bại!");
@@ -921,7 +920,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             LoaiDoiTac ldt = lstLDT.getSelectedValue();
             try {
                 ldtDAO.delete(ldt.getMaLDT());
-                this.fillToList();
+                this.fillToListLoaiDoiTac();
                 this.clearForm();
                 tblModel.setRowCount(0);
                 MsgBox.alert(this, "Xoá thành công!");
@@ -938,7 +937,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             DoiTac dt = getForm();
             try {
                 dtDAO.insert(dt);
-                this.fillToTable();
+                this.fillToTableDoiTac();
                 this.clearForm();
                 MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
@@ -956,7 +955,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             try {
                 int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
                 dtDAO.delete(maDT);
-                this.fillToTable();
+                this.fillToTableDoiTac();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
@@ -974,7 +973,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         DoiTac dt = getForm();
         try {
             dtDAO.update(dt);
-            this.fillToTable();
+            this.fillToTableDoiTac();
             MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
             MsgBox.alert(this, "Cập nhật thất bại!");
@@ -1010,8 +1009,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Đỗ lại dữ liệu 
     public void refreshForm() {
-        this.fillToComboBox();
-        this.fillToTable();
+        this.fillToComboBoxTimKiemDT();
+        this.fillToTableDoiTac();
 
         this.timer.restart();
     }
