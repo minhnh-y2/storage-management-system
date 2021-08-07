@@ -7,11 +7,8 @@ package com.stoman.ui;
 
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
-import com.stoman.utils.DragPanel;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
-import java.awt.Color;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -127,7 +124,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(pnlDoiMatKhau, java.awt.BorderLayout.CENTER);
