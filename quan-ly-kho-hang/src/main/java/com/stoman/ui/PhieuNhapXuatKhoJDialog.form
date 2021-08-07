@@ -432,7 +432,7 @@
                                       <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pnlTblCTPhieu_sub" pref="229" max="32767" attributes="0"/>
+                                  <Component id="pnlTblCTPhieu_sub" pref="309" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="pnlNutDieuHuong" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -911,7 +911,7 @@
                                           </Group>
                                           <Component id="txtMaNV" max="32767" attributes="0"/>
                                           <Component id="txtNgayLap" max="32767" attributes="0"/>
-                                          <Component id="cboKho" alignment="0" pref="316" max="32767" attributes="0"/>
+                                          <Component id="cboKho" alignment="0" pref="303" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -925,7 +925,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cboLoaiDT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtNgayThucHien" alignment="0" pref="244" max="32767" attributes="0"/>
+                                          <Component id="txtNgayThucHien" alignment="0" pref="231" max="32767" attributes="0"/>
                                           <Component id="txtNgayHoanThanh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cboDoiTac" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -1203,7 +1203,7 @@
                                       </Group>
                                       <Component id="scrollPane2" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="pnlThongKe" pref="528" max="32767" attributes="0"/>
+                                          <Component id="pnlThongKe" pref="522" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="pnlChuThich" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -1213,10 +1213,8 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
-                          <Component id="lblTimKiemPhieu3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cboTimKiemPhieu1" min="-2" pref="154" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
+                          <Component id="pnlLoaiPhieu" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1226,12 +1224,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="lblDanhSachPhieu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblTimKiemPhieu3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTimKiemPhieu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="pnlLoaiPhieu" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblTimKiemCT1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1239,7 +1234,7 @@
                               <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="379" max="32767" attributes="0"/>
+                          <Component id="scrollPane2" pref="458" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="pnlThongKe" max="32767" attributes="0"/>
@@ -1302,14 +1297,15 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPhieuMouseClicked"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPhieuPropertyChange"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="lblTimKiemCT1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/stoman/icons/search_24px.png"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTimKiemPhieu">
@@ -1329,19 +1325,6 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cboTimKiemPhieu1">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTimKiemPhieu1ActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblTimKiemPhieu3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i phi&#x1ebf;u"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDanhSachPhieu">
                   <Properties>
@@ -1373,7 +1356,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtMau1" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                                   <Component id="txtMau2" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
@@ -1383,7 +1366,7 @@
                                   <Component id="lblMau3" max="32767" attributes="0"/>
                                   <Component id="lblMau1" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtMau4" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                                   <Component id="txtMau3" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
@@ -1400,14 +1383,14 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblMau4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtMau3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMau1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtMau1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtMau4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMau2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1617,6 +1600,64 @@
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="text" type="java.lang.String" value="0"/>
                           </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="pnlLoaiPhieu">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder thickness="2">
+                          <Color PropertyName="color" blue="ff" green="d9" red="b3" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="1"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="pnlPhieuNhap">
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lblPhieuNhap">
+                          <Properties>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u nh&#x1ead;p"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPhieuNhapMouseClicked"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnlPhieuXuat">
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lblPhieuXuat">
+                          <Properties>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u xu&#x1ea5;t"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPhieuXuatMouseClicked"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center"/>
+                            </Constraint>
+                          </Constraints>
                         </Component>
                       </SubComponents>
                     </Container>

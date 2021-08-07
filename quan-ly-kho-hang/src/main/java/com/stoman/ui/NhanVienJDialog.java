@@ -503,9 +503,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
          */
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
-            javax.swing.UIManager.put("Table.showHorizontalLines", true);
-            javax.swing.UIManager.put("Table.showVerticalLines", true);
-            javax.swing.UIManager.put("TitlePane.unifiedBackground", true);
         } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

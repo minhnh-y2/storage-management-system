@@ -146,4 +146,9 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
         List<Phieu> list = this.selectBySQL(sql, MaNV, NgayLap);
         return list.size() > 0 ? list.get(0).getMaPhieu() : null;
     }
+    
+    public List<Phieu> selectByLoaiPhieu(boolean loaiPhieu) {
+        String sql = "SELECT * FROM PHIEU WHERE LOAI = ? ORDER BY MAPHIEU DESC";
+        return selectBySQLTest(sql, loaiPhieu);
+    }
 }
