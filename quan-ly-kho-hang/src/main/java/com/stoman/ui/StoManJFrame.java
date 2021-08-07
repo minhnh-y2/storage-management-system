@@ -6,8 +6,6 @@
 package com.stoman.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.extras.FlatInspector;
-import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
 import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.dao.ThongKeDAO;
