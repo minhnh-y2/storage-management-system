@@ -1210,9 +1210,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
-        pnlThanhTieuDeCTP.setVisible(false);
-        pnlThanhTieuDeQR.setVisible(false);
-
         this.formatTable();
 
         this.refreshForm();
