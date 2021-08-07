@@ -11,10 +11,15 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -108,19 +113,24 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlThongTinNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlThongTinNV.setOpaque(false);
 
-        lblMaNV.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMaNV.setForeground(new java.awt.Color(102, 102, 102));
         lblMaNV.setText("Mã nhân viên");
 
-        lblHoTen.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblHoTen.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblHoTen.setForeground(new java.awt.Color(102, 102, 102));
         lblHoTen.setText("Họ và tên");
 
-        lblMatKhau.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblMatKhau.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMatKhau.setForeground(new java.awt.Color(102, 102, 102));
         lblMatKhau.setText("Mật khẩu");
 
-        lblXacNhanMK.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblXacNhanMK.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblXacNhanMK.setForeground(new java.awt.Color(102, 102, 102));
         lblXacNhanMK.setText("Xác nhận mật khẩu");
 
-        lblVaiTro.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblVaiTro.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblVaiTro.setForeground(new java.awt.Color(102, 102, 102));
         lblVaiTro.setText("Vai trò");
 
         txtHoTen.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -652,10 +662,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
-        boolean isTableEmpty = (tblNhanVien.getRowCount() == 0);
 
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblNhanVien.setAutoCreateRowSorter(!isTableEmpty);
         // Chọn hàng trên bảng
         if (edit) {
             tblNhanVien.setRowSelectionInterval(row, row);
@@ -840,6 +847,32 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         };
         tblNhanVien.setModel(tblModel);
+        tblNhanVien.setAutoCreateRowSorter(true);
+        
+        tblNhanVien.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                          boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = (JLabel) super.getTableCellRendererComponent(table, 
+                        value, isSelected, hasFocus, row, column);
+                
+                Color color = Color.black;
+                Object obj = table.getValueAt(row, 2);
+                if (obj != null && "Trưởng kho".equals(obj.toString())) {
+                    color = new Color(19, 97, 91);
+                } 
+                if (obj != null && "Thủ kho".equals(obj.toString())) {
+                    color = new Color(163, 52, 34);
+                }
+                if (isSelected) {
+                    color = Color.white;
+                }
+                label.setForeground(color);
+                label.setFont(new java.awt.Font("Segoe UI", 1, 13));
+                return label;
+            }
+        });
+        
     }
 
     // Đỗ lại dữ liệu 
