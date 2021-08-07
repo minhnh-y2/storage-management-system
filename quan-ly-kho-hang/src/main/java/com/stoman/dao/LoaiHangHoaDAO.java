@@ -79,8 +79,4 @@ public class LoaiHangHoaDAO extends StoManDAO<LoaiHangHoa, Integer> {
         return list;
     }
     
-    public List<LoaiHangHoa> selectByKeyword(String keyword) {
-        String sql = "SELECT * FROM LOAIHANGHOA WHERE TENLHH LIKE ?";
-        return this.selectBySQL(sql, "%" + keyword + "%");
-    }
 }
