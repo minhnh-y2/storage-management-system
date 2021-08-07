@@ -6,6 +6,8 @@
 package com.stoman.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.extras.FlatInspector;
+import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
 import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.dao.ThongKeDAO;
@@ -27,6 +29,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
@@ -1781,7 +1785,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableXuat();
         this.fillToTableTop10HHxuat();
         this.fillToTableTop10LHHxuat();
-        
+
     }//GEN-LAST:event_cboKhoXuatActionPerformed
 
     private void cboLoaiHangHoaXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiHangHoaXuatActionPerformed
@@ -1915,16 +1919,22 @@ public class StoManJFrame extends javax.swing.JFrame {
          */
         //</editor-fold>
         try {
-            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
-            javax.swing.UIManager.put("Table.showHorizontalLines", true);
-            javax.swing.UIManager.put("Table.showVerticalLines", true);
-            javax.swing.UIManager.put("TitlePane.unifiedBackground", true);
-        } catch (Exception ex) {
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+            UIManager.put("Table.showHorizontalLines", true);
+            UIManager.put("Table.showVerticalLines", false);
+            UIManager.put("TitlePane.unifiedBackground", true);
+            UIManager.put("Button.arc", 15);
+            UIManager.put("Component.arc", 15);
+            UIManager.put("ProgressBar.arc", 15);
+            UIManager.put("TextComponent.arc", 15);
+            UIManager.put("FileChooser.useSystemExtensionHiding", true);
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new StoManJFrame().setVisible(true);
             }
@@ -2375,11 +2385,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblLuuTru.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblLuuTru.getColumnModel().getColumn(1).setPreferredWidth(700);
         tblLuuTru.getColumnModel().getColumn(2).setPreferredWidth(100);
-        
+
         tblTopLHH.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopLHH.getColumnModel().getColumn(1).setPreferredWidth(200);
         tblTopLHH.getColumnModel().getColumn(2).setPreferredWidth(200);
-        
+
         tblTopHH.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopHH.getColumnModel().getColumn(1).setPreferredWidth(600);
         tblTopHH.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -2390,11 +2400,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTKnhap.getColumnModel().getColumn(3).setPreferredWidth(50);
         tblTKnhap.getColumnModel().getColumn(4).setPreferredWidth(100);
         tblTKnhap.getColumnModel().getColumn(5).setPreferredWidth(100);
-        
+
         tblTopLHHNhap.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopLHHNhap.getColumnModel().getColumn(1).setPreferredWidth(200);
         tblTopLHHNhap.getColumnModel().getColumn(2).setPreferredWidth(200);
-        
+
         tblTopHHNhap.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopHHNhap.getColumnModel().getColumn(1).setPreferredWidth(600);
         tblTopHHNhap.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -2405,11 +2415,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTKxuat.getColumnModel().getColumn(3).setPreferredWidth(50);
         tblTKxuat.getColumnModel().getColumn(4).setPreferredWidth(100);
         tblTKxuat.getColumnModel().getColumn(5).setPreferredWidth(100);
-        
+
         tblTopLHHXuat.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopLHHXuat.getColumnModel().getColumn(1).setPreferredWidth(200);
         tblTopLHHXuat.getColumnModel().getColumn(2).setPreferredWidth(200);
-        
+
         tblTopHHXuat.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopHHXuat.getColumnModel().getColumn(1).setPreferredWidth(600);
         tblTopHHXuat.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -2423,12 +2433,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTopLHHTH.getColumnModel().getColumn(1).setPreferredWidth(150);
         tblTopLHHTH.getColumnModel().getColumn(2).setPreferredWidth(100);
         tblTopLHHTH.getColumnModel().getColumn(3).setPreferredWidth(100);
-        
+
         tblTopHHTH.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblTopHHTH.getColumnModel().getColumn(1).setPreferredWidth(400);
         tblTopHHTH.getColumnModel().getColumn(2).setPreferredWidth(150);
         tblTopHHTH.getColumnModel().getColumn(3).setPreferredWidth(150);
-
 
         // thể hiện các cột    
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -2436,7 +2445,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tblLuuTru.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTopLHH.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        tblTopHH.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);        
+        tblTopHH.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTKnhap.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTopLHHNhap.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTopHHNhap.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
@@ -2446,7 +2455,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTongHop.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTopLHHTH.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblTopHHTH.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        
+
     }
 
     // Tự động điều chỉnh nút đăng nhập/đăng xuất
@@ -2521,7 +2530,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             List<Object[]> list = tkDAO.getListTongQuan(nam, maKho);
 
             int i = 0;
-            
+
             addValue:
             for (Object[] values : list) {
                 check:
@@ -2532,7 +2541,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         }
                         break;
                     case 2:
-                        if ((Integer) values[0] < 4 || (Integer) values[0]> 6) {
+                        if ((Integer) values[0] < 4 || (Integer) values[0] > 6) {
                             continue addValue;
                         }
                         break;
@@ -2587,7 +2596,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             ((CategoryPlot) chtBieuDo.getChart().getPlot()).getRenderer().setSeriesPaint(0, new Color(255, 102, 102));
             ((CategoryPlot) chtBieuDo.getChart().getPlot()).getRenderer().setSeriesPaint(1, new Color(0, 153, 204));
 
-            if(i>0){
+            if (i > 0) {
                 pnlBieuDo.add(chtBieuDo);
             }
             pnlBieuDo.updateUI();
@@ -2897,7 +2906,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void fillToComboBoxThangTongHop() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
@@ -3156,11 +3165,11 @@ public class StoManJFrame extends javax.swing.JFrame {
         }
 
         String nam = String.valueOf(cboNamTH.getSelectedItem());
-        
+
         Double sumXuatNhap = 0.0;
         Double sumXuat = 0.0;
         Double sumNhap = 0.0;
-        
+
         try {
             int i = 1;
             List<Object[]> list = tkDAO.getListTongHop(maKho, maLHH, thang, nam, keyword, index);
@@ -3180,7 +3189,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             lblTongSoGTXTH.setText(XNumber.toString(sumXuat, numFormat));
             lblTongSoGTNTH.setText(XNumber.toString(sumNhap, numFormat));
             lblTongSoGTXN.setText(XNumber.toString(sumXuatNhap, numFormat));
-            
+
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
@@ -3188,7 +3197,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     }
 
     // đổ dữ liệu bảng top 10 
-    
     // đổ dữ liệu top 10 loại hàng hóa theo từng bảng thống kê
     private void fillToTableTop10LHHLT() {
         tblTopLHHModel.setRowCount(0);
@@ -3290,10 +3298,8 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
 
     // đổ dữ liệu top 10 hàng hóa theo từng bảng thống kê
-    
     private void fillToTableTop10HHLT() {
         tblTopHHModel.setRowCount(0);
 
@@ -3304,7 +3310,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             maKho = "";
         }
-        
+
         String maLHH;
         int indexLHH = cboLoaiHangHoaLT.getSelectedIndex();
         if (indexLHH > 0) {
@@ -3328,7 +3334,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void fillToTableTop10HHnhap() {
         tblTopHHNhapModel.setRowCount(0);
 
@@ -3339,7 +3345,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             maKho = "";
         }
-        
+
         String maLHH;
         int indexLHH = cboLoaiHangHoaNhap.getSelectedIndex();
         if (indexLHH > 0) {
@@ -3355,7 +3361,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             thang = "";
         }
-        
+
         String nam = String.valueOf(cboNamXuat.getSelectedItem());
 
         try {
@@ -3373,7 +3379,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void fillToTableTop10HHxuat() {
         tblTopHHXuatModel.setRowCount(0);
 
@@ -3384,7 +3390,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             maKho = "";
         }
-        
+
         String maLHH;
         int indexLHH = cboLoaiHangHoaXuat.getSelectedIndex();
         if (indexLHH > 0) {
@@ -3400,7 +3406,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             thang = "";
         }
-        
+
         String nam = String.valueOf(cboNamXuat.getSelectedItem());
 
         try {
@@ -3418,7 +3424,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void fillToTableTop10LHHTH() {
         tblTopLHHTHModel.setRowCount(0);
 
@@ -3429,7 +3435,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             maKho = "";
         }
-        
+
         String thang;
         int indexThang = cboThangTH.getSelectedIndex();
         if (indexThang > 0) {
@@ -3437,7 +3443,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             thang = "";
         }
-        
+
         String nam = String.valueOf(cboNamTH.getSelectedItem());
 
         try {
@@ -3456,7 +3462,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void fillToTableTop10HHTH() {
         tblTopHHTHModel.setRowCount(0);
 
@@ -3467,7 +3473,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             maKho = "";
         }
-        
+
         String maLHH;
         int indexLHH = cboLoaiHangHoaTH.getSelectedIndex();
         if (indexLHH > 0) {
@@ -3483,7 +3489,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         } else {
             thang = "";
         }
-        
+
         String nam = String.valueOf(cboNamXuat.getSelectedItem());
 
         try {
@@ -3502,7 +3508,6 @@ public class StoManJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
 
     // Đỗ lại dữ liệu 
     public void refreshForm() {
@@ -3526,7 +3531,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.fillToTableNhap();
         this.fillToTableXuat();
         this.fillToTableTongHop();
-        
+
         this.fillToTableTop10LHHLT();
         this.fillToTableTop10LHHnhap();
         this.fillToTableTop10LHHxuat();
@@ -3541,7 +3546,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTKnhap.setAutoCreateRowSorter(tblTKnhap.getRowCount() > 0);
         tblTKxuat.setAutoCreateRowSorter(tblTKxuat.getRowCount() > 0);
         tblTongHop.setAutoCreateRowSorter(tblTongHop.getRowCount() > 0);
-        
+
         this.timer.restart();
     }
 

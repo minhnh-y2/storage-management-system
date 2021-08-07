@@ -9,6 +9,7 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
+import java.awt.Color;
 
 /**
  *
@@ -52,15 +53,21 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         lblMatKhauCu.setText("Mật khẩu hiện tại");
 
+        txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
         txtMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
+        txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         lblMatKhauMoi.setText("Mật khẩu mới");
 
+        txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
         txtMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
+        txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         lblXacNhanMK.setText("Xác nhận mật khẩu mới");
 
+        txtXacNhanMK.setBackground(new Color(0, 0, 0, 0));
         txtXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
+        txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
         txtXacNhanMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtXacNhanMKActionPerformed(evt);
