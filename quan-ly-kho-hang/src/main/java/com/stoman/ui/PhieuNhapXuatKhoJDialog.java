@@ -60,6 +60,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
+import org.eclipse.jdt.internal.compiler.ast.FalseLiteral;
 
 /**
  *
@@ -1474,23 +1475,45 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         QRCodeDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }
 
+    private boolean isPhieuNhap = true;
+
+    private void updateStatusChonLoaiPhieu() {
+        if (isPhieuNhap) {
+            pnlPhieuXuat.setBackground(new Color(242, 242, 242));
+            pnlPhieuNhap.setBackground(new Color(179, 217, 255));
+        } else {
+            pnlPhieuNhap.setBackground(new Color(242, 242, 242));
+            pnlPhieuXuat.setBackground(new Color(179, 217, 255));
+        }
+    }
+
     // Đổ dữ liệu phiếu nhập xuất
+    private SwingWorker worker;
+
     private void fillToTablePhieu() {
-        tblPhieu.setRowSorter(null);
+        if (worker != null) {
+            worker.cancel(true);
+        }
+
         modelPhieu.setRowCount(0);
+        tblPhieu.setRowSorter(null);
+        
         List<Phieu> list = pDAO.selectByLoaiPhieu(isPhieuNhap);
 
-//        new SwingWorker<DefaultTableModel, Phieu>() {
-//            @Override
-//            protected DefaultTableModel doInBackground() throws Exception {
+        worker = new SwingWorker() {
+            @Override
+            protected Object doInBackground() throws Exception {
                 int i = 1;
-
                 int hoanThanh = 0;
                 int cThanhToan = 0;
                 int cVanChuyen = 0;
                 int tongPhieu = 0;
 
                 for (Phieu p : list) {
+                    if (isCancelled()) {
+                        modelPhieu.setRowCount(0);
+                        break;
+                    }
                     int maLT = ctpDAO.getOnlyOneMaLT(p.getMaPhieu());
                     if (maLT == 0) {
                         continue;
@@ -1510,7 +1533,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         }
                     }
                     tongPhieu++;
-
+                    
                     modelPhieu.addRow(new Object[]{
                         i++,
                         dtDAO.getTenDT(p.getMaDT()),
@@ -1529,18 +1552,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     lblSoLuongThanhToan.setText(String.valueOf(cThanhToan));
                     lblSoLuongChuyenHang.setText(String.valueOf(cVanChuyen));
                 }
-
-//                return modelPhieu;
-//            }
-
-//            @Override
-//            protected void process(List<Phieu> chunks) {
-//                System.out.println("Adding " + chunks.size() + " rows");
-//                    modelPhieu.addRow(new Object[]{
-//                        chunks
-//                    });
-//            }
-//        }.execute();
+                return null;
+            }
+            
+        };
+        worker.execute();
     }
 
     // Đổ dữ liệu chi tiết phiếu
@@ -2635,17 +2651,5 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private Timer timer = new Timer(120000, (e) -> {
         refreshForm();
     });
-
-    private boolean isPhieuNhap = true;
-
-    private void updateStatusChonLoaiPhieu() {
-        if (isPhieuNhap) {
-            pnlPhieuXuat.setBackground(new Color(242, 242, 242));
-            pnlPhieuNhap.setBackground(new Color(179, 217, 255));
-        } else {
-            pnlPhieuNhap.setBackground(new Color(242, 242, 242));
-            pnlPhieuXuat.setBackground(new Color(179, 217, 255));
-        }
-    }
 
 }
