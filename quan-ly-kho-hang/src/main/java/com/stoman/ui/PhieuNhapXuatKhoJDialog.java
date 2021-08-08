@@ -60,7 +60,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
-import org.eclipse.jdt.internal.compiler.ast.FalseLiteral;
 
 /**
  *
