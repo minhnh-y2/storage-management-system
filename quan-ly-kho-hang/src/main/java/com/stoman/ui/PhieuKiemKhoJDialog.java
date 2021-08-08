@@ -148,6 +148,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblCTPhieuKiemKho_main.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         pnlTblCTPhieuKiemKho_main.setViewportView(tblCTPhieuKiemKho_main);
 
         btnXoaKhoiDS.setText("Xóa khỏi danh sách");
@@ -190,6 +191,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHangHoaKho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         pnlTblHangHoaKho.setViewportView(tblHangHoaKho);
 
         btnThemVaoDS.setText("Thêm vào danh sách");
@@ -264,7 +266,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         ));
         tblCTPhieuKiemKho_sub.setRowHeight(25);
-        tblCTPhieuKiemKho_sub.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblCTPhieuKiemKho_sub.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieuKiemKho_sub.getTableHeader().setReorderingAllowed(false);
         pnlTblCTPhieuKiemKho_sub.setViewportView(tblCTPhieuKiemKho_sub);
 
@@ -929,7 +931,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tabs.setSelectedIndex(1);
 
         this.updateStatus();
-        
+
         timer.start();
     }
 
@@ -989,7 +991,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     return modelPhieuKiem;
                 }
             }.execute();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1013,7 +1015,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ dữ liệu vào bảng chi tiết
+    private SwingWorker workerCTPhieu;
+
     private void fillToTableCTPhieu() {
+        if (workerCTPhieu != null) {
+            workerCTPhieu.cancel(true);
+        }
+
         tblCTPhieuKiemKho_main.setRowSorter(null);
         tblCTPhieuKiemKho_sub.setRowSorter(null);
         modelCTPhieuKiem.setRowCount(0);
@@ -1024,21 +1032,34 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
 
         try {
-            List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(Integer.valueOf(maPhieu));
-            int i = 1;
-            for (ChiTietKiemKho ctkk : list) {
-                listCT.add(ctkk.getMaLT());
-                LuuTru lt = ltDAO.selectByID(ctkk.getMaLT());
-                HangHoa hh = hhDAO.selectByID(lt.getMaHH());
-                modelCTPhieuKiem.addRow(new Object[]{
-                    i++,
-                    hh,
-                    ctkk.getSoLuongTon(),
-                    ctkk.getSoLuongThuc(),
-                    ctkk.getMaCTKK(),
-                    ctkk.getMaLT()
-                });
-            }
+            workerCTPhieu = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+                    List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(Integer.valueOf(maPhieu));
+                    int i = 1;
+                    for (ChiTietKiemKho ctkk : list) {
+                        if (isCancelled()) {
+                            break;
+                        }
+                        listCT.add(ctkk.getMaLT());
+                        LuuTru lt = ltDAO.selectByID(ctkk.getMaLT());
+                        HangHoa hh = hhDAO.selectByID(lt.getMaHH());
+                        modelCTPhieuKiem.addRow(new Object[]{
+                            i++,
+                            hh,
+                            ctkk.getSoLuongTon(),
+                            ctkk.getSoLuongThuc(),
+                            ctkk.getMaCTKK(),
+                            ctkk.getMaLT()
+                        });
+                    }
+                    if (isCancelled()) {
+                        modelCTPhieuKiem.setRowCount(0);
+                    }
+                    return null;
+                }
+            };
+            workerCTPhieu.execute();
             this.fillToTableHHkho();
         } catch (Exception e) {
             e.printStackTrace();
@@ -1046,22 +1067,41 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đỗ dữ liệu vào bảng hàng hóa trong kho
+    private SwingWorker workerHHKho;
+
     private void fillToTableHHkho() {
+        if (workerHHKho != null) {
+            workerHHKho.cancel(true);
+        }
         modelHangHoaKho.setRowCount(0);
         //String keyword
         int maKho = ((Kho) cboKho.getSelectedItem()).getMaKho();
         try {
-            List<LuuTru> list = ltDAO.selectNotInList(maKho, "", 0, this.listCT);
-            int i = 1;
-            for (LuuTru lt : list) {
-                HangHoa hh = hhDAO.selectByID(lt.getMaHH());
-                modelHangHoaKho.addRow(new Object[]{
-                    i++,
-                    hh,
-                    lt.getSoLuong(),
-                    lt.getMaLT()
-                });
-            }
+            workerHHKho = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+                    List<LuuTru> list = ltDAO.selectNotInList(maKho, "", 0, listCT);
+                    int i = 1;
+                    for (LuuTru lt : list) {
+                        if (isCancelled()) {
+                            break;
+                        }
+                        HangHoa hh = hhDAO.selectByID(lt.getMaHH());
+                        modelHangHoaKho.addRow(new Object[]{
+                            i++,
+                            hh,
+                            lt.getSoLuong(),
+                            lt.getMaLT()
+                        });
+                    }
+                    if (isCancelled()) {
+                        modelHangHoaKho.setRowCount(0);
+                    }
+                    return null;
+                }
+            };
+            workerHHKho.execute();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1142,8 +1182,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int maKK = pkkDAO.getMaPhieuByNVandCreatedDate(pkk.getMaNV(), pkk.getNgayLap());
 
         int rows = modelCTPhieuKiem.getRowCount();
-        
-        if(rows < 1) {
+
+        if (rows < 1) {
             MsgBox.alert(this, "Danh sách hàng hoá trống!");
             return;
         }
@@ -1355,7 +1395,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblPhieuKiemKho.getColumnModel().getColumn(3).setPreferredWidth(185);
         tblPhieuKiemKho.getColumnModel().getColumn(4).setPreferredWidth(185);
         tblPhieuKiemKho.getColumnModel().getColumn(5).setPreferredWidth(186);
-        
+
         // Định dạng form ra giữa
 //        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 //        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -1365,7 +1405,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 //        
 //        tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 //        tblPhieuKiemKho.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);        
-        
     }
 
     private void createQRCode() {
@@ -1471,7 +1510,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             txtNgayKiem.requestFocus();
             return false;
         }
-        
+
         Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
         if (txtNgayKiem.getDate().before(ngayLap)) {
             MsgBox.alert(this, "Ngày kiểm kho không nhỏ hơn ngày lập phiếu!");
@@ -1480,7 +1519,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
         return true;
     }
-    
 
     private void edit() {
         delCTP.clear();
@@ -1525,7 +1563,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Đổ lại dữ liệu 
     public void refreshForm() {
-        
+
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
@@ -1537,7 +1575,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private Timer timer = new Timer(120000, (e) -> {
         refreshForm();
     });
-    
+
     // Đổ tên bảng vào combobox tìm kiếm
     private void fillToComboBoxTimKiem() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCT.getModel();
@@ -1547,7 +1585,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             model.addElement(columnName);
         }
     }
-    
+
     // Lọc bảng theo từ khoá phiếu
     private void searchCTPhieu() {
         TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieuKiem);

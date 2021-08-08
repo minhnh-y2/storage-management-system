@@ -614,12 +614,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         lblDoiTac.setText("Đối tác");
 
         txtNgayHoanThanh.setDate(new Date());
+        txtNgayHoanThanh.setDateFormatString("dd-MM-yyyy");
         txtNgayHoanThanh.setOpaque(false);
 
         lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMaNV.setText("Người lập");
 
         txtNgayThucHien.setDate(new Date());
+        txtNgayThucHien.setDateFormatString("dd-MM-yyyy");
         txtNgayThucHien.setOpaque(false);
 
         lblLoaiDT.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -1003,7 +1005,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlThongKe.add(pnlTongPhieu);
 
         pnlLoaiPhieu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(179, 217, 255), 2));
-        pnlLoaiPhieu.setLayout(new java.awt.GridLayout());
+        pnlLoaiPhieu.setLayout(new java.awt.GridLayout(1, 0));
 
         pnlPhieuNhap.setLayout(new java.awt.BorderLayout());
 
@@ -1487,85 +1489,95 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu phiếu nhập xuất
-    private SwingWorker worker;
+    private SwingWorker workerPhieu;
 
     private void fillToTablePhieu() {
-        if (worker != null) {
-            worker.cancel(true);
+        if (workerPhieu != null) {
+            workerPhieu.cancel(true);
         }
 
         modelPhieu.setRowCount(0);
         tblPhieu.setRowSorter(null);
-        
-        List<Phieu> list = pDAO.selectByLoaiPhieu(isPhieuNhap);
 
-        worker = new SwingWorker() {
-            @Override
-            protected Object doInBackground() throws Exception {
-                int i = 1;
-                int hoanThanh = 0;
-                int cThanhToan = 0;
-                int cVanChuyen = 0;
-                int tongPhieu = 0;
+        try {
+            List<Phieu> list = pDAO.selectByLoaiPhieu(isPhieuNhap);
 
-                for (Phieu p : list) {
-                    if (isCancelled()) {
-                        modelPhieu.setRowCount(0);
-                        break;
-                    }
-                    int maLT = ctpDAO.getOnlyOneMaLT(p.getMaPhieu());
-                    if (maLT == 0) {
-                        continue;
-                    }
-                    int maKho = ltDAO.getMaKho(maLT);
-                    Kho k = kDAO.selectByID(maKho);
-                    if (p.isTrangThai()) {
-                        if (p.isTinhTrangThanhToan()) {
-                            hoanThanh++;
+            workerPhieu = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+                    int i = 1;
+                    int hoanThanh = 0;
+                    int cThanhToan = 0;
+                    int cVanChuyen = 0;
+                    int tongPhieu = 0;
+
+                    for (Phieu p : list) {
+                        if (isCancelled()) {
+                            modelPhieu.setRowCount(0);
+                            break;
+                        }
+                        int maLT = ctpDAO.getOnlyOneMaLT(p.getMaPhieu());
+                        if (maLT == 0) {
+                            continue;
+                        }
+                        int maKho = ltDAO.getMaKho(maLT);
+                        Kho k = kDAO.selectByID(maKho);
+                        if (p.isTrangThai()) {
+                            if (p.isTinhTrangThanhToan()) {
+                                hoanThanh++;
+                            } else {
+                                cThanhToan++;
+                            }
                         } else {
-                            cThanhToan++;
+                            cVanChuyen++;
+                            if (!p.isTinhTrangThanhToan()) {
+                                cThanhToan++;
+                            }
                         }
-                    } else {
-                        cVanChuyen++;
-                        if (!p.isTinhTrangThanhToan()) {
-                            cThanhToan++;
-                        }
-                    }
-                    tongPhieu++;
-                    
-                    modelPhieu.addRow(new Object[]{
-                        i++,
-                        dtDAO.getTenDT(p.getMaDT()),
-                        p.isLoai() ? "Nhập" : "Xuất",
-                        k.getMaKho(),
-                        p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
-                        p.isTinhTrangThanhToan() ? "Đã xong" : "Chưa xong",
-                        p.getNgThucHien(),
-                        p.getNgHoanThanh(),
-                        p.getNgayLap(),
-                        p
-                    });
+                        tongPhieu++;
 
-                    lblSoLuongPhieu.setText(String.valueOf(tongPhieu));
-                    lblSoLuongHoanThanh.setText(String.valueOf(hoanThanh));
-                    lblSoLuongThanhToan.setText(String.valueOf(cThanhToan));
-                    lblSoLuongChuyenHang.setText(String.valueOf(cVanChuyen));
+                        modelPhieu.addRow(new Object[]{
+                            i++,
+                            dtDAO.getTenDT(p.getMaDT()),
+                            p.isLoai() ? "Nhập" : "Xuất",
+                            k.getMaKho(),
+                            p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
+                            p.isTinhTrangThanhToan() ? "Đã xong" : "Chưa xong",
+                            p.getNgThucHien(),
+                            p.getNgHoanThanh(),
+                            p.getNgayLap(),
+                            p
+                        });
+
+                        lblSoLuongPhieu.setText(String.valueOf(tongPhieu));
+                        lblSoLuongHoanThanh.setText(String.valueOf(hoanThanh));
+                        lblSoLuongThanhToan.setText(String.valueOf(cThanhToan));
+                        lblSoLuongChuyenHang.setText(String.valueOf(cVanChuyen));
+                    }
+                    return null;
                 }
-                return null;
-            }
-            
-        };
-        worker.execute();
+
+            };
+            workerPhieu.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Đổ dữ liệu chi tiết phiếu
+    private SwingWorker workerCTPhieu;
+
     private void fillToTableCTPhieu() {
+        if (workerCTPhieu != null) {
+            workerCTPhieu.cancel(true);
+        }
+
         listCT.clear();
         tblCTPhieu_main.setRowSorter(null);
         tblCTPhieu_sub.setRowSorter(null);
         modelCTPhieu.setRowCount(0);
-        Kho k = (Kho) cboKho.getSelectedItem();
 
+        Kho k = (Kho) cboKho.getSelectedItem();
         try {
             String maPhieu = tblCTPhieu_sub.getToolTipText();
             if (maPhieu == null) {
@@ -1575,34 +1587,43 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             if (list.size() < 1) {
                 return;
             }
-            int i = 1;
-            double tongTien = 0;
-            double ton = 0;
-            for (ChiTietPhieu ctp : list) {
-                String maHH = ltDAO.selectByID(ctp.getMaLT()).getMaHH();
-                HangHoa hh = hhDAO.selectByID(maHH);
-                tongTien += ctp.getSoLuong() * ctp.getDonGia();
-                ton = ltDAO.getSoLuong(k.getMaKho(), hh.getMaHH());
-                if (rdoPhieuXuat.isSelected() && ctp.isTrangThai()) {
-                    ton += ctp.getSoLuong();
-                }
+            workerCTPhieu = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+                    int i = 1;
+                    double tongTien = 0;
+                    double ton = 0;
+                    for (ChiTietPhieu ctp : list) {
+                        if (isCancelled()) break;
+                        String maHH = ltDAO.selectByID(ctp.getMaLT()).getMaHH();
+                        HangHoa hh = hhDAO.selectByID(maHH);
+                        tongTien += ctp.getSoLuong() * ctp.getDonGia();
+                        ton = ltDAO.getSoLuong(k.getMaKho(), hh.getMaHH());
+                        if (rdoPhieuXuat.isSelected() && ctp.isTrangThai()) {
+                            ton += ctp.getSoLuong();
+                        }
 
-                modelCTPhieu.addRow(new Object[]{
-                    i++,
-                    hh,
-                    ctp.getSoLuong(),
-                    ctp.getDonGia(),
-                    ctp.getMaCTP(),
-                    ctp.getThanhTien(),
-                    ctp.isTrangThai(),
-                    ton,
-                    ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
-                });
-                listCT.add(hh);
-            }
-            tblCTPhieu_sub.setModel(modelCTPhieu);
-            tblCTPhieu_main.setModel(modelCTPhieu);
-            lblTongTien.setText(XNumber.toString(tongTien, numFormat));
+                        modelCTPhieu.addRow(new Object[]{
+                            i++,
+                            hh,
+                            ctp.getSoLuong(),
+                            ctp.getDonGia(),
+                            ctp.getMaCTP(),
+                            ctp.getThanhTien(),
+                            ctp.isTrangThai(),
+                            ton,
+                            ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
+                        });
+                        listCT.add(hh);
+                    }
+                    tblCTPhieu_sub.setModel(modelCTPhieu);
+                    tblCTPhieu_main.setModel(modelCTPhieu);
+                    lblTongTien.setText(XNumber.toString(tongTien, numFormat));
+                    if(isCancelled()) modelCTPhieu.setRowCount(0);
+                    return null;
+                }
+            };
+            workerCTPhieu.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }

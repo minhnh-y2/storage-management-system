@@ -375,7 +375,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         gridBagConstraints.gridy = 1;
         pnlChucNang.add(btnThem, gridBagConstraints);
 
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px_2.png"))); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px.png"))); // NOI18N
         btnXoa.setText("Xoá");
         btnXoa.setPreferredSize(new java.awt.Dimension(100, 35));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
