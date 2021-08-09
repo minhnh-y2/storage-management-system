@@ -5,6 +5,7 @@
  */
 package com.stoman.ui;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
@@ -14,6 +15,7 @@ import com.stoman.utils.XImages;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -40,6 +42,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlBackground = new javax.swing.JPanel();
         lblDangNhap = new javax.swing.JLabel();
         lblGioiThieu = new javax.swing.JLabel();
         lblThoat = new javax.swing.JLabel();
@@ -57,18 +60,19 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         setTitle("StoMan - Đăng nhập");
         setAlwaysOnTop(true);
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDangNhap.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        pnlBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblDangNhap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDangNhap.setText("ĐĂNG NHẬP");
-        getContentPane().add(lblDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, -1));
+        pnlBackground.add(lblDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, -1));
 
-        lblGioiThieu.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
+        lblGioiThieu.setFont(new java.awt.Font("Segoe UI", 2, 13)); // NOI18N
         lblGioiThieu.setForeground(new java.awt.Color(255, 255, 255));
         lblGioiThieu.setText("Hệ thống quản lý kho hàng StoMan");
-        getContentPane().add(lblGioiThieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 210, -1));
+        pnlBackground.add(lblGioiThieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 210, -1));
 
         lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel-32(2).png"))); // NOI18N
         lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,35 +86,35 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 lblThoatMouseExited(evt);
             }
         });
-        getContentPane().add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 30, 30));
+        pnlBackground.add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 30, 30));
 
-        lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMaNV.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblMaNV.setForeground(new java.awt.Color(204, 255, 255));
         lblMaNV.setText("Tên tài khoản");
-        getContentPane().add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        pnlBackground.add(lblMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
         txtMaNV.setBackground(new java.awt.Color(0, 0, 0, 0));
-        txtMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(255, 255, 255));
         txtMaNV.setText("trungtv");
         txtMaNV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtMaNV.setCaretColor(new java.awt.Color(255, 255, 255));
         txtMaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 280, 30));
+        pnlBackground.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 280, 30));
 
-        lblMatKhau.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblMatKhau.setForeground(new java.awt.Color(204, 255, 255));
         lblMatKhau.setText("Mật khẩu");
-        getContentPane().add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        pnlBackground.add(lblMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         txtMatKhau.setBackground(new java.awt.Color(0, 0, 0, 0));
-        txtMatKhau.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhau.setText("12345");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtMatKhau.setCaretColor(new java.awt.Color(255, 255, 255));
         txtMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 280, 30));
+        pnlBackground.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 280, 30));
 
         btnDangNhap.setBackground(new java.awt.Color(153, 204, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/login-24.png"))); // NOI18N
@@ -120,7 +124,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 btnDangNhapActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 150, -1));
+        pnlBackground.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 150, -1));
 
         btnThoat.setBackground(new java.awt.Color(255, 153, 153));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
@@ -130,11 +134,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 btnThoatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 150, -1));
+        pnlBackground.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 150, -1));
 
         pnlDangNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         pnlDangNhap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 370));
+        pnlBackground.add(pnlDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 370));
 
         pnlMotion.setOpaque(false);
         pnlMotion.setLayout(new java.awt.BorderLayout());
@@ -144,7 +148,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         lblBackground.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         pnlMotion.add(lblBackground, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 370));
+        pnlBackground.add(pnlMotion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 370));
+
+        getContentPane().add(pnlBackground, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,19 +190,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DangNhapJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -228,6 +223,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblMatKhau;
     private javax.swing.JLabel lblThoat;
+    private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlDangNhap;
     private javax.swing.JPanel pnlMotion;
     private javax.swing.JTextField txtMaNV;
@@ -236,7 +232,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        pnlDangNhap.setBackground(new Color(0, 0, 0, 120));
+        pnlDangNhap.setBackground(new Color(0, 0, 0, 160));
         lblBackground.setIcon(XImages.getImageScale(new ImageIcon(
                 getClass().getResource("/com/stoman/images/background-login.png")),
                 this.getWidth(),

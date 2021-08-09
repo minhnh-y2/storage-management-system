@@ -12,11 +12,16 @@ import com.stoman.dao.PhieuDAO;
 import com.stoman.entity.DoiTac;
 import com.stoman.entity.LoaiDoiTac;
 import com.stoman.utils.MsgBox;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.validator.GenericValidator;
 
@@ -314,19 +319,24 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         buttonGroup1.add(rdoNhaPhanPhoi);
         rdoNhaPhanPhoi.setText("Nhà phân phối");
 
-        lblTenDT.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblTenDT.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTenDT.setForeground(new java.awt.Color(102, 102, 102));
         lblTenDT.setText("Tên đối tác");
 
-        lblDiaChi.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblDiaChi.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDiaChi.setForeground(new java.awt.Color(102, 102, 102));
         lblDiaChi.setText("Địa chỉ");
 
-        lblEmail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(102, 102, 102));
         lblEmail.setText("Email");
 
-        lblDienThoai.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblDienThoai.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDienThoai.setForeground(new java.awt.Color(102, 102, 102));
         lblDienThoai.setText("Số điện thoại");
 
-        lblVaiTro.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblVaiTro.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblVaiTro.setForeground(new java.awt.Color(102, 102, 102));
         lblVaiTro.setText("Vai trò");
 
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
@@ -338,16 +348,16 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEmail)
                     .addComponent(lblDiaChi)
-                    .addComponent(lblDienThoai)
                     .addComponent(lblVaiTro)
-                    .addComponent(lblTenDT))
+                    .addComponent(lblTenDT)
+                    .addComponent(lblDienThoai))
                 .addGap(10, 10, 10)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addComponent(rdoKhachHang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoNhaPhanPhoi)
-                        .addGap(0, 133, Short.MAX_VALUE))
+                        .addGap(0, 139, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -475,7 +485,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDieuHuongTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -591,7 +601,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoiTacJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -889,10 +899,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             }
         }
     }
-    
+
     // Thêm loại đối tác vào danh sách
     private void updateLDT() {
-        if(lstLDT.isSelectionEmpty()){
+        if (lstLDT.isSelectionEmpty()) {
             MsgBox.alert(this, "Chưa chọn loại đối tác!");
             return;
         }
@@ -1008,6 +1018,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         tblDoiTac.setModel(tblModel);
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(1));
         tblDoiTac.getColumnModel().getColumn(0).setMaxWidth(40);
+
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tblDoiTac.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+        tblDoiTac.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+        tblDoiTac.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+
     }
 
     // Đỗ lại dữ liệu 

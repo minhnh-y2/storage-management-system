@@ -5,6 +5,7 @@
  */
 package com.stoman.ui;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JComponent;
 import javax.swing.Painter;
 import javax.swing.Timer;
 import javax.swing.UIDefaults;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.nimbus.AbstractRegionPainter;
 
@@ -54,6 +56,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/chao.gif"))); // NOI18N
         pnlBorder.add(lblLogo, java.awt.BorderLayout.CENTER);
 
+        progressBar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         progressBar.setMaximum(1000);
         progressBar.setMaximumSize(new java.awt.Dimension(32767, 17));
         progressBar.setMinimumSize(new java.awt.Dimension(10, 17));
@@ -76,20 +79,8 @@ public class ChaoJDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    javax.swing.UIManager.put("nimbusOrange", new ColorUIResource(new Color(37, 156, 82)));
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChaoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChaoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChaoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ChaoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

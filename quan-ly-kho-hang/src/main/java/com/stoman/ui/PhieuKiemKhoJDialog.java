@@ -273,22 +273,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlThongTin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlThongTin.setOpaque(false);
 
-        lblTrangThai.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTrangThai.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTrangThai.setText("Trạng thái");
 
-        lblKho.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblKho.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblKho.setText("Kho");
 
-        lblNgayLap.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayLap.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayLap.setText("Ngày lập");
 
-        lblNgayKiem.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayKiem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayKiem.setText("Ngày kiểm");
 
-        lblNguoiLap.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNguoiLap.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNguoiLap.setText("Người lập");
 
-        lblGhiChu.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblGhiChu.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblGhiChu.setText("Ghi chú");
 
         txtGhiChu.setColumns(20);

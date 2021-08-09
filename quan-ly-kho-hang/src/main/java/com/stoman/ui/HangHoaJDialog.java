@@ -97,16 +97,20 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlThongTinHangHoa.setForeground(new java.awt.Color(255, 255, 255));
         pnlThongTinHangHoa.setOpaque(false);
 
-        lblMaHangHoa.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblMaHangHoa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblMaHangHoa.setForeground(new java.awt.Color(102, 102, 102));
         lblMaHangHoa.setText("Mã hàng hoá");
 
-        lblTenHangHoa.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblTenHangHoa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTenHangHoa.setForeground(new java.awt.Color(102, 102, 102));
         lblTenHangHoa.setText("Tên hàng hoá");
 
-        lblDonViTinh.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblDonViTinh.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDonViTinh.setForeground(new java.awt.Color(102, 102, 102));
         lblDonViTinh.setText("Đơn vị tính");
 
-        lblDonGia.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lblDonGia.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblDonGia.setForeground(new java.awt.Color(102, 102, 102));
         lblDonGia.setText("Đơn giá");
 
         txtDonGia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
@@ -564,7 +568,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HangHoaJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

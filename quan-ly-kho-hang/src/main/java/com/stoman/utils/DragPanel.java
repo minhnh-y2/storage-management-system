@@ -28,6 +28,7 @@ public class DragPanel extends JPanel {
         this.dialog = dialog;
 
         addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent e) {
                 initialClick = e.getPoint();
                 getComponentAt(initialClick);

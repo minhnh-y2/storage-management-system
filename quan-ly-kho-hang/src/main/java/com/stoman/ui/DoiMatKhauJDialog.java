@@ -5,11 +5,13 @@
  */
 package com.stoman.ui;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -77,7 +79,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
 
         btnDongY.setBackground(new java.awt.Color(204, 255, 204));
-        btnDongY.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
         btnDongY.setText("Đồng ý");
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +89,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnDongY);
 
         btnThoat.setBackground(new java.awt.Color(255, 153, 153));
-        btnThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -163,19 +163,8 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

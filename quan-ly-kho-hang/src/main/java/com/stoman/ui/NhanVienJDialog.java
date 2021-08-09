@@ -91,6 +91,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlTblNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTblNhanVien.setOpaque(false);
 
+        tblNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -155,9 +156,11 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         });
 
         btnGrpVaiTro.add(rdoTruongKho);
+        rdoTruongKho.setForeground(new java.awt.Color(19, 97, 91));
         rdoTruongKho.setText("Trưởng kho");
 
         btnGrpVaiTro.add(rdoThuKho);
+        rdoThuKho.setForeground(new java.awt.Color(163, 52, 34));
         rdoThuKho.setSelected(true);
         rdoThuKho.setText("Thủ kho");
 
@@ -504,7 +507,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NhanVienJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -865,7 +868,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     color = Color.white;
                 }
                 label.setForeground(color);
-                label.setFont(new java.awt.Font("Segoe UI", 1, 13));
                 return label;
             }
         });

@@ -5,6 +5,9 @@
  */
 package com.stoman.ui;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author MinIT
@@ -45,7 +48,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
 
         txtGioiThieu.setEditable(false);
         txtGioiThieu.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 5, 10, 5));
-        txtGioiThieu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGioiThieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGioiThieu.setText("StoMan là phần mềm quản lý kho hàng hiệu quả cho các doanh nghiệp, nâng cao công tác quản lý hàng tồn kho và cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ. \n\nHệ thống quản lý kho hàng giúp giảm tải các nhân viên hành chính liên quan đến việc thống kê và đạt được kết quả tốt hơn trong các hoạt động của công ty.\n\nYêu cầu về môi trường:\n1. Hệ điều hành bất kỳ\n2. JDK 1.8 trở lên\n3. SQL Server 2008 trở lên");
         txtGioiThieu.setPreferredSize(new java.awt.Dimension(512, 175));
         txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,19 +96,8 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GioiThieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GioiThieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GioiThieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GioiThieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

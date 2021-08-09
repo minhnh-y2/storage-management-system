@@ -84,6 +84,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         ChiTietPhieuDialog = new javax.swing.JDialog();
         pnlBackgroundDialog = new javax.swing.JPanel();
@@ -432,67 +433,82 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         pnlChucNang.setBackground(new java.awt.Color(153, 153, 255));
         pnlChucNang.setOpaque(false);
-        pnlChucNang.setLayout(new java.awt.GridLayout(6, 0));
+        pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
         btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnMoi.setPreferredSize(new java.awt.Dimension(120, 63));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnMoi);
+        pnlChucNang.add(btnMoi, new java.awt.GridBagConstraints());
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
         btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnThem.setPreferredSize(new java.awt.Dimension(120, 63));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnThem);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnXoa.setPreferredSize(new java.awt.Dimension(120, 63));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnXoa);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
         btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnSua.setPreferredSize(new java.awt.Dimension(120, 63));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnSua);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
         btnChiTiet.setText("Chi tiết");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(120, 63));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnChiTiet);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
         btnXuatMaPhieu.setText("QR Code");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(120, 45));
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(120, 63));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnXuatMaPhieu);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
         pnlChucNangMoRong.setLayout(new java.awt.GridLayout(1, 2));
@@ -531,7 +547,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtDaThanhToan.setText("0.0");
         txtDaThanhToan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblTongTien.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTongTien.setText("0.0");
         lblTongTien.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
 
@@ -547,7 +563,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
 
-        lblDaThanhToan.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblDaThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblDaThanhToan.setText("Đã thanh toán");
 
         chkChuyenHang.setText("Hoàn thành chuyển hàng");
@@ -557,10 +573,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
 
-        lblTongTienTitle.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTongTienTitle.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTongTienTitle.setText("Tổng tiền cần thanh toán");
 
-        lblTrangThai.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblTrangThai.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblTrangThai.setText("Trạng thái");
 
         javax.swing.GroupLayout pnlThongTinKhacLayout = new javax.swing.GroupLayout(pnlThongTinKhac);
@@ -610,39 +626,37 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblDoiTac.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblDoiTac.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblDoiTac.setText("Đối tác");
 
         txtNgayHoanThanh.setDate(new Date());
-        txtNgayHoanThanh.setDateFormatString("dd-MM-yyyy");
         txtNgayHoanThanh.setOpaque(false);
 
-        lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblMaNV.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblMaNV.setText("Người lập");
 
         txtNgayThucHien.setDate(new Date());
-        txtNgayThucHien.setDateFormatString("dd-MM-yyyy");
         txtNgayThucHien.setOpaque(false);
 
-        lblLoaiDT.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblLoaiDT.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblLoaiDT.setText("Loại đối tác");
 
-        lblLoaiPhieu.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblLoaiPhieu.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblLoaiPhieu.setText("Loại phiếu");
 
-        lblGhiChu.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblGhiChu.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblGhiChu.setText("Ghi chú");
 
-        lblNgayHoanThanh.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayHoanThanh.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayHoanThanh.setText("Ngày hoàn thành");
 
         btnGrpLoaiPhieu.add(rdoPhieuXuat);
         rdoPhieuXuat.setText("Phiếu xuất");
 
-        lblNgayHoanThanh1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayHoanThanh1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayHoanThanh1.setText("Kho");
 
-        lblNgayThucHien.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayThucHien.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayThucHien.setText("Ngày thực hiện");
 
         cboKho.setEditable(true);
@@ -658,7 +672,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
 
-        lblNgayLap.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblNgayLap.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         lblNgayLap.setText("Ngày lập");
 
         txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy HH:mm:ss"))));
@@ -830,7 +844,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlChiTietLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1053,7 +1067,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(scrollPane2)
                             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlChuThich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -1076,7 +1090,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiemPhieu2)
                     .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1287,7 +1301,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PhieuNhapXuatKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

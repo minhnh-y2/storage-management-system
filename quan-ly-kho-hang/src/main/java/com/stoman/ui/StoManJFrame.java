@@ -361,7 +361,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
 
-        tabs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         pnlBieuDo.setLayout(new java.awt.BorderLayout());
 
@@ -371,7 +371,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlLuongNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongNhap.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblLuongNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLuongNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLuongNhap.setText("<html><center>Lượng nhập<br>trong năm</center></html>");
@@ -389,7 +389,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlLuongXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongXuat.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblLuongXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLuongXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLuongXuat.setText("<html><center>Lượng xuất<br>trong năm</center></html>");
@@ -407,7 +407,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlLuongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongTonKho.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTonKho.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTonKho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTonKho.setForeground(new java.awt.Color(255, 255, 255));
         lblTonKho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTonKho.setText("Tồn kho hiện tại");
@@ -423,11 +423,11 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblDShangHoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDShangHoa1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDShangHoa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoa1.setText("Biểu đồ nhập xuất");
 
-        lblKhoTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblKhoTQ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblKhoTQ.setText("KHO");
         jPanel1.add(lblKhoTQ);
 
@@ -442,7 +442,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         lblLocBieuDo.add(jPanel1);
 
-        lblNamTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblNamTQ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNamTQ.setText("NĂM");
         jPanel3.add(lblNamTQ);
 
@@ -457,7 +457,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         lblLocBieuDo.add(jPanel3);
 
-        lblQuyTQ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblQuyTQ.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblQuyTQ.setText("QUÝ");
         jPanel4.add(lblQuyTQ);
 
@@ -506,7 +506,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Tổng quan", pnlTongQuan);
 
-        lblDShangHoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDShangHoa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDShangHoa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoa.setText("Danh sách hàng hóa");
 
@@ -541,7 +541,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblPhanLoaiHH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPhanLoaiHH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhanLoaiHH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhanLoaiHH.setText("Phân loại danh sách");
 
@@ -565,7 +565,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongGiaTri.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGiaTri.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTri.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTri.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTri.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTri.setText("Tổng Giá Trị");
@@ -581,7 +581,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongTonKho.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTonKhoLT.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTonKhoLT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTonKhoLT.setForeground(new java.awt.Color(255, 255, 255));
         lblTonKhoLT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTonKhoLT.setText("Tổng tồn kho");
@@ -593,7 +593,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblSoLuongTKLT.setText("0");
         pnlTongTonKho.add(lblSoLuongTKLT);
 
-        lblTopLHH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopLHH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopLHH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopLHH.setText("10 loại hàng tồn nhiều nhất");
 
@@ -610,7 +610,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblTopHH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopHH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopHH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopHH.setText("10 mặt hàng tồn nhiều nhất");
 
@@ -715,7 +715,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTopHH))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                             .addComponent(pnlTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(separator12))
                 .addContainerGap())
@@ -723,7 +723,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Hàng tồn kho", pnlTonKho);
 
-        lblDShangHoaNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDShangHoaNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDShangHoaNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoaNhap.setText("Danh sách hàng hóa nhập");
 
@@ -774,7 +774,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblTrongNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTrongNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTrongNhap.setText("Trong");
 
         lblThangNhap.setText("Tháng");
@@ -793,7 +793,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblPhanLoaiN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPhanLoaiN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhanLoaiN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhanLoaiN.setText("Phân loại danh sách");
 
@@ -801,7 +801,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongLGNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGNhap.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTriNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTriNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTriNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTriNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTriNhap.setText("Tổng Giá Trị Nhập");
@@ -817,7 +817,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongGTNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGTNhap.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongLuongNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongLuongNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblTongLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongLuongNhap.setText("Tổng lượng Nhập");
@@ -829,7 +829,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongSoLN.setText("0");
         pnlTongGTNhap.add(lblTongSoLN);
 
-        lblTopLHHNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopLHHNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopLHHNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopLHHNhap.setText("10 loại hàng nhập nhiều nhất");
 
@@ -846,7 +846,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator19.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblTopHHNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopHHNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopHHNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopHHNhap.setText("10 mặt hàng nhập nhiều nhất");
 
@@ -972,7 +972,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopLHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -983,7 +983,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Thống kê nhập", pnlTKNhap);
 
-        lblDShangHoaXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDShangHoaXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDShangHoaXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoaXuat.setText("Danh sách hàng hóa xuất");
 
@@ -1033,7 +1033,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblTrongXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTrongXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTrongXuat.setText("Trong");
 
         lblThangXuat.setText("Tháng");
@@ -1052,7 +1052,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblPhanXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPhanXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhanXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhanXuat.setText("Phân loại danh sách");
 
@@ -1060,7 +1060,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongLGXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGXuat.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTriXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTriXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTriXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTriXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTriXuat.setText("Tổng Giá Trị Xuất");
@@ -1076,7 +1076,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongGTXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGTXuat.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongLuongXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongLuongXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblTongLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongLuongXuat.setText("Tổng lượng Xuất");
@@ -1088,7 +1088,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongSoLX.setText("0");
         pnlTongGTXuat.add(lblTongSoLX);
 
-        lblTopLHHXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopLHHXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopLHHXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopLHHXuat.setText("10 loại hàng xuất nhiều nhất");
 
@@ -1105,7 +1105,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator28.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblTopHHXuat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopHHXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopHHXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopHHXuat.setText("10 mặt hàng xuất nhiều nhất");
 
@@ -1229,7 +1229,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1240,7 +1240,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         tabs.addTab("Thống kê xuất", pnlTKXuat);
 
-        lblDSTongHop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDSTongHop.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDSTongHop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDSTongHop.setText("Cán cân xuất nhập theo năm");
 
@@ -1275,7 +1275,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator29.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblPhanTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPhanTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPhanTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhanTH.setText("Phân loại danh sách");
 
@@ -1285,7 +1285,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
 
-        lblTrongTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTrongTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTrongTH.setText("Trong");
 
         lblNamTH.setText("Năm");
@@ -1344,7 +1344,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongSoGTXN.setText("0");
         pnlTongCCGTXuatNhap.add(lblTongSoGTXN);
 
-        lblTopLHHTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopLHHTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopLHHTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopLHHTH.setText("10 loại hàng giá trị nhập xuất cao");
 
@@ -1361,7 +1361,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         separator33.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblTopHHTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTopHHTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopHHTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopHHTH.setText("10 mặt hàng giá trị nhập xuất cao");
 
@@ -1506,7 +1506,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1534,8 +1534,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTrangThai.add(lblDongHo, java.awt.BorderLayout.EAST);
 
         getContentPane().add(pnlTrangThai, java.awt.BorderLayout.PAGE_END);
-
-        menuBar.setOpaque(false);
 
         mnuHeThong.setText("Hệ thống");
 
@@ -1927,7 +1925,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             UIManager.put("TextComponent.arc", 15);
             UIManager.put("FileChooser.useSystemExtensionHiding", true);
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PhieuKiemKhoJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StoManJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */

@@ -78,7 +78,7 @@
                       <Component id="pnlDieuHuongTitle" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="pnlTblDoiTac" pref="306" max="32767" attributes="0"/>
+                  <Component id="pnlTblDoiTac" pref="316" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -461,9 +461,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDienThoai" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVaiTro" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTenDT" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDienThoai" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -471,7 +471,7 @@
                               <Component id="rdoKhachHang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="rdoNhaPhanPhoi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="133" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtDiaChi" alignment="1" max="32767" attributes="0"/>
                           <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
@@ -545,7 +545,10 @@
             <Component class="javax.swing.JLabel" name="lblTenDT">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="13" style="0"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#xea;n &#x111;&#x1ed1;i t&#xe1;c"/>
               </Properties>
@@ -553,7 +556,10 @@
             <Component class="javax.swing.JLabel" name="lblDiaChi">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="13" style="0"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;"/>
               </Properties>
@@ -561,7 +567,10 @@
             <Component class="javax.swing.JLabel" name="lblEmail">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="13" style="0"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
@@ -569,7 +578,10 @@
             <Component class="javax.swing.JLabel" name="lblDienThoai">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="13" style="0"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i"/>
               </Properties>
@@ -577,7 +589,10 @@
             <Component class="javax.swing.JLabel" name="lblVaiTro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="13" style="0"/>
+                  <Font name="Segoe UI" size="13" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vai tr&#xf2;"/>
               </Properties>
