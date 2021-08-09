@@ -13,6 +13,7 @@ import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.TextFieldCustom;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
@@ -117,7 +118,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
         lblTimKiemLT = new javax.swing.JLabel();
-        txtTimKiemLT = new javax.swing.JTextField();
+        txtTimKiemLT = new TextFieldCustom();
         lblTheoLT = new javax.swing.JLabel();
         cboTimKiemLT = new javax.swing.JComboBox<>();
         lblTblLuuTru = new javax.swing.JScrollPane();
@@ -146,7 +147,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKNhap = new javax.swing.JPanel();
         lblDShangHoaNhap = new javax.swing.JLabel();
         lblTimKiemNhap = new javax.swing.JLabel();
-        txtTimKiemNhap = new javax.swing.JTextField();
+        txtTimKiemNhap = new TextFieldCustom();
         lblTheoNhap = new javax.swing.JLabel();
         cboTimKiemNhap = new javax.swing.JComboBox<>();
         lblTblTKnhap = new javax.swing.JScrollPane();
@@ -181,7 +182,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKXuat = new javax.swing.JPanel();
         lblDShangHoaXuat = new javax.swing.JLabel();
         lblTimKiemXuat = new javax.swing.JLabel();
-        txtTimKiemXuat = new javax.swing.JTextField();
+        txtTimKiemXuat = new TextFieldCustom();
         lblTheoXuat = new javax.swing.JLabel();
         cboTimKiemXuat = new javax.swing.JComboBox<>();
         lblTblTKxuat = new javax.swing.JScrollPane();
@@ -216,7 +217,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongHop = new javax.swing.JPanel();
         lblDSTongHop = new javax.swing.JLabel();
         lblTimKiemTH = new javax.swing.JLabel();
-        txtTimKiemTH = new javax.swing.JTextField();
+        txtTimKiemTH = new TextFieldCustom();
         lblTheoTH = new javax.swing.JLabel();
         cboTimKiemTH = new javax.swing.JComboBox<>();
         lblTblTongHop = new javax.swing.JScrollPane();
@@ -267,7 +268,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         mniPhieuNhapXuat = new javax.swing.JMenuItem();
         mniPhieuKiemKho = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        separatorMniNhanVien = new javax.swing.JPopupMenu.Separator();
         mniNhanVien = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
         mniGioiThieu = new javax.swing.JMenuItem();
@@ -901,12 +902,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(separator4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                                 .addComponent(lblThangNhap)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboThangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboThangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNamNhap)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboNamNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboNamNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(separator5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTKNhapLayout.createSequentialGroup()
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -923,8 +924,8 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTKNhapLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
+                .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhanLoaiN)
                             .addComponent(lblDShangHoaNhap))
@@ -962,7 +963,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                     .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTblTKnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                    .addComponent(separator18, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(separator18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator17, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1156,12 +1157,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(separator26, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                                 .addComponent(lblThangXuat)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboThangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboThangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNamXuat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboNamXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboNamXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(separator25, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTKXuatLayout.createSequentialGroup()
                                 .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1435,12 +1436,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(pnlTongCCGTXuatNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                                 .addComponent(lblThangTH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboThangTH, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboThangTH, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNamTH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboNamTH, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboNamTH, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlTongHopLayout.createSequentialGroup()
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblLoaiHangHoaTH)
@@ -1470,7 +1471,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboLoaiHangHoaTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblLoaiHangHoaTH))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(separator30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTrongTH)
@@ -1504,7 +1505,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1620,7 +1621,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         });
         mnuQuanLy.add(mniPhieuKiemKho);
-        mnuQuanLy.add(jSeparator5);
+        mnuQuanLy.add(separatorMniNhanVien);
 
         mniNhanVien.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/name-tag.png"))); // NOI18N
@@ -1917,10 +1918,10 @@ public class StoManJFrame extends javax.swing.JFrame {
             UIManager.put("Table.showHorizontalLines", true);
             UIManager.put("Table.showVerticalLines", false);
             UIManager.put("TitlePane.unifiedBackground", true);
-            UIManager.put("Button.arc", 15);
-            UIManager.put("Component.arc", 15);
-            UIManager.put("ProgressBar.arc", 15);
-            UIManager.put("TextComponent.arc", 15);
+            UIManager.put("Button.arc", 10);
+            UIManager.put("Component.arc", 10);
+            UIManager.put("ProgressBar.arc", 10);
+            UIManager.put("TextComponent.arc", 10);
             UIManager.put("FileChooser.useSystemExtensionHiding", true);
         } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StoManJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -1967,7 +1968,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JLabel lblDSTongHop;
     private javax.swing.JLabel lblDShangHoa;
@@ -2109,6 +2109,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator separator4;
     private javax.swing.JSeparator separator5;
     private javax.swing.JSeparator separator6;
+    private javax.swing.JPopupMenu.Separator separatorMniNhanVien;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblLuuTru;
     private javax.swing.JTable tblTKnhap;
@@ -2461,7 +2462,10 @@ public class StoManJFrame extends javax.swing.JFrame {
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
             lblTrangThai.setText("Chưa đăng nhập vào hệ thống!");
 
+            mnuQuanLy.setVisible(false);
+            mniDoiMK.setVisible(false);
             tabs.setVisible(false);
+            
             hideComponents(false);
         } else {
             mniTaiKhoan.setText("Đăng xuất");
@@ -2470,15 +2474,19 @@ public class StoManJFrame extends javax.swing.JFrame {
             btnTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/logout.png")));
             String vaiTro = Auth.user.isVaiTro() ? "Trưởng kho" : "Thủ kho";
             lblTrangThai.setText(Auth.user.getTenNV() + " | " + vaiTro);
-
+            
+            mnuQuanLy.setVisible(true);
+            mniDoiMK.setVisible(true);
             tabs.setVisible(true);
+            
             hideComponents(Auth.user.isVaiTro());
         }
+        
     }
 
     // Giấu các bộ phận form
     private void hideComponents(boolean init) {
-        jSeparator5.setVisible(init);
+        separatorMniNhanVien.setVisible(init);
         mniNhanVien.setVisible(init);
         pnlTongHop.setVisible(init);
         if (init) {
@@ -2620,23 +2628,11 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form đổi mật khẩu
     private void openDoiMatKhauDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
         new DoiMatKhauJDialog(this, true).setVisible(true);
     }
 
     // Mở form quản lý đối tác
     private void openDoiTacDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền quản lý đối tác!");
-            return;
-        }
         this.timer.stop();
         new DoiTacJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2651,10 +2647,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý hàng hoá
     private void openHangHoaDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
         this.timer.stop();
         new HangHoaJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2662,10 +2654,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý kho
     private void openKhoDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
         this.timer.stop();
         new KhoJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2673,14 +2661,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý nhân viên
     private void openNhanVienDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
-        if (!Auth.isManager()) {
-            MsgBox.alert(this, "Bạn không có quyền quản lý nhân viên!");
-            return;
-        }
         this.timer.stop();
         new NhanVienJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2688,10 +2668,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu kiểm kho
     private void openKiemKhoDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
         this.timer.stop();
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2699,10 +2675,6 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu nhập xuất kho
     private void openNhapXuatKhoDialog() {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-            return;
-        }
         this.timer.stop();
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
         this.refreshForm();
