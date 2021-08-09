@@ -56,16 +56,19 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
         txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtMatKhauCu.setPreferredSize(new java.awt.Dimension(64, 22));
 
         lblMatKhauMoi.setText("Mật khẩu mới");
 
         txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
         txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtMatKhauMoi.setPreferredSize(new java.awt.Dimension(64, 22));
 
         lblXacNhanMK.setText("Xác nhận mật khẩu mới");
 
         txtXacNhanMK.setBackground(new Color(0, 0, 0, 0));
         txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
+        txtXacNhanMK.setPreferredSize(new java.awt.Dimension(64, 22));
         txtXacNhanMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtXacNhanMKActionPerformed(evt);
@@ -102,9 +105,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addGroup(pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtXacNhanMK, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtMatKhauCu)
+                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtXacNhanMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtMatKhauCu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblMatKhauCu)
                     .addComponent(lblMatKhauMoi)
                     .addComponent(lblXacNhanMK))
