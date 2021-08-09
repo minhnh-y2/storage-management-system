@@ -422,9 +422,9 @@
                               <Component id="lblCTP" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblChucNang" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblTimKiemCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -432,17 +432,14 @@
                                       <Component id="cboTimKiemCTPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pnlTblCTPhieu_sub" pref="309" max="32767" attributes="0"/>
+                                  <Component id="pnlTblCTPhieu_sub" pref="315" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="pnlNutDieuHuong" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="pnlChucNangMoRong" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlChucNang" pref="384" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="pnlChucNang" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -796,15 +793,13 @@
                                   <Component id="jSeparator3" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtDaThanhToan" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblTrangThai" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblDaThanhToan" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTongTienTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkThanhToan" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chkChuyenHang" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="88" max="32767" attributes="0"/>
+                                      <Component id="lblTrangThai" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="193" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="lblDaThanhToan" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTongTienTitle" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="chkThanhToan" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="chkChuyenHang" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -821,7 +816,7 @@
                               <Component id="jSeparator4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="lblDaThanhToan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="7" max="32767" attributes="0"/>
                               <Component id="txtDaThanhToan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
@@ -867,7 +862,7 @@
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="chkThanhToan">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh thanh to&#xe1;n"/>
+                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh thanh to&#xe1;n cho &#x111;&#x1ed1;i t&#xe1;c"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkThanhToanMouseClicked"/>
@@ -879,12 +874,12 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&#x110;&#xe3; thanh to&#xe1;n"/>
+                        <Property name="text" type="java.lang.String" value="&#x110;&#xe3; thanh to&#xe1;n cho &#x111;&#x1ed1;i t&#xe1;c"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="chkChuyenHang">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh chuy&#x1ec3;n h&#xe0;ng"/>
+                        <Property name="text" type="java.lang.String" value="Ho&#xe0;n th&#xe0;nh nh&#x1ead;p h&#xe0;ng"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkChuyenHangMouseClicked"/>
@@ -938,7 +933,7 @@
                                           </Group>
                                           <Component id="txtMaNV" max="32767" attributes="0"/>
                                           <Component id="txtNgayLap" max="32767" attributes="0"/>
-                                          <Component id="cboKho" alignment="0" pref="303" max="32767" attributes="0"/>
+                                          <Component id="cboKho" alignment="0" pref="292" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -952,7 +947,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cboLoaiDT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtNgayThucHien" alignment="0" pref="231" max="32767" attributes="0"/>
+                                          <Component id="txtNgayThucHien" alignment="0" pref="227" max="32767" attributes="0"/>
                                           <Component id="txtNgayHoanThanh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cboDoiTac" alignment="0" max="32767" attributes="0"/>
                                       </Group>
@@ -1230,7 +1225,7 @@
                                       </Group>
                                       <Component id="scrollPane2" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="pnlThongKe" pref="541" max="32767" attributes="0"/>
+                                          <Component id="pnlThongKe" pref="577" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="pnlChuThich" min="-2" max="-2" attributes="0"/>
                                       </Group>

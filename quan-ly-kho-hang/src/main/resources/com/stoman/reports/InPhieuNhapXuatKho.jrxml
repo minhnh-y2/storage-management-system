@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InPhieuNhapXuatKho" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f2cbbbe2-f169-4e63-b403-2dd93c56c556">
-	<property name="ireport.zoom" value="1.9487171000000083"/>
+	<property name="ireport.zoom" value="1.3310000000000057"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="140"/>
+	<property name="ireport.y" value="0"/>
 	<style name="tblCTPhieu">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -53,9 +53,9 @@ WHERE
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT DISTINCT
-     IIF(PHIEU."LOAI" = 0, N'PHIẾU NHẬP KHO', N'PHIẾU XUẤT KHO') AS PHIEU_LOAIPHIEU,
-     IIF(PHIEU."LOAI" = 0, N'Nhập từ:', N'Xuất cho:') AS PHIEU_LOAIPHIEU2,
-IIF(PHIEU."LOAI" = 0, N'Đối tác:', N'Khách hàng') AS PHIEU_KYTEN,
+     IIF(PHIEU."LOAI" = 1, N'PHIẾU NHẬP KHO', N'PHIẾU XUẤT KHO') AS PHIEU_LOAIPHIEU,
+     IIF(PHIEU."LOAI" = 1, N'Nhập từ:', N'Xuất cho:') AS PHIEU_LOAIPHIEU2,
+IIF(PHIEU."LOAI" = 1, N'Đối tác', N'Khách hàng') AS PHIEU_KYTEN,
      PHIEU."MAPHIEU" AS PHIEU_MAPHIEU,
      PHIEU."NGAYLAP" AS PHIEU_NGAYLAP,
      LUUTRU."MAKHO" AS LUUTRU_MAKHO,

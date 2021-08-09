@@ -104,10 +104,15 @@ public class DoiTacDAO extends StoManDAO<DoiTac, Integer> {
         String sql = "SELECT * FROM DOITAC WHERE MALDT = ? AND " + header[index] + " LIKE ?";
         return this.selectBySQL(sql, maLDT, "%" + keyword + "%");
     }
-
+    
     public List<DoiTac> selectByLoaiDT(Integer maLDT) {
-        String sql = "SELECT * FROM DOITAC WHERE MaLDT = ?";
+        String sql = "SELECT * FROM DOITAC WHERE MALDT = ?";
         return this.selectBySQL(sql, maLDT);
+    }
+
+    public List<DoiTac> selectByLoaiDTandVaiTro(Integer maLDT, boolean vaiTro) {
+        String sql = "SELECT * FROM DOITAC WHERE MALDT = ? AND VAITRO = ?";
+        return this.selectBySQL(sql, maLDT, vaiTro);
     }
 
     public String getTenDT(int maDT) {

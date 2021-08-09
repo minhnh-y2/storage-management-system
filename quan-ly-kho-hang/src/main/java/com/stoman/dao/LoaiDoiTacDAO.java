@@ -84,4 +84,8 @@ public class LoaiDoiTacDAO extends StoManDAO<LoaiDoiTac, Integer>{
         return this.selectBySQL(sql, "%" + keyword + "%");
     }
 
+    public List<LoaiDoiTac> selectLDTonVaiTro(boolean loai) {
+        String sql = "SELECT LDT.MALDT, TENLDT FROM LOAIDOITAC LDT INNER JOIN DOITAC DT ON LDT.MALDT = DT.MALDT WHERE VAITRO = ? GROUP BY LDT.MALDT, TENLDT";
+        return this.selectBySQL(sql, loai);
+    }
 }
