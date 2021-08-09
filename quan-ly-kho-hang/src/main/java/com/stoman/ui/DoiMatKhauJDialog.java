@@ -50,25 +50,21 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Đổi mật khẩu");
-        setAlwaysOnTop(true);
         setResizable(false);
 
         lblMatKhauCu.setText("Mật khẩu hiện tại");
 
         txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
-        txtMatKhauCu.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         lblMatKhauMoi.setText("Mật khẩu mới");
 
         txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
-        txtMatKhauMoi.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
 
         lblXacNhanMK.setText("Xác nhận mật khẩu mới");
 
         txtXacNhanMK.setBackground(new Color(0, 0, 0, 0));
-        txtXacNhanMK.setForeground(new java.awt.Color(255, 255, 255));
         txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
         txtXacNhanMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,34 +202,14 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     //Code phương thức đổi mật khẩu.
     private void changePassWord() {
         if (isValidated()) {
-            String matKhau = new String(txtMatKhauCu.getPassword());
-            String matKhauMoi = new String(txtMatKhauMoi.getPassword());
-            String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
-            
-            if (!XPassword.isValidated(matKhau, Auth.user.getMatKhau(), Auth.user.getMuoi())) {
-                MsgBox.alert(this, "Mật khẩu không đúng!");
-                txtMatKhauCu.requestFocus();
-                return;
-            }
-            if (XPassword.isValidated(matKhauMoi, Auth.user.getMatKhau(), Auth.user.getMuoi())) {
-                MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
-                txtMatKhauCu.requestFocus();
-                return;
-            }
-            if (!matKhauMoi.equals(xacNhanMKMoi)) {
-                MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
-                txtXacNhanMK.requestFocus();
-                return;
-            }
-            
             byte[] muoi = XPassword.getSalt();
-            Auth.user.setMuoi(muoi);
-            Auth.user.setMatKhau(XPassword.getHashMD5(matKhauMoi, muoi));
             
+            Auth.user.setMuoi(muoi);
+            Auth.user.setMatKhau(XPassword.getHashMD5(txtMatKhauMoi.getPassword(), muoi));
+
             dao.update(Auth.user);
             MsgBox.alert(this, "Đổi mật khẩu thành công!");
             this.dispose();
-            
         }
     }
 
@@ -247,6 +223,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             txtMatKhauCu.requestFocus();
             return false;
         }
+        
         if (txtMatKhauMoi.getPassword().length == 0) {
             MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
             txtMatKhauMoi.requestFocus();
@@ -257,12 +234,32 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             txtMatKhauMoi.requestFocus();
             return false;
         }
-        if (txtMatKhauMoi.getPassword().length == 0) {
-            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
+        if (txtXacNhanMK.getPassword().length == 0) {
+            MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
             txtMatKhauMoi.requestFocus();
             return false;
         }
+        if (!XPassword.isValidated(txtMatKhauCu.getPassword(),
+                Auth.user.getMatKhau(), Auth.user.getMuoi())) {
+            MsgBox.alert(this, "Mật khẩu không đúng!");
+            txtMatKhauCu.setText("");
+            txtMatKhauCu.requestFocus();
+            return false;
+        }
+        if (XPassword.isValidated(txtMatKhauMoi.getPassword(),
+                Auth.user.getMatKhau(), Auth.user.getMuoi())) {
+            MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
+            txtMatKhauCu.requestFocus();
+            return false;
+        }
+        String matKhauMoi = new String(txtMatKhauMoi.getPassword());
+        String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
+        if (!matKhauMoi.equals(xacNhanMKMoi)) {
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
+            txtXacNhanMK.requestFocus();
+            return false;
+        }
         return true;
-        
+
     }
 }
