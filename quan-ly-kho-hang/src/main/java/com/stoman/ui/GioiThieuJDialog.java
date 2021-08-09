@@ -6,6 +6,7 @@
 package com.stoman.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.awt.Color;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -20,7 +21,7 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
     public GioiThieuJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        init();
     }
 
     /**
@@ -32,46 +33,42 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlGioiThieu = new javax.swing.JPanel();
+        lblHeaderImage = new javax.swing.JLabel();
+        pnlContent = new javax.swing.JPanel();
         txtGioiThieu = new javax.swing.JTextPane();
-        pnlLogo = new javax.swing.JPanel();
-        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(519, 540));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(480, 400));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(480, 600));
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        pnlGioiThieu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(153, 153, 153)));
-        pnlGioiThieu.setMinimumSize(new java.awt.Dimension(514, 176));
-        pnlGioiThieu.setLayout(new java.awt.BorderLayout());
+        lblHeaderImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif"))); // NOI18N
+        lblHeaderImage.setText("jLabel1");
+        lblHeaderImage.setPreferredSize(new java.awt.Dimension(480, 100));
+        getContentPane().add(lblHeaderImage);
+
+        pnlContent.setBackground(new java.awt.Color(0, 102, 204));
 
         txtGioiThieu.setEditable(false);
-        txtGioiThieu.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 5, 10, 5));
+        txtGioiThieu.setBackground(new java.awt.Color(0, 102, 153));
+        txtGioiThieu.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        txtGioiThieu.setContentType("text/html"); // NOI18N
         txtGioiThieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtGioiThieu.setText("StoMan là phần mềm quản lý kho hàng hiệu quả cho các doanh nghiệp, nâng cao công tác quản lý hàng tồn kho và cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ. \n\nHệ thống quản lý kho hàng giúp giảm tải các nhân viên hành chính liên quan đến việc thống kê và đạt được kết quả tốt hơn trong các hoạt động của công ty.\n\nYêu cầu về môi trường:\n1. Hệ điều hành bất kỳ\n2. JDK 1.8 trở lên\n3. SQL Server 2008 trở lên");
-        txtGioiThieu.setPreferredSize(new java.awt.Dimension(512, 175));
+        txtGioiThieu.setForeground(new java.awt.Color(255, 255, 255));
+        txtGioiThieu.setText("<html>\n  <head>\n\n  </head>\n  <body>\n<center><h1>Storage Manage</h1></center>\n<p>Storage Manager (StoMan) là phần mềm hổ trợ quản lý kho cho doanh nghiêp.</p>\n<p>Stoman sẽ giúp doanh nghiệp nâng cao công tác quản lý kho thông qua giảm tải được các công việc hành chính và thống kê, nâng cao khả năng cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ.</p>\n<p>Giúp doanh nghiệp đạt được kết quả tốt hơn trong việc sản xuất và kinh doanh.</p>\n<p><br></p>\n<p><strong>Yêu cầu về môi trường:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Tác giá:</strong></p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>1. Hệ điều hành bất kỳ<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>1. Nguyễn Hoài Minh</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>2. JDK 1.8 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span>2. Đặng Hữu Đăng Khoa</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>3. SQL Server 2008 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>3. Nguyễn Quang Huy <span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span></p>\n  </body>\n</html>\n");
+        txtGioiThieu.setPreferredSize(new java.awt.Dimension(480, 450));
+        txtGioiThieu.setRequestFocusEnabled(false);
         txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtGioiThieuMouseClicked(evt);
             }
         });
-        pnlGioiThieu.add(txtGioiThieu, java.awt.BorderLayout.CENTER);
+        pnlContent.add(txtGioiThieu);
 
-        getContentPane().add(pnlGioiThieu, java.awt.BorderLayout.CENTER);
-
-        pnlLogo.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 0, 2, new java.awt.Color(153, 153, 153)));
-        pnlLogo.setLayout(new java.awt.GridLayout(1, 0));
-
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif"))); // NOI18N
-        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLogoMouseClicked(evt);
-            }
-        });
-        pnlLogo.add(lblLogo);
-
-        getContentPane().add(pnlLogo, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(pnlContent);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,11 +77,6 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_txtGioiThieuMouseClicked
-
-    private void lblLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_lblLogoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -121,9 +113,12 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblLogo;
-    private javax.swing.JPanel pnlGioiThieu;
-    private javax.swing.JPanel pnlLogo;
+    private javax.swing.JLabel lblHeaderImage;
+    private javax.swing.JPanel pnlContent;
     private javax.swing.JTextPane txtGioiThieu;
     // End of variables declaration//GEN-END:variables
+
+    private void init(){
+        this.setLocationRelativeTo(null);
+    }
 }
