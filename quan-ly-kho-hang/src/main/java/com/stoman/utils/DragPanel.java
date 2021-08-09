@@ -8,6 +8,7 @@ package com.stoman.utils;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -26,7 +27,10 @@ public class DragPanel extends JPanel {
 
     public DragPanel(final JDialog dialog) {
         this.dialog = dialog;
+        this.addEventsForDragging();
+    }
 
+    private void addEventsForDragging() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -53,5 +57,6 @@ public class DragPanel extends JPanel {
                 dialog.setLocation(X, Y);
             }
         });
+
     }
 }
