@@ -6,7 +6,6 @@
 package com.stoman.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import java.awt.Color;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
