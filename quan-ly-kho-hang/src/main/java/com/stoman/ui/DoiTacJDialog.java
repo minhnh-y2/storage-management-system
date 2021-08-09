@@ -1143,8 +1143,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {
-            JLabel label = (JLabel) super.getTableCellRendererComponent(table,
-                    value, isSelected, hasFocus, row, column);
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
             Color color = Color.black;
             Object obj = table.getValueAt(row, 5);
@@ -1157,8 +1156,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             if (isSelected) {
                 color = Color.white;
             }
-            label.setForeground(color);
-            return label;
+            setForeground(color);
+            table.setSelectionBackground(new Color(38, 117, 191));
+            return this;
         }
     }
 

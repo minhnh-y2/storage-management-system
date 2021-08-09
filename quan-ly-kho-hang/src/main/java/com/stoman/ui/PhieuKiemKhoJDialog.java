@@ -649,6 +649,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         lblTheo.setText("theo");
 
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
+
         lblTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
@@ -776,7 +782,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-        this.rowPhieu = tblPhieuKiemKho.convertRowIndexToModel(tblPhieuKiemKho.getSelectedRow());
+        int rowPhieuView = tblPhieuKiemKho.getSelectedRow();
+        this.rowPhieu = tblPhieuKiemKho.convertRowIndexToModel(rowPhieuView);
         edit();
     }//GEN-LAST:event_tblPhieuKiemKhoMouseClicked
 
@@ -876,6 +883,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         txtTimKiemCT.setText("");
         searchCTPhieu();
     }//GEN-LAST:event_cboTimKiemCTActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
