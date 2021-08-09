@@ -38,7 +38,7 @@ public class TextFieldCustom extends JTextField {
     }
 
     private void searchBox(String defaultSearchText) {
-        //setPreferredSize(new Dimension(64, 24));
+        setPreferredSize(new Dimension(64, 24));
         setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
         setText(defaultSearchText);
         setBackground(new Color(0, 0, 0, 0));

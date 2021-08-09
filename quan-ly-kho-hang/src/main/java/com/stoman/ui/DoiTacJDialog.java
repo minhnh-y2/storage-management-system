@@ -13,10 +13,13 @@ import com.stoman.entity.DoiTac;
 import com.stoman.entity.LoaiDoiTac;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -54,7 +57,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlTblDoiTac = new javax.swing.JScrollPane();
         tblDoiTac = new javax.swing.JTable();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiemDT = new com.stoman.utils.TextFieldCustom(defaultSearchTextDoiTac);
+        txtTimKiemDT = new com.stoman.utils.TextFieldCustom(defaultSearchDoiTac);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiemDT = new javax.swing.JComboBox<>();
         lblTimKiemDT = new javax.swing.JLabel();
@@ -71,7 +74,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
         btnSuaList = new javax.swing.JButton();
-        txtTimKiemLDT = new com.stoman.utils.TextFieldCustom(defaultSearchTextLoaiDT);
+        txtTimKiemLDT = new com.stoman.utils.TextFieldCustom(defaultSearchLoaiDT);
         lblTimKiemLDT = new javax.swing.JLabel();
         pnlThongTin = new javax.swing.JPanel();
         txtTenDT = new com.stoman.utils.TextFieldCustom();
@@ -346,10 +349,12 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         });
 
         buttonGroup1.add(rdoKhachHang);
+        rdoKhachHang.setForeground(new java.awt.Color(19, 97, 91));
         rdoKhachHang.setSelected(true);
         rdoKhachHang.setText("Khách hàng");
 
         buttonGroup1.add(rdoNhaPhanPhoi);
+        rdoNhaPhanPhoi.setForeground(new java.awt.Color(163, 52, 34));
         rdoNhaPhanPhoi.setText("Nhà phân phối");
 
         lblTenDT.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -604,7 +609,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void cboTimKiemDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemDTActionPerformed
         // TODO add your handling code here:
         if (!lstLDT.isSelectionEmpty()) {
-            txtTimKiemDT.setText(defaultSearchTextDoiTac);
+            txtTimKiemDT.setText(defaultSearchDoiTac);
             fillToTableDoiTac();
             clearForm();
         }
@@ -747,8 +752,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private int row = -1;
 
-    private String defaultSearchTextLoaiDT = "Nhập từ khoá tìm kiếm loại đối tác";
-    private String defaultSearchTextDoiTac = "Nhập từ khoá tìm kiếm đối tác";
+    private String defaultSearchLoaiDT = "Nhập từ khoá tìm kiếm loại đối tác";
+    private String defaultSearchDoiTac = "Nhập từ khoá tìm kiếm đối tác";
 
     private void init() {
         setLocationRelativeTo(null);
@@ -769,7 +774,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void fillToListLoaiDoiTac() {
         DefaultListModel lstModel = new DefaultListModel();
         String keyword = txtTimKiemLDT.getText();
-        if (keyword.equals(defaultSearchTextLoaiDT)) {
+        if (keyword.equals(defaultSearchLoaiDT)) {
             keyword = "";
         }
         try {
@@ -786,6 +791,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng
     private SwingWorker worker;
+
     private void fillToTableDoiTac() {
         if (worker != null) {
             worker.cancel(true);
@@ -800,19 +806,19 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 @Override
                 protected Object doInBackground() throws Exception {
                     Thread.sleep(100);
-                    
+
                     String keyword = txtTimKiemDT.getText();
-                    if (keyword.equals(defaultSearchTextDoiTac)) {
+                    if (keyword.equals(defaultSearchDoiTac)) {
                         keyword = "";
                     }
-                    
+
                     List<DoiTac> list = null;
                     if (keyword.isEmpty()) {
                         list = dtDAO.selectByLoaiDT(maLDT);
                     } else {
                         list = dtDAO.selectByKeyword(maLDT, keyword, headerIndex);
                     }
-                    
+
                     int i = 1;
                     for (DoiTac dt : list) {
                         if (worker.isCancelled()) {
@@ -1123,13 +1129,39 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(1));
         tblDoiTac.getColumnModel().getColumn(0).setMaxWidth(40);
 
-        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        tblDoiTac.setDefaultRenderer(Object.class, new DoiTacTableCellRenderer());
+        
+        DoiTacTableCellRenderer rightRenderer = new DoiTacTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.CENTER);
         tblDoiTac.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
         tblDoiTac.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
         tblDoiTac.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
 
     }
+    
+    class DoiTacTableCellRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel label = (JLabel) super.getTableCellRendererComponent(table,
+                    value, isSelected, hasFocus, row, column);
+
+            Color color = Color.black;
+            Object obj = table.getValueAt(row, 5);
+            if (obj != null && "Khách hàng".equals(obj.toString())) {
+                color = new Color(19, 97, 91);
+            }
+            if (obj != null && "Nhà phân phối".equals(obj.toString())) {
+                color = new Color(163, 52, 34);
+            }
+            if (isSelected) {
+                color = Color.white;
+            }
+            label.setForeground(color);
+            return label;
+        }
+    }
+
 
     // Đỗ lại dữ liệu 
     public void refreshForm() {

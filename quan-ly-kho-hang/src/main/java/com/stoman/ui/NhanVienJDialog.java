@@ -10,6 +10,7 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.TextFieldCustom;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
 import java.awt.Component;
@@ -17,6 +18,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -56,14 +58,14 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblMatKhau = new javax.swing.JLabel();
         lblXacNhanMK = new javax.swing.JLabel();
         lblVaiTro = new javax.swing.JLabel();
-        txtMaNV = new javax.swing.JTextField();
-        txtHoTen = new javax.swing.JTextField();
+        txtMaNV = new TextFieldCustom();
+        txtHoTen = new TextFieldCustom();
         txtMatKhau = new javax.swing.JPasswordField();
         txtXacNhanMK = new javax.swing.JPasswordField();
         rdoTruongKho = new javax.swing.JRadioButton();
         rdoThuKho = new javax.swing.JRadioButton();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiem = new javax.swing.JTextField();
+        txtTimKiem = new TextFieldCustom(defaultSearchNhanVien);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiem = new javax.swing.JComboBox<>();
         pnlDieuHuongTitle = new javax.swing.JPanel();
@@ -91,7 +93,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlTblNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTblNhanVien.setOpaque(false);
 
-        tblNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -148,10 +149,20 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 txtMatKhauFocusGained(evt);
             }
         });
+        txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatKhauMouseClicked(evt);
+            }
+        });
 
         txtXacNhanMK.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtXacNhanMKFocusGained(evt);
+            }
+        });
+        txtXacNhanMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtXacNhanMKMouseClicked(evt);
             }
         });
 
@@ -470,7 +481,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void txtHoTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoTenFocusLost
         // TODO add your handling code here:
         String hoTen = txtHoTen.getText();
-        if(!hoTen.isEmpty()){
+        if (!hoTen.isEmpty()) {
             txtHoTen.setText(capitalizeWord(hoTen));
         }
     }//GEN-LAST:event_txtHoTenFocusLost
@@ -494,6 +505,16 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.timer.stop();
     }//GEN-LAST:event_formWindowClosed
+
+    private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
+        // TODO add your handling code here:
+        txtMatKhau.selectAll();
+    }//GEN-LAST:event_txtMatKhauMouseClicked
+
+    private void txtXacNhanMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtXacNhanMKMouseClicked
+        // TODO add your handling code here:
+        txtXacNhanMK.selectAll();
+    }//GEN-LAST:event_txtXacNhanMKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -565,39 +586,62 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private DefaultTableModel tblModel;
     private int row = -1;
 
+    private String defaultSearchNhanVien = "Nhập từ khoá tìm kiếm nhân viên";
+
     private void init() {
         setLocationRelativeTo(null);
-        
+
         this.formatTable();
-        
+
         this.fillToComboBox();
         this.fillToTable();
         this.updateStatus();
-        
+
         timer.start();
     }
 
     // Đổ dữ liệu nhân viên vào bảng
+    private SwingWorker worker;
     private void fillToTable() {
+        if (worker != null) {
+            worker.cancel(true);
+        }
         tblModel.setRowCount(0);
-        String keyword = txtTimKiem.getText();
-        List<NhanVien> list = null;
-
         try {
-            if (!txtTimKiem.getText().isEmpty()) {
-                int headerIndex = cboTimKiem.getSelectedIndex();
-                list = DAO.selectByKeyword(keyword, headerIndex);
-            } else {
-                list = DAO.selectAll();
-            }
-            for (NhanVien nv : list) {
-                tblModel.addRow(new Object[]{
-                    nv.getMaNV(),
-                    nv.getTenNV(),
-                    nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
-                });
-            }
-            tblNhanVien.setModel(tblModel);
+            worker = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+                    String keyword = txtTimKiem.getText();
+                    if (keyword.equals(defaultSearchNhanVien)) {
+                        keyword = "";
+                    }
+                    List<NhanVien> list = null;
+
+                    if (!txtTimKiem.getText().isEmpty()) {
+                        int headerIndex = cboTimKiem.getSelectedIndex();
+                        list = DAO.selectByKeyword(keyword, headerIndex);
+                    } else {
+                        list = DAO.selectAll();
+                    }
+                    for (NhanVien nv : list) {
+                        if (worker.isCancelled()) {
+                            break;
+                        }
+                        tblModel.addRow(new Object[]{
+                            nv.getMaNV(),
+                            nv.getTenNV(),
+                            nv.isVaiTro() ? "Trưởng kho" : "Thủ kho"
+                        });
+                    }
+
+                    if (worker.isCancelled()) {
+                        tblModel.setRowCount(0);
+                    }
+                    return null;
+                }
+
+            };
+            worker.execute();
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
@@ -796,7 +840,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         if (!isValidated()) {
             return;
         }
-        
+
         NhanVien nv = getForm();
         try {
             DAO.update(nv);
@@ -848,44 +892,45 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         };
         tblNhanVien.setModel(tblModel);
         tblNhanVien.setAutoCreateRowSorter(true);
-        
-        tblNhanVien.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                          boolean isSelected, boolean hasFocus, int row, int column) {
-                JLabel label = (JLabel) super.getTableCellRendererComponent(table, 
-                        value, isSelected, hasFocus, row, column);
-                
-                Color color = Color.black;
-                Object obj = table.getValueAt(row, 2);
-                if (obj != null && "Trưởng kho".equals(obj.toString())) {
-                    color = new Color(19, 97, 91);
-                } 
-                if (obj != null && "Thủ kho".equals(obj.toString())) {
-                    color = new Color(163, 52, 34);
-                }
-                if (isSelected) {
-                    color = Color.white;
-                }
-                label.setForeground(color);
-                return label;
+
+        tblNhanVien.setDefaultRenderer(Object.class, new NhanVienTableCellRenderer());
+
+    }
+
+    class NhanVienTableCellRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JLabel label = (JLabel) super.getTableCellRendererComponent(table,
+                    value, isSelected, hasFocus, row, column);
+
+            Color color = Color.black;
+            Object obj = table.getValueAt(row, 2);
+            if (obj != null && "Trưởng kho".equals(obj.toString())) {
+                color = new Color(19, 97, 91);
             }
-        });
-        
+            if (obj != null && "Thủ kho".equals(obj.toString())) {
+                color = new Color(163, 52, 34);
+            }
+            if (isSelected) {
+                color = Color.white;
+            }
+            label.setForeground(color);
+            return label;
+        }
     }
 
     // Đỗ lại dữ liệu 
     public void refreshForm() {
-        
         this.fillToComboBox();
         this.fillToTable();
 
         this.timer.restart();
     }
-    
+
     // sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
         refreshForm();
     });
-    
+
 }
