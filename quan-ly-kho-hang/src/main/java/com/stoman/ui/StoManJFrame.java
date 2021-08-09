@@ -377,7 +377,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblLuongNhap.setText("<html><center>Lượng nhập<br>trong năm</center></html>");
         pnlLuongNhap.add(lblLuongNhap);
 
-        lblSoLuongNhap.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongNhap.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSoLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongNhap.setText("0");
@@ -395,7 +395,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblLuongXuat.setText("<html><center>Lượng xuất<br>trong năm</center></html>");
         pnlLuongXuat.add(lblLuongXuat);
 
-        lblSoLuongXuat.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongXuat.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSoLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongXuat.setText("0");
@@ -413,7 +413,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTonKho.setText("Tồn kho hiện tại");
         pnlLuongTonKho.add(lblTonKho);
 
-        lblSoLuongTK.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongTK.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSoLuongTK.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongTK.setText("0");
@@ -493,7 +493,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                         .addComponent(lblDShangHoa1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -510,7 +510,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblDShangHoa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoa.setText("Danh sách hàng hóa");
 
-        lblTimKiemLT.setText("Tìm kiếm");
+        lblTimKiemLT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         txtTimKiemLT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -571,7 +571,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongGiaTri.setText("Tổng Giá Trị");
         pnlTongGiaTri.add(lblTongGiaTri);
 
-        lblSumTongGiaTri.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSumTongGiaTri.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSumTongGiaTri.setForeground(new java.awt.Color(255, 255, 255));
         lblSumTongGiaTri.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSumTongGiaTri.setText("0");
@@ -587,7 +587,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTonKhoLT.setText("Tổng tồn kho");
         pnlTongTonKho.add(lblTonKhoLT);
 
-        lblSoLuongTKLT.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSoLuongTKLT.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSoLuongTKLT.setForeground(new java.awt.Color(255, 255, 255));
         lblSoLuongTKLT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSoLuongTKLT.setText("0");
@@ -642,12 +642,12 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
                     .addGroup(pnlTonKhoLayout.createSequentialGroup()
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTonKhoLayout.createSequentialGroup()
                                 .addComponent(lblTimKiemLT)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTimKiemLT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblTheoLT)
@@ -667,10 +667,10 @@ public class StoManJFrame extends javax.swing.JFrame {
                                     .addComponent(lblLoaiHangHoaLT))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cboKhoLT, 0, 163, Short.MAX_VALUE)
-                                    .addComponent(cboLoaiHangHoaLT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(cboKhoLT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboLoaiHangHoaLT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(separator6)
-                            .addComponent(lblPhanLoaiHH, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                            .addComponent(lblPhanLoaiHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         pnlTonKhoLayout.setVerticalGroup(
@@ -700,7 +700,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(cboLoaiHangHoaLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(separator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlTongGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlTongTonKho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -715,7 +715,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTopHH))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addComponent(pnlTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(separator12))
                 .addContainerGap())
@@ -727,7 +727,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblDShangHoaNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoaNhap.setText("Danh sách hàng hóa nhập");
 
-        lblTimKiemNhap.setText("Tìm kiếm");
+        lblTimKiemNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         txtTimKiemNhap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -807,7 +807,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongGiaTriNhap.setText("Tổng Giá Trị Nhập");
         pnlTongLGNhap.add(lblTongGiaTriNhap);
 
-        lblTongSoGTN.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoGTN.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoGTN.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoGTN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoGTN.setText("0");
@@ -823,7 +823,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongLuongNhap.setText("Tổng lượng Nhập");
         pnlTongGTNhap.add(lblTongLuongNhap);
 
-        lblTongSoLN.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoLN.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoLN.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoLN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoLN.setText("0");
@@ -881,7 +881,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTblTKnhap)
+                            .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
                             .addGroup(pnlTKNhapLayout.createSequentialGroup()
                                 .addComponent(lblTimKiemNhap)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -914,8 +914,8 @@ public class StoManJFrame extends javax.swing.JFrame {
                                     .addComponent(lblLoaiHangHoaNhap))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboKhoNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboLoaiHangHoaNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(cboLoaiHangHoaNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboKhoNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(lblTrongNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -934,7 +934,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboKhoNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblKhoNhap))
-                                .addGap(4, 4, 4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboLoaiHangHoaNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblLoaiHangHoaNhap))
@@ -955,13 +955,11 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlTongGTNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTKNhapLayout.createSequentialGroup()
-                                .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblTimKiemNhap)
-                                        .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblTheoNhap)))
+                                .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTimKiemNhap)
+                                    .addComponent(txtTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTheoNhap)
+                                    .addComponent(cboTimKiemNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTblTKnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                     .addComponent(separator18, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -972,7 +970,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopLHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -987,7 +985,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblDShangHoaXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDShangHoaXuat.setText("Danh sách hàng hóa xuất");
 
-        lblTimKiemXuat.setText("Tìm kiếm");
+        lblTimKiemXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         txtTimKiemXuat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1066,7 +1064,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongGiaTriXuat.setText("Tổng Giá Trị Xuất");
         pnlTongLGXuat.add(lblTongGiaTriXuat);
 
-        lblTongSoGTX.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoGTX.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoGTX.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoGTX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoGTX.setText("0");
@@ -1082,7 +1080,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTongLuongXuat.setText("Tổng lượng Xuất");
         pnlTongGTXuat.add(lblTongLuongXuat);
 
-        lblTongSoLX.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoLX.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoLX.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoLX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoLX.setText("0");
@@ -1201,7 +1199,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblKhoXuat)
                                     .addComponent(cboKhoXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblLoaiHangHoaXuat)
                                     .addComponent(cboLoaiHangHoaXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1229,7 +1227,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1244,7 +1242,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblDSTongHop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDSTongHop.setText("Cán cân xuất nhập theo năm");
 
-        lblTimKiemTH.setText("Tìm kiếm");
+        lblTimKiemTH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         txtTimKiemTH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1300,13 +1298,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongLGXuatTH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGXuatTH.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTriXuatTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTriXuatTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTriXuatTH.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTriXuatTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTriXuatTH.setText("Tổng Giá Trị Xuất");
         pnlTongLGXuatTH.add(lblTongGiaTriXuatTH);
 
-        lblTongSoGTXTH.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoGTXTH.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoGTXTH.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoGTXTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoGTXTH.setText("0");
@@ -1316,13 +1314,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongLGNhapTH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGNhapTH.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTriNhapTH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTriNhapTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTriNhapTH.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTriNhapTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTriNhapTH.setText("Tổng Giá Trị Nhập");
         pnlTongLGNhapTH.add(lblTongGiaTriNhapTH);
 
-        lblTongSoGTNTH.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoGTNTH.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoGTNTH.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoGTNTH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoGTNTH.setText("0");
@@ -1332,13 +1330,13 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongCCGTXuatNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongCCGTXuatNhap.setLayout(new java.awt.GridLayout(0, 1));
 
-        lblTongGiaTriXN.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTongGiaTriXN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongGiaTriXN.setForeground(new java.awt.Color(255, 255, 255));
         lblTongGiaTriXN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongGiaTriXN.setText("Tổng cán cân xuất nhập");
         pnlTongCCGTXuatNhap.add(lblTongGiaTriXN);
 
-        lblTongSoGTXN.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTongSoGTXN.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTongSoGTXN.setForeground(new java.awt.Color(255, 255, 255));
         lblTongSoGTXN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongSoGTXN.setText("0");
@@ -1411,7 +1409,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTongHopLayout.createSequentialGroup()
@@ -1457,7 +1455,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongHopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhanTH)
@@ -1468,7 +1466,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboKhoTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblKhoTH))
-                                .addGap(4, 4, 4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboLoaiHangHoaTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblLoaiHangHoaTH))
@@ -1490,14 +1488,14 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addComponent(pnlTongLGNhapTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlTongCCGTXuatNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlTongHopLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTongHopLayout.createSequentialGroup()
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTheoTH)
                                     .addComponent(lblTimKiemTH)
                                     .addComponent(txtTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                     .addComponent(separator29))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1506,7 +1504,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
