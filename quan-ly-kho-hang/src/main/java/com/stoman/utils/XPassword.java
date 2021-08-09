@@ -45,6 +45,10 @@ public class XPassword {
         }
         return generatedPassword;
     }
+    
+    public static String getHashMD5(char[] password, byte [] salt) {
+        return getHashMD5(new String(password), salt);
+    }
 
     /**
      *
@@ -56,6 +60,10 @@ public class XPassword {
     public static boolean isValidated(String passwordInput, String passwordBD, byte [] salt){
         String password = getHashMD5(passwordInput, salt);
         return password.equals(passwordBD);
+    }
+    
+    public static boolean isValidated(char [] passwordInput, String passwordBD, byte [] salt){
+        return isValidated(new String(passwordInput), passwordBD, salt);
     }
     
 }
