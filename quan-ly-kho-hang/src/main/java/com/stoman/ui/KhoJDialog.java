@@ -15,10 +15,12 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.TextFieldCustom;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -428,6 +430,10 @@ public class KhoJDialog extends javax.swing.JDialog {
         tblKho.getColumnModel().getColumn(0).setPreferredWidth(22);
         tblKho.getColumnModel().getColumn(1).setPreferredWidth(130);
         tblKho.getColumnModel().getColumn(2).setPreferredWidth(107);
+        
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tblKho.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
     }
 
     // Đổ dữ liệu combobox mã kho

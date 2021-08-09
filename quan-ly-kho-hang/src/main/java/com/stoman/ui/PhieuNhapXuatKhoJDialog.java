@@ -691,6 +691,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtGhiChu.setLineWrap(true);
         txtGhiChu.setRows(5);
         txtGhiChu.setWrapStyleWord(true);
+        txtGhiChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGhiChuMouseClicked(evt);
+            }
+        });
         pnlGhiChu.setViewportView(txtGhiChu);
 
         txtMaNV.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -896,7 +901,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtMau3.setBorder(null);
         txtMau3.setFocusable(false);
 
-        lblMau4.setText("Phiếu chưa hoàn thành gì");
+        lblMau4.setText("Phiếu chưa thực hiện");
 
         txtMau4.setBackground(new java.awt.Color(102, 255, 153));
         txtMau4.setBorder(null);
@@ -1286,6 +1291,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         updateStatusChonLoaiPhieu();
         fillToTablePhieu();
     }//GEN-LAST:event_lblPhieuXuatMouseClicked
+
+    private void txtGhiChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGhiChuMouseClicked
+        // TODO add your handling code here:
+        txtGhiChu.selectAll();
+    }//GEN-LAST:event_txtGhiChuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2272,6 +2282,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         };
 
         DateRenderer cellDateRenderK = new DateRenderer(dateFormat + "(hh:MM:ss)") {
+            @Override
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 
