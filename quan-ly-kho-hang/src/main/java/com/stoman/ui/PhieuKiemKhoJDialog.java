@@ -776,7 +776,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-        this.rowPhieu = tblPhieuKiemKho.getSelectedRow();
+        this.rowPhieu = tblPhieuKiemKho.convertRowIndexToModel(tblPhieuKiemKho.getSelectedRow());
         edit();
     }//GEN-LAST:event_tblPhieuKiemKhoMouseClicked
 
@@ -1667,9 +1667,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void edit() {
         delCTP.clear();
         int maPkk = (Integer) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
-
         PhieuKiemKho pkk = pkkDAO.selectByID(maPkk);
-
         this.setFormPhieu(pkk);
         tabs.setSelectedIndex(0);
 
