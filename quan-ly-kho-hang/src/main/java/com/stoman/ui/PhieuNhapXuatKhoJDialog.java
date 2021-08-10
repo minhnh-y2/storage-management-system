@@ -691,6 +691,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtGhiChu.setLineWrap(true);
         txtGhiChu.setRows(5);
         txtGhiChu.setWrapStyleWord(true);
+        txtGhiChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGhiChuMouseClicked(evt);
+            }
+        });
         pnlGhiChu.setViewportView(txtGhiChu);
 
         txtMaNV.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -896,7 +901,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtMau3.setBorder(null);
         txtMau3.setFocusable(false);
 
-        lblMau4.setText("Phiếu chưa hoàn thành gì");
+        lblMau4.setText("Phiếu chưa thực hiện");
 
         txtMau4.setBackground(new java.awt.Color(102, 255, 153));
         txtMau4.setBorder(null);
@@ -1069,7 +1074,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(pnlChuThich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                .addGap(389, 389, 389)
+                .addGap(405, 405, 405)
                 .addComponent(pnlLoaiPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1087,7 +1092,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiemPhieu2)
                     .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1286,6 +1291,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         updateStatusChonLoaiPhieu();
         fillToTablePhieu();
     }//GEN-LAST:event_lblPhieuXuatMouseClicked
+
+    private void txtGhiChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGhiChuMouseClicked
+        // TODO add your handling code here:
+        txtGhiChu.selectAll();
+    }//GEN-LAST:event_txtGhiChuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2273,6 +2283,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         };
 
         DateRenderer cellDateRenderK = new DateRenderer(dateFormat + "(hh:MM:ss)") {
+            @Override
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 

@@ -1168,6 +1168,9 @@
                             <Property name="rows" type="int" value="5"/>
                             <Property name="wrapStyleWord" type="boolean" value="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtGhiChuMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1235,7 +1238,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="405" max="-2" attributes="0"/>
                           <Component id="pnlLoaiPhieu" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1256,7 +1259,7 @@
                               <Component id="cboTimKiemPhieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPane2" pref="462" max="32767" attributes="0"/>
+                          <Component id="scrollPane2" pref="469" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="pnlThongKe" max="32767" attributes="0"/>
@@ -1443,7 +1446,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblMau4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u ch&#x1b0;a ho&#xe0;n th&#xe0;nh g&#xec;"/>
+                        <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u ch&#x1b0;a th&#x1ef1;c hi&#x1ec7;n"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtMau4">
