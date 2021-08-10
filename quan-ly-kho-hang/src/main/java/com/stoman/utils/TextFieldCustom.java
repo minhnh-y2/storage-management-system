@@ -45,7 +45,9 @@ public class TextFieldCustom extends JTextField {
         addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent evt) {
-                setText("");
+                if(getText().equals(defaultSearchText)){
+                    setText("");
+                }
             }
         });
         addFocusListener(new FocusAdapter() {
