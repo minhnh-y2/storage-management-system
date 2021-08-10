@@ -29,7 +29,10 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1088,7 +1091,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     for (PhieuKiemKho pkk : list) {
                         if (isCancelled()) {
                             break;
-                        } 
+                        }
                         int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
                         if (maLT == 0) {
                             continue;
@@ -1097,10 +1100,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         modelPhieuKiem.addRow(new Object[]{
                             i++,
                             maKho,
-                            pkk.getNgayKiem(),
+                            //pkk.getNgayKiem(),
+                            XDate.toString(pkk.getNgayKiem(), dateFormat),
                             pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                             pkk.getMaNV(),
-                            pkk.getNgayLap(),
+                            //pkk.getNgayLap(),
+                            XDate.toString(pkk.getNgayLap(), dateTimeFormat),
                             pkk.getMaKK()
                         });
                     }
@@ -1124,7 +1129,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         txtNguoiLap.setText(pkk.getMaNV());
         txtNgayKiem.setDate(pkk.getNgayLap());
-        txtNgayLap.setText(XDate.toString(pkk.getNgayLap(), dateFormat + "(hh:MM:ss)"));
+        txtNgayLap.setText(XDate.toString(pkk.getNgayLap(), dateTimeFormat));
         cboKho.getModel().setSelectedItem(k);
         chkHoanThanh.setSelected(pkk.isTrangThai());
         txtGhiChu.setText(pkk.getGhiChu());
@@ -1232,7 +1237,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         PhieuKiemKho pkk = new PhieuKiemKho();
         pkk.setMaNV(txtNguoiLap.getText());
         pkk.setNgayKiem(txtNgayKiem.getDate());
-        pkk.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat + "(hh:MM:ss)"));
+        pkk.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateTimeFormat));
         pkk.setTrangThai(chkHoanThanh.isSelected());
         pkk.setGhiChu(txtGhiChu.getText());
 
@@ -1388,7 +1393,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void clearForm() {
         txtNguoiLap.setText(Auth.user.getMaNV());
         Date NgayLap = new Date(System.currentTimeMillis());
-        txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
+        txtNgayLap.setText(XDate.toString(NgayLap, dateTimeFormat));
         txtNgayKiem.setDate(new Date());
         cboKho.setSelectedIndex(0);
         chkHoanThanh.setSelected(false);
@@ -1469,9 +1474,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblHangHoaKho.setModel(modelHangHoaKho);
 
         // cài đặt bộ lọc cho bảng
-        tblPhieuKiemKho.getColumnModel().getColumn(2).setCellRenderer(new DateRenderer(dateFormat));
-        tblPhieuKiemKho.getColumnModel().getColumn(5).setCellRenderer(new DateRenderer(dateFormat + "(hh:MM:ss)"));
-
         tblPhieuKiemKho.setAutoCreateRowSorter(true);
         tblCTPhieuKiemKho_main.setAutoCreateRowSorter(true);
         tblCTPhieuKiemKho_sub.setAutoCreateRowSorter(true);
@@ -1518,8 +1520,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         tblPhieuKiemKho.setDefaultRenderer(Object.class, new TableObjectCellRenderer());
         tblPhieuKiemKho.setDefaultRenderer(Integer.class, new TableObjectCellRenderer());
-        tblPhieuKiemKho.getColumnModel().getColumn(2).setCellRenderer(new TableDateCellRenderer(dateFormat));
-        tblPhieuKiemKho.getColumnModel().getColumn(5).setCellRenderer(new TableDateCellRenderer(dateTimeFormat));
         // Định dạng form ra giữa
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -1556,38 +1556,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             return this;
         }
     }
-
-    class TableDateCellRenderer extends DateRenderer {
-
-        public TableDateCellRenderer(String format) {
-            super(format);
-        }
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table,
-                Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-
-            if (table.isRowSelected(row)) {
-                // Highlight self.
-                this.repaint();
-                return this;
-            }
-
-            Object obj = table.getValueAt(row, 3);
-            if (obj != null && "Đã hoàn thành".equals(obj.toString())) {
-                setBackground(txtMauDaHoanThanh.getBackground());
-            }
-            if (obj != null && "Chưa hoàn thành".equals(obj.toString())) {
-                setBackground(txtMauChuaHoanThanh.getBackground());
-            }
-
-            setHorizontalAlignment(CENTER);
-
-            return this;
-        }
-    };
 
     private void createQRCode() {
         if (rowPhieu < 0) {
@@ -1813,6 +1781,24 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             public String toString(TableModel model, int row, int column) {
                 return model.getValueAt(row, column).toString().toLowerCase();
             }
+        });
+
+        sorterPhieu.setComparator(2, new Comparator<String>() {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            @Override
+            public int compare(String o1, String o2) {
+                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
+            }
+            
+        });
+        
+        sorterPhieu.setComparator(5, new Comparator<String>() {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy(hh:MM:ss)");
+            @Override
+            public int compare(String o1, String o2) {
+                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
+            }
+            
         });
 
         RowFilter<TableModel, Object> rf = null;

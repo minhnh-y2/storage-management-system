@@ -31,7 +31,7 @@ public class XDate {
             formater.applyPattern(pattern);
             return formater.parse(date);
         } catch (ParseException e){
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
     
