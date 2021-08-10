@@ -25,6 +25,7 @@ import com.stoman.utils.QRCode;
 import com.stoman.utils.ExporterReport;
 import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.XDate;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -684,7 +685,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTimKiemLayout.setVerticalGroup(
             pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTimKiemLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimKiemPhieu)
                     .addComponent(txtTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -791,8 +792,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-        int rowPhieuView = tblPhieuKiemKho.getSelectedRow();
-        this.rowPhieu = tblPhieuKiemKho.convertRowIndexToModel(rowPhieuView);
+        this.rowPhieuView = tblPhieuKiemKho.getSelectedRow();
+        this.rowPhieuModel = tblPhieuKiemKho.convertRowIndexToModel(rowPhieuView);
         edit();
     }//GEN-LAST:event_tblPhieuKiemKhoMouseClicked
 
@@ -901,7 +902,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
         // TODO add your handling code here:
         txtTimKiemPhieu.setText("");
-        searchPhieu();
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
     /**
@@ -1023,7 +1023,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private String numFormat = "#,##0.0";
     private String dateFormat = "dd-MM-yyyy";
     private String dateTimeFormat = "dd-MM-yyyy(hh:MM:ss)";
-    private int rowPhieu = -1;
+    private int rowPhieuModel = -1;
+    private int rowPhieuView = -1;
 
     private boolean isUpdate = false;
 
@@ -1033,12 +1034,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.initDialogOther();
 
         this.formatTable();
+        this.fillToComboBoxTimKiemPhieu();
+        this.fillToComboBoxTimKiemCT();
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
-        this.fillToComboBoxTimKiemPhieu();
-        this.fillToComboBoxTimKiemCT();
-
+        
         tabs.setSelectedIndex(1);
 
         this.updateStatus();
@@ -1080,7 +1081,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         if (workerPhieu != null) {
             workerPhieu.cancel(true);
         }
-        tblPhieuKiemKho.setRowSorter(null);
         modelPhieuKiem.setRowCount(0);
         try {
             workerPhieu = new SwingWorker() {
@@ -1100,11 +1100,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         modelPhieuKiem.addRow(new Object[]{
                             i++,
                             maKho,
-                            //pkk.getNgayKiem(),
                             XDate.toString(pkk.getNgayKiem(), dateFormat),
                             pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                             pkk.getMaNV(),
-                            //pkk.getNgayLap(),
                             XDate.toString(pkk.getNgayLap(), dateTimeFormat),
                             pkk.getMaKK()
                         });
@@ -1124,7 +1122,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Nhập dữ liệu vào form phiếu nhập
     private void setFormPhieu(PhieuKiemKho pkk) {
-        int maKho = (int) modelPhieuKiem.getValueAt(rowPhieu, 1);
+        int maKho = (int) modelPhieuKiem.getValueAt(rowPhieuModel, 1);
         Kho k = kDAO.selectByID(maKho);
 
         txtNguoiLap.setText(pkk.getMaNV());
@@ -1403,7 +1401,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         isUpdate = false;
 
-        this.rowPhieu = -1;
+        this.rowPhieuModel = -1;
         this.updateStatus();
     }
 
@@ -1526,8 +1524,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-
-        tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        
+        tblPhieuKiemKho.setSelectionBackground(new Color(38, 117, 191));
+        tblPhieuKiemKho.setSelectionForeground(Color.white);
     }
 
     class TableObjectCellRenderer extends DefaultTableCellRenderer {
@@ -1552,16 +1551,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
 
             setHorizontalAlignment(CENTER);
-
             return this;
         }
     }
 
     private void createQRCode() {
-        if (rowPhieu < 0) {
+        if (rowPhieuModel < 0) {
             MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
         } else {
-            int maPhieu = (int) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+            int maPhieu = (int) this.modelPhieuKiem.getValueAt(rowPhieuModel, 6);
             try {
                 BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(maPhieu));
                 lblQRCodeImage.setIcon(new ImageIcon(bi));
@@ -1577,13 +1575,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private final String reportPath = "/com/stoman/reports/InPhieuKiemKho.jrxml";
 
     private void exportReportExcel() {
-        if (rowPhieu < 0) {
+        if (rowPhieuModel < 0) {
             MsgBox.alert(this, "Chưa chọn phiếu!");
             return;
         }
 
         try {
-            int maKK = (int) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+            int maKK = (int) this.modelPhieuKiem.getValueAt(rowPhieuModel, 6);
 
             // Truyền tham số vào báo cáo
             HashMap parameters = new HashMap();
@@ -1599,13 +1597,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // In báo báo
     private void printReport() {
-        if (rowPhieu < 0) {
+        if (rowPhieuModel < 0) {
             MsgBox.alert(this, "Chưa chọn phiếu!");
             return;
         }
 
         try {
-            int maKK = (int) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+            int maKK = (int) this.modelPhieuKiem.getValueAt(rowPhieuModel, 6);
 
             // Truyền tham số vào báo cáo
             HashMap parameters = new HashMap();
@@ -1622,12 +1620,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     // Cập nhật giao diện form theo hoạt động của người dùng
     private void updateStatus() {
         // Kiểm tra trạng thái chọn phiếu trên bảng
-        boolean edit = (this.rowPhieu >= 0);
-        boolean first = (this.rowPhieu == 0);
-        boolean last = (this.rowPhieu == tblPhieuKiemKho.getRowCount() - 1);
-        if (edit) {
-            tblPhieuKiemKho.setRowSelectionInterval(rowPhieu, rowPhieu);
-        }
+        boolean edit = (this.rowPhieuView >= 0);
+        boolean first = (this.rowPhieuView == 0);
+        boolean last = (this.rowPhieuView == tblPhieuKiemKho.getRowCount() - 1);
+        
         btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
@@ -1639,18 +1635,17 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
 
-        // Kiểm tra dữ liệu trong bảng, chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblHangHoaKho.setAutoCreateRowSorter(tblHangHoaKho.getRowCount() > 0);
-        tblCTPhieuKiemKho_sub.setAutoCreateRowSorter(tblCTPhieuKiemKho_sub.getRowCount() > 0);
-        tblCTPhieuKiemKho_main.setAutoCreateRowSorter(tblCTPhieuKiemKho_main.getRowCount() > 0);
-        tblPhieuKiemKho.setAutoCreateRowSorter(tblPhieuKiemKho.getRowCount() > 0);
-
         // Kiểm tra vai trò người dùng, hạn chế quyền thủ kho
         boolean isManager = Auth.isManager();
         btnXoa.setVisible(isManager);
 
         // Cập nhật trạng thái update phiếu
         cboKho.setEnabled(!isUpdate);
+        
+        
+        if (edit) {
+            tblPhieuKiemKho.setRowSelectionInterval(rowPhieuView, rowPhieuView);
+        }
 
     }
 
@@ -1672,7 +1667,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void edit() {
         delCTP.clear();
-        int maPkk = (Integer) this.modelPhieuKiem.getValueAt(rowPhieu, 6);
+        int maPkk = (Integer) this.modelPhieuKiem.getValueAt(rowPhieuModel, 6);
         PhieuKiemKho pkk = pkkDAO.selectByID(maPkk);
         this.setFormPhieu(pkk);
         tabs.setSelectedIndex(0);
@@ -1683,29 +1678,29 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Hiển thị phiếu đầu danh sách
     private void first() {
-        this.rowPhieu = 0;
+        this.rowPhieuView = 0;
         this.edit();
     }
 
     // Hiển thị phiếu kế trước
     private void prev() {
-        if (this.rowPhieu > 0) {
-            this.rowPhieu--;
+        if (this.rowPhieuView > 0) {
+            this.rowPhieuView--;
             this.edit();
         }
     }
 
     // Hiển thị phiếu kế tiếp
     private void next() {
-        if (this.rowPhieu < (tblPhieuKiemKho.getRowCount() - 1)) {
-            this.rowPhieu++;
+        if (this.rowPhieuView < (tblPhieuKiemKho.getRowCount() - 1)) {
+            this.rowPhieuView++;
             this.edit();
         }
     }
 
     // Hiển thị phiếu cuối danh sách
     private void last() {
-        this.rowPhieu = tblPhieuKiemKho.getRowCount() - 1;
+        this.rowPhieuView = tblPhieuKiemKho.getRowCount() - 1;
         this.edit();
     }
 
