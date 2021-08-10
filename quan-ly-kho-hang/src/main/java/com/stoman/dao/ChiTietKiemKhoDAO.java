@@ -71,8 +71,8 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
                     entity.setMaCTKK(rs.getInt("MACTKK"));
                     entity.setSoLuongTon(rs.getDouble("SOLUONGTON"));
                     entity.setSoLuongThuc(rs.getDouble("SOLUONGTHUC"));
-                    entity.setMaKK(rs.getInt("MALT"));
-                    entity.setMaLT(rs.getInt("MAKK"));
+                    entity.setMaLT(rs.getInt("MALT"));
+                    entity.setMaKK(rs.getInt("MAKK"));
                     
                     list.add(entity);
                 }
@@ -94,7 +94,8 @@ public class ChiTietKiemKhoDAO extends StoManDAO<ChiTietKiemKho, Integer> {
     }
     
     public Integer getOnlyOneMaLT(Integer maPhieu) {
-        List<ChiTietKiemKho> list = this.selectByMaPhieu(maPhieu);
+        String sql = "SELECT * FROM CHITIETKIEMKHO WHERE MAKK = ?";
+        List<ChiTietKiemKho> list = this.selectBySQL(sql, maPhieu);
         return list.size()>0?list.get(0).getMaLT():0;
     }
 

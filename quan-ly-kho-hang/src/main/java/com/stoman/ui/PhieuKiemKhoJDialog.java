@@ -1088,16 +1088,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                     for (PhieuKiemKho pkk : list) {
                         if (isCancelled()) {
                             break;
-                        }
+                        } 
                         int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
                         if (maLT == 0) {
                             continue;
                         }
                         int maKho = ltDAO.getMaKho(maLT);
-                        Kho kho = kDAO.selectByID(maKho);
                         modelPhieuKiem.addRow(new Object[]{
                             i++,
-                            kho.getMaKho(),
+                            maKho,
                             pkk.getNgayKiem(),
                             pkk.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                             pkk.getMaNV(),
