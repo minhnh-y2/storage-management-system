@@ -1748,6 +1748,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         p.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat + "(hh:MM:ss)"));
         p.setTrangThai(chkChuyenHang.isSelected());
         p.setTinhTrangThanhToan(chkThanhToan.isSelected());
+        p.setSoTienThanhToan(XNumber.toDouble(txtDaThanhToan.getText(), numFormat));
         p.setGhiChu(txtGhiChu.getText());
         return p;
     }
