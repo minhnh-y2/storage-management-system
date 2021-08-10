@@ -131,10 +131,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTblPhieuKiemKho = new javax.swing.JScrollPane();
         tblPhieuKiemKho = new javax.swing.JTable();
         pnlTimKiem = new javax.swing.JPanel();
-        cboTimKiem = new javax.swing.JComboBox<>();
-        lblTheo = new javax.swing.JLabel();
-        txtTimKiem = new javax.swing.JTextField();
-        lblTimKiem = new javax.swing.JLabel();
+        cboTimKiemPhieu = new javax.swing.JComboBox<>();
+        lblTimKiemTheoPhieu = new javax.swing.JLabel();
+        txtTimKiemPhieu = new javax.swing.JTextField();
+        lblTimKiemPhieu = new javax.swing.JLabel();
         pnlChuThich = new javax.swing.JPanel();
         pnlDaHoanThanh = new javax.swing.JPanel();
         lblMauDaHoanThanh = new javax.swing.JLabel();
@@ -647,15 +647,21 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTimKiem.setOpaque(false);
 
-        lblTheo.setText("theo");
-
-        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
+        cboTimKiemPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimKiemPhieuActionPerformed(evt);
             }
         });
 
-        lblTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
+        lblTimKiemTheoPhieu.setText("theo");
+
+        txtTimKiemPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemPhieuKeyReleased(evt);
+            }
+        });
+
+        lblTimKiemPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlTimKiemLayout = new javax.swing.GroupLayout(pnlTimKiem);
         pnlTimKiem.setLayout(pnlTimKiemLayout);
@@ -663,13 +669,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTimKiemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTimKiem)
+                .addComponent(lblTimKiemPhieu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTimKiem)
+                .addComponent(txtTimKiemPhieu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTheo)
+                .addComponent(lblTimKiemTheoPhieu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlTimKiemLayout.setVerticalGroup(
@@ -677,10 +683,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTimKiemLayout.createSequentialGroup()
                 .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTimKiem)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTheo)
-                    .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTimKiemPhieu)
+                    .addComponent(txtTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTimKiemTheoPhieu)
+                    .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -884,9 +890,16 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         searchCTPhieu();
     }//GEN-LAST:event_cboTimKiemCTActionPerformed
 
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+    private void txtTimKiemPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemPhieuKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemKeyReleased
+        searchPhieu();
+    }//GEN-LAST:event_txtTimKiemPhieuKeyReleased
+
+    private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
+        // TODO add your handling code here:
+        txtTimKiemPhieu.setText("");
+        searchPhieu();
+    }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -938,8 +951,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnXuatFile;
     private javax.swing.JButton btnXuatMaPhieu;
     private javax.swing.JComboBox<String> cboKho;
-    private javax.swing.JComboBox<String> cboTimKiem;
     private javax.swing.JComboBox<String> cboTimKiemCT;
+    private javax.swing.JComboBox<String> cboTimKiemPhieu;
     private javax.swing.JCheckBox chkHoanThanh;
     private javax.swing.JLabel lblGhiChu;
     private javax.swing.JLabel lblKho;
@@ -949,10 +962,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblNgayLap;
     private javax.swing.JLabel lblNguoiLap;
     private javax.swing.JLabel lblQRCodeImage;
-    private javax.swing.JLabel lblTheo;
     private javax.swing.JLabel lblTheoCT;
-    private javax.swing.JLabel lblTimKiem;
     private javax.swing.JLabel lblTimKiemCT;
+    private javax.swing.JLabel lblTimKiemPhieu;
+    private javax.swing.JLabel lblTimKiemTheoPhieu;
     private javax.swing.JLabel lblTrangThai;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundCTP;
@@ -987,8 +1000,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser txtNgayKiem;
     private javax.swing.JFormattedTextField txtNgayLap;
     private javax.swing.JTextField txtNguoiLap;
-    private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTimKiemCT;
+    private javax.swing.JTextField txtTimKiemPhieu;
     // End of variables declaration//GEN-END:variables
 
     private KhoDAO kDAO = new KhoDAO();
@@ -1020,7 +1033,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.fillToComboBoxKho();
         this.fillToTablePhieuKiem();
         this.fillToTableHHkho();
-        this.fillToComboBoxTimKiem();
+        this.fillToComboBoxTimKiemPhieu();
+        this.fillToComboBoxTimKiemCT();
 
         tabs.setSelectedIndex(1);
 
@@ -1057,15 +1071,24 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     // Đổ dữ liệu vào bảng phiếu kiểm
+    private SwingWorker workerPhieu;
+
     private void fillToTablePhieuKiem() {
+        if (workerPhieu != null) {
+            workerPhieu.cancel(true);
+        }
+        tblPhieuKiemKho.setRowSorter(null);
         modelPhieuKiem.setRowCount(0);
         try {
-            new SwingWorker<DefaultTableModel, Void>() {
+            workerPhieu = new SwingWorker() {
                 @Override
-                protected DefaultTableModel doInBackground() throws Exception {
+                protected Object doInBackground() throws Exception {
                     List<PhieuKiemKho> list = pkkDAO.selectAll();
                     int i = 1;
                     for (PhieuKiemKho pkk : list) {
+                        if (isCancelled()) {
+                            break;
+                        }
                         int maLT = ctkkDAO.getOnlyOneMaLT(pkk.getMaKK());
                         if (maLT == 0) {
                             continue;
@@ -1082,9 +1105,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                             pkk.getMaKK()
                         });
                     }
-                    return modelPhieuKiem;
+                    if (isCancelled()) {
+                        modelPhieuKiem.setRowCount(0);
+                    }
+                    return null;
                 }
-            }.execute();
+            };
+            workerPhieu.execute();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1500,7 +1527,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         tblCTPhieuKiemKho_sub.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        
+
         tblCTPhieuKiemKho_main.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
     }
 
@@ -1510,7 +1537,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         public Component getTableCellRendererComponent(JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {
             super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            
+
             if (table.isRowSelected(row)) {
                 // Highlight self.
                 this.repaint();
@@ -1524,18 +1551,19 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             if (obj != null && "Chưa hoàn thành".equals(obj.toString())) {
                 setBackground(txtMauChuaHoanThanh.getBackground());
             }
-            
+
             setHorizontalAlignment(CENTER);
-            
+
             return this;
         }
     }
 
     class TableDateCellRenderer extends DateRenderer {
-        public TableDateCellRenderer (String format) {
+
+        public TableDateCellRenderer(String format) {
             super(format);
         }
-        
+
         @Override
         public Component getTableCellRendererComponent(JTable table,
                 Object value, boolean isSelected, boolean hasFocus, int row, int col) {
@@ -1555,9 +1583,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             if (obj != null && "Chưa hoàn thành".equals(obj.toString())) {
                 setBackground(txtMauChuaHoanThanh.getBackground());
             }
-            
+
             setHorizontalAlignment(CENTER);
-            
+
             return this;
         }
     };
@@ -1730,7 +1758,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     });
 
     // Đổ tên bảng vào combobox tìm kiếm
-    private void fillToComboBoxTimKiem() {
+    private void fillToComboBoxTimKiemCT() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCT.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblCTPhieuKiemKho_sub.getColumnCount(); i++) {
@@ -1741,7 +1769,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Lọc bảng theo từ khoá phiếu
     private void searchCTPhieu() {
-        TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieuKiem);
+        TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter(modelCTPhieuKiem);
         tblCTPhieuKiemKho_sub.setRowSorter(sorterCTPhieu);
 
         int columnFilter = cboTimKiemCT.getSelectedIndex();
@@ -1761,5 +1789,39 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             return;
         }
         sorterCTPhieu.setRowFilter(rf);
+    }
+
+    // Đổ tên bảng vào combobox tìm kiếm
+    private void fillToComboBoxTimKiemPhieu() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemPhieu.getModel();
+        model.removeAllElements();
+        for (int i = 0; i < tblPhieuKiemKho.getColumnCount(); i++) {
+            String columnName = tblPhieuKiemKho.getColumnName(i);
+            model.addElement(columnName);
+        }
+    }
+
+    // Lọc bảng theo từ khoá phiếu
+    private void searchPhieu() {
+        TableRowSorter<TableModel> sorterPhieu = new TableRowSorter(modelPhieuKiem);
+        tblPhieuKiemKho.setRowSorter(sorterPhieu);
+
+        int columnFilter = cboTimKiemPhieu.getSelectedIndex();
+        String keyword = txtTimKiemPhieu.getText();
+
+        sorterPhieu.setStringConverter(new TableStringConverter() {
+            @Override
+            public String toString(TableModel model, int row, int column) {
+                return model.getValueAt(row, column).toString().toLowerCase();
+            }
+        });
+
+        RowFilter<TableModel, Object> rf = null;
+        try {
+            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
+        } catch (Exception e) {
+            return;
+        }
+        sorterPhieu.setRowFilter(rf);
     }
 }
