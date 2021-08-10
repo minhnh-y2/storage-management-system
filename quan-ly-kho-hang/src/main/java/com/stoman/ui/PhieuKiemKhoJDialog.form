@@ -24,7 +24,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JTabbedPane" name="pnlMainCTP">
+            <Container class="javax.swing.JTabbedPane" name="tabsMainCTP">
               <Properties>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
@@ -65,7 +65,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="pnlTblCTPhieuKiemKho_main" pref="375" max="32767" attributes="0"/>
+                              <Component id="pnlTblCTPhieuKiemKho_main" pref="384" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="btnXoaKhoiDS" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -167,7 +167,7 @@
                               <Component id="pnlTblHangHoaKho" pref="384" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="btnThemVaoDS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -214,6 +214,7 @@
                                 </Column>
                               </TableColumnModel>
                             </Property>
+                            <Property name="rowHeight" type="int" value="25"/>
                             <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                               <JTableSelectionModel selectionMode="0"/>
                             </Property>
@@ -655,6 +656,7 @@
                         <Property name="date" type="java.util.Date" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new Date()" type="code"/>
                         </Property>
+                        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                     </Component>
