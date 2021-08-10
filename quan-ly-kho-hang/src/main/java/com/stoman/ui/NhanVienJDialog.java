@@ -473,7 +473,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
         // TODO add your handling code here:
-        txtTimKiem.setText("");
+        txtTimKiem.setText(defaultSearchNhanVien);
         clearForm();
         fillToTable();
     }//GEN-LAST:event_cboTimKiemActionPerformed

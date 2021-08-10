@@ -536,7 +536,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
         // TODO add your handling code here:
         if (!lstLHH.isSelectionEmpty()) {
-            txtTimKiem.setText("");
+            txtTimKiem.setText(defaultSearchHangHoa);
             fillToTable();
             clearForm();
         }
