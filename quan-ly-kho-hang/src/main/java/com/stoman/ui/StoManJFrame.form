@@ -2350,7 +2350,7 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="C&#xe1;n c&#xe2;n xu&#x1ea5;t nh&#x1ead;p theo n&#x103;m"/>
+                <Property name="text" type="java.lang.String" value="C&#xe1;n c&#xe2;n xu&#x1ea5;t nh&#x1ead;p"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTimKiemTH">
