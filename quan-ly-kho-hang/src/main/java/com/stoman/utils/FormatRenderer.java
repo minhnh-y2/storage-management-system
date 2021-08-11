@@ -8,6 +8,7 @@ package com.stoman.utils;
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -17,9 +18,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FormatRenderer extends DefaultTableCellRenderer {
 
     private Format formatter;
-
+    
     public FormatRenderer(Format formatter) {
         this.formatter = formatter;
+    }
+
+    public FormatRenderer(Format formatter, int alignment) {
+        this.formatter = formatter;
+        setHorizontalAlignment(alignment);
     }
 
     @Override
@@ -34,16 +40,8 @@ public class FormatRenderer extends DefaultTableCellRenderer {
         super.setValue(value);
     }
 
-    public static FormatRenderer getDateTimeRenderer() {
-        return new FormatRenderer(DateFormat.getDateTimeInstance());
-    }
-
-    public static FormatRenderer getTimeRenderer() {
-        return new FormatRenderer(DateFormat.getTimeInstance());
-    }
-    
-    public static FormatRenderer getDateRenderer(String pattern) {
-        return new FormatRenderer(new SimpleDateFormat(pattern));
+    public static FormatRenderer getSimpleDateRenderer(String pattern, int alignment) {
+        return new FormatRenderer(new SimpleDateFormat(pattern), alignment);
     }
     
 }
