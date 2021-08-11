@@ -118,7 +118,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
         lblTimKiemLT = new javax.swing.JLabel();
-        txtTimKiemLT = new TextFieldCustom();
+        txtTimKiemLT = new com.stoman.utils.TextFieldCustom();
         lblTheoLT = new javax.swing.JLabel();
         cboTimKiemLT = new javax.swing.JComboBox<>();
         lblTblLuuTru = new javax.swing.JScrollPane();
@@ -147,7 +147,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKNhap = new javax.swing.JPanel();
         lblDShangHoaNhap = new javax.swing.JLabel();
         lblTimKiemNhap = new javax.swing.JLabel();
-        txtTimKiemNhap = new TextFieldCustom();
+        txtTimKiemNhap = new com.stoman.utils.TextFieldCustom();
         lblTheoNhap = new javax.swing.JLabel();
         cboTimKiemNhap = new javax.swing.JComboBox<>();
         lblTblTKnhap = new javax.swing.JScrollPane();
@@ -182,7 +182,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKXuat = new javax.swing.JPanel();
         lblDShangHoaXuat = new javax.swing.JLabel();
         lblTimKiemXuat = new javax.swing.JLabel();
-        txtTimKiemXuat = new TextFieldCustom();
+        txtTimKiemXuat = new com.stoman.utils.TextFieldCustom();
         lblTheoXuat = new javax.swing.JLabel();
         cboTimKiemXuat = new javax.swing.JComboBox<>();
         lblTblTKxuat = new javax.swing.JScrollPane();
@@ -217,7 +217,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongHop = new javax.swing.JPanel();
         lblDSTongHop = new javax.swing.JLabel();
         lblTimKiemTH = new javax.swing.JLabel();
-        txtTimKiemTH = new TextFieldCustom();
+        txtTimKiemTH = new com.stoman.utils.TextFieldCustom();
         lblTheoTH = new javax.swing.JLabel();
         cboTimKiemTH = new javax.swing.JComboBox<>();
         lblTblTongHop = new javax.swing.JScrollPane();
@@ -1241,7 +1241,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         lblDSTongHop.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDSTongHop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDSTongHop.setText("Cán cân xuất nhập theo năm");
+        lblDSTongHop.setText("Cán cân xuất nhập");
 
         lblTimKiemTH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
@@ -2222,7 +2222,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         };
         tblTKxuat.setModel(tblXuatModel);
 
-        String headerTH[] = {"STT", "LOẠI HÀNG HÓA", "TỔNG GIÁ TRỊ XUẤT NHẬP", "LỢI NHUẬN TB"};
+        String headerTH[] = {"STT", "TÊN HÀNG HÓA", "TỔNG GIÁ TRỊ XUẤT NHẬP", "LỢI NHUẬN TB"};
         tblTongHopModel = new DefaultTableModel(headerTH, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
