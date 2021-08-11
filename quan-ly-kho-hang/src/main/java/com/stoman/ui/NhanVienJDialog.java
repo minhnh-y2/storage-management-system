@@ -16,7 +16,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
