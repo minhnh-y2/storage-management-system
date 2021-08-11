@@ -88,8 +88,7 @@ public class LuuTruDAO extends StoManDAO<LuuTru, Integer> {
         return (int) XJdbc.value(sql, maLT);
     }
     
-    public List<LuuTru> selectNotInList(Integer maKho, String keyword, Integer index, List<Integer> listCT){
-        String[] header = {"MAHH", "TENHH", "DONGIA", "DONVITINH"};
+    public List<LuuTru> selectNotInList(Integer maKho, List<Integer> listCT){
         String sql = "SELECT * FROM LUUTRU WHERE MAKHO LIKE ?";
         
         if(listCT.size()>0){
