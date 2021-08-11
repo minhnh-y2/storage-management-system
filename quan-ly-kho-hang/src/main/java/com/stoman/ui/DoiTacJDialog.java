@@ -187,7 +187,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(txtTimKiemDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblTimKiem2)
                         .addComponent(cboTimKiemDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addGap(9, 9, 9))
         );
 
         pnlDieuHuongTitle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Điều hướng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
@@ -312,9 +312,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlLoaiDoiTacLayout.setVerticalGroup(
             pnlLoaiDoiTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoaiDoiTacLayout.createSequentialGroup()
-                .addGroup(pnlLoaiDoiTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTimKiemLDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTimKiemLDT))
+                .addGroup(pnlLoaiDoiTacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTimKiemLDT)
+                    .addComponent(txtTimKiemLDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLstLoaiDoiTac, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,11 +325,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlThongTin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
 
         buttonGroup1.add(rdoKhachHang);
+        rdoKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rdoKhachHang.setForeground(new java.awt.Color(19, 97, 91));
         rdoKhachHang.setSelected(true);
         rdoKhachHang.setText("Khách hàng");
 
         buttonGroup1.add(rdoNhaPhanPhoi);
+        rdoNhaPhanPhoi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rdoNhaPhanPhoi.setForeground(new java.awt.Color(163, 52, 34));
         rdoNhaPhanPhoi.setText("Nhà phân phối");
 
@@ -371,7 +373,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(rdoKhachHang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoNhaPhanPhoi)
-                        .addGap(0, 154, Short.MAX_VALUE))
+                        .addGap(0, 153, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -381,7 +383,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlThongTinLayout.setVerticalGroup(
             pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongTinLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
                 .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTenDT))
@@ -506,8 +508,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDieuHuongTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlTblDoiTac, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -856,10 +858,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
         btnXoa.setVisible(Auth.isManager());
 
-        if (edit) {
-            tblDoiTac.setRowSelectionInterval(row, row);
-        }
-
         btnThemList.setEnabled(isSelectedList);
         btnSuaList.setEnabled(isSelectedList);
         btnXoaList.setEnabled(isSelectedList);
@@ -887,6 +885,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void first() {
         this.row = 0;
         this.edit();
+        tblDoiTac.setRowSelectionInterval(row, row);
     }
 
     // Hiển thị đối tác kế trước
@@ -894,6 +893,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         if (this.row > 0) {
             this.row--;
             this.edit();
+            tblDoiTac.setRowSelectionInterval(row, row);
         }
     }
 
@@ -902,6 +902,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         if (this.row < (tblDoiTac.getRowCount() - 1)) {
             this.row++;
             this.edit();
+            tblDoiTac.setRowSelectionInterval(row, row);
         }
     }
 
@@ -909,6 +910,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void last() {
         this.row = tblDoiTac.getRowCount() - 1;
         this.edit();
+        tblDoiTac.setRowSelectionInterval(row, row);
     }
 
     // Xác thực dữ liệu hợp lệ trên form

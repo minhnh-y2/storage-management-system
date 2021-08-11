@@ -29,9 +29,9 @@ public class TextFieldCustom extends JTextField {
     }
 
     private void selectAllText() {
-        addMouseListener(new MouseAdapter() {
+        addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void focusGained(FocusEvent evt) {
                 selectAll();
             }
         });

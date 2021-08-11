@@ -12,18 +12,26 @@ import com.stoman.entity.HangHoa;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
+import com.stoman.utils.NumberRenderer;
 import com.stoman.utils.TextFieldCustom;
 import com.stoman.utils.XNumber;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.table.TableStringConverter;
 
 /**
  *
@@ -61,9 +69,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         txtDonViTinh = new TextFieldCustom();
         txtDonGia = new javax.swing.JFormattedTextField();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiem = new TextFieldCustom(defaultSearchHangHoa);
+        txtTimKiemHangHoa = new TextFieldCustom(defaultSearchHangHoa);
         lblTimKiem2 = new javax.swing.JLabel();
-        cboTimKiem = new javax.swing.JComboBox<>();
+        cboTimKiemHangHoa = new javax.swing.JComboBox<>();
         lblLHH1 = new javax.swing.JLabel();
         pnlDieuHuongTitle = new javax.swing.JPanel();
         pnlDieuHuong = new javax.swing.JPanel();
@@ -168,17 +176,17 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTimKiem.setOpaque(false);
 
-        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtTimKiemHangHoa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
+                txtTimKiemHangHoaKeyReleased(evt);
             }
         });
 
         lblTimKiem2.setText("theo");
 
-        cboTimKiem.addActionListener(new java.awt.event.ActionListener() {
+        cboTimKiemHangHoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTimKiemActionPerformed(evt);
+                cboTimKiemHangHoaActionPerformed(evt);
             }
         });
 
@@ -192,11 +200,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lblLHH1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(txtTimKiemHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTimKiem2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboTimKiemHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlTimKiemLayout.setVerticalGroup(
@@ -206,9 +214,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblLHH1)
                     .addGroup(pnlTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimKiemHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblTimKiem2)
-                        .addComponent(cboTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboTimKiemHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9))
         );
 
@@ -477,8 +485,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void lstLHHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstLHHMouseClicked
         // TODO add your handling code here:
-        cboTimKiem.setSelectedIndex(0);
-        this.fillToTable();
+        cboTimKiemHangHoa.setSelectedIndex(0);
+        this.fillToTableHangHoa();
         this.clearForm();
         this.updateStatus();
     }//GEN-LAST:event_lstLHHMouseClicked
@@ -533,22 +541,22 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         last();
     }//GEN-LAST:event_btnLastActionPerformed
 
-    private void cboTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemActionPerformed
+    private void cboTimKiemHangHoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemHangHoaActionPerformed
         // TODO add your handling code here:
         if (!lstLHH.isSelectionEmpty()) {
-            txtTimKiem.setText(defaultSearchHangHoa);
-            fillToTable();
+            txtTimKiemHangHoa.setText(defaultSearchHangHoa);
+            searchPhieu();
             clearForm();
         }
-    }//GEN-LAST:event_cboTimKiemActionPerformed
+    }//GEN-LAST:event_cboTimKiemHangHoaActionPerformed
 
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+    private void txtTimKiemHangHoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemHangHoaKeyReleased
         // TODO add your handling code here:
         if (!lstLHH.isSelectionEmpty()) {
-            fillToTable();
+            searchPhieu();
             clearForm();
         }
-    }//GEN-LAST:event_txtTimKiemKeyReleased
+    }//GEN-LAST:event_txtTimKiemHangHoaKeyReleased
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -613,7 +621,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnThemLHH;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaLHH;
-    private javax.swing.JComboBox<String> cboTimKiem;
+    private javax.swing.JComboBox<String> cboTimKiemHangHoa;
     private javax.swing.JLabel lblDonGia;
     private javax.swing.JLabel lblDonViTinh;
     private javax.swing.JLabel lblLHH;
@@ -637,25 +645,26 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtDonViTinh;
     private javax.swing.JTextField txtMaHH;
     private javax.swing.JTextField txtTenHH;
-    private javax.swing.JTextField txtTimKiem;
+    private javax.swing.JTextField txtTimKiemHangHoa;
     private javax.swing.JTextField txtTimKiemLHH;
     // End of variables declaration//GEN-END:variables
 
     private HangHoaDAO hhDAO = new HangHoaDAO();
     private LoaiHangHoaDAO lhhDAO = new LoaiHangHoaDAO();
+    private DefaultListModel<LoaiHangHoa> lstModel = new DefaultListModel<>();
     private int row = -1;
+    
     private String numPattern = "#,##0";
     private DefaultTableModel modelHangHoa;
+    private TableRowSorter<TableModel> sorterHangHoa;
 
     private String defaultSearchLoaiHH = "Nhập từ khoá tìm kiếm loại hàng hoá";
     private String defaultSearchHangHoa = "Nhập từ khoá tìm kiếm hàng hoá";
 
-    private DefaultListModel<LoaiHangHoa> lstModel;
+   
 
     private void init() {
         this.setLocationRelativeTo(null);
-
-        this.lstModel = new DefaultListModel<>();
 
         this.formatTable();
         this.fillToComboboxTimKiemHH();
@@ -667,24 +676,24 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng.
     private SwingWorker workerHangHoa;
-    private void fillToTable() {
+    private void fillToTableHangHoa() {
         if (workerHangHoa != null) {
             workerHangHoa.cancel(true);
         }
         modelHangHoa.setRowCount(0);
+        
         workerHangHoa = new SwingWorker() {
             @Override
             protected Object doInBackground() throws Exception {
                 Thread.sleep(100);
                 int maLHH = lstLHH.getSelectedValue().getMaLHH();
-                String keyword = txtTimKiem.getText();
+                String keyword = txtTimKiemHangHoa.getText();
                 if (keyword.equals(defaultSearchHangHoa)) {
                     keyword = "";
                 }
-                int headerIndex = cboTimKiem.getSelectedIndex();
+                
+                List<HangHoa> list = hhDAO.selectByLoaiHangHoa(maLHH);
                 int i = 1;
-
-                List<HangHoa> list = hhDAO.selectByKeyword(maLHH, keyword, headerIndex);
                 for (HangHoa hh : list) {
                     if (workerHangHoa.isCancelled()) {
                         break;
@@ -693,22 +702,27 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                         i++,
                         hh.getMaHH(),
                         hh.getTenHH(),
-                        hh.getDonGia(),
+                        XNumber.toString(hh.getDonGia(), numPattern),
                         hh.getDonViTinh()
                     };
                     modelHangHoa.addRow(row);
                 }
 
-                tblHangHoa.setModel(modelHangHoa);
                 if (workerHangHoa.isCancelled()) {
                     modelHangHoa.setRowCount(0);
                 }
                 return null;
             }
 
+            @Override
+            protected void done() {
+                if(row >= 0){
+                    tblHangHoa.setRowSelectionInterval(row, row);
+                }
+            }
         };
         workerHangHoa.execute();
-
+        
         try {
 
         } catch (Exception e) {
@@ -738,13 +752,10 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Đổ tên bảng vào ComboBox tìm kiếm
     private void fillToComboboxTimKiemHH() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiem.getModel();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemHangHoa.getModel();
         model.removeAllElements();
         for (int i = 0; i < tblHangHoa.getColumnCount(); i++) {
             String columnName = tblHangHoa.getColumnName(i);
-            if (columnName.equalsIgnoreCase("STT")) {
-                continue;
-            }
             model.addElement(columnName);
         }
     }
@@ -782,14 +793,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
-        boolean isTableEmpty = (tblHangHoa.getRowCount() == 0);
-
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblHangHoa.setAutoCreateRowSorter(!isTableEmpty);
-        // Chọn hàng trên bảng
-        if (edit) {
-            tblHangHoa.setRowSelectionInterval(row, row);
-        }
 
         txtMaHH.setEditable(!edit && isSelectedList);
         btnThem.setEnabled(!edit && isSelectedList);
@@ -806,7 +809,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Hiển thị dữ liệu hàng hoá được chọn trên bảng lên form
     private void edit() {
-        String maHH = (String) tblHangHoa.getModel().getValueAt(this.row, 1);
+        int rowModel = tblHangHoa.convertRowIndexToModel(row);
+        String maHH = (String) tblHangHoa.getModel().getValueAt(rowModel, 1);
         HangHoa hh = hhDAO.selectByID(maHH);
         this.setForm(hh);
         this.updateStatus();
@@ -816,6 +820,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void first() {
         this.row = 0;
         this.edit();
+        tblHangHoa.setRowSelectionInterval(row, row);
     }
 
     // Hiển thị hàng hoá kế trước
@@ -823,6 +828,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (this.row > 0) {
             this.row--;
             this.edit();
+            tblHangHoa.setRowSelectionInterval(row, row);
         }
     }
 
@@ -831,6 +837,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (this.row < (tblHangHoa.getRowCount() - 1)) {
             this.row++;
             this.edit();
+            tblHangHoa.setRowSelectionInterval(row, row);
         }
     }
 
@@ -838,6 +845,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void last() {
         this.row = tblHangHoa.getRowCount() - 1;
         this.edit();
+        tblHangHoa.setRowSelectionInterval(row, row);
     }
 
     // Thêm mới loại hàng hoá
@@ -924,16 +932,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             txtDonGia.requestFocus();
             return false;
         }
-        try {
-            double donGia = Double.parseDouble(txtDonGia.getText());
-            if (donGia < 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            MsgBox.alert(this, "Đơn giá không hợp lệ!");
-            txtDonGia.requestFocus();
-            return false;
-        }
         return true;
     }
 
@@ -952,7 +950,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         HangHoa hh = getForm();
         try {
             hhDAO.insert(hh);
-            this.fillToTable();
+            this.fillToTableHangHoa();
             this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
@@ -964,14 +962,15 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Xoá hàng hoá
     private void delete() {
         if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
-            String maHH = (String) tblHangHoa.getValueAt(this.row, 1);
+            int rowModel = tblHangHoa.convertRowIndexToModel(this.row);
+            String maHH = (String) tblHangHoa.getValueAt(rowModel, 1);
             try {
                 hhDAO.delete(maHH);
-                this.fillToTable();
+                this.fillToTableHangHoa();
                 this.clearForm();
                 MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Không thể xoá hàng hoá đang còn tồn kho!");
+                MsgBox.alert(this, "Xoá thất bại!");
                 e.printStackTrace();
             }
         }
@@ -985,7 +984,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         HangHoa hh = getForm();
         try {
             hhDAO.update(hh);
-            this.fillToTable();
+            this.fillToTableHangHoa();
             this.updateStatus();
             MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
@@ -1003,21 +1002,23 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+            
+            Class[] types = new Class[]{
+                Integer.class, String.class, String.class, String.class,
+                String.class
+            };
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelHangHoa.getRowCount() == 0) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types [columnIndex];
             }
+            
         };
+        //tblHangHoa.setAutoCreateRowSorter(true);
         tblHangHoa.setModel(modelHangHoa);
-
-        //tblHangHoa.removeColumn(tblHangHoa.getColumnModel().getColumn(1));
+        sorterHangHoa = new TableRowSorter<>(modelHangHoa);
+        tblHangHoa.setRowSorter(sorterHangHoa);
+        
         // Set size column
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -1031,13 +1032,58 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         rightRenderer.setHorizontalAlignment(JLabel.CENTER);
         tblHangHoa.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
         tblHangHoa.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
+        tblHangHoa.getColumnModel().getColumn(3).setCellRenderer(NumberRenderer.getDoubleRenderer(numPattern));
         tblHangHoa.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+    }
+    
+    private void searchPhieu() {
+        int columnFilter = cboTimKiemHangHoa.getSelectedIndex();
+        String keyword = txtTimKiemHangHoa.getText();
+        
+        if (keyword.equals(defaultSearchHangHoa)) {
+            keyword = "";
+        }
+        
+        sorterHangHoa.setStringConverter(new TableStringConverter() {
+            @Override
+            public String toString(TableModel model, int row, int column) {
+                if (column == 3) {
+                    return model.getValueAt(row, column).toString().toLowerCase().replaceAll("[,.]", "");
+                }
+                return model.getValueAt(row, column).toString().toLowerCase();
+            }
+        });
+        
+        class DoubleComparator implements Comparator<String> {
+            @Override
+            public int compare(String o1, String o2) {
+                Double n1 = XNumber.toDouble(o1, numPattern);
+                Double n2 = XNumber.toDouble(o2, numPattern);
+                return n1.compareTo(n2);
+            }
+
+            @Override
+            public boolean equals(Object o2) {
+                return this.equals(o2);
+            }
+   
+        }
+        
+        sorterHangHoa.setComparator(3, new DoubleComparator());
+
+        RowFilter<TableModel, Object> rf = null;
+        try {
+            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
+        } catch (Exception e) {
+            return;
+        }
+        sorterHangHoa.setRowFilter(rf);
     }
 
     // Đỗ lại dữ liệu 
     public void refreshForm() {
         this.fillToComboboxTimKiemHH();
-        this.fillToTable();
+        this.fillToTableHangHoa();
 
         this.timer.restart();
     }
