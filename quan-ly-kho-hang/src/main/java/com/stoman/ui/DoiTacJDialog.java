@@ -25,6 +25,8 @@ import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import org.apache.commons.validator.GenericValidator;
 
 /**
@@ -106,6 +108,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlTblDoiTac.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTblDoiTac.setOpaque(false);
 
+        tblDoiTac.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblDoiTac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,9 +117,16 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -136,11 +146,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTimKiem.setOpaque(false);
 
-        txtTimKiemDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTimKiemDTMouseClicked(evt);
-            }
-        });
         txtTimKiemDT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemDTKeyReleased(evt);
@@ -281,11 +286,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         });
         pnlChucNangLoaiDT.add(btnSuaList);
 
-        txtTimKiemLDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTimKiemLDTMouseClicked(evt);
-            }
-        });
         txtTimKiemLDT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemLDTKeyReleased(evt);
@@ -323,30 +323,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         );
 
         pnlThongTin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin đối tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
-
-        txtTenDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTenDTMouseClicked(evt);
-            }
-        });
-
-        txtDiaChi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDiaChiMouseClicked(evt);
-            }
-        });
-
-        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtEmailMouseClicked(evt);
-            }
-        });
-
-        txtDienThoai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDienThoaiMouseClicked(evt);
-            }
-        });
 
         buttonGroup1.add(rdoKhachHang);
         rdoKhachHang.setForeground(new java.awt.Color(19, 97, 91));
@@ -582,7 +558,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void tblDoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoiTacMouseClicked
         // TODO add your handling code here:
-        this.row = tblDoiTac.getSelectedRow();
+        row = tblDoiTac.getSelectedRow();
         edit();
     }//GEN-LAST:event_tblDoiTacMouseClicked
 
@@ -639,36 +615,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         modelDoiTac.setRowCount(0);
         fillToListLoaiDoiTac();
     }//GEN-LAST:event_txtTimKiemLDTKeyReleased
-
-    private void txtTimKiemLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimKiemLDTMouseClicked
-        // TODO add your handling code here:
-        txtTimKiemLDT.selectAll();
-    }//GEN-LAST:event_txtTimKiemLDTMouseClicked
-
-    private void txtTenDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenDTMouseClicked
-        // TODO add your handling code here:
-        txtTenDT.selectAll();
-    }//GEN-LAST:event_txtTenDTMouseClicked
-
-    private void txtTimKiemDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimKiemDTMouseClicked
-        // TODO add your handling code here:
-        txtTimKiemDT.selectAll();
-    }//GEN-LAST:event_txtTimKiemDTMouseClicked
-
-    private void txtDiaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDiaChiMouseClicked
-        // TODO add your handling code here:
-        txtDiaChi.selectAll();
-    }//GEN-LAST:event_txtDiaChiMouseClicked
-
-    private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
-        // TODO add your handling code here:
-        txtEmail.selectAll();
-    }//GEN-LAST:event_txtEmailMouseClicked
-
-    private void txtDienThoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDienThoaiMouseClicked
-        // TODO add your handling code here:
-        txtDienThoai.selectAll();
-    }//GEN-LAST:event_txtDienThoaiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -745,9 +691,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTimKiemLDT;
     // End of variables declaration//GEN-END:variables
 
-    private DoiTacDAO dtDAO;
-    private PhieuDAO pDAO;
-    private LoaiDoiTacDAO ldtDAO;
+    private DoiTacDAO dtDAO = new DoiTacDAO();
+    private PhieuDAO pDAO = new PhieuDAO();
+    private LoaiDoiTacDAO ldtDAO = new LoaiDoiTacDAO();
     private DefaultTableModel modelDoiTac;
 
     private int row = -1;
@@ -757,9 +703,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-        this.dtDAO = new DoiTacDAO();
-        this.ldtDAO = new LoaiDoiTacDAO();
-        this.pDAO = new PhieuDAO();
 
         this.formatTable();
 
@@ -798,6 +741,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
 
         modelDoiTac.setRowCount(0);
+
         int maLDT = lstLDT.getSelectedValue().getMaLDT();
         int headerIndex = cboTimKiemDT.getSelectedIndex();
 
@@ -839,6 +783,14 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                     }
                     return null;
                 }
+
+                @Override
+                protected void done() {
+                    if (row >= 0) {
+                        tblDoiTac.setRowSelectionInterval(row, row);
+                    }
+                }
+
             };
             worker.execute();
         } catch (Exception e) {
@@ -864,10 +816,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private DoiTac getForm() {
         DoiTac dt = new DoiTac();
         dt.setTenDT(txtTenDT.getText().trim());
+        dt.setMaDT(Integer.parseInt(txtTenDT.getToolTipText()));
         dt.setDiaChi(txtDiaChi.getText());
         dt.setEmail(txtEmail.getText());
         dt.setSoDT(txtDienThoai.getText());
-        dt.setVaiTro(rdoKhachHang.isSelected());
+        dt.setVaiTro(rdoNhaPhanPhoi.isSelected());
         dt.setMaLDT(lstLDT.getSelectedValue().getMaLDT());
         return dt;
     }
@@ -875,6 +828,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     // Nạp dữ liệu vào form
     private void setForm(DoiTac dt) {
         txtTenDT.setText(dt.getTenDT());
+        txtTenDT.setToolTipText(String.valueOf(dt.getMaDT()));
         txtDiaChi.setText(dt.getDiaChi());
         txtEmail.setText(dt.getEmail());
         txtDienThoai.setText(dt.getSoDT());
@@ -900,14 +854,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         boolean last = (this.row == tblDoiTac.getRowCount() - 1);
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
 
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblDoiTac.setAutoCreateRowSorter(tblDoiTac.getRowCount() > 0);
-        // Chọn hàng trên bảng
+        btnXoa.setVisible(Auth.isManager());
+
         if (edit) {
             tblDoiTac.setRowSelectionInterval(row, row);
         }
-
-        btnSua.setVisible(Auth.isManager());
 
         btnThemList.setEnabled(isSelectedList);
         btnSuaList.setEnabled(isSelectedList);
@@ -926,7 +877,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Hiển thị đối tác được chọn từ bảng lên form
     private void edit() {
-        int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
+        int maDT = (int) tblDoiTac.getModel().getValueAt(tblDoiTac.convertRowIndexToModel(row), 1);
         DoiTac dt = dtDAO.selectByID(maDT);
         this.setForm(dt);
         this.updateStatus();
@@ -991,11 +942,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             txtDienThoai.requestFocus();
             return false;
         }
+        /*
         if (!dienThoai.matches("((84)|(0))\\d{9}")) {
             MsgBox.alert(this, "Số điện thoại không hợp lệ!");
             txtDienThoai.requestFocus();
             return false;
         }
+         */
         return true;
 
     }
@@ -1076,7 +1029,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 + "\nBạn có chắc chắn xoá đối tác này?";
         if (MsgBox.confirm(this, message)) {
             try {
-                int maDT = (int) tblDoiTac.getModel().getValueAt(this.row, 1);
+                int rowModel = tblDoiTac.convertRowIndexToModel(this.row);
+                int maDT = (int) tblDoiTac.getModel().getValueAt(rowModel, 1);
                 dtDAO.delete(maDT);
                 this.fillToTableDoiTac();
                 this.clearForm();
@@ -1114,32 +1068,34 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 return false;
             }
 
+            Class[] types = new Class[]{
+                Integer.class, Integer.class, String.class, String.class,
+                String.class, String.class, String.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelDoiTac.getRowCount() == 0) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types [columnIndex];
             }
         };
+
+        tblDoiTac.setAutoCreateRowSorter(true);
         tblDoiTac.setModel(modelDoiTac);
         tblDoiTac.removeColumn(tblDoiTac.getColumnModel().getColumn(1));
         tblDoiTac.getColumnModel().getColumn(0).setMaxWidth(40);
 
         tblDoiTac.setDefaultRenderer(Object.class, new DoiTacTableCellRenderer());
-        
-        DoiTacTableCellRenderer rightRenderer = new DoiTacTableCellRenderer();
-        rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tblDoiTac.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-        tblDoiTac.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
-        tblDoiTac.getColumnModel().getColumn(5).setCellRenderer(rightRenderer);
+
+        DoiTacTableCellRenderer centerRenderer = new DoiTacTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tblDoiTac.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        tblDoiTac.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
+        tblDoiTac.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
 
     }
-    
+
     class DoiTacTableCellRenderer extends DefaultTableCellRenderer {
+
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {
@@ -1162,7 +1118,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         }
     }
 
-
     // Đỗ lại dữ liệu 
     public void refreshForm() {
         this.fillToComboBoxTimKiemDT();
@@ -1175,9 +1130,5 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private Timer timer = new Timer(300000, (e) -> {
         refreshForm();
     });
-
-    private void formatForm() {
-
-    }
 
 }

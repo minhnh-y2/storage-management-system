@@ -104,12 +104,15 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblDoiTac">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="0">
-                    <Column editable="false" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="false" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="false" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="false" title="Title 4" type="java.lang.Object"/>
+                    <Column editable="false" title="Title 1" type="java.lang.Integer"/>
+                    <Column editable="false" title="Title 2" type="java.lang.String"/>
+                    <Column editable="false" title="Title 3" type="java.lang.String"/>
+                    <Column editable="false" title="Title 4" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -199,7 +202,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtTimKiemDT">
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimKiemDTMouseClicked"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemDTKeyReleased"/>
               </Events>
               <AuxValues>
@@ -434,7 +436,6 @@
             </Container>
             <Component class="javax.swing.JTextField" name="txtTimKiemLDT">
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimKiemLDTMouseClicked"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLDTKeyReleased"/>
               </Events>
               <AuxValues>
@@ -526,33 +527,21 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtTenDT">
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTenDTMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDiaChi">
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDiaChiMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtEmailMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDienThoai">
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtDienThoaiMouseClicked"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
               </AuxValues>
