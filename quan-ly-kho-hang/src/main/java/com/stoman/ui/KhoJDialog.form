@@ -292,7 +292,7 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyReleased"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom(defaultSearchKho)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchKho)"/>
           </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="pnlTblKho">

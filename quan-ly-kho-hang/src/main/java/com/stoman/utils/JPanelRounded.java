@@ -10,35 +10,36 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
+import java.awt.Point;
 import java.awt.RenderingHints;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 /**
  *
  * @author MinhNH
  */
-public class RoundedPanel extends JPanel {
-
+public class JPanelRounded extends JPanel {
     private Color backgroundColor;
     private int cornerRadius = 15;
 
-    public RoundedPanel(LayoutManager layout, int radius) {
+    public JPanelRounded(LayoutManager layout, int radius) {
         super(layout);
         cornerRadius = radius;
     }
 
-    public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+    public JPanelRounded(LayoutManager layout, int radius, Color bgColor) {
         super(layout);
         cornerRadius = radius;
         backgroundColor = bgColor;
     }
 
-    public RoundedPanel(int radius) {
+    public JPanelRounded(int radius) {
         super();
         cornerRadius = radius;
     }
 
-    public RoundedPanel(int radius, Color bgColor) {
+    public JPanelRounded(int radius, Color bgColor) {
         super();
         cornerRadius = radius;
         backgroundColor = bgColor;

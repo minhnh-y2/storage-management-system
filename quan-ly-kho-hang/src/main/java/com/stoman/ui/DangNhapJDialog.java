@@ -9,8 +9,8 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
-import com.stoman.utils.DragPanel;
-import com.stoman.utils.MsgBox;
+import com.stoman.utils.JPanelDrag;
+import com.stoman.utils.XOptionPane;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
@@ -53,7 +53,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         pnlDangNhap = new javax.swing.JPanel();
-        pnlMotion = new DragPanel(this);
+        pnlMotion = new JPanelDrag(this);
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -253,13 +253,13 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             NhanVien nv = dao.selectByID(maNV);
 
             if (nv == null) {
-                MsgBox.alert(this, "Tên đăng nhập không đúng");
+                XOptionPane.alert(this, "Tên đăng nhập không đúng");
                 txtMaNV.requestFocus();
                 return;
             }
 
             if (!XPassword.isValidated(matKhau, nv.getMatKhau(), nv.getMuoi())) {
-                MsgBox.alert(this, "Mật khẩu không đúng.");
+                XOptionPane.alert(this, "Mật khẩu không đúng.");
                 txtMatKhau.requestFocus();
                 return;
             }
@@ -267,14 +267,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             Auth.user = nv;
             this.dispose();
         } catch (Exception e) {
-            MsgBox.alert(this, "Không thể đăng nhập!");
+            XOptionPane.alert(this, "Không thể đăng nhập!");
             e.printStackTrace();
         }
     }
 
     // Thoát chương trình
     private void exit() {
-        if (MsgBox.confirm(this, "Bạn có muốn thoát phần mềm?")) {
+        if (XOptionPane.confirm(this, "Bạn có muốn thoát phần mềm?")) {
             System.exit(0);
         }
     }
@@ -282,12 +282,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // Xác thực dữ liệu nhập vào form
     private boolean isValidated() {
         if (txtMaNV.getText().length() == 0) {
-            MsgBox.alert(this, "Chưa nhập tên đăng nhập!");
+            XOptionPane.alert(this, "Chưa nhập tên đăng nhập!");
             txtMaNV.requestFocus();
             return false;
         }
         if (txtMatKhau.getPassword().length == 0) {
-            MsgBox.alert(this, "Chưa nhập mật khẩu!");
+            XOptionPane.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
             return false;
         }

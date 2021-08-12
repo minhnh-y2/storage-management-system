@@ -205,7 +205,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemDTKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom(defaultSearchDoiTac)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchDoiTac)"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTimKiem2">
@@ -439,7 +439,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLDTKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom(defaultSearchLoaiDT)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiDT)"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTimKiemLDT">
@@ -528,22 +528,22 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtTenDT">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDiaChi">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDienThoai">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoKhachHang">

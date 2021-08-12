@@ -289,7 +289,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtMaNV">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHoTen">
@@ -298,7 +298,7 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtHoTenFocusLost"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtMatKhau">
@@ -384,7 +384,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom(defaultSearchNhanVien)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchNhanVien)"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTimKiem2">

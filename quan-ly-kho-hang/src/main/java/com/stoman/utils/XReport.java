@@ -36,14 +36,14 @@ import org.apache.commons.io.FilenameUtils;
  *
  * @author MinhNH
  */
-public class ExporterReport {
+public class XReport {
 
     private static JasperPrint getJasperPrint(String reportPath, HashMap parameters) throws SQLException, JRException {
         // Kết nối với database
         Connection conn = XJdbc.getConnection();
 
         // Biên dịch file
-        InputStream path = ExporterReport.class.getResourceAsStream(reportPath);
+        InputStream path = XReport.class.getResourceAsStream(reportPath);
         JasperReport jasperReport = JasperCompileManager.compileReport(path);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
 
@@ -68,7 +68,7 @@ public class ExporterReport {
             File selectedFile = fileChooser.getSelectedFile();
             
             if(selectedFile.exists())
-                if(!MsgBox.confirm(fileChooser, "File tồn tại! Bạn có muốn ghi đè")) return null;
+                if(!XOptionPane.confirm(fileChooser, "File tồn tại! Bạn có muốn ghi đè")) return null;
             
             String pathFile = selectedFile.getAbsolutePath();
             

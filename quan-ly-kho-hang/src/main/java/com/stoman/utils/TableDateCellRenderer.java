@@ -16,19 +16,19 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Huy
  */
-public class DateRenderer extends DefaultTableCellRenderer {
+public class TableDateCellRenderer extends DefaultTableCellRenderer {
 
     private static final long serialVersionUID = 1L;
     private Date dateValue;
     private SimpleDateFormat sdfNewValue = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
     private String valueToString = "";
 
-    public DateRenderer(){
+    public TableDateCellRenderer(){
         super();
         setHorizontalAlignment(JLabel.CENTER);
     }
 
-    public DateRenderer(String format){
+    public TableDateCellRenderer(String format){
         super();
         sdfNewValue.applyPattern(format);
         setHorizontalAlignment(JLabel.CENTER);

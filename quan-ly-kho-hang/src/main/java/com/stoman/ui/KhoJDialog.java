@@ -11,8 +11,8 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
-import com.stoman.utils.MsgBox;
-import com.stoman.utils.TextFieldCustom;
+import com.stoman.utils.XOptionPane;
+import com.stoman.utils.JTextFieldCustom;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -65,7 +65,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         lblTruongKho = new javax.swing.JLabel();
         cboTruongKho = new javax.swing.JComboBox<>();
         lblTimKiem = new javax.swing.JLabel();
-        txtTimKiem = new TextFieldCustom(defaultSearchKho);
+        txtTimKiem = new JTextFieldCustom(defaultSearchKho);
         pnlTblKho = new javax.swing.JScrollPane();
         tblKho = new javax.swing.JTable();
 
@@ -449,7 +449,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                 model.addElement(nv);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -498,7 +498,7 @@ public class KhoJDialog extends javax.swing.JDialog {
             };
             worker.execute();
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -568,7 +568,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     // Xác thực dữ liệu trên form
     private boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập số kho!");
+            XOptionPane.alert(this, "Chưa nhập số kho!");
             txtMaKho.requestFocus();
             return false;
         }
@@ -578,17 +578,17 @@ public class KhoJDialog extends javax.swing.JDialog {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            MsgBox.alert(this, "Mã kho phải là số và lớn hơn 0!");
+            XOptionPane.alert(this, "Mã kho phải là số và lớn hơn 0!");
             txtMaKho.requestFocus();
             return false;
         }
         if (txtDiaChi.getText().isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập địa chỉ!");
+            XOptionPane.alert(this, "Chưa nhập địa chỉ!");
             txtDiaChi.requestFocus();
             return false;
         }
         if (cboTruongKho.getSelectedIndex() == 0) {
-            MsgBox.alert(this, "Chưa chọn trưởng kho!");
+            XOptionPane.alert(this, "Chưa chọn trưởng kho!");
             return false;
         }
         return true;
@@ -599,16 +599,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         if (isValidated()) {
             Kho k = getForm();
             if (kDAO.selectByID(k.getMaKho()) != null) {
-                MsgBox.alert(this, "Mã kho đã tồn tại!");
+                XOptionPane.alert(this, "Mã kho đã tồn tại!");
                 return;
             }
             try {
                 kDAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công!");
+                XOptionPane.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại!");
+                XOptionPane.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -621,9 +621,9 @@ public class KhoJDialog extends javax.swing.JDialog {
             try {
                 kDAO.update(k);
                 this.fillToTable();
-                MsgBox.alert(this, "Cập nhật thành công!");
+                XOptionPane.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Cập nhật thất bại!");
+                XOptionPane.alert(this, "Cập nhật thất bại!");
                 e.printStackTrace();
             }
         }
@@ -633,15 +633,15 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void delete() {
         String message = "Các hàng hoá đang lưu trữ trong kho này cũng sẽ bị xoá!"
                 + "\nBạn có muốn tiếp tục xoá không?";
-        if (MsgBox.confirm(this, message)) {
+        if (XOptionPane.confirm(this, message)) {
             try {
                 int maKho = (int) tblKho.getValueAt(this.row, 0);
                 kDAO.delete(maKho);
                 this.fillToTable();
                 this.clearForm();
-                MsgBox.alert(this, "Xoá kho thành công!");
+                XOptionPane.alert(this, "Xoá kho thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá kho thất bại!");
+                XOptionPane.alert(this, "Xoá kho thất bại!");
                 e.printStackTrace();
             }
         }

@@ -8,7 +8,6 @@ package com.stoman.utils;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -20,12 +19,12 @@ import javax.swing.JPanel;
 /**
  * Tạo panel có thể kéo chuột di chuyển form dialog
  */
-public class DragPanel extends JPanel {
+public class JPanelDrag extends JPanel {
 
     private Point initialClick;
     private JDialog dialog;
 
-    public DragPanel(final JDialog dialog) {
+    public JPanelDrag(final JDialog dialog) {
         this.dialog = dialog;
         this.addEventsForDragging();
     }

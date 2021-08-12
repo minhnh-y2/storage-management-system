@@ -18,12 +18,12 @@ import javax.swing.JTextField;
  *
  * @author MinhNH
  */
-public class TextFieldCustom extends JTextField {
-    public TextFieldCustom() {
+public class JTextFieldCustom extends JTextField {
+    public JTextFieldCustom() {
         selectAllText();
     }
 
-    public TextFieldCustom(String defaultSearchText) {
+    public JTextFieldCustom(String defaultSearchText) {
         selectAllText();
         searchBox(defaultSearchText);
     }

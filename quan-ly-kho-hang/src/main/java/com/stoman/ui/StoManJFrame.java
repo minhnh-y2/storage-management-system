@@ -12,8 +12,8 @@ import com.stoman.dao.ThongKeDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
-import com.stoman.utils.MsgBox;
-import com.stoman.utils.TextFieldCustom;
+import com.stoman.utils.XOptionPane;
+import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
@@ -118,7 +118,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTonKho = new javax.swing.JPanel();
         lblDShangHoa = new javax.swing.JLabel();
         lblTimKiemLT = new javax.swing.JLabel();
-        txtTimKiemLT = new com.stoman.utils.TextFieldCustom();
+        txtTimKiemLT = new com.stoman.utils.JTextFieldCustom();
         lblTheoLT = new javax.swing.JLabel();
         cboTimKiemLT = new javax.swing.JComboBox<>();
         lblTblLuuTru = new javax.swing.JScrollPane();
@@ -147,7 +147,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKNhap = new javax.swing.JPanel();
         lblDShangHoaNhap = new javax.swing.JLabel();
         lblTimKiemNhap = new javax.swing.JLabel();
-        txtTimKiemNhap = new com.stoman.utils.TextFieldCustom();
+        txtTimKiemNhap = new com.stoman.utils.JTextFieldCustom();
         lblTheoNhap = new javax.swing.JLabel();
         cboTimKiemNhap = new javax.swing.JComboBox<>();
         lblTblTKnhap = new javax.swing.JScrollPane();
@@ -182,7 +182,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTKXuat = new javax.swing.JPanel();
         lblDShangHoaXuat = new javax.swing.JLabel();
         lblTimKiemXuat = new javax.swing.JLabel();
-        txtTimKiemXuat = new com.stoman.utils.TextFieldCustom();
+        txtTimKiemXuat = new com.stoman.utils.JTextFieldCustom();
         lblTheoXuat = new javax.swing.JLabel();
         cboTimKiemXuat = new javax.swing.JComboBox<>();
         lblTblTKxuat = new javax.swing.JScrollPane();
@@ -217,7 +217,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongHop = new javax.swing.JPanel();
         lblDSTongHop = new javax.swing.JLabel();
         lblTimKiemTH = new javax.swing.JLabel();
-        txtTimKiemTH = new com.stoman.utils.TextFieldCustom();
+        txtTimKiemTH = new com.stoman.utils.JTextFieldCustom();
         lblTheoTH = new javax.swing.JLabel();
         cboTimKiemTH = new javax.swing.JComboBox<>();
         lblTblTongHop = new javax.swing.JScrollPane();
@@ -2621,7 +2621,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Thoát chương trình
     private void exit() {
-        if (MsgBox.confirm(this, "Bạn có muốn kết thúc chương trình?")) {
+        if (XOptionPane.confirm(this, "Bạn có muốn kết thúc chương trình?")) {
             System.exit(0);
         }
     }
@@ -2972,7 +2972,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             lblSumTongGiaTri.setText(XNumber.toString(sumMoney, numFormat));
             lblSoLuongTKLT.setText(XNumber.toString(sumSoLuong, numFormat));
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3033,7 +3033,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             lblTongSoGTN.setText(XNumber.toString(sumMoney, numFormat));
             lblTongSoLN.setText(XNumber.toString(sumSoLuong, numFormat));
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3094,7 +3094,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             lblTongSoGTX.setText(XNumber.toString(sumMoney, numFormat));
             lblTongSoLX.setText(XNumber.toString(sumSoLuong, numFormat));
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3157,7 +3157,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             lblTongSoGTXN.setText(XNumber.toString(sumXuatNhap, numFormat));
 
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3186,7 +3186,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopLHHModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3223,7 +3223,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopLHHNhapModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3260,7 +3260,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopLHHXuatModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3296,7 +3296,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopHHModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3341,7 +3341,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopHHNhapModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3386,7 +3386,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopHHXuatModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3424,7 +3424,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopLHHTHModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -3470,7 +3470,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                 tblTopHHTHModel.addRow(row);
             }
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
