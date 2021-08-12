@@ -22,12 +22,15 @@ import com.stoman.entity.NhanVien;
 import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DateComparator;
+import com.stoman.utils.DateTimeComparator;
 import com.stoman.utils.XOptionPane;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.XReport;
 import com.stoman.utils.TableNumberCellRenderer;
 import com.stoman.utils.JSpinnerEditor;
+import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XDate;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,7 +51,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -320,6 +322,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblCTPhieu.setColumnSelectionAllowed(false);
         tblCTPhieu.setRowHeight(25);
         tblCTPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieu.getTableHeader().setReorderingAllowed(false);
@@ -912,16 +915,18 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.rowPhieu = tblPhieu.getSelectedRow();
     }//GEN-LAST:event_tblPhieuMousePressed
 
-    private void tblCTPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieuMouseClicked
-        // TODO add your handling code here:
-        mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
-    }//GEN-LAST:event_tblCTPhieuMouseClicked
-
     private void tblCTPhieu_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietMouseClicked
         // TODO add your handling code here:
+        this.rowCTPhieu = tblCTPhieu_ChiTiet.getSelectedRow();
         mapSelectionTable(tblCTPhieu_ChiTiet, tblCTPhieu);
     }//GEN-LAST:event_tblCTPhieu_ChiTietMouseClicked
 
+    private void tblCTPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieuMouseClicked
+        // TODO add your handling code here:
+        this.rowCTPhieu = tblCTPhieu.getSelectedRow();
+        mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
+    }//GEN-LAST:event_tblCTPhieuMouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -1038,13 +1043,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private TableRowSorter<TableModel> sorterPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu_ChiTiet;
-    TableRowSorter<TableModel> sorterHHKho;
+    private TableRowSorter<TableModel> sorterHHKho;
 
     private String numFormat = "#,##0.0";
     private String dateFormat = "dd-MM-yyyy";
-    private String dateTimeFormat = "dd-MM-yyyy(hh:MM:ss)";
-    
+    private String dateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+
     private int rowPhieu = -1;
+    private int rowCTPhieu = -1;
 
     private String defaultSearchHangHoa = "Nhập từ khoá tìm kiếm hàng hoá";
     private String defaultSearchPhieu = "Nhập từ khoá tìm kiếm phiếu";
@@ -1451,7 +1457,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         isUpdate = false;
 
         this.rowPhieu = -1;
-        
+        this.rowCTPhieu = -1;
+
         this.updateStatus();
     }
 
@@ -1521,42 +1528,24 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_ChiTiet.setModel(modelCTPhieuKiem);
         tblCTPhieu.setModel(modelCTPhieuKiem);
         tblHangHoaKho.setModel(modelHangHoaKho);
+        
+        tblCTPhieu.putClientProperty("terminateEditOnFocusLost", true);
 
         // Cài đặt bộ lọc cho bảng
-        sorterPhieu = new TableRowSorter(modelPhieu);
-        sorterPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
+        sorterPhieu = new TableRowSorter<>(modelPhieu);
+        sorterPhieu.setStringConverter(new LowerCaseStringConverter());
         sorterPhieu.setComparator(2, new DateComparator(dateFormat));
-        sorterPhieu.setComparator(5, new DateComparator(dateFormat));
-        
-        sorterCTPhieu = new TableRowSorter(modelCTPhieuKiem);
-        sorterCTPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
-        sorterCTPhieu_ChiTiet = new TableRowSorter(modelCTPhieuKiem);
-        sorterCTPhieu_ChiTiet.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
+        sorterPhieu.setComparator(5, new DateTimeComparator(dateTimeFormat));
+
+        sorterCTPhieu = new TableRowSorter<>(modelCTPhieuKiem);
+        sorterCTPhieu.setStringConverter(new LowerCaseStringConverter());
+
+        sorterCTPhieu_ChiTiet = new TableRowSorter<>(modelCTPhieuKiem);
+        sorterCTPhieu_ChiTiet.setStringConverter(new LowerCaseStringConverter());
+
         sorterHHKho = new TableRowSorter<>(modelHangHoaKho);
-        sorterHHKho.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
+        sorterHHKho.setStringConverter(new LowerCaseStringConverter());
+
         tblPhieu.setRowSorter(sorterPhieu);
         tblCTPhieu.setRowSorter(sorterCTPhieu);
         tblCTPhieu_ChiTiet.setRowSorter(sorterCTPhieu_ChiTiet);
@@ -1576,8 +1565,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu.setRowHeight(25);
 
         // Thêm chức năng nhập cho bảng
-        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellEditor(new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
-        tblCTPhieu.getColumnModel().getColumn(3).setCellEditor(new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+        JSpinnerEditor spinnerEditor = new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0);
+        
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellEditor(spinnerEditor);
+        tblCTPhieu.getColumnModel().getColumn(3).setCellEditor(spinnerEditor);
 
         // Chỉnh size cột các bảng
         tblCTPhieu.getColumnModel().getColumn(0).setPreferredWidth(47);
@@ -1825,7 +1816,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
         sorterCTPhieu_ChiTiet.setRowFilter(rf);
     }
-    
+
     private void searchHangHoaKho() {
         String keyword = txtTimKiemHHKho.getText();
         if (keyword.equals(defaultSearchHangHoa)) {
@@ -1858,7 +1849,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void searchPhieu() {
         int columnFilter = cboTimKiemPhieu.getSelectedIndex();
-        if(columnFilter > 2){
+        if (columnFilter > 2) {
             columnFilter++;
         }
         String keyword = txtTimKiemPhieu.getText();
@@ -1874,7 +1865,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
         sorterPhieu.setRowFilter(rf);
     }
-    
+
     // Ánh xạ dòng được chọn của bảng này sang bảng khác
     private void mapSelectionTable(JTable TableToClick, JTable TableToMap) {
         int rowTableToClick = TableToClick.convertRowIndexToModel(TableToClick.getSelectedRow());

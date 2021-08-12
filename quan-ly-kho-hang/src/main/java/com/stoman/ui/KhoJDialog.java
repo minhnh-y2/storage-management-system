@@ -13,6 +13,7 @@ import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.XOptionPane;
 import com.stoman.utils.JTextFieldCustom;
+import com.stoman.utils.LowerCaseStringConverter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -425,7 +426,10 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         };
         tblKho.setModel(tblModel);
+        
+        // Set Table Sorter
         sorterKho = new TableRowSorter<TableModel>(tblModel);
+        sorterKho.setStringConverter(new LowerCaseStringConverter());
         tblKho.setRowSorter(sorterKho);
 
         // Điều chỉnh size column
@@ -649,13 +653,6 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     private void search() {
         String keyword = txtTimKiem.getText().toLowerCase();
-
-        sorterKho.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
 
         RowFilter<TableModel, Object> rf = null;
         try {

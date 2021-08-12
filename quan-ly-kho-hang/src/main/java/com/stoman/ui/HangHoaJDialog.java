@@ -13,19 +13,15 @@ import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.XOptionPane;
-import com.stoman.utils.JSpinnerEditor;
 import com.stoman.utils.JSpinnerStringEditor;
 import com.stoman.utils.JTextFieldCustom;
+import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XNumber;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
@@ -35,7 +31,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 
 /**
  *
@@ -68,12 +63,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblTenHangHoa = new javax.swing.JLabel();
         lblDonViTinh = new javax.swing.JLabel();
         lblDonGia = new javax.swing.JLabel();
-        txtMaHH = new JTextFieldCustom();
-        txtTenHH = new JTextFieldCustom();
-        txtDonViTinh = new JTextFieldCustom();
+        txtMaHH = new com.stoman.utils.JTextFieldCustom();
+        txtTenHH = new com.stoman.utils.JTextFieldCustom();
+        txtDonViTinh = new com.stoman.utils.JTextFieldCustom();
         txtDonGia = new javax.swing.JFormattedTextField();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiemHangHoa = new JTextFieldCustom(defaultSearchHangHoa);
+        txtTimKiemHangHoa = new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiemHangHoa = new javax.swing.JComboBox<>();
         lblLHH1 = new javax.swing.JLabel();
@@ -93,7 +88,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         btnXoaLHH = new javax.swing.JButton();
         btnSuaLHH = new javax.swing.JButton();
         lblLHH = new javax.swing.JLabel();
-        txtTimKiemLHH = new JTextFieldCustom(defaultSearchLoaiHH);
+        txtTimKiemLHH = new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiHH);
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -600,7 +595,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void tblHangHoaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblHangHoaPropertyChange
         // TODO add your handling code here:
         if ("tableCellEditor".equals(evt.getPropertyName())) {
-            if (!tblHangHoa.isEditing()) {
+            if (this.row >= 0) {
                 updateDonGia();
             }
         }
@@ -1061,7 +1056,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         };
 
         tblHangHoa.setModel(modelHangHoa);
+
+        // Set Table Sorter
         sorterHangHoa = new TableRowSorter<>(modelHangHoa);
+        sorterHangHoa.setStringConverter(new LowerCaseStringConverter());
+        sorterHangHoa.setComparator(3, new DoubleComparator(numPattern));
         tblHangHoa.setRowSorter(sorterHangHoa);
 
         // Set size column
@@ -1101,18 +1100,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (keyword.equals(defaultSearchHangHoa)) {
             keyword = "";
         }
-
-        sorterHangHoa.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                if (column == 3) {
-                    return model.getValueAt(row, column).toString().toLowerCase().replaceAll("[,.]", "");
-                }
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        sorterHangHoa.setComparator(3, new DoubleComparator(numPattern));
 
         RowFilter<TableModel, Object> rf = null;
         try {

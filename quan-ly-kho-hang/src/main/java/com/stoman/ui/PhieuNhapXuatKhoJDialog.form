@@ -73,7 +73,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblCTPhieu_main">
+                <Component class="javax.swing.JTable" name="tblCTPhieu_ChiTiet">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
@@ -115,7 +115,8 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieu_mainPropertyChange"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieu_ChiTietPropertyChange"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblCTPhieu_ChiTietKeyReleased"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -482,7 +483,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblCTPhieu_sub">
+                    <Component class="javax.swing.JTable" name="tblCTPhieu">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
@@ -524,7 +525,9 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieu_subPropertyChange"/>
+                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblCTPhieuMousePressed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblCTPhieuPropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblCTPhieuKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1021,6 +1024,7 @@
                         <Property name="date" type="java.util.Date" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new Date()" type="code"/>
                         </Property>
+                        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -1037,6 +1041,7 @@
                         <Property name="date" type="java.util.Date" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new Date()" type="code"/>
                         </Property>
+                        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                     </Component>
