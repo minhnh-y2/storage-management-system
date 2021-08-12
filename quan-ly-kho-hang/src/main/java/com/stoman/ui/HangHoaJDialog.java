@@ -11,17 +11,20 @@ import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.entity.HangHoa;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
+import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.MsgBox;
-import com.stoman.utils.NumberRenderer;
+import com.stoman.utils.SpinnerEditor;
 import com.stoman.utils.TextFieldCustom;
 import com.stoman.utils.XNumber;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.List;
+import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
@@ -126,9 +129,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblDonGia.setText("Đơn giá");
 
         txtDonGia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
-        txtDonGia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDonGiaMouseClicked(evt);
+        txtDonGia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDonGiaFocusGained(evt);
             }
         });
 
@@ -297,9 +300,24 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         tblHangHoa.setRowHeight(25);
         tblHangHoa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblHangHoa.getTableHeader().setReorderingAllowed(false);
+        tblHangHoa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblHangHoaFocusGained(evt);
+            }
+        });
         tblHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHangHoaMouseClicked(evt);
+            }
+        });
+        tblHangHoa.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblHangHoaPropertyChange(evt);
+            }
+        });
+        tblHangHoa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblHangHoaKeyReleased(evt);
             }
         });
         pnlTblHangHoa.setViewportView(tblHangHoa);
@@ -573,10 +591,37 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         fillToListLoaiHangHoa();
     }//GEN-LAST:event_txtTimKiemLHHKeyReleased
 
-    private void txtDonGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDonGiaMouseClicked
+    private void txtDonGiaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDonGiaFocusGained
         // TODO add your handling code here:
         txtDonGia.selectAll();
-    }//GEN-LAST:event_txtDonGiaMouseClicked
+    }//GEN-LAST:event_txtDonGiaFocusGained
+
+    private void tblHangHoaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblHangHoaPropertyChange
+        // TODO add your handling code here:
+        if ("tableCellEditor".equals(evt.getPropertyName())) {
+            if (!tblHangHoa.isEditing()) {
+                updateDonGia();
+            }
+        }
+    }//GEN-LAST:event_tblHangHoaPropertyChange
+
+    private void tblHangHoaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblHangHoaFocusGained
+        // TODO add your handling code here:
+        this.row = tblHangHoa.getSelectedRow();
+        this.edit();
+    }//GEN-LAST:event_tblHangHoaFocusGained
+
+    private void tblHangHoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHangHoaKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (this.row == 0) {
+                this.row = tblHangHoa.getRowCount() - 1;
+            } else {
+                this.row--;
+            }
+            updateDonGia();
+        }
+    }//GEN-LAST:event_tblHangHoaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -653,15 +698,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private LoaiHangHoaDAO lhhDAO = new LoaiHangHoaDAO();
     private DefaultListModel<LoaiHangHoa> lstModel = new DefaultListModel<>();
     private int row = -1;
-    
+
     private String numPattern = "#,##0";
     private DefaultTableModel modelHangHoa;
     private TableRowSorter<TableModel> sorterHangHoa;
 
     private String defaultSearchLoaiHH = "Nhập từ khoá tìm kiếm loại hàng hoá";
     private String defaultSearchHangHoa = "Nhập từ khoá tìm kiếm hàng hoá";
-
-   
 
     private void init() {
         this.setLocationRelativeTo(null);
@@ -676,22 +719,23 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu vào bảng.
     private SwingWorker workerHangHoa;
+
     private void fillToTableHangHoa() {
         if (workerHangHoa != null) {
             workerHangHoa.cancel(true);
         }
         modelHangHoa.setRowCount(0);
-        
+
         workerHangHoa = new SwingWorker() {
             @Override
             protected Object doInBackground() throws Exception {
-                Thread.sleep(100);
+                Thread.sleep(200);
                 int maLHH = lstLHH.getSelectedValue().getMaLHH();
                 String keyword = txtTimKiemHangHoa.getText();
                 if (keyword.equals(defaultSearchHangHoa)) {
                     keyword = "";
                 }
-                
+
                 List<HangHoa> list = hhDAO.selectByLoaiHangHoa(maLHH);
                 int i = 1;
                 for (HangHoa hh : list) {
@@ -716,13 +760,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
             @Override
             protected void done() {
-                if(row >= 0){
+                if (row >= 0) {
                     tblHangHoa.setRowSelectionInterval(row, row);
                 }
             }
         };
         workerHangHoa.execute();
-        
+
         try {
 
         } catch (Exception e) {
@@ -814,13 +858,13 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         HangHoa hh = hhDAO.selectByID(maHH);
         this.setForm(hh);
         this.updateStatus();
+        tblHangHoa.setRowSelectionInterval(row, row);
     }
 
     // Hiển thị hàng hoá đầu danh sách bảng
     private void first() {
         this.row = 0;
         this.edit();
-        tblHangHoa.setRowSelectionInterval(row, row);
     }
 
     // Hiển thị hàng hoá kế trước
@@ -828,7 +872,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (this.row > 0) {
             this.row--;
             this.edit();
-            tblHangHoa.setRowSelectionInterval(row, row);
         }
     }
 
@@ -837,7 +880,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (this.row < (tblHangHoa.getRowCount() - 1)) {
             this.row++;
             this.edit();
-            tblHangHoa.setRowSelectionInterval(row, row);
         }
     }
 
@@ -845,7 +887,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private void last() {
         this.row = tblHangHoa.getRowCount() - 1;
         this.edit();
-        tblHangHoa.setRowSelectionInterval(row, row);
     }
 
     // Thêm mới loại hàng hoá
@@ -1000,9 +1041,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
             @Override
             public boolean isCellEditable(int row, int column) {
+                if (column == 3) {
+                    return true;
+                }
                 return false;
             }
-            
+
             Class[] types = new Class[]{
                 Integer.class, String.class, String.class, String.class,
                 String.class
@@ -1010,15 +1054,15 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
-            
+
         };
-        //tblHangHoa.setAutoCreateRowSorter(true);
+
         tblHangHoa.setModel(modelHangHoa);
         sorterHangHoa = new TableRowSorter<>(modelHangHoa);
         tblHangHoa.setRowSorter(sorterHangHoa);
-        
+
         // Set size column
         tblHangHoa.getColumnModel().getColumn(0).setPreferredWidth(40);
         tblHangHoa.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -1027,23 +1071,36 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         tblHangHoa.getColumnModel().getColumn(4).setPreferredWidth(125);
 
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-        rightRenderer.setHorizontalAlignment(JLabel.CENTER);
-        tblHangHoa.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
-        tblHangHoa.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
-        tblHangHoa.getColumnModel().getColumn(3).setCellRenderer(NumberRenderer.getDoubleRenderer(numPattern));
-        tblHangHoa.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+
+        tblHangHoa.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0, 0, 1000000000, 100000, numPattern));
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tblHangHoa.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        tblHangHoa.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        tblHangHoa.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
+        tblHangHoa.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
     }
-    
+
+    private void updateDonGia() {
+        double donGia = XNumber.toDouble((String) modelHangHoa.getValueAt(row, 3), numPattern);
+        String maHH = (String) modelHangHoa.getValueAt(row, 1);
+        HangHoa hh = hhDAO.selectByID(maHH);
+        hh.setDonGia(donGia);
+        hhDAO.update(hh);
+        if (row >= 0) {
+            edit();
+        }
+    }
+
     private void searchPhieu() {
         int columnFilter = cboTimKiemHangHoa.getSelectedIndex();
         String keyword = txtTimKiemHangHoa.getText();
-        
+
         if (keyword.equals(defaultSearchHangHoa)) {
             keyword = "";
         }
-        
+
         sorterHangHoa.setStringConverter(new TableStringConverter() {
             @Override
             public String toString(TableModel model, int row, int column) {
@@ -1053,23 +1110,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 return model.getValueAt(row, column).toString().toLowerCase();
             }
         });
-        
-        class DoubleComparator implements Comparator<String> {
-            @Override
-            public int compare(String o1, String o2) {
-                Double n1 = XNumber.toDouble(o1, numPattern);
-                Double n2 = XNumber.toDouble(o2, numPattern);
-                return n1.compareTo(n2);
-            }
 
-            @Override
-            public boolean equals(Object o2) {
-                return this.equals(o2);
-            }
-   
-        }
-        
-        sorterHangHoa.setComparator(3, new DoubleComparator());
+        sorterHangHoa.setComparator(3, new DoubleComparator(numPattern));
 
         RowFilter<TableModel, Object> rf = null;
         try {
