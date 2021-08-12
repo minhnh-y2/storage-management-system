@@ -31,10 +31,7 @@ import com.stoman.utils.XDate;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +39,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -50,7 +46,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -649,7 +644,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -673,6 +668,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPhieuMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPhieuMousePressed(evt);
             }
         });
         tblPhieu.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -744,7 +742,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(pnlTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -758,11 +756,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhieuMouseClicked
-        if (evt.getClickCount() < 2) {
-            return;
+        if (evt.getClickCount() > 1) {
+            this.rowPhieuView = tblPhieu.getSelectedRow();
+            edit();
         }
-        this.rowPhieuView = tblPhieu.getSelectedRow();
-        edit();
     }//GEN-LAST:event_tblPhieuMouseClicked
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
@@ -856,40 +853,50 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosed
     private void txtTimKiemCTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemCTKeyReleased
         // TODO add your handling code here:
-        searchCTPhieu();
+        //searchCTPhieu();
     }//GEN-LAST:event_txtTimKiemCTKeyReleased
 
     private void cboTimKiemCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemCTActionPerformed
         // TODO add your handling code here:
         txtTimKiemCT.setText(defaultSearchHangHoa);
-        searchCTPhieu();
+        //searchCTPhieu();
     }//GEN-LAST:event_cboTimKiemCTActionPerformed
 
     private void txtTimKiemPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemPhieuKeyReleased
         // TODO add your handling code here:
-        searchPhieu();
+        //searchPhieu();
     }//GEN-LAST:event_txtTimKiemPhieuKeyReleased
 
     private void cboTimKiemPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimKiemPhieuActionPerformed
         // TODO add your handling code here:
         txtTimKiemPhieu.setText(defaultSearchPhieu);
-        searchPhieu();
+        //searchPhieu();
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
     private void txtTimKiemCTPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemCTPKeyReleased
         // TODO add your handling code here:
-        searchCTPhieu_ChiTiet();
+        //searchCTPhieu_ChiTiet();
     }//GEN-LAST:event_txtTimKiemCTPKeyReleased
 
     private void txtTimKiemHHKhoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemHHKhoKeyReleased
         // TODO add your handling code here:
-        searchHangHoaKho();
+        //searchHangHoaKho();
     }//GEN-LAST:event_txtTimKiemHHKhoKeyReleased
 
     private void tblPhieuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPhieuPropertyChange
         // TODO add your handling code here:
-        updateTrangThaiPhieu();
+        if(rowPhieuView < 0) {
+            return;
+        }
+        if ("tableCellEditor".equals(evt.getPropertyName())) {
+            updateTrangThaiPhieu();
+        }
     }//GEN-LAST:event_tblPhieuPropertyChange
+
+    private void tblPhieuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhieuMousePressed
+        // TODO add your handling code here:
+        this.rowPhieuView = tblPhieu.getSelectedRow();
+    }//GEN-LAST:event_tblPhieuMousePressed
 
     /**
      * @param args the command line arguments
@@ -1025,7 +1032,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.initDialogOther();
 
         this.formatTable();
-        this.fillToComboBoxTimKiemPhieu();
+        //this.fillToComboBoxTimKiemPhieu();
         this.fillToComboBoxTimKiemCT();
         this.fillToComboBoxKho();
         this.fillToTablePhieu();
@@ -1368,21 +1375,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     private void updateTrangThaiPhieu() {
-        new SwingWorker() {
-            @Override
-            protected Object doInBackground() throws Exception {
-                int row = 0;
-                for (int i = 0; i < tblPhieu.getRowCount(); i++) {
-                    row = tblPhieu.convertRowIndexToModel(i);
-                    boolean isHoanThanh = (boolean) modelPhieu.getValueAt(row, 3);
-                    int maPhieu = (int) modelPhieu.getValueAt(row, 6);
-                    PhieuKiemKho pkk = pkkDAO.selectByID(maPhieu);
-                    pkk.setTrangThai(isHoanThanh);
-                    pkkDAO.update(pkk);
-                }
-                return null;
-            }
-        }.execute();
+        boolean isHoanThanh = (boolean) modelPhieu.getValueAt(rowPhieuView, 3);
+        int maPhieu = (int) modelPhieu.getValueAt(rowPhieuView, 6);
+        PhieuKiemKho pkk = pkkDAO.selectByID(maPhieu);
+        pkk.setTrangThai(isHoanThanh);
+        pkkDAO.update(pkk);
     }
 
     // Xóa phiếu kiểm khỏi hệ thống
@@ -1443,16 +1440,15 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return false;
             }
 
-            // Get class để sắp xếp bảng
+            Class[] types = new Class[]{
+                Integer.class, Integer.class, String.class, Boolean.class,
+                String.class, String.class, Integer.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelPhieu.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                //return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
 
@@ -1466,16 +1462,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return false;
             }
 
-            // Get class để sắp xếp bảng
+            Class[] types = new Class[]{
+                Integer.class, HangHoa.class, Integer.class, Integer.class,
+                Integer.class, Integer.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelCTPhieuKiem.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
 
@@ -1486,16 +1480,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return false;
             }
 
-            // Get class để sắp xếp bảng
+            Class[] types = new Class[]{
+                Integer.class, HangHoa.class, Integer.class, Integer.class,
+                Integer.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelHangHoaKho.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
 
@@ -1554,7 +1546,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblPhieu.getColumnModel().getColumn(5).setPreferredWidth(186);
 
         // Định dạng form
-        
         tblCTPhieu.getColumnModel().getColumn(0).setCellRenderer(NumberRenderer.getIntegerRenderer());
         tblCTPhieu.getColumnModel().getColumn(2).setCellRenderer(NumberRenderer.getIntegerRenderer());
         tblCTPhieu.getColumnModel().getColumn(3).setCellRenderer(NumberRenderer.getIntegerRenderer());
@@ -1565,7 +1556,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblHangHoaKho.getColumnModel().getColumn(2).setCellRenderer(NumberRenderer.getIntegerRenderer());
         tblPhieu.getColumnModel().getColumn(0).setCellRenderer(NumberRenderer.getIntegerRenderer());
         tblPhieu.getColumnModel().getColumn(1).setCellRenderer(NumberRenderer.getIntegerRenderer());
-        
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tblPhieu.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
@@ -1750,125 +1741,125 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
     }
 
-    // Lọc bảng theo từ khoá phiếu
-    private void searchCTPhieu() {
-        int columnFilter = cboTimKiemCT.getSelectedIndex();
-        String keyword = txtTimKiemCT.getText();
-        if (keyword.equals(defaultSearchHangHoa)) {
-            keyword = "";
-        }
-
-        sorterCTPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        RowFilter<TableModel, Object> rf = null;
-        try {
-            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
-        } catch (Exception e) {
-            return;
-        }
-        sorterCTPhieu.setRowFilter(rf);
-    }
-
-    private void searchCTPhieu_ChiTiet() {
-        String keyword = txtTimKiemCTP.getText();
-        if (keyword.equals(defaultSearchHangHoa)) {
-            keyword = "";
-        }
-
-        sorterCTPhieu_ChiTiet.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        RowFilter<TableModel, Object> rf = null;
-        try {
-            rf = RowFilter.regexFilter(keyword.toLowerCase());
-        } catch (Exception e) {
-            return;
-        }
-        sorterCTPhieu_ChiTiet.setRowFilter(rf);
-    }
-
-    private void searchHangHoaKho() {
-        String keyword = txtTimKiemHHKho.getText();
-        if (keyword.equals(defaultSearchHangHoa)) {
-            keyword = "";
-        }
-
-        sorterHHKho.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        RowFilter<TableModel, Object> rf = null;
-        try {
-            rf = RowFilter.regexFilter(keyword.toLowerCase());
-        } catch (Exception e) {
-            return;
-        }
-        sorterHHKho.setRowFilter(rf);
-    }
-
-    // Đổ tên bảng vào combobox tìm kiếm
-    private void fillToComboBoxTimKiemPhieu() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemPhieu.getModel();
-        model.removeAllElements();
-        for (int i = 0; i < tblPhieu.getColumnCount(); i++) {
-            String columnName = tblPhieu.getColumnName(i);
-            model.addElement(columnName);
-        }
-    }
-
-    // Lọc bảng theo từ khoá phiếu
-    private void searchPhieu() {
-        int columnFilter = cboTimKiemPhieu.getSelectedIndex();
-        String keyword = txtTimKiemPhieu.getText();
-        if (keyword.equals(defaultSearchPhieu)) {
-            keyword = "";
-        }
-
-        sorterPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        sorterPhieu.setComparator(2, new Comparator<String>() {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-            @Override
-            public int compare(String o1, String o2) {
-                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
-            }
-
-        });
-
-        sorterPhieu.setComparator(5, new Comparator<String>() {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy(hh:MM:ss)");
-
-            @Override
-            public int compare(String o1, String o2) {
-                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
-            }
-
-        });
-
-        RowFilter<TableModel, Object> rf = null;
-        try {
-            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
-        } catch (Exception e) {
-            return;
-        }
-        sorterPhieu.setRowFilter(rf);
-    }
+//    // Lọc bảng theo từ khoá phiếu
+//    private void searchCTPhieu() {
+//        int columnFilter = cboTimKiemCT.getSelectedIndex();
+//        String keyword = txtTimKiemCT.getText();
+//        if (keyword.equals(defaultSearchHangHoa)) {
+//            keyword = "";
+//        }
+//
+//        sorterCTPhieu.setStringConverter(new TableStringConverter() {
+//            @Override
+//            public String toString(TableModel model, int row, int column) {
+//                return model.getValueAt(row, column).toString().toLowerCase();
+//            }
+//        });
+//
+//        RowFilter<TableModel, Object> rf = null;
+//        try {
+//            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
+//        } catch (Exception e) {
+//            return;
+//        }
+//        sorterCTPhieu.setRowFilter(rf);
+//    }
+//
+//    private void searchCTPhieu_ChiTiet() {
+//        String keyword = txtTimKiemCTP.getText();
+//        if (keyword.equals(defaultSearchHangHoa)) {
+//            keyword = "";
+//        }
+//
+//        sorterCTPhieu_ChiTiet.setStringConverter(new TableStringConverter() {
+//            @Override
+//            public String toString(TableModel model, int row, int column) {
+//                return model.getValueAt(row, column).toString().toLowerCase();
+//            }
+//        });
+//
+//        RowFilter<TableModel, Object> rf = null;
+//        try {
+//            rf = RowFilter.regexFilter(keyword.toLowerCase());
+//        } catch (Exception e) {
+//            return;
+//        }
+//        sorterCTPhieu_ChiTiet.setRowFilter(rf);
+//    }
+//
+//    private void searchHangHoaKho() {
+//        String keyword = txtTimKiemHHKho.getText();
+//        if (keyword.equals(defaultSearchHangHoa)) {
+//            keyword = "";
+//        }
+//
+//        sorterHHKho.setStringConverter(new TableStringConverter() {
+//            @Override
+//            public String toString(TableModel model, int row, int column) {
+//                return model.getValueAt(row, column).toString().toLowerCase();
+//            }
+//        });
+//
+//        RowFilter<TableModel, Object> rf = null;
+//        try {
+//            rf = RowFilter.regexFilter(keyword.toLowerCase());
+//        } catch (Exception e) {
+//            return;
+//        }
+//        sorterHHKho.setRowFilter(rf);
+//    }
+//
+//    // Đổ tên bảng vào combobox tìm kiếm
+//    private void fillToComboBoxTimKiemPhieu() {
+//        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemPhieu.getModel();
+//        model.removeAllElements();
+//        for (int i = 0; i < tblPhieu.getColumnCount(); i++) {
+//            String columnName = tblPhieu.getColumnName(i);
+//            model.addElement(columnName);
+//        }
+//    }
+//
+//    // Lọc bảng theo từ khoá phiếu
+//    private void searchPhieu() {
+//        int columnFilter = cboTimKiemPhieu.getSelectedIndex();
+//        String keyword = txtTimKiemPhieu.getText();
+//        if (keyword.equals(defaultSearchPhieu)) {
+//            keyword = "";
+//        }
+//
+//        sorterPhieu.setStringConverter(new TableStringConverter() {
+//            @Override
+//            public String toString(TableModel model, int row, int column) {
+//                return model.getValueAt(row, column).toString().toLowerCase();
+//            }
+//        });
+//
+//        sorterPhieu.setComparator(2, new Comparator<String>() {
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
+//            }
+//
+//        });
+//
+//        sorterPhieu.setComparator(5, new Comparator<String>() {
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy(hh:MM:ss)");
+//
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter));
+//            }
+//
+//        });
+//
+//        RowFilter<TableModel, Object> rf = null;
+//        try {
+//            rf = RowFilter.regexFilter(keyword.toLowerCase(), columnFilter);
+//        } catch (Exception e) {
+//            return;
+//        }
+//        sorterPhieu.setRowFilter(rf);
+//    }
 }
