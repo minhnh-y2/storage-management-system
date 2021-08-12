@@ -15,11 +15,11 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author MinhNH
  */
-public class NumberRenderer extends DefaultTableCellRenderer {
+public class TableNumberCellRenderer extends DefaultTableCellRenderer {
 
     private Format formatter;
 
-    public NumberRenderer(NumberFormat formatter) {
+    public TableNumberCellRenderer(NumberFormat formatter) {
         this.formatter = formatter;
         setHorizontalAlignment(SwingConstants.CENTER);
     }
@@ -36,19 +36,19 @@ public class NumberRenderer extends DefaultTableCellRenderer {
         super.setValue(value);
     }
 
-    public static NumberRenderer getCurrencyRenderer() {
-        return new NumberRenderer(NumberFormat.getCurrencyInstance());
+    public static TableNumberCellRenderer getCurrencyRenderer() {
+        return new TableNumberCellRenderer(NumberFormat.getCurrencyInstance());
     }
 
-    public static NumberRenderer getIntegerRenderer() {
-        return new NumberRenderer(NumberFormat.getIntegerInstance());
+    public static TableNumberCellRenderer getIntegerRenderer() {
+        return new TableNumberCellRenderer(NumberFormat.getIntegerInstance());
     }
 
-    public static NumberRenderer getPercentRenderer() {
-        return new NumberRenderer(NumberFormat.getPercentInstance());
+    public static TableNumberCellRenderer getPercentRenderer() {
+        return new TableNumberCellRenderer(NumberFormat.getPercentInstance());
     }
 
-    public static NumberRenderer getDoubleRenderer(String pattern) {
-        return new NumberRenderer(new DecimalFormat(pattern));
+    public static TableNumberCellRenderer getDoubleRenderer(String pattern) {
+        return new TableNumberCellRenderer(new DecimalFormat(pattern));
     }
 }

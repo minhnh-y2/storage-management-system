@@ -200,17 +200,17 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtMaHH">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTenHH">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDonViTinh">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom()"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtDonGia">
@@ -276,7 +276,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemHangHoaKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom(defaultSearchHangHoa)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa)"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTimKiem2">
@@ -572,7 +572,7 @@
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemLHHKeyReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TextFieldCustom(defaultSearchLoaiHH)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiHH)"/>
               </AuxValues>
             </Component>
           </SubComponents>

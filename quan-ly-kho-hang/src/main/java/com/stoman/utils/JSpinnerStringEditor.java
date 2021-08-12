@@ -12,11 +12,11 @@ import javax.swing.JTable;
  *
  * @author MinIT
  */
-public class SpinnerStringEditor extends SpinnerEditor {
+public class JSpinnerStringEditor extends JSpinnerEditor {
     private String pattern = "#,##0.0";        
 
 
-    public SpinnerStringEditor(double value, double minimum, double maximum, double stepSize, String pattern) {
+    public JSpinnerStringEditor(double value, double minimum, double maximum, double stepSize, String pattern) {
         super(value, minimum, maximum, stepSize);
         this.pattern = pattern;
     }

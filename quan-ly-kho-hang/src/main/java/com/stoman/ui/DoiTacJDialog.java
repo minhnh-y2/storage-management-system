@@ -12,7 +12,7 @@ import com.stoman.dao.PhieuDAO;
 import com.stoman.entity.DoiTac;
 import com.stoman.entity.LoaiDoiTac;
 import com.stoman.utils.Auth;
-import com.stoman.utils.MsgBox;
+import com.stoman.utils.XOptionPane;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
@@ -59,7 +59,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlTblDoiTac = new javax.swing.JScrollPane();
         tblDoiTac = new javax.swing.JTable();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiemDT = new com.stoman.utils.TextFieldCustom(defaultSearchDoiTac);
+        txtTimKiemDT = new com.stoman.utils.JTextFieldCustom(defaultSearchDoiTac);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiemDT = new javax.swing.JComboBox<>();
         lblTimKiemDT = new javax.swing.JLabel();
@@ -76,13 +76,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         btnThemList = new javax.swing.JButton();
         btnXoaList = new javax.swing.JButton();
         btnSuaList = new javax.swing.JButton();
-        txtTimKiemLDT = new com.stoman.utils.TextFieldCustom(defaultSearchLoaiDT);
+        txtTimKiemLDT = new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiDT);
         lblTimKiemLDT = new javax.swing.JLabel();
         pnlThongTin = new javax.swing.JPanel();
-        txtTenDT = new com.stoman.utils.TextFieldCustom();
-        txtDiaChi = new com.stoman.utils.TextFieldCustom();
-        txtEmail = new com.stoman.utils.TextFieldCustom();
-        txtDienThoai = new com.stoman.utils.TextFieldCustom();
+        txtTenDT = new com.stoman.utils.JTextFieldCustom();
+        txtDiaChi = new com.stoman.utils.JTextFieldCustom();
+        txtEmail = new com.stoman.utils.JTextFieldCustom();
+        txtDienThoai = new com.stoman.utils.JTextFieldCustom();
         rdoKhachHang = new javax.swing.JRadioButton();
         rdoNhaPhanPhoi = new javax.swing.JRadioButton();
         lblTenDT = new javax.swing.JLabel();
@@ -729,7 +729,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             }
             lstLDT.setModel(lstModel);
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -796,7 +796,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
             };
             worker.execute();
         } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -920,27 +920,27 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         String email = txtEmail.getText();
         String dienThoai = txtDienThoai.getText();
         if (tenDT.isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập tên đối tác!");
+            XOptionPane.alert(this, "Chưa nhập tên đối tác!");
             txtTenDT.requestFocus();
             return false;
         }
         if (diaChi.isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập địa chỉ!");
+            XOptionPane.alert(this, "Chưa nhập địa chỉ!");
             txtDiaChi.requestFocus();
             return false;
         }
         if (email.isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập email!");
+            XOptionPane.alert(this, "Chưa nhập email!");
             txtEmail.requestFocus();
             return false;
         }
         if (!GenericValidator.isEmail(email)) {
-            MsgBox.alert(this, "Email không hợp lệ!");
+            XOptionPane.alert(this, "Email không hợp lệ!");
             txtEmail.requestFocus();
             return false;
         }
         if (dienThoai.isEmpty()) {
-            MsgBox.alert(this, "Chưa nhập số điện thoại");
+            XOptionPane.alert(this, "Chưa nhập số điện thoại");
             txtDienThoai.requestFocus();
             return false;
         }
@@ -957,7 +957,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     // Thêm loại đối tác vào danh sách
     private void insertLDT() {
-        String tenLDT = MsgBox.prompt(this, "Tên loại đối tác mới:");
+        String tenLDT = XOptionPane.prompt(this, "Tên loại đối tác mới:");
         if (tenLDT != null && !tenLDT.isEmpty()) {
             LoaiDoiTac loaiDT = new LoaiDoiTac(tenLDT);
             try {
@@ -965,9 +965,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 this.fillToListLoaiDoiTac();
                 this.clearForm();
                 modelDoiTac.setRowCount(0);
-                MsgBox.alert(this, "Thêm mới thành công!");
+                XOptionPane.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại!");
+                XOptionPane.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -976,15 +976,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     // Thêm loại đối tác vào danh sách
     private void updateLDT() {
         LoaiDoiTac ldt = lstLDT.getSelectedValue();
-        String tenLDT = MsgBox.prompt(this, "Tên loại đối tác mới:", ldt.getTenLDT());
+        String tenLDT = XOptionPane.prompt(this, "Tên loại đối tác mới:", ldt.getTenLDT());
         if (tenLDT != null && !tenLDT.isEmpty()) {
             ldt.setTenLDT(tenLDT);
             try {
                 ldtDAO.update(ldt);
                 this.fillToListLoaiDoiTac();
-                MsgBox.alert(this, "Đổi tên thành công!");
+                XOptionPane.alert(this, "Đổi tên thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Đổi tên thất bại!");
+                XOptionPane.alert(this, "Đổi tên thất bại!");
                 e.printStackTrace();
             }
         }
@@ -994,16 +994,16 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void deleteLDT() {
         String message = "Các đối tác thuộc loại đối tác này sẽ bị xoá!"
                 + "\nBạn có muốn tiếp tục xoá không?";
-        if (MsgBox.confirm(this, message)) {
+        if (XOptionPane.confirm(this, message)) {
             LoaiDoiTac ldt = lstLDT.getSelectedValue();
             try {
                 ldtDAO.delete(ldt.getMaLDT());
                 this.fillToListLoaiDoiTac();
                 this.clearForm();
                 modelDoiTac.setRowCount(0);
-                MsgBox.alert(this, "Xoá thành công!");
+                XOptionPane.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá thất bại!");
+                XOptionPane.alert(this, "Xoá thất bại!");
                 e.printStackTrace();
             }
         }
@@ -1017,9 +1017,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 dtDAO.insert(dt);
                 this.fillToTableDoiTac();
                 this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công!");
+                XOptionPane.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại!");
+                XOptionPane.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -1029,16 +1029,16 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private void delete() {
         String message = "Các hàng hoá của đối tác đang lưu trữ trong kho sẽ bị xoá!"
                 + "\nBạn có chắc chắn xoá đối tác này?";
-        if (MsgBox.confirm(this, message)) {
+        if (XOptionPane.confirm(this, message)) {
             try {
                 int rowModel = tblDoiTac.convertRowIndexToModel(this.row);
                 int maDT = (int) tblDoiTac.getModel().getValueAt(rowModel, 1);
                 dtDAO.delete(maDT);
                 this.fillToTableDoiTac();
                 this.clearForm();
-                MsgBox.alert(this, "Xoá thành công!");
+                XOptionPane.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                MsgBox.alert(this, "Xoá thất bại!");
+                XOptionPane.alert(this, "Xoá thất bại!");
                 e.printStackTrace();
             }
         }
@@ -1053,9 +1053,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         try {
             dtDAO.update(dt);
             this.fillToTableDoiTac();
-            MsgBox.alert(this, "Cập nhật thành công!");
+            XOptionPane.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
-            MsgBox.alert(this, "Cập nhật thất bại!");
+            XOptionPane.alert(this, "Cập nhật thất bại!");
             e.printStackTrace();
         }
     }
