@@ -14,6 +14,7 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.SpinnerEditor;
+import com.stoman.utils.SpinnerStringEditor;
 import com.stoman.utils.TextFieldCustom;
 import com.stoman.utils.XNumber;
 import java.awt.event.ActionEvent;
@@ -1072,7 +1073,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         tblHangHoa.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        tblHangHoa.getColumnModel().getColumn(3).setCellEditor(new SpinnerEditor(0, 0, 1000000000, 100000, numPattern));
+        tblHangHoa.getColumnModel().getColumn(3).setCellEditor(new SpinnerStringEditor(0, 0, 1000000000, 100000, numPattern));
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
