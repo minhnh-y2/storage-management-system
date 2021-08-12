@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
@@ -92,6 +93,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlTblNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
         pnlTblNhanVien.setOpaque(false);
 
+        tblNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -639,6 +641,13 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                     return null;
                 }
 
+                @Override
+                protected void done() {
+                    if(row >= 0) {
+                        tblNhanVien.setRowSelectionInterval(row, row);
+                    }
+                }
+                
             };
             worker.execute();
         } catch (Exception e) {
@@ -694,7 +703,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     // Hiển thị dữ liệu nhân viên đang chọn trên bảng
     private void edit() {
-        String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
+        String maNV = (String) tblNhanVien.getValueAt(tblNhanVien.convertRowIndexToModel(this.row), 0);
         NhanVien nv = DAO.selectByID(maNV);
         this.setForm(nv);
         this.updateStatus();
@@ -706,10 +715,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         boolean first = (this.row == 0);
         boolean last = (this.row == tblNhanVien.getRowCount() - 1);
 
-        // Chọn hàng trên bảng
-        if (edit) {
-            tblNhanVien.setRowSelectionInterval(row, row);
-        }
         // Điều chỉnh trạng thái các nút và ô nhập text
         txtMaNV.setEditable(!edit);
         btnThem.setEnabled(!edit);
@@ -726,6 +731,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void first() {
         this.row = 0;
         this.edit();
+        tblNhanVien.setRowSelectionInterval(row, row);
     }
 
     // Hiển thị nhân viên kế trước
@@ -733,6 +739,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         if (this.row > 0) {
             this.row--;
             this.edit();
+            tblNhanVien.setRowSelectionInterval(row, row);
         }
     }
 
@@ -741,6 +748,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         if (this.row < (tblNhanVien.getRowCount() - 1)) {
             this.row++;
             this.edit();
+            tblNhanVien.setRowSelectionInterval(row, row);
         }
     }
 
@@ -748,6 +756,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void last() {
         this.row = tblNhanVien.getRowCount() - 1;
         this.edit();
+        tblNhanVien.setRowSelectionInterval(row, row);
     }
 
     // Xác thực dữ liệu trên form
@@ -877,26 +886,25 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+            
+            Class[] types = new Class[]{
+                String.class, String.class, String.class
+            };
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (tblModel.getRowCount() == 0) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                //return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
         tblNhanVien.setModel(tblModel);
         tblNhanVien.setAutoCreateRowSorter(true);
 
-        tblNhanVien.setDefaultRenderer(Object.class, new NhanVienTableCellRenderer());
+        tblNhanVien.setDefaultRenderer(String.class, new NhanVienTableCellRenderer());
 
     }
 
-    class NhanVienTableCellRenderer extends DefaultTableCellRenderer {
+    public class NhanVienTableCellRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {

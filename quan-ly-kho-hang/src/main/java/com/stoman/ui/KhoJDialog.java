@@ -385,6 +385,8 @@ public class KhoJDialog extends javax.swing.JDialog {
     private NhanVienDAO nvDAO;
 
     private DefaultTableModel tblModel;
+    private TableRowSorter<TableModel> sorterKho;
+    
     private int row = -1;
 
     private String defaultSearchKho = "Nhập từ khoá tìm kiếm kho";
@@ -412,19 +414,19 @@ public class KhoJDialog extends javax.swing.JDialog {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+            
+            Class[] types = new Class[] {
+                Integer.class, String.class, NhanVien.class
+            };
 
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (tblModel.getRowCount() <= 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
         tblKho.setModel(tblModel);
+        sorterKho = new TableRowSorter<TableModel>(tblModel);
+        tblKho.setRowSorter(sorterKho);
 
         // Điều chỉnh size column
         tblKho.getColumnModel().getColumn(0).setPreferredWidth(22);
@@ -486,6 +488,13 @@ public class KhoJDialog extends javax.swing.JDialog {
                     return null;
                 }
 
+                @Override
+                protected void done() {
+                    if (row >= 0) {
+                        tblKho.setRowSelectionInterval(row, row);
+                    }
+                }
+                
             };
             worker.execute();
         } catch (Exception e) {
@@ -497,16 +506,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     // Cập nhật trạng thái nút và form
     private void updateStatus() {
         boolean edit = (this.row >= 0);
-
-        boolean isTableEmpty = (tblKho.getRowCount() == 0);
         boolean isManager = Auth.isManager();
-
-        // Chỉ bật bộ sắp xếp khi bảng có dữ liệu
-        tblKho.setAutoCreateRowSorter(!isTableEmpty);
-        // Chọn hàng trên bảng
-        if (edit) {
-            tblKho.setRowSelectionInterval(row, row);
-        }
 
         pnlChucNang.setVisible(isManager);
         pnlThongTinKho.setVisible(isManager);
@@ -557,7 +557,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     // Hiển thị dữ liệu đang chọn trên bảng lên form
     private void edit() {
-        int maKho = (int) tblKho.getValueAt(this.row, 0);
+        int maKho = (int) tblKho.getValueAt(tblKho.convertRowIndexToModel(this.row), 0);
         String maNV = ((NhanVien) tblKho.getValueAt(this.row, 2)).getMaNV();
         Kho k = kDAO.selectByID(maKho);
         NhanVien nv = nvDAO.selectByID(maNV);
@@ -648,12 +648,9 @@ public class KhoJDialog extends javax.swing.JDialog {
     }
 
     private void search() {
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tblModel);
-        tblKho.setRowSorter(sorter);
-
         String keyword = txtTimKiem.getText().toLowerCase();
 
-        sorter.setStringConverter(new TableStringConverter() {
+        sorterKho.setStringConverter(new TableStringConverter() {
             @Override
             public String toString(TableModel model, int row, int column) {
                 return model.getValueAt(row, column).toString().toLowerCase();
@@ -666,7 +663,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             return;
         }
-        sorter.setRowFilter(rf);
+        sorterKho.setRowFilter(rf);
     }
 
     // Đỗ lại dữ liệu 
