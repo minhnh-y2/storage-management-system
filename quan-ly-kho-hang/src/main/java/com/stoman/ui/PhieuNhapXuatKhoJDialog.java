@@ -1903,8 +1903,16 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         if (listCT.contains(hh)) {
             XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
+            for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
+                HangHoa hangHoa = (HangHoa) tblCTPhieu_ChiTiet.getValueAt(i, 1);
+                if(hangHoa.getMaHH().equals(hh.getMaHH())){
+                    tblCTPhieu_ChiTiet.setRowSelectionInterval(i, i);
+                    break;
+                }
+            }
             return;
         }
+        
         if (cboHangHoa.getItemCount() == 0) {
             return;
         }
