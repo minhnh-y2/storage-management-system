@@ -27,11 +27,17 @@ import com.stoman.entity.LuuTru;
 import com.stoman.entity.NhanVien;
 import com.stoman.entity.Phieu;
 import com.stoman.utils.Auth;
-import com.stoman.utils.DateRenderer;
-import com.stoman.utils.ExporterReport;
-import com.stoman.utils.MsgBox;
+import com.stoman.utils.DateComparator;
+import com.stoman.utils.DateTimeComparator;
+import com.stoman.utils.DoubleComparator;
+import com.stoman.utils.TableDateCellRenderer;
+import com.stoman.utils.XReport;
+import com.stoman.utils.XOptionPane;
 import com.stoman.utils.QRCode;
-import com.stoman.utils.SpinnerEditor;
+import com.stoman.utils.JSpinnerEditor;
+import com.stoman.utils.JSpinnerStringEditor;
+import com.stoman.utils.LowerCaseStringConverter;
+import com.stoman.utils.TableNumberCellRenderer;
 import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
@@ -58,7 +64,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -89,7 +94,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuDialog = new javax.swing.JDialog();
         pnlBackgroundDialog = new javax.swing.JPanel();
         pnlTblCTPhieu_main = new javax.swing.JScrollPane();
-        tblCTPhieu_main = new javax.swing.JTable();
+        tblCTPhieu_ChiTiet = new javax.swing.JTable();
         pnlThongTinCTP = new javax.swing.JPanel();
         lblLoaiHH = new javax.swing.JLabel();
         lblTenHH = new javax.swing.JLabel();
@@ -111,7 +116,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtTimKiemCTPhieu = new javax.swing.JTextField();
         cboTimKiemCTPhieu = new javax.swing.JComboBox<>();
         pnlTblCTPhieu_sub = new javax.swing.JScrollPane();
-        tblCTPhieu_sub = new javax.swing.JTable();
+        tblCTPhieu = new javax.swing.JTable();
         pnlNutDieuHuong = new javax.swing.JPanel();
         btnFirst = new javax.swing.JButton();
         btnPrev = new javax.swing.JButton();
@@ -119,11 +124,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnLast = new javax.swing.JButton();
         pnlChucNang = new javax.swing.JPanel();
         btnMoi = new javax.swing.JButton();
-        btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
         btnXuatMaPhieu = new javax.swing.JButton();
+        btnHoanTac = new javax.swing.JButton();
         pnlChucNangMoRong = new javax.swing.JPanel();
         btnXuatFile = new javax.swing.JButton();
         btnInPhieu = new javax.swing.JButton();
@@ -205,7 +210,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlTblCTPhieu_main.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlTblCTPhieu_main.setOpaque(false);
 
-        tblCTPhieu_main.setModel(new javax.swing.table.DefaultTableModel(
+        tblCTPhieu_ChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -221,14 +226,24 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tblCTPhieu_main.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblCTPhieu_main.getTableHeader().setReorderingAllowed(false);
-        tblCTPhieu_main.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblCTPhieu_mainPropertyChange(evt);
+        tblCTPhieu_ChiTiet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCTPhieu_ChiTiet.getTableHeader().setReorderingAllowed(false);
+        tblCTPhieu_ChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCTPhieu_ChiTietMouseClicked(evt);
             }
         });
-        pnlTblCTPhieu_main.setViewportView(tblCTPhieu_main);
+        tblCTPhieu_ChiTiet.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieu_ChiTietPropertyChange(evt);
+            }
+        });
+        tblCTPhieu_ChiTiet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieu_ChiTietKeyReleased(evt);
+            }
+        });
+        pnlTblCTPhieu_main.setViewportView(tblCTPhieu_ChiTiet);
 
         pnlThongTinCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlThongTinCTP.setToolTipText("StoMan - Chi tiết phiếu kiểm kho");
@@ -262,38 +277,43 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlThongTinCTPLayout.setVerticalGroup(
             pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongTinCTPLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLoaiHH)
                     .addComponent(cboLoaiHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTenHH)
                     .addComponent(cboHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pnlChucNangCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlChucNangCTP.setOpaque(false);
-        pnlChucNangCTP.setLayout(new java.awt.GridLayout(0, 1));
+        pnlChucNangCTP.setLayout(new java.awt.GridBagLayout());
 
         btnThemCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThemCTP.setText("Thêm");
+        btnThemCTP.setPreferredSize(new java.awt.Dimension(100, 35));
         btnThemCTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemCTPActionPerformed(evt);
             }
         });
-        pnlChucNangCTP.add(btnThemCTP);
+        pnlChucNangCTP.add(btnThemCTP, new java.awt.GridBagConstraints());
 
         btnXoaCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoaCTP.setText("Xoá");
+        btnXoaCTP.setPreferredSize(new java.awt.Dimension(100, 35));
         btnXoaCTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaCTPActionPerformed(evt);
             }
         });
-        pnlChucNangCTP.add(btnXoaCTP);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        pnlChucNangCTP.add(btnXoaCTP, gridBagConstraints);
 
         javax.swing.GroupLayout pnlBackgroundDialogLayout = new javax.swing.GroupLayout(pnlBackgroundDialog);
         pnlBackgroundDialog.setLayout(pnlBackgroundDialogLayout);
@@ -305,7 +325,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
                         .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -315,9 +335,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -375,7 +395,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         pnlTblCTPhieu_sub.setOpaque(false);
 
-        tblCTPhieu_sub.setModel(new javax.swing.table.DefaultTableModel(
+        tblCTPhieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -383,14 +403,24 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 "null", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblCTPhieu_sub.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblCTPhieu_sub.getTableHeader().setReorderingAllowed(false);
-        tblCTPhieu_sub.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblCTPhieu_subPropertyChange(evt);
+        tblCTPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCTPhieu.getTableHeader().setReorderingAllowed(false);
+        tblCTPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCTPhieuMouseClicked(evt);
             }
         });
-        pnlTblCTPhieu_sub.setViewportView(tblCTPhieu_sub);
+        tblCTPhieu.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieuPropertyChange(evt);
+            }
+        });
+        tblCTPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieuKeyReleased(evt);
+            }
+        });
+        pnlTblCTPhieu_sub.setViewportView(tblCTPhieu);
 
         pnlNutDieuHuong.setOpaque(false);
         pnlNutDieuHuong.setLayout(new java.awt.GridLayout(1, 0));
@@ -436,31 +466,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(120, 63));
+        btnMoi.setText("Phiếu mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(140, 40));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnMoi, new java.awt.GridBagConstraints());
-
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(120, 63));
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        pnlChucNang.add(btnThem, gridBagConstraints);
+        gridBagConstraints.ipady = 27;
+        pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(120, 63));
+        btnXoa.setText("Xoá phiếu");
+        btnXoa.setPreferredSize(new java.awt.Dimension(140, 40));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -469,11 +488,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(120, 63));
+        btnSua.setText("Sửa phiếu");
+        btnSua.setPreferredSize(new java.awt.Dimension(140, 40));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -482,11 +502,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
-        btnChiTiet.setText("Chi tiết");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(120, 63));
+        btnChiTiet.setText("Chi tiết phiếu");
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 40));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
@@ -494,12 +515,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
-        btnXuatMaPhieu.setText("QR Code");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(120, 63));
+        btnXuatMaPhieu.setText("Mã phiếu QR");
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 40));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
@@ -507,8 +529,23 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
+
+        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
+        btnHoanTac.setText("Huỷ thay đổi");
+        btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoanTacActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = 27;
+        pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
         pnlChucNangMoRong.setLayout(new java.awt.GridLayout(1, 2));
@@ -545,18 +582,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         txtDaThanhToan.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.0"))));
         txtDaThanhToan.setText("0.0");
-        txtDaThanhToan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDaThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongTien.setText("0.0");
         lblTongTien.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
 
         chkThanhToan.setText("Hoàn thành thanh toán cho đối tác");
-        chkThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                chkThanhToanMouseClicked(evt);
-            }
-        });
         chkThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkThanhToanActionPerformed(evt);
@@ -610,7 +642,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDaThanhToan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtDaThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -723,7 +755,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(rdoPhieuXuat))
                             .addComponent(txtMaNV)
                             .addComponent(txtNgayLap)
-                            .addComponent(cboKho, 0, 292, Short.MAX_VALUE))
+                            .addComponent(cboKho, 0, 312, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -734,7 +766,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboLoaiDT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(txtNgayHoanThanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboDoiTac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlGhiChu))
@@ -806,8 +838,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlChiTietLayout.createSequentialGroup()
+                                .addComponent(lblChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33))
+                            .addComponent(pnlChucNang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlChiTietLayout.createSequentialGroup()
                         .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -841,12 +875,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(lblTimKiemCT2)
                             .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1092,7 +1126,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiemPhieu2)
                     .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1123,7 +1157,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         if (evt.getClickCount() < 2) {
             return;
         }
-        this.rowPhieu = ((Integer) tblPhieu.getValueAt(tblPhieu.getSelectedRow(), 0)) - 1;
+        //this.rowPhieu = ((Integer) tblPhieu.getValueAt(tblPhieu.getSelectedRow(), 0)) - 1;
+        this.rowPhieu = tblPhieu.getSelectedRow();
+        if (tblPhieu.getValueAt(rowPhieu, tblPhieu.getSelectedColumn()) == null) {
+            return;
+        }
         edit();
     }//GEN-LAST:event_tblPhieuMouseClicked
 
@@ -1150,11 +1188,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         searchPhieu();
     }//GEN-LAST:event_cboTimKiemPhieuActionPerformed
 
-    private void tblCTPhieu_mainPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieu_mainPropertyChange
+    private void tblCTPhieu_ChiTietPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietPropertyChange
         // TODO add your handling code here:
-        int row = tblCTPhieu_main.getSelectedRow();
-        this.updateThanhTien(row);
-    }//GEN-LAST:event_tblCTPhieu_mainPropertyChange
+        int row = tblCTPhieu_ChiTiet.getSelectedRow();
+        this.updateThanhTienCTPhieu(tblCTPhieu_ChiTiet, row);
+    }//GEN-LAST:event_tblCTPhieu_ChiTietPropertyChange
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -1194,25 +1232,34 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
-        delCTP.clear();
-        this.clearForm();
+
+        //btnChiTiet.setEnabled(true);
+        //btnThem.setEnabled(true);
+        isInsert = true;
+        if (btnMoi.getText().equals("Phiếu mới")) {
+            this.clearForm();
+            ChiTietPhieuDialog.setVisible(true);
+            return;
+        }
+        if (btnMoi.getText().equals("Thêm phiếu")) {
+            this.insertPhieu();
+            btnMoi.setText("Phiếu mới");
+            btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
+            btnChiTiet.setEnabled(false);
+            isInsert = false;
+        }
+        
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         this.updatePhieu();
-
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         this.deletePhieu();
     }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        this.insertPhieu();
-
-    }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
@@ -1234,10 +1281,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         first();
     }//GEN-LAST:event_btnFirstActionPerformed
 
-    private void chkThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkThanhToanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkThanhToanMouseClicked
-
     private void cboKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKhoActionPerformed
         // TODO add your handling code here:
         cboKho.setEnabled(!isUpdate);
@@ -1253,12 +1296,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         fillToComboBoxDoiTac();
     }//GEN-LAST:event_cboLoaiDTActionPerformed
-
-    private void tblCTPhieu_subPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieu_subPropertyChange
-        // TODO add your handling code here:
-        int row = tblCTPhieu_sub.getSelectedRow();
-        this.updateThanhTien(row);
-    }//GEN-LAST:event_tblCTPhieu_subPropertyChange
 
     private void rdoPhieuNhapStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rdoPhieuNhapStateChanged
         // TODO add your handling code here:
@@ -1296,6 +1333,37 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         txtGhiChu.selectAll();
     }//GEN-LAST:event_txtGhiChuMouseClicked
+
+    private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu_ChiTiet);
+    }//GEN-LAST:event_tblCTPhieu_ChiTietKeyReleased
+
+    private void tblCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieuKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu);
+    }//GEN-LAST:event_tblCTPhieuKeyReleased
+
+    private void tblCTPhieuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieuPropertyChange
+        // TODO add your handling code here:
+        int row = tblCTPhieu.getSelectedRow();
+        this.updateThanhTienCTPhieu(tblCTPhieu, row);
+    }//GEN-LAST:event_tblCTPhieuPropertyChange
+
+    private void tblCTPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieuMouseClicked
+        // TODO add your handling code here:
+        mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
+    }//GEN-LAST:event_tblCTPhieuMouseClicked
+
+    private void tblCTPhieu_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietMouseClicked
+        // TODO add your handling code here:
+        mapSelectionTable(tblCTPhieu_ChiTiet, tblCTPhieu);
+    }//GEN-LAST:event_tblCTPhieu_ChiTietMouseClicked
+
+    private void btnHoanTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacActionPerformed
+        // TODO add your handling code here:
+        fillToTableCTPhieu();
+    }//GEN-LAST:event_btnHoanTacActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1336,13 +1404,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnFirst;
     private javax.swing.ButtonGroup btnGrpLoaiPhieu;
+    private javax.swing.JButton btnHoanTac;
     private javax.swing.JButton btnInPhieu;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemCTP;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaCTP;
@@ -1428,8 +1496,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton rdoPhieuXuat;
     private javax.swing.JScrollPane scrollPane2;
     private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblCTPhieu_main;
-    private javax.swing.JTable tblCTPhieu_sub;
+    private javax.swing.JTable tblCTPhieu;
+    private javax.swing.JTable tblCTPhieu_ChiTiet;
     private javax.swing.JTable tblPhieu;
     private javax.swing.JFormattedTextField txtDaThanhToan;
     private javax.swing.JTextArea txtGhiChu;
@@ -1459,11 +1527,17 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private DefaultTableModel modelPhieu;
     private DefaultTableModel modelCTPhieu;
 
+    private TableRowSorter<TableModel> sorterPhieu;
+    private TableRowSorter<TableModel> sorterCTPhieu;
+    private TableRowSorter<TableModel> sorterCTPhieu_ChiTiet;
+
     private final String numFormat = "#,##0.0";
     private final String dateFormat = "dd-MM-yyyy";
+    private final String dateTimeFormat = "dd-MM-yyyy HH:mm:ss";
     private final String reportPath = "/com/stoman/reports/InPhieuNhapXuatKho.jrxml";
 
     private boolean isUpdate = false;
+    private boolean isInsert = false;
 
     private int rowPhieu = -1;
 
@@ -1483,6 +1557,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.updateStatus();
         this.updateStatusChonLoaiPhieu();
 
+        this.clearForm();
         this.timer.start();
     }
 
@@ -1491,6 +1566,23 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuDialog.setLocationRelativeTo(null);
         ChiTietPhieuDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         ChiTietPhieuDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+        ChiTietPhieuDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                if (isInsert == true) {
+                    if (modelCTPhieu.getRowCount() == 0) {
+                        btnMoi.setText("Phiếu mới");
+                        btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
+                        btnChiTiet.setEnabled(false);
+                    } else {
+                        btnMoi.setText("Thêm phiếu");
+                        btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png")));
+                        btnChiTiet.setEnabled(true);
+                    }
+                }
+            }
+        });
 
         QRCodeDialog.pack();
         QRCodeDialog.setLocationRelativeTo(null);
@@ -1519,7 +1611,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
 
         modelPhieu.setRowCount(0);
-        tblPhieu.setRowSorter(null);
 
         try {
             List<Phieu> list = pDAO.selectByLoaiPhieu(isPhieuNhap);
@@ -1527,6 +1618,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             workerPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     int i = 1;
                     int hoanThanh = 0;
                     int cThanhToan = 0;
@@ -1565,9 +1657,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             k.getMaKho(),
                             p.isTrangThai() ? "Đã hoàn thành" : "Chưa hoàn thành",
                             p.isTinhTrangThanhToan() ? "Đã xong" : "Chưa xong",
-                            p.getNgThucHien(),
-                            p.getNgHoanThanh(),
-                            p.getNgayLap(),
+                            XDate.toString(p.getNgThucHien(), dateFormat),
+                            XDate.toString(p.getNgHoanThanh(), dateFormat),
+                            XDate.toString(p.getNgayLap(), dateTimeFormat),
                             p
                         });
 
@@ -1577,6 +1669,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         lblSoLuongChuyenHang.setText(String.valueOf(cVanChuyen));
                     }
                     return null;
+                }
+
+                @Override
+                protected void done() {
+                    if (rowPhieu > 0) {
+                        tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
+                    }
                 }
 
             };
@@ -1595,13 +1694,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
 
         listCT.clear();
-        tblCTPhieu_main.setRowSorter(null);
-        tblCTPhieu_sub.setRowSorter(null);
         modelCTPhieu.setRowCount(0);
 
         Kho k = (Kho) cboKho.getSelectedItem();
         try {
-            String maPhieu = tblCTPhieu_sub.getToolTipText();
+            String maPhieu = tblCTPhieu.getToolTipText();
             if (maPhieu == null) {
                 return;
             }
@@ -1612,11 +1709,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             workerCTPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     int i = 1;
                     double tongTien = 0;
                     double ton = 0;
                     for (ChiTietPhieu ctp : list) {
-                        if (isCancelled()) break;
+                        if (isCancelled()) {
+                            break;
+                        }
                         String maHH = ltDAO.selectByID(ctp.getMaLT()).getMaHH();
                         HangHoa hh = hhDAO.selectByID(maHH);
                         tongTien += ctp.getSoLuong() * ctp.getDonGia();
@@ -1629,19 +1729,22 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             i++,
                             hh,
                             ctp.getSoLuong(),
-                            ctp.getDonGia(),
+                            XNumber.toString(ctp.getDonGia(), numFormat),
                             ctp.getMaCTP(),
-                            ctp.getThanhTien(),
+                            XNumber.toString(ctp.getThanhTien(), numFormat),
                             ctp.isTrangThai(),
                             ton,
                             ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
                         });
+
                         listCT.add(hh);
                     }
-                    tblCTPhieu_sub.setModel(modelCTPhieu);
-                    tblCTPhieu_main.setModel(modelCTPhieu);
+                    tblCTPhieu.setModel(modelCTPhieu);
+                    tblCTPhieu_ChiTiet.setModel(modelCTPhieu);
                     lblTongTien.setText(XNumber.toString(tongTien, numFormat));
-                    if(isCancelled()) modelCTPhieu.setRowCount(0);
+                    if (isCancelled()) {
+                        modelCTPhieu.setRowCount(0);
+                    }
                     return null;
                 }
             };
@@ -1755,7 +1858,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             p.setNgHoanThanh(txtNgayHoanThanh.getDate());
         }
         p.setNgThucHien(txtNgayThucHien.getDate());
-        p.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateFormat + "(hh:MM:ss)"));
+        p.setNgayLap(XDate.toDate(txtNgayLap.getText(), dateTimeFormat));
         p.setTrangThai(chkChuyenHang.isSelected());
         p.setTinhTrangThanhToan(chkThanhToan.isSelected());
         p.setSoTienThanhToan(XNumber.toDouble(txtDaThanhToan.getText(), numFormat));
@@ -1765,15 +1868,16 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Nhập dữ liệu vào form phiếu nhập
     private void setFormPhieu(Phieu p) {
+        int rowPhieuModel = tblPhieu.convertRowIndexToModel(this.rowPhieu);
         DoiTac dt = dtDAO.selectByID(p.getMaDT());
         LoaiDoiTac ldt = ldtDAO.selectByID(dt.getMaLDT());
         NhanVien nv = nvDAO.selectByID(p.getMaNV());
-        Kho kho = kDAO.selectByID((Integer) modelPhieu.getValueAt(rowPhieu, 3));
+        Kho kho = kDAO.selectByID((Integer) tblPhieu.getModel().getValueAt(rowPhieuModel, 3));
         cboLoaiDT.setSelectedItem(ldt);
         cboDoiTac.setSelectedItem(dt);
         txtMaNV.setToolTipText(p.getMaNV());
         txtMaNV.setText(nv.getTenNV());
-        txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateFormat + "(hh:mm:ss)"));
+        txtNgayLap.setText(XDate.toString(p.getNgayLap(), dateTimeFormat));
         txtNgayThucHien.setDate(p.getNgThucHien());
         txtNgayHoanThanh.setDate(p.getNgHoanThanh());
         cboKho.setSelectedItem(kho);
@@ -1788,7 +1892,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         chkThanhToan.setSelected(p.isTinhTrangThanhToan());
         chkChuyenHang.setSelected(p.isTrangThai());
         txtGhiChu.setText(p.getGhiChu());
-        tblCTPhieu_sub.setToolTipText(p.getMaPhieu().toString());
+        tblCTPhieu.setToolTipText(p.getMaPhieu().toString());
 
         this.fillToTableCTPhieu();
     }
@@ -1796,10 +1900,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Lấy dữ liệu từ form chi tiết phiếu
     private ChiTietPhieu getFormCTPhieu(int row) {
         ChiTietPhieu ctp = new ChiTietPhieu();
-        //ctp.setSoLuong(XNumber.toDouble((String) modelCTPhieu.getValueAt(row, 2), numFormat));
-        //ctp.setDonGia(XNumber.toDouble((String) modelCTPhieu.getValueAt(row, 3), numFormat));
-        ctp.setSoLuong((double) modelCTPhieu.getValueAt(row, 2));
-        ctp.setDonGia((double) modelCTPhieu.getValueAt(row, 3));
+        ctp.setDonGia(XNumber.toDouble((String) modelCTPhieu.getValueAt(row, 3), numFormat));
+        ctp.setSoLuong((Double) modelCTPhieu.getValueAt(row, 2));
         ctp.setMaCTP((Integer) modelCTPhieu.getValueAt(row, 4));
         ctp.setMaLT((Integer) modelCTPhieu.getValueAt(row, 8));
         return ctp;
@@ -1812,17 +1914,29 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         HangHoa hh = (HangHoa) cboHangHoa.getSelectedItem();
         Kho k = (Kho) cboKho.getSelectedItem();
 
-        if (listCT.contains(hh) || cboHangHoa.getItemCount() == 0) {
+        if (cboHangHoa.getItemCount() == 0) {
+            return;
+        }
+
+        if (listCT.contains(hh)) {
+            XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
+            for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
+                HangHoa hangHoa = (HangHoa) tblCTPhieu_ChiTiet.getValueAt(i, 1);
+                if (hangHoa.getMaHH().equals(hh.getMaHH())) {
+                    tblCTPhieu_ChiTiet.setRowSelectionInterval(i, i);
+                    break;
+                }
+            }
             return;
         }
 
         modelCTPhieu.addRow(new Object[]{
-            tblCTPhieu_main.getRowCount() + 1,
+            tblCTPhieu_ChiTiet.getRowCount() + 1,
             hh,
             0.0,
-            hh.getDonGia(),
+            XNumber.toString(hh.getDonGia(), numFormat),
             0,
-            0.0,
+            XNumber.toString(0.0, numFormat),
             false,
             ltDAO.getSoLuong(k.getMaKho(), hh.getMaHH()),
             ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
@@ -1834,7 +1948,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void updateCT() {
         Kho k = (Kho) cboKho.getSelectedItem();
         HangHoa hh;
-        for (int i = 0; i < tblCTPhieu_sub.getRowCount(); i++) {
+        for (int i = 0; i < tblCTPhieu.getRowCount(); i++) {
             hh = (HangHoa) modelCTPhieu.getValueAt(i, 1);
             modelCTPhieu.setValueAt(ltDAO.getSoLuong(k.getMaKho(), hh.getMaHH()), i, 7);
         }
@@ -1844,12 +1958,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private ArrayList<ChiTietPhieu> delCTP = new ArrayList<>();
 
     private void deleteCT() {
-        int delRow = tblCTPhieu_main.getSelectedRow();
-        int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
+        int delRow = tblCTPhieu_ChiTiet.getSelectedRow();
 
-        if (maCTP == 0) {
+        if (delRow < 0) {
+            XOptionPane.alert(ChiTietPhieuDialog, "Chọn một hàng hoá cần xoá!");
             return;
         }
+
+        int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
 
         listCT.remove((HangHoa) modelCTPhieu.getValueAt(delRow, 1));
 
@@ -1900,17 +2016,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
 
         int rows = modelCTPhieu.getRowCount();
-
-        if (rows < 1) {
-            MsgBox.alert(this, "Danh sách hàng hoá trống!");
-            return;
-        }
+        btnChiTiet.setEnabled(true);
 
         Phieu phieu = this.getFormPhieu();
         ChiTietPhieu ctp;
         pDAO.insert(phieu);
 
-        int maPhieu = pDAO.getMaPhieuByNVandCreatedDate(txtMaNV.getToolTipText(), XDate.toDate(txtNgayLap.getText(), dateFormat + "(hh:MM:ss)"));
+        int maPhieu = pDAO.getMaPhieuByNVandCreatedDate(txtMaNV.getToolTipText(), XDate.toDate(txtNgayLap.getText(), dateTimeFormat));
         int maKho = ((Kho) cboKho.getSelectedItem()).getMaKho();
         int maLT;
 
@@ -1942,7 +2054,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.fillToTablePhieu();
 
-        MsgBox.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        XOptionPane.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Cập nhật phiếu vào hệ thống và cập nhật thông tin hàng hóa
@@ -1951,7 +2063,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             return;
         }
         Phieu phieu = this.getFormPhieu();
-        String maPhieu = tblCTPhieu_sub.getToolTipText();
+        String maPhieu = tblCTPhieu.getToolTipText();
         System.out.println(maPhieu);
 
         if (maPhieu == null) {
@@ -2030,13 +2142,18 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieu();
         this.fillToTableCTPhieu();
 
-        MsgBox.alert(this, "Cập nhật phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        XOptionPane.alert(this, "Cập nhật phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Xoá phieu khoi he thong
     private void deletePhieu() {
         Phieu phieu = this.getFormPhieu();
-        String maPhieu = tblCTPhieu_sub.getToolTipText();
+
+        if (!XOptionPane.confirm(this, "Bạn chắc chắn muốn xoá phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " này ?")) {
+            return;
+        }
+
+        String maPhieu = tblCTPhieu.getToolTipText();
 
         if (maPhieu == null) {
             return;
@@ -2072,7 +2189,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.clearForm();
         this.fillToTablePhieu();
 
-        MsgBox.alert(this, "Xóa phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        XOptionPane.alert(this, "Xóa phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Xóa trắng form
@@ -2087,21 +2204,25 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         cboDoiTac.setSelectedIndex(0);
         txtMaNV.setToolTipText(Auth.user.getMaNV());
         txtMaNV.setText(Auth.user.getTenNV());
-        txtNgayLap.setText(XDate.toString(NgayLap, dateFormat + "(hh:MM:ss)"));
+        txtNgayLap.setText(XDate.toString(NgayLap, dateTimeFormat));
         txtNgayThucHien.setDate(new Date());
         txtNgayHoanThanh.setDate(new Date());
         txtGhiChu.setText(null);
         cboKho.setSelectedIndex(0);
         chkChuyenHang.setSelected(false);
         chkThanhToan.setSelected(false);
-        tblCTPhieu_sub.setToolTipText(null);
+        tblCTPhieu.setToolTipText(null);
         lblQRCodeImage.setIcon(null);
         txtDaThanhToan.setText("0.0");
+
+        cboLoaiHH.setSelectedIndex(0);
+
         this.fillToTableCTPhieu();
 
         this.rowPhieu = -1;
 
         this.delCTP.clear();
+        this.listCT.clear();
 
         isUpdate = false;
         this.updateStatus();
@@ -2114,29 +2235,25 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
 
-        btnThem.setEnabled(!edit);
+        this.isInsert = !edit;
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
         btnXuatFile.setEnabled(edit);
+        btnChiTiet.setEnabled(edit);
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
         btnLast.setEnabled(edit && !last);
 
         // Kiểm tra vai trò người dùng, hạn chế quyền thủ kho
-        boolean isManager = Auth.isManager();
-        btnXoa.setVisible(isManager);
-        btnXoaCTP.setEnabled(isManager);
-
-        tblPhieu.setAutoCreateRowSorter(tblPhieu.getRowCount() > 0);
-        tblCTPhieu_sub.setAutoCreateRowSorter(tblCTPhieu_sub.getRowCount() > 0);
-        tblCTPhieu_main.setAutoCreateRowSorter(tblCTPhieu_main.getRowCount() > 0);
+        btnXoa.setVisible(Auth.isManager());
+        btnXoaCTP.setEnabled(Auth.isManager());
 
         // Kiểm tra trạng thái hoàn thành phiếu
         boolean isCompleted = chkChuyenHang.isSelected();
         if (!isCompleted) {
-            txtNgayHoanThanh.setDate(null);
+            txtNgayHoanThanh.setDate(new Date());
         }
         txtNgayHoanThanh.setEnabled(isCompleted);
 
@@ -2146,15 +2263,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         rdoPhieuXuat.setEnabled(!isUpdate);
 
     }
-    
-    private void updateUIPhieu(){
-        if(rdoPhieuNhap.isSelected()){
+
+    private void updateUIPhieu() {
+        if (rdoPhieuNhap.isSelected()) {
             lblDaThanhToan.setText("Đã thanh toán cho đối tác");
             chkChuyenHang.setText("Hoàn thành nhập hàng");
             chkThanhToan.setText("Hoàn thành thanh toán cho đối tác");
             lblLoaiDT.setText("Loại đối tác");
             lblDoiTac.setText("Đối tác");
-        }else{
+        } else {
             lblDaThanhToan.setText("Khách hàng đã thanh toán");
             chkChuyenHang.setText("Hoàn thành xuất hàng");
             chkThanhToan.setText("Khách hàng đã hoàn thành thanh toán");
@@ -2175,18 +2292,26 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return false;
             }
 
+            Class[] types = new Class[]{
+                Integer.class,
+                String.class,
+                String.class,
+                Integer.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                Phieu.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelPhieu.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
-        String headerCTPhieu[] = {"STT", "TÊN HÀNG HÓA", "SỐ LƯỢNG", "ĐƠN GIÁ", "MÃ CHI TIẾT PHIẾU", "THÀNH TIỀN", "TRẠNG THÁI", "LƯU TRỮ", "MÃ LƯU TRỮ"};
+        String headerCTPhieu[] = {"STT", "TÊN HÀNG HÓA", "SỐ LƯỢNG", "ĐƠN GIÁ",
+            "MÃ CHI TIẾT PHIẾU", "THÀNH TIỀN", "TRẠNG THÁI", "LƯU TRỮ", "MÃ LƯU TRỮ"};
         this.modelCTPhieu = new DefaultTableModel(headerCTPhieu, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -2196,36 +2321,61 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 return false;
             }
 
+            Class[] types = new Class[]{
+                Integer.class,
+                HangHoa.class,
+                Double.class,
+                String.class,
+                Integer.class,
+                String.class,
+                Boolean.class,
+                Double.class,
+                Integer.class
+            };
+
             @Override
             public Class getColumnClass(int columnIndex) {
-                if (modelCTPhieu.getRowCount() < 1) {
-                    return String.class;
-                }
-                if (getValueAt(0, columnIndex) == null) {
-                    return Object.class;
-                }
-                return getValueAt(0, columnIndex).getClass();
+                return types[columnIndex];
             }
         };
 
         tblPhieu.setModel(modelPhieu);
-        tblCTPhieu_sub.setModel(modelCTPhieu);
-        tblCTPhieu_main.setModel(modelCTPhieu);
+        tblCTPhieu.setModel(modelCTPhieu);
+        tblCTPhieu_ChiTiet.setModel(modelCTPhieu);
+
+        sorterPhieu = new TableRowSorter<>(modelPhieu);
+        sorterCTPhieu = new TableRowSorter<>(modelCTPhieu);
+        sorterCTPhieu_ChiTiet = new TableRowSorter<>(modelCTPhieu);
+
+        tblPhieu.setRowSorter(sorterPhieu);
+        tblCTPhieu.setRowSorter(sorterCTPhieu);
+        tblCTPhieu_ChiTiet.setRowSorter(sorterCTPhieu_ChiTiet);
+
+        sorterPhieu.setStringConverter(new LowerCaseStringConverter());
+        sorterPhieu.setComparator(6, new DateComparator(dateFormat));
+        sorterPhieu.setComparator(7, new DateComparator(dateFormat));
+        sorterPhieu.setComparator(8, new DateTimeComparator(dateTimeFormat));
+        sorterCTPhieu.setStringConverter(new LowerCaseStringConverter());
+        sorterCTPhieu.setComparator(3, new DoubleComparator(numFormat));
+        sorterCTPhieu.setComparator(4, new DoubleComparator(numFormat));
+        sorterCTPhieu_ChiTiet.setStringConverter(new LowerCaseStringConverter());
 
         // Giấu cột
-        tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(8));
-        tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(8));
-        tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(7));
-        tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(7));
-        tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(6));
-        tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(6));
-        tblCTPhieu_main.getColumnModel().removeColumn(tblCTPhieu_main.getColumnModel().getColumn(4));
-        tblCTPhieu_sub.getColumnModel().removeColumn(tblCTPhieu_sub.getColumnModel().getColumn(4));
+        tblCTPhieu_ChiTiet.getColumnModel().removeColumn(tblCTPhieu_ChiTiet.getColumnModel().getColumn(8));
+        tblCTPhieu.getColumnModel().removeColumn(tblCTPhieu.getColumnModel().getColumn(8));
+        tblCTPhieu_ChiTiet.getColumnModel().removeColumn(tblCTPhieu_ChiTiet.getColumnModel().getColumn(7));
+        tblCTPhieu.getColumnModel().removeColumn(tblCTPhieu.getColumnModel().getColumn(7));
+        tblCTPhieu_ChiTiet.getColumnModel().removeColumn(tblCTPhieu_ChiTiet.getColumnModel().getColumn(6));
+        tblCTPhieu.getColumnModel().removeColumn(tblCTPhieu.getColumnModel().getColumn(6));
+        tblCTPhieu_ChiTiet.getColumnModel().removeColumn(tblCTPhieu_ChiTiet.getColumnModel().getColumn(4));
+        tblCTPhieu.getColumnModel().removeColumn(tblCTPhieu.getColumnModel().getColumn(4));
 
         // Chỉnh độ dài các cột bảng Phiếu
         tblPhieu.getColumnModel().getColumn(0).setPreferredWidth(35);
-        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(257);
-        tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(35);
+        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(293);
+        tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(0);
+        tblPhieu.getColumnModel().getColumn(2).setMinWidth(0);
+        tblPhieu.getColumnModel().getColumn(2).setMaxWidth(0);
         tblPhieu.getColumnModel().getColumn(3).setPreferredWidth(35);
         tblPhieu.getColumnModel().getColumn(4).setPreferredWidth(95);
         tblPhieu.getColumnModel().getColumn(5).setPreferredWidth(90);
@@ -2234,19 +2384,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblPhieu.getColumnModel().getColumn(8).setPreferredWidth(60);
 
         // Chỉnh độ dài các cột bảng Chi tiết phiếu
-        tblCTPhieu_main.getColumnModel().getColumn(0).setPreferredWidth(35);
-        tblCTPhieu_main.getColumnModel().getColumn(1).setPreferredWidth(274);
-        tblCTPhieu_main.getColumnModel().getColumn(2).setPreferredWidth(85);
-        tblCTPhieu_main.getColumnModel().getColumn(3).setPreferredWidth(85);
-        tblCTPhieu_main.getColumnModel().getColumn(3).setPreferredWidth(85);
-        tblCTPhieu_sub.getColumnModel().getColumn(0).setPreferredWidth(35);
-        tblCTPhieu_sub.getColumnModel().getColumn(1).setPreferredWidth(395);
-        tblCTPhieu_sub.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tblCTPhieu_sub.getColumnModel().getColumn(3).setPreferredWidth(120);
-        tblCTPhieu_sub.getColumnModel().getColumn(4).setPreferredWidth(120);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(1).setPreferredWidth(274);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(2).setPreferredWidth(85);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setPreferredWidth(85);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setPreferredWidth(85);
+        tblCTPhieu.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblCTPhieu.getColumnModel().getColumn(1).setPreferredWidth(395);
+        tblCTPhieu.getColumnModel().getColumn(2).setPreferredWidth(120);
+        tblCTPhieu.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tblCTPhieu.getColumnModel().getColumn(4).setPreferredWidth(120);
 
         // Cài đặt định dạng cho bảng
-        DateRenderer cellDateRender = new DateRenderer(dateFormat) {
+        TableDateCellRenderer cellDateRender = new TableDateCellRenderer(dateFormat) {
+            @Override
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
 
@@ -2282,7 +2433,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         };
 
-        DateRenderer cellDateRenderK = new DateRenderer(dateFormat + "(hh:MM:ss)") {
+        TableDateCellRenderer cellDateRenderK = new TableDateCellRenderer(dateTimeFormat) {
             @Override
             public Component getTableCellRendererComponent(JTable table,
                     Object value, boolean isSelected, boolean hasFocus, int row, int col) {
@@ -2405,37 +2556,47 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblPhieu.getColumnModel().getColumn(8).setCellRenderer(cellDateRenderK);
         tblPhieu.getColumnModel().getColumn(9).setCellRenderer(cellCenterRender);
 
+        tblCTPhieu.getColumnModel().getColumn(0).setCellRenderer(TableNumberCellRenderer.getIntegerRenderer());
+        tblCTPhieu.getColumnModel().getColumn(2).setCellRenderer(TableNumberCellRenderer.getIntegerRenderer());
+        tblCTPhieu.getColumnModel().getColumn(3).setCellRenderer(TableNumberCellRenderer.getDoubleRenderer(numFormat));
+        tblCTPhieu.getColumnModel().getColumn(4).setCellRenderer(TableNumberCellRenderer.getDoubleRenderer(numFormat));
+
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(0).setCellRenderer(TableNumberCellRenderer.getIntegerRenderer());
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(2).setCellRenderer(TableNumberCellRenderer.getIntegerRenderer());
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellRenderer(TableNumberCellRenderer.getDoubleRenderer(numFormat));
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(4).setCellRenderer(TableNumberCellRenderer.getDoubleRenderer(numFormat));
+
 //        {"STT", "ĐỐI TÁC", "LOẠI", "KHO", "TT VẬN CHUYỂN", "TT THANH TOÁN",
 //            "NGÀY THỰC HIỆN", "NGÀY HOÀN THÀNH", "NGÀY LẬP", "NGƯỜI LẬP"};
         // Chỉnh độ rộng hàng trong bảng
-        tblCTPhieu_sub.setRowHeight(25);
-        tblCTPhieu_main.setRowHeight(25);
+        tblCTPhieu.setRowHeight(25);
+        tblCTPhieu_ChiTiet.setRowHeight(25);
         tblPhieu.setRowHeight(25);
 
         // Thêm chức năng nhập cho bảng
-        SpinnerEditor spinnerSoLuong = new SpinnerEditor(0.0, 0.0, 100000.0, 1.0);
-        SpinnerEditor spinnerDonGia = new SpinnerEditor(0.0, 0.0, 1000000000.0, 1000.0);
+        JSpinnerEditor spinnerSoLuong = new JSpinnerEditor(0.0, 0.0, 100000.0, 1.0);
+        JSpinnerEditor spinnerDonGia = new JSpinnerStringEditor(0.0, 0.0, 1000000000.0, 1000.0, numFormat);
 
-        tblCTPhieu_main.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
-        tblCTPhieu_main.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
-        tblCTPhieu_sub.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
-        tblCTPhieu_sub.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
+        tblCTPhieu.getColumnModel().getColumn(2).setCellEditor(spinnerSoLuong);
+        tblCTPhieu.getColumnModel().getColumn(3).setCellEditor(spinnerDonGia);
 
         // check value of the cell
-        tblCTPhieu_main.getColumnModel().getColumn(2).getCellEditor().addCellEditorListener(new CellEditorListener() {
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(2).getCellEditor().addCellEditorListener(new CellEditorListener() {
             @Override
             public void editingStopped(ChangeEvent e) {
-                int row = tblCTPhieu_sub.getSelectedRow();
+                int row = tblCTPhieu.getSelectedRow();
                 if (row < 0 || rdoPhieuNhap.isSelected() || ChiTietPhieuDialog.isFocused()) {
                     return;
                 }
 
                 double Ton = (Double) modelCTPhieu.getValueAt(row, 7);
 
-                SpinnerEditor c = (SpinnerEditor) e.getSource();
+                JSpinnerEditor c = (JSpinnerEditor) e.getSource();
 
                 if (c.getNewValue() > Ton && rdoPhieuXuat.isSelected()) {
-                    MsgBox.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
+                    XOptionPane.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
                     modelCTPhieu.setValueAt(c.getOldValue(), row, 2);
                 }
             }
@@ -2445,20 +2606,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
 
-        tblCTPhieu_sub.getColumnModel().getColumn(2).getCellEditor().addCellEditorListener(new CellEditorListener() {
+        tblCTPhieu.getColumnModel().getColumn(2).getCellEditor().addCellEditorListener(new CellEditorListener() {
             @Override
             public void editingStopped(ChangeEvent e) {
-                int row = tblCTPhieu_sub.getSelectedRow();
+                int row = tblCTPhieu.getSelectedRow();
                 if (row < 0 || rdoPhieuNhap.isSelected() || !ChiTietPhieuDialog.isFocused()) {
                     return;
                 }
 
                 double Ton = (Double) modelCTPhieu.getValueAt(row, 7);
 
-                SpinnerEditor c = (SpinnerEditor) e.getSource();
+                JSpinnerEditor c = (JSpinnerEditor) e.getSource();
 
                 if (c.getNewValue() > Ton && rdoPhieuXuat.isSelected()) {
-                    MsgBox.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
+                    XOptionPane.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
                     modelCTPhieu.setValueAt(c.getOldValue(), row, 2);
                 }
             }
@@ -2473,25 +2634,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void fillToComboBoxTimKiemCTPhieu() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTimKiemCTPhieu.getModel();
         model.removeAllElements();
-        for (int i = 0; i < tblCTPhieu_sub.getColumnCount(); i++) {
-            model.addElement(tblCTPhieu_sub.getColumnName(i));
+        for (int i = 0; i < tblCTPhieu.getColumnCount(); i++) {
+            model.addElement(tblCTPhieu.getColumnName(i));
         }
     }
 
     // Lọc bảng theo từ khoá chi tiết phiếu
     private void searchCTPhieu() {
-        TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelCTPhieu);
-        tblCTPhieu_sub.setRowSorter(sorterCTPhieu);
-
         int columnFilter = cboTimKiemCTPhieu.getSelectedIndex();
         String keyword = txtTimKiemCTPhieu.getText().toLowerCase();
-
-        sorterCTPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
 
         RowFilter<TableModel, Object> rf = null;
         try {
@@ -2513,18 +2664,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Lọc bảng theo từ khoá phiếu
     private void searchPhieu() {
-        TableRowSorter<TableModel> sorterCTPhieu = new TableRowSorter<TableModel>(modelPhieu);
-        tblPhieu.setRowSorter(sorterCTPhieu);
-
         int columnFilter = cboTimKiemPhieu.getSelectedIndex();
         String keyword = txtTimKiemPhieu.getText();
-
-        sorterCTPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
 
         RowFilter<TableModel, Object> rf = null;
         try {
@@ -2532,7 +2673,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             return;
         }
-        sorterCTPhieu.setRowFilter(rf);
+        sorterPhieu.setRowFilter(rf);
     }
 
     // Hiển thị phiếu đầu danh sách
@@ -2565,25 +2706,30 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Hiển thị dữ liệu của phiếu được chọn lên form
     private void edit() {
+        int rowPhieuModel = tblPhieu.convertRowIndexToModel(this.rowPhieu);
+
         delCTP.clear();
 
-        Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 9);
-
+        Phieu phieu = (Phieu) tblPhieu.getModel().getValueAt(rowPhieuModel, 9);
         this.setFormPhieu(phieu);
+
         tabs.setSelectedIndex(0);
         cboTimKiemCTPhieu.setSelectedIndex(0);
         txtTimKiemCTPhieu.setText("");
 
         isUpdate = true;
         this.updateStatus();
+
+        tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
     }
 
     // Tạo mã QR chứa mã phiếu
     private void createQRCode() {
         if (rowPhieu < 0) {
-            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
         } else {
-            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 9);
+            int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
+            Phieu phieu = (Phieu) tblPhieu.getModel().getValueAt(rowPhieuModel, 9);
             try {
                 BufferedImage bi = QRCode.generateQRCodeImage(String.valueOf(phieu.getMaPhieu()));
                 lblQRCodeImage.setIcon(new ImageIcon(bi));
@@ -2597,12 +2743,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Xuất phiếu
     private void exportReport() {
         if (rowPhieu < 0) {
-            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
         }
 
         try {
-            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 9);
+            int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
+            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieuModel, 9);
 
             // Truyền tham số vào báo cáo
             HashMap parameters = new HashMap();
@@ -2615,9 +2762,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             } else {
                 fileName = "PhieuXuatSo" + phieu.getMaPhieu();
             }
-            ExporterReport.exportFile(fileName, reportPath, parameters);
+            XReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
-            MsgBox.alert(this, "Xuất file thất bại!");
+            XOptionPane.alert(this, "Xuất file thất bại!");
             e.printStackTrace();
         }
     }
@@ -2625,12 +2772,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // In báo cáo
     private void printReport() {
         if (rowPhieu < 0) {
-            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
+            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
         }
 
         try {
-            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieu, 9);
+            int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
+            Phieu phieu = (Phieu) this.modelPhieu.getValueAt(rowPhieuModel, 9);
 
             // Truyền tham số vào báo cáo
             HashMap parameters = new HashMap();
@@ -2643,49 +2791,62 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             } else {
                 fileName = "PhieuXuatSo" + phieu.getMaPhieu();
             }
-            ExporterReport.printReport(fileName, reportPath, parameters);
+            XReport.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
-            MsgBox.alert(this, "In phiếu thất bại!");
+            XOptionPane.alert(this, "In phiếu thất bại!");
             e.printStackTrace();
         }
     }
 
     // Cập nhật thành tiền khi sửa số lượng hoặc đơn giá trên bảng
-    private void updateThanhTien(int row) {
+    private void updateThanhTienCTPhieu(JTable table, int row) {
         if (row < 0) {
             return;
         }
 
-        double soLuong = (double) modelCTPhieu.getValueAt(row, 2);
-        double donGia = (double) modelCTPhieu.getValueAt(row, 3);
+        double soLuong = (Double) table.getValueAt(row, 2);
+        double donGia = XNumber.toDouble((String) table.getModel().getValueAt(row, 3), numFormat);
+        double thanhTien = soLuong * donGia;
 
-        modelCTPhieu.setValueAt(soLuong * donGia, row, 5);
+        table.getModel().setValueAt(XNumber.toString(thanhTien, numFormat), row, 5);
 
         double tongTien = 0;
-        for (int i = 0; i < modelCTPhieu.getRowCount(); i++) {
-            tongTien += (double) modelCTPhieu.getValueAt(i, 5);
+        for (int i = 0; i < table.getModel().getRowCount(); i++) {
+            tongTien += XNumber.toDouble((String) table.getModel().getValueAt(i, 5), numFormat);
         }
         lblTongTien.setText(XNumber.toString(tongTien, numFormat));
+
+        // Tự động cập nhật số lượng và đơn giá vào CSDL
+        /*
+        int maChiTiet = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
+        ChiTietPhieu ctp = ctpDAO.selectByID(maChiTiet);
+        if(ctp == null) return;
+        ctp.setSoLuong(soLuong);
+        ctp.setDonGia(donGia);
+        ctpDAO.update(ctp);
+         */
     }
 
     // Xác thực form
     private boolean isValidated() {
         if (txtNgayThucHien.getDate() == null) {
-            MsgBox.alert(this, "Chưa nhập ngày thực hiện!");
+            XOptionPane.alert(this, "Chưa nhập ngày thực hiện!");
             txtNgayThucHien.requestFocus();
             return false;
         }
 
-        //Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
-        //Date ngayThucHien = txtNgayThucHien.getDate();
-        //if (ngayThucHien.before(ngayLap)) {
-        //    MsgBox.alert(this, "Ngày thực hiện không nhỏ hơn ngày lập phiếu!");
-        //    txtNgayThucHien.requestFocus();
-        //    return false;
-        //}
+        /*
+        Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
+        Date ngayThucHien = txtNgayThucHien.getDate();
+        if (ngayThucHien.before(ngayLap)) {
+            XOptionPane.alert(this, "Ngày thực hiện không nhỏ hơn ngày lập phiếu!");
+            txtNgayThucHien.requestFocus();
+            return false;
+        }
+         */
         if (chkChuyenHang.isSelected()) {
             if (txtNgayHoanThanh.getDate() == null) {
-                MsgBox.alert(this, "Chưa nhập ngày hoàn thành!");
+                XOptionPane.alert(this, "Chưa nhập ngày hoàn thành!");
                 txtNgayThucHien.requestFocus();
                 return false;
             }
@@ -2700,7 +2861,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         return true;
     }
 
-    // Đỗ lại dữ liệu 
+    // Đổ lại dữ liệu 
     public void refreshForm() {
         this.fillToComboBoxKho();
         this.fillToTablePhieu();
@@ -2710,9 +2871,27 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.timer.restart();
     }
 
-    // sau hai phút tải lại dữ liệu
+    // Sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
         refreshForm();
     });
+
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void disableEnterCellNextLine(JTable table) {
+        int row = table.getSelectedRow();
+        if (row == 0) {
+            row = table.getRowCount() - 1;
+        } else {
+            row--;
+        }
+        table.setRowSelectionInterval(row, row);
+    }
+
+    // Ánh xạ dòng được chọn của bảng này sang bảng khác
+    private void mapSelectionTable(JTable TableToClick, JTable TableToMap) {
+        int rowTableToClick = TableToClick.convertRowIndexToModel(TableToClick.getSelectedRow());
+        int rowTableToMap = TableToMap.convertRowIndexToView(rowTableToClick);
+        TableToMap.setRowSelectionInterval(rowTableToMap, rowTableToMap);
+    }
 
 }

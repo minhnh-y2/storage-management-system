@@ -28,14 +28,14 @@ public class TableDateCellRenderer extends DefaultTableCellRenderer {
         setHorizontalAlignment(JLabel.CENTER);
     }
 
-    public TableDateCellRenderer(String format){
+    public TableDateCellRenderer(String pattern){
         super();
-        sdfNewValue.applyPattern(format);
+        sdfNewValue.applyPattern(pattern);
         setHorizontalAlignment(JLabel.CENTER);
     }
     
-    public void setFormat(String format){
-        sdfNewValue.applyPattern(format);
+    public void setFormat(String pattern){
+        sdfNewValue.applyPattern(pattern);
     }
 
 
@@ -44,7 +44,7 @@ public class TableDateCellRenderer extends DefaultTableCellRenderer {
         if (value != null) {
             String stringFormat = value.toString();
             try {
-                dateValue = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(stringFormat);
+                dateValue = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(stringFormat);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

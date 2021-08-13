@@ -22,11 +22,13 @@ import com.stoman.entity.NhanVien;
 import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DateComparator;
+import com.stoman.utils.DateTimeComparator;
 import com.stoman.utils.XOptionPane;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.XReport;
 import com.stoman.utils.TableNumberCellRenderer;
 import com.stoman.utils.JSpinnerEditor;
+import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XDate;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -48,7 +50,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -126,6 +127,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        btnHoanTac = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
@@ -163,6 +165,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_ChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCTPhieu_ChiTietMouseClicked(evt);
+            }
+        });
+        tblCTPhieu_ChiTiet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieu_ChiTietKeyReleased(evt);
             }
         });
         pnlTblCTPhieu_ChiTiet.setViewportView(tblCTPhieu_ChiTiet);
@@ -328,6 +335,16 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 tblCTPhieuMouseClicked(evt);
             }
         });
+        tblCTPhieu.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieuPropertyChange(evt);
+            }
+        });
+        tblCTPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieuKeyReleased(evt);
+            }
+        });
         pnlTblCTPhieu.setViewportView(tblCTPhieu);
 
         pnlThongTin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin phiếu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
@@ -374,7 +391,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         txtNgayKiem.setDate(new Date());
-        txtNgayKiem.setDateFormatString("dd-MM-yyyy");
         txtNgayKiem.setOpaque(false);
 
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
@@ -527,18 +543,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnThem.setText("Thêm chi tiết");
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 45));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnThem, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 8;
+        pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnXoa.setText("Xoá phiếu");
+        btnXoa.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -546,12 +566,27 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
+        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
+        btnHoanTac.setText("Huỷ thay đổi");
+        btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoanTacActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = 8;
+        pnlChucNang.add(btnHoanTac, gridBagConstraints);
+
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnSua.setText("Sửa phiếu");
+        btnSua.setPreferredSize(new java.awt.Dimension(140, 45));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -559,12 +594,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnMoi.setText("Phiếu mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(140, 45));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -572,12 +608,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
-        btnChiTiet.setText("Chi tiết");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnChiTiet.setText("Chi tiết phiêu");
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 45));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
@@ -585,12 +622,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
-        btnXuatMaPhieu.setText("QR Code");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnXuatMaPhieu.setText("Mã phiếu QR");
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
@@ -599,6 +637,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
@@ -912,16 +951,44 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.rowPhieu = tblPhieu.getSelectedRow();
     }//GEN-LAST:event_tblPhieuMousePressed
 
-    private void tblCTPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieuMouseClicked
-        // TODO add your handling code here:
-        mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
-    }//GEN-LAST:event_tblCTPhieuMouseClicked
-
     private void tblCTPhieu_ChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietMouseClicked
         // TODO add your handling code here:
+        this.rowCTPhieu = tblCTPhieu_ChiTiet.getSelectedRow();
         mapSelectionTable(tblCTPhieu_ChiTiet, tblCTPhieu);
     }//GEN-LAST:event_tblCTPhieu_ChiTietMouseClicked
 
+    private void tblCTPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPhieuMouseClicked
+        // TODO add your handling code here:
+        this.rowCTPhieu = tblCTPhieu.getSelectedRow();
+        mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
+    }//GEN-LAST:event_tblCTPhieuMouseClicked
+
+    private void tblCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieuKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu);
+        //updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
+    }//GEN-LAST:event_tblCTPhieuKeyReleased
+
+    private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu_ChiTiet);
+        //updateSoLuongThuc(tblCTPhieu_ChiTiet, tblCTPhieu_ChiTiet.getSelectedRow());
+    }//GEN-LAST:event_tblCTPhieu_ChiTietKeyReleased
+
+    private void tblCTPhieuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieuPropertyChange
+        // TODO add your handling code here:
+        /*
+        if(tblCTPhieu.getSelectedRow() >= 0) {
+            updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
+        }
+        */
+    }//GEN-LAST:event_tblCTPhieuPropertyChange
+
+    private void btnHoanTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacActionPerformed
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_btnHoanTacActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -959,6 +1026,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JDialog QRCodeDialog;
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnHoanTac;
     private javax.swing.JButton btnInPhieu;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
@@ -1038,13 +1106,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private TableRowSorter<TableModel> sorterPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu_ChiTiet;
-    TableRowSorter<TableModel> sorterHHKho;
+    private TableRowSorter<TableModel> sorterHHKho;
 
     private String numFormat = "#,##0.0";
     private String dateFormat = "dd-MM-yyyy";
-    private String dateTimeFormat = "dd-MM-yyyy(hh:MM:ss)";
-    
+    private String dateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+
     private int rowPhieu = -1;
+    private int rowCTPhieu = -1;
 
     private String defaultSearchHangHoa = "Nhập từ khoá tìm kiếm hàng hoá";
     private String defaultSearchPhieu = "Nhập từ khoá tìm kiếm phiếu";
@@ -1056,6 +1125,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
+        Auth.user = nvDAO.selectByID("minhnh");
+        
         this.formatTable();
         this.fillToComboBoxTimKiemPhieu();
         this.fillToComboBoxTimKiemCT();
@@ -1110,6 +1181,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<PhieuKiemKho> list = pkkDAO.selectAll();
                     int i = 1;
                     for (PhieuKiemKho pkk : list) {
@@ -1170,6 +1242,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerCTPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(Integer.parseInt(maPhieu));
                     int i = 1;
                     for (ChiTietKiemKho ctkk : list) {
@@ -1210,7 +1283,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Đỗ dữ liệu vào bảng hàng hóa trong kho
     private SwingWorker workerHHKho;
-
     private void fillToTableHHkho() {
         if (workerHHKho != null) {
             workerHHKho.cancel(true);
@@ -1222,6 +1294,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerHHKho = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<LuuTru> list = ltDAO.selectNotInList(maKho, listCT);
                     int i = 1;
                     for (LuuTru lt : list) {
@@ -1283,6 +1356,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Thêm hàng hóa vào bảng Chi tiết
     private void insertCT() {
+        if (tblHangHoaKho.getSelectedRow() < 0) {
+            XOptionPane.alert(this, "Chọn một hàng hoá muốn thêm!");
+            return;
+        }
+        
         int selectRow = tblHangHoaKho.convertRowIndexToModel(tblHangHoaKho.getSelectedRow());
         int maLT = (Integer) modelHangHoaKho.getValueAt(selectRow, 3);
         modelCTPhieuKiem.addRow(new Object[]{
@@ -1302,15 +1380,19 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private ArrayList<ChiTietKiemKho> delCTP = new ArrayList<>();
 
     private void deleteCT() {
-        int rowView = tblCTPhieu_ChiTiet.getSelectedRow();
-        int delRow = tblCTPhieu_ChiTiet.convertRowIndexToModel(rowView);
+        if (tblCTPhieu_ChiTiet.getSelectedRow() < 0) {
+            XOptionPane.alert(this, "Chọn một hàng hoá muốn xoá!");
+            return;
+        }
+        
+        int delRow = tblCTPhieu_ChiTiet.convertRowIndexToModel(tblCTPhieu_ChiTiet.getSelectedRow());
         ChiTietKiemKho ctkk = this.getFormCTPhieu(delRow);
 
         if (isUpdate && ctkk.getMaLT() != 0) {
             delCTP.add(ctkk);
             this.listCT.remove(new Integer(ctkk.getMaLT()));
         }
-
+        
         modelCTPhieuKiem.removeRow(delRow);
 
         for (int i = 0; i < modelCTPhieuKiem.getRowCount(); i++) {
@@ -1347,7 +1429,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int rows = modelCTPhieuKiem.getRowCount();
 
         if (rows < 1) {
-            XOptionPane.alert(this, "Danh sách hàng hoá trống!");
+            XOptionPane.alert(this, "Danh sách hàng hoá kiểm trống!");
             return;
         }
 
@@ -1406,6 +1488,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pkk.setTrangThai(isHoanThanh);
         pkkDAO.update(pkk);
     }
+    
+    private void updateSoLuongThuc(JTable table, int row) {
+        Double soLuongThuc = (Double) table.getValueAt(row, 3);
+        int maChiTiet = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
+        ChiTietKiemKho ctkk = ctkkDAO.selectByID(maChiTiet);
+        ctkk.setSoLuongThuc(soLuongThuc);
+        ctkkDAO.update(ctkk);
+    }
 
     // Xóa phiếu kiểm khỏi hệ thống
     private void deletePhieu() {
@@ -1451,7 +1541,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         isUpdate = false;
 
         this.rowPhieu = -1;
-        
+        this.rowCTPhieu = -1;
+
         this.updateStatus();
     }
 
@@ -1521,42 +1612,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu_ChiTiet.setModel(modelCTPhieuKiem);
         tblCTPhieu.setModel(modelCTPhieuKiem);
         tblHangHoaKho.setModel(modelHangHoaKho);
-
+        
         // Cài đặt bộ lọc cho bảng
-        sorterPhieu = new TableRowSorter(modelPhieu);
-        sorterPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
+        sorterPhieu = new TableRowSorter<>(modelPhieu);
+        sorterPhieu.setStringConverter(new LowerCaseStringConverter());
         sorterPhieu.setComparator(2, new DateComparator(dateFormat));
-        sorterPhieu.setComparator(5, new DateComparator(dateFormat));
-        
-        sorterCTPhieu = new TableRowSorter(modelCTPhieuKiem);
-        sorterCTPhieu.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
-        sorterCTPhieu_ChiTiet = new TableRowSorter(modelCTPhieuKiem);
-        sorterCTPhieu_ChiTiet.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
+        sorterPhieu.setComparator(5, new DateTimeComparator(dateTimeFormat));
+
+        sorterCTPhieu = new TableRowSorter<>(modelCTPhieuKiem);
+        sorterCTPhieu.setStringConverter(new LowerCaseStringConverter());
+
+        sorterCTPhieu_ChiTiet = new TableRowSorter<>(modelCTPhieuKiem);
+        sorterCTPhieu_ChiTiet.setStringConverter(new LowerCaseStringConverter());
+
         sorterHHKho = new TableRowSorter<>(modelHangHoaKho);
-        sorterHHKho.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-        
+        sorterHHKho.setStringConverter(new LowerCaseStringConverter());
+
         tblPhieu.setRowSorter(sorterPhieu);
         tblCTPhieu.setRowSorter(sorterCTPhieu);
         tblCTPhieu_ChiTiet.setRowSorter(sorterCTPhieu_ChiTiet);
@@ -1576,8 +1647,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu.setRowHeight(25);
 
         // Thêm chức năng nhập cho bảng
-        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellEditor(new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
-        tblCTPhieu.getColumnModel().getColumn(3).setCellEditor(new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0));
+        JSpinnerEditor spinnerEditor = new JSpinnerEditor(0.0, 0.0, 10000000.0, 1.0);
+        
+        tblCTPhieu_ChiTiet.getColumnModel().getColumn(3).setCellEditor(spinnerEditor);
+        tblCTPhieu.getColumnModel().getColumn(3).setCellEditor(spinnerEditor);
 
         // Chỉnh size cột các bảng
         tblCTPhieu.getColumnModel().getColumn(0).setPreferredWidth(47);
@@ -1825,7 +1898,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
         sorterCTPhieu_ChiTiet.setRowFilter(rf);
     }
-    
+
     private void searchHangHoaKho() {
         String keyword = txtTimKiemHHKho.getText();
         if (keyword.equals(defaultSearchHangHoa)) {
@@ -1858,7 +1931,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void searchPhieu() {
         int columnFilter = cboTimKiemPhieu.getSelectedIndex();
-        if(columnFilter > 2){
+        if (columnFilter > 2) {
             columnFilter++;
         }
         String keyword = txtTimKiemPhieu.getText();
@@ -1874,11 +1947,23 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         }
         sorterPhieu.setRowFilter(rf);
     }
-    
+
     // Ánh xạ dòng được chọn của bảng này sang bảng khác
     private void mapSelectionTable(JTable TableToClick, JTable TableToMap) {
         int rowTableToClick = TableToClick.convertRowIndexToModel(TableToClick.getSelectedRow());
         int rowTableToMap = TableToMap.convertRowIndexToView(rowTableToClick);
         TableToMap.setRowSelectionInterval(rowTableToMap, rowTableToMap);
     }
+    
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void disableEnterCellNextLine(JTable table) {
+        int row = table.getSelectedRow();
+        if (row == 0) {
+            row = table.getRowCount() - 1;
+        } else {
+            row--;
+        }
+        table.setRowSelectionInterval(row, row);
+    }
+    
 }

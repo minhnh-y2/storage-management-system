@@ -13,19 +13,16 @@ import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.XOptionPane;
-import com.stoman.utils.JSpinnerEditor;
 import com.stoman.utils.JSpinnerStringEditor;
 import com.stoman.utils.JTextFieldCustom;
+import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XNumber;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.KeyStroke;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
@@ -35,7 +32,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
 
 /**
  *
@@ -68,12 +64,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         lblTenHangHoa = new javax.swing.JLabel();
         lblDonViTinh = new javax.swing.JLabel();
         lblDonGia = new javax.swing.JLabel();
-        txtMaHH = new JTextFieldCustom();
-        txtTenHH = new JTextFieldCustom();
-        txtDonViTinh = new JTextFieldCustom();
+        txtMaHH = new com.stoman.utils.JTextFieldCustom();
+        txtTenHH = new com.stoman.utils.JTextFieldCustom();
+        txtDonViTinh = new com.stoman.utils.JTextFieldCustom();
         txtDonGia = new javax.swing.JFormattedTextField();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiemHangHoa = new JTextFieldCustom(defaultSearchHangHoa);
+        txtTimKiemHangHoa = new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiemHangHoa = new javax.swing.JComboBox<>();
         lblLHH1 = new javax.swing.JLabel();
@@ -93,7 +89,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         btnXoaLHH = new javax.swing.JButton();
         btnSuaLHH = new javax.swing.JButton();
         lblLHH = new javax.swing.JLabel();
-        txtTimKiemLHH = new JTextFieldCustom(defaultSearchLoaiHH);
+        txtTimKiemLHH = new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiHH);
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -102,6 +98,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("StoMan - Quản lý hàng hoá");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -204,7 +201,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(lblLHH1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTimKiemHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(txtTimKiemHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTimKiem2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -403,8 +400,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_add_list_24px_4.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnThem.setText("Thêm hàng hoá");
+        btnThem.setPreferredSize(new java.awt.Dimension(145, 35));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -416,8 +413,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnXoa.setText("Xoá hàng hoá");
+        btnXoa.setPreferredSize(new java.awt.Dimension(145, 35));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -429,8 +426,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnSua.setText("Sửa hàng hoá");
+        btnSua.setPreferredSize(new java.awt.Dimension(145, 35));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -442,8 +439,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_24px.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnMoi.setText("Làm mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(145, 35));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -461,7 +458,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlThongTinHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -488,7 +485,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDieuHuongTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(pnlTblHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -599,10 +596,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void tblHangHoaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblHangHoaPropertyChange
         // TODO add your handling code here:
-        if ("tableCellEditor".equals(evt.getPropertyName())) {
-            if (!tblHangHoa.isEditing()) {
-                updateDonGia();
-            }
+        if (this.row >= 0) {
+            updateDonGia();
         }
     }//GEN-LAST:event_tblHangHoaPropertyChange
 
@@ -614,14 +609,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void tblHangHoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHangHoaKeyReleased
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (this.row == 0) {
-                this.row = tblHangHoa.getRowCount() - 1;
-            } else {
-                this.row--;
-            }
-            updateDonGia();
-        }
+        disableEnterCellNextLine(tblHangHoa);
+        updateDonGia();
     }//GEN-LAST:event_tblHangHoaKeyReleased
 
     /**
@@ -1061,7 +1050,11 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         };
 
         tblHangHoa.setModel(modelHangHoa);
+
+        // Set Table Sorter
         sorterHangHoa = new TableRowSorter<>(modelHangHoa);
+        sorterHangHoa.setStringConverter(new LowerCaseStringConverter());
+        sorterHangHoa.setComparator(3, new DoubleComparator(numPattern));
         tblHangHoa.setRowSorter(sorterHangHoa);
 
         // Set size column
@@ -1084,14 +1077,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     private void updateDonGia() {
-        double donGia = XNumber.toDouble((String) modelHangHoa.getValueAt(row, 3), numPattern);
-        String maHH = (String) modelHangHoa.getValueAt(row, 1);
+        double donGia = XNumber.toDouble((String) tblHangHoa.getValueAt(row, 3), numPattern);
+        String maHH = (String) tblHangHoa.getValueAt(row, 1);
         HangHoa hh = hhDAO.selectByID(maHH);
         hh.setDonGia(donGia);
         hhDAO.update(hh);
-        if (row >= 0) {
-            edit();
-        }
+        edit();
     }
 
     private void searchPhieu() {
@@ -1101,18 +1092,6 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         if (keyword.equals(defaultSearchHangHoa)) {
             keyword = "";
         }
-
-        sorterHangHoa.setStringConverter(new TableStringConverter() {
-            @Override
-            public String toString(TableModel model, int row, int column) {
-                if (column == 3) {
-                    return model.getValueAt(row, column).toString().toLowerCase().replaceAll("[,.]", "");
-                }
-                return model.getValueAt(row, column).toString().toLowerCase();
-            }
-        });
-
-        sorterHangHoa.setComparator(3, new DoubleComparator(numPattern));
 
         RowFilter<TableModel, Object> rf = null;
         try {
@@ -1135,4 +1114,15 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private Timer timer = new Timer(300000, (e) -> {
         refreshForm();
     });
+
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void disableEnterCellNextLine(JTable table) {
+        int row = table.getSelectedRow();
+        if (row == 0) {
+            row = table.getRowCount() - 1;
+        } else {
+            row--;
+        }
+        table.setRowSelectionInterval(row, row);
+    }
 }

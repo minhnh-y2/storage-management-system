@@ -57,14 +57,14 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         lblMatKhau = new javax.swing.JLabel();
         lblXacNhanMK = new javax.swing.JLabel();
         lblVaiTro = new javax.swing.JLabel();
-        txtMaNV = new JTextFieldCustom();
-        txtHoTen = new JTextFieldCustom();
+        txtMaNV = new com.stoman.utils.JTextFieldCustom();
+        txtHoTen = new com.stoman.utils.JTextFieldCustom();
         txtMatKhau = new javax.swing.JPasswordField();
         txtXacNhanMK = new javax.swing.JPasswordField();
         rdoTruongKho = new javax.swing.JRadioButton();
         rdoThuKho = new javax.swing.JRadioButton();
         pnlTimKiem = new javax.swing.JPanel();
-        txtTimKiem = new JTextFieldCustom(defaultSearchNhanVien);
+        txtTimKiem = new com.stoman.utils.JTextFieldCustom(defaultSearchNhanVien);
         lblTimKiem2 = new javax.swing.JLabel();
         cboTimKiem = new javax.swing.JComboBox<>();
         pnlDieuHuongTitle = new javax.swing.JPanel();
@@ -329,7 +329,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridLayout(4, 1));
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_24px.png"))); // NOI18N
-        btnMoi.setText("Mới");
+        btnMoi.setText("Làm mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -338,7 +338,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnMoi);
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_add_list_24px_4.png"))); // NOI18N
-        btnThem.setText("Thêm");
+        btnThem.setText("Thêm nhân viên");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -347,7 +347,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnThem);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
+        btnXoa.setText("Xoá nhân viên");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -356,7 +356,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnXoa);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
-        btnSua.setText("Sửa");
+        btnSua.setText("Sửa thông tin");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -370,7 +370,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             pnlChucNangTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChucNangTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlChucNangTitleLayout.setVerticalGroup(
@@ -611,6 +611,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             worker = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     String keyword = txtTimKiem.getText();
                     if (keyword.equals(defaultSearchNhanVien)) {
                         keyword = "";

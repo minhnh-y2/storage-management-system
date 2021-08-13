@@ -53,7 +53,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         pnlDangNhap = new javax.swing.JPanel();
-        pnlMotion = new JPanelDrag(this);
+        pnlMotion = new com.stoman.utils.JPanelDrag(this);
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -96,7 +96,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMaNV.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(255, 255, 255));
-        txtMaNV.setText("trungtv");
         txtMaNV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtMaNV.setCaretColor(new java.awt.Color(255, 255, 255));
         txtMaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -110,7 +109,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMatKhau.setBackground(new java.awt.Color(0, 0, 0, 0));
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        txtMatKhau.setText("12345");
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtMatKhau.setCaretColor(new java.awt.Color(255, 255, 255));
         txtMatKhau.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
