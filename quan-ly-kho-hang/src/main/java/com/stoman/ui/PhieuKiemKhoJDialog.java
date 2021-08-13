@@ -167,6 +167,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 tblCTPhieu_ChiTietMouseClicked(evt);
             }
         });
+        tblCTPhieu_ChiTiet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieu_ChiTietKeyReleased(evt);
+            }
+        });
         pnlTblCTPhieu_ChiTiet.setViewportView(tblCTPhieu_ChiTiet);
 
         btnXoaKhoiDS.setText("Xóa khỏi danh sách");
@@ -322,13 +327,22 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tblCTPhieu.setColumnSelectionAllowed(false);
         tblCTPhieu.setRowHeight(25);
         tblCTPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieu.getTableHeader().setReorderingAllowed(false);
         tblCTPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCTPhieuMouseClicked(evt);
+            }
+        });
+        tblCTPhieu.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblCTPhieuPropertyChange(evt);
+            }
+        });
+        tblCTPhieu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblCTPhieuKeyReleased(evt);
             }
         });
         pnlTblCTPhieu.setViewportView(tblCTPhieu);
@@ -377,7 +391,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         txtNgayLap.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         txtNgayKiem.setDate(new Date());
-        txtNgayKiem.setDateFormatString("dd-MM-yyyy");
         txtNgayKiem.setOpaque(false);
 
         javax.swing.GroupLayout pnlThongTinLayout = new javax.swing.GroupLayout(pnlThongTin);
@@ -926,6 +939,25 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.rowCTPhieu = tblCTPhieu.getSelectedRow();
         mapSelectionTable(tblCTPhieu, tblCTPhieu_ChiTiet);
     }//GEN-LAST:event_tblCTPhieuMouseClicked
+
+    private void tblCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieuKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu);
+        updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
+    }//GEN-LAST:event_tblCTPhieuKeyReleased
+
+    private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
+        // TODO add your handling code here:
+        disableEnterCellNextLine(tblCTPhieu_ChiTiet);
+        updateSoLuongThuc(tblCTPhieu_ChiTiet, tblCTPhieu_ChiTiet.getSelectedRow());
+    }//GEN-LAST:event_tblCTPhieu_ChiTietKeyReleased
+
+    private void tblCTPhieuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieuPropertyChange
+        // TODO add your handling code here:
+        if(tblCTPhieu.getSelectedRow() >= 0) {
+            updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
+        }
+    }//GEN-LAST:event_tblCTPhieuPropertyChange
     
     /**
      * @param args the command line arguments
@@ -1216,7 +1248,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Đỗ dữ liệu vào bảng hàng hóa trong kho
     private SwingWorker workerHHKho;
-
     private void fillToTableHHkho() {
         if (workerHHKho != null) {
             workerHHKho.cancel(true);
@@ -1411,6 +1442,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         PhieuKiemKho pkk = pkkDAO.selectByID(maPhieu);
         pkk.setTrangThai(isHoanThanh);
         pkkDAO.update(pkk);
+    }
+    
+    private void updateSoLuongThuc(JTable table, int row) {
+        Double soLuongThuc = (Double) table.getValueAt(row, 3);
+        int maCTP = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
+        ChiTietKiemKho ctkk = ctkkDAO.selectByID(maCTP);
+        ctkk.setSoLuongThuc(soLuongThuc);
+        ctkkDAO.update(ctkk);
     }
 
     // Xóa phiếu kiểm khỏi hệ thống
@@ -1872,4 +1911,16 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int rowTableToMap = TableToMap.convertRowIndexToView(rowTableToClick);
         TableToMap.setRowSelectionInterval(rowTableToMap, rowTableToMap);
     }
+    
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void disableEnterCellNextLine(JTable table) {
+        int row = table.getSelectedRow();
+        if (row == 0) {
+            row = table.getRowCount() - 1;
+        } else {
+            row--;
+        }
+        table.setRowSelectionInterval(row, row);
+    }
+    
 }

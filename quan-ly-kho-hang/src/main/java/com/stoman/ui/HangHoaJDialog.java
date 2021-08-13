@@ -22,6 +22,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
@@ -594,10 +595,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void tblHangHoaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblHangHoaPropertyChange
         // TODO add your handling code here:
-        if ("tableCellEditor".equals(evt.getPropertyName())) {
-            if (this.row >= 0) {
-                updateDonGia();
-            }
+        if (this.row >= 0) {
+            updateDonGia();
         }
     }//GEN-LAST:event_tblHangHoaPropertyChange
 
@@ -609,14 +608,8 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     private void tblHangHoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHangHoaKeyReleased
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (this.row == 0) {
-                this.row = tblHangHoa.getRowCount() - 1;
-            } else {
-                this.row--;
-            }
-            updateDonGia();
-        }
+        disableEnterCellNextLine(tblHangHoa);
+        updateDonGia();
     }//GEN-LAST:event_tblHangHoaKeyReleased
 
     /**
@@ -1083,14 +1076,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     }
 
     private void updateDonGia() {
-        double donGia = XNumber.toDouble((String) modelHangHoa.getValueAt(row, 3), numPattern);
-        String maHH = (String) modelHangHoa.getValueAt(row, 1);
+        double donGia = XNumber.toDouble((String) tblHangHoa.getValueAt(row, 3), numPattern);
+        String maHH = (String) tblHangHoa.getValueAt(row, 1);
         HangHoa hh = hhDAO.selectByID(maHH);
         hh.setDonGia(donGia);
         hhDAO.update(hh);
-        if (row >= 0) {
-            edit();
-        }
+        edit();
     }
 
     private void searchPhieu() {
@@ -1122,4 +1113,15 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     private Timer timer = new Timer(300000, (e) -> {
         refreshForm();
     });
+
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void disableEnterCellNextLine(JTable table) {
+        int row = table.getSelectedRow();
+        if (row == 0) {
+            row = table.getRowCount() - 1;
+        } else {
+            row--;
+        }
+        table.setRowSelectionInterval(row, row);
+    }
 }

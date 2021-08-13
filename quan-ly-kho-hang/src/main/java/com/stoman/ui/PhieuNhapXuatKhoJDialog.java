@@ -1324,14 +1324,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            enterCellEditorNoDownTheLine(tblCTPhieu_ChiTiet);
+            enterCellNextLine(tblCTPhieu_ChiTiet);
         }
     }//GEN-LAST:event_tblCTPhieu_ChiTietKeyReleased
 
     private void tblCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieuKeyReleased
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            enterCellEditorNoDownTheLine(tblCTPhieu);
+            enterCellNextLine(tblCTPhieu);
         }
     }//GEN-LAST:event_tblCTPhieuKeyReleased
 
@@ -2789,7 +2789,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         return true;
     }
 
-    // Đỗ lại dữ liệu 
+    // Đổ lại dữ liệu 
     public void refreshForm() {
         this.fillToComboBoxKho();
         this.fillToTablePhieu();
@@ -2799,12 +2799,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.timer.restart();
     }
 
-    // sau hai phút tải lại dữ liệu
+    // Sau hai phút tải lại dữ liệu
     private Timer timer = new Timer(120000, (e) -> {
         refreshForm();
     });
 
-    private void enterCellEditorNoDownTheLine(JTable table) {
+    // Nhấn enter không xuống dòng tiếp theo khi đang sửa ô trong table
+    private void enterCellNextLine(JTable table) {
         int row = table.getSelectedRow();
         if (row == 0) {
             row = table.getRowCount() - 1;
