@@ -1546,8 +1546,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
-        Auth.user = nvDAO.selectByID("minhnh");
-
         this.formatTable();
 
         this.refreshForm();
