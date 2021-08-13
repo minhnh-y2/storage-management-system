@@ -124,7 +124,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnLast = new javax.swing.JButton();
         pnlChucNang = new javax.swing.JPanel();
         btnMoi = new javax.swing.JButton();
-        btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
@@ -475,23 +474,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnMoi, gridBagConstraints);
-
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setEnabled(false);
-        btnThem.setPreferredSize(new java.awt.Dimension(140, 40));
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 15;
-        pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá");
@@ -504,7 +488,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
@@ -518,7 +502,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
@@ -532,7 +516,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
@@ -546,7 +530,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
@@ -560,7 +544,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
@@ -1248,11 +1232,23 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
-        delCTP.clear();
-        this.clearForm();
-        btnChiTiet.setEnabled(true);
-        btnThem.setEnabled(true);
-        ChiTietPhieuDialog.setVisible(true);
+
+        //btnChiTiet.setEnabled(true);
+        //btnThem.setEnabled(true);
+        isInsert = true;
+        if (btnMoi.getText().equals("Mới")) {
+            this.clearForm();
+            ChiTietPhieuDialog.setVisible(true);
+            return;
+        }
+        if (btnMoi.getText().equals("Thêm")) {
+            this.insertPhieu();
+            btnMoi.setText("Mới");
+            btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
+            btnChiTiet.setEnabled(false);
+            isInsert = false;
+        }
+        
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -1264,10 +1260,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.deletePhieu();
     }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        this.insertPhieu();
-    }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
@@ -1419,7 +1411,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemCTP;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaCTP;
@@ -1546,6 +1537,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     private final String reportPath = "/com/stoman/reports/InPhieuNhapXuatKho.jrxml";
 
     private boolean isUpdate = false;
+    private boolean isInsert = false;
 
     private int rowPhieu = -1;
 
@@ -1576,6 +1568,23 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ChiTietPhieuDialog.setLocationRelativeTo(null);
         ChiTietPhieuDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         ChiTietPhieuDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+        ChiTietPhieuDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                if (isInsert == true) {
+                    if (modelCTPhieu.getRowCount() == 0) {
+                        btnMoi.setText("Mới");
+                        btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
+                        btnChiTiet.setEnabled(false);
+                    } else {
+                        btnMoi.setText("Thêm");
+                        btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png")));
+                        btnChiTiet.setEnabled(true);
+                    }
+                }
+            }
+        });
 
         QRCodeDialog.pack();
         QRCodeDialog.setLocationRelativeTo(null);
@@ -1910,7 +1919,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         if (cboHangHoa.getItemCount() == 0) {
             return;
         }
-        
+
         if (listCT.contains(hh)) {
             XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
             for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
@@ -1954,7 +1963,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int delRow = tblCTPhieu_ChiTiet.getSelectedRow();
 
         if (delRow < 0) {
-            XOptionPane.alert(this, "Chọn một hàng hoá cần xoá!");
+            XOptionPane.alert(ChiTietPhieuDialog, "Chọn một hàng hoá cần xoá!");
             return;
         }
 
@@ -2011,12 +2020,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int rows = modelCTPhieu.getRowCount();
         btnChiTiet.setEnabled(true);
 
-        if (rows < 1) {
-            XOptionPane.alert(this, "Danh sách hàng hoá trống!");
-            ChiTietPhieuDialog.setVisible(true);
-            return;
-        }
-
         Phieu phieu = this.getFormPhieu();
         ChiTietPhieu ctp;
         pDAO.insert(phieu);
@@ -2054,7 +2057,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieu();
 
         XOptionPane.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
-        btnChiTiet.setEnabled(false);
     }
 
     // Cập nhật phiếu vào hệ thống và cập nhật thông tin hàng hóa
@@ -2235,6 +2237,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
 
+        this.isInsert = !edit;
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
