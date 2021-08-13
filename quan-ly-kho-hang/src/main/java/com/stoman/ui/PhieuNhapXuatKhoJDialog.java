@@ -466,7 +466,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
-        btnMoi.setText("Mới");
+        btnMoi.setText("Phiếu mới");
         btnMoi.setPreferredSize(new java.awt.Dimension(140, 40));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,7 +478,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
+        btnXoa.setText("Xoá phiếu");
         btnXoa.setPreferredSize(new java.awt.Dimension(140, 40));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,7 +492,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
-        btnSua.setText("Sửa");
+        btnSua.setText("Sửa phiếu");
         btnSua.setPreferredSize(new java.awt.Dimension(140, 40));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -501,12 +501,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
-        btnChiTiet.setText("Chi tiết");
+        btnChiTiet.setText("Chi tiết phiếu");
         btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 40));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -520,7 +520,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
-        btnXuatMaPhieu.setText("QR Code");
+        btnXuatMaPhieu.setText("Mã phiếu QR");
         btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 40));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -534,7 +534,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
-        btnHoanTac.setText("Hoàn tác sửa");
+        btnHoanTac.setText("Huỷ thay đổi");
         btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 40));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -543,7 +543,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
@@ -1236,14 +1236,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         //btnChiTiet.setEnabled(true);
         //btnThem.setEnabled(true);
         isInsert = true;
-        if (btnMoi.getText().equals("Mới")) {
+        if (btnMoi.getText().equals("Phiếu mới")) {
             this.clearForm();
             ChiTietPhieuDialog.setVisible(true);
             return;
         }
-        if (btnMoi.getText().equals("Thêm")) {
+        if (btnMoi.getText().equals("Thêm phiếu")) {
             this.insertPhieu();
-            btnMoi.setText("Mới");
+            btnMoi.setText("Phiếu mới");
             btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
             btnChiTiet.setEnabled(false);
             isInsert = false;
@@ -1572,11 +1572,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             public void windowClosing(java.awt.event.WindowEvent e) {
                 if (isInsert == true) {
                     if (modelCTPhieu.getRowCount() == 0) {
-                        btnMoi.setText("Mới");
+                        btnMoi.setText("Phiếu mới");
                         btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png")));
                         btnChiTiet.setEnabled(false);
                     } else {
-                        btnMoi.setText("Thêm");
+                        btnMoi.setText("Thêm phiếu");
                         btnMoi.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png")));
                         btnChiTiet.setEnabled(true);
                     }

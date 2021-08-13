@@ -30,7 +30,6 @@ import com.stoman.utils.TableNumberCellRenderer;
 import com.stoman.utils.JSpinnerEditor;
 import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XDate;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -544,7 +543,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.setLayout(new java.awt.GridBagLayout());
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
-        btnThem.setText("Thêm");
+        btnThem.setText("Thêm chi tiết");
         btnThem.setPreferredSize(new java.awt.Dimension(140, 45));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,7 +557,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
+        btnXoa.setText("Xoá phiếu");
         btnXoa.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -572,7 +571,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
         btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
-        btnHoanTac.setText("Hoàn tác sửa");
+        btnHoanTac.setText("Huỷ thay đổi");
         btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 45));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -586,7 +585,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
-        btnSua.setText("Sửa");
+        btnSua.setText("Sửa phiếu");
         btnSua.setPreferredSize(new java.awt.Dimension(140, 45));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -600,7 +599,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
-        btnMoi.setText("Mới");
+        btnMoi.setText("Phiếu mới");
         btnMoi.setPreferredSize(new java.awt.Dimension(140, 45));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -614,7 +613,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
-        btnChiTiet.setText("Chi tiết");
+        btnChiTiet.setText("Chi tiết phiêu");
         btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 45));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -628,7 +627,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
-        btnXuatMaPhieu.setText("QR Code");
+        btnXuatMaPhieu.setText("Mã phiếu QR");
         btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1126,6 +1125,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
+        Auth.user = nvDAO.selectByID("minhnh");
+        
         this.formatTable();
         this.fillToComboBoxTimKiemPhieu();
         this.fillToComboBoxTimKiemCT();
@@ -1428,7 +1429,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int rows = modelCTPhieuKiem.getRowCount();
 
         if (rows < 1) {
-            XOptionPane.alert(this, "Danh sách hàng hoá trống!");
+            XOptionPane.alert(this, "Danh sách hàng hoá kiểm trống!");
             return;
         }
 

@@ -371,7 +371,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                         .addComponent(rdoKhachHang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoNhaPhanPhoi)
-                        .addGap(0, 153, Short.MAX_VALUE))
+                        .addGap(0, 163, Short.MAX_VALUE))
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDienThoai)
@@ -411,8 +411,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangTitle.setLayout(new java.awt.GridBagLayout());
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_24px.png"))); // NOI18N
-        btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnMoi.setText("Làm mới");
+        btnMoi.setPreferredSize(new java.awt.Dimension(140, 30));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -427,8 +427,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangTitle.add(btnMoi, gridBagConstraints);
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_add_list_24px_4.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnThem.setText("Thêm đối tác");
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 30));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -443,8 +443,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangTitle.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_24px.png"))); // NOI18N
-        btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnXoa.setText("Xoá đối tác");
+        btnXoa.setPreferredSize(new java.awt.Dimension(140, 30));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -459,8 +459,8 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangTitle.add(btnXoa, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnSua.setText("Sửa đối tác");
+        btnSua.setPreferredSize(new java.awt.Dimension(140, 30));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
