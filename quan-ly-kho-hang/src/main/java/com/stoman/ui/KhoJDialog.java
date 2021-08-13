@@ -470,6 +470,7 @@ public class KhoJDialog extends javax.swing.JDialog {
             worker = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     String keyword = txtTimKiem.getText();
                     if (keyword.equals(defaultSearchKho)) {
                         keyword = "";

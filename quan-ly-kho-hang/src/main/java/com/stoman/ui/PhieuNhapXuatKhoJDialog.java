@@ -283,7 +283,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLoaiHH)
                     .addComponent(cboLoaiHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTenHH)
                     .addComponent(cboHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -296,6 +296,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnThemCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThemCTP.setText("Thêm");
+        btnThemCTP.setPreferredSize(new java.awt.Dimension(100, 35));
         btnThemCTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemCTPActionPerformed(evt);
@@ -305,7 +306,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnXoaCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoaCTP.setText("Xoá");
-        btnXoaCTP.setPreferredSize(new java.awt.Dimension(88, 30));
+        btnXoaCTP.setPreferredSize(new java.awt.Dimension(100, 35));
         btnXoaCTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaCTPActionPerformed(evt);
@@ -326,7 +327,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
                         .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -338,7 +339,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -597,18 +598,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         txtDaThanhToan.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.0"))));
         txtDaThanhToan.setText("0.0");
-        txtDaThanhToan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDaThanhToan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTongTien.setText("0.0");
         lblTongTien.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 7, 1, 1));
 
         chkThanhToan.setText("Hoàn thành thanh toán cho đối tác");
-        chkThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                chkThanhToanMouseClicked(evt);
-            }
-        });
         chkThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkThanhToanActionPerformed(evt);
@@ -895,12 +891,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(lblTimKiemCT2)
                             .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1146,7 +1142,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(lblTimKiemPhieu2)
                     .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(scrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1179,8 +1175,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
         //this.rowPhieu = ((Integer) tblPhieu.getValueAt(tblPhieu.getSelectedRow(), 0)) - 1;
         this.rowPhieu = tblPhieu.getSelectedRow();
+        if(tblPhieu.getValueAt(rowPhieu, tblPhieu.getSelectedColumn()) == null) {
+            return;
+        }
         edit();
-
     }//GEN-LAST:event_tblPhieuMouseClicked
 
     private void btnThemCTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTPActionPerformed
@@ -1252,6 +1250,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         delCTP.clear();
         this.clearForm();
+        for (int i = 0; i < listCT.size(); i++) {
+            System.out.println("Truoc: " + listCT.get(i));
+        }
+        ChiTietPhieuDialog.setVisible(true);      
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -1288,10 +1290,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         first();
     }//GEN-LAST:event_btnFirstActionPerformed
-
-    private void chkThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkThanhToanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkThanhToanMouseClicked
 
     private void cboKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKhoActionPerformed
         // TODO add your handling code here:
@@ -1374,7 +1372,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnHoanTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacActionPerformed
         // TODO add your handling code here:
-        edit();
+        fillToTableCTPhieu();
     }//GEN-LAST:event_btnHoanTacActionPerformed
 
     /**
@@ -1612,6 +1610,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             workerPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     int i = 1;
                     int hoanThanh = 0;
                     int cThanhToan = 0;
@@ -1680,7 +1679,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu chi tiết phiếu
     private SwingWorker workerCTPhieu;
-
     private void fillToTableCTPhieu() {
         if (workerCTPhieu != null) {
             workerCTPhieu.cancel(true);
@@ -1702,6 +1700,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             workerCTPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     int i = 1;
                     double tongTien = 0;
                     double ton = 0;
@@ -1716,7 +1715,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         if (rdoPhieuXuat.isSelected() && ctp.isTrangThai()) {
                             ton += ctp.getSoLuong();
                         }
-
+                        
                         modelCTPhieu.addRow(new Object[]{
                             i++,
                             hh,
@@ -1728,6 +1727,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             ton,
                             ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
                         });
+                        
                         listCT.add(hh);
                     }
                     tblCTPhieu.setModel(modelCTPhieu);
@@ -1905,19 +1905,19 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         HangHoa hh = (HangHoa) cboHangHoa.getSelectedItem();
         Kho k = (Kho) cboKho.getSelectedItem();
 
+        if (cboHangHoa.getItemCount() == 0) {
+            return;
+        }
+
         if (listCT.contains(hh)) {
             XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
             for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
                 HangHoa hangHoa = (HangHoa) tblCTPhieu_ChiTiet.getValueAt(i, 1);
-                if(hangHoa.getMaHH().equals(hh.getMaHH())){
+                if (hangHoa.getMaHH().equals(hh.getMaHH())) {
                     tblCTPhieu_ChiTiet.setRowSelectionInterval(i, i);
                     break;
                 }
             }
-            return;
-        }
-        
-        if (cboHangHoa.getItemCount() == 0) {
             return;
         }
 
@@ -2141,6 +2141,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Xoá phieu khoi he thong
     private void deletePhieu() {
         Phieu phieu = this.getFormPhieu();
+        
+        if(!XOptionPane.confirm(this, "Bạn chắc chắn muốn xoá phiếu "+ (phieu.isLoai() ? "nhập" : "xuất") + " này ?")){
+            return;
+        }
+        
         String maPhieu = tblCTPhieu.getToolTipText();
 
         if (maPhieu == null) {
@@ -2179,7 +2184,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         XOptionPane.alert(this, "Xóa phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
-    
+
     // Xóa trắng form
     private void clearForm() {
         Date NgayLap = new Date(System.currentTimeMillis());
@@ -2202,11 +2207,15 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu.setToolTipText(null);
         lblQRCodeImage.setIcon(null);
         txtDaThanhToan.setText("0.0");
+
+        cboLoaiHH.setSelectedIndex(0);
+
         this.fillToTableCTPhieu();
 
         this.rowPhieu = -1;
 
         this.delCTP.clear();
+        this.listCT.clear();
 
         isUpdate = false;
         this.updateStatus();
@@ -2237,7 +2246,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // Kiểm tra trạng thái hoàn thành phiếu
         boolean isCompleted = chkChuyenHang.isSelected();
         if (!isCompleted) {
-            txtNgayHoanThanh.setDate(null);
+            txtNgayHoanThanh.setDate(new Date());
         }
         txtNgayHoanThanh.setEnabled(isCompleted);
 
@@ -2356,8 +2365,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         // Chỉnh độ dài các cột bảng Phiếu
         tblPhieu.getColumnModel().getColumn(0).setPreferredWidth(35);
-        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(257);
-        tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(35);
+        tblPhieu.getColumnModel().getColumn(1).setPreferredWidth(293);
+        tblPhieu.getColumnModel().getColumn(2).setPreferredWidth(0);
+        tblPhieu.getColumnModel().getColumn(2).setMinWidth(0);
+        tblPhieu.getColumnModel().getColumn(2).setMaxWidth(0);
         tblPhieu.getColumnModel().getColumn(3).setPreferredWidth(35);
         tblPhieu.getColumnModel().getColumn(4).setPreferredWidth(95);
         tblPhieu.getColumnModel().getColumn(5).setPreferredWidth(90);
@@ -2702,10 +2713,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         isUpdate = true;
         this.updateStatus();
 
-        if(rowPhieu >= 0) {
-            tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
-        }
-        
+        tblPhieu.setRowSelectionInterval(rowPhieu, rowPhieu);
     }
 
     // Tạo mã QR chứa mã phiếu
@@ -2800,7 +2808,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             tongTien += XNumber.toDouble((String) table.getModel().getValueAt(i, 5), numFormat);
         }
         lblTongTien.setText(XNumber.toString(tongTien, numFormat));
-        
+
         // Tự động cập nhật số lượng và đơn giá vào CSDL
         /*
         int maChiTiet = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
@@ -2809,7 +2817,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         ctp.setSoLuong(soLuong);
         ctp.setDonGia(donGia);
         ctpDAO.update(ctp);
-        */
+         */
     }
 
     // Xác thực form

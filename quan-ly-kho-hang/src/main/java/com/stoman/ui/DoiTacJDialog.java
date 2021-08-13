@@ -750,7 +750,6 @@ public class DoiTacJDialog extends javax.swing.JDialog {
                 @Override
                 protected Object doInBackground() throws Exception {
                     Thread.sleep(100);
-
                     String keyword = txtTimKiemDT.getText();
                     if (keyword.equals(defaultSearchDoiTac)) {
                         keyword = "";

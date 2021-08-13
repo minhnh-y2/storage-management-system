@@ -552,6 +552,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnThem, gridBagConstraints);
 
@@ -565,7 +567,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
@@ -579,7 +581,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
@@ -593,7 +595,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
@@ -607,7 +609,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
@@ -1178,6 +1180,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<PhieuKiemKho> list = pkkDAO.selectAll();
                     int i = 1;
                     for (PhieuKiemKho pkk : list) {
@@ -1238,6 +1241,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerCTPhieu = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<ChiTietKiemKho> list = ctkkDAO.selectByMaPhieu(Integer.parseInt(maPhieu));
                     int i = 1;
                     for (ChiTietKiemKho ctkk : list) {
@@ -1289,6 +1293,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             workerHHKho = new SwingWorker() {
                 @Override
                 protected Object doInBackground() throws Exception {
+                    Thread.sleep(100);
                     List<LuuTru> list = ltDAO.selectNotInList(maKho, listCT);
                     int i = 1;
                     for (LuuTru lt : list) {
@@ -1350,6 +1355,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Thêm hàng hóa vào bảng Chi tiết
     private void insertCT() {
+        if (tblHangHoaKho.getSelectedRow() < 0) {
+            XOptionPane.alert(this, "Chọn một hàng hoá muốn thêm!");
+            return;
+        }
+        
         int selectRow = tblHangHoaKho.convertRowIndexToModel(tblHangHoaKho.getSelectedRow());
         int maLT = (Integer) modelHangHoaKho.getValueAt(selectRow, 3);
         modelCTPhieuKiem.addRow(new Object[]{
@@ -1369,6 +1379,11 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private ArrayList<ChiTietKiemKho> delCTP = new ArrayList<>();
 
     private void deleteCT() {
+        if (tblCTPhieu_ChiTiet.getSelectedRow() < 0) {
+            XOptionPane.alert(this, "Chọn một hàng hoá muốn xoá!");
+            return;
+        }
+        
         int delRow = tblCTPhieu_ChiTiet.convertRowIndexToModel(tblCTPhieu_ChiTiet.getSelectedRow());
         ChiTietKiemKho ctkk = this.getFormCTPhieu(delRow);
 

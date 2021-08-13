@@ -21,7 +21,7 @@ public class PhieuDAO extends StoManDAO<Phieu, Integer>{
 
     @Override  
     public void insert(Phieu entity) {
-        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, TINHTRANGTT, SOTIENDATHANHTOAN, MANV) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PHIEU (NGAYLAP, LOAI, TRANGTHAI, NGTHUCHIEN, NGHOANTHANH, GHICHU, MADT, TINHTRANGTT, SOTIENDATHANHTOAN, MANV) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql,
                 entity.getNgayLap(),
                 entity.isLoai(),
