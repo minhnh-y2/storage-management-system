@@ -42,7 +42,6 @@ import com.stoman.utils.XDate;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -1250,9 +1249,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         delCTP.clear();
         this.clearForm();
-        for (int i = 0; i < listCT.size(); i++) {
-            System.out.println("Truoc: " + listCT.get(i));
-        }
+        btnChiTiet.setEnabled(true);
         ChiTietPhieuDialog.setVisible(true);      
     }//GEN-LAST:event_btnMoiActionPerformed
 
@@ -1566,7 +1563,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.updateStatus();
         this.updateStatusChonLoaiPhieu();
-
+        
+        this.clearForm();
         this.timer.start();
     }
 
@@ -1952,9 +1950,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int delRow = tblCTPhieu_ChiTiet.getSelectedRow();
         int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
 
-        if (maCTP == 0) {
-            return;
-        }
+        //if (maCTP == 0) {
+        //    return;
+        //}
 
         listCT.remove((HangHoa) modelCTPhieu.getValueAt(delRow, 1));
 
@@ -2005,6 +2003,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
 
         int rows = modelCTPhieu.getRowCount();
+        btnChiTiet.setEnabled(true);
 
         if (rows < 1) {
             XOptionPane.alert(this, "Danh sách hàng hoá trống!");
@@ -2048,6 +2047,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieu();
 
         XOptionPane.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        btnChiTiet.setEnabled(false);
     }
 
     // Cập nhật phiếu vào hệ thống và cập nhật thông tin hàng hóa
@@ -2233,6 +2233,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnXoa.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
         btnXuatFile.setEnabled(edit);
+        btnChiTiet.setEnabled(edit);
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
         btnNext.setEnabled(edit && !last);
