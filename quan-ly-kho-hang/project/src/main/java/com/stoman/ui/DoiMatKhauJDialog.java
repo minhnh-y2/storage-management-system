@@ -8,7 +8,7 @@ package com.stoman.ui;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -211,7 +211,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
             Auth.user.setMatKhau(XPassword.getHashMD5(txtMatKhauMoi.getPassword(), muoi));
 
             dao.update(Auth.user);
-            XOptionPane.alert(this, "Đổi mật khẩu thành công!");
+            MsgBox.alert(this, "Đổi mật khẩu thành công!");
             this.dispose();
         }
     }
@@ -222,43 +222,43 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
     private boolean isValidated() {
         if (txtMatKhauCu.getPassword().length == 0) {
-            XOptionPane.alert(this, "Chưa nhập mật khẩu hiện tại!");
+            MsgBox.alert(this, "Chưa nhập mật khẩu hiện tại!");
             txtMatKhauCu.requestFocus();
             return false;
         }
         
         if (txtMatKhauMoi.getPassword().length == 0) {
-            XOptionPane.alert(this, "Chưa nhập mật khẩu mới!");
+            MsgBox.alert(this, "Chưa nhập mật khẩu mới!");
             txtMatKhauMoi.requestFocus();
             return false;
         }
         if (txtMatKhauMoi.getPassword().length < 8) {
-            XOptionPane.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
+            MsgBox.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
             txtMatKhauMoi.requestFocus();
             return false;
         }
         if (txtXacNhanMK.getPassword().length == 0) {
-            XOptionPane.alert(this, "Chưa nhập mật khẩu xác nhận!");
+            MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
             txtMatKhauMoi.requestFocus();
             return false;
         }
         if (!XPassword.isValidated(txtMatKhauCu.getPassword(),
                 Auth.user.getMatKhau(), Auth.user.getMuoi())) {
-            XOptionPane.alert(this, "Mật khẩu không đúng!");
+            MsgBox.alert(this, "Mật khẩu không đúng!");
             txtMatKhauCu.setText("");
             txtMatKhauCu.requestFocus();
             return false;
         }
         if (XPassword.isValidated(txtMatKhauMoi.getPassword(),
                 Auth.user.getMatKhau(), Auth.user.getMuoi())) {
-            XOptionPane.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
+            MsgBox.alert(this, "Mật khẩu mới không được trùng với mật khẩu cũ!");
             txtMatKhauCu.requestFocus();
             return false;
         }
         String matKhauMoi = new String(txtMatKhauMoi.getPassword());
         String xacNhanMKMoi = new String(txtXacNhanMK.getPassword());
         if (!matKhauMoi.equals(xacNhanMKMoi)) {
-            XOptionPane.alert(this, "Xác nhận mật khẩu không đúng!");
+            MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
             txtXacNhanMK.requestFocus();
             return false;
         }

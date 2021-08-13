@@ -13,7 +13,7 @@ import com.stoman.dao.ThongKeDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XNumber;
 import java.awt.Color;
@@ -71,6 +71,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTrangThai = new javax.swing.JLabel();
         toolBar = new javax.swing.JToolBar() {
             @Override
             protected void paintComponent(Graphics g){
@@ -256,7 +257,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblLoaiHangHoaTH = new javax.swing.JLabel();
         cboLoaiHangHoaTH = new javax.swing.JComboBox();
         pnlTrangThai = new javax.swing.JPanel();
-        lblTrangThai = new javax.swing.JLabel();
         lblDongHo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mnuHeThong = new javax.swing.JMenu();
@@ -275,6 +275,10 @@ public class StoManJFrame extends javax.swing.JFrame {
         mniNhanVien = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
         mniGioiThieu = new javax.swing.JMenuItem();
+
+        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/team_32px.png"))); // NOI18N
+        lblTrangThai.setText("Chưa đăng nhập!");
+        lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STOMAN - STROGE MANAGER SYSTEM");
@@ -483,7 +487,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                    .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
                     .addComponent(lblLocBieuDo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDShangHoa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,7 +501,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                         .addComponent(lblDShangHoa1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -719,7 +723,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(lblTopHH))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(pnlTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(separator12))
                 .addContainerGap())
@@ -882,7 +886,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addGroup(pnlTKNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTblTKnhap, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
@@ -974,7 +978,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                        .addComponent(oblTopHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKNhapLayout.createSequentialGroup()
                         .addComponent(lblTopLHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1139,7 +1143,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)))
+                            .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addGroup(pnlTKXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTKXuatLayout.createSequentialGroup()
@@ -1151,7 +1155,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cboTimKiemXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblDShangHoaXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTblTKxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
+                            .addComponent(lblTblTKxuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator24, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1231,7 +1235,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTKXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1459,13 +1463,13 @@ public class StoManJFrame extends javax.swing.JFrame {
             pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTongHopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
+                .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPhanTH)
                             .addComponent(lblDSTongHop))
-                        .addGap(6, 6, 6)
-                        .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTongHopLayout.createSequentialGroup()
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cboKhoTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1492,14 +1496,14 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addComponent(pnlTongLGNhapTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlTongCCGTXuatNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTongHopLayout.createSequentialGroup()
+                            .addGroup(pnlTongHopLayout.createSequentialGroup()
                                 .addGroup(pnlTongHopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTheoTH)
                                     .addComponent(lblTimKiemTH)
                                     .addComponent(txtTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboTimKiemTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                                .addComponent(lblTblTongHop, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(separator29))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1508,7 +1512,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongHopLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1524,11 +1528,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTrangThai.setBackground(new java.awt.Color(255, 255, 255));
         pnlTrangThai.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(102, 102, 102)));
         pnlTrangThai.setLayout(new java.awt.BorderLayout());
-
-        lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/team_32px.png"))); // NOI18N
-        lblTrangThai.setText("Chưa đăng nhập!");
-        lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-        pnlTrangThai.add(lblTrangThai, java.awt.BorderLayout.CENTER);
 
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/alarm_clock_32px.png"))); // NOI18N
         lblDongHo.setText("00:00:00 AM");
@@ -2628,7 +2627,7 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Thoát chương trình
     private void exit() {
-        if (XOptionPane.confirm(this, "Bạn có muốn kết thúc chương trình?")) {
+        if (MsgBox.confirm(this, "Bạn có muốn kết thúc chương trình?")) {
             System.exit(0);
         }
     }
@@ -2640,6 +2639,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý đối tác
     private void openDoiTacDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new DoiTacJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2654,6 +2657,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý hàng hoá
     private void openHangHoaDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new HangHoaJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2661,6 +2668,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý kho
     private void openKhoDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new KhoJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2668,6 +2679,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý nhân viên
     private void openNhanVienDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new NhanVienJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2675,6 +2690,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu kiểm kho
     private void openKiemKhoDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new PhieuKiemKhoJDialog(this, true).setVisible(true);
         this.refreshForm();
@@ -2682,6 +2701,10 @@ public class StoManJFrame extends javax.swing.JFrame {
 
     // Mở form quản lý phiếu nhập xuất kho
     private void openNhapXuatKhoDialog() {
+        if(!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+            return;
+        }
         this.timer.stop();
         new PhieuNhapXuatKhoJDialog(this, true).setVisible(true);
         this.refreshForm();

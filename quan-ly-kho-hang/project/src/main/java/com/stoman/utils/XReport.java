@@ -68,7 +68,7 @@ public class XReport {
             File selectedFile = fileChooser.getSelectedFile();
             
             if(selectedFile.exists())
-                if(!XOptionPane.confirm(fileChooser, "File tồn tại! Bạn có muốn ghi đè")) return null;
+                if(!MsgBox.confirm(fileChooser, "File tồn tại! Bạn có muốn ghi đè")) return null;
             
             String pathFile = selectedFile.getAbsolutePath();
             

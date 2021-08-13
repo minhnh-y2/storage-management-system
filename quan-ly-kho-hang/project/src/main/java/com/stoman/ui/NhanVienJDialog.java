@@ -9,7 +9,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
@@ -651,7 +651,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             };
             worker.execute();
         } catch (Exception e) {
-            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -767,32 +767,32 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         char[] xacNhanMK = txtXacNhanMK.getPassword();
 
         if (maNV.isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập mã nhân viên!");
+            MsgBox.alert(this, "Chưa nhập mã nhân viên!");
             txtMaNV.requestFocus();
             return false;
         }
         if (hoTen.isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập họ và tên!");
+            MsgBox.alert(this, "Chưa nhập họ và tên!");
             txtHoTen.requestFocus();
             return false;
         }
         if (matKhau.length == 0) {
-            XOptionPane.alert(this, "Chưa nhập mật khẩu!");
+            MsgBox.alert(this, "Chưa nhập mật khẩu!");
             txtMatKhau.requestFocus();
             return false;
         }
         if (matKhau.length < 8) {
-            XOptionPane.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
+            MsgBox.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
             txtMatKhau.requestFocus();
             return false;
         }
         if (xacNhanMK.length == 0) {
-            XOptionPane.alert(this, "Chưa nhập mật khẩu xác nhận!");
+            MsgBox.alert(this, "Chưa nhập mật khẩu xác nhận!");
             txtXacNhanMK.requestFocus();
             return false;
         }
         if (!new String(matKhau).equals(new String(xacNhanMK))) {
-            XOptionPane.alert(this, "Xác nhận mật khẩu không trùng khớp!");
+            MsgBox.alert(this, "Xác nhận mật khẩu không trùng khớp!");
             return false;
         }
         return true;
@@ -805,18 +805,19 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         }
 
         if (DAO.selectByID(txtMaNV.getText()) != null) {
-            XOptionPane.alert(this, "Mã nhân viên đã tồn tại!");
+            MsgBox.alert(this, "Mã nhân viên đã tồn tại!");
             txtHoTen.requestFocus();
             return;
         }
+        
         NhanVien nv = getForm();
         try {
             DAO.insert(nv);
             this.fillToTable();
             this.clearForm();
-            XOptionPane.alert(this, "Thêm mới thành công!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
-            XOptionPane.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thất bại!");
             e.printStackTrace();
         }
     }
@@ -825,19 +826,19 @@ public class NhanVienJDialog extends javax.swing.JDialog {
     private void delete() {
         String maNV = (String) tblNhanVien.getValueAt(this.row, 0);
         if (maNV.equals(Auth.user.getMaNV())) {
-            XOptionPane.alert(this, "Bạn không thể xoá chính bạn!");
+            MsgBox.alert(this, "Bạn không thể xoá chính bạn!");
             return;
         }
         String message = "Các phiếu nhập xuất và kiểm kho do nhân viên này lập sẽ bị xoá!"
                 + "\nBạn có chắc chắn xoá nhân viên này?";
-        if (XOptionPane.confirm(this, message)) {
+        if (MsgBox.confirm(this, message)) {
             try {
                 DAO.delete(maNV);
                 this.fillToTable();
                 this.clearForm();
-                XOptionPane.alert(this, "Xoá thành công!");
+                MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Xoá không thành công!");
+                MsgBox.alert(this, "Xoá không thành công!");
                 e.printStackTrace();
             }
         }
@@ -854,9 +855,9 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             DAO.update(nv);
             this.fillToTable();
             this.updateStatus();
-            XOptionPane.alert(this, "Cập nhật thành công!");
+            MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
-            XOptionPane.alert(this, "Cập nhật thất bại!");
+            MsgBox.alert(this, "Cập nhật thất bại!");
             e.printStackTrace();
         }
     }

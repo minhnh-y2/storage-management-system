@@ -23,7 +23,7 @@ import com.stoman.entity.PhieuKiemKho;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DateComparator;
 import com.stoman.utils.DateTimeComparator;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.XReport;
 import com.stoman.utils.TableNumberCellRenderer;
@@ -544,7 +544,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
         btnThem.setText("Thêm chi tiết");
-        btnThem.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnThem.setPreferredSize(new java.awt.Dimension(148, 45));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -558,7 +558,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá phiếu");
-        btnXoa.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnXoa.setPreferredSize(new java.awt.Dimension(148, 45));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -572,7 +572,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
         btnHoanTac.setText("Huỷ thay đổi");
-        btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnHoanTac.setPreferredSize(new java.awt.Dimension(148, 45));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoanTacActionPerformed(evt);
@@ -586,7 +586,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
         btnSua.setText("Sửa phiếu");
-        btnSua.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnSua.setPreferredSize(new java.awt.Dimension(148, 45));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -600,7 +600,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
         btnMoi.setText("Phiếu mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnMoi.setPreferredSize(new java.awt.Dimension(148, 45));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -613,8 +613,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
-        btnChiTiet.setText("Chi tiết phiêu");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnChiTiet.setText("Chi tiết phiếu");
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(148, 45));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
@@ -628,7 +628,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
         btnXuatMaPhieu.setText("Mã phiếu QR");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(148, 45));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
@@ -673,12 +673,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                                 .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                                 .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlTblCTPhieu)
                             .addComponent(pnlTimKiemCT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlChiTietPhieuKiemLayout.setVerticalGroup(
@@ -1125,8 +1125,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
-        Auth.user = nvDAO.selectByID("admin");
-        
         this.formatTable();
         this.fillToComboBoxTimKiemPhieu();
         this.fillToComboBoxTimKiemCT();
@@ -1358,7 +1356,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     // Thêm hàng hóa vào bảng Chi tiết
     private void insertCT() {
         if (tblHangHoaKho.getSelectedRow() < 0) {
-            XOptionPane.alert(this, "Chọn một hàng hoá muốn thêm!");
+            MsgBox.alert(this, "Chọn một hàng hoá muốn thêm!");
             return;
         }
         
@@ -1382,7 +1380,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private void deleteCT() {
         if (tblCTPhieu_ChiTiet.getSelectedRow() < 0) {
-            XOptionPane.alert(this, "Chọn một hàng hoá muốn xoá!");
+            MsgBox.alert(this, "Chọn một hàng hoá muốn xoá!");
             return;
         }
         
@@ -1430,7 +1428,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         int rows = modelCTPhieuKiem.getRowCount();
 
         if (rows < 1) {
-            XOptionPane.alert(this, "Danh sách hàng hoá kiểm trống!");
+            MsgBox.alert(this, "Danh sách hàng hoá kiểm trống!");
             return;
         }
 
@@ -1443,7 +1441,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.clearForm();
         this.fillToTablePhieu();
 
-        XOptionPane.alert(this, "Thêm phiếu kiểm thành công!");
+        MsgBox.alert(this, "Thêm phiếu kiểm thành công!");
     }
 
     // Cập nhật phiếu vào hệ thống và cập nhật thông tin hàng hóa
@@ -1479,7 +1477,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieu();
         this.fillToTableCTPhieu();
 
-        XOptionPane.alert(this, "Cập nhật phiếu kiểm thành công!");
+        MsgBox.alert(this, "Cập nhật phiếu kiểm thành công!");
     }
 
     private void updateTrangThaiPhieu() {
@@ -1523,7 +1521,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.clearForm();
         this.fillToTablePhieu();
 
-        XOptionPane.alert(this, "Xóa phiếu kiểm thành công!");
+        MsgBox.alert(this, "Xóa phiếu kiểm thành công!");
     }
 
     // Xóa trắng form
@@ -1697,7 +1695,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void createQRCode() {
         int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
         if (rowPhieuModel < 0) {
-            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
         } else {
             int maPhieu = (int) this.modelPhieu.getValueAt(rowPhieuModel, 6);
             try {
@@ -1705,7 +1703,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 lblQRCodeImage.setIcon(new ImageIcon(bi));
                 QRCodeDialog.setVisible(true);
             } catch (WriterException ex) {
-                XOptionPane.alert(this, "Lỗi tạo mã QR không thành công!");
+                MsgBox.alert(this, "Lỗi tạo mã QR không thành công!");
                 ex.printStackTrace();
             }
         }
@@ -1717,7 +1715,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void exportReportExcel() {
         int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
         if (rowPhieuModel < 0) {
-            XOptionPane.alert(this, "Chưa chọn phiếu!");
+            MsgBox.alert(this, "Chưa chọn phiếu!");
             return;
         }
 
@@ -1731,7 +1729,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             String fileName = "PhieuKiemKhoSo" + maKK;
             XReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
-            XOptionPane.alert(this, "Xuất file thất bại!");
+            MsgBox.alert(this, "Xuất file thất bại!");
             e.printStackTrace();
         }
     }
@@ -1740,7 +1738,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void printReport() {
         int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
         if (rowPhieuModel < 0) {
-            XOptionPane.alert(this, "Chưa chọn phiếu!");
+            MsgBox.alert(this, "Chưa chọn phiếu!");
             return;
         }
 
@@ -1754,7 +1752,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             String fileName = "PhieuKiemKhoSo" + maKK;
             XReport.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
-            XOptionPane.alert(this, "In phiếu thất bại!");
+            MsgBox.alert(this, "In phiếu thất bại!");
             e.printStackTrace();
         }
     }
@@ -1787,14 +1785,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     private boolean isValidated() {
         if (txtNgayKiem.getDate() == null) {
-            XOptionPane.alert(this, "Chưa nhập ngày thực hiện!");
+            MsgBox.alert(this, "Chưa nhập ngày thực hiện!");
             txtNgayKiem.requestFocus();
             return false;
         }
 
         Date ngayLap = XDate.toDate(txtNgayLap.getText(), dateFormat);
         if (txtNgayKiem.getDate().before(ngayLap)) {
-            XOptionPane.alert(this, "Ngày kiểm kho không nhỏ hơn ngày lập phiếu!");
+            MsgBox.alert(this, "Ngày kiểm kho không nhỏ hơn ngày lập phiếu!");
             txtNgayKiem.requestFocus();
             return false;
         }

@@ -32,7 +32,7 @@ import com.stoman.utils.DateTimeComparator;
 import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.TableDateCellRenderer;
 import com.stoman.utils.XReport;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.QRCode;
 import com.stoman.utils.JSpinnerEditor;
 import com.stoman.utils.JSpinnerStringEditor;
@@ -468,7 +468,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
         btnMoi.setText("Phiếu mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnMoi.setPreferredSize(new java.awt.Dimension(148, 40));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -480,7 +480,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá phiếu");
-        btnXoa.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnXoa.setPreferredSize(new java.awt.Dimension(148, 40));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -494,7 +494,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
         btnSua.setText("Sửa phiếu");
-        btnSua.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnSua.setPreferredSize(new java.awt.Dimension(148, 40));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -508,7 +508,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
         btnChiTiet.setText("Chi tiết phiếu");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(148, 40));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
@@ -522,7 +522,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
         btnXuatMaPhieu.setText("Mã phiếu QR");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(148, 40));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
@@ -536,7 +536,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
         btnHoanTac.setText("Huỷ thay đổi");
-        btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnHoanTac.setPreferredSize(new java.awt.Dimension(148, 40));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoanTacActionPerformed(evt);
@@ -756,7 +756,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(rdoPhieuXuat))
                             .addComponent(txtMaNV)
                             .addComponent(txtNgayLap)
-                            .addComponent(cboKho, 0, 312, Short.MAX_VALUE))
+                            .addComponent(cboKho, 0, 285, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -767,7 +767,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboLoaiDT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(txtNgayThucHien, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                             .addComponent(txtNgayHoanThanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboDoiTac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlGhiChu))
@@ -838,11 +838,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlChiTietLayout.createSequentialGroup()
-                                .addComponent(lblChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addComponent(pnlChucNang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlChiTietLayout.createSequentialGroup()
                         .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -876,12 +874,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             .addComponent(lblTimKiemCT2)
                             .addComponent(cboTimKiemCTPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                        .addComponent(pnlTblCTPhieu_sub, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1104,12 +1102,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(cboTimKiemPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(scrollPane2)
                             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                                .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlChuThich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(pnlDanhSachLayout.createSequentialGroup()
-                .addGap(405, 405, 405)
+                .addGap(378, 378, 378)
                 .addComponent(pnlLoaiPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1922,7 +1920,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
 
         if (listCT.contains(hh)) {
-            XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
+            MsgBox.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
             for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
                 HangHoa hangHoa = (HangHoa) tblCTPhieu_ChiTiet.getValueAt(i, 1);
                 if (hangHoa.getMaHH().equals(hh.getMaHH())) {
@@ -1964,7 +1962,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         int delRow = tblCTPhieu_ChiTiet.getSelectedRow();
 
         if (delRow < 0) {
-            XOptionPane.alert(ChiTietPhieuDialog, "Chọn một hàng hoá cần xoá!");
+            MsgBox.alert(ChiTietPhieuDialog, "Chọn một hàng hoá cần xoá!");
             return;
         }
 
@@ -2057,7 +2055,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.fillToTablePhieu();
 
-        XOptionPane.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        MsgBox.alert(this, "Thêm phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Cập nhật phiếu vào hệ thống và cập nhật thông tin hàng hóa
@@ -2145,14 +2143,14 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToTablePhieu();
         this.fillToTableCTPhieu();
 
-        XOptionPane.alert(this, "Cập nhật phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        MsgBox.alert(this, "Cập nhật phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Xoá phieu khoi he thong
     private void deletePhieu() {
         Phieu phieu = this.getFormPhieu();
 
-        if (!XOptionPane.confirm(this, "Bạn chắc chắn muốn xoá phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " này ?")) {
+        if (!MsgBox.confirm(this, "Bạn chắc chắn muốn xoá phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " này ?")) {
             return;
         }
 
@@ -2192,7 +2190,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.clearForm();
         this.fillToTablePhieu();
 
-        XOptionPane.alert(this, "Xóa phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
+        MsgBox.alert(this, "Xóa phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " thành công!");
     }
 
     // Xóa trắng form
@@ -2599,7 +2597,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 JSpinnerEditor c = (JSpinnerEditor) e.getSource();
 
                 if (c.getNewValue() > Ton && rdoPhieuXuat.isSelected()) {
-                    XOptionPane.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
+                    MsgBox.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
                     modelCTPhieu.setValueAt(c.getOldValue(), row, 2);
                 }
             }
@@ -2622,7 +2620,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 JSpinnerEditor c = (JSpinnerEditor) e.getSource();
 
                 if (c.getNewValue() > Ton && rdoPhieuXuat.isSelected()) {
-                    XOptionPane.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
+                    MsgBox.alert(pnlBackground, "Không đủ hàng tồn để xuất!");
                     modelCTPhieu.setValueAt(c.getOldValue(), row, 2);
                 }
             }
@@ -2729,7 +2727,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Tạo mã QR chứa mã phiếu
     private void createQRCode() {
         if (rowPhieu < 0) {
-            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
         } else {
             int rowPhieuModel = tblPhieu.convertRowIndexToModel(rowPhieu);
             Phieu phieu = (Phieu) tblPhieu.getModel().getValueAt(rowPhieuModel, 9);
@@ -2746,7 +2744,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Xuất phiếu
     private void exportReport() {
         if (rowPhieu < 0) {
-            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
         }
 
@@ -2767,7 +2765,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
             XReport.exportFile(fileName, reportPath, parameters);
         } catch (SQLException | JRException | IOException e) {
-            XOptionPane.alert(this, "Xuất file thất bại!");
+            MsgBox.alert(this, "Xuất file thất bại!");
             e.printStackTrace();
         }
     }
@@ -2775,7 +2773,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // In báo cáo
     private void printReport() {
         if (rowPhieu < 0) {
-            XOptionPane.alert(this, "Chưa chọn chi tiết phiếu!");
+            MsgBox.alert(this, "Chưa chọn chi tiết phiếu!");
             return;
         }
 
@@ -2796,7 +2794,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
             }
             XReport.printReport(fileName, reportPath, parameters);
         } catch (SQLException | JRException e) {
-            XOptionPane.alert(this, "In phiếu thất bại!");
+            MsgBox.alert(this, "In phiếu thất bại!");
             e.printStackTrace();
         }
     }
@@ -2833,7 +2831,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Xác thực form
     private boolean isValidated() {
         if (txtNgayThucHien.getDate() == null) {
-            XOptionPane.alert(this, "Chưa nhập ngày thực hiện!");
+            MsgBox.alert(this, "Chưa nhập ngày thực hiện!");
             txtNgayThucHien.requestFocus();
             return false;
         }
@@ -2849,7 +2847,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
          */
         if (chkChuyenHang.isSelected()) {
             if (txtNgayHoanThanh.getDate() == null) {
-                XOptionPane.alert(this, "Chưa nhập ngày hoàn thành!");
+                MsgBox.alert(this, "Chưa nhập ngày hoàn thành!");
                 txtNgayThucHien.requestFocus();
                 return false;
             }

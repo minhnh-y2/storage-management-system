@@ -12,7 +12,7 @@ import com.stoman.entity.HangHoa;
 import com.stoman.entity.LoaiHangHoa;
 import com.stoman.utils.Auth;
 import com.stoman.utils.DoubleComparator;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.JSpinnerStringEditor;
 import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.LowerCaseStringConverter;
@@ -760,7 +760,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         try {
 
         } catch (Exception e) {
-            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
             e.printStackTrace();
         }
     }
@@ -779,7 +779,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             }
             lstLHH.setModel(lstModel);
         } catch (Exception e) {
-            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
             e.printStackTrace();
         }
     }
@@ -881,7 +881,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
 
     // Thêm mới loại hàng hoá
     private void insertLHH() {
-        String tenLHH = XOptionPane.prompt(this, "Nhập tên loại hàng hoá mới:");
+        String tenLHH = MsgBox.prompt(this, "Nhập tên loại hàng hoá mới:");
         if (tenLHH != null && !tenLHH.isEmpty()) {
             LoaiHangHoa lhh = new LoaiHangHoa(tenLHH);
             try {
@@ -889,9 +889,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
                 this.fillToListLoaiHangHoa();
                 this.clearForm();
                 modelHangHoa.setRowCount(0);
-                XOptionPane.alert(this, "Thêm mới thành công!");
+                MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Thêm mới thất bại!");
+                MsgBox.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -900,19 +900,19 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Thêm loại đối tác vào danh sách
     private void updateLHH() {
         if (lstLHH.isSelectionEmpty()) {
-            XOptionPane.alert(this, "Chưa chọn loại hàng hoá!");
+            MsgBox.alert(this, "Chưa chọn loại hàng hoá!");
             return;
         }
-        String tenLHH = XOptionPane.prompt(this, "Tên loại hàng hoá mới:");
+        String tenLHH = MsgBox.prompt(this, "Tên loại hàng hoá mới:");
         if (tenLHH != null && !tenLHH.isEmpty()) {
             LoaiHangHoa lhh = lstLHH.getSelectedValue();
             lhh.setTenLHH(tenLHH);
             try {
                 lhhDAO.update(lhh);
                 this.fillToListLoaiHangHoa();
-                XOptionPane.alert(this, "Đổi tên thành công!");
+                MsgBox.alert(this, "Đổi tên thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Đổi tên thất bại!");
+                MsgBox.alert(this, "Đổi tên thất bại!");
                 e.printStackTrace();
             }
         }
@@ -921,21 +921,21 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Xoá loại hàng hoá
     private void deleteLHH() {
         if (lstLHH.isSelectionEmpty()) {
-            XOptionPane.alert(this, "Chưa chọn loại hàng hoá!");
+            MsgBox.alert(this, "Chưa chọn loại hàng hoá!");
             return;
         }
         String message = "Các hàng hoá thuộc loại hàng hoá này sẽ bị xoá!"
                 + "\nBạn có muốn tiếp tục xoá không?";
-        if (XOptionPane.confirm(this, message)) {
+        if (MsgBox.confirm(this, message)) {
             LoaiHangHoa lhh = lstLHH.getSelectedValue();
             try {
                 lhhDAO.delete(lhh.getMaLHH());
                 this.fillToListLoaiHangHoa();
                 this.clearForm();
                 modelHangHoa.setRowCount(0);
-                XOptionPane.alert(this, "Xoá thành công!");
+                MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Không thể xoá danh mục đang có sản phẩm!");
+                MsgBox.alert(this, "Không thể xoá danh mục đang có sản phẩm!");
                 e.printStackTrace();
             }
         }
@@ -944,22 +944,22 @@ public class HangHoaJDialog extends javax.swing.JDialog {
     // Xác thực dữ liệu form
     private boolean isValidated() {
         if (txtMaHH.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập mã hàng hoá!");
+            MsgBox.alert(this, "Chưa nhập mã hàng hoá!");
             txtMaHH.requestFocus();
             return false;
         }
         if (txtTenHH.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập tên hàng hoá!");
+            MsgBox.alert(this, "Chưa nhập tên hàng hoá!");
             txtTenHH.requestFocus();
             return false;
         }
         if (txtDonViTinh.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập đơn vị tính!");
+            MsgBox.alert(this, "Chưa nhập đơn vị tính!");
             txtDonViTinh.requestFocus();
             return false;
         }
         if (txtDonGia.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập đơn giá!");
+            MsgBox.alert(this, "Chưa nhập đơn giá!");
             txtDonGia.requestFocus();
             return false;
         }
@@ -973,7 +973,7 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         }
 
         if (hhDAO.selectByID(txtMaHH.getText()) != null) {
-            XOptionPane.alert(this, "Mã hàng hoá đã tồn tại!");
+            MsgBox.alert(this, "Mã hàng hoá đã tồn tại!");
             txtMaHH.requestFocus();
             return;
         }
@@ -983,25 +983,25 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             hhDAO.insert(hh);
             this.fillToTableHangHoa();
             this.clearForm();
-            XOptionPane.alert(this, "Thêm mới thành công!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         } catch (Exception e) {
-            XOptionPane.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thất bại!");
             e.printStackTrace();
         }
     }
 
     // Xoá hàng hoá
     private void delete() {
-        if (XOptionPane.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
+        if (MsgBox.confirm(this, "Bạn có chắc chắc muốn xoá hàng hoá này?")) {
             int rowModel = tblHangHoa.convertRowIndexToModel(this.row);
             String maHH = (String) tblHangHoa.getValueAt(rowModel, 1);
             try {
                 hhDAO.delete(maHH);
                 this.fillToTableHangHoa();
                 this.clearForm();
-                XOptionPane.alert(this, "Xoá thành công!");
+                MsgBox.alert(this, "Xoá thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Xoá thất bại!");
+                MsgBox.alert(this, "Xoá thất bại!");
                 e.printStackTrace();
             }
         }
@@ -1017,9 +1017,9 @@ public class HangHoaJDialog extends javax.swing.JDialog {
             hhDAO.update(hh);
             this.fillToTableHangHoa();
             this.updateStatus();
-            XOptionPane.alert(this, "Cập nhật thành công!");
+            MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception e) {
-            XOptionPane.alert(this, "Cập nhật thất bại!");
+            MsgBox.alert(this, "Cập nhật thất bại!");
             e.printStackTrace();
         }
     }

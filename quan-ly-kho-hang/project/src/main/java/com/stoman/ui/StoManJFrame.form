@@ -2,6 +2,19 @@
 
 <Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="lblTrangThai">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/stoman/icons/team_32px.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ch&#x1b0;a &#x111;&#x103;ng nh&#x1ead;p!"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuHeThong">
@@ -193,7 +206,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-52,0,0,3,-19"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,1,0,0,3,-19"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -351,7 +364,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlBieuDo" alignment="0" pref="793" max="32767" attributes="0"/>
+                          <Component id="pnlBieuDo" alignment="0" pref="805" max="32767" attributes="0"/>
                           <Component id="lblLocBieuDo" alignment="1" max="32767" attributes="0"/>
                           <Component id="lblDShangHoa1" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -368,7 +381,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlThongTin" pref="542" max="32767" attributes="0"/>
+                          <Component id="pnlThongTin" pref="595" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblDShangHoa1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -772,7 +785,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="oblTopHH" pref="207" max="32767" attributes="0"/>
+                                  <Component id="oblTopHH" pref="260" max="32767" attributes="0"/>
                                   <Component id="pnlTopLHH" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1150,7 +1163,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHNhap" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHNhap" alignment="0" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHNhap" alignment="0" pref="634" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1265,7 +1278,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHNhap" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHNhap" pref="172" max="32767" attributes="0"/>
+                              <Component id="oblTopHHNhap" pref="225" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHNhap" min="-2" max="-2" attributes="0"/>
@@ -1682,7 +1695,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTopHHXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="oblTopHHXuat" alignment="0" pref="615" max="32767" attributes="0"/>
+                                  <Component id="oblTopHHXuat" alignment="0" pref="634" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -1697,7 +1710,7 @@
                                       <Component id="cboTimKiemXuat" min="-2" pref="250" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="lblDShangHoaXuat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblTblTKxuat" alignment="1" pref="710" max="32767" attributes="0"/>
+                                  <Component id="lblTblTKxuat" alignment="1" pref="729" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="separator24" min="-2" pref="2" max="-2" attributes="0"/>
@@ -1797,7 +1810,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHXuat" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHXuat" pref="172" max="32767" attributes="0"/>
+                              <Component id="oblTopHHXuat" pref="225" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHXuat" min="-2" max="-2" attributes="0"/>
@@ -2270,14 +2283,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblPhanTH" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDSTongHop" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="cboKhoTH" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2316,20 +2329,20 @@
                                           <Component id="cboTimKiemTH" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTblTongHop" pref="0" max="32767" attributes="0"/>
+                                      <Component id="lblTblTongHop" min="-2" pref="319" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Component id="separator29" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="separator32" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTopHHTH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="oblTopHHTH" pref="131" max="32767" attributes="0"/>
+                              <Component id="oblTopHHTH" pref="187" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTopLHHTH" min="-2" max="-2" attributes="0"/>
@@ -2786,24 +2799,6 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblTrangThai">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/stoman/icons/team_32px.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Ch&#x1b0;a &#x111;&#x103;ng nh&#x1ead;p!"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                <EmptyBorder bottom="1" left="10" right="1" top="1"/>
-              </Border>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Center"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblDongHo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

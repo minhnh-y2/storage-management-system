@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Huy
  */
-public class XOptionPane {
+public class MsgBox {
 
     /**
      * form thong bao

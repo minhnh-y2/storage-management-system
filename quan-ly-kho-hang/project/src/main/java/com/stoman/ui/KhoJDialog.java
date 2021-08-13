@@ -11,7 +11,7 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
-import com.stoman.utils.XOptionPane;
+import com.stoman.utils.MsgBox;
 import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.LowerCaseStringConverter;
 import java.util.List;
@@ -453,7 +453,7 @@ public class KhoJDialog extends javax.swing.JDialog {
                 model.addElement(nv);
             }
         } catch (Exception e) {
-            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -503,7 +503,7 @@ public class KhoJDialog extends javax.swing.JDialog {
             };
             worker.execute();
         } catch (Exception e) {
-            XOptionPane.alert(this, "Lỗi truy vấn dữ liệu!");
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
             e.printStackTrace();
         }
     }
@@ -573,7 +573,7 @@ public class KhoJDialog extends javax.swing.JDialog {
     // Xác thực dữ liệu trên form
     private boolean isValidated() {
         if (txtMaKho.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập số kho!");
+            MsgBox.alert(this, "Chưa nhập số kho!");
             txtMaKho.requestFocus();
             return false;
         }
@@ -583,17 +583,17 @@ public class KhoJDialog extends javax.swing.JDialog {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            XOptionPane.alert(this, "Mã kho phải là số và lớn hơn 0!");
+            MsgBox.alert(this, "Mã kho phải là số và lớn hơn 0!");
             txtMaKho.requestFocus();
             return false;
         }
         if (txtDiaChi.getText().isEmpty()) {
-            XOptionPane.alert(this, "Chưa nhập địa chỉ!");
+            MsgBox.alert(this, "Chưa nhập địa chỉ!");
             txtDiaChi.requestFocus();
             return false;
         }
         if (cboTruongKho.getSelectedIndex() == 0) {
-            XOptionPane.alert(this, "Chưa chọn trưởng kho!");
+            MsgBox.alert(this, "Chưa chọn trưởng kho!");
             return false;
         }
         return true;
@@ -604,16 +604,16 @@ public class KhoJDialog extends javax.swing.JDialog {
         if (isValidated()) {
             Kho k = getForm();
             if (kDAO.selectByID(k.getMaKho()) != null) {
-                XOptionPane.alert(this, "Mã kho đã tồn tại!");
+                MsgBox.alert(this, "Mã kho đã tồn tại!");
                 return;
             }
             try {
                 kDAO.insert(k);
                 this.fillToTable();
                 this.clearForm();
-                XOptionPane.alert(this, "Thêm mới thành công!");
+                MsgBox.alert(this, "Thêm mới thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Thêm mới thất bại!");
+                MsgBox.alert(this, "Thêm mới thất bại!");
                 e.printStackTrace();
             }
         }
@@ -626,9 +626,9 @@ public class KhoJDialog extends javax.swing.JDialog {
             try {
                 kDAO.update(k);
                 this.fillToTable();
-                XOptionPane.alert(this, "Cập nhật thành công!");
+                MsgBox.alert(this, "Cập nhật thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Cập nhật thất bại!");
+                MsgBox.alert(this, "Cập nhật thất bại!");
                 e.printStackTrace();
             }
         }
@@ -638,15 +638,15 @@ public class KhoJDialog extends javax.swing.JDialog {
     private void delete() {
         String message = "Các hàng hoá đang lưu trữ trong kho này cũng sẽ bị xoá!"
                 + "\nBạn có muốn tiếp tục xoá không?";
-        if (XOptionPane.confirm(this, message)) {
+        if (MsgBox.confirm(this, message)) {
             try {
                 int maKho = (int) tblKho.getValueAt(this.row, 0);
                 kDAO.delete(maKho);
                 this.fillToTable();
                 this.clearForm();
-                XOptionPane.alert(this, "Xoá kho thành công!");
+                MsgBox.alert(this, "Xoá kho thành công!");
             } catch (Exception e) {
-                XOptionPane.alert(this, "Xoá kho thất bại!");
+                MsgBox.alert(this, "Xoá kho thất bại!");
                 e.printStackTrace();
             }
         }
