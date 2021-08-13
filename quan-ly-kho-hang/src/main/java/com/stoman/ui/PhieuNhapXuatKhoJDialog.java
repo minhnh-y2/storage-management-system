@@ -480,6 +480,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.setEnabled(false);
         btnThem.setPreferredSize(new java.awt.Dimension(140, 40));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1174,7 +1175,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         }
         //this.rowPhieu = ((Integer) tblPhieu.getValueAt(tblPhieu.getSelectedRow(), 0)) - 1;
         this.rowPhieu = tblPhieu.getSelectedRow();
-        if(tblPhieu.getValueAt(rowPhieu, tblPhieu.getSelectedColumn()) == null) {
+        if (tblPhieu.getValueAt(rowPhieu, tblPhieu.getSelectedColumn()) == null) {
             return;
         }
         edit();
@@ -1250,7 +1251,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         delCTP.clear();
         this.clearForm();
         btnChiTiet.setEnabled(true);
-        ChiTietPhieuDialog.setVisible(true);      
+        btnThem.setEnabled(true);
+        ChiTietPhieuDialog.setVisible(true);
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -1265,7 +1267,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.insertPhieu();
-
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
@@ -1553,6 +1554,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.setModal(false);
         this.initDialogOther();
 
+        Auth.user = nvDAO.selectByID("minhnh");
+
         this.formatTable();
 
         this.refreshForm();
@@ -1563,7 +1566,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         this.updateStatus();
         this.updateStatusChonLoaiPhieu();
-        
+
         this.clearForm();
         this.timer.start();
     }
@@ -1677,6 +1680,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Đổ dữ liệu chi tiết phiếu
     private SwingWorker workerCTPhieu;
+
     private void fillToTableCTPhieu() {
         if (workerCTPhieu != null) {
             workerCTPhieu.cancel(true);
@@ -1713,7 +1717,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                         if (rdoPhieuXuat.isSelected() && ctp.isTrangThai()) {
                             ton += ctp.getSoLuong();
                         }
-                        
+
                         modelCTPhieu.addRow(new Object[]{
                             i++,
                             hh,
@@ -1725,7 +1729,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                             ton,
                             ltDAO.getMaLT(k.getMaKho(), hh.getMaHH())
                         });
-                        
+
                         listCT.add(hh);
                     }
                     tblCTPhieu.setModel(modelCTPhieu);
@@ -1906,7 +1910,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         if (cboHangHoa.getItemCount() == 0) {
             return;
         }
-
+        
         if (listCT.contains(hh)) {
             XOptionPane.alert(ChiTietPhieuDialog, "Hàng hoá này đã tồn tại trong danh sách!");
             for (int i = 0; i < tblCTPhieu_ChiTiet.getRowCount(); i++) {
@@ -1948,11 +1952,13 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     private void deleteCT() {
         int delRow = tblCTPhieu_ChiTiet.getSelectedRow();
-        int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
 
-        //if (maCTP == 0) {
-        //    return;
-        //}
+        if (delRow < 0) {
+            XOptionPane.alert(this, "Chọn một hàng hoá cần xoá!");
+            return;
+        }
+
+        int maCTP = (int) modelCTPhieu.getValueAt(delRow, 4);
 
         listCT.remove((HangHoa) modelCTPhieu.getValueAt(delRow, 1));
 
@@ -2007,6 +2013,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
         if (rows < 1) {
             XOptionPane.alert(this, "Danh sách hàng hoá trống!");
+            ChiTietPhieuDialog.setVisible(true);
             return;
         }
 
@@ -2141,11 +2148,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
     // Xoá phieu khoi he thong
     private void deletePhieu() {
         Phieu phieu = this.getFormPhieu();
-        
-        if(!XOptionPane.confirm(this, "Bạn chắc chắn muốn xoá phiếu "+ (phieu.isLoai() ? "nhập" : "xuất") + " này ?")){
+
+        if (!XOptionPane.confirm(this, "Bạn chắc chắn muốn xoá phiếu " + (phieu.isLoai() ? "nhập" : "xuất") + " này ?")) {
             return;
         }
-        
+
         String maPhieu = tblCTPhieu.getToolTipText();
 
         if (maPhieu == null) {
@@ -2228,7 +2235,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         boolean first = (this.rowPhieu == 0);
         boolean last = (this.rowPhieu == tblPhieu.getRowCount() - 1);
 
-        btnThem.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
@@ -2240,9 +2246,8 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         btnLast.setEnabled(edit && !last);
 
         // Kiểm tra vai trò người dùng, hạn chế quyền thủ kho
-        boolean isManager = Auth.isManager();
-        btnXoa.setVisible(isManager);
-        btnXoaCTP.setEnabled(isManager);
+        btnXoa.setVisible(Auth.isManager());
+        btnXoaCTP.setEnabled(Auth.isManager());
 
         // Kiểm tra trạng thái hoàn thành phiếu
         boolean isCompleted = chkChuyenHang.isSelected();

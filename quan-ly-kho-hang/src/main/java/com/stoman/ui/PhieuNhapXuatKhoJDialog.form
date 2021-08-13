@@ -648,6 +648,7 @@
                           <Image iconType="3" name="/com/stoman/icons/icons8_new_copy_32px.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[140, 40]"/>
                         </Property>
