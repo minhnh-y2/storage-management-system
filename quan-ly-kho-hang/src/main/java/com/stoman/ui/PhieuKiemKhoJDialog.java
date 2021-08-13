@@ -128,6 +128,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         pnlChucNang = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        btnHoanTac = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
         btnChiTiet = new javax.swing.JButton();
@@ -544,17 +545,19 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_new_copy_32px.png"))); // NOI18N
         btnThem.setText("Thêm");
-        btnThem.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnThem.setPreferredSize(new java.awt.Dimension(140, 45));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        pnlChucNang.add(btnThem, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipady = 8;
+        pnlChucNang.add(btnThem, gridBagConstraints);
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_delete_document_32px.png"))); // NOI18N
         btnXoa.setText("Xoá");
-        btnXoa.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnXoa.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
@@ -563,11 +566,26 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXoa, gridBagConstraints);
+
+        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
+        btnHoanTac.setText("Hoàn tác sửa");
+        btnHoanTac.setPreferredSize(new java.awt.Dimension(140, 45));
+        btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoanTacActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 8;
+        pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
         btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnSua.setPreferredSize(new java.awt.Dimension(140, 45));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
@@ -576,11 +594,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_document_32px.png"))); // NOI18N
         btnMoi.setText("Mới");
-        btnMoi.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnMoi.setPreferredSize(new java.awt.Dimension(140, 45));
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -588,12 +607,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/more-details-32.png"))); // NOI18N
         btnChiTiet.setText("Chi tiết");
-        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnChiTiet.setPreferredSize(new java.awt.Dimension(140, 45));
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietActionPerformed(evt);
@@ -601,12 +621,13 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
         btnXuatMaPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_qr_code_24px.png"))); // NOI18N
         btnXuatMaPhieu.setText("QR Code");
-        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 63));
+        btnXuatMaPhieu.setPreferredSize(new java.awt.Dimension(140, 45));
         btnXuatMaPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXuatMaPhieuActionPerformed(evt);
@@ -615,6 +636,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
         pnlChucNangMoRong.setOpaque(false);
@@ -943,21 +965,28 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private void tblCTPhieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieuKeyReleased
         // TODO add your handling code here:
         disableEnterCellNextLine(tblCTPhieu);
-        updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
+        //updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
     }//GEN-LAST:event_tblCTPhieuKeyReleased
 
     private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
         // TODO add your handling code here:
         disableEnterCellNextLine(tblCTPhieu_ChiTiet);
-        updateSoLuongThuc(tblCTPhieu_ChiTiet, tblCTPhieu_ChiTiet.getSelectedRow());
+        //updateSoLuongThuc(tblCTPhieu_ChiTiet, tblCTPhieu_ChiTiet.getSelectedRow());
     }//GEN-LAST:event_tblCTPhieu_ChiTietKeyReleased
 
     private void tblCTPhieuPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCTPhieuPropertyChange
         // TODO add your handling code here:
+        /*
         if(tblCTPhieu.getSelectedRow() >= 0) {
             updateSoLuongThuc(tblCTPhieu, tblCTPhieu.getSelectedRow());
         }
+        */
     }//GEN-LAST:event_tblCTPhieuPropertyChange
+
+    private void btnHoanTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacActionPerformed
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_btnHoanTacActionPerformed
     
     /**
      * @param args the command line arguments
@@ -996,6 +1025,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private javax.swing.JDialog QRCodeDialog;
     private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnHoanTac;
     private javax.swing.JButton btnInPhieu;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnMoi;
@@ -1339,15 +1369,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private ArrayList<ChiTietKiemKho> delCTP = new ArrayList<>();
 
     private void deleteCT() {
-        int rowView = tblCTPhieu_ChiTiet.getSelectedRow();
-        int delRow = tblCTPhieu_ChiTiet.convertRowIndexToModel(rowView);
+        int delRow = tblCTPhieu_ChiTiet.convertRowIndexToModel(tblCTPhieu_ChiTiet.getSelectedRow());
         ChiTietKiemKho ctkk = this.getFormCTPhieu(delRow);
 
         if (isUpdate && ctkk.getMaLT() != 0) {
             delCTP.add(ctkk);
             this.listCT.remove(new Integer(ctkk.getMaLT()));
         }
-
+        
         modelCTPhieuKiem.removeRow(delRow);
 
         for (int i = 0; i < modelCTPhieuKiem.getRowCount(); i++) {
@@ -1446,8 +1475,8 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     
     private void updateSoLuongThuc(JTable table, int row) {
         Double soLuongThuc = (Double) table.getValueAt(row, 3);
-        int maCTP = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
-        ChiTietKiemKho ctkk = ctkkDAO.selectByID(maCTP);
+        int maChiTiet = (int) table.getModel().getValueAt(table.convertRowIndexToModel(row), 4);
+        ChiTietKiemKho ctkk = ctkkDAO.selectByID(maChiTiet);
         ctkk.setSoLuongThuc(soLuongThuc);
         ctkkDAO.update(ctkk);
     }
@@ -1568,8 +1597,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         tblCTPhieu.setModel(modelCTPhieuKiem);
         tblHangHoaKho.setModel(modelHangHoaKho);
         
-        tblCTPhieu.putClientProperty("terminateEditOnFocusLost", true);
-
         // Cài đặt bộ lọc cho bảng
         sorterPhieu = new TableRowSorter<>(modelPhieu);
         sorterPhieu.setStringConverter(new LowerCaseStringConverter());
