@@ -279,7 +279,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         pnlThongTinCTPLayout.setVerticalGroup(
             pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongTinCTPLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLoaiHH)
                     .addComponent(cboLoaiHH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -287,12 +287,12 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addGroup(pnlThongTinCTPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTenHH)
                     .addComponent(cboHangHoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pnlChucNangCTP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
         pnlChucNangCTP.setOpaque(false);
-        pnlChucNangCTP.setLayout(new java.awt.GridLayout(0, 1));
+        pnlChucNangCTP.setLayout(new java.awt.GridBagLayout());
 
         btnThemCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/add.png"))); // NOI18N
         btnThemCTP.setText("Thêm");
@@ -301,16 +301,20 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 btnThemCTPActionPerformed(evt);
             }
         });
-        pnlChucNangCTP.add(btnThemCTP);
+        pnlChucNangCTP.add(btnThemCTP, new java.awt.GridBagConstraints());
 
         btnXoaCTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
         btnXoaCTP.setText("Xoá");
+        btnXoaCTP.setPreferredSize(new java.awt.Dimension(88, 30));
         btnXoaCTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaCTPActionPerformed(evt);
             }
         });
-        pnlChucNangCTP.add(btnXoaCTP);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        pnlChucNangCTP.add(btnXoaCTP, gridBagConstraints);
 
         javax.swing.GroupLayout pnlBackgroundDialogLayout = new javax.swing.GroupLayout(pnlBackgroundDialog);
         pnlBackgroundDialog.setLayout(pnlBackgroundDialogLayout);
@@ -322,7 +326,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addGroup(pnlBackgroundDialogLayout.createSequentialGroup()
                         .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -332,9 +336,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(pnlBackgroundDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlThongTinCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlChucNangCTP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(pnlTblCTPhieu_main, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
