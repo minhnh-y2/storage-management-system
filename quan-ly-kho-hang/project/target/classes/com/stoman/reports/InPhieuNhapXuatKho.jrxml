@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InPhieuNhapXuatKho" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f2cbbbe2-f169-4e63-b403-2dd93c56c556">
 	<property name="ireport.zoom" value="1.7715610000000082"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="25"/>
+	<property name="ireport.y" value="64"/>
 	<style name="tblCTPhieu">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -187,7 +187,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Nhân viên:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="80" y="20" width="268" height="15" uuid="ff0f2a34-e6b1-49db-8e21-a5619b875382"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
@@ -195,7 +195,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NHANVIEN_TENNV}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="450" y="20" width="73" height="15" uuid="48be28a0-98eb-485c-a084-9b2cd829d2d2"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
@@ -203,13 +203,13 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{PHIEU_NGTHUCHIEN})]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="440" y="0" width="83" height="15" uuid="8830bde8-6914-4c75-9ed1-927d71a8e245"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{PHIEU_NGHOANTHANH})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{PHIEU_NGTHUCHIEN})]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="21" y="62" width="59" height="15" uuid="a03a2960-ebc5-4571-ab9e-ef325596ff6e"/>
@@ -226,8 +226,8 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEU_GHICHU}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="66" y="0" width="282" height="15" uuid="ac4122bd-b1c8-4a16-9d5f-24eda48c3b8a"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="0" width="282" height="15" uuid="ac4122bd-b1c8-4a16-9d5f-24eda48c3b8a"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
 					<paragraph leftIndent="5"/>
@@ -235,7 +235,10 @@ WHERE
 				<textFieldExpression><![CDATA[$F{DOITAC_TENDT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="21" y="0" width="45" height="15" uuid="a640a460-1be6-4655-87ca-052bdc8562b7"/>
+				<reportElement x="21" y="0" width="54" height="15" uuid="a640a460-1be6-4655-87ca-052bdc8562b7"/>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEU_LOAIDOITAC}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -245,7 +248,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Đã thanh toán:]]></text>
 			</staticText>
-			<textField pattern="#,##0.0">
+			<textField pattern="#,##0.0" isBlankWhenNull="true">
 				<reportElement x="100" y="41" width="100" height="15" uuid="bfce6811-b967-440b-9b51-62a1467d7a61"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true"/>
@@ -400,9 +403,9 @@ WHERE
 				<text><![CDATA[Ký tên]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="394" y="20" width="100" height="20" uuid="771d03bd-b632-403d-be94-e08728695b34"/>
+				<reportElement x="362" y="20" width="166" height="20" uuid="771d03bd-b632-403d-be94-e08728695b34"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="DejaVu Sans" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PHIEU_KYTEN}]]></textFieldExpression>
 			</textField>

@@ -49,7 +49,7 @@ public class XReport {
 
         // Đóng kết nối
         conn.close();
-
+        
         return jasperPrint;
     }
 
