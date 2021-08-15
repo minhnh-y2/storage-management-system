@@ -73,7 +73,6 @@ com\stoman\ui\ChaoJDialog.class
 com\stoman\ui\HangHoaJDialog$14.class
 com\stoman\ui\ChaoJDialog$1.class
 com\stoman\ui\HangHoaJDialog$1.class
-com\stoman\utils\XOptionPane.class
 com\stoman\ui\DoiTacJDialog$1.class
 com\stoman\ui\DoiTacJDialog$16.class
 com\stoman\ui\PhieuKiemKhoJDialog$14.class
@@ -131,6 +130,7 @@ com\stoman\ui\PhieuKiemKhoJDialog$35.class
 com\stoman\ui\StoManJFrame$51.class
 com\stoman\entity\ChiTietPhieu.class
 com\stoman\ui\PhieuNhapXuatKhoJDialog$31.class
+com\stoman\utils\MsgBox.class
 com\stoman\entity\Kho.class
 com\stoman\ui\PhieuNhapXuatKhoJDialog$48.class
 com\stoman\ui\NhanVienJDialog$5.class
