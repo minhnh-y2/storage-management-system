@@ -849,9 +849,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.clearForm();
         this.fillToTableHHkho();
+        btnChiTiet.setEnabled(true);
         tabsCTP.setSelectedIndex(1);
         ChiTietPhieuJDialog.setVisible(true);
-
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void cboKhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboKhoItemStateChanged
@@ -1102,13 +1102,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     private DefaultTableModel modelCTPhieuKiem;
     private DefaultTableModel modelHangHoaKho;
 
-    private ArrayList<Integer> listCT = new ArrayList<Integer>();
+    private ArrayList<Integer> listCT = new ArrayList<>();
     private TableRowSorter<TableModel> sorterPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu;
     private TableRowSorter<TableModel> sorterCTPhieu_ChiTiet;
     private TableRowSorter<TableModel> sorterHHKho;
 
-    private String numFormat = "#,##0.0";
     private String dateFormat = "dd-MM-yyyy";
     private String dateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
@@ -1124,7 +1123,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setModal(false);
         this.initDialogOther();
-
+        
         this.formatTable();
         this.fillToComboBoxTimKiemPhieu();
         this.fillToComboBoxTimKiemCT();
@@ -1138,13 +1137,14 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         timer.start();
     }
+    
 
     private void initDialogOther() {
         ChiTietPhieuJDialog.pack();
         ChiTietPhieuJDialog.setLocationRelativeTo(null);
         ChiTietPhieuJDialog.setModalityType(ModalityType.APPLICATION_MODAL);
         ChiTietPhieuJDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-
+        
         QRCodeDialog.pack();
         QRCodeDialog.setLocationRelativeTo(null);
         QRCodeDialog.setModalityType(ModalityType.APPLICATION_MODAL);
@@ -1441,6 +1441,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         this.clearForm();
         this.fillToTablePhieu();
 
+        this.updateStatus();
         MsgBox.alert(this, "Thêm phiếu kiểm thành công!");
     }
 
@@ -1526,15 +1527,19 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
     // Xóa trắng form
     private void clearForm() {
+        Date NgayLap = new Date(System.currentTimeMillis());
+        
         txtNguoiLap.setToolTipText(Auth.user.getMaNV());
         txtNguoiLap.setText(Auth.user.getTenNV());
-        Date NgayLap = new Date(System.currentTimeMillis());
         txtNgayLap.setText(XDate.toString(NgayLap, dateTimeFormat));
-        txtNgayKiem.setDate(new Date());
-        cboKho.setSelectedIndex(0);
-        chkHoanThanh.setSelected(false);
         txtGhiChu.setText(null);
         tblCTPhieu.setToolTipText(null);
+        txtNgayKiem.setDate(new Date());
+        chkHoanThanh.setSelected(false);
+        if (cboKho.getItemCount() > 0){
+            cboKho.setSelectedIndex(0);
+        }
+        
         this.fillToTableCTPhieu();
 
         isUpdate = false;
@@ -1768,7 +1773,9 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
         btnXuatMaPhieu.setEnabled(edit);
+        btnInPhieu.setEnabled(edit);
         btnXuatFile.setEnabled(edit);
+        btnChiTiet.setEnabled(edit);
 
         btnFirst.setEnabled(edit && !first);
         btnPrev.setEnabled(edit && !first);
@@ -1800,6 +1807,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
     }
 
     private void edit() {
+        if (this.rowPhieu < 0) {
+            return;
+        }
+        
         delCTP.clear();
 
         int rowPhieuModel = tblPhieu.convertRowIndexToModel(this.rowPhieu);
@@ -1846,6 +1857,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
 
         this.fillToComboBoxKho();
         this.fillToTablePhieu();
+        this.fillToTableCTPhieu();
         this.fillToTableHHkho();
 
         this.timer.restart();

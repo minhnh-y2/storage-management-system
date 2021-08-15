@@ -71,9 +71,9 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlLstLoaiDoiTac = new javax.swing.JScrollPane();
         lstLDT = new javax.swing.JList<>();
         pnlChucNangLoaiDT = new javax.swing.JPanel();
-        btnThemList = new javax.swing.JButton();
-        btnXoaList = new javax.swing.JButton();
-        btnSuaList = new javax.swing.JButton();
+        btnThemLDT = new javax.swing.JButton();
+        btnXoaLDT = new javax.swing.JButton();
+        btnSuaLDT = new javax.swing.JButton();
         txtTimKiemLDT = new com.stoman.utils.JTextFieldCustom(defaultSearchLoaiDT);
         lblTimKiemLDT = new javax.swing.JLabel();
         pnlThongTin = new javax.swing.JPanel();
@@ -260,29 +260,29 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         pnlChucNangLoaiDT.setOpaque(false);
         pnlChucNangLoaiDT.setLayout(new java.awt.GridLayout(1, 3));
 
-        btnThemList.setText("Thêm");
-        btnThemList.addActionListener(new java.awt.event.ActionListener() {
+        btnThemLDT.setText("Thêm");
+        btnThemLDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemListActionPerformed(evt);
+                btnThemLDTActionPerformed(evt);
             }
         });
-        pnlChucNangLoaiDT.add(btnThemList);
+        pnlChucNangLoaiDT.add(btnThemLDT);
 
-        btnXoaList.setText("Xoá");
-        btnXoaList.addActionListener(new java.awt.event.ActionListener() {
+        btnXoaLDT.setText("Xoá");
+        btnXoaLDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaListActionPerformed(evt);
+                btnXoaLDTActionPerformed(evt);
             }
         });
-        pnlChucNangLoaiDT.add(btnXoaList);
+        pnlChucNangLoaiDT.add(btnXoaLDT);
 
-        btnSuaList.setText("Sửa");
-        btnSuaList.addActionListener(new java.awt.event.ActionListener() {
+        btnSuaLDT.setText("Sửa");
+        btnSuaLDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaListActionPerformed(evt);
+                btnSuaLDTActionPerformed(evt);
             }
         });
-        pnlChucNangLoaiDT.add(btnSuaList);
+        pnlChucNangLoaiDT.add(btnSuaLDT);
 
         txtTimKiemLDT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -526,15 +526,15 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.clearForm();
     }//GEN-LAST:event_lstLDTMouseClicked
 
-    private void btnThemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemListActionPerformed
+    private void btnThemLDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLDTActionPerformed
         // TODO add your handling code here:
         insertLDT();
-    }//GEN-LAST:event_btnThemListActionPerformed
+    }//GEN-LAST:event_btnThemLDTActionPerformed
 
-    private void btnXoaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaListActionPerformed
+    private void btnXoaLDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaLDTActionPerformed
         // TODO add your handling code here:
         deleteLDT();
-    }//GEN-LAST:event_btnXoaListActionPerformed
+    }//GEN-LAST:event_btnXoaLDTActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
@@ -605,10 +605,10 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         this.timer.stop();
     }//GEN-LAST:event_formWindowClosed
 
-    private void btnSuaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaListActionPerformed
+    private void btnSuaLDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaLDTActionPerformed
         // TODO add your handling code here:
         updateLDT();
-    }//GEN-LAST:event_btnSuaListActionPerformed
+    }//GEN-LAST:event_btnSuaLDTActionPerformed
 
     private void txtTimKiemLDTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemLDTKeyReleased
         // TODO add your handling code here:
@@ -654,11 +654,11 @@ public class DoiTacJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnSuaList;
+    private javax.swing.JButton btnSuaLDT;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnThemList;
+    private javax.swing.JButton btnThemLDT;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnXoaList;
+    private javax.swing.JButton btnXoaLDT;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboTimKiemDT;
     private javax.swing.JLabel lblDiaChi;
@@ -703,7 +703,7 @@ public class DoiTacJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-
+        
         this.formatTable();
 
         this.fillToComboBoxTimKiemDT();
@@ -854,10 +854,13 @@ public class DoiTacJDialog extends javax.swing.JDialog {
         boolean isSelectedList = !lstLDT.isSelectionEmpty();
 
         btnXoa.setVisible(Auth.isManager());
-
-        btnThemList.setEnabled(isSelectedList);
-        btnSuaList.setEnabled(isSelectedList);
-        btnXoaList.setEnabled(isSelectedList);
+        
+        btnSuaLDT.setEnabled(isSelectedList);
+        btnXoaLDT.setEnabled(isSelectedList);
+        txtDiaChi.setEnabled(isSelectedList);
+        txtDienThoai.setEnabled(isSelectedList);
+        txtEmail.setEnabled(isSelectedList);
+        txtTenDT.setEnabled(isSelectedList);
 
         btnThem.setEnabled(!edit && isSelectedList);
         btnSua.setEnabled(edit && isSelectedList);

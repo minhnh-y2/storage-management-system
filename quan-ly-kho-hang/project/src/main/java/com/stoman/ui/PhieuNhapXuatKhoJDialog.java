@@ -53,7 +53,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingWorker;
@@ -1542,9 +1541,10 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setModal(false);
         this.initDialogOther();
-
+        
         this.formatTable();
         this.updateStatus();
+        this.updateStatusChonLoaiPhieu();
 
         this.refreshForm();
 
@@ -1552,9 +1552,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         this.fillToComboBoxTimKiemPhieu();
         tabs.setSelectedIndex(1);
 
-        this.updateStatusChonLoaiPhieu();
-
-        //this.clearForm();
         this.timer.start();
     }
 
@@ -2864,12 +2861,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
 
     // Đổ lại dữ liệu 
     public void refreshForm() {
-        if (dtDAO.selectAll().size() == 0) {
-            return;
-        }
-        if (ctpDAO.selectAll().size() == 0) {
-            return;
-        }
 
         this.fillToComboBoxKho();
         this.fillToTablePhieu();

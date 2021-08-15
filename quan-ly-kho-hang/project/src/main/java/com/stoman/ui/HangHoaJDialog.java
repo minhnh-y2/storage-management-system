@@ -14,10 +14,8 @@ import com.stoman.utils.Auth;
 import com.stoman.utils.DoubleComparator;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.JSpinnerStringEditor;
-import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.LowerCaseStringConverter;
 import com.stoman.utils.XNumber;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -827,6 +825,12 @@ public class HangHoaJDialog extends javax.swing.JDialog {
         boolean edit = (this.row >= 0);
         boolean first = (this.row == 0);
         boolean last = (this.row == tblHangHoa.getRowCount() - 1);
+        
+        btnSuaLHH.setEnabled(isSelectedList);
+        btnXoaLHH.setEnabled(isSelectedList);
+        txtDonGia.setEnabled(isSelectedList);
+        txtDonViTinh.setEnabled(isSelectedList);
+        txtTenHH.setEnabled(isSelectedList);
 
         txtMaHH.setEditable(!edit && isSelectedList);
         btnThem.setEnabled(!edit && isSelectedList);

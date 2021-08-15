@@ -394,7 +394,7 @@ public class KhoJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-
+        
         this.kDAO = new KhoDAO();
         this.nvDAO = new NhanVienDAO();
 

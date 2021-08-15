@@ -30,7 +30,6 @@ public class ThongKeDAO {
         }
         rs.getStatement().getConnection().close();
         return list;
-
     }
 
     public List<Object[]> getListLuuTru(String maKho, String maLHH, String keyword, Integer index) throws SQLException {

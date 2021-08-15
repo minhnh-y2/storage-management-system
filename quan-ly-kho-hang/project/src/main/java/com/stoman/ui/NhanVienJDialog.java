@@ -590,7 +590,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
 
     private void init() {
         setLocationRelativeTo(null);
-
+        
         this.formatTable();
 
         this.fillToComboBox();

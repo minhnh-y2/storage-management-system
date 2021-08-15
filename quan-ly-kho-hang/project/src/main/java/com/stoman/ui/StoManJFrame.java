@@ -2281,8 +2281,9 @@ public class StoManJFrame extends javax.swing.JFrame {
         this.setIconImage(XImages.getAppIcon());
         this.setLocationRelativeTo(null);
 
-        new ChaoJDialog(this, true).setVisible(true);
-        new DangNhapJDialog(this, true).setVisible(true);
+        //new ChaoJDialog(this, true).setVisible(true);
+        //new DangNhapJDialog(this, true).setVisible(true);
+        Auth.user = new NhanVienDAO().selectByID("admin");
         
         this.clock();
         this.formatTable();
