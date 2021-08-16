@@ -15,7 +15,6 @@ import javax.swing.Painter;
 import javax.swing.Timer;
 import javax.swing.UIDefaults;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.nimbus.AbstractRegionPainter;
 
 /**

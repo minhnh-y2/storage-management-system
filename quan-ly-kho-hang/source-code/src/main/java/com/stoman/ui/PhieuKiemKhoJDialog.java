@@ -447,7 +447,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                             .addComponent(chkHoanThanh))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                             .addComponent(lblNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addContainerGap())
@@ -570,7 +570,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
-        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
+        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_24px.png"))); // NOI18N
         btnHoanTac.setText("Huỷ thay đổi");
         btnHoanTac.setPreferredSize(new java.awt.Dimension(148, 45));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {

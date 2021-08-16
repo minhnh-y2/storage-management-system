@@ -533,7 +533,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints.ipady = 27;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
-        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/edit-property-32.png"))); // NOI18N
+        btnHoanTac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/icons8_undo_32px.png"))); // NOI18N
         btnHoanTac.setText("Huỷ thay đổi");
         btnHoanTac.setPreferredSize(new java.awt.Dimension(148, 40));
         btnHoanTac.addActionListener(new java.awt.event.ActionListener() {
