@@ -229,7 +229,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblHangHoaKho.setRowHeight(25);
         tblHangHoaKho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblHangHoaKho.getTableHeader().setReorderingAllowed(false);
         pnlTblHangHoaKho.setViewportView(tblHangHoaKho);
@@ -327,7 +326,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tblCTPhieu.setRowHeight(25);
         tblCTPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblCTPhieu.getTableHeader().setReorderingAllowed(false);
         tblCTPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -425,9 +423,10 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         );
         pnlThongTinLayout.setVerticalGroup(
             pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThongTinLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongTinLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pnlThongTinLayout.createSequentialGroup()
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlThongTinLayout.createSequentialGroup()
@@ -447,11 +446,12 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                             .addComponent(chkHoanThanh))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                            .addComponent(lblNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(pnlTxtGhiChu, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                            .addComponent(txtNgayKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE)
+                            .addComponent(lblNgayKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
+
+        pnlThongTinLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtNgayKiem, txtNgayLap});
 
         pnlTimKiemCT.setOpaque(false);
 
@@ -553,6 +553,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnThem, gridBagConstraints);
 
@@ -567,6 +568,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXoa, gridBagConstraints);
 
@@ -581,6 +583,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnHoanTac, gridBagConstraints);
 
@@ -595,6 +598,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnSua, gridBagConstraints);
 
@@ -609,6 +613,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnMoi, gridBagConstraints);
 
@@ -623,6 +628,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnChiTiet, gridBagConstraints);
 
@@ -637,6 +643,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 8;
         pnlChucNang.add(btnXuatMaPhieu, gridBagConstraints);
 
@@ -673,18 +680,18 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
                                 .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                 .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(pnlTblCTPhieu)
                             .addComponent(pnlTimKiemCT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
         pnlChiTietPhieuKiemLayout.setVerticalGroup(
             pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChiTietPhieuKiemLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(10, 10, 10)
                 .addComponent(pnlThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,7 +703,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                         .addGroup(pnlChiTietPhieuKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlNutDieuHuong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
+                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -714,7 +721,6 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblPhieu.setRowHeight(25);
         tblPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPhieu.getTableHeader().setReorderingAllowed(false);
         tblPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -784,7 +790,7 @@ public class PhieuKiemKhoJDialog extends javax.swing.JDialog {
             .addGroup(pnlDanhSachLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+                    .addComponent(pnlTblPhieuKiemKho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                     .addComponent(pnlTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
