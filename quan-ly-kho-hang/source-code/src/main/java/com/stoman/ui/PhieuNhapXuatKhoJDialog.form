@@ -409,9 +409,9 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="pnlThongTin" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jSeparator2" min="-2" pref="5" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                  <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                                   <Component id="pnlThongTinKhac" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -949,7 +949,7 @@
                                           </Group>
                                           <Component id="txtMaNV" max="32767" attributes="0"/>
                                           <Component id="txtNgayLap" max="32767" attributes="0"/>
-                                          <Component id="cboKho" alignment="0" pref="285" max="32767" attributes="0"/>
+                                          <Component id="cboKho" alignment="0" pref="302" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -963,7 +963,7 @@
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cboLoaiDT" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtNgayThucHien" alignment="0" pref="219" max="32767" attributes="0"/>
+                                          <Component id="txtNgayThucHien" alignment="0" pref="237" max="32767" attributes="0"/>
                                           <Component id="txtNgayHoanThanh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cboDoiTac" alignment="0" max="32767" attributes="0"/>
                                       </Group>
