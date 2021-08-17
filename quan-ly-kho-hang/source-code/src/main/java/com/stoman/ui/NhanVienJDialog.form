@@ -140,7 +140,6 @@
                   </TableColumnModel>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
-                <Property name="rowHeight" type="int" value="25"/>
                 <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                   <JTableSelectionModel selectionMode="0"/>
                 </Property>
@@ -304,13 +303,11 @@
             <Component class="javax.swing.JPasswordField" name="txtMatKhau">
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMatKhauFocusGained"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatKhauMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtXacNhanMK">
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtXacNhanMKFocusGained"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtXacNhanMKMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoTruongKho">

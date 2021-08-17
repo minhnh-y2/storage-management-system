@@ -624,7 +624,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                     .addComponent(txtDaThanhToan)
                     .addGroup(pnlThongTinKhacLayout.createSequentialGroup()
                         .addComponent(lblTrangThai)
-                        .addGap(0, 193, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lblDaThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTongTienTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(chkThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -723,9 +723,9 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         txtGhiChu.setLineWrap(true);
         txtGhiChu.setRows(5);
         txtGhiChu.setWrapStyleWord(true);
-        txtGhiChu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtGhiChuMouseClicked(evt);
+        txtGhiChu.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtGhiChuFocusGained(evt);
             }
         });
         pnlGhiChu.setViewportView(txtGhiChu);
@@ -838,7 +838,7 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                                 .addComponent(pnlChucNangMoRong, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                             .addComponent(lblChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlChiTietLayout.createSequentialGroup()
                         .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -894,7 +894,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblPhieu.setRowHeight(25);
         tblPhieu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPhieu.getTableHeader().setReorderingAllowed(false);
         tblPhieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1324,11 +1323,6 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         fillToTablePhieu();
     }//GEN-LAST:event_lblPhieuXuatMouseClicked
 
-    private void txtGhiChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGhiChuMouseClicked
-        // TODO add your handling code here:
-        txtGhiChu.selectAll();
-    }//GEN-LAST:event_txtGhiChuMouseClicked
-
     private void tblCTPhieu_ChiTietKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCTPhieu_ChiTietKeyReleased
         // TODO add your handling code here:
         disableEnterCellNextLine(tblCTPhieu_ChiTiet);
@@ -1360,6 +1354,11 @@ public class PhieuNhapXuatKhoJDialog extends javax.swing.JDialog {
         fillToTableCTPhieu();
         updateBtnMoi();
     }//GEN-LAST:event_btnHoanTacActionPerformed
+
+    private void txtGhiChuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGhiChuFocusGained
+        // TODO add your handling code here:
+        txtGhiChu.selectAll();
+    }//GEN-LAST:event_txtGhiChuFocusGained
 
     /**
      * @param args the command line arguments

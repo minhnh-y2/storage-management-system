@@ -66,7 +66,7 @@ public class KhoJDialog extends javax.swing.JDialog {
         lblTruongKho = new javax.swing.JLabel();
         cboTruongKho = new javax.swing.JComboBox<>();
         lblTimKiem = new javax.swing.JLabel();
-        txtTimKiem = new JTextFieldCustom(defaultSearchKho);
+        txtTimKiem = new com.stoman.utils.JTextFieldCustom(defaultSearchKho);
         pnlTblKho = new javax.swing.JScrollPane();
         tblKho = new javax.swing.JTable();
 
@@ -130,9 +130,9 @@ public class KhoJDialog extends javax.swing.JDialog {
         txtDiaChi.setLineWrap(true);
         txtDiaChi.setRows(3);
         txtDiaChi.setWrapStyleWord(true);
-        txtDiaChi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDiaChiMouseClicked(evt);
+        txtDiaChi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDiaChiFocusGained(evt);
             }
         });
         pnlTxtDiaChi.setViewportView(txtDiaChi);
@@ -142,9 +142,9 @@ public class KhoJDialog extends javax.swing.JDialog {
         lblMaKho.setText("Kho số");
 
         txtMaKho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        txtMaKho.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMaKhoMouseClicked(evt);
+        txtMaKho.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaKhoFocusGained(evt);
             }
         });
 
@@ -219,7 +219,6 @@ public class KhoJDialog extends javax.swing.JDialog {
             }
         });
         tblKho.setOpaque(false);
-        tblKho.setRowHeight(25);
         tblKho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblKho.getTableHeader().setReorderingAllowed(false);
         tblKho.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -320,15 +319,15 @@ public class KhoJDialog extends javax.swing.JDialog {
         this.timer.stop();
     }//GEN-LAST:event_formWindowClosed
 
-    private void txtMaKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaKhoMouseClicked
+    private void txtMaKhoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaKhoFocusGained
         // TODO add your handling code here:
         txtMaKho.selectAll();
-    }//GEN-LAST:event_txtMaKhoMouseClicked
+    }//GEN-LAST:event_txtMaKhoFocusGained
 
-    private void txtDiaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDiaChiMouseClicked
+    private void txtDiaChiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaChiFocusGained
         // TODO add your handling code here:
         txtDiaChi.selectAll();
-    }//GEN-LAST:event_txtDiaChiMouseClicked
+    }//GEN-LAST:event_txtDiaChiFocusGained
 
     /**
      * @param args the command line arguments

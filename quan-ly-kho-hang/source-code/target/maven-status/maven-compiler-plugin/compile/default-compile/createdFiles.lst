@@ -83,10 +83,10 @@ com\stoman\ui\NhanVienJDialog.class
 com\stoman\ui\NhanVienJDialog$4.class
 com\stoman\ui\PhieuKiemKhoJDialog$37.class
 com\stoman\ui\PhieuKiemKhoJDialog$27.class
-com\stoman\ui\NhanVienJDialog$19.class
 com\stoman\ui\StoManJFrame$49.class
 com\stoman\ui\StoManJFrame$39.class
 com\stoman\ui\StoManJFrame$23.class
+com\stoman\ui\NhanVienJDialog$16$1.class
 com\stoman\ui\StoManJFrame$9.class
 com\stoman\ui\KhoJDialog$6.class
 com\stoman\ui\StoManJFrame$53.class
@@ -164,7 +164,6 @@ com\stoman\ui\PhieuNhapXuatKhoJDialog$46.class
 com\stoman\ui\HangHoaJDialog$10.class
 com\stoman\utils\JSystemFileChooser.class
 com\stoman\ui\PhieuKiemKhoJDialog$30.class
-com\stoman\ui\NhanVienJDialog$18$1.class
 com\stoman\ui\PhieuKiemKhoJDialog$28.class
 com\stoman\ui\PhieuNhapXuatKhoJDialog$39.class
 com\stoman\utils\JTextFieldCustom$2.class
@@ -253,7 +252,6 @@ com\stoman\ui\StoManJFrame$1.class
 com\stoman\utils\QRCode.class
 com\stoman\ui\PhieuNhapXuatKhoJDialog$7.class
 com\stoman\ui\HangHoaJDialog$21.class
-com\stoman\ui\NhanVienJDialog$20.class
 com\stoman\ui\PhieuKiemKhoJDialog$9.class
 com\stoman\ui\PhieuNhapXuatKhoJDialog$38.class
 com\stoman\ui\PhieuKiemKhoJDialog$21.class

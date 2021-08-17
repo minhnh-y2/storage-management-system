@@ -10,7 +10,6 @@ import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
 import com.stoman.utils.MsgBox;
-import com.stoman.utils.JTextFieldCustom;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
 import java.awt.Component;
@@ -102,7 +101,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             }
         ));
         tblNhanVien.setOpaque(false);
-        tblNhanVien.setRowHeight(25);
         tblNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,20 +147,10 @@ public class NhanVienJDialog extends javax.swing.JDialog {
                 txtMatKhauFocusGained(evt);
             }
         });
-        txtMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMatKhauMouseClicked(evt);
-            }
-        });
 
         txtXacNhanMK.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtXacNhanMKFocusGained(evt);
-            }
-        });
-        txtXacNhanMK.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtXacNhanMKMouseClicked(evt);
             }
         });
 
@@ -506,16 +494,6 @@ public class NhanVienJDialog extends javax.swing.JDialog {
         this.timer.stop();
     }//GEN-LAST:event_formWindowClosed
 
-    private void txtMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatKhauMouseClicked
-        // TODO add your handling code here:
-        txtMatKhau.selectAll();
-    }//GEN-LAST:event_txtMatKhauMouseClicked
-
-    private void txtXacNhanMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtXacNhanMKMouseClicked
-        // TODO add your handling code here:
-        txtXacNhanMK.selectAll();
-    }//GEN-LAST:event_txtXacNhanMKMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -781,7 +759,7 @@ public class NhanVienJDialog extends javax.swing.JDialog {
             txtMatKhau.requestFocus();
             return false;
         }
-        if (matKhau.length < 8) {
+        if (matKhau.length < 5) {
             MsgBox.alert(this, "Mật khẩu không được ngắn hơn 8 ký tự!");
             txtMatKhau.requestFocus();
             return false;
