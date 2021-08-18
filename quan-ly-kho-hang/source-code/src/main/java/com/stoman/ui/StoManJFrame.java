@@ -2302,9 +2302,12 @@ public class StoManJFrame extends javax.swing.JFrame {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
-
+            
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblLuuTru.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2322,6 +2325,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblNhapModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2339,6 +2345,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblXuatModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2356,6 +2365,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTongHopModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2373,6 +2385,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopLHHModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2390,6 +2405,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopHHModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2407,6 +2425,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopLHHNhapModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2424,6 +2445,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopHHNhapModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2441,6 +2465,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopLHHXuatModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2458,6 +2485,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopHHXuatModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2475,6 +2505,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopLHHTHModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -2492,6 +2525,9 @@ public class StoManJFrame extends javax.swing.JFrame {
 
             @Override
             public Class getColumnClass(int columnIndex) {
+                if (tblTopHHTHModel.getRowCount() == 0) {
+                    return String.class;
+                }
                 if (getValueAt(0, columnIndex) == null) {
                     return Object.class;
                 }
@@ -3061,7 +3097,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         modelXuat.removeAllElements();
         modelTH.removeAllElements();
 
-        int nam = (Integer) cboNamNhap.getSelectedItem();
+        //int nam = (Integer) cboNamNhap.getSelectedItem();
 
         for (int i = 1; i < tblLuuTru.getColumnCount(); i++) {
             modelLT.addElement(tblLuuTru.getColumnName(i));
@@ -3626,6 +3662,7 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTKxuat.setRowSorter(null);
         tblTongHop.setRowSorter(null);
 
+        this.fillToComboBoxTimKiem();
         this.fillToComboBoxKho();
         this.fillToComboBoxLoaiHangHoa();
         this.fillToComboBoxNamTQ();
