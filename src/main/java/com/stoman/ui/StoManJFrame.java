@@ -8,7 +8,6 @@ package com.stoman.ui;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
-import com.stoman.dao.NhanVienDAO;
 import com.stoman.dao.ThongKeDAO;
 import com.stoman.entity.Kho;
 import com.stoman.entity.LoaiHangHoa;
@@ -2008,6 +2007,7 @@ public class StoManJFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        System.setProperty("sun.java2d.uiScale", "100%");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
