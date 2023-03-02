@@ -6,6 +6,7 @@
 package com.stoman.ui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.stoman.dao.KhoDAO;
 import com.stoman.dao.LoaiHangHoaDAO;
 import com.stoman.dao.ThongKeDAO;
@@ -954,8 +955,8 @@ public class StoManJFrame extends javax.swing.JFrame {
                                 .addComponent(lblLoaiHangHoaNhap))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(pnlHangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cboLoaiHangHoaNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboKhoNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cboLoaiHangHoaNhap, 0, 165, Short.MAX_VALUE)
+                                .addComponent(cboKhoNhap, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(lblTrongNhap)))
                 .addContainerGap())
         );
