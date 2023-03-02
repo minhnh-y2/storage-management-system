@@ -142,13 +142,15 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTheoLT = new javax.swing.JLabel();
         cboTimKiemLT = new javax.swing.JComboBox<>();
         pnlTop10HangTK = new javax.swing.JPanel();
+        splTop10HangTK = new javax.swing.JSplitPane();
+        pnlTopHH = new javax.swing.JPanel();
         lblTopHH = new javax.swing.JLabel();
         oblTopHH = new javax.swing.JScrollPane();
         tblTopHH = new javax.swing.JTable();
+        pnlTopLHH = new javax.swing.JPanel();
         lblTopLHH = new javax.swing.JLabel();
-        pnlTopLHH = new javax.swing.JScrollPane();
+        jspTopLHH = new javax.swing.JScrollPane();
         tblTopLHH = new javax.swing.JTable();
-        separator12 = new javax.swing.JSeparator();
         pnlTKNhap = new javax.swing.JPanel();
         slpTKNhap = new javax.swing.JSplitPane();
         pnlHangNhap = new javax.swing.JPanel();
@@ -290,8 +292,8 @@ public class StoManJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STOMAN - STROGE MANAGER SYSTEM");
         setMinimumSize(new java.awt.Dimension(1020, 700));
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
-        toolBar.setFloatable(false);
         toolBar.setRollover(true);
 
         btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/logout.png"))); // NOI18N
@@ -383,7 +385,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlThongTin.setLayout(new java.awt.GridLayout(0, 1));
 
         pnlLuongNhap.setBackground(new java.awt.Color(255, 102, 102));
-        pnlLuongNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongNhap.setLayout(new java.awt.GridLayout(0, 1));
 
         lblLuongNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -401,7 +402,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlThongTin.add(pnlLuongNhap);
 
         pnlLuongXuat.setBackground(new java.awt.Color(0, 153, 204));
-        pnlLuongXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongXuat.setLayout(new java.awt.GridLayout(0, 1));
 
         lblLuongXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -419,7 +419,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlThongTin.add(pnlLuongXuat);
 
         pnlLuongTonKho.setBackground(new java.awt.Color(0, 204, 102));
-        pnlLuongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlLuongTonKho.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTonKho.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -508,7 +507,7 @@ public class StoManJFrame extends javax.swing.JFrame {
             .addGroup(pnlTongQuanLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                    .addComponent(pnlThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTongQuanLayout.createSequentialGroup()
                         .addComponent(lblDShangHoa1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -539,7 +538,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         separator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         pnlTongGiaTri.setBackground(new java.awt.Color(0, 204, 102));
-        pnlTongGiaTri.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGiaTri.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -555,7 +553,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongGiaTri.add(lblSumTongGiaTri);
 
         pnlTongTonKho.setBackground(new java.awt.Color(0, 204, 102));
-        pnlTongTonKho.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongTonKho.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTonKhoLT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -625,7 +622,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                         .addComponent(lblTheoLT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cboTimKiemLT, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                    .addComponent(lblTblLuuTru, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
                     .addComponent(lblDShangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,7 +640,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                             .addComponent(cboLoaiHangHoaLT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(separator6)
                     .addComponent(lblPhanLoaiHH, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(9, 9, 9))
         );
         pnlHangTonKhoLayout.setVerticalGroup(
             pnlHangTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,6 +680,8 @@ public class StoManJFrame extends javax.swing.JFrame {
 
         slpHangTK.setTopComponent(pnlHangTonKho);
 
+        pnlTopHH.setPreferredSize(new java.awt.Dimension(720, 297));
+
         lblTopHH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopHH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopHH.setText("10 mặt hàng tồn nhiều nhất");
@@ -698,6 +697,36 @@ public class StoManJFrame extends javax.swing.JFrame {
         tblTopHH.getTableHeader().setReorderingAllowed(false);
         oblTopHH.setViewportView(tblTopHH);
 
+        javax.swing.GroupLayout pnlTopHHLayout = new javax.swing.GroupLayout(pnlTopHH);
+        pnlTopHH.setLayout(pnlTopHHLayout);
+        pnlTopHHLayout.setHorizontalGroup(
+            pnlTopHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(pnlTopHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTopHHLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlTopHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                        .addComponent(lblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap()))
+        );
+        pnlTopHHLayout.setVerticalGroup(
+            pnlTopHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnlTopHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTopHHLayout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addComponent(lblTopHH)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(oblTopHH)
+                    .addGap(3, 3, 3)))
+        );
+
+        splTop10HangTK.setLeftComponent(pnlTopHH);
+
+        pnlTopLHH.setPreferredSize(new java.awt.Dimension(359, 297));
+        pnlTopLHH.setRequestFocusEnabled(false);
+
         lblTopLHH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTopLHH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTopLHH.setText("10 loại hàng tồn nhiều nhất");
@@ -711,41 +740,45 @@ public class StoManJFrame extends javax.swing.JFrame {
             }
         ));
         tblTopLHH.getTableHeader().setReorderingAllowed(false);
-        pnlTopLHH.setViewportView(tblTopLHH);
+        jspTopLHH.setViewportView(tblTopLHH);
 
-        separator12.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        javax.swing.GroupLayout pnlTopLHHLayout = new javax.swing.GroupLayout(pnlTopLHH);
+        pnlTopLHH.setLayout(pnlTopLHHLayout);
+        pnlTopLHHLayout.setHorizontalGroup(
+            pnlTopLHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 359, Short.MAX_VALUE)
+            .addGroup(pnlTopLHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTopLHHLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlTopLHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jspTopLHH, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                        .addComponent(lblTopLHH, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+                    .addContainerGap()))
+        );
+        pnlTopLHHLayout.setVerticalGroup(
+            pnlTopLHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 297, Short.MAX_VALUE)
+            .addGroup(pnlTopLHHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlTopLHHLayout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addComponent(lblTopLHH)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jspTopLHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGap(3, 3, 3)))
+        );
+
+        splTop10HangTK.setRightComponent(pnlTopLHH);
 
         javax.swing.GroupLayout pnlTop10HangTKLayout = new javax.swing.GroupLayout(pnlTop10HangTK);
         pnlTop10HangTK.setLayout(pnlTop10HangTKLayout);
         pnlTop10HangTKLayout.setHorizontalGroup(
             pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTop10HangTKLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlTopLHH, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                    .addComponent(lblTopLHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separator12, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(oblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
-                    .addComponent(lblTopHH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(splTop10HangTK)
         );
         pnlTop10HangTKLayout.setVerticalGroup(
             pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTop10HangTKLayout.createSequentialGroup()
-                .addGroup(pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTop10HangTKLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTopLHH)
-                            .addComponent(lblTopHH, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlTop10HangTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlTopLHH, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                            .addComponent(oblTopHH, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addComponent(separator12))
+                .addComponent(splTop10HangTK)
                 .addContainerGap())
         );
 
@@ -813,7 +846,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblPhanLoaiN.setText("Phân loại danh sách");
 
         pnlTongLGNhap.setBackground(new java.awt.Color(255, 102, 102));
-        pnlTongLGNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGNhap.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTriNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -829,7 +861,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         pnlTongLGNhap.add(lblTongSoGTN);
 
         pnlTongGTNhap.setBackground(new java.awt.Color(255, 102, 102));
-        pnlTongGTNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGTNhap.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongLuongNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1031,7 +1062,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(pnlTop10HangNhapLayout.createSequentialGroup()
                         .addComponent(lblTopLHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlTopLHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addComponent(pnlTopLHHNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
                     .addGroup(pnlTop10HangNhapLayout.createSequentialGroup()
                         .addComponent(lblTopHHNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1080,7 +1111,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblPhanXuat.setText("Phân loại danh sách");
 
         pnlTongLGXuat.setBackground(new java.awt.Color(0, 153, 204));
-        pnlTongLGXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGXuat.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTriXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1108,7 +1138,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         });
 
         pnlTongGTXuat.setBackground(new java.awt.Color(0, 153, 204));
-        pnlTongGTXuat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongGTXuat.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongLuongXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1313,7 +1342,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopHangXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addComponent(oblTopHHXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopHangXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHXuat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1396,7 +1425,7 @@ public class StoManJFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopGiaTriNhapXuatLayout.createSequentialGroup()
                         .addComponent(lblTopHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                        .addComponent(oblTopHHTH, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTopGiaTriNhapXuatLayout.createSequentialGroup()
                         .addComponent(lblTopLHHTH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1411,7 +1440,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblThangTH.setText("Tháng");
 
         pnlTongLGXuatTH.setBackground(new java.awt.Color(0, 153, 204));
-        pnlTongLGXuatTH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGXuatTH.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTriXuatTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1441,7 +1469,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         });
 
         pnlTongLGNhapTH.setBackground(new java.awt.Color(255, 102, 102));
-        pnlTongLGNhapTH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongLGNhapTH.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTriNhapTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1463,7 +1490,6 @@ public class StoManJFrame extends javax.swing.JFrame {
         lblTimKiemTH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/search_24px.png"))); // NOI18N
 
         pnlTongCCGTXuatNhap.setBackground(new java.awt.Color(255, 153, 51));
-        pnlTongCCGTXuatNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlTongCCGTXuatNhap.setLayout(new java.awt.GridLayout(0, 1));
 
         lblTongGiaTriXN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -2088,6 +2114,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JScrollPane jspTopLHH;
     private javax.swing.JLabel lblDSTongHop;
     private javax.swing.JLabel lblDShangHoa;
     private javax.swing.JLabel lblDShangHoa1;
@@ -2208,8 +2235,9 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTop10HangNhap;
     private javax.swing.JPanel pnlTop10HangTK;
     private javax.swing.JPanel pnlTopGiaTriNhapXuat;
+    private javax.swing.JPanel pnlTopHH;
     private javax.swing.JPanel pnlTopHangXuat;
-    private javax.swing.JScrollPane pnlTopLHH;
+    private javax.swing.JPanel pnlTopLHH;
     private javax.swing.JScrollPane pnlTopLHHNhap;
     private javax.swing.JScrollPane pnlTopLHHTH;
     private javax.swing.JScrollPane pnlTopLHHXuat;
@@ -2217,7 +2245,6 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator separator;
     private javax.swing.JToolBar.Separator separator1;
     private javax.swing.JSeparator separator10;
-    private javax.swing.JSeparator separator12;
     private javax.swing.JSeparator separator18;
     private javax.swing.JSeparator separator19;
     private javax.swing.JToolBar.Separator separator2;
@@ -2237,6 +2264,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane slpTKNhap;
     private javax.swing.JSplitPane slpTKXuat;
     private javax.swing.JSplitPane slpTongHop;
+    private javax.swing.JSplitPane splTop10HangTK;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblLuuTru;
     private javax.swing.JTable tblTKnhap;
