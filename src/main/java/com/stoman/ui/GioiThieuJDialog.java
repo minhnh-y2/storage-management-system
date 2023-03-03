@@ -5,6 +5,10 @@
  */
 package com.stoman.ui;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.*;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -31,45 +35,52 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        lblHeaderImage = new JLabel();
+        pnlContent = new JPanel();
+        txtGioiThieu = new JTextPane();
 
-        lblHeaderImage = new javax.swing.JLabel();
-        pnlContent = new javax.swing.JPanel();
-        txtGioiThieu = new javax.swing.JTextPane();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(480, 400));
+        setBackground(Color.white);
+        setMinimumSize(new Dimension(480, 400));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(480, 600));
-        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        setPreferredSize(new Dimension(480, 600));
+        var contentPane = getContentPane();
+        contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
-        lblHeaderImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif"))); // NOI18N
+        //---- lblHeaderImage ----
+        lblHeaderImage.setIcon(new ImageIcon(getClass().getResource("/com/stoman/images/gioi-thieu.gif")));
         lblHeaderImage.setText("jLabel1");
-        lblHeaderImage.setPreferredSize(new java.awt.Dimension(480, 100));
-        getContentPane().add(lblHeaderImage);
+        lblHeaderImage.setPreferredSize(new Dimension(480, 100));
+        contentPane.add(lblHeaderImage);
 
-        pnlContent.setBackground(new java.awt.Color(0, 102, 204));
+        //======== pnlContent ========
+        {
+            pnlContent.setBackground(new Color(0x0066cc));
+            pnlContent.setLayout(new FlowLayout());
 
-        txtGioiThieu.setEditable(false);
-        txtGioiThieu.setBackground(new java.awt.Color(0, 102, 153));
-        txtGioiThieu.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        txtGioiThieu.setContentType("text/html"); // NOI18N
-        txtGioiThieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtGioiThieu.setForeground(new java.awt.Color(255, 255, 255));
-        txtGioiThieu.setText("<html>\n  <head>\n\n  </head>\n  <body>\n<center><h1>Storage Manage</h1></center>\n<p>Storage Manager (StoMan) là phần mềm hổ trợ quản lý kho cho doanh nghiêp.</p>\n<p>Stoman sẽ giúp doanh nghiệp nâng cao công tác quản lý kho thông qua giảm tải được các công việc hành chính và thống kê, nâng cao khả năng cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ.</p>\n<p>Giúp doanh nghiệp đạt được kết quả tốt hơn trong việc sản xuất và kinh doanh.</p>\n<p><br></p>\n<p><strong>Yêu cầu về môi trường:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Tác giá:</strong></p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>1. Hệ điều hành bất kỳ<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>1. Nguyễn Hoài Minh</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>2. JDK 1.8 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span>2. Đặng Hữu Đăng Khoa</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>3. SQL Server 2008 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>3. Nguyễn Quang Huy <span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span></p>\n  </body>\n</html>\n");
-        txtGioiThieu.setPreferredSize(new java.awt.Dimension(480, 450));
-        txtGioiThieu.setRequestFocusEnabled(false);
-        txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtGioiThieuMouseClicked(evt);
-            }
-        });
-        pnlContent.add(txtGioiThieu);
-
-        getContentPane().add(pnlContent);
-
+            //---- txtGioiThieu ----
+            txtGioiThieu.setEditable(false);
+            txtGioiThieu.setBackground(new Color(0x006699));
+            txtGioiThieu.setBorder(new EmptyBorder(20, 20, 20, 20));
+            txtGioiThieu.setContentType("text/html");
+            txtGioiThieu.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            txtGioiThieu.setForeground(Color.white);
+            txtGioiThieu.setText("<html>\n  <head>\n\n  </head>\n  <body>\n<center><h1>Storage Manage</h1></center>\n<p>Storage Manager (StoMan) l\u00e0 ph\u1ea7n m\u1ec1m h\u1ed5 tr\u1ee3 qu\u1ea3n l\u00fd kho cho doanh nghi\u00eap.</p>\n<p>Stoman s\u1ebd gi\u00fap doanh nghi\u1ec7p n\u00e2ng cao c\u00f4ng t\u00e1c qu\u1ea3n l\u00fd kho th\u00f4ng qua gi\u1ea3m t\u1ea3i \u0111\u01b0\u1ee3c c\u00e1c c\u00f4ng vi\u1ec7c h\u00e0nh ch\u00ednh v\u00e0 th\u1ed1ng k\u00ea, n\u00e2ng cao kh\u1ea3 n\u0103ng c\u00e2n b\u1eb1ng gi\u1eefa c\u00e1c giai \u0111o\u1ea1n s\u1ea3n xu\u1ea5t - d\u1ef1 tr\u1eef - ti\u00eau th\u1ee5.</p>\n<p>Gi\u00fap doanh nghi\u1ec7p \u0111\u1ea1t \u0111\u01b0\u1ee3c k\u1ebft qu\u1ea3 t\u1ed1t h\u01a1n trong vi\u1ec7c s\u1ea3n xu\u1ea5t v\u00e0 kinh doanh.</p>\n<p><br></p>\n<p><strong>Y\u00eau c\u1ea7u v\u1ec1 m\u00f4i tr\u01b0\u1eddng:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;T\u00e1c gi\u00e1:</strong></p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>1. H\u1ec7 \u0111i\u1ec1u h\u00e0nh b\u1ea5t k\u1ef3<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>1. Nguy\u1ec5n Ho\u00e0i Minh</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>2. JDK 1.8 tr\u1edf l\u00ean<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span>2. \u0110\u1eb7ng H\u1eefu \u0110\u0103ng Khoa</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>3. SQL Server 2008 tr\u1edf l\u00ean<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>3. Nguy\u1ec5n Quang Huy <span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span></p>\n  </body>\n</html>\n");
+            txtGioiThieu.setPreferredSize(new Dimension(480, 450));
+            txtGioiThieu.setRequestFocusEnabled(false);
+            txtGioiThieu.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    txtGioiThieuMouseClicked(e);
+                }
+            });
+            pnlContent.add(txtGioiThieu);
+        }
+        contentPane.add(pnlContent);
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtGioiThieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGioiThieuMouseClicked
@@ -112,9 +123,9 @@ public class GioiThieuJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblHeaderImage;
-    private javax.swing.JPanel pnlContent;
-    private javax.swing.JTextPane txtGioiThieu;
+    private JLabel lblHeaderImage;
+    private JPanel pnlContent;
+    private JTextPane txtGioiThieu;
     // End of variables declaration//GEN-END:variables
 
     private void init(){

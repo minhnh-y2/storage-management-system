@@ -14,14 +14,14 @@ import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XPassword;
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 /**
  *
  * @author MinhNH
  */
 public class DangNhapJDialog extends javax.swing.JDialog {
+    StoManJFrame parent;
 
     /**
      * Creates new form DangNhapJDialog
@@ -29,6 +29,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setUndecorated(true);
+        this.parent = (StoManJFrame) parent;
         initComponents();
         init();
     }
@@ -261,9 +262,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 txtMatKhau.requestFocus();
                 return;
             }
-
             Auth.user = nv;
             this.dispose();
+
+            if (this.parent.isVisible()) {
+                this.parent.loginStatus();
+            }
         } catch (Exception e) {
             MsgBox.alert(this, "Không thể đăng nhập!");
             e.printStackTrace();

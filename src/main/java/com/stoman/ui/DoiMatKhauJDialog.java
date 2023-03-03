@@ -5,6 +5,11 @@
  */
 package com.stoman.ui;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle;
+import javax.swing.border.*;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.utils.Auth;
@@ -36,106 +41,110 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        pnlDoiMatKhau = new JPanel();
+        lblMatKhauCu = new JLabel();
+        txtMatKhauCu = new JPasswordField();
+        lblMatKhauMoi = new JLabel();
+        txtMatKhauMoi = new JPasswordField();
+        lblXacNhanMK = new JLabel();
+        txtXacNhanMK = new JPasswordField();
+        pnlChucNang = new JPanel();
+        btnDongY = new JButton();
+        btnThoat = new JButton();
 
-        pnlDoiMatKhau = new javax.swing.JPanel();
-        lblMatKhauCu = new javax.swing.JLabel();
-        txtMatKhauCu = new javax.swing.JPasswordField();
-        lblMatKhauMoi = new javax.swing.JLabel();
-        txtMatKhauMoi = new javax.swing.JPasswordField();
-        lblXacNhanMK = new javax.swing.JLabel();
-        txtXacNhanMK = new javax.swing.JPasswordField();
-        pnlChucNang = new javax.swing.JPanel();
-        btnDongY = new javax.swing.JButton();
-        btnThoat = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("StoMan - Đổi mật khẩu");
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("StoMan - \u0110\u1ed5i m\u1eadt kh\u1ea9u");
         setResizable(false);
+        var contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
-        lblMatKhauCu.setText("Mật khẩu hiện tại");
+        //======== pnlDoiMatKhau ========
+        {
 
-        txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
-        txtMatKhauCu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
-        txtMatKhauCu.setPreferredSize(new java.awt.Dimension(64, 22));
+            //---- lblMatKhauCu ----
+            lblMatKhauCu.setText("M\u1eadt kh\u1ea9u hi\u1ec7n t\u1ea1i");
 
-        lblMatKhauMoi.setText("Mật khẩu mới");
+            //---- txtMatKhauCu ----
+            txtMatKhauCu.setBackground(new Color(0, 0, 0, 0));
+            txtMatKhauCu.setBorder(new MatteBorder(0, 0, 1, 0, new Color(0x999999)));
+            txtMatKhauCu.setPreferredSize(new Dimension(64, 22));
 
-        txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
-        txtMatKhauMoi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
-        txtMatKhauMoi.setPreferredSize(new java.awt.Dimension(64, 22));
+            //---- lblMatKhauMoi ----
+            lblMatKhauMoi.setText("M\u1eadt kh\u1ea9u m\u1edbi");
 
-        lblXacNhanMK.setText("Xác nhận mật khẩu mới");
+            //---- txtMatKhauMoi ----
+            txtMatKhauMoi.setBackground(new Color(0, 0, 0, 0));
+            txtMatKhauMoi.setBorder(new MatteBorder(0, 0, 1, 0, new Color(0x999999)));
+            txtMatKhauMoi.setPreferredSize(new Dimension(64, 22));
 
-        txtXacNhanMK.setBackground(new Color(0, 0, 0, 0));
-        txtXacNhanMK.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
-        txtXacNhanMK.setPreferredSize(new java.awt.Dimension(64, 22));
-        txtXacNhanMK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXacNhanMKActionPerformed(evt);
+            //---- lblXacNhanMK ----
+            lblXacNhanMK.setText("X\u00e1c nh\u1eadn m\u1eadt kh\u1ea9u m\u1edbi");
+
+            //---- txtXacNhanMK ----
+            txtXacNhanMK.setBackground(new Color(0, 0, 0, 0));
+            txtXacNhanMK.setBorder(new MatteBorder(0, 0, 1, 0, new Color(0x999999)));
+            txtXacNhanMK.setPreferredSize(new Dimension(64, 22));
+            txtXacNhanMK.addActionListener(e -> txtXacNhanMKActionPerformed(e));
+
+            //======== pnlChucNang ========
+            {
+                pnlChucNang.setLayout(new GridLayout());
+
+                //---- btnDongY ----
+                btnDongY.setBackground(new Color(0xccffcc));
+                btnDongY.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/checked.png")));
+                btnDongY.setText("\u0110\u1ed3ng \u00fd");
+                btnDongY.addActionListener(e -> btnDongYActionPerformed(e));
+                pnlChucNang.add(btnDongY);
+
+                //---- btnThoat ----
+                btnThoat.setBackground(new Color(0xff9999));
+                btnThoat.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png")));
+                btnThoat.setText("Tho\u00e1t");
+                btnThoat.addActionListener(e -> btnThoatActionPerformed(e));
+                pnlChucNang.add(btnThoat);
             }
-        });
 
-        pnlChucNang.setLayout(new java.awt.GridLayout(1, 0));
-
-        btnDongY.setBackground(new java.awt.Color(204, 255, 204));
-        btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/checked.png"))); // NOI18N
-        btnDongY.setText("Đồng ý");
-        btnDongY.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDongYActionPerformed(evt);
-            }
-        });
-        pnlChucNang.add(btnDongY);
-
-        btnThoat.setBackground(new java.awt.Color(255, 153, 153));
-        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/icons/cancel.png"))); // NOI18N
-        btnThoat.setText("Thoát");
-        btnThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThoatActionPerformed(evt);
-            }
-        });
-        pnlChucNang.add(btnThoat);
-
-        javax.swing.GroupLayout pnlDoiMatKhauLayout = new javax.swing.GroupLayout(pnlDoiMatKhau);
-        pnlDoiMatKhau.setLayout(pnlDoiMatKhauLayout);
-        pnlDoiMatKhauLayout.setHorizontalGroup(
-            pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtXacNhanMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtMatKhauCu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMatKhauCu)
-                    .addComponent(lblMatKhauMoi)
-                    .addComponent(lblXacNhanMK))
-                .addGap(15, 15, 15))
-        );
-        pnlDoiMatKhauLayout.setVerticalGroup(
-            pnlDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblMatKhauCu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblMatKhauMoi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(lblXacNhanMK)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-        );
-
-        getContentPane().add(pnlDoiMatKhau, java.awt.BorderLayout.CENTER);
-
+            GroupLayout pnlDoiMatKhauLayout = new GroupLayout(pnlDoiMatKhau);
+            pnlDoiMatKhau.setLayout(pnlDoiMatKhauLayout);
+            pnlDoiMatKhauLayout.setHorizontalGroup(
+                pnlDoiMatKhauLayout.createParallelGroup()
+                    .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(pnlDoiMatKhauLayout.createParallelGroup()
+                            .addComponent(pnlChucNang, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(txtMatKhauMoi, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtXacNhanMK, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMatKhauCu, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMatKhauCu)
+                            .addComponent(lblMatKhauMoi)
+                            .addComponent(lblXacNhanMK))
+                        .addGap(15, 15, 15))
+            );
+            pnlDoiMatKhauLayout.setVerticalGroup(
+                pnlDoiMatKhauLayout.createParallelGroup()
+                    .addGroup(pnlDoiMatKhauLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lblMatKhauCu)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMatKhauCu, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(lblMatKhauMoi)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMatKhauMoi, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(lblXacNhanMK)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtXacNhanMK, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlChucNang, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+            );
+        }
+        contentPane.add(pnlDoiMatKhau, BorderLayout.CENTER);
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -184,16 +193,16 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDongY;
-    private javax.swing.JButton btnThoat;
-    private javax.swing.JLabel lblMatKhauCu;
-    private javax.swing.JLabel lblMatKhauMoi;
-    private javax.swing.JLabel lblXacNhanMK;
-    private javax.swing.JPanel pnlChucNang;
-    private javax.swing.JPanel pnlDoiMatKhau;
-    private javax.swing.JPasswordField txtMatKhauCu;
-    private javax.swing.JPasswordField txtMatKhauMoi;
-    private javax.swing.JPasswordField txtXacNhanMK;
+    private JPanel pnlDoiMatKhau;
+    private JLabel lblMatKhauCu;
+    private JPasswordField txtMatKhauCu;
+    private JLabel lblMatKhauMoi;
+    private JPasswordField txtMatKhauMoi;
+    private JLabel lblXacNhanMK;
+    private JPasswordField txtXacNhanMK;
+    private JPanel pnlChucNang;
+    private JButton btnDongY;
+    private JButton btnThoat;
     // End of variables declaration//GEN-END:variables
 
     private void init() {

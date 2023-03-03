@@ -1,0 +1,44 @@
+JFDML JFormDesigner: "8.0.2.0.220" Java: "17.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.FlowLayout ) {
+			"hgap": 0
+			"vgap": 0
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			"alwaysOnTop": true
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"minimumSize": new java.awt.Dimension( 480, 400 )
+			"undecorated": true
+			"preferredSize": new java.awt.Dimension( 480, 600 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblHeaderImage"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/images/gioi-thieu.gif" )
+				"text": "jLabel1"
+				"preferredSize": new java.awt.Dimension( 480, 100 )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "pnlContent"
+				"background": new java.awt.Color( 0, 102, 204, 255 )
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "txtGioiThieu"
+					"editable": false
+					"background": new java.awt.Color( 0, 102, 153, 255 )
+					"border": new javax.swing.border.EmptyBorder( 20, 20, 20, 20 )
+					"contentType": "text/html"
+					"font": new java.awt.Font( "Segoe UI", 0, 14 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"text": "<html>\n  <head>\n\n  </head>\n  <body>\n<center><h1>Storage Manage</h1></center>\n<p>Storage Manager (StoMan) là phần mềm hổ trợ quản lý kho cho doanh nghiêp.</p>\n<p>Stoman sẽ giúp doanh nghiệp nâng cao công tác quản lý kho thông qua giảm tải được các công việc hành chính và thống kê, nâng cao khả năng cân bằng giữa các giai đoạn sản xuất - dự trữ - tiêu thụ.</p>\n<p>Giúp doanh nghiệp đạt được kết quả tốt hơn trong việc sản xuất và kinh doanh.</p>\n<p><br></p>\n<p><strong>Yêu cầu về môi trường:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Tác giá:</strong></p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>1. Hệ điều hành bất kỳ<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>1. Nguyễn Hoài Minh</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>2. JDK 1.8 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span>2. Đặng Hữu Đăng Khoa</p>\n<p><span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span>3. SQL Server 2008 trở lên<span style=\"white-space:pre;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>3. Nguyễn Quang Huy <span style=\"white-space:pre;\">&nbsp; &nbsp;&nbsp;</span></p>\n  </body>\n</html>\n"
+					"preferredSize": new java.awt.Dimension( 480, 450 )
+					"requestFocusEnabled": false
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "txtGioiThieuMouseClicked", true ) )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 480, 476 )
+		} )
+	}
+}

@@ -1,0 +1,534 @@
+JFDML JFormDesigner: "8.0.2.0.220" Java: "17.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			"title": "StoMan - Quản lý phiếu kiểm kho"
+			"resizable": false
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "formWindowClosed", true ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "pnlBackground"
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tabs"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq l {space :p:10:p, par l {comp pnlThongTin:::::x, seq {par t {seq t {comp pnlNutDieuHuong:::p::p, space ::41:x, comp pnlChucNangMoRong:::p::p}, comp pnlTblCTPhieu:::::x, comp pnlTimKiemCT::l:::x}, space :::p, comp pnlChucNang:::p:182:p}}, space :p:10:p}}"
+						"$verticalGroup": "par l {seq l {space :p:10:p, comp pnlThongTin:::p::p, space :::p, par l {seq {comp pnlTimKiemCT:::p::p, space :::p, comp pnlTblCTPhieu::::0:x, space :p:10:p, par l {comp pnlChucNangMoRong:::p::p, comp pnlNutDieuHuong::t:p:33:p}}, comp pnlChucNang::::411:x}, space :p:10:p}}"
+					} ) {
+						name: "pnlChiTietPhieuKiem"
+						"opaque": false
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "pnlTblCTPhieu"
+							"border": new javax.swing.border.TitledBorder( null, "Chi tiết phiếu", 4, 0, new java.awt.Font( "Segoe UI", 1, 13 ), null )
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "tblCTPhieu"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+									add( "Title 1" )
+									add( "Title 2" )
+									add( "Title 3" )
+									add( "Title 4" )
+								}, new java.util.Vector {
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+								}, new java.util.Vector {
+									add( true )
+									add( false )
+									add( true )
+									add( true )
+								}, new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+								"selectionMode": 0
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tblCTPhieuMouseClicked", true ) )
+								addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "tblCTPhieuPropertyChange", true ) )
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "tblCTPhieuKeyReleased", true ) )
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space :::p, par l {comp lblNgayLap::l:p:65:p, comp lblNguoiLap::l:p:65:p, comp lblNgayKiem::l:p::p}, space :::p, par l {comp txtNgayKiem:::::x, comp txtNguoiLap:::::x, comp txtNgayLap:::::x}, space s:::p, par l {comp lblKho:::p:27:p, comp lblTrangThai:::p::p}, space :p::p, par l {seq {comp cboKho:::p:90:p, space s:::p, comp lblGhiChu:::p::p}, comp chkHoanThanh::l:p::p}, space :::p, comp pnlTxtGhiChu:::::x, space :::p}}"
+							"$verticalGroup": "par l {seq t {space :p::p, par t {comp pnlTxtGhiChu::::0:x, seq {par l {seq {comp lblGhiChu:::p::p, space :p:14:p}, seq t {par b {comp txtNguoiLap::b:::x, comp lblNguoiLap::b:p::p, comp lblKho::b:p::p, comp cboKho::b:p::p}, space :::p}}, par b {comp lblNgayLap::b:p::p, comp txtNgayLap:1:b:p::p, comp lblTrangThai::b:p::p, comp chkHoanThanh::b:p::p}, space :::p, par l:::p {comp txtNgayKiem:1:::22:x, comp lblNgayKiem:::::x}}}, space :::p}}"
+						} ) {
+							name: "pnlThongTin"
+							"border": new javax.swing.border.TitledBorder( null, "Thông tin phiếu", 4, 0, new java.awt.Font( "Segoe UI", 1, 13 ), null )
+							"opaque": false
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblTrangThai"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Trạng thái"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblKho"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Kho"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblNgayLap"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Ngày lập"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblNgayKiem"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Ngày kiểm"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblNguoiLap"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Người lập"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblGhiChu"
+								"font": new java.awt.Font( "Segoe UI", 1, 13 )
+								"text": "Ghi chú"
+							} )
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "pnlTxtGhiChu"
+								add( new FormComponent( "javax.swing.JTextArea" ) {
+									name: "txtGhiChu"
+									"columns": 20
+									"rows": 5
+								} )
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "chkHoanThanh"
+								"text": "Hoàn thành"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "cboKho"
+								"model": new javax.swing.DefaultComboBoxModel
+								auxiliary() {
+									"JavaCodeGenerator.typeParameters": "String"
+								}
+								addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "cboKhoItemStateChanged", true ) )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cboKhoActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "txtNguoiLap"
+								"editable": false
+							} )
+							add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+								name: "txtNgayLap"
+								"editable": false
+							} )
+							add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+								name: "txtNgayKiem"
+								"opaque": false
+								auxiliary() {
+									"JavaCodeGenerator.preInitCode": "${field}.setDate(new Date());"
+								}
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space :p:2:p, comp lblTimKiemCT:::p::p, space :::p, comp txtTimKiemCT:::::x, space :::p, comp lblTheoCT:::p::p, space :::p, comp cboTimKiemCT:::p:207:p, space :::p}}"
+							"$verticalGroup": "par l {seq t {space :::x, par t {comp lblTimKiemCT:::p::p, par b {comp txtTimKiemCT::b:p::p, comp lblTheoCT::b:p::p, comp cboTimKiemCT::b:p::p}}, space :::p}}"
+						} ) {
+							name: "pnlTimKiemCT"
+							"opaque": false
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "txtTimKiemCT"
+								auxiliary() {
+									"JavaCodeGenerator.customCreateCode": "new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa);"
+								}
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "txtTimKiemCTKeyReleased", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblTimKiemCT"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/search_24px.png" )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblTheoCT"
+								"text": "theo"
+							} )
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "cboTimKiemCT"
+								auxiliary() {
+									"JavaCodeGenerator.typeParameters": "String"
+								}
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cboTimKiemCTActionPerformed", true ) )
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+							"columns": 0
+							"rows": 1
+						} ) {
+							name: "pnlNutDieuHuong"
+							"opaque": false
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnFirst"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/skip-to-start.png" )
+								"preferredSize": new java.awt.Dimension( 100, 33 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnFirstActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnPrev"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/double-left-24.png" )
+								"preferredSize": new java.awt.Dimension( 100, 33 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnPrevActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnNext"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/double-right.png" )
+								"preferredSize": new java.awt.Dimension( 100, 33 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnNextActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnLast"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/skip-to-end.png" )
+								"preferredSize": new java.awt.Dimension( 100, 33 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnLastActionPerformed", true ) )
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+							"$columnSpecs": "0"
+							"$rowSpecs": "0, 0, 0, 0, 0, 0, 0"
+						} ) {
+							name: "pnlChucNang"
+							"border": new javax.swing.border.TitledBorder( null, "Chức năng", 4, 0, new java.awt.Font( "Segoe UI", 1, 13 ), null )
+							"opaque": false
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnThem"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/icons8_new_copy_32px.png" )
+								"text": "Thêm chi tiết"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnThemActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 1
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnXoa"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/icons8_delete_document_32px.png" )
+								"text": "Xoá phiếu"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnXoaActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 2
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnHoanTac"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/icons8_undo_32px.png" )
+								"text": "Huỷ thay đổi"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnHoanTacActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 4
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnSua"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/edit-property-32.png" )
+								"text": "Sửa phiếu"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnSuaActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 3
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnMoi"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/icons8_document_32px.png" )
+								"text": "Phiếu mới"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnMoiActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnChiTiet"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/more-details-32.png" )
+								"text": "Chi tiết phiếu"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnChiTietActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 5
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnXuatMaPhieu"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/icons8_qr_code_24px.png" )
+								"text": "Mã phiếu QR"
+								"preferredSize": new java.awt.Dimension( 148, 45 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnXuatMaPhieuActionPerformed", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+								"gridy": 6
+								"hAlign": 0
+								"vAlign": 0
+								"ipadx": 8
+								"ipady": 8
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+							"columns": 3
+							"rows": 1
+						} ) {
+							name: "pnlChucNangMoRong"
+							"opaque": false
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnXuatFile"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/open-document.png" )
+								"text": "Xuất file"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnXuatFileActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "btnInPhieu"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/print.png" )
+								"text": "In phiếu"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnInPhieuActionPerformed", true ) )
+							} )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Thông tin phiếu kiểm"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq {space :::p, par l {comp pnlTblPhieuKiemKho::t::865:x, comp pnlTimKiem::t:::x}, space :::p}}"
+						"$verticalGroup": "par l {seq t {space :p::p, comp pnlTimKiem:::p::p, space :::p, comp pnlTblPhieuKiemKho::::518:x, space :::p}}"
+					} ) {
+						name: "pnlDanhSach"
+						"opaque": false
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "pnlTblPhieuKiemKho"
+							"border": new javax.swing.border.TitledBorder( null, "Danh sách phiếu", 4, 0, new java.awt.Font( "Segoe UI", 1, 13 ), null )
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "tblPhieu"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+									add( "Title 1" )
+									add( "Title 2" )
+									add( "Title 3" )
+									add( "Title 4" )
+								}, new java.util.Vector {
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+								}, new java.util.Vector {
+									add( true )
+									add( true )
+									add( true )
+									add( true )
+								}, new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+								"selectionMode": 0
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tblPhieuMouseClicked", true ) )
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "tblPhieuMousePressed", true ) )
+								addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "tblPhieuPropertyChange", true ) )
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space :p::p, comp lblTimKiemPhieu:::p::p, space :p::p, comp txtTimKiemPhieu:::::x, space :p::p, comp lblTimKiemTheoPhieu:::p::p, space :p::p, comp cboTimKiemPhieu:::p:207:p, space :p::p}}"
+							"$verticalGroup": "par l {seq t {space :::x, par b {comp lblTimKiemPhieu::b:p::p, comp txtTimKiemPhieu::b:p::p, comp lblTimKiemTheoPhieu::b:p::p, comp cboTimKiemPhieu::b:p::p}, space :::p}}"
+						} ) {
+							name: "pnlTimKiem"
+							"opaque": false
+							add( new FormComponent( "javax.swing.JComboBox" ) {
+								name: "cboTimKiemPhieu"
+								auxiliary() {
+									"JavaCodeGenerator.typeParameters": "String"
+								}
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cboTimKiemPhieuActionPerformed", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblTimKiemTheoPhieu"
+								"text": "theo"
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "txtTimKiemPhieu"
+								auxiliary() {
+									"JavaCodeGenerator.customCreateCode": "new com.stoman.utils.JTextFieldCustom(defaultSearchPhieu);"
+								}
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "txtTimKiemPhieuKeyReleased", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "lblTimKiemPhieu"
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/search_24px.png" )
+							} )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Danh sách phiếu kiểm"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 877, 605 )
+		} )
+		add( new FormContainer( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "ChiTietPhieuJDialog"
+			"title": "Chi tiết phiếu kiểm kho"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "pnlBackgroundCTP"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tabsCTP"
+					"opaque": true
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq t {space :p::p, par t {comp pnlTblCTPhieu_ChiTiet::::604:x, seq {comp lblTimKiemCTP:::p::p, space :::p, comp txtTimKiemCTP:::::x, space :::p, comp btnXoaKhoiDS:::p::p}}, space :p::p}}"
+						"$verticalGroup": "par l {seq l {space :::p, par l {comp lblTimKiemCTP::l:::x, comp btnXoaKhoiDS::l:::x, comp txtTimKiemCTP::l:::x}, space :p::p, comp pnlTblCTPhieu_ChiTiet::::370:x, space :p::p}}"
+					} ) {
+						name: "pnlDSKiemKho"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "pnlTblCTPhieu_ChiTiet"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "tblCTPhieu_ChiTiet"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+									add( "Title 1" )
+									add( "Title 2" )
+									add( "Title 3" )
+									add( "Title 4" )
+								}, new java.util.Vector {
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+								}, new java.util.Vector {
+									add( true )
+									add( true )
+									add( true )
+									add( true )
+								}, new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+								"selectionMode": 0
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "tblCTPhieu_ChiTietMouseClicked", true ) )
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "tblCTPhieu_ChiTietKeyReleased", true ) )
+							} )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnXoaKhoiDS"
+							"text": "Xóa khỏi danh sách"
+							"preferredSize": new java.awt.Dimension( 139, 22 )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnXoaKhoiDSActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "txtTimKiemCTP"
+							auxiliary() {
+								"JavaCodeGenerator.customCreateCode": "new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa);"
+							}
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "txtTimKiemCTPKeyReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTimKiemCTP"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/search_24px.png" )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Danh sách kiểm kho"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+						"$horizontalGroup": "par l {seq {space :::p, par l {comp pnlTblHangHoaKho::::604:x, seq l {comp lblTimKiemHHKho:::p::p, space :::p, comp txtTimKiemHHKho:::::x, space :::p, comp btnThemVaoDS:::p::p}}, space :::p}}"
+						"$verticalGroup": "par l {seq l {space :p::p, par l {comp lblTimKiemHHKho:::::x, comp txtTimKiemHHKho::l:::x, comp btnThemVaoDS::l:::x}, space :::p, comp pnlTblHangHoaKho::::370:x, space :p::p}}"
+					} ) {
+						name: "pnlDSHangHoa"
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "pnlTblHangHoaKho"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "tblHangHoaKho"
+								"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+									add( "Title 1" )
+									add( "Title 2" )
+									add( "Title 3" )
+									add( "Title 4" )
+								}, new java.util.Vector {
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+									add( class java.lang.Object )
+								}, new java.util.Vector {
+									add( true )
+									add( true )
+									add( true )
+									add( true )
+								}, new java.util.Vector {
+									add( null )
+									add( null )
+									add( null )
+									add( null )
+								} )
+								"selectionMode": 0
+							} )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "btnThemVaoDS"
+							"text": "Thêm vào danh sách"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnThemVaoDSActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTimKiemHHKho"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/search_24px.png" )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "txtTimKiemHHKho"
+							auxiliary() {
+								"JavaCodeGenerator.customCreateCode": "new com.stoman.utils.JTextFieldCustom(defaultSearchHangHoa);"
+							}
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "txtTimKiemHHKhoKeyReleased", true ) )
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Danh sách hàng hóa trong kho"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		} )
+		add( new FormContainer( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "QRCodeDialog"
+			"title": "Xuất mã phiếu (QR Code)"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0"
+				"$rowSpecs": "0"
+			} ) {
+				name: "pnlBackgroundQR"
+				"preferredSize": new java.awt.Dimension( 300, 300 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblQRCodeImage"
+					"border": new javax.swing.border.LineBorder( new java.awt.Color( 153, 153, 153, 255 ), 2, false )
+					"preferredSize": new java.awt.Dimension( 200, 200 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"hAlign": 0
+					"vAlign": 0
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		} )
+	}
+}

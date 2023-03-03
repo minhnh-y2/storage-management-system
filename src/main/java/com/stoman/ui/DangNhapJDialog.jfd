@@ -1,0 +1,153 @@
+JFDML JFormDesigner: "8.0.2.0.220" Java: "17.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 2
+			"title": "StoMan - Đăng nhập"
+			"alwaysOnTop": true
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "pnlBackground"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblDangNhap"
+					"font": new java.awt.Font( "Segoe UI", 1, 24 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"horizontalAlignment": 2
+					"text": "ĐĂNG NHẬP"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 40
+					"y": 30
+					"width": 150
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblGioiThieu"
+					"font": new java.awt.Font( "Segoe UI", 2, 13 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"text": "Hệ thống quản lý kho hàng StoMan"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 40
+					"y": 60
+					"width": 210
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblThoat"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/cancel-32(2).png" )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "lblThoatMouseClicked", true ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "lblThoatMouseEntered", true ) )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "lblThoatMouseExited", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 340
+					"y": 10
+					"width": 30
+					"height": 30
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblMaNV"
+					"font": new java.awt.Font( "Segoe UI", 1, 13 )
+					"foreground": new java.awt.Color( 204, 255, 255, 255 )
+					"text": "Tên tài khoản"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 40
+					"y": 110
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtMaNV"
+					"font": new java.awt.Font( "Segoe UI", 1, 13 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 204, 204, 204, 255 ) )
+					"caretColor": new java.awt.Color( 255, 255, 255, 255 )
+					"cursor": &Cursor0 new java.awt.Cursor( 2 )
+					auxiliary() {
+						"JavaCodeGenerator.preInitCode": "${field}.setBackground(new java.awt.Color(0, 0, 0, 0));"
+					}
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 50
+					"y": 140
+					"width": 280
+					"height": 30
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblMatKhau"
+					"font": new java.awt.Font( "Segoe UI", 1, 13 )
+					"foreground": new java.awt.Color( 204, 255, 255, 255 )
+					"text": "Mật khẩu"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 40
+					"y": 200
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "txtMatKhau"
+					"font": new java.awt.Font( "Segoe UI", 1, 13 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 204, 204, 204, 255 ) )
+					"caretColor": new java.awt.Color( 255, 255, 255, 255 )
+					"cursor": #Cursor0
+					auxiliary() {
+						"JavaCodeGenerator.preInitCode": "${field}.setBackground(new java.awt.Color(0, 0, 0, 0));"
+					}
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 50
+					"y": 230
+					"width": 280
+					"height": 30
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnDangNhap"
+					"background": new java.awt.Color( 153, 204, 255, 255 )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/login-24.png" )
+					"text": "Đăng nhập"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDangNhapActionPerformed", true ) )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnDangNhap", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 40
+					"y": 300
+					"width": 150
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnThoat"
+					"background": new java.awt.Color( 255, 153, 153, 255 )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/icons/cancel.png" )
+					"text": "Thoát"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnThoatActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 190
+					"y": 300
+					"width": 150
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "pnlDangNhap"
+					"border": new javax.swing.border.LineBorder( new java.awt.Color( 153, 153, 153, 255 ), 1, false )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 380
+					"height": 370
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "pnlMotion"
+					"opaque": false
+					auxiliary() {
+						"JavaCodeGenerator.customCreateCode": "new com.stoman.utils.JPanelDrag(this);"
+					}
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lblBackground"
+						"foreground": new java.awt.Color( 255, 255, 255, 255 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/stoman/images/background-login.png" )
+						"border": new javax.swing.border.LineBorder( new java.awt.Color( 153, 153, 153, 255 ), 1, false )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 380
+					"height": 370
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 379, 366 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

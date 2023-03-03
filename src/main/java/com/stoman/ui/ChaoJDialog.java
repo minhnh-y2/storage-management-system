@@ -5,6 +5,9 @@
  */
 package com.stoman.ui;
 
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -40,32 +43,38 @@ public class ChaoJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        pnlBorder = new JPanel();
+        lblLogo = new JLabel();
+        progressBar = new JProgressBar();
 
-        pnlBorder = new javax.swing.JPanel();
-        lblLogo = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        //======== this ========
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setUndecorated(true);
+        var contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
-        pnlBorder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        pnlBorder.setLayout(new java.awt.BorderLayout());
+        //======== pnlBorder ========
+        {
+            pnlBorder.setBorder(new LineBorder(new Color(0x999999)));
+            pnlBorder.setLayout(new BorderLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/stoman/images/chao.gif"))); // NOI18N
-        pnlBorder.add(lblLogo, java.awt.BorderLayout.CENTER);
+            //---- lblLogo ----
+            lblLogo.setIcon(new ImageIcon(getClass().getResource("/com/stoman/images/chao.gif")));
+            pnlBorder.add(lblLogo, BorderLayout.CENTER);
 
-        progressBar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        progressBar.setMaximum(1000);
-        progressBar.setMaximumSize(new java.awt.Dimension(32767, 17));
-        progressBar.setMinimumSize(new java.awt.Dimension(10, 17));
-        progressBar.setPreferredSize(new java.awt.Dimension(146, 17));
-        progressBar.setStringPainted(true);
-        pnlBorder.add(progressBar, java.awt.BorderLayout.SOUTH);
-
-        getContentPane().add(pnlBorder, java.awt.BorderLayout.PAGE_START);
-
+            //---- progressBar ----
+            progressBar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            progressBar.setMaximum(1000);
+            progressBar.setMaximumSize(new Dimension(32767, 17));
+            progressBar.setMinimumSize(new Dimension(10, 17));
+            progressBar.setPreferredSize(new Dimension(146, 17));
+            progressBar.setStringPainted(true);
+            pnlBorder.add(progressBar, BorderLayout.SOUTH);
+        }
+        contentPane.add(pnlBorder, BorderLayout.PAGE_START);
         pack();
+        setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -101,9 +110,9 @@ public class ChaoJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblLogo;
-    private javax.swing.JPanel pnlBorder;
-    private javax.swing.JProgressBar progressBar;
+    private JPanel pnlBorder;
+    private JLabel lblLogo;
+    private JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 
     private void init() {        
