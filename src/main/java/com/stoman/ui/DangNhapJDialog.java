@@ -9,7 +9,6 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.stoman.dao.NhanVienDAO;
 import com.stoman.entity.NhanVien;
 import com.stoman.utils.Auth;
-import com.stoman.utils.JPanelDrag;
 import com.stoman.utils.MsgBox;
 import com.stoman.utils.XImages;
 import com.stoman.utils.XPassword;
@@ -22,13 +21,15 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author MinhNH
  */
 public class DangNhapJDialog extends javax.swing.JDialog {
+    StoManJFrame parentFrame;
 
     /**
      * Creates new form DangNhapJDialog
      */
-    public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public DangNhapJDialog(java.awt.Frame parentFrame, boolean modal) {
+        super(parentFrame, modal);
         this.setUndecorated(true);
+        this.parentFrame = (StoManJFrame) parentFrame;
         initComponents();
         init();
     }
@@ -264,6 +265,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
             Auth.user = nv;
             this.dispose();
+            
+            if (this.parentFrame != null && this.parentFrame.isVisible()) {
+                this.parentFrame.loginStatus();
+            }
         } catch (Exception e) {
             MsgBox.alert(this, "Không thể đăng nhập!");
             e.printStackTrace();

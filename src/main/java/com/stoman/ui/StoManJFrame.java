@@ -2759,7 +2759,7 @@ public class StoManJFrame extends javax.swing.JFrame {
     }
 
     // Tự động điều chỉnh nút đăng nhập/đăng xuất
-    private void loginStatus() {
+    public void loginStatus() {
         if (!Auth.isLogin()) {
             mniTaiKhoan.setText("Đăng nhập");
             mniTaiKhoan.setIcon(new ImageIcon(getClass().getResource("/com/stoman/icons/login.png")));
@@ -2926,8 +2926,8 @@ public class StoManJFrame extends javax.swing.JFrame {
     // Đăng xuất
     private void logout() {
         Auth.clear();
-        new DangNhapJDialog(this, true).setVisible(true);
         this.loginStatus();
+        new DangNhapJDialog(this, true).setVisible(true);
     }
 
     // Thoát chương trình
